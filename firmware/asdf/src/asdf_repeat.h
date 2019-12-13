@@ -81,7 +81,7 @@ void asdf_repeat_deactivate(void);
 // should be repeated to the output.
 uint8_t asdf_repeat(void);
 
-#endif // !defined (FILENAME_H)
+#endif // !defined (ASDF_REPEAT_H)
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

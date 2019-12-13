@@ -27,7 +27,7 @@
 #define ASDF_NUM_ROWS 8
 #define ASDF_NUM_COLS 8
 #define ASDF_ACTION 0x80
-#define ASDF_INVALID_CODE 0x80
+#define ASDF_INVALID_CODE ASDF_ACTION
 // an action code is not a valid keycode.
 
 // for efficiency on 8-bit machines, use 8 columns per row. For 16 columns per
