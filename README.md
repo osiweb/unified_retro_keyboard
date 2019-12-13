@@ -7,6 +7,6 @@ The keyboard will allow use of Cherry MX keys, or Futaba MD-4PCS (aka eorge Risk
 The keyboard is designed using KiCad in order to be the most useful for anybody wishing to modify the keyboard for more specific uses, or to add to the project.
 
 This keyboard project so far consists of:
-1. A classic retro-style ASCII keyboard, modeled after the ADM-3A keyboard, which can be also be populated to fit perfectly in an Apple II/II+ case, or an OSI case.
-1. A keyscan/decoder interface module that can output parallel ASCII, and can be adapted for other protocols.
-1. An OSI-compatible interface module.
+- A classic retro-style ASCII keyboard, modeled after the ADM-3A keyboard, which can be also be populated to fit perfectly in an Apple II/II+ case, or an OSI case.
+- A keyscan/decoder interface module that can output parallel ASCII, and can be adapted for other protocols.
+- An OSI-compatible interface module.
