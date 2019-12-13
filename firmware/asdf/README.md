@@ -1,5 +1,4 @@
--*- text -*-
-- asdf Keyboard scanning firmware
+ASDF Keyboard scanning firmware
 
 The ASDF (Auto Scan by DF) firmware is a key matrix scanner that can detect and
 debounce keypress and release events on a key matrix and either send codes or
