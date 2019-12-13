@@ -1,12 +1,10 @@
 ASDF Keyboard scanning firmware
-
+-
 The ASDF (Auto Scan by DF) firmware is a key matrix scanner that can detect and
 debounce keypress and release events on a key matrix and either send codes or
 perform actions on keypress or release. Keymaps are defined per application and
 may, for example, generate ASCII codes, special keyscan codes, etc. The code is
 modular and may be integrated into a larger system easily.
-
-
 
 By default, the code supports any number of rows by 8 columns, which will give
 the bestperformance on an 8-bit microcontroller. For more than 8 columns per
@@ -21,7 +19,7 @@ boolean variables, and via the key maps. The key maps are organized in
 row,column format, with separate keymaps shift, capslock, and control-key modes.
 
 Features:
-
+--
 * modifiers: A set of modifier keys may be specified. When only a few modifiers
   are used, this mechanism is a low-overhead alternative to a keymap overlay for
   keyboard states that only change the key value, such as SHIFT, CAPS LOCK, CONTROL,
@@ -76,7 +74,7 @@ Features:
   functions.
 
 Compiling and configuration
-
+--
 The source files are in the ./src directory.  The final build files go in the ./build directory.
 
 To build, enter the ./src directory. You should be able to build a binary and
@@ -88,7 +86,7 @@ keys), and specify the character output buffer size (if you are implementing
 macros, etc.)
 
 Porting
-
+--
 This firmware was written in modular, portable C99, to be compiled with GCC
 (avr-gcc for the Atmega). The hardware-sepecific files are in Arch/*.[ch]. To
 adapt the Atmega port for additional hardware, enter the ./src/Arch directory,
