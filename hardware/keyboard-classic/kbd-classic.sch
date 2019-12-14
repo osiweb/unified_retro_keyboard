@@ -4,9 +4,9 @@ EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 3
-Title "Universal Retro Keyboard"
+Title "Unified Retro Keyboard"
 Date "2019-08-25"
-Rev "1.0"
+Rev "1.2"
 Comp "OSIWeb.org"
 Comment1 "Main sheet with connector"
 Comment2 ""

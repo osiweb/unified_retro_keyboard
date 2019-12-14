@@ -4,7 +4,7 @@ EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
-Title "ASCII Interface for Universal Retro Keyboard"
+Title "ASCII Interface for Unified Retro Keyboard"
 Date "2019-08-25"
 Rev "2.2"
 Comp "OSIWeb.org"
