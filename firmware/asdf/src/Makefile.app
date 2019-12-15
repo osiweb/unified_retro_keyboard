@@ -65,7 +65,7 @@ MAKEDEPEND = $(CPP) $(DEPFLAGS) $(CPPFLAGS) $< \
              | sed -n 's,^\# *[0-9][0-9]* *"\([^"<]*\)".*,$@: \1\n\1:,p' \
              | sort -u > $*.d
 
-SRC_FILES = main.c asdf.c asdf_modifiers.c asdf_repeat.c asdf_keymaps.c asdf_buffer.c asdf_arch.c
+SRC_FILES = main.c asdf.c asdf_modifiers.c asdf_repeat.c asdf_keymaps.c asdf_buffer.c asdf_arch.c asdf_actions.c
 OBJ_FILES := $(SRC_FILES:.c=.o)
 DEP_FILES := $(SRC_FILES:%.c=$(DEP_DIR)/%.d)
 MAP_FILE = $(TARGET).map
@@ -137,6 +137,7 @@ asdf.o: asdf.c asdf.h asdf_arch.h asdf_keymaps.h asdf_config.h
 asdf_repeat.o: asdf_repeat.c asdf_repeat.h asdf_config.h
 asdf_buffer.o: asdf_buffer.c asdf.h asdf_config.h
 asdf_modifiers.o: asdf_modifiers.c asdf_modifiers.h
+asdf_actions.o: asdf_actions.h asdf.h asdf_arch.h
 
 tags:   $(SRC_FILES)
 	etags $(SRC_FILES)

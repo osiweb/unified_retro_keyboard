@@ -1,9 +1,12 @@
+// File recommented by recomment.cpp
+// on Dec  9 2019 at 10:14:05.
+//
 // -*- mode: C; tab-width: 2 ; indent-tabs-mode: nil -*-
 //
-// Unified Keyboard Project
-// ASDF firmware - small, fast, and simple keyboard encoder.
+//  Universal Keyboard Project
+//  ASDF firmware - small, fast, and simple keyboard encoder.
 //
-// asdf.c
+//  asdf.c
 //
 // This file contains code for:
 // - the main scan code and key handler routines
@@ -35,6 +38,7 @@
 #include "asdf_modifiers.h"
 #include "asdf_buffer.h"
 #include "asdf_arch.h"
+#include "asdf_actions.h"
 
 static asdf_cols_t last_stable_key_state[ASDF_NUM_ROWS];
 
@@ -151,6 +155,14 @@ static void asdf_activate_action(action_t keycode)
       asdf_repeat_activate();
       break;
     }
+    case ACTION_CLEAR: {
+      asdf_send_screen_clear();
+      break;
+    }
+    case ACTION_RESET: {
+      asdf_send_reset();
+      break;
+    }
     case ACTION_NOTHING:
     case ACTION_LOCAL:
     case ACTION_BREAK:
@@ -165,7 +177,6 @@ static void asdf_activate_action(action_t keycode)
     case ACTION_FN_8:
     case ACTION_FN_9:
     case ACTION_FN_10:
-    case ACTION_CLEAR:
     default: break;
   }
 }
@@ -444,4 +455,3 @@ void asdf_keyscan(void)
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-

@@ -92,8 +92,14 @@
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  0x1c },                                          \
       { ACTION_NOTHING, ASCII_CTRL_P, ACTION_NOTHING, ACTION_NOTHING,                              \
         ASCII_SPACE,    ASCII_CTRL_Z, ASCII_CTRL_A,   ASCII_CTRL_Q },                              \
-      { ACTION_BREAK, ASCII_COMMA,  ASCII_CTRL_M, ASCII_CTRL_N,                                    \
-        ASCII_CTRL_B, ASCII_CTRL_V, ASCII_CTRL_C, ASCII_CTRL_X },                                  \
+      { ACTION_RESET /*ctrl-break is RESET*/,                                                      \
+        ASCII_COMMA,                                                                               \
+        ASCII_CTRL_M,                                                                              \
+        ASCII_CTRL_N,                                                                              \
+        ASCII_CTRL_B,                                                                              \
+        ASCII_CTRL_V,                                                                              \
+        ASCII_CTRL_C,                                                                              \
+        ASCII_CTRL_X },                                                                            \
       { ACTION_CLEAR, ASCII_CTRL_I, ASCII_CTRL_U, ASCII_CTRL_Y,                                    \
         ASCII_CTRL_T, ASCII_CTRL_R, ASCII_CTRL_E, ASCII_CTRL_W },                                  \
       { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR,                                \

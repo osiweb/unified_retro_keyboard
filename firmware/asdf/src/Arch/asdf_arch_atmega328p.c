@@ -38,13 +38,13 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <stdint.h>
-
+#include "asdf_config.h"
 #include "asdf_arch.h"
 
 static volatile uint8_t tick = 0;
 
-static uint8_t data_polarity = 0;   // normally positive polarity
-static uint8_t strobe_polarity = 0; // normally positive polarity
+static uint8_t data_polarity = ASDF_DEFAULT_DATA_POLARITY;
+static uint8_t strobe_polarity = ASDF_DEFAULT_STROBE_POLARITY;
 
 
 // PROCEDURE: ISR for Timer 0 overflow
@@ -223,22 +223,31 @@ static void asdf_arch_init_special_outputs(void)
   set_bit(&ASDF_CAPS_LED_DDR, ASDF_CAPS_LED_BIT);
 
 
-  // initialize SCREEN_CLEAR output line to LOW (inactive)
-  clear_bit(&ASDF_SCREEN_CLEAR_PORT, ASDF_SCREEN_CLEAR_BIT);
+  // initialize SCREEN_CLEAR output line to inactive
+  if (ASDF_DEFAULT_SCREEN_CLEAR_POLARITY == ASDF_POSITIVE_POLARITY) {
+    clear_bit(&ASDF_SCREEN_CLEAR_PORT, ASDF_SCREEN_CLEAR_BIT);
+  } else {
+    set_bit(&ASDF_SCREEN_CLEAR_PORT, ASDF_SCREEN_CLEAR_BIT);
+  }
   set_bit(&ASDF_SCREEN_CLEAR_DDR, ASDF_SCREEN_CLEAR_BIT);
 
 
-  // initialize /SYS_RESET output line to HIGH (inactive)
-  set_bit(&ASDF_SYS_RESET_PORT, ASDF_SYS_RESET_BIT);
+  // initialize /SYS_RESET output line to inactive
+  if (ASDF_DEFAULT_RESET_POLARITY == ASDF_POSITIVE_POLARITY) {
+    clear_bit(&ASDF_SYS_RESET_PORT, ASDF_SYS_RESET_BIT);
+  } else {
+    set_bit(&ASDF_SYS_RESET_PORT, ASDF_SYS_RESET_BIT);
+  }
   set_bit(&ASDF_SYS_RESET_DDR, ASDF_SYS_RESET_BIT);
 
 
-  // initialize /STROBE output to inactive.  Must test before set/clear to avoid spurious strobe
-  if (strobe_polarity) {
-    set_bit(&ASDF_STROBE_PORT, ASDF_STROBE_BIT);
+  // initialize /STROBE output to inactive. Must test before set/clear to avoid
+  // spurious strobe
+  if (ASDF_DEFAULT_STROBE_POLARITY == ASDF_POSITIVE_POLARITY) {
+    clear_bit(&ASDF_STROBE_PORT, ASDF_STROBE_BIT);
   }
   else {
-    clear_bit(&ASDF_STROBE_PORT, ASDF_STROBE_BIT);
+    set_bit(&ASDF_STROBE_PORT, ASDF_STROBE_BIT);
   }
 
   set_bit(&ASDF_STROBE_DDR, ASDF_STROBE_BIT);
@@ -260,7 +269,7 @@ static void asdf_arch_init_ascii_output(void)
 {
 
   // set all outputs
-  ASDF_ASCII_PORT = 0;
+  ASDF_ASCII_PORT = ASDF_DEFAULT_DATA_POLARITY;
   ASDF_ASCII_DDR = ALL_OUTPUTS;
 }
 
@@ -339,8 +348,8 @@ void asdf_arch_init(void)
   asdf_arch_init_ascii_output();
 
   // initialize keyboard data and strobe to positive polairy
-  data_polarity = 0;
-  strobe_polarity = 0;
+  data_polarity = ASDF_DEFAULT_DATA_POLARITY;
+  strobe_polarity = ASDF_DEFAULT_STROBE_POLARITY;
 
   // set up strobe output
   // set up indicator output
@@ -356,6 +365,48 @@ void asdf_arch_init(void)
 
   // enable interrupts:
   sei();
+}
+
+// PROCEDURE: asdf_arch_send_screen_clear
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Toggles the SCREEN_CLEAR output.
+//
+// SIDE EFFECTS: see DESCRIPTION
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_send_screen_clear(void)
+{
+  set_bit(&ASDF_SCREEN_CLEAR_PIN, ASDF_SCREEN_CLEAR_BIT);
+  _delay_us(ASDF_STROBE_LENGTH_US);
+  set_bit(&ASDF_SCREEN_CLEAR_PIN, ASDF_SCREEN_CLEAR_BIT);
+}
+
+// PROCEDURE: asdf_arch_send_reset
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Toggles the SCREEN_CLEAR output.
+//
+// SIDE EFFECTS: see DESCRIPTION
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_send_reset(void)
+{
+  set_bit(&ASDF_SYS_RESET_PIN, ASDF_SYS_RESET_BIT);
+  _delay_us(ASDF_STROBE_LENGTH_US);
+  set_bit(&ASDF_SYS_RESET_PIN, ASDF_SYS_RESET_BIT);
 }
 
 // PROCEDURE: asdf_arch_read_row
@@ -436,11 +487,11 @@ void asdf_arch_send_code(asdf_keycode_t code)
 
 
   // toggle strobe.  Must test before setting to avoid spurious strobe
-  set_bit(&ASDF_STROBE_PINS, ASDF_STROBE_BIT);
+  set_bit(&ASDF_STROBE_PIN, ASDF_STROBE_BIT);
 
   _delay_us(ASDF_STROBE_LENGTH_US);
 
-  set_bit(&ASDF_STROBE_PINS, ASDF_STROBE_BIT);
+  set_bit(&ASDF_STROBE_PIN, ASDF_STROBE_BIT);
 }
 
 //-------|---------|---------+---------+---------+---------+---------+---------+

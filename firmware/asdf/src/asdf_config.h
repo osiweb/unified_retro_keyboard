@@ -1,6 +1,6 @@
 // -*- mode: C; tab-width: 4 ; indent-tabs-mode: nil -*- 
 //
-//  Unified Keyboard Project
+//  Universal Keyboard Project
 //  ASDF keyboard firmware
 //
 //  asdf_config.h
@@ -30,6 +30,22 @@
 
 #if !defined (CONFIG_H)
 #define CONFIG_H
+
+#define ASDF_POSITIVE_POLARITY 0
+#define ASDF_NEGATIVE_POLARITY (~ASDF_POSITIVE_POLARITY)
+
+// data polarity is positive (inactive is low, active is high)
+#define ASDF_DEFAULT_DATA_POLARITY ASDF_POSITIVE_POLARITY
+
+// Strobe polarity is positive (inactive is low, active is high)
+#define ASDF_DEFAULT_STROBE_POLARITY ASDF_POSITIVE_POLARITY
+
+// RESET output polarity is negative (inactive is high, active is low)
+#define ASDF_DEFAULT_RESET_POLARITY ASDF_NEGATIVE_POLARITY
+
+// SCREEN_CLEAR output polarity is positive (inactive is low, active is high)
+#define ASDF_DEFAULT_SCREEN_CLEAR_POLARITY ASDF_POSITIVE_POLARITY
+
 
 // size of the keycode output buffer.
 #define ASDF_KEYCODE_BUFFER_SIZE 16

@@ -206,15 +206,17 @@
 #define ASDF_CAPS_LED_BIT 3
 
 #define ASDF_SCREEN_CLEAR_PORT PORTC
+#define ASDF_SCREEN_CLEAR_PIN PINC
 #define ASDF_SCREEN_CLEAR_DDR DDRC
-#define ASDF_SCREEN_CLEAR_BIT 4
+#define ASDF_SCREEN_CLEAR_BIT 5
 
-#define ASDF_SYS_RESET_PORT PORTC
-#define ASDF_SYS_RESET_DDR DDRC
-#define ASDF_SYS_RESET_BIT 5
+#define ASDF_SYS_RESET_PORT PORTB
+#define ASDF_SYS_RESET_PIN PINB
+#define ASDF_SYS_RESET_DDR DDRB
+#define ASDF_SYS_RESET_BIT 7
 
 #define ASDF_STROBE_PORT PORTB
-#define ASDF_STROBE_PINS PINB
+#define ASDF_STROBE_PIN PINB
 #define ASDF_STROBE_DDR DDRB
 #define ASDF_STROBE_BIT 6
 
@@ -246,6 +248,18 @@ asdf_cols_t asdf_arch_read_row(uint8_t row);
 // INPUTS: none
 // OUTPUTS: returns a 1 if the 1ms timer timed out, 0 otherwise
 uint8_t asdf_arch_tick(void);
+
+// PROCEDURE: asdf_arch_send_screen_clear
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Toggles the SCREEN_CLEAR output.
+void asdf_arch_send_screen_clear(void);
+
+// PROCEDURE: asdf_arch_send_reset
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Toggles the SCREEN_CLEAR output.
+void asdf_arch_send_reset(void);
 
 // PROCEDURE: asdf_arch_send_code
 // INPUTS: (keycode_t) code - the code to be output by the keyboard
