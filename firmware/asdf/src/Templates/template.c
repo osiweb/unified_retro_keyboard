@@ -1,9 +1,9 @@
 // -*- mode: C; tab-width: 2 ; indent-tabs-mode: nil -*- 
 //
-//  Universal Keyboard Project
-//  ASDF keyboard firmware
+// Unified Keyboard Project
+// ASDF keyboard firmware
 //
-//  <FIXME-filename>.c
+// <FIXME-filename>.c
 //
 // Copyright 2019 David Fenyes
 //
@@ -22,15 +22,15 @@
 //
 
 
-//iring Information:
+// Wiring Information:
 // Chip: {Microcontroller type and version}
 //
-// Example: 
+// Example:
 // PIN NAME FUNCTION
 // 3   AN1  ADC INPUT: Line sense analog input
-// 
+//
 // 6   A4   INPUT: (T0CK) COUNT DOWN from quadrature decoder.
-//          configured to count on rising edge, synced with xtal 
+//          configured to count on rising edge, synced with xtal
 //
 
 

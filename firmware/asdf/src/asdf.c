@@ -1,12 +1,9 @@
-// File recommented by recomment.cpp
-// on Dec  9 2019 at 10:14:05.
-//
 // -*- mode: C; tab-width: 2 ; indent-tabs-mode: nil -*-
 //
-//  Universal Keyboard Project
-//  ASDF firmware - small, fast, and simple keyboard encoder.
+// Unified Keyboard Project
+// ASDF firmware - small, fast, and simple keyboard encoder.
 //
-//  asdf.c
+// asdf.c
 //
 // This file contains code for:
 // - the main scan code and key handler routines

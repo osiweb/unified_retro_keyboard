@@ -1,9 +1,6 @@
-// File recommented by recomment.cpp
-// on Dec  9 2019 at 10:14:05.
-//
 // -*- mode: C; tab-width: 4 ; indent-tabs-mode: nil -*-
 //
-//  Universal Keyboard Project
+//  Unified Keyboard Project
 //  ASDF keyboard firmware
 //
 //  asdf_ascii.h

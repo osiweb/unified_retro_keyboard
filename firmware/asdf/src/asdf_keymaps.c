@@ -1,6 +1,6 @@
 // -*- mode: C; tab-width: 2 ; indent-tabs-mode: nil -*-
 //
-// Universal Keyboard Project
+// Unified Keyboard Project
 // ASDF keyboard firmware
 //
 // asdf_keymaps.c

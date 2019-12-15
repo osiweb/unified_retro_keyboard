@@ -1,9 +1,9 @@
 // -*- mode: C; tab-width: 4 ; indent-tabs-mode: nil -*- 
 //
-//  Universal Keyboard Project
-//  ASDF keyboard firmware
+// Unfified Keyboard Project
+// ASDF keyboard firmware
 //
-//  <FIXME-filename>.h
+// <FIXME-filename>.h
 //
 // Copyright 2019 David Fenyes
 // This program is free software: you can redistribute it and/or modify it under
