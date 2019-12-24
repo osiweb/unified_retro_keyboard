@@ -40,10 +40,10 @@
                                                              ACTION_SHIFT_LOCK,                    \
                                                              ASCII_CR,                             \
                                                              ASCII_LF,                             \
-                                                             'o',                                  \
+                                                             '0',                                  \
                                                              'l',                                  \
                                                              ASCII_PERIOD },                       \
-      { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', '0', '9', '8' },      \
+      { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', 'o', '9', '8' },      \
     {                                                                                              \
       ASCII_AT, '7', '6', '5', '4', '3', '2', '1'                                                  \
     }                                                                                              \
@@ -61,10 +61,10 @@
                                                              ACTION_SHIFT_LOCK,                    \
                                                              ASCII_CR,                             \
                                                              ASCII_LF,                             \
-                                                             'O',                                  \
+                                                             '0',                                  \
                                                              'L',                                  \
                                                              ASCII_PERIOD },                       \
-      { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', '0', '9', '8' },      \
+      { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', 'O', '9', '8' },      \
     {                                                                                              \
       ASCII_AT, '7', '6', '5', '4', '3', '2', '1'                                                  \
     }                                                                                              \
@@ -78,9 +78,9 @@
       { ACTION_BREAK, '>', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
       { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },                                       \
       { ACTION_CLEAR, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                         \
-      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR, ASCII_LF, 'O', 'L', '<' },     \
+      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR, ASCII_LF, '0', 'L', '<' },     \
       { ASCII_TILDE, ASCII_RT_CURLY_BRACE, ASCII_LT_CURLY_BRACE, '=', '*',                         \
-        '0',         ASCII_RT_PAREN,       ASCII_LT_PAREN },                                       \
+        'O',         ASCII_RT_PAREN,       ASCII_LT_PAREN },                                       \
     {                                                                                              \
       ASCII_GRAVE_ACCENT, ASCII_SINGLE_QUOTE, '&', '%', '$', '#', ASCII_DOUBLE_QUOTE, '!'          \
     }                                                                                              \
@@ -103,9 +103,9 @@
       { ACTION_CLEAR, ASCII_CTRL_I, ASCII_CTRL_U, ASCII_CTRL_Y,                                    \
         ASCII_CTRL_T, ASCII_CTRL_R, ASCII_CTRL_E, ASCII_CTRL_W },                                  \
       { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR,                                \
-        ASCII_LF,      ASCII_CTRL_O,   ASCII_CTRL_L,      ACTION_NOTHING },                        \
+        ASCII_LF,      ACTION_FN_10,   ASCII_CTRL_L,      ACTION_NOTHING },                        \
       { ACTION_NOTHING, 0x1d,        ASCII_ESC,   ACTION_NOTHING,                                  \
-        ACTION_NOTHING, ACTION_FN_1, ACTION_FN_9, ACTION_FN_8 },                                   \
+        ACTION_NOTHING, ASCII_CTRL_O, ACTION_FN_9, ACTION_FN_8 },                                   \
     {                                                                                              \
       ACTION_NOTHING, ACTION_FN_7, ACTION_FN_6, ACTION_FN_5, ACTION_FN_4, ACTION_FN_3,             \
         ACTION_FN_2, ACTION_FN_2                                                                   \
