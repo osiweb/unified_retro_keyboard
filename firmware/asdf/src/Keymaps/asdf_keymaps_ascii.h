@@ -1,9 +1,12 @@
 // -*- mode: C; tab-width: 4 ; indent-tabs-mode: nil -*-
 //
-//  Unfified Keyboard Project
-//  ASDF keyboard firmware
+// Unfified Keyboard Project
+// ASDF keyboard firmware
 //
-//  asdf_keymaps.h
+// asdf_keymaps.h -- Swapped 'O' and '0' version.
+//
+// This keymap is for use with rev 1.2 or earlier of the starndard ASCII key
+// matrix. That version has swapped position of the 'O' and '0' keys.
 //
 // Copyright 2019 David Fenyes
 //
