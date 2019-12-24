@@ -37,7 +37,7 @@
       { ACTION_NOTHING, 'k', 'j', 'h', 'g', 'f', 'd', 's' },                                       \
       { ACTION_CLEAR, 'i', 'u', 'y', 't', 'r', 'e', 'w' }, { ACTION_REPEAT,                        \
                                                              ACTION_HERE_IS,                       \
-                                                             ACTION_SHIFT_LOCK,                    \
+                                                             ACTION_CAPS_LOCK,                    \
                                                              ASCII_CR,                             \
                                                              ASCII_LF,                             \
                                                              '0',                                  \
@@ -58,7 +58,7 @@
       { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },                                       \
       { ACTION_CLEAR, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' }, { ACTION_REPEAT,                        \
                                                              ACTION_HERE_IS,                       \
-                                                             ACTION_SHIFT_LOCK,                    \
+                                                             ACTION_CAPS_LOCK,                    \
                                                              ASCII_CR,                             \
                                                              ASCII_LF,                             \
                                                              '0',                                  \
@@ -78,7 +78,7 @@
       { ACTION_BREAK, '>', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
       { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },                                       \
       { ACTION_CLEAR, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                         \
-      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR, ASCII_LF, '0', 'L', '<' },     \
+      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_CAPS_LOCK, ASCII_CR, ASCII_LF, '0', 'L', '<' },     \
       { ASCII_TILDE, ASCII_RT_CURLY_BRACE, ASCII_LT_CURLY_BRACE, '=', '*',                         \
         'O',         ASCII_RT_PAREN,       ASCII_LT_PAREN },                                       \
     {                                                                                              \
@@ -102,7 +102,7 @@
         ASCII_CTRL_X },                                                                            \
       { ACTION_CLEAR, ASCII_CTRL_I, ASCII_CTRL_U, ASCII_CTRL_Y,                                    \
         ASCII_CTRL_T, ASCII_CTRL_R, ASCII_CTRL_E, ASCII_CTRL_W },                                  \
-      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR,                                \
+      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_CAPS_LOCK, ASCII_CR,                                \
         ASCII_LF,      ACTION_FN_10,   ASCII_CTRL_L,      ACTION_NOTHING },                        \
       { ACTION_NOTHING, 0x1d,        ASCII_ESC,   ACTION_NOTHING,                                  \
         ACTION_NOTHING, ASCII_CTRL_O, ACTION_FN_9, ACTION_FN_8 },                                   \
