@@ -78,10 +78,10 @@
     { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  ASCII_VERT_BAR },                                \
       { ASCII_DEL, 'P', '+', '?', ASCII_SPACE, 'Z', 'A', 'Q' },                                    \
-      { ACTION_BREAK, '>', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
+      { ACTION_BREAK, '<', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
       { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },                                       \
       { ACTION_CLEAR, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                         \
-      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', '<' },     \
+      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', '>' },     \
       { ASCII_TILDE, ASCII_RT_CURLY_BRACE, ASCII_LT_CURLY_BRACE, '=', '*',                         \
         ASCII_ZERO,         ASCII_RT_PAREN,       ASCII_LT_PAREN },                                       \
     {                                                                                              \
