@@ -1,6 +1,3 @@
-// File recommented by recomment.cpp
-// on Dec  9 2019 at 10:14:05.
-//
 // -*- mode: C; tab-width: 4 ; indent-tabs-mode: nil -*-
 //
 //  Unfified Keyboard Project
@@ -26,9 +23,31 @@
 #if !defined(ASDF_MODIFIERS_H)
 #define ASDF_MODIFIERS_H
 
-typedef enum { SHIFT_OFF_ST = 0, SHIFT_ON_ST = 0x01, SHIFT_LOCKED_ST = 0x02 } shift_state_t;
-typedef enum { CAPS_OFF_ST = 0, CAPS_ON_ST = 0x02 } caps_state_t;
-typedef enum { CTRL_OFF_ST = 0, CTRL_ON_ST = 0x04 } ctrl_state_t;
+#define ASDF_MODIFIERS_SHIFT_POS 0
+#define ASDF_MODIFIERS_CAPS_POS 1
+#define ASDF_MODIFIERS_CTRL_POS 2
+
+#define ASDF_MODIFIERS_SHIFT_MASK (1 << ASDF_MODIFIERS_SHIFT_POS)
+#define ASDF_MODIFIERS_CAPS_MASK (1 << ASDF_MODIFIERS_CAPS_POS)
+#define ASDF_MODIFIERS_CTRL_MASK (1 << ASDF_MODIFIERS_CTRL_POS)
+
+typedef enum {
+  SHIFT_OFF_ST = 0,
+  SHIFT_ON_ST = 1,
+  SHIFT_LOCKED_ST = 2,
+  SHIFT_BOTH_ST = 3 // Never explicitly set. SHIFT and SHIFTLOCK together.
+
+} shift_state_t;
+
+typedef enum {
+  CAPS_OFF_ST = 0,
+  CAPS_ON_ST = 1,
+  CAPS_LOCKED_ST = 2,
+  CAPS_BOTH_ST = 3 // Never explicitly set. CAPS and CAPSLOCK together.
+} caps_state_t;
+
+typedef enum { CTRL_OFF_ST = 0, CTRL_ON_ST = 1 } ctrl_state_t;
+
 typedef enum {
   MOD_PLAIN_MAP = 0,
   MOD_SHIFT_MAP,
@@ -60,6 +79,12 @@ void asdf_modifier_shiftlock_activate(void);
 // DESCRIPTION: Turns on Capslock state
 //
 void asdf_modifier_capslock_activate(void);
+
+// PROCEDURE: asdf_modifier_caps_activate
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: sets CAPS state to ON (without disturbing the caps lock state)
+void asdf_modifier_caps_activate(void);
 
 // PROCEDURE: asdf_modifier_ctrl_activate
 // INPUTS: none
@@ -95,6 +120,12 @@ void asdf_modifier_shiftlock_deactivate(void);
 // DESCRIPTION: No action.  Called when releasing the CAPS LOCK key.
 //
 void asdf_modifier_capslock_deactivate(void);
+
+// PROCEDURE: asdf_modifier_caps_deactivate
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: sets CAPS state to OFF (without disturbing the caps lock state)
+void asdf_modifier_caps_deactivate(void);
 
 // PROCEDURE: asdf_modifiers_init
 // INPUTS: none

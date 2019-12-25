@@ -1,4 +1,5 @@
-ARCH = test
+# -*- makefile -*-
+
 ARCH = test
 KEYMAP = test
 

@@ -1,6 +1,3 @@
-// File recommented by recomment.cpp
-// on Dec  9 2019 at 10:14:05.
-//
 // -*-mode : C;
 // tab - width : 2; indent-tabs-mode: nil -*-
 //
@@ -61,6 +58,7 @@ void asdf_modifier_shift_activate(void)
   shift_state = SHIFT_ON_ST;
 }
 
+
 // PROCEDURE: asdf_modifier_shiftlock_activate
 // INPUTS: none
 // OUTPUTS: none
@@ -94,6 +92,36 @@ void asdf_modifier_shiftlock_activate(void)
   }
 }
 
+// PROCEDURE: asdf_modifier_caps_activate
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: sets CAPS state to ON (without disturbing the caps lock state)
+//
+// SIDE EFFECTS: see DESCRIPTION
+//
+// COMPLEXITY: 1
+//
+void asdf_modifier_caps_activate(void)
+{
+  caps_state |= CAPS_ON_ST;
+}
+
+// PROCEDURE: asdf_modifier_caps_deactivate
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: sets CAPS state to OFF (without disturbing the caps lock state)
+//
+// SIDE EFFECTS: see DESCRIPTION
+//
+// COMPLEXITY: 1
+//
+void asdf_modifier_caps_deactivate(void)
+{
+  caps_state &= ~CAPS_ON_ST;
+}
+
 // PROCEDURE: asdf_modifier_capslock_activate
 // INPUTS: none
 // OUTPUTS: none
@@ -106,7 +134,7 @@ void asdf_modifier_shiftlock_activate(void)
 //
 void asdf_modifier_capslock_activate(void)
 {
-  caps_state ^= CAPS_ON_ST;
+  caps_state ^= CAPS_LOCKED_ST;
 }
 
 // PROCEDURE: asdf_modifier_ctrl_activate
@@ -213,8 +241,20 @@ void asdf_modifiers_init(void)
 //
 modifier_index_t asdf_modifier_index(void)
 {
-  return modifier_indices[((uint8_t)(shift_state & 1)      // shift active
-                           | ((uint8_t)(shift_state >> 1)) // shiftlock active
-                           | (uint8_t) caps_state          // caps active
-                           | (uint8_t) ctrl_state)];       // ctrl active
+  uint8_t modifier = 0;
+  if (shift_state) {
+    modifier |= ASDF_MODIFIERS_SHIFT_MASK;
+  }
+  if (caps_state) {
+    modifier |= ASDF_MODIFIERS_CAPS_MASK;
+  }
+  if (ctrl_state) {
+    modifier |= ASDF_MODIFIERS_CTRL_MASK;
+  }
+
+  return modifier_indices[modifier];
 }
+
+
+//-------|---------|---------+---------+---------+---------+---------+---------+
+// Above line is 80 columns, and should display completely in the editor.

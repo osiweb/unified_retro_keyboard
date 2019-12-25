@@ -1,3 +1,5 @@
+# -*- makefile -*-
+
 ARCH ?= atmega328p
 KEYMAP ?= ascii
 
