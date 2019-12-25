@@ -24,6 +24,7 @@
 #include "asdf.h"
 #include "asdf_arch.h"
 #include "asdf_keymaps.h"
+#include "asdf_keymap_defs.h"
 
 typedef asdf_keycode_t keycode_matrix_t[ASDF_NUM_ROWS][ASDF_NUM_COLS];
 

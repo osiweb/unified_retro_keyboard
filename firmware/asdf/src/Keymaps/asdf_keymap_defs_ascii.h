@@ -1,9 +1,12 @@
 // -*- mode: C; tab-width: 4 ; indent-tabs-mode: nil -*-
 //
-//  Unfified Keyboard Project
-//  ASDF keyboard firmware
+// Unfified Keyboard Project
+// ASDF keyboard firmware
 //
-//  asdf_keymaps.h
+// asdf_keymaps.h -- Swapped 'O' and '0' version.
+//
+// This keymap is for use with rev 1.2 or earlier of the starndard ASCII key
+// matrix. That version has swapped position of the 'O' and '0' keys.
 //
 // Copyright 2019 David Fenyes
 //
@@ -21,14 +24,18 @@
 // this program. If not, see <https://www.gnu.org/licenses/>.
 
 
-#if !defined(ASDF_KEYMAPS_H)
-#define ASDF_KEYMAPS_H
+#if !defined(ASDF_KEYMAP_DEFS_H)
+#define ASDF_KEYMAP_DEFS_H
 
 #include "asdf.h"
 #include "asdf_ascii.h"
 #include "asdf_modifiers.h"
 
-#define ASCII_PLAIN_MAP                                                                            \
+
+#define ASDF_NUM_ROWS 8
+#define ASDF_NUM_COLS 8
+
+#define ASCII_PLAIN_MAP                                                 \
   {                                                                                                \
     { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  ASCII_BACKSLASH },                               \
@@ -40,7 +47,7 @@
                                                              ACTION_CAPS,                    \
                                                              ASCII_CR,                             \
                                                              ASCII_LF,                             \
-                                                             '0',                                  \
+                                                             'O',                                  \
                                                              'l',                                  \
                                                              ASCII_PERIOD },                       \
       { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', 'o', '9', '8' },      \
@@ -61,10 +68,10 @@
                                                              ACTION_CAPS,                    \
                                                              ASCII_CR,                             \
                                                              ASCII_LF,                             \
-                                                             '0',                                  \
+                                                             'O',                                  \
                                                              'L',                                  \
                                                              ASCII_PERIOD },                       \
-      { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', 'O', '9', '8' },      \
+      { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', ASCII_ZERO, '9', '8' },      \
     {                                                                                              \
       ASCII_AT, '7', '6', '5', '4', '3', '2', '1'                                                  \
     }                                                                                              \
@@ -78,9 +85,9 @@
       { ACTION_BREAK, '<', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
       { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },                                       \
       { ACTION_CLEAR, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                         \
-      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_CAPS, ASCII_CR, ASCII_LF, '0', 'L', '>' },     \
+      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', '>' },     \
       { ASCII_TILDE, ASCII_RT_CURLY_BRACE, ASCII_LT_CURLY_BRACE, '=', '*',                         \
-        'O',         ASCII_RT_PAREN,       ASCII_LT_PAREN },                                       \
+        ASCII_ZERO,         ASCII_RT_PAREN,       ASCII_LT_PAREN },                                       \
     {                                                                                              \
       ASCII_GRAVE_ACCENT, ASCII_SINGLE_QUOTE, '&', '%', '$', '#', ASCII_DOUBLE_QUOTE, '!'          \
     }                                                                                              \
@@ -128,7 +135,7 @@ void asdf_keymaps_init(void);
 asdf_keycode_t asdf_keymaps_get_code(uint8_t row, uint8_t col, uint8_t modifier_index);
 
 
-#endif /* !defined (ASDF_KEYMAPS_H) */
+#endif /* !defined (ASDF_KEYMAP_DEFS_H) */
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

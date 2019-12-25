@@ -33,7 +33,7 @@ CFLAGS += -Wstrict-prototypes
 CFLAGS += -Wundef
 CFLAGS += -Wold-style-definition
 
-SRC_FILES = main.c asdf.c asdf_modifiers.c asdf_repeat.c asdf_keymaps.c asdf_buffer.c asdf_arch.c
+SRC_FILES = main.c asdf.c asdf_actions.c asdf_modifiers.c asdf_repeat.c asdf_keymaps.c asdf_buffer.c asdf_arch.c
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
 
@@ -64,7 +64,7 @@ TEST4_BUILD = $(BUILD_DIR)/test_$(TEST4)
 
 TEST5 = asdf
 TEST5_SRC = $(TEST_DIR)/test_$(TEST5).c
-TEST5_DEPS = ./$(TEST5).c $(UNITY_DIR)/unity.c ./$(TEST1).c $(TEST2).c $(TEST3).c $(TEST4).c
+TEST5_DEPS = ./$(TEST5).c $(UNITY_DIR)/unity.c ./asdf_actions.c ./asdf_arch.c ./$(TEST1).c $(TEST2).c $(TEST3).c $(TEST4).c
 TEST5_BUILD = $(BUILD_DIR)/test_$(TEST5)
 
 .SUFFIXES:
@@ -75,9 +75,9 @@ TEST5_BUILD = $(BUILD_DIR)/test_$(TEST5)
 
 all: test
 
-asdf_keymaps.h: Keymaps/asdf_keymaps_$(KEYMAP).h
+asdf_keymap_defs.h: Keymaps/asdf_keymap_defs_$(KEYMAP).h
 	cp $< $@
-GENERATED_FILES += asdf_keymaps.h
+GENERATED_FILES += asdf_keymap_defs.h
 
 
 asdf_arch.c: $(ARCH_DIR)/asdf_arch_$(ARCH).c _Arch_$(ARCH)
@@ -92,7 +92,7 @@ GENERATED_FILES += asdf_arch.h
 $(ARCH_TOKEN):
 	touch $(ARCH_TOKEN)
 
-asdf_keymaps.c: asdf.h asdf_ascii.h asdf_modifiers.h asdf_arch.h asdf_keymaps.h
+asdf_keymaps.c: asdf.h asdf_ascii.h asdf_modifiers.h asdf_arch.h asdf_keymaps.h asdf_keymap_defs.h
 
 tags:   $(SRC_FILES)
 	etags $(SRC_FILES)

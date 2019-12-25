@@ -26,13 +26,37 @@
 #if !defined (ASDF_ARCH_H)
 #define ASDF_ARCH_H
 
+#include "asdf.h"
+
 #define FLASH
 #define FLASH_READ (a) (*(a))
 #define FLASH_READ_MATRIX_ELEMENT(mat,row,col) (mat)[(row)][(col)]
 
+// PROCEDURE: asdf_arch_read_row
+// INPUTS: (uint8_t) row: the row number to be scanned
+// OUTPUTS: returns a word containing the active (pressed) columns
+// DESCRIPTION: Outputs the argument to the ROW port, then reads the column port
+// and returns the value. The value is a binary representation of the keys
+// pressed within the row, with 1=pressed, 0=released.
+asdf_cols_t asdf_arch_read_row(uint8_t row);
+
+// PROCEDURE: asdf_arch_send_screen_clear
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Toggles the SCREEN_CLEAR output.
+void asdf_arch_send_screen_clear(void);
+
+// PROCEDURE: asdf_arch_send_reset
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Toggles the SCREEN_CLEAR output.
+void asdf_arch_send_reset(void);
+
+// PROCEDURE: asdf_arch_init
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: sets up all the hardware for the keyboard
 void asdf_arch_init(void);
-void asdf_arch_tick(void);
-uint8_t asdf_arch_read_row(uint8_t row);
 
 #endif // !defined (ASDF_ARCH_H)
 

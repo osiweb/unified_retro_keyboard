@@ -1,12 +1,12 @@
-// -*- mode: C; tab-width: 2 ; indent-tabs-mode: nil -*- 
+// -*- mode: C; tab-width: 2 ; indent-tabs-mode: nil -*-
 //
-// Unified Keyboard Project
+// Unfified Keyboard Project
 // ASDF keyboard firmware
 //
-// asdf_actions.c
+// asdf_arch.c
 //
-// This file implements actions that are bound to keys in the keymap that don't
-// have a clear home in any other module.
+// This file contains all the architecture dependent code, including register
+// setup, I/O, timers, etc.
 //
 // Copyright 2019 David Fenyes
 //
@@ -22,41 +22,46 @@
 //
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+// Wiring Information:
+// Chip: {Microcontroller type and version}
 //
+// Example:
+// PIN          NAME      FUNCTION
+// 14-19,9,10   PORTB     COLUMN inputs (1 bit per column)
+// 23-25        PORTC0-2  ROW outputs (row number)
+// 27           PORTC4
+
+
 #include <stdint.h>
-#include "asdf_actions.h"
+#include "asdf_keymap_defs.h"
+#include "asdf_config.h"
 #include "asdf_arch.h"
 
-// PROCEDURE: asdf_screen_clear
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Performs screen clear. This function contains implementation
-// independent actions, which may be simply calling the architecture-dependent
-// hardware screen clear routine, or could involve a special character output.
-//
-// SIDE EFFECTS: causes screen clear may occur.  See DESCRIPTION
-//
-// NOTES:
-//
-// SCOPE: public
-//
-// COMPLEXITY: 1
-//
-void asdf_send_screen_clear(void)
-{
-  asdf_arch_send_screen_clear();
-}
 
-// PROCEDURE: asdf_send_reset
+
+// PROCEDURE: asdf_arch_init
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Performs host reset. This function contains implementation
-// independent actions, which may be simply calling the architecture-dependent
-// hardware screen clear routine, or could involve a special character output.
+// DESCRIPTION: sets up all the hardware for the keyboard
 //
-// SIDE EFFECTS: causes host reset.  See DESCRIPTION
+// SIDE EFFECTS: see DESCRIPTION
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_init(void) {}
+
+// PROCEDURE: asdf_arch_send_screen_clear
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Toggles the SCREEN_CLEAR output.
+//
+// SIDE EFFECTS: see DESCRIPTION
 //
 // NOTES:
 //
@@ -64,11 +69,24 @@ void asdf_send_screen_clear(void)
 //
 // COMPLEXITY: 1
 //
-void asdf_send_reset(void)
-{
-  asdf_arch_send_reset();
-}
+void asdf_arch_send_screen_clear(void) {}
+
+// PROCEDURE: asdf_arch_send_reset
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Toggles the SCREEN_CLEAR output.
+//
+// SIDE EFFECTS: see DESCRIPTION
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_send_reset(void) {}
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-
+//

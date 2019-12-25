@@ -98,9 +98,9 @@ include $(wildcard $(DEPFILES))
 %.o: %.c $(DEP_DIR)/%.d | $(DEP_DIR)
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(DEPFLAGS) $<
 
-asdf_keymaps.h: $(KEYMAPS_DIR)/asdf_keymaps_$(KEYMAP).h $(KEYMAP_H_TOKEN)
+asdf_keymap_defs.h: $(KEYMAPS_DIR)/asdf_keymap_defs_$(KEYMAP).h $(KEYMAPDEFS_H_TOKEN)
 	cp $< $@
-GENERATED_FILES += asdf_keymaps.h
+GENERATED_FILES += asdf_keymap_defs.h
 
 
 asdf_arch.c: $(ARCH_DIR)/asdf_arch_$(ARCH).c $(ARCH_C_TOKEN)
@@ -131,9 +131,9 @@ $(TARGET_BIN): $(OBJ_FILES)
 	$(CC) $(CFLAGS) -o $@ $(LDFLAGS) $^
 	$(SIZE_COMMAND) $(TARGET_BIN)
 
-asdf_keymaps.o: asdf_keymaps.c asdf.h asdf_ascii.h asdf_modifiers.h asdf_arch.h asdf_keymaps.h
+asdf_keymaps.o: asdf_keymaps.c asdf.h asdf_ascii.h asdf_modifiers.h asdf_arch.h asdf_keymaps.h asdf_keymap_defs.h
 main.o: main.c asdf.h asdf_arch.h
-asdf.o: asdf.c asdf.h asdf_arch.h asdf_keymaps.h asdf_config.h
+asdf.o: asdf.c asdf.h asdf_arch.h asdf_keymaps.h asdf_config.h asdf_keymap_defs.h
 asdf_repeat.o: asdf_repeat.c asdf_repeat.h asdf_config.h
 asdf_buffer.o: asdf_buffer.c asdf.h asdf_config.h
 asdf_modifiers.o: asdf_modifiers.c asdf_modifiers.h

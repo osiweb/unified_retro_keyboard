@@ -4,6 +4,7 @@
 #include "asdf_ascii.h"
 #include "asdf_modifiers.h"
 #include "asdf_keymaps.h"
+#include "asdf_keymap_defs.h"
 
 #define TESTALPHA 'a'
 #define TESTNUM '2'

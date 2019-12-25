@@ -24,8 +24,6 @@
 #if !defined(ASDF_H)
 #define ASDF_H
 
-#define ASDF_NUM_ROWS 8
-#define ASDF_NUM_COLS 8
 #define ASDF_ACTION 0x80
 #define ASDF_INVALID_CODE ASDF_ACTION
 // an action code is not a valid keycode.
