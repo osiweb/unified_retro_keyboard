@@ -249,6 +249,12 @@ asdf_cols_t asdf_arch_read_row(uint8_t row);
 // OUTPUTS: returns a 1 if the 1ms timer timed out, 0 otherwise
 uint8_t asdf_arch_tick(void);
 
+// PROCEDURE: asdf_arch_caps_led
+// INPUTS: (uint8_t) led_state: nonzero value turns on LED, zero turns off LED
+// OUTPUTS: none
+// DESCRIPTION: Controls the CAPSLOCK LED.
+void asdf_arch_caps_led(uint8_t led_status);
+
 // PROCEDURE: asdf_arch_send_screen_clear
 // INPUTS: none
 // OUTPUTS: none

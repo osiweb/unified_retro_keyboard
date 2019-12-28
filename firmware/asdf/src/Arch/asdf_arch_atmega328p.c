@@ -203,12 +203,11 @@ static void asdf_arch_init_clock(void)
   CLKPR = (CLKPCE | SYSCLK_DIV1);
 }
 
-// PROCEDURE: asdf_arch_init_special_outputs
+// PROCEDURE: asdf_arch_init_caps_led
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Sets up special output lines for LED indicator(s), System RESET
-// and SCREEN CLEAR, etc.
+// DESCRIPTION: Initialize CAPSLOCK LED to off.
 //
 // SIDE EFFECTS: See DESCRIPTION
 //
@@ -216,41 +215,78 @@ static void asdf_arch_init_clock(void)
 //
 // COMPLEXITY: 1
 //
-static void asdf_arch_init_special_outputs(void)
+static void asdf_arch_init_caps_led(void)
 {
-
-  // initialize CAPS LED to OFF
   clear_bit(&ASDF_CAPS_LED_PORT, ASDF_CAPS_LED_BIT);
   set_bit(&ASDF_CAPS_LED_DDR, ASDF_CAPS_LED_BIT);
+}
 
-
-  // initialize SCREEN_CLEAR output line to inactive
+// PROCEDURE: asdf_arch_screen_clear(void)
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Initialize Screen Clear to LOW
+//
+// SIDE EFFECTS: See DESCRIPTION
+//
+// SCOPE: private
+//
+// COMPLEXITY: 1
+//
+static void asdf_arch_init_screen_clear(void)
+{
   if (ASDF_DEFAULT_SCREEN_CLEAR_POLARITY == ASDF_POSITIVE_POLARITY) {
     clear_bit(&ASDF_SCREEN_CLEAR_PORT, ASDF_SCREEN_CLEAR_BIT);
   } else {
     set_bit(&ASDF_SCREEN_CLEAR_PORT, ASDF_SCREEN_CLEAR_BIT);
   }
   set_bit(&ASDF_SCREEN_CLEAR_DDR, ASDF_SCREEN_CLEAR_BIT);
+}
 
+// PROCEDURE: asdf_arch_init_sys_reset
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Initialize system reset to INACTIVE. Sys Reset emulates an open
+// collector output, so the inactive state is high impedance. Configure as an
+// input. Set the pin up as an input, and enable the weak pullup. Normally the
+// host system should pull the line high. The weak pullup is ~200-300k, at least
+// an order of magnitude greater than the typical host pullup value, so should
+// not have significant impact on the current, but will ensure the line is high
+// if the host omits a pullup.
+//
+// SIDE EFFECTS: See DESCRIPTION
+//
+// SCOPE: private
+//
+// COMPLEXITY: 1
+//
+static void asdf_arch_init_sys_reset(void)
+{
+  clear_bit(&ASDF_SYS_RESET_DDR, ASDF_SYS_RESET_BIT);  // set as input
+  set_bit(&ASDF_SYS_RESET_PORT, ASDF_SYS_RESET_BIT); // enable weak pullup
+}
 
-  // initialize /SYS_RESET output line to inactive
-  if (ASDF_DEFAULT_RESET_POLARITY == ASDF_POSITIVE_POLARITY) {
-    clear_bit(&ASDF_SYS_RESET_PORT, ASDF_SYS_RESET_BIT);
-  } else {
-    set_bit(&ASDF_SYS_RESET_PORT, ASDF_SYS_RESET_BIT);
-  }
-  set_bit(&ASDF_SYS_RESET_DDR, ASDF_SYS_RESET_BIT);
-
-
-  // initialize /STROBE output to inactive. Must test before set/clear to avoid
-  // spurious strobe
-  if (ASDF_DEFAULT_STROBE_POLARITY == ASDF_POSITIVE_POLARITY) {
+// PROCEDURE: asdf_arch_init_strobe
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Initialize strobe output
+//
+// SIDE EFFECTS: See DESCRIPTION
+//
+// SCOPE: private
+//
+// COMPLEXITY: 1
+//
+static void asdf_arch_init_strobe(void)
+{
+  if (strobe_polarity == ASDF_POSITIVE_POLARITY) {
     clear_bit(&ASDF_STROBE_PORT, ASDF_STROBE_BIT);
   }
   else {
     set_bit(&ASDF_STROBE_PORT, ASDF_STROBE_BIT);
   }
-
   set_bit(&ASDF_STROBE_DDR, ASDF_STROBE_BIT);
 }
 
@@ -270,7 +306,7 @@ static void asdf_arch_init_ascii_output(void)
 {
 
   // set all outputs
-  ASDF_ASCII_PORT = ASDF_DEFAULT_DATA_POLARITY;
+  ASDF_ASCII_PORT = data_polarity;
   ASDF_ASCII_DDR = ALL_OUTPUTS;
 }
 
@@ -352,11 +388,10 @@ void asdf_arch_init(void)
   data_polarity = ASDF_DEFAULT_DATA_POLARITY;
   strobe_polarity = ASDF_DEFAULT_STROBE_POLARITY;
 
-  // set up strobe output
-  // set up indicator output
-  // set up RESET output
-  // set up CLEAR output
-  asdf_arch_init_special_outputs();
+  asdf_arch_init_strobe();
+  asdf_arch_init_screen_clear();
+  asdf_arch_init_sys_reset();
+  asdf_arch_init_caps_led();
 
   // set up row output port
   asdf_arch_init_row_outputs();
@@ -366,6 +401,28 @@ void asdf_arch_init(void)
 
   // enable interrupts:
   sei();
+}
+
+
+// PROCEDURE: asdf_arch_caps_led
+// INPUTS: (uint8_t) led_state: nonzero value turns on LED, zero turns off LED
+// OUTPUTS: none
+//
+// DESCRIPTION: Controls the CAPSLOCK LED.
+//
+// SIDE EFFECTS: See DESCRIPTION
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_caps_led(uint8_t led_status)
+{
+  if (led_status) {
+    set_bit(&ASDF_CAPS_LED_PORT, ASDF_CAPS_LED_BIT);
+  } else {
+    clear_bit(&ASDF_CAPS_LED_PORT, ASDF_CAPS_LED_BIT);
+  }
 }
 
 // PROCEDURE: asdf_arch_send_screen_clear
@@ -393,7 +450,11 @@ void asdf_arch_send_screen_clear(void)
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Toggles the SCREEN_CLEAR output.
+// DESCRIPTION: Pulses the SYS_RESET output. This emulates open collector, so
+// PORT is set to LOW also briefly disabling the weak pullup but also preventing
+// even a brief conflict on the output, in case the line is pulled low
+// elsewhere. Then, DDR is set to output. After the pulse duration, the DDR is
+// set back to input, and PORT is set to HIGH to activate the weak pullup.
 //
 // SIDE EFFECTS: see DESCRIPTION
 //
@@ -405,9 +466,11 @@ void asdf_arch_send_screen_clear(void)
 //
 void asdf_arch_send_reset(void)
 {
-  set_bit(&ASDF_SYS_RESET_PIN, ASDF_SYS_RESET_BIT);
+  clear_bit(&ASDF_SYS_RESET_PORT, ASDF_SYS_RESET_BIT);
+  set_bit(&ASDF_SYS_RESET_DDR, ASDF_SYS_RESET_BIT);
   _delay_us(ASDF_STROBE_LENGTH_US);
-  set_bit(&ASDF_SYS_RESET_PIN, ASDF_SYS_RESET_BIT);
+  clear_bit(&ASDF_SYS_RESET_DDR, ASDF_SYS_RESET_BIT);
+  set_bit(&ASDF_SYS_RESET_PORT, ASDF_SYS_RESET_BIT);
 }
 
 // PROCEDURE: asdf_arch_read_row
