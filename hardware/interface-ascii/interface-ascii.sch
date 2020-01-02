@@ -6,7 +6,7 @@ encoding utf-8
 Sheet 1 1
 Title "ASCII Interface for Unified Retro Keyboard"
 Date "2019-08-25"
-Rev "2.2"
+Rev "2.3"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -407,7 +407,7 @@ $EndComp
 Connection ~ 4360 7325
 Wire Wire Line
 	4360 7325 4760 7325
-Text Label 3995 4750 0    50   ~ 0
+Text Label 4690 4750 0    50   ~ 0
 ClrScr
 $Comp
 L Connector_Generic:Conn_01x04 J4
@@ -712,7 +712,7 @@ Wire Wire Line
 	3900 3950 5100 3950
 Wire Wire Line
 	5100 4050 3900 4050
-Text Label 4760 3950 0    50   ~ 0
+Text Label 4690 3950 0    50   ~ 0
 ~STROBE
 Text Label 4690 4050 0    50   ~ 0
 ~SYS_RESET
@@ -1447,7 +1447,7 @@ Wire Wire Line
 	9060 3150 9975 3150
 Entry Wire Line
 	7800 3250 7900 3150
-Text Label 9595 2250 0    50   ~ 0
+Text Label 9595 2350 0    50   ~ 0
 CAPS_LED
 $Comp
 L Diode:1N4148 D4
@@ -1699,7 +1699,7 @@ Entry Wire Line
 	9975 1750 10075 1850
 Text Label 9745 1750 0    50   ~ 0
 Row7
-Text Label 9775 1650 0    50   ~ 0
+Text Label 9765 1650 0    50   ~ 0
 Col0
 $Comp
 L Diode:1N4148 D22
@@ -1756,25 +1756,10 @@ F 3 "~" H 9330 2350 50  0001 C CNN
 	1    9330 2350
 	0    1    1    0   
 $EndComp
-$Comp
-L power:GND #PWR022
-U 1 1 5EE8EA9E
-P 9590 2350
-F 0 "#PWR022" H 9590 2100 50  0001 C CNN
-F 1 "GND" H 9720 2305 50  0000 C CNN
-F 2 "" H 9590 2350 50  0001 C CNN
-F 3 "" H 9590 2350 50  0001 C CNN
-	1    9590 2350
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	9060 2350 9180 2350
-Wire Wire Line
-	9480 2350 9590 2350
 Entry Wire Line
-	9975 2250 10075 2350
-Wire Wire Line
-	9060 2250 9975 2250
+	9975 2350 10075 2450
 Wire Wire Line
 	4205 4850 3900 4850
 Wire Wire Line
@@ -1783,48 +1768,66 @@ Wire Wire Line
 	4120 1555 3000 1555
 Wire Wire Line
 	4120 1555 4120 3850
-Text Label 4755 4650 0    50   ~ 0
+Text Label 4690 4650 0    50   ~ 0
 CAPS_LED
 Entry Wire Line
 	9975 1350 10075 1450
-Text Label 9475 1450 0    50   ~ 0
-CAPS_LED
-$Comp
-L Device:R_US R1
-U 1 1 5E779921
-P 9210 1550
-F 0 "R1" V 9250 1635 50  0000 L CNN
-F 1 "330" V 9135 1470 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 9250 1540 50  0001 C CNN
-F 3 "~" H 9210 1550 50  0001 C CNN
-	1    9210 1550
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GND #PWR024
-U 1 1 5E779927
-P 9475 1510
-F 0 "#PWR024" H 9475 1260 50  0001 C CNN
-F 1 "GND" H 9605 1465 50  0000 C CNN
-F 2 "" H 9475 1510 50  0001 C CNN
-F 3 "" H 9475 1510 50  0001 C CNN
-	1    9475 1510
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9475 1510 9385 1510
-Wire Wire Line
-	9385 1510 9385 1550
-Wire Wire Line
-	9385 1550 9360 1550
 Wire Wire Line
 	9060 1450 9115 1450
 Wire Wire Line
 	9115 1450 9115 1065
+$Comp
+L power:+5V #PWR023
+U 1 1 5E8162A5
+P 9115 1065
+F 0 "#PWR023" H 9115 915 50  0001 C CNN
+F 1 "+5V" H 9130 1238 50  0000 C CNN
+F 2 "" H 9115 1065 50  0001 C CNN
+F 3 "" H 9115 1065 50  0001 C CNN
+	1    9115 1065
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R1
+U 1 1 5E779921
+P 9340 1550
+F 0 "R1" V 9380 1635 50  0000 L CNN
+F 1 "330" V 9265 1470 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 9380 1540 50  0001 C CNN
+F 3 "~" H 9340 1550 50  0001 C CNN
+	1    9340 1550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9190 1550 9060 1550
+Wire Wire Line
+	9975 2350 9480 2350
+Wire Wire Line
+	9060 2250 9115 2250
+Wire Wire Line
+	9115 2250 9115 1450
+Connection ~ 9115 1450
+Wire Wire Line
+	9515 1550 9490 1550
+Wire Wire Line
+	9515 1510 9515 1550
+$Comp
+L power:GND #PWR024
+U 1 1 5E779927
+P 9605 1510
+F 0 "#PWR024" H 9605 1260 50  0001 C CNN
+F 1 "GND" H 9735 1465 50  0000 C CNN
+F 2 "" H 9605 1510 50  0001 C CNN
+F 3 "" H 9605 1510 50  0001 C CNN
+	1    9605 1510
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9605 1510 9515 1510
+Wire Wire Line
+	9975 1650 9060 1650
 Wire Wire Line
 	8300 5100 8300 5200
-Wire Wire Line
-	9060 1650 9976 1650
 Wire Bus Line
 	7800 4085 7800 5055
 Wire Bus Line
@@ -1839,15 +1842,4 @@ Wire Bus Line
 	1975 1495 1975 6425
 Wire Bus Line
 	7800 1350 7800 4085
-$Comp
-L power:+5V #PWR023
-U 1 1 5E8162A5
-P 9115 1065
-F 0 "#PWR023" H 9115 915 50  0001 C CNN
-F 1 "+5V" H 9130 1238 50  0000 C CNN
-F 2 "" H 9115 1065 50  0001 C CNN
-F 3 "" H 9115 1065 50  0001 C CNN
-	1    9115 1065
-	1    0    0    -1  
-$EndComp
 $EndSCHEMATC

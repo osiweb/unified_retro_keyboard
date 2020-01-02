@@ -368,15 +368,9 @@ Wire Wire Line
 Wire Bus Line
 	2925 700  7400 700 
 Wire Wire Line
-	8400 2250 9250 2250
+	8400 2250 8920 2250
 Wire Wire Line
 	9250 2250 9250 2675
-Wire Wire Line
-	9250 3075 9100 3075
-Wire Wire Line
-	9100 3075 9100 2350
-Wire Wire Line
-	9100 2350 8400 2350
 Entry Wire Line
 	10200 2670 10300 2570
 Entry Wire Line
@@ -455,10 +449,37 @@ Wire Wire Line
 	9400 2670 9350 2670
 Wire Wire Line
 	9350 2670 9350 2675
+Wire Wire Line
+	8790 2350 8400 2350
+Wire Wire Line
+	9250 3075 8920 3075
+Wire Wire Line
+	8790 3075 8790 2350
+$Comp
+L Device:LED D?
+U 1 1 5E12925F
+P 8920 2870
+F 0 "D?" V 8959 2753 50  0000 R CNN
+F 1 "LED" V 8868 2753 50  0000 R CNN
+F 2 "" H 8920 2870 50  0001 C CNN
+F 3 "~" H 8920 2870 50  0001 C CNN
+	1    8920 2870
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8920 2720 8920 2250
+Connection ~ 8920 2250
+Wire Wire Line
+	8920 2250 9250 2250
+Wire Wire Line
+	8920 3020 8920 3075
 Wire Bus Line
 	10300 700  10300 2975
 Wire Bus Line
 	7400 700  7400 2650
 Wire Bus Line
 	2925 700  2925 4700
+Connection ~ 8920 3075
+Wire Wire Line
+	8920 3075 8790 3075
 $EndSCHEMATC

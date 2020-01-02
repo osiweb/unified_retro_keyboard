@@ -64,7 +64,7 @@ L Switch:SW_Push SW49
 U 1 1 5BC3FF69
 P 7000 3200
 F 0 "SW49" H 7000 3485 50  0000 C CNN
-F 1 "ESC" H 7000 3394 50  0000 C CNN
+F 1 "TAB" H 7000 3394 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 7000 3400 50  0001 C CNN
 F 3 "" H 7000 3400 50  0001 C CNN
 	1    7000 3200
@@ -846,9 +846,9 @@ Row2_keys
 Wire Wire Line
 	5200 1900 5200 4100
 Wire Wire Line
-	6000 1700 6000 4100
+	6000 1700 6000 3200
 Wire Wire Line
-	4800 3600 7200 3600
+	4800 3600 6400 3600
 Text Label 2300 6300 0    50   ~ 0
 Row3_keys
 Wire Wire Line
@@ -863,4 +863,34 @@ Wire Wire Line
 	1450 6300 4000 6300
 Text Notes 2960 4200 0    50   ~ 0
 Rubout
+$Comp
+L Switch:SW_Push SW62
+U 1 1 5E0AC938
+P 6200 3200
+F 0 "SW62" H 6200 3485 50  0000 C CNN
+F 1 "ESC" H 6200 3394 50  0000 C CNN
+F 2 "unikbd:Key_MX" H 6200 3400 50  0001 C CNN
+F 3 "" H 6200 3400 50  0001 C CNN
+	1    6200 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D1
+U 1 1 5E0AC93E
+P 6400 3450
+F 0 "D1" V 6446 3371 50  0000 R CNN
+F 1 "1N4148" V 6355 3371 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 6400 3275 50  0001 C CNN
+F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 6400 3450 50  0001 C CNN
+	1    6400 3450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6400 3200 6400 3300
+Connection ~ 6000 3200
+Wire Wire Line
+	6000 3200 6000 4100
+Connection ~ 6400 3600
+Wire Wire Line
+	6400 3600 7200 3600
 $EndSCHEMATC
