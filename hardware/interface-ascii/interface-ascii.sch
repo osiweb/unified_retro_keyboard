@@ -2019,7 +2019,7 @@ Wire Wire Line
 Wire Wire Line
 	4210 5150 4460 5150
 Text Label 7950 6500 0    50   ~ 0
-Row8
+Row15
 Entry Wire Line
 	7800 6400 7900 6500
 Wire Wire Line
