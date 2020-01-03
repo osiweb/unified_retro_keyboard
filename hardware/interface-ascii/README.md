@@ -62,9 +62,12 @@ the default behavior, and skip the DIP switch and Diodes D17-D20 and D24-D27.
 ### Second 74LS138 multiplexer (U4)
 Only needed if you have more than 8 rows.
 
-### The 74LS07 hex buffer (U5)
-Only needed if you are using LED2 or LED3 on the keyboard, or the OUT2 open
+### The 74LS07 hex buffer (U5) and pullup R6
+The 74LS07 is only needed if you are using LED2 or LED3 on the keyboard, or the OUT2 open
 collector output.
+
+R6 is the optional pullup for the open collector output 2 (O2), and only needs to be
+installed if output 2 is used, and if the host does not provide a pullup.
 
 ### Diodes D21, D22, D23
 Some keyboards may not wire all keys into the matrix. For example, some other
