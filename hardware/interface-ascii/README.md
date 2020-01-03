@@ -13,6 +13,14 @@ even slightly simplify the hardware layer of the firmware.
 
 <img alt="Assembly Rendering" src="images/PCB-assembly-rendering.jpg" height=75% width=75%>
 
+## Features
+- Parallel or serial output
+- Up to 8 configuration settings via an up-to-8 position DIP switch
+- Apple 1 and Apple 2 compatible outputs.  Other configurations can be supported by
+  making a custom cable.
+- Can decode arbitrary keyboards up 16 rows by 8 columns by making a custom keyboard cable.
+- Supports up to 3 keyboard LEDs
+- Supports up to 3 "special" host outputs, such as RESET, SCREEN_CLEAR, BREAK, etc.
 
 ## Overview
 - The keyboard rows are driven by a pair of 74LS138 decoders, allowing 4 GPIO
@@ -24,6 +32,7 @@ even slightly simplify the hardware layer of the firmware.
 - One GPIO line is used to control a keyboard LED.
 - Three of the ISP lines are also used as outputs to controll two more Keyboard
   LEDs and one more "special" output line.
+- The DIP switch is wired into row 15 (last row) of the matrix.
 - The top two parallel I/O bits can also be configured as UART I/O. This could
 be used to provide serial output instead or parallel output, to support a
 bootloader, or even to accept a serial input stream from another computer to
