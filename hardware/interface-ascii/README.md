@@ -11,7 +11,7 @@ to compensate for the limited number of GPIO lines on this small 28-pin
 microcontroller. Using a bigger chip would greatly simplify the hardware and
 even slightly simplify the hardware layer of the firmware.
 
-<img alt="Assembly Rendering" src="images/images/PCB-assembly-rendering.jpg" height=75% width=75%>
+<img alt="Assembly Rendering" src="images/PCB-assembly-rendering.jpg" height=75% width=75%>
 
 
 ## Overview
