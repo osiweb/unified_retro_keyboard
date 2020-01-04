@@ -1,4 +1,4 @@
-// -*- mode: C; tab-width: 4 ; indent-tabs-mode: nil -*- 
+// -*- mode: C; tab-width: 4 ; indent-tabs-mode: nil -*-
 //
 // Unified Keyboard Project
 // ASDF keyboard firmware
@@ -19,8 +19,8 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
- 
-#if !defined (ASDF_ACTIONS_H)
+
+#if !defined(ASDF_ACTIONS_H)
 #define ASDF_ACTIONS_H
 
 // PROCEDURE: asdf_screen_clear
@@ -43,4 +43,3 @@ void asdf_send_reset(void);
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-

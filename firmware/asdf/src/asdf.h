@@ -96,4 +96,3 @@ asdf_keycode_t asdf_get_code(void);
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-

@@ -1,4 +1,4 @@
-// -*- mode: C; tab-width: 2 ; indent-tabs-mode: nil -*- 
+// -*- mode: C; tab-width: 2 ; indent-tabs-mode: nil -*-
 //
 // Unified Keyboard Project
 // ASDF keyboard firmware
@@ -71,4 +71,3 @@ void asdf_send_reset(void)
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-

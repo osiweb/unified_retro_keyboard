@@ -56,7 +56,6 @@ typedef enum {
   ASCII_CTRL_Y = 0x19,
   ASCII_CTRL_Z = 0x1a,
   ASCII_ESC = 0x1b,
-
   ASCII_SPACE = 0x20,
   ASCII_COMMA = 0x2C,
   ASCII_ZERO = 0x30,
@@ -85,4 +84,3 @@ typedef enum {
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-

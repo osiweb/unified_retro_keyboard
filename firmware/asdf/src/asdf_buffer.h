@@ -73,4 +73,3 @@ asdf_keycode_t asdf_buffer_get(asdf_buffer_handle_t handle);
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-
