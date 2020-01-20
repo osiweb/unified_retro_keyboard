@@ -860,7 +860,7 @@ Wire Wire Line
 Wire Wire Line
 	1450 3600 4000 3600
 Wire Wire Line
-	1450 6300 4000 6300
+	1450 6300 3200 6300
 Text Notes 2960 4200 0    50   ~ 0
 Rubout
 $Comp
@@ -893,4 +893,34 @@ Wire Wire Line
 Connection ~ 6400 3600
 Wire Wire Line
 	6400 3600 7200 3600
+$Comp
+L Switch:SW_Push SW63
+U 1 1 5E423211
+P 3000 5900
+F 0 "SW63" H 3000 6185 50  0000 C CNN
+F 1 "Spare" H 3000 6094 50  0000 C CNN
+F 2 "unikbd:Key_MX" H 3000 6100 50  0001 C CNN
+F 3 "" H 3000 6100 50  0001 C CNN
+	1    3000 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D35
+U 1 1 5E423217
+P 3200 6150
+F 0 "D35" V 3246 6071 50  0000 R CNN
+F 1 "1N4148" V 3155 6071 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3200 5975 50  0001 C CNN
+F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 3200 6150 50  0001 C CNN
+	1    3200 6150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3200 5900 3200 6000
+Wire Wire Line
+	2800 5000 2800 5900
+Connection ~ 2800 5000
+Connection ~ 3200 6300
+Wire Wire Line
+	3200 6300 4000 6300
 $EndSCHEMATC

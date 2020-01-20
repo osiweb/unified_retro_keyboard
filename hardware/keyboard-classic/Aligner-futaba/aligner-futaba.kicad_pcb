@@ -2,10 +2,10 @@
 
   (general
     (thickness 1.6)
-    (drawings 14)
+    (drawings 6)
     (tracks 0)
     (zones 0)
-    (modules 75)
+    (modules 77)
     (nets 1)
   )
 
@@ -136,6 +136,34 @@
     (diff_pair_gap 0.254)
   )
 
+  (module "unikbd:Cherry aligner" (layer F.Cu) (tedit 5DA626D6) (tstamp 5E25A2EB)
+    (at 263.83488 165.99916)
+    (fp_text reference REF** (at -5.0292 -7.7724) (layer F.SilkS)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "Cherry aligner" (at 0 7.9756) (layer B.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_line (start -6.985 -6.985) (end -6.985 6.985) (layer Edge.Cuts) (width 0.12))
+    (fp_line (start 6.985 6.985) (end 6.985 -6.985) (layer Edge.Cuts) (width 0.12))
+    (fp_line (start -6.985 -6.985) (end 6.985 -6.985) (layer Edge.Cuts) (width 0.12))
+    (fp_line (start -6.985 6.985) (end 6.985 6.985) (layer Edge.Cuts) (width 0.12))
+  )
+
+  (module "unikbd:Cherry aligner" (layer F.Cu) (tedit 5DA626D6) (tstamp 5E25A2C7)
+    (at 130.48488 165.99916)
+    (fp_text reference REF** (at -5.0292 -7.7724) (layer F.SilkS)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "Cherry aligner" (at 0 7.9756) (layer B.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_line (start -6.985 -6.985) (end -6.985 6.985) (layer Edge.Cuts) (width 0.12))
+    (fp_line (start 6.985 6.985) (end 6.985 -6.985) (layer Edge.Cuts) (width 0.12))
+    (fp_line (start -6.985 -6.985) (end 6.985 -6.985) (layer Edge.Cuts) (width 0.12))
+    (fp_line (start -6.985 6.985) (end 6.985 6.985) (layer Edge.Cuts) (width 0.12))
+  )
+
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5E0A54F3)
     (at 68.57238 89.79916)
     (fp_text reference SW62 (at -8.01878 -9.25576) (layer F.SilkS)
@@ -151,8 +179,8 @@
     (pad "" np_thru_hole circle (at 6.985 -6.985) (size 1.6256 1.6256) (drill 1.6256) (layers *.Cu *.Mask))
   )
 
-  (module unikbd:Futaba-MD-4PCS-aligner (layer F.Cu) (tedit 5DA63068) (tstamp 5E0A1078)
-    (at 82.7786 166.0906)
+  (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5E0A1078)
+    (at 82.85988 166.0906)
     (fp_text reference REF** (at -3.937 -8.3566) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
@@ -166,8 +194,8 @@
     (pad "" np_thru_hole circle (at 6.985 -6.985) (size 1.6256 1.6256) (drill 1.6256) (layers *.Cu *.Mask))
   )
 
-  (module unikbd:OSI_spacer_holes (layer F.Cu) (tedit 5E099C16) (tstamp 5E0A12E7)
-    (at 196.94398 165.99916)
+  (module unikbd:OSI_spacer_holes locked (layer F.Cu) (tedit 5E099C16) (tstamp 5E0A12E7)
+    (at 197.15988 165.99916)
     (fp_text reference REF** (at 0 0.5) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
@@ -740,8 +768,8 @@
     (pad 1 np_thru_hole circle (at 0 0) (size 3.5 3.5) (drill 3.5) (layers *.Cu *.Mask))
   )
 
-  (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0D7A0F)
-    (at 196.94398 165.99916)
+  (module unikbd:Futaba-MD-4PCS-aligner (layer F.Cu) (tedit 5DA63068) (tstamp 5D0D7A0F)
+    (at 197.15988 165.99916)
     (path /5BC3E99D/5BC6CD72)
     (fp_text reference SW46 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -757,7 +785,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FBBE7)
-    (at 244.67058 146.94916)
+    (at 244.78488 146.94916)
     (path /5BC3E99D/5BC6CEDD)
     (fp_text reference SW37 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -805,7 +833,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D633EAE)
-    (at 263.72058 146.94916)
+    (at 263.83488 146.94916)
     (path /5BC3EA0A/5BCAF3A9)
     (fp_text reference SW29 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -821,7 +849,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0F9EDE)
-    (at 115.91798 108.84916)
+    (at 116.19738 108.84916)
     (path /5BC3EA0A/5BCAF339)
     (fp_text reference SW28 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -869,7 +897,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FAB87)
-    (at 254.19558 127.89916)
+    (at 254.30988 127.89916)
     (path /5BC3EA0A/5BCAF3B0)
     (fp_text reference SW25 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -885,7 +913,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0F9EA5)
-    (at 134.96798 108.84916)
+    (at 135.24738 108.84916)
     (path /5BC3EA0A/5BCAF340)
     (fp_text reference SW24 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -917,7 +945,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D633858)
-    (at 249.26798 108.84916)
+    (at 249.54738 108.84916)
     (path /5BC3EA0A/5BCAF412)
     (fp_text reference SW22 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -949,7 +977,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0F9E6C)
-    (at 154.01798 108.84916)
+    (at 154.29738 108.84916)
     (path /5BC3EA0A/5BCAF332)
     (fp_text reference SW20 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -997,7 +1025,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0F9D4F)
-    (at 287.36798 108.84916)
+    (at 287.64738 108.84916)
     (path /5BC3EA0A/5BCAF39B)
     (fp_text reference SW17 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1013,7 +1041,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0F9D88)
-    (at 173.06798 108.84916)
+    (at 173.34738 108.84916)
     (path /5BC3EA0A/5BCAF32B)
     (fp_text reference SW16 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1061,7 +1089,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D10F44A)
-    (at 311.21858 108.84916)
+    (at 311.45988 108.84916)
     (path /5BC3EA0A/5BCAF38D)
     (fp_text reference SW13 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1077,7 +1105,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0F9DFA)
-    (at 192.11798 108.84916)
+    (at 192.39738 108.84916)
     (path /5BC3EA0A/5BCAF31D)
     (fp_text reference SW12 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1125,7 +1153,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0D7B8F)
-    (at 335.06918 108.84916)
+    (at 335.27238 108.84916)
     (path /5BC3EA0A/5BCAF394)
     (fp_text reference SW9 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1141,7 +1169,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0F9DC1)
-    (at 211.16798 108.84916)
+    (at 211.44738 108.84916)
     (path /5BC3EA0A/5BCAF324)
     (fp_text reference SW8 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1156,7 +1184,7 @@
     (pad "" np_thru_hole circle (at 6.985 -6.985) (size 1.6256 1.6256) (drill 1.6256) (layers *.Cu *.Mask))
   )
 
-  (module unikbd:Futaba-MD-4PCS-aligner (layer F.Cu) (tedit 5DA63068) (tstamp 5D0D7B6F)
+  (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0D7B6F)
     (at 201.92238 89.79916)
     (path /5BC3EA0A/5BCAF466)
     (fp_text reference SW7 (at -5.7912 -8.6106) (layer F.SilkS)
@@ -1189,7 +1217,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0F200E)
-    (at 349.44558 127.89916)
+    (at 349.55988 127.89916)
     (path /5BC3EA0A/5BCAF386)
     (fp_text reference SW5 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1205,7 +1233,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0F9D16)
-    (at 230.21798 108.84916)
+    (at 230.49738 108.84916)
     (path /5BC3EA0A/5BCAF316)
     (fp_text reference SW4 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1237,7 +1265,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0F6109)
-    (at 330.47178 146.94916)
+    (at 330.50988 146.94916)
     (path /5BC3EA0A/5BCAF37F)
     (fp_text reference SW2 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1253,7 +1281,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FAB4E)
-    (at 120.84558 127.89916)
+    (at 120.95988 127.89916)
     (path /5BC3E99D/5BC6D0D0)
     (fp_text reference SW60 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1268,8 +1296,8 @@
     (pad "" np_thru_hole circle (at 6.985 -6.985) (size 1.6256 1.6256) (drill 1.6256) (layers *.Cu *.Mask))
   )
 
-  (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FB692)
-    (at 130.37058 146.94916)
+  (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5E2596A0)
+    (at 130.48488 146.94916)
     (path /5BC3E99D/5BC6CF00)
     (fp_text reference SW59 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1285,7 +1313,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0F9CDD)
-    (at 96.86798 108.84916)
+    (at 97.14738 108.84916)
     (path /5BC3E99D/5BC6CD80)
     (fp_text reference SW58 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1301,7 +1329,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D633B5C)
-    (at 311.34558 127.89916)
+    (at 311.45988 127.89916)
     (path /5BC3E99D/5BC3FF70)
     (fp_text reference SW57 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1317,7 +1345,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FAB15)
-    (at 139.89558 127.89916)
+    (at 140.00988 127.89916)
     (path /5BC3E99D/5BC6D0D7)
     (fp_text reference SW56 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1333,7 +1361,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FB659)
-    (at 149.42058 146.94916)
+    (at 149.53488 146.94916)
     (path /5BC3E99D/5BC6CF07)
     (fp_text reference SW55 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1349,7 +1377,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FAADC)
-    (at 101.79558 127.89916)
+    (at 101.90988 127.89916)
     (path /5BC3E99D/5BC6CD87)
     (fp_text reference SW54 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1365,7 +1393,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FAF44)
-    (at 82.74558 127.89916)
+    (at 82.85988 127.89916)
     (path /5BC3E99D/5BC3FF77)
     (fp_text reference SW53 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1381,7 +1409,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FB0A3)
-    (at 158.94558 127.89916)
+    (at 159.05988 127.89916)
     (path /5BC3E99D/5BC6D0C9)
     (fp_text reference SW52 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1397,7 +1425,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FBCCB)
-    (at 168.47058 146.94916)
+    (at 168.58488 146.94916)
     (path /5BC3E99D/5BC6CEF9)
     (fp_text reference SW51 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1413,7 +1441,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FBC59)
-    (at 111.32058 146.94916)
+    (at 111.43488 146.94916)
     (path /5BC3E99D/5BC6CD79)
     (fp_text reference SW50 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1429,7 +1457,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FA2F5)
-    (at 77.99578 108.84916)
+    (at 78.09738 108.84916)
     (path /5BC3E99D/5BC3FF69)
     (fp_text reference SW49 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1445,7 +1473,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FB115)
-    (at 177.99558 127.89916)
+    (at 178.10988 127.89916)
     (path /5BC3E99D/5BC6D0C2)
     (fp_text reference SW48 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1461,7 +1489,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FBB3C)
-    (at 187.52058 146.94916)
+    (at 187.63488 146.94916)
     (path /5BC3E99D/5BC6CEF2)
     (fp_text reference SW47 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1477,7 +1505,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FB187)
-    (at 197.04558 127.89916)
+    (at 197.15988 127.89916)
     (path /5BC3E99D/5BC6D0B4)
     (fp_text reference SW45 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1493,7 +1521,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FBC20)
-    (at 206.57058 146.94916)
+    (at 206.68488 146.94916)
     (path /5BC3E99D/5BC6CEE4)
     (fp_text reference SW44 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1509,7 +1537,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FBBAE)
-    (at 282.77058 146.94916)
+    (at 282.88488 146.94916)
     (path /5BC3E99D/5BC6CD64)
     (fp_text reference SW43 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1525,7 +1553,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FB14E)
-    (at 216.09558 127.89916)
+    (at 216.20988 127.89916)
     (path /5BC3E99D/5BC6D0BB)
     (fp_text reference SW42 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1541,7 +1569,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FBC92)
-    (at 225.62058 146.94916)
+    (at 225.73488 146.94916)
     (path /5BC3E99D/5BC6CEEB)
     (fp_text reference SW41 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1557,7 +1585,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FB031)
-    (at 273.24558 127.89916)
+    (at 273.35988 127.89916)
     (path /5BC3E99D/5BC6CD6B)
     (fp_text reference SW40 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1573,7 +1601,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FBB75)
-    (at 87.46998 146.94916)
+    (at 87.62238 146.94916)
     (path /5BC3E99D/5BC3FE57)
     (fp_text reference SW39 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1589,7 +1617,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FB06A)
-    (at 235.14558 127.89916)
+    (at 235.25988 127.89916)
     (path /5BC3E99D/5BC6D0AD)
     (fp_text reference SW38 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1605,7 +1633,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FA32E)
-    (at 268.31798 108.84916)
+    (at 268.59738 108.84916)
     (path /5BC3E99D/5BC6CD5D)
     (fp_text reference SW36 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1621,7 +1649,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FBD04)
-    (at 306.62118 146.94916)
+    (at 306.69738 146.94916)
     (path /5BC3E99D/5BC3FD26)
     (fp_text reference SW35 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1637,7 +1665,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0EE51F)
-    (at 330.39558 127.89916)
+    (at 330.50988 127.89916)
     (path /5D6C3751)
     (fp_text reference SW34 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1653,7 +1681,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0D791F)
-    (at 354.11918 108.84916)
+    (at 354.32238 108.84916)
     (path /5BC3E99D/5BC6CED6)
     (fp_text reference SW33 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1669,7 +1697,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0FB0DC)
-    (at 292.29558 127.89916)
+    (at 292.40988 127.89916)
     (path /5D6BE647)
     (fp_text reference SW32 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1685,7 +1713,7 @@
   )
 
   (module unikbd:Futaba-MD-4PCS-aligner locked (layer F.Cu) (tedit 5DA63068) (tstamp 5D0D7AFF)
-    (at 349.52178 146.94916)
+    (at 349.55988 146.94916)
     (path /5BC3EA0A/5BCAF30F)
     (fp_text reference SW1 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1700,15 +1728,7 @@
     (pad "" np_thru_hole circle (at 6.985 -6.985) (size 1.6256 1.6256) (drill 1.6256) (layers *.Cu *.Mask))
   )
 
-  (gr_line (start 271.59458 158.12516) (end 271.59458 173.87316) (layer Edge.Cuts) (width 0.1) (tstamp 5DA6A2D8))
-  (gr_line (start 271.59458 173.87316) (end 255.84658 173.87316) (layer Edge.Cuts) (width 0.1) (tstamp 5DA6A2D7))
-  (gr_line (start 255.84658 173.87316) (end 255.84658 158.12516) (layer Edge.Cuts) (width 0.1) (tstamp 5DA6A2D6))
-  (gr_line (start 255.84658 158.12516) (end 271.59458 158.12516) (layer Edge.Cuts) (width 0.1) (tstamp 5DA6A2D5))
-  (gr_line (start 138.24458 158.12516) (end 138.24458 173.87316) (layer Edge.Cuts) (width 0.1) (tstamp 5DA6A2D8))
-  (gr_line (start 138.24458 173.87316) (end 122.49658 173.87316) (layer Edge.Cuts) (width 0.1) (tstamp 5DA6A2D7))
-  (gr_line (start 122.49658 173.87316) (end 122.49658 158.12516) (layer Edge.Cuts) (width 0.1) (tstamp 5DA6A2D6))
-  (gr_line (start 122.49658 158.12516) (end 138.24458 158.12516) (layer Edge.Cuts) (width 0.1) (tstamp 5DA6A2D5))
-  (gr_text "Unified Keyboard    Rev 1.3     http://osiweb.org\nKey Aligner for Futaba MD-4PCS, George Risk KBM-01-01" (at 295.402 162.814) (layer F.SilkS)
+  (gr_text "Unified Keyboard    Rev 1.4     http://osiweb.org\nKey Aligner for Futaba MD-4PCS, George Risk KBM-01-01" (at 295.402 162.814) (layer F.SilkS)
     (effects (font (size 1.524 1.524) (thickness 0.1778)) (justify left))
   )
   (gr_line (start 57.15 181.61) (end 369.57 181.61) (layer Edge.Cuts) (width 0.1) (tstamp 5D911490))
