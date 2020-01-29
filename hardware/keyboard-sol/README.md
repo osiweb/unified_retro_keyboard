@@ -1,6 +1,6 @@
 # SOL keyboard
 
-This keyboard replicate the keyboard on the SOL-20.
+This keyboard replicates the keyboard on the SOL-20.
 
 The keyboard is designed using KiCad in order to be the most useful for anybody
 wishing to modify the keyboard for more specific uses, or to add to the project.
