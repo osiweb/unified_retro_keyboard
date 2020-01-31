@@ -5909,7 +5909,7 @@
   (gr_line (start 59.42838 80.65516) (end 363.46638 80.65516) (layer B.Fab) (width 0.15) (tstamp 5D90C80E))
   (gr_line (start 33.64738 180.34) (end 381.64738 180.34) (layer Edge.Cuts) (width 0.1) (tstamp 5D911490))
   (gr_line (start 381.64738 67.564) (end 33.64738 67.564) (layer Edge.Cuts) (width 0.1) (tstamp 5D91148D))
-  (gr_text "Distances:\nVertical: 0.75 inch\nHorizontal (1x - 1x): 0.75 inch\nHorizontal (1x - 1.5x): 0.9375 inch\nHorizontal (Row 1 left key -> Row 2 left key): 0.375 inch\nHorizontal (Row 2 left key -> Row 3 left key): 0.1875 inch\nHorizontal (Row 3 left key -> Row 4 left key): 0.1875 inch\nHorizontal (Row 4 left key -> Row 5 left key): -0.1875 inch\nHorizontal (Row 5 left key -> Space bar): 4.5 inch" (at 38.4175 240.0681) (layer Cmts.User)
+  (gr_text "Distances:\nVertical: 0.75 inch\nHorizontal (1x - 1x): 0.75 inch\nHorizontal (1x - 1.5x): 0.9375 inch\nHorizontal (Row 1 left key -> Row 2 left key): 0.375 inch\nHorizontal (Row 2 left key -> Row 3 left key): 0.1875 inch\nHorizontal (Row 3 left key -> Row 4 left key): 0.1875 inch\nHorizontal (Row 4 left key -> Row 5 left key): -0.1875 inch\nHorizontal (Row 5 left key -> Space bar): 4.5 inch\nCenter of key to cutout edge: 0.36 inch" (at 38.4175 240.0681) (layer Cmts.User)
     (effects (font (size 2.54 2.54) (thickness 0.3048)) (justify left))
   )
 
