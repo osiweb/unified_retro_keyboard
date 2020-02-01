@@ -6,7 +6,7 @@ encoding utf-8
 Sheet 1 3
 Title "Unified Retro Keyboard"
 Date "2019-08-25"
-Rev "1.3"
+Rev "1.4"
 Comp "OSIWeb.org"
 Comment1 "Main sheet with connector"
 Comment2 ""
@@ -98,7 +98,7 @@ $EndSheet
 Text Notes 580  7070 0    79   ~ 0
 For OSI keyboards:\n“@“ (AT symbol) maps to “Shift Lock”, R0 C0\n“[“ (left bracket) maps to “Rub Out”, R6 C2\n“\” maps to “Repeat”, R0 C7\n“Rubout” maps to “Break”, \nDNP: “]” (right bracket), “^”, “Here is”, “Break”, “Repeat”, “Clear”
 Text Notes 600  7905 0    79   ~ 0
-For Apple II keyboards:\n"@" (AT symbol) maps to "Left arrow"\n"\" maps to "Right Arrow"\n"[" (left bracket) maps to "Reset"\n\nDNP: "]" (right bracket), "^", "Here is", "Rub", "Break", "Repeat", "Clear"
+For Apple II keyboards:\n“@“ (AT symbol) maps to “Left arrow”\n“\” maps to “Right Arrow\n“[“ (left bracket) maps to “Reset”\nDNP: “]” (right bracket), “^”, “Here is”, “Rub”, “Break”, “Repeat”, “Clear”
 $Comp
 L Switch:SW_Push_LED SW9
 U 1 1 5DF7D21E
@@ -451,12 +451,6 @@ Wire Wire Line
 	8790 2350 8400 2350
 Wire Wire Line
 	8790 3075 8790 2350
-Wire Bus Line
-	10300 700  10300 2975
-Wire Bus Line
-	7400 700  7400 2650
-Wire Bus Line
-	2925 700  2925 4700
 Wire Wire Line
 	8920 3075 8790 3075
 Wire Wire Line
@@ -482,4 +476,10 @@ F 3 "~" H 8920 2870 50  0001 C CNN
 	1    8920 2870
 	0    -1   -1   0   
 $EndComp
+Wire Bus Line
+	10300 700  10300 2975
+Wire Bus Line
+	7400 700  7400 2650
+Wire Bus Line
+	2925 700  2925 4700
 $EndSCHEMATC

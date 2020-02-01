@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 44)
+    (drawings 40)
     (tracks 1105)
     (zones 0)
     (modules 141)
@@ -13,7 +13,7 @@
   (title_block
     (title "Unified Retro Keyboard")
     (date 2019-08-25)
-    (rev 1.3)
+    (rev 1.4)
     (company OSIWeb.org)
     (comment 1 "Key matrix w/ LED")
   )
@@ -73,7 +73,7 @@
     (aux_axis_origin 61.4172 179.1081)
     (visible_elements 7FFFEFFF)
     (pcbplotparams
-      (layerselection 0x01000_7ffffffe)
+      (layerselection 0x11000_7ffffffe)
       (usegerberextensions false)
       (usegerberattributes false)
       (usegerberadvancedattributes false)
@@ -5868,11 +5868,7 @@
   (gr_line (start 377.75388 137.80516) (end 377.75388 156.09316) (layer B.Fab) (width 0.15) (tstamp 5E349134))
   (gr_arc (start 376.64738 89.79916) (end 376.64738 91.57716) (angle -180) (layer Edge.Cuts) (width 0.1016) (tstamp 5E30A2F6))
   (gr_arc (start 376.64738 165.99916) (end 376.64738 167.77716) (angle -180) (layer Edge.Cuts) (width 0.1016) (tstamp 5E30A2F6))
-  (gr_line (start 73.71588 137.04316) (end 73.71588 117.99316) (layer B.Fab) (width 0.15) (tstamp 5E0A4B06))
-  (gr_line (start 73.71588 156.85516) (end 73.71588 175.14316) (layer B.Fab) (width 0.15) (tstamp 5E0A4B05))
-  (gr_line (start 78.47838 156.85516) (end 73.71588 156.85516) (layer B.Fab) (width 0.15))
-  (gr_line (start 78.47838 137.04316) (end 73.71588 137.04316) (layer B.Fab) (width 0.15))
-  (gr_line (start 78.47838 137.04316) (end 78.47838 156.85516) (layer B.Fab) (width 0.15))
+  (gr_line (start 73.71588 175.14316) (end 73.71588 117.99316) (layer B.Fab) (width 0.15) (tstamp 5E0A4B06))
   (gr_line (start 59.42838 98.94316) (end 68.95338 98.94316) (layer B.Fab) (width 0.15) (tstamp 5E0A4ADA))
   (gr_line (start 43.17238 88.02116) (end 33.64738 88.02116) (layer Edge.Cuts) (width 0.1016) (tstamp 5E08FB4B))
   (gr_line (start 43.17238 164.22116) (end 33.64738 164.22116) (layer Edge.Cuts) (width 0.1016) (tstamp 5E08F43A))
@@ -5890,7 +5886,7 @@
   (gr_line (start 33.64738 67.564) (end 33.64738 88.02116) (layer Edge.Cuts) (width 0.1016))
   (gr_line (start 33.64738 167.77716) (end 33.64738 180.34) (layer Edge.Cuts) (width 0.1016) (tstamp 5E07A245))
   (gr_arc (start 43.17238 89.79916) (end 43.17238 91.57716) (angle -180) (layer Edge.Cuts) (width 0.1016))
-  (gr_text "Unified Keyboard     Rev 1.3     http://osiweb.org" (at 106.553 77.597) (layer F.SilkS)
+  (gr_text "Unified Keyboard     Rev 1.4     http://osiweb.org" (at 106.553 77.597) (layer F.SilkS)
     (effects (font (size 1.524 1.524) (thickness 0.1778)))
   )
   (gr_line (start 358.70388 117.99316) (end 363.46638 117.99316) (layer B.Fab) (width 0.15) (tstamp 5D929410))
@@ -5909,7 +5905,7 @@
   (gr_line (start 59.42838 80.65516) (end 363.46638 80.65516) (layer B.Fab) (width 0.15) (tstamp 5D90C80E))
   (gr_line (start 33.64738 180.34) (end 381.64738 180.34) (layer Edge.Cuts) (width 0.1) (tstamp 5D911490))
   (gr_line (start 381.64738 67.564) (end 33.64738 67.564) (layer Edge.Cuts) (width 0.1) (tstamp 5D91148D))
-  (gr_text "Distances:\nVertical: 0.75 inch\nHorizontal (1x - 1x): 0.75 inch\nHorizontal (1x - 1.5x): 0.9375 inch\nHorizontal (Row 1 left key -> Row 2 left key): 0.375 inch\nHorizontal (Row 2 left key -> Row 3 left key): 0.1875 inch\nHorizontal (Row 3 left key -> Row 4 left key): 0.1875 inch\nHorizontal (Row 4 left key -> Row 5 left key): -0.1875 inch\nHorizontal (Row 5 left key -> Space bar): 4.5 inch\nCenter of key to cutout edge: 0.36 inch" (at 38.4175 240.0681) (layer Cmts.User)
+  (gr_text "Distances:\nVertical: 0.75 inch\nHorizontal (1u - 1u): 0.75 inch\nHorizontal (1u - 1.5u): 0.9375 inch\nHorizontal (Row 1 left key -> Row 2 left key): 0.375 inch\nHorizontal (Row 2 left key -> Row 3 left key): 0.1875 inch\nHorizontal (Row 3 left key -> Row 4 left key): 0.1875 inch\nHorizontal (Row 4 left key -> Row 5 left key): -0.1875 inch\nHorizontal (Row 5 left key -> Space bar): 4.5 inch\nCenter of key (1u) to vertical or side cutout edge: 0.36 inch\nCenter of key (1.5u) to side cutout edge: 0.5475 inch" (at 38.4175 240.0681) (layer Cmts.User)
     (effects (font (size 2.54 2.54) (thickness 0.3048)) (justify left))
   )
 
