@@ -2159,6 +2159,8 @@ Entry Wire Line
 	1875 2085 1975 2185
 Wire Wire Line
 	1150 2685 1875 2685
+Text Label 1260 2685 0    50   ~ 0
+OUT1
 Wire Bus Line
 	5200 3850 5200 6640
 Wire Bus Line
