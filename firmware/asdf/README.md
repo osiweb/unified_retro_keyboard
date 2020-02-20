@@ -39,17 +39,11 @@ Features:
   matrix, and providing activate() and deactivate() functions for the on and off
   positions.
 
-* Spinners/rotary encoders: Rotary encoders can be implemented by adding the
-  encoder switches into the matrix, and driving the encoder state machine via
-  the activate() and deactivate() functions.
-
-* sticky keys: Stick keys remain active until another key is pressed. This
-  functionality is supported by the per-key activate() and deactivate() functions.
-
-  For example, for sticky "control", replace control_deactivate() with
-  null_deactivate() as the deactivate function for the control key, and add a
-  call to "control_deactivate()" in the "standard_keypress_postprocess_hook()" function.
-
+* Multiple keymaps. DIP switches 0-4 select the map. The current version
+  includes: 
+  (0): ADM-style ASCII keyboard 
+  (1): ADM-style ASCII keyboard (all caps)
+  
 * Indicators: Controlled via activate() and deactivate() functions for the various keys.
 
 * Debounce and Repeat functions: The main keyscan logic implements key
