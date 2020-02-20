@@ -498,7 +498,7 @@ asdf_cols_t asdf_arch_read_row(uint8_t row)
   asdf_cols_t cols = 0;
 
   // first, output the new row value:
-  ASDF_ROW_PORT = (ASDF_ROW_PORT & ~ASDF_ROW_MASK) | row << ASDF_ROW_OFFSET;
+  ASDF_ROW_PORT = (ASDF_ROW_PORT & ~ASDF_ROW_MASK) | ((row & ASDF_ROW_MASK) << ASDF_ROW_OFFSET);
 
 
   // read in the columns.  Set LOAD mode and pulse clock.

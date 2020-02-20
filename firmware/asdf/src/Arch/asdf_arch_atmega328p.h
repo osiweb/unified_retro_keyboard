@@ -179,7 +179,7 @@
 
 #define ASDF_ROW_PORT PORTC
 #define ASDF_ROW_DDR DDRC
-#define ASDF_ROW_MASK 0x07
+#define ASDF_ROW_MASK 0x0f
 #define ASDF_ROW_OFFSET 0
 
 #define ASDF_COL_PORT PORTB
