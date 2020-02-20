@@ -24,11 +24,11 @@
 // "Shift Lock" key and a "Caps Lock" key, usually only one will be present. For
 // testing, both must be present to test their functionality.
 
-#if !defined(ASDF_KEYMAP_DEFS_TEST_H)
-#define ASDF_KEYMAP_DEFS_TEST_H
+#if !defined(ASDF_KEYMAP_DEFS_TEST2_H)
+#define ASDF_KEYMAP_DEFS_TEST2_H
 
-#define ASDF_TEST_NUM_ROWS 9
-#define ASDF_TEST_NUM_COLS 8
+#define ASDF_TEST2_NUM_ROWS 16
+#define ASDF_TEST2_NUM_COLS 8
 
 // The first value in each row serves two purposes:
 //
@@ -49,18 +49,19 @@
 // only 9 rows need be allocated.
 
 
-#define PLAIN_MATRIX_1 RESERVED_1
-#define CAPS_MATRIX_1 RESERVED_2
-#define SHIFT_MATRIX_1 RESERVED_3
-#define CTRL_MATRIX_1 RESERVED_4
+#define PLAIN_MATRIX_2 RESERVED_5
+#define CAPS_MATRIX_2 RESERVED_6
+#define SHIFT_MATRIX_2 RESERVED_7
+#define CTRL_MATRIX_2 RESERVED_8
 
 #define ASDF_LAST_ROW (ASDF_NUM_ROWS - 1)
-#define ASDF_TEST_MAP_DIP_SWITCHES                                                                 \
+
+#define ASDF_TEST_MAP_DIP_SWITCHES                                      \
   [ASDF_LAST_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
 
-#define ASDF_TEST_PLAIN_MAP                                                                        \
+#define ASDF_TEST2_PLAIN_MAP                                                                        \
   {                                                                                                \
-    { PLAIN_MATRIX_1, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
+    { PLAIN_MATRIX_2, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_CAPS,    ASCII_ESC,    ACTION_CTRL,  ASCII_BACKSLASH },                               \
       { ACTION_NOTHING, 'p', ';', '/', ASCII_SPACE, 'z', 'a', 'q' },                               \
       { ACTION_BREAK, ASCII_COMMA, 'm', 'n', 'b', 'v', 'c', 'x' },                                 \
@@ -72,9 +73,9 @@
       { ACTION_NOTHING, '7', '6', '5', '4', '3', '2', '1' }, ASDF_TEST_MAP_DIP_SWITCHES            \
   }
 
-#define ASDF_TEST_CAPS_MAP                                                                         \
+#define ASDF_TEST2_CAPS_MAP                                                                         \
   {                                                                                                \
-    { CAPS_MATRIX_1,  ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
+    { CAPS_MATRIX_2,  ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  ASCII_BACKSLASH },                               \
       { ACTION_NOTHING, 'P', ';', '/', ASCII_SPACE, 'Z', 'A', 'Q' },                               \
       { ACTION_BREAK, ASCII_COMMA, 'M', 'N', 'B', 'V', 'C', 'X' },                                 \
@@ -86,10 +87,10 @@
       { ACTION_NOTHING, '7', '6', '5', '4', '3', '2', '1' }, ASDF_TEST_MAP_DIP_SWITCHES            \
   }
 
-#define ASDF_TEST_SHIFT_MAP                                                                        \
+#define ASDF_TEST2_SHIFT_MAP                                                                        \
   {                                                                                                \
                                                                                                    \
-    { SHIFT_MATRIX_1, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
+    { SHIFT_MATRIX_2, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  ASCII_VERT_BAR },                                \
       { ACTION_NOTHING, 'P', '+', '?', ASCII_SPACE, 'Z', 'A', 'Q' },                               \
       { ACTION_BREAK, '>', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
@@ -103,9 +104,9 @@
   }
 
 
-#define ASDF_TEST_CTRL_MAP                                                                         \
+#define ASDF_TEST2_CTRL_MAP                                                                         \
   {                                                                                                \
-    { CTRL_MATRIX_1,  ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
+    { CTRL_MATRIX_2,  ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  0x1c },                                          \
       { ACTION_NOTHING, ASCII_CTRL_P, ACTION_NOTHING, ACTION_NOTHING,                              \
         ASCII_SPACE,    ASCII_CTRL_Z, ASCII_CTRL_A,   ASCII_CTRL_Q },                              \
@@ -125,27 +126,27 @@
   }
 
 
-#define ASDF_TEST_DECLARATIONS                                                                     \
-  static const FLASH keycode_matrix_t test_PLAIN_matrix = ASDF_TEST_PLAIN_MAP;                     \
-  static const FLASH keycode_matrix_t test_SHIFT_matrix = ASDF_TEST_SHIFT_MAP;                     \
-  static const FLASH keycode_matrix_t test_CAPS_matrix = ASDF_TEST_CAPS_MAP;                       \
-  static const FLASH keycode_matrix_t test_CTRL_matrix = ASDF_TEST_CTRL_MAP;
+#define ASDF_TEST2_DECLARATIONS                                                                     \
+  static const FLASH keycode_matrix_t test2_PLAIN_matrix = ASDF_TEST2_PLAIN_MAP;                     \
+  static const FLASH keycode_matrix_t test2_SHIFT_matrix = ASDF_TEST2_SHIFT_MAP;                     \
+  static const FLASH keycode_matrix_t test2_CAPS_matrix = ASDF_TEST2_CAPS_MAP;                       \
+  static const FLASH keycode_matrix_t test2_CTRL_matrix = ASDF_TEST2_CTRL_MAP;
 
-#define ASDF_TEST_MAP_DEFS                                                                         \
+#define ASDF_TEST2_MAP_DEFS                                                                         \
   {                                                                                                \
-    &test_PLAIN_matrix, &test_SHIFT_matrix, &test_CAPS_matrix, &test_CTRL_matrix                   \
+    &test2_PLAIN_matrix, &test2_SHIFT_matrix, &test2_CAPS_matrix, &test2_CTRL_matrix                   \
   }
 
-#define ASDF_TEST_CAPS_MAP_DEFS                                                                    \
+#define ASDF_TEST2_CAPS_MAP_DEFS                                                                    \
   {                                                                                                \
-    &test_CAPS_matrix, &test_SHIFT_matrix, &test_CAPS_matrix, &test_CTRL_matrix                    \
+    &test2_CAPS_matrix, &test2_SHIFT_matrix, &test2_CAPS_matrix, &test2_CTRL_matrix                    \
   }
 
-#define ASDF_TEST_KEYMAPS ASDF_TEST_MAP_DEFS, ASDF_TEST_CAPS_MAP_DEFS
+#define ASDF_TEST2_KEYMAPS  ASDF_TEST2_MAP_DEFS, ASDF_TEST2_CAPS_MAP_DEFS
 
-#define ASDF_TEST_KEYMAPS_COUNT 2
-#define ASDF_TEST_PLAIN_MAP_INDEX ASDF_TEST_BASE + 0
-#define ASDF_TEST_CAPS_MAP_INDEX ASDF_TEST_BASE + 1
+#define ASDF_TEST2_KEYMAPS_COUNT 2
+#define ASDF_TEST2_PLAIN_MAP_INDEX (ASDF_TEST2_BASE + 0)
+#define ASDF_TEST2_CAPS_MAP_INDEX (ASDF_TEST2_BASE + 1)
 
 // The following preprocessor "code" permits various keymaps to be created and
 // included without generating a lot of complicating code dependencies. The use
@@ -155,18 +156,18 @@
 // to keep track of the array sizes to be allocated at compile time.
 
 
-#if !defined(ASDF_NUM_ROWS) || (ASDF_NUM_ROWS < ASDF_TEST_NUM_ROWS)
+#if !defined(ASDF_NUM_ROWS) || (ASDF_NUM_ROWS < ASDF_TEST2_NUM_ROWS)
 #undef ASDF_NUM_ROWS
-#define ASDF_NUM_ROWS ASDF_TEST_NUM_ROWS
+#define ASDF_NUM_ROWS ASDF_TEST2_NUM_ROWS
 #endif
 
-#if !defined(ASDF_NUM_COLS) || (ASDF_NUM_COLS < ASDF_TEST_NUM_COLS)
+#if !defined(ASDF_NUM_COLS) || (ASDF_NUM_COLS < ASDF_TEST2_NUM_COLS)
 #undef ASDF_NUM_COLS
-#define ASDF_NUM_COLS ASDF_TEST_NUM_COLS
+#define ASDF_NUM_COLS ASDF_TEST2_NUM_COLS
 #endif
 
 
-#endif /* !defined (ASDF_KEYMAP_DEFS_TEST_H) */
+#endif /* !defined (ASDF_KEYMAP_DEFS_TEST2_H) */
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

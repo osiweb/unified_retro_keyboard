@@ -1,7 +1,7 @@
 # -*- makefile -*-
 
 ARCH ?= atmega328p
-KEYMAP ?= ascii
+KEYMAP ?= production
 
 ARCH_TOKEN = _Arch_$(ARCH)
 
@@ -67,7 +67,9 @@ MAKEDEPEND = $(CPP) $(DEPFLAGS) $(CPPFLAGS) $< \
              | sed -n 's,^\# *[0-9][0-9]* *"\([^"<]*\)".*,$@: \1\n\1:,p' \
              | sort -u > $*.d
 
-SRC_FILES = main.c asdf.c asdf_modifiers.c asdf_repeat.c asdf_keymaps.c asdf_buffer.c asdf_arch.c asdf_actions.c
+SRC_FILES = main.c asdf.c asdf_modifiers.c asdf_repeat.c asdf_keymaps.c
+SRC_FILES += asdf_buffer.c asdf_arch.c asdf_actions.c
+
 OBJ_FILES := $(SRC_FILES:.c=.o)
 DEP_FILES := $(SRC_FILES:%.c=$(DEP_DIR)/%.d)
 MAP_FILE = $(TARGET).map
@@ -100,7 +102,7 @@ include $(wildcard $(DEPFILES))
 %.o: %.c $(DEP_DIR)/%.d | $(DEP_DIR)
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(DEPFLAGS) $<
 
-asdf_keymap_defs.h: $(KEYMAPS_DIR)/asdf_keymap_defs_$(KEYMAP).h $(KEYMAPDEFS_H_TOKEN)
+asdf_keymap_defs.h: $(KEYMAPS_DIR)/asdf_all_keymap_defs_$(KEYMAP).h $(KEYMAPDEFS_H_TOKEN)
 	cp $< $@
 GENERATED_FILES += asdf_keymap_defs.h
 

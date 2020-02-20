@@ -53,7 +53,7 @@ typedef enum {
   MOD_SHIFT_MAP,
   MOD_CAPS_MAP,
   MOD_CTRL_MAP,
-  MOD_NUM_MAPS
+  ASDF_MOD_NUM_MODIFIERS
 } modifier_index_t;
 
 typedef enum { TOGGLE_SHIFTLOCK = 0, HOLD_SHIFTLOCK = 1 } shiftlock_mode_t;

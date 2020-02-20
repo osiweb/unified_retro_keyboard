@@ -76,7 +76,7 @@ TEST5_BUILD = $(BUILD_DIR)/test_$(TEST5)
 
 all: test
 
-asdf_keymap_defs.h: Keymaps/asdf_keymap_defs_$(KEYMAP).h
+asdf_keymap_defs.h: $(KEYMAPS_DIR)/asdf_all_keymap_defs_$(KEYMAP).h $(KEYMAPDEFS_H_TOKEN)
 	cp $< $@
 GENERATED_FILES += asdf_keymap_defs.h
 

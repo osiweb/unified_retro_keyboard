@@ -26,15 +26,44 @@
 #include "asdf_keymaps.h"
 #include "asdf_keymap_defs.h"
 
-typedef asdf_keycode_t keycode_matrix_t[ASDF_NUM_ROWS][ASDF_NUM_COLS];
+// ASDF_KEYMAP_DECLARATIONS is defined in asdf_keymap_defs.h, agregated from all
+// the included keymap definition files.
+//
+// This is a terrible practice, but defining the declarations as a macro permits
+// the keymap definitions to be incorporated in a fairly modular fashion, using
+// the limited capabilities of the C preprocessor. One alternative is to use a
+// program (in C or at the expense of additional build dependencies, in python
+// or bash) to generate the keymap definitions and declarations. But then the
+// keymap declarations would not be private. constexpr in C++ may be an
+// alternative option as well.
+ASDF_KEYMAP_DECLARATIONS;
 
-static const FLASH keycode_matrix_t plain_matrix = ASCII_PLAIN_MAP;
-static const FLASH keycode_matrix_t shift_matrix = ASCII_SHIFT_MAP;
-static const FLASH keycode_matrix_t caps_matrix = ASCII_CAPS_MAP;
-static const FLASH keycode_matrix_t ctrl_matrix = ASCII_CTRL_MAP;
+static keycode_matrix_t const *keymap_matrix[ASDF_NUM_KEYMAPS][ASDF_MOD_NUM_MODIFIERS] =
+  ASDF_KEYMAP_DEFS;
 
-static keycode_matrix_t const *modifier_matrix[MOD_NUM_MAPS];
+static uint8_t keymap_index;
 
+// PROCEDURE: asdf_keymaps_select_keymap
+// INPUTS: (uint8_t) index - index of the keymap number to select
+// OUTPUTS: none
+//
+// DESCRIPTION: accepts a index value. If the requested keymap index is valid,
+// then assign the value to the global (to the module) keymap_index variable.
+//
+// SIDE EFFECTS: May change the module-global keymap_index variable.
+//
+// NOTES: If the requested index is not valid, then no action is performed.
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_keymaps_select_keymap(uint8_t index)
+{
+  if (index < ASDF_NUM_KEYMAPS) {
+    keymap_index = index;
+  }
+}
 
 // PROCEDURE: asdf_keymaps_init
 // INPUTS: none
@@ -51,10 +80,6 @@ static keycode_matrix_t const *modifier_matrix[MOD_NUM_MAPS];
 //
 void asdf_keymaps_init(void)
 {
-  modifier_matrix[MOD_PLAIN_MAP] = &plain_matrix;
-  modifier_matrix[MOD_SHIFT_MAP] = &shift_matrix;
-  modifier_matrix[MOD_CAPS_MAP] = &caps_matrix;
-  modifier_matrix[MOD_CTRL_MAP] = &ctrl_matrix;
 }
 
 // PROCEDURE: asdf_keymaps_get_code
