@@ -49,7 +49,7 @@ TEST1_DEPS = ./$(TEST1).c $(UNITY_DIR)/unity.c
 TEST1_BUILD = $(BUILD_DIR)/test_$(TEST1)
 
 TEST2 = asdf_modifiers
-TEST2_SRC = $(TEST_DIR)/test_$(TEST2).c
+TEST2_SRC = $(TEST_DIR)/test_$(TEST2).c ./asdf_arch.c
 TEST2_DEPS = ./$(TEST2).c $(UNITY_DIR)/unity.c
 TEST2_BUILD = $(BUILD_DIR)/test_$(TEST2)
 
@@ -94,6 +94,8 @@ $(ARCH_TOKEN):
 	touch $(ARCH_TOKEN)
 
 asdf_keymaps.c: asdf.h asdf_ascii.h asdf_modifiers.h asdf_arch.h asdf_keymaps.h asdf_keymap_defs.h
+asdf_modifiers.c: asdf_modifiers.h asdf_arch.h asdf_keymap_defs.h
+asdf_arch.h: asdf_arch.h
 
 tags:   $(SRC_FILES)
 	etags $(SRC_FILES)

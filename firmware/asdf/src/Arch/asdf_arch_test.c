@@ -39,7 +39,8 @@
 #include "asdf_config.h"
 #include "asdf_arch.h"
 
-
+// this is to get rid of "unused variable" warnings.
+volatile static uint32_t junk_variable;
 
 // PROCEDURE: asdf_arch_init
 // INPUTS: none
@@ -86,6 +87,23 @@ void asdf_arch_send_screen_clear(void) {}
 // COMPLEXITY: 1
 //
 void asdf_arch_send_reset(void) {}
+
+// PROCEDURE: asdf_arch_caps_led
+// INPUTS: (uint8_t) led_state: nonzero value turns on LED, zero turns off LED
+// OUTPUTS: none
+//
+// DESCRIPTION: Controls the CAPSLOCK LED.  Test version is empty.
+//
+// SIDE EFFECTS: None for test version
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_caps_led(uint8_t led_status) {
+  junk_variable = led_status;
+}
+
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

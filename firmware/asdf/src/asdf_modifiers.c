@@ -26,6 +26,7 @@
 
 #include <stdint.h>
 #include "asdf_modifiers.h"
+#include "asdf_arch.h"
 
 static shift_state_t shift_state;
 static caps_state_t caps_state;
@@ -92,6 +93,22 @@ void asdf_modifier_shiftlock_activate(void)
   }
 }
 
+// PROCEDURE: asdf_modifier_set_caps_state
+// INPUTS: (uint8_t) new_state
+// OUTPUTS: none
+//
+// DESCRIPTION: sets CAPS state and sets CAPS LED.
+//
+// SIDE EFFECTS: see DESCRIPTION
+//
+// COMPLEXITY: 1
+//
+void asdf_modifier_set_caps_state(uint8_t new_state)
+{
+  uint8_t caps_state = new_state;
+  asdf_arch_caps_led(caps_state);
+}
+
 // PROCEDURE: asdf_modifier_caps_activate
 // INPUTS: none
 // OUTPUTS: none
@@ -104,7 +121,7 @@ void asdf_modifier_shiftlock_activate(void)
 //
 void asdf_modifier_caps_activate(void)
 {
-  caps_state |= CAPS_ON_ST;
+  asdf_modifier_set_caps_state(caps_state |= CAPS_ON_ST);
 }
 
 // PROCEDURE: asdf_modifier_caps_deactivate
@@ -119,7 +136,7 @@ void asdf_modifier_caps_activate(void)
 //
 void asdf_modifier_caps_deactivate(void)
 {
-  caps_state &= ~CAPS_ON_ST;
+  asdf_modifier_set_caps_state(caps_state &= ~CAPS_ON_ST);
 }
 
 // PROCEDURE: asdf_modifier_capslock_activate
@@ -134,7 +151,7 @@ void asdf_modifier_caps_deactivate(void)
 //
 void asdf_modifier_capslock_activate(void)
 {
-  caps_state ^= CAPS_LOCKED_ST;
+  asdf_modifier_set_caps_state(caps_state ^= CAPS_LOCKED_ST);
 }
 
 // PROCEDURE: asdf_modifier_ctrl_activate

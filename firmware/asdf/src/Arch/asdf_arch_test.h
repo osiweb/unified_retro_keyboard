@@ -58,6 +58,12 @@ void asdf_arch_send_reset(void);
 // DESCRIPTION: sets up all the hardware for the keyboard
 void asdf_arch_init(void);
 
+// PROCEDURE: asdf_arch_caps_led
+// INPUTS: (uint8_t) led_state: nonzero value turns on LED, zero turns off LED
+// OUTPUTS: none
+// DESCRIPTION: Controls the CAPSLOCK LED.  Test version is empty.
+void asdf_arch_caps_led(uint8_t led_status);
+
 #endif // !defined (ASDF_ARCH_H)
 
 //-------|---------|---------+---------+---------+---------+---------+---------+

@@ -203,24 +203,6 @@ static void asdf_arch_init_clock(void)
   CLKPR = (CLKPCE | SYSCLK_DIV1);
 }
 
-// PROCEDURE: asdf_arch_init_caps_led
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Initialize CAPSLOCK LED to off.
-//
-// SIDE EFFECTS: See DESCRIPTION
-//
-// SCOPE: private
-//
-// COMPLEXITY: 1
-//
-static void asdf_arch_init_caps_led(void)
-{
-  clear_bit(&ASDF_CAPS_LED_PORT, ASDF_CAPS_LED_BIT);
-  set_bit(&ASDF_CAPS_LED_DDR, ASDF_CAPS_LED_BIT);
-}
-
 // PROCEDURE: asdf_arch_screen_clear(void)
 // INPUTS: none
 // OUTPUTS: none
@@ -357,6 +339,65 @@ static void asdf_arch_init_row_outputs(void)
   ASDF_ROW_DDR |= ASDF_ROW_MASK;
 }
 
+
+// PROCEDURE: asdf_arch_caps_led
+// INPUTS: (uint8_t) led_state: nonzero value turns on LED, zero turns off LED
+// OUTPUTS: none
+//
+// DESCRIPTION: Controls the CAPSLOCK LED.
+//
+// SIDE EFFECTS: See DESCRIPTION
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_caps_led(uint8_t led_status)
+{
+  if (led_status) {
+    set_bit(&ASDF_CAPS_LED_PORT, ASDF_CAPS_LED_BIT);
+  } else {
+    clear_bit(&ASDF_CAPS_LED_PORT, ASDF_CAPS_LED_BIT);
+  }
+}
+
+// PROCEDURE: asdf_arch_init_caps_led
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Initialize CAPSLOCK LED to off.
+//
+// SIDE EFFECTS: See DESCRIPTION
+//
+// SCOPE: private
+//
+// COMPLEXITY: 1
+//
+static void asdf_arch_init_caps_led(void)
+{
+  asdf_arch_caps_led(0);
+  set_bit(&ASDF_CAPS_LED_DDR, ASDF_CAPS_LED_BIT);
+}
+
+
+// PROCEDURE: asdf_arch_init_power_led
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Initialize CAPSLOCK LED to off.
+//
+// SIDE EFFECTS: See DESCRIPTION
+//
+// SCOPE: private
+//
+// COMPLEXITY: 1
+//
+static void asdf_arch_init_power_led(void)
+{
+  clear_bit(&ASDF_POWER_LED_PORT, ASDF_POWER_LED_BIT);
+  set_bit(&ASDF_POWER_LED_DDR, ASDF_POWER_LED_BIT);
+}
+
 // PROCEDURE: asdf_arch_init
 // INPUTS: none
 // OUTPUTS: none
@@ -392,6 +433,7 @@ void asdf_arch_init(void)
   asdf_arch_init_screen_clear();
   asdf_arch_init_sys_reset();
   asdf_arch_init_caps_led();
+  asdf_arch_init_power_led();
 
   // set up row output port
   asdf_arch_init_row_outputs();
@@ -403,27 +445,6 @@ void asdf_arch_init(void)
   sei();
 }
 
-
-// PROCEDURE: asdf_arch_caps_led
-// INPUTS: (uint8_t) led_state: nonzero value turns on LED, zero turns off LED
-// OUTPUTS: none
-//
-// DESCRIPTION: Controls the CAPSLOCK LED.
-//
-// SIDE EFFECTS: See DESCRIPTION
-//
-// SCOPE: public
-//
-// COMPLEXITY: 2
-//
-void asdf_arch_caps_led(uint8_t led_status)
-{
-  if (led_status) {
-    set_bit(&ASDF_CAPS_LED_PORT, ASDF_CAPS_LED_BIT);
-  } else {
-    clear_bit(&ASDF_CAPS_LED_PORT, ASDF_CAPS_LED_BIT);
-  }
-}
 
 // PROCEDURE: asdf_arch_send_screen_clear
 // INPUTS: none
