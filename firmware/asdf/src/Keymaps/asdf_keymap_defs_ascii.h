@@ -60,12 +60,12 @@
 #define ASDF_ASCII_PLAIN_MAP                                                                       \
   {                                                                     \
    [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,  \
-           ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  ASCII_BACKSLASH }, \
+           ASCII_ESC, ASCII_TAB,    ACTION_CTRL,  ASCII_BACKSLASH }, \
    [1] = { ASCII_DEL, 'p', ';', '/', ASCII_SPACE, 'z', 'a', 'q' },      \
    [2] = { ACTION_BREAK, ASCII_COMMA, 'm', 'n', 'b', 'v', 'c', 'x' },   \
    [3] = { ACTION_NOTHING, 'k', 'j', 'h', 'g', 'f', 'd', 's' },         \
    [4] = { ACTION_CLEAR, 'i', 'u', 'y', 't', 'r', 'e', 'w' },           \
-   [5] = { ACTION_REPEAT, ACTION_HERE_IS, ACTION_CAPS, ASCII_CR, ASCII_LF, 'o', 'l', ASCII_PERIOD }, \
+   [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, 'o', 'l', ASCII_PERIOD }, \
    [6] = { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', ASCII_ZERO, '9', '8' }, \
    [7] = { ASCII_AT, '7', '6', '5', '4', '3', '2', '1' }, \
    ASDF_ASCII_DIP_SWITCHES                   \
@@ -74,12 +74,12 @@
 #define ASDF_ASCII_CAPS_MAP                                                                          \
   {                                                                     \
     [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING, \
-            ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  ASCII_BACKSLASH }, \
+            ASCII_ESC, ASCII_TAB,    ACTION_CTRL,  ASCII_BACKSLASH }, \
     [1] = { ASCII_DEL, 'P', ';', '/', ASCII_SPACE, 'Z', 'A', 'Q' },     \
     [2] = { ACTION_BREAK, ASCII_COMMA, 'M', 'N', 'B', 'V', 'C', 'X' },  \
     [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },        \
     [4] = { ACTION_CLEAR, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },          \
-    [5] = { ACTION_REPEAT, ACTION_HERE_IS, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', ASCII_PERIOD }, \
+    [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', ASCII_PERIOD }, \
     [6] = { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', ASCII_ZERO, '9', '8' }, \
     [7] = { ASCII_AT, '7', '6', '5', '4', '3', '2', '1' },              \
     ASDF_ASCII_DIP_SWITCHES                                          \
@@ -88,12 +88,12 @@
 #define ASDF_ASCII_SHIFT_MAP                                                                       \
   {                                                                     \
    [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,        \
-     ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  ASCII_VERT_BAR },      \
+     ASCII_ESC, ASCII_TAB,    ACTION_CTRL,  ASCII_VERT_BAR },      \
    [1] = { ASCII_DEL, 'P', '+', '?', ASCII_SPACE, 'Z', 'A', 'Q' },            \
    [2] = { ACTION_BREAK, '<', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
    [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },               \
    [4] = { ACTION_CLEAR, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                         \
-   [5] = { ACTION_REPEAT, ACTION_HERE_IS, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', '>' },           \
+   [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', '>' },           \
    [6] = { ASCII_TILDE, ASCII_RT_CURLY_BRACE, ASCII_LT_CURLY_BRACE, '=', \
            '*',         ASCII_ZERO,           ASCII_RT_PAREN,       ASCII_LT_PAREN }, \
    [7] = { ASCII_GRAVE_ACCENT, ASCII_SINGLE_QUOTE, '&', '%', '$', '#', ASCII_DOUBLE_QUOTE, '!' }, \
@@ -103,7 +103,7 @@
 #define ASDF_ASCII_CTRL_MAP                                                                        \
   {                                                                     \
    [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
-      ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  0x1c },                                          \
+      ASCII_ESC, ASCII_TAB,    ACTION_CTRL,  0x1c },                                          \
    [1] = { ACTION_NOTHING, ASCII_CTRL_P, ACTION_NOTHING, ACTION_NOTHING,      \
         ASCII_SPACE,    ASCII_CTRL_Z, ASCII_CTRL_A,   ASCII_CTRL_Q },                              \
    [2] = { ACTION_RESET, ASCII_COMMA, ASCII_CTRL_M, ASCII_CTRL_N,       \
@@ -112,7 +112,7 @@
            ASCII_CTRL_G, ASCII_CTRL_F, ASCII_CTRL_D, ASCII_CTRL_S }, \
    [4] = { ACTION_CLEAR, ASCII_CTRL_I, ASCII_CTRL_U, ASCII_CTRL_Y,      \
         ASCII_CTRL_T, ASCII_CTRL_R, ASCII_CTRL_E, ASCII_CTRL_W },                                  \
-   [5] = { ACTION_REPEAT, ACTION_HERE_IS, ACTION_CAPS,  ASCII_CR,       \
+   [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS,  ASCII_CR,       \
         ASCII_LF,      ASCII_CTRL_O,   ASCII_CTRL_L, ACTION_NOTHING },                             \
    [6] = { ACTION_NOTHING, 0x1d,         ASCII_ESC,   ACTION_NOTHING,   \
         ACTION_NOTHING, ACTION_FN_10, ACTION_FN_9, ACTION_FN_8 },                                  \
