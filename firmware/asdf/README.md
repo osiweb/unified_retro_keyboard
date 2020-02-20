@@ -41,8 +41,9 @@ Features:
 
 * Multiple keymaps. DIP switches 0-4 select the map. The current version
   includes: 
-  (0): ADM-style ASCII keyboard 
-  (1): ADM-style ASCII keyboard (all caps)
+  
+  * (0): ADM-style ASCII keyboard 
+  * (1): ADM-style ASCII keyboard (all caps)
   
 * Indicators: Controlled via activate() and deactivate() functions for the various keys.
 
