@@ -50,6 +50,10 @@ typedef enum {
   ACTION_HERE_IS,
   ACTION_CLEAR,
   ACTION_RESET,
+  ACTION_MAPSEL_0,
+  ACTION_MAPSEL_1,
+  ACTION_MAPSEL_2,
+  ACTION_MAPSEL_3,
   ACTION_FN_1,
   ACTION_FN_2,
   ACTION_FN_3,
@@ -59,7 +63,23 @@ typedef enum {
   ACTION_FN_7,
   ACTION_FN_8,
   ACTION_FN_9,
-  ACTION_FN_10
+  ACTION_FN_10,
+  RESERVED_1,
+  RESERVED_2,
+  RESERVED_3,
+  RESERVED_4,
+  RESERVED_5,
+  RESERVED_6,
+  RESERVED_7,
+  RESERVED_8,
+  RESERVED_9,
+  RESERVED_10,
+  RESERVED_11,
+  RESERVED_12,
+  RESERVED_13,
+  RESERVED_14,
+  RESERVED_15,
+  RESERVED_16
 } action_t;
 
 
@@ -85,11 +105,11 @@ void asdf_keyscan(void);
 // NOTES: If buffer is full, silently drop the code.
 void asdf_put_code(asdf_keycode_t code);
 
-// PROCEDURE: asdf_get_code
+// PROCEDURE: asdf_next_code
 // INPUTS: none
 // OUTPUTS: (asdf_keycode_t) returns next value in buffer.
 // DESCRIPTION: Takes a keycode argument and buffers for output.
-asdf_keycode_t asdf_get_code(void);
+asdf_keycode_t asdf_next_code(void);
 
 #endif // !defined (ASDF_H)
 

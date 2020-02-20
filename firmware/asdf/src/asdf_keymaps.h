@@ -27,6 +27,78 @@
 #if !defined(ASDF_KEYMAPS_H)
 #define ASDF_KEYMAPS_H
 
+
+
+#define ASDF_KEYMAP_BIT_0 1
+#define ASDF_KEYMAP_BIT_1 2
+#define ASDF_KEYMAP_BIT_2 4
+#define ASDF_KEYMAP_BIT_3 8
+
+// PROCEDURE: asdf_keymaps_select_keymap
+// INPUTS: (uint8_t) index - index of the keymap number to select
+// OUTPUTS: none
+// DESCRIPTION: accepts a index value. If the requested keymap index is valid,
+// then assign the value to the global (to the module) keymap_index variable. If
+// requested index is not valid then do nothing.
+void asdf_keymaps_select_keymap(uint8_t index);
+
+// PROCEDURE: asdf_keymaps_map_select_0_clear
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: called when map select 0 switch is open. Clears the 0 bit in the
+// keymap index.
+void asdf_keymaps_map_select_0_clear(void);
+
+
+// PROCEDURE: asdf_keymaps_map_select_0_set
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: called when map select 0 switch is closed. Sets the 0 bit in the
+// keymap index, if the resulting keymap index is valid.  Otherwise do nothing.
+void asdf_keymaps_map_select_0_set(void);
+
+// PROCEDURE: asdf_keymaps_map_select_1_clear
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: called when map select 1 switch is open. Clears the 1 bit in the
+// keymap index.
+void asdf_keymaps_map_select_1_clear(void);
+
+// PROCEDURE: asdf_keymaps_map_select_1_set
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: called when map select 1 switch is closed. Sets the 0 bit in the
+// keymap index, if the resulting keymap index is valid.  Otherwise do nothing.
+void asdf_keymaps_map_select_1_set(void);
+
+// PROCEDURE: asdf_keymaps_map_select_2_clear
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: called when map select 2 switch is open. Clears the 2 bit in the
+// keymap index.
+void asdf_keymaps_map_select_2_clear(void);
+
+// PROCEDURE: asdf_keymaps_map_select_2_set
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: called when map select 2 switch is closed. Sets the 0 bit in the
+// keymap index, if the resulting keymap index is valid.  Otherwise do nothing.
+void asdf_keymaps_map_select_2_set(void);
+
+// PROCEDURE: asdf_keymaps_map_select_3_clear
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: called when map select 3 switch is open. Clears the 3 bit in the
+// keymap index.
+void asdf_keymaps_map_select_3_clear(void);
+
+// PROCEDURE: asdf_keymaps_map_select_3_set
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: called when map select 3 switch is closed. Sets the 0 bit in the
+// keymap index, if the resulting keymap index is valid.  Otherwise do nothing.
+void asdf_keymaps_map_select_3_set(void);
+
 // PROCEDURE: asdf_keymaps_init
 // INPUTS: none
 // OUTPUTS: none
@@ -34,7 +106,7 @@
 // index, to avoid hard-coding constant index values.
 void asdf_keymaps_init(void);
 
-// PROCEDURE: asdf_keymaps_get_code
+// PROCEDURE: asdf_keymaps_get_`code
 // INPUTS: row, col: row and column of key that has been pressed
 //         modifiers_index: index into the keymap array, based on modifier state
 // OUTPUTS: returns a key code.

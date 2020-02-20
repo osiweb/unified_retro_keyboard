@@ -80,6 +80,167 @@ void asdf_keymaps_select_keymap(uint8_t index)
 //
 void asdf_keymaps_init(void)
 {
+  asdf_keymaps_select_keymap(0);
+}
+
+// PROCEDURE: asdf_keymaps_map_select_0_clear
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: called when map select 0 switch is open. Clears the 0 bit in the
+// keymap index.
+//
+// SIDE EFFECTS: changes selected keymap
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_keymaps_map_select_0_clear(void)
+{
+  asdf_keymaps_select_keymap(keymap_index & (~ASDF_KEYMAP_BIT_0));
+}
+
+// PROCEDURE: asdf_keymaps_map_select_0_set
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: called when map select 0 switch is closed. Sets the 0 bit in the
+// keymap index.
+//
+// SIDE EFFECTS: changes selected keymap
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_keymaps_map_select_0_set(void)
+{
+  asdf_keymaps_select_keymap(keymap_index | ASDF_KEYMAP_BIT_0);
+}
+
+// PROCEDURE: asdf_keymaps_map_select_1_clear
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: called when map select 1 switch is open. Clears the 1 bit in the
+// keymap index.
+//
+// SIDE EFFECTS: changes selected keymap
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_keymaps_map_select_1_clear(void)
+{
+  asdf_keymaps_select_keymap(keymap_index & (~ASDF_KEYMAP_BIT_1));
+}
+
+// PROCEDURE: asdf_keymaps_map_select_1_set
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: called when map select 1 switch is closed. Sets the 1 bit in the
+// keymap index.
+//
+// SIDE EFFECTS: changes selected keymap
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_keymaps_map_select_1_set(void)
+{
+  asdf_keymaps_select_keymap(keymap_index | ASDF_KEYMAP_BIT_1);
+}
+
+// PROCEDURE: asdf_keymaps_map_select_2_clear
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: called when map select 2 switch is open. Clears the 2 bit in the
+// keymap index.
+//
+// SIDE EFFECTS: changes selected keymap
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_keymaps_map_select_2_clear(void)
+{
+  asdf_keymaps_select_keymap(keymap_index & (~ASDF_KEYMAP_BIT_2));
+}
+
+// PROCEDURE: asdf_keymaps_map_select_2_set
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: called when map select 2 switch is closed. Sets the 2 bit in the
+// keymap index.
+//
+// SIDE EFFECTS: changes selected keymap
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_keymaps_map_select_2_set(void)
+{
+  asdf_keymaps_select_keymap(keymap_index | ASDF_KEYMAP_BIT_2);
+}
+
+// PROCEDURE: asdf_keymaps_map_select_3_clear
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: called when map select 3 switch is open. Clears the 3 bit in the
+// keymap index.
+//
+// SIDE EFFECTS: changes selected keymap
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_keymaps_map_select_3_clear(void)
+{
+  asdf_keymaps_select_keymap(keymap_index & (~ASDF_KEYMAP_BIT_3));
+}
+
+// PROCEDURE: asdf_keymaps_map_select_3_set
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: called when map select 3 switch is closed. Sets the 3 bit in the
+// keymap index.
+//
+// SIDE EFFECTS: changes selected keymap
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_keymaps_map_select_3_set(void)
+{
+  asdf_keymaps_select_keymap(keymap_index | ASDF_KEYMAP_BIT_3);
 }
 
 // PROCEDURE: asdf_keymaps_get_code
@@ -94,12 +255,15 @@ void asdf_keymaps_init(void)
 //
 // SCOPE: public
 //
+// NOTES: Since the first value in each row is the physical row number, we add 1
+// to the column number to read the code for a given row and column number.
+//
 // COMPLEXITY: 1
 //
 asdf_keycode_t asdf_keymaps_get_code(const uint8_t row, const uint8_t col,
                                      const uint8_t modifier_index)
 {
-  const keycode_matrix_t *matrix = modifier_matrix[modifier_index];
+  const keycode_matrix_t *matrix = keymap_matrix[keymap_index][modifier_index];
 
   return FLASH_READ_MATRIX_ELEMENT(*matrix, row, col);
 }

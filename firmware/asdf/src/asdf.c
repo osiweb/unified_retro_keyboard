@@ -80,7 +80,7 @@ void asdf_put_code(asdf_keycode_t code)
   asdf_buffer_put(asdf_keycode_buffer, code);
 }
 
-// PROCEDURE: asdf_get_code
+// PROCEDURE: asdf_next_code
 // INPUTS: none
 // OUTPUTS: (asdf_keycode_t) returns next value in buffer.
 //
@@ -94,7 +94,7 @@ void asdf_put_code(asdf_keycode_t code)
 //
 // COMPLEXITY: 1
 //
-asdf_keycode_t asdf_get_code(void)
+asdf_keycode_t asdf_next_code(void)
 {
   return asdf_buffer_get(asdf_keycode_buffer);
 }
@@ -164,6 +164,22 @@ static void asdf_activate_action(action_t keycode)
       asdf_send_reset();
       break;
     }
+    case ACTION_MAPSEL_0: {
+      asdf_keymaps_map_select_0_set();
+      break;
+    }
+    case ACTION_MAPSEL_1: {
+      asdf_keymaps_map_select_1_set();
+      break;
+    }
+    case ACTION_MAPSEL_2: {
+      asdf_keymaps_map_select_2_set();
+      break;
+    }
+    case ACTION_MAPSEL_3: {
+      asdf_keymaps_map_select_3_set();
+      break;
+    }
     case ACTION_NOTHING:
     case ACTION_LOCAL:
     case ACTION_BREAK:
@@ -218,6 +234,23 @@ static void asdf_deactivate_action(action_t keycode)
     }
     case ACTION_REPEAT: {
       asdf_repeat_deactivate();
+      break;
+    }
+    case ACTION_MAPSEL_0: {
+      asdf_keymaps_map_select_0_clear();
+      break;
+    }
+    case ACTION_MAPSEL_1: {
+      asdf_keymaps_map_select_1_clear();
+      break;
+    }
+    case ACTION_MAPSEL_2: {
+      asdf_keymaps_map_select_2_clear();
+      break;
+    }
+    case ACTION_MAPSEL_3: {
+      asdf_keymaps_map_select_3_clear();
+      break;
     }
     case ACTION_NOTHING:
     case ACTION_LOCAL:

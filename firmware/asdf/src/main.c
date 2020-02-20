@@ -68,7 +68,7 @@ int main(void)
   while (1) {
 
     if (asdf_arch_tick()) {
-      asdf_keycode_t code = asdf_get_code();
+      asdf_keycode_t code = asdf_next_code();
 
       if (code != ASDF_INVALID_CODE) {
         asdf_arch_send_code(code);
