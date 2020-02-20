@@ -116,7 +116,7 @@
         ASCII_LF,      ASCII_CTRL_O,   ASCII_CTRL_L, ACTION_NOTHING },                             \
    [6] = { ACTION_NOTHING, 0x1d,         ASCII_ESC,   ACTION_NOTHING,   \
         ACTION_NOTHING, ACTION_FN_10, ACTION_FN_9, ACTION_FN_8 },                                  \
-   [7] = { ACTION_NOTHING, ACTION_FN_7, ACTION_FN_6, ACTION_FN_5, \
+   [7] = { ASCII_NULL, ACTION_FN_7, ACTION_FN_6, ACTION_FN_5, \
             ACTION_FN_4, ACTION_FN_3, ACTION_FN_2, ACTION_FN_1 }, \
    ASDF_ASCII_DIP_SWITCHES                                        \
   }
