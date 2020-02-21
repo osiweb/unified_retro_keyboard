@@ -1,10 +1,10 @@
 ASDF Keyboard scanning firmware
 -
-The ASDF (Auto Scan by DF) firmware is a key matrix scanner that can detect and
-debounce keypress and release events on a key matrix and either send codes or
-perform actions on keypress or release. Keymaps are defined per application and
-may, for example, generate ASCII codes, special keyscan codes, etc. The code is
-modular and may be integrated into a larger system easily.
+This is a key matrix scanner that can detect and debounce keypress and release
+events on a key matrix and either send codes or perform actions on keypress or
+release. Keymaps are defined per application and may, for example, generate
+ASCII codes, special keyscan codes, etc. The code is modular and may be
+integrated into a larger system easily.
 
 By default, the code supports any number of rows by 8 columns, which will give
 the bestperformance on an 8-bit microcontroller. For more than 8 columns per
@@ -44,7 +44,9 @@ Features:
   
   * (0): ADM-style ASCII keyboard 
   * (1): ADM-style ASCII keyboard (all caps)
-  
+  * (2): Apple 2 ASCII keyboard (upper/lower)
+  * (3): Apple 2 ASCII keyboard (standard all caps)
+
 * Indicators: Controlled via activate() and deactivate() functions for the various keys.
 
 * Debounce and Repeat functions: The main keyscan logic implements key
@@ -56,13 +58,7 @@ Features:
   functions, or other keyboard logic. Repeat and autorepeat only apply to the
   most recently pressed key.
 
-* (Future feature) NVRAM: For architectures that support EEPROM or other non-volatile storage,
-  configuration parameters are stored in non-volatile storage to survive a power
-  cycle.
-
 * ASCII output - supported via output_value function.
-
-* (Future feature) Serial, USB CDC, USB HID interfaces - supportable via output_value function.
 
 * Indicator LEDs and other direct logic-level hardware controls: supported via
   per-key activate/deactivate functions, and also via hooks to standard key
