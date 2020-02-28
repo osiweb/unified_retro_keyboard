@@ -16,9 +16,9 @@ even slightly simplify the hardware layer of the firmware.
 ## Features
 - Parallel or serial output
 - Up to 8 configuration settings via an up-to-8 position DIP switch
-- Apple 1 and Apple 2 compatible outputs.  Other configurations can be supported by
-  making a custom cable.
-- Can decode arbitrary keyboards up 16 rows by 8 columns by making a custom keyboard cable.
+- Apple 1, Apple 2, and SOL-20 compatible outputs. Other configurations can be
+  supported by making a custom cable.
+- Can decode arbitrary keyboards up 16 rows by 8 columns.
 - Supports up to 3 keyboard LEDs
 - Supports up to 3 "special" host outputs, such as RESET, SCREEN_CLEAR, BREAK, etc.
 
@@ -27,12 +27,14 @@ even slightly simplify the hardware layer of the firmware.
   lines to drive 16 rows.
 - The columns are read in via an 8-bit shift register, controlled by 3 GPIO lines.
 - One 8-bit port is used for the parallel ASCII output.
-- Two GPIO lines are used to generate special outputs to the host. These could
-  be RESET, BREAK, CLEAR, etc.
-- One GPIO line is used to control a keyboard LED.
-- Three of the ISP lines are also used as outputs to controll two more Keyboard
-  LEDs and one more "special" output line.
-- The DIP switch is wired into row 15 (last row) of the matrix.
+- Three GPIO lines are used to generate special outputs to the host. These could
+  be RESET, BREAK, CLEAR, etc. Two of these may be configured as emulated
+  open-collector drivers.
+- Three GPIO lines are used to control keyboard LEDs. 
+
+- The DIP switch is wired into row 15 (last row) of the matrix. In the future,
+the DIP switch will be moved to row 9 to reduce RAM usage and speed up key scanning.
+
 - The top two parallel I/O bits can also be configured as UART I/O. This could
 be used to provide serial output instead or parallel output, to support a
 bootloader, or even to accept a serial input stream from another computer to
@@ -44,7 +46,8 @@ careful timing to avoid conflicts.
 The minimum functioning circuit includes 
 1. the Microcontroller (U1)
 1. the 74LS166 shift register (U2)
-1. one 74LS138 decoder (U3).
+1. one 74LS138 decoder (U3). This means no DIP switch, so keymap must be
+   selected at firmware build.
 1. The resistor network RN1
 1. The two resistors R3 and R4. If you are using the keyboard in only a parallel
 configuration or only a serial configuration, then you can jumper these
@@ -53,15 +56,19 @@ resistors with a piece of wire.
 
 ## Optional components
 ### Diodes D1-D16
-These diodes are intended to mitigate ghosting when used with a keyboard matrix
-that does not have any diodes installed. These provide one diode per row. If you
-are attaching a keyboard with no diodes, then you only need to populate the
-diodes corresponding to rows on the keyboard. If the keyboard has 8 rows, then
-you may want to install 8 diodes corresponding to those rows.
+These diodes are intended to prevent conflicts between high and low keyboard
+driver outputs. They allow the row drivers to pull rows low, but not high,
+emulating open collector outputs.
+
+If you are attaching a keyboard with no diodes, then you only need to populate
+the diodes corresponding to rows on the keyboard. If the keyboard has 8 rows,
+then you may want to install 8 diodes corresponding to those rows.
 
 Note that the footprints for these diodes include a copper jumper on the TOP
 copper layer. If you install any of these diodes, you should cut the jumpers for
 those diodes. Otherwise the diodes do nothing.
+
+If you are attaching a keyboard with a diode per key, then the diodes on the keys perform the same function, in addition to preventing "ghosting", so the per-row diodes do not need to be installed.
 
 ### DIP switch and associated diodes
 The DIP switch is optional. If you don't want to be able to set options via the
@@ -69,14 +76,11 @@ DIP switches, you can set all your preferences in the firmware, or just accept
 the default behavior, and skip the DIP switch and Diodes D17-D20 and D24-D27.
 
 ### Second 74LS138 multiplexer (U4)
-Only needed if you have more than 8 rows.
+Only needed if you have more than 8 rows (including the DIP switch).
 
 ### The 74LS07 hex buffer (U5) and pullup R6
 The 74LS07 is only needed if you are using LED2 or LED3 on the keyboard, or the OUT2 open
 collector output.
-
-R6 is the optional pullup for the open collector output 2 (O2), and only needs to be
-installed if output 2 is used, and if the host does not provide a pullup.
 
 ### Diodes D21, D22, D23
 Some keyboards may not wire all keys into the matrix. For example, some other
