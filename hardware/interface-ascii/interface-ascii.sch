@@ -6,7 +6,7 @@ encoding utf-8
 Sheet 1 1
 Title "ASCII Interface for Unified Retro Keyboard"
 Date "2019-08-25"
-Rev "2.3"
+Rev "2.4"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -1268,10 +1268,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7150 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D12
+L Diode:1N4148 D1
 U 1 1 5E32CB02
 P 7280 4430
-F 0 "D12" H 7310 3990 50  0000 C CNN
+F 0 "D1" H 7310 3990 50  0000 C CNN
 F 1 "1N4148" H 7078 4470 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7280 4255 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7280 4430 50  0001 C CNN
@@ -1279,10 +1279,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7280 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D3
+L Diode:1N4148 D2
 U 1 1 5E34160D
 P 7150 4330
-F 0 "D3" H 7120 3860 50  0000 C CNN
+F 0 "D2" H 7120 3860 50  0000 C CNN
 F 1 "1N4148" H 6948 4370 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7150 4155 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7150 4330 50  0001 C CNN
@@ -1449,10 +1449,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7280 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D2
+L Diode:1N4148 D3
 U 1 1 5E357678
 P 7150 4130
-F 0 "D2" H 7120 3540 50  0000 C CNN
+F 0 "D3" H 7120 3540 50  0000 C CNN
 F 1 "1N4148" H 6948 4170 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7150 3955 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7150 4130 50  0001 C CNN
@@ -1471,10 +1471,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7280 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D1
+L Diode:1N4148 D12
 U 1 1 5E36B862
 P 7140 3930
-F 0 "D1" H 7120 3210 50  0000 C CNN
+F 0 "D12" H 7120 3210 50  0000 C CNN
 F 1 "1N4148" H 6938 3970 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7140 3755 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7140 3930 50  0001 C CNN
@@ -1984,7 +1984,7 @@ OUT1
 Text Notes 1135 6635 0    50   ~ 0
 (D7 to +5V)
 NoConn ~ 1150 6440
-NoConn ~ 1150 6135
+NoConn ~ 1150 6140
 NoConn ~ 1150 6240
 NoConn ~ 1150 3825
 NoConn ~ 1150 4325
@@ -1992,7 +1992,7 @@ NoConn ~ 1150 4825
 NoConn ~ 1150 4925
 NoConn ~ 1150 5025
 Text Notes 2055 6585 0    50   ~ 0
-SOL-20:\nRESET=OUT1\nLOCAL=OUT3\nBREAK=OUT2\n\nApple 1:\nD7 on socket is tied high\n~RESET = OUT1\nCLRSCR = OUT3\n\nApple 2:\n~RESET = OUT3\n\n
+SOL-20:\nRESET=OUT1\nLOCAL=OUT3\nBREAK=OUT2\n\nApple 1:\nD7 on socket is tied high\n~RESET = OUT3\nCLRSCR = OUT1\n\nApple 2:\n~RESET = OUT3\n\n
 Wire Wire Line
 	2805 655  3050 655 
 Wire Wire Line
@@ -2169,6 +2169,4 @@ Wire Bus Line
 	1975 875  1975 6640
 Wire Bus Line
 	7800 1350 7800 6705
-Text Label 1260 2685 0    50   ~ 0
-OUT1
 $EndSCHEMATC
