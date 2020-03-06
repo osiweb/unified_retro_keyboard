@@ -213,23 +213,20 @@
 #define ASDF_LED3_DDR DDRB
 #define ASDF_LED3_BIT 4
 
-#define ASDF_POWER_LED_PORT ASDF_LED1_PORT
-#define ASDF_POWER_LED_DDR ASDF_LED1_DDR
-#define ASDF_POWER_LED_BIT ASDF_LED1_BIT
+#define ASDF_OUT1_PORT PORTC
+#define ASDF_OUT1_PIN PINC
+#define ASDF_OUT1_DDR DDRC
+#define ASDF_OUT1_BIT 5
 
-#define ASDF_CAPS_LED_PORT ASDF_LED3_PORT
-#define ASDF_CAPS_LED_DDR ASDF_LED3_DDR
-#define ASDF_CAPS_LED_BIT ASDF_LED3_BIT
+#define ASDF_OUT2_PORT PORTB
+#define ASDF_OUT2_PIN PINB
+#define ASDF_OUT2_DDR DDRB
+#define ASDF_OUT2_BIT 3
 
-#define ASDF_SCREEN_CLEAR_PORT PORTC
-#define ASDF_SCREEN_CLEAR_PIN PINC
-#define ASDF_SCREEN_CLEAR_DDR DDRC
-#define ASDF_SCREEN_CLEAR_BIT 5
-
-#define ASDF_SYS_RESET_PORT PORTB
-#define ASDF_SYS_RESET_PIN PINB
-#define ASDF_SYS_RESET_DDR DDRB
-#define ASDF_SYS_RESET_BIT 7
+#define ASDF_OUT3_PORT PORTB
+#define ASDF_OUT3_PIN PINB
+#define ASDF_OUT3_DDR DDRB
+#define ASDF_OUT3_BIT 7
 
 #define ASDF_STROBE_PORT PORTB
 #define ASDF_STROBE_PIN PINB
@@ -251,6 +248,53 @@
 // For 1 ms tick, (8000000 / 64(prescale)) / 1000(usec) - 1 = 124
 #define TICK_COUNT 124
 
+// PROCEDURE: asdf_arch_led1_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: If value is true, turn on LED1.  If value is false, turn off LED1
+void asdf_arch_led1_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_led2_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: If value is true, turn on LED2.  If value is false, turn off LED2
+void asdf_arch_led2_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_led3_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: If value is true, turn on LED3.  If value is false, turn off LED3
+void asdf_arch_led3_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_out1_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Sets the OUT1 bit if value is true, and clear OUT1 if value is false.
+void asdf_arch_out1_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_out1_hi_z_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Sets the OUT1 bit to hi-z if value is true, and low if value is false.
+void asdf_arch_out1_hi_z_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_out2_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Sets the OUT2 bit if value is true, and clear OUT2 if value is false.
+void asdf_arch_out2_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_out3_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Sets the OUT3 bit if value is true, and clear OUT3 if value is false.
+void asdf_arch_out3_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_out3_hi_z_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Sets the OUT3 bit to hi-z if value is true, and low if value is false.
+void asdf_arch_out3_hi_z_set(uint8_t value);
 
 // PROCEDURE: asdf_arch_read_row
 // INPUTS: (uint8_t) row: the row number to be scanned
@@ -264,24 +308,6 @@ asdf_cols_t asdf_arch_read_row(uint8_t row);
 // INPUTS: none
 // OUTPUTS: returns a 1 if the 1ms timer timed out, 0 otherwise
 uint8_t asdf_arch_tick(void);
-
-// PROCEDURE: asdf_arch_caps_led
-// INPUTS: (uint8_t) led_state: nonzero value turns on LED, zero turns off LED
-// OUTPUTS: none
-// DESCRIPTION: Controls the CAPSLOCK LED.
-void asdf_arch_caps_led(uint8_t led_status);
-
-// PROCEDURE: asdf_arch_send_screen_clear
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: Toggles the SCREEN_CLEAR output.
-void asdf_arch_send_screen_clear(void);
-
-// PROCEDURE: asdf_arch_send_reset
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: Toggles the SCREEN_CLEAR output.
-void asdf_arch_send_reset(void);
 
 // PROCEDURE: asdf_arch_send_code
 // INPUTS: (keycode_t) code - the code to be output by the keyboard

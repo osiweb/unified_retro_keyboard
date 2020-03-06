@@ -75,7 +75,7 @@ typedef enum {
   ASCII_TILDE = 0x7e,
   ASCII_VERT_BAR = 0x7c,
   ASCII_DEL = 0x7f
-} ascii;
+} ascii_defs_t;
 
 #define ASCII_LF ASCII_CTRL_J
 #define ASCII_CR ASCII_CTRL_M

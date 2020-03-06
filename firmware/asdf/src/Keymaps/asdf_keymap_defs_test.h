@@ -147,6 +147,15 @@
 #define ASDF_TEST_PLAIN_MAP_INDEX ASDF_TEST_BASE + 0
 #define ASDF_TEST_CAPS_MAP_INDEX ASDF_TEST_BASE + 1
 
+#define ASDF_TEST_KEYMAP_INITIALIZER_LENGTH 3
+#define ASDF_TEST_KEYMAP_INITIALIZER                                    \
+  {                                                                     \
+   { .virtual_device = VCAPS_LED, .device = VMAP_LED1, .initial_value = 1 }, \
+   { .virtual_device = VOUT1, .device = VMAP_OUT1, .initial_value = 1 }, \
+   { .virtual_device = VOUT2, .device = VMAP_OUT3, .initial_value = 1 } \
+  }
+
+
 // The following preprocessor "code" permits various keymaps to be created and
 // included without generating a lot of complicating code dependencies. The use
 // of macros in this way is a bit ugly, I realize, and stretches the intention
@@ -165,6 +174,10 @@
 #define ASDF_NUM_COLS ASDF_TEST_NUM_COLS
 #endif
 
+#if !defined(ASDF_KEYMAP_INITIALIZER_LENGTH) || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_TEST_KEYMAP_INITIALIZER_LENGTH)
+#undef ASDF_KEYMAP_INITIALIZER_LENGTH
+#define ASDF_KEYMAP_INITIALIZER_LENGTH ASDF_TEST_KEYMAP_INITIALIZER_LENGTH
+#endif
 
 #endif /* !defined (ASDF_KEYMAP_DEFS_TEST_H) */
 

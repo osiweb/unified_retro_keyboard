@@ -23,6 +23,7 @@
 #include <stdint.h>
 #include "asdf.h"
 #include "asdf_arch.h"
+#include "asdf_virtual.h"
 #include "asdf_keymaps.h"
 #include "asdf_keymap_defs.h"
 
@@ -41,7 +42,12 @@ ASDF_KEYMAP_DECLARATIONS;
 static keycode_matrix_t const *keymap_matrix[ASDF_NUM_KEYMAPS][ASDF_MOD_NUM_MODIFIERS] =
   ASDF_KEYMAP_DEFS;
 
+
+static const FLASH virtual_initializer_t keymap_initializer_list[ASDF_NUM_KEYMAPS][ASDF_INITIALIZER_LENGTH] =
+  ASDF_KEYMAP_INITIALIZERS;
+
 static uint8_t keymap_index;
+
 
 // PROCEDURE: asdf_keymaps_select_keymap
 // INPUTS: (uint8_t) index - index of the keymap number to select
@@ -62,6 +68,7 @@ void asdf_keymaps_select_keymap(uint8_t index)
 {
   if (index < ASDF_NUM_KEYMAPS) {
     keymap_index = index;
+    asdf_virtual_init(keymap_initializer_list[keymap_index]);
   }
 }
 

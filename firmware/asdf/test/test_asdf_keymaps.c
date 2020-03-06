@@ -77,10 +77,28 @@ typedef struct {
 
 ASDF_KEYMAP_DECLARATIONS;
 
-
+// keymap coordinates for special functions
 static coord_t alpha_sample;
 static coord_t num_sample;
 static coord_t keymap_tag;
+
+// Array of zeros which will be initialized to specific values on keymap changes.
+static keycode_t init_testvals[ASDF_NUM_INITIALIZERS] = {};
+static keycode_t initializers[ASDF_NUM_KEYMAPS][ASDF_NUM_INITIALIZERS] = ASDF_KEYMAP_INITIALIZERS;
+
+void reset_testvals(void)
+{
+  for(int i = 0; i < ASDF_NUM_INITIALIZERS; i++) {
+    init_testvals[i] = 0;
+  }
+}
+
+
+
+
+
+
+
 
 uint32_t max(uint8_t first, uint8_t second)
 {
@@ -112,6 +130,8 @@ coord_t *find_code(asdf_keycode_t code)
 void setUp(void)
 {
   coord_t *temp;
+
+  reset_testvals();
 
   asdf_keymaps_init();
 
@@ -328,6 +348,13 @@ void dip_switch_invalid_keymap_has_no_effect(void)
 
 }
 
+void keymap_initializers_run_on_startup(void)
+{
+  for (int i = 0; i < NUM_INITIALIZERS; i++)
+    {
+      TEST_ASSERT_EQUAL_INT32((int32_t) )
+    }
+}
 
 int main(void)
 {

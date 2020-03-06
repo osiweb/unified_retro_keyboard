@@ -203,11 +203,12 @@ static void asdf_arch_init_clock(void)
   CLKPR = (CLKPCE | SYSCLK_DIV1);
 }
 
-// PROCEDURE: asdf_arch_screen_clear(void)
+// PROCEDURE: asdf_arch_init_outputs
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Initialize Screen Clear to LOW
+// DESCRIPTION: Initialize all LED ports as outputs. Values are not set here.
+// They are set by the keymap code
 //
 // SIDE EFFECTS: See DESCRIPTION
 //
@@ -215,38 +216,206 @@ static void asdf_arch_init_clock(void)
 //
 // COMPLEXITY: 1
 //
-static void asdf_arch_init_screen_clear(void)
+static void asdf_arch_init_leds(void)
 {
-  if (ASDF_DEFAULT_SCREEN_CLEAR_POLARITY == ASDF_POSITIVE_POLARITY) {
-    clear_bit(&ASDF_SCREEN_CLEAR_PORT, ASDF_SCREEN_CLEAR_BIT);
-  } else {
-    set_bit(&ASDF_SCREEN_CLEAR_PORT, ASDF_SCREEN_CLEAR_BIT);
-  }
-  set_bit(&ASDF_SCREEN_CLEAR_DDR, ASDF_SCREEN_CLEAR_BIT);
+  set_bit(&ASDF_LED1_DDR, ASDF_LED1_BIT);
+  set_bit(&ASDF_LED2_DDR, ASDF_LED2_BIT);
+  set_bit(&ASDF_LED3_DDR, ASDF_LED3_BIT);
 }
 
-// PROCEDURE: asdf_arch_init_sys_reset
-// INPUTS: none
+
+// PROCEDURE: asdf_arch_led1_set
+// INPUTS: (uint8_t) value
 // OUTPUTS: none
 //
-// DESCRIPTION: Initialize system reset to INACTIVE. Sys Reset emulates an open
-// collector output, so the inactive state is high impedance. Configure as an
-// input. Set the pin up as an input, and enable the weak pullup. Normally the
-// host system should pull the line high. The weak pullup is ~200-300k, at least
-// an order of magnitude greater than the typical host pullup value, so should
-// not have significant impact on the current, but will ensure the line is high
-// if the host omits a pullup.
+// DESCRIPTION: If value is true, turn on LED1.  If value is false, turn off LED1
 //
-// SIDE EFFECTS: See DESCRIPTION
+// SIDE EFFECTS: See above.
 //
-// SCOPE: private
+// NOTES: The LED1 port drives the LED directly by pulling the cathode low, so
+// clearing the bit turns the LED on.
 //
-// COMPLEXITY: 1
+// SCOPE: public
 //
-static void asdf_arch_init_sys_reset(void)
+// COMPLEXITY: 2
+//
+void asdf_arch_led1_set(uint8_t value)
 {
-  clear_bit(&ASDF_SYS_RESET_DDR, ASDF_SYS_RESET_BIT);  // set as input
-  set_bit(&ASDF_SYS_RESET_PORT, ASDF_SYS_RESET_BIT); // enable weak pullup
+  if (value) {
+    clear_bit(&ASDF_LED1_PORT, ASDF_LED1_BIT);
+  } else {
+    set_bit(&ASDF_LED1_PORT, ASDF_LED1_BIT);
+  }
+}
+
+// PROCEDURE: asdf_arch_led2_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: If value is true, turn on LED2.  If value is false, turn off LED2
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES: The LED2 output drives the LED via an inverter buffer, so a high
+// output pulls the LED cathode low, lighting the LED.
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_led2_set(uint8_t value)
+{
+  if (value) {
+    set_bit(&ASDF_LED2_PORT, ASDF_LED2_BIT);
+  } else {
+    clear_bit(&ASDF_LED2_PORT, ASDF_LED2_BIT);
+  }
+}
+
+// PROCEDURE: asdf_arch_led3_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: If value is true, turn on LED3.  If value is false, turn off LED3
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES: The LED3 output drives the LED via an inverter buffer, so a high
+// output pulls the LED cathode low, lighting the LED.
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_led3_set(uint8_t value)
+{
+  if (value) {
+    set_bit(&ASDF_LED3_PORT, ASDF_LED3_BIT);
+  } else {
+    clear_bit(&ASDF_LED3_PORT, ASDF_LED3_BIT);
+  }
+}
+
+// PROCEDURE: asdf_arch_out1_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: Sets the OUT1 bit if value is true, and clear OUT1 if value is false.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_out1_set(uint8_t value)
+{
+  if (value) {
+    set_bit(&ASDF_OUT1_PORT, ASDF_OUT1_BIT);
+  } else {
+    clear_bit(&ASDF_OUT1_PORT, ASDF_OUT1_BIT);
+  }
+  set_bit(&ASDF_OUT1_DDR, ASDF_OUT1_BIT);
+}
+
+// PROCEDURE: asdf_arch_out1_hi_z_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: Sets the OUT1 bit to hi-z if value is true, and low if value is false.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_out1_hi_z_set(uint8_t value)
+{
+  if (value) {
+    clear_bit(&ASDF_OUT1_DDR, ASDF_OUT1_BIT);
+    set_bit(&ASDF_OUT1_PORT, ASDF_OUT1_BIT);
+  } else {
+    clear_bit(&ASDF_OUT1_PORT, ASDF_OUT1_BIT);
+    set_bit(&ASDF_OUT1_DDR, ASDF_OUT1_BIT);
+  }
+}
+
+// PROCEDURE: asdf_arch_out2_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: Sets the OUT2 bit if value is true, and clear OUT2 if value is false.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES: OUT2 is inverted by the 7404 buffer, so clearing the bit sets the output high.  OUT2 cannot be high impedance.
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_out2_set(uint8_t value)
+{
+  if (value) {
+    clear_bit(&ASDF_OUT2_PORT, ASDF_OUT1_BIT);
+  } else {
+    set_bit(&ASDF_OUT2_PORT, ASDF_OUT1_BIT);
+  }
+  set_bit(&ASDF_OUT2_DDR, ASDF_OUT2_BIT);
+}
+
+// PROCEDURE: asdf_arch_out3_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: Sets the OUT3 bit if value is true, and clear OUT3 if value is false.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_out3_set(uint8_t value)
+{
+  if (value) {
+    set_bit(&ASDF_OUT3_PORT, ASDF_OUT3_BIT);
+  } else {
+    clear_bit(&ASDF_OUT3_PORT, ASDF_OUT3_BIT);
+  }
+  set_bit(&ASDF_OUT3_DDR, ASDF_OUT3_BIT);
+}
+
+// PROCEDURE: asdf_arch_out3_hi_z_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: Sets the OUT3 bit to hi-z if value is true, and low if value is false.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_out3_hi_z_set(uint8_t value)
+{
+  if (value) {
+    clear_bit(&ASDF_OUT3_DDR, ASDF_OUT3_BIT);
+    set_bit(&ASDF_OUT3_PORT, ASDF_OUT3_BIT);
+  } else {
+    clear_bit(&ASDF_OUT3_PORT, ASDF_OUT3_BIT);
+    set_bit(&ASDF_OUT3_DDR, ASDF_OUT3_BIT);
+  }
 }
 
 // PROCEDURE: asdf_arch_init_strobe
@@ -340,159 +509,50 @@ static void asdf_arch_init_row_outputs(void)
 }
 
 
-// PROCEDURE: asdf_arch_caps_led
-// INPUTS: (uint8_t) led_state: nonzero value turns on LED, zero turns off LED
-// OUTPUTS: none
-//
-// DESCRIPTION: Controls the CAPSLOCK LED.
-//
-// SIDE EFFECTS: See DESCRIPTION
-//
-// SCOPE: public
-//
-// COMPLEXITY: 2
-//
-void asdf_arch_caps_led(uint8_t led_status)
-{
-  if (led_status) {
-    set_bit(&ASDF_CAPS_LED_PORT, ASDF_CAPS_LED_BIT);
-  } else {
-    clear_bit(&ASDF_CAPS_LED_PORT, ASDF_CAPS_LED_BIT);
+  // PROCEDURE: asdf_arch_init
+  // INPUTS: none
+  // OUTPUTS: none
+  //
+  // DESCRIPTION: sets up all the hardware for the keyboard
+  //
+  // SIDE EFFECTS: see DESCRIPTION
+  //
+  // SCOPE: public
+  //
+  // COMPLEXITY: 1
+  //
+  void asdf_arch_init(void)
+  {
+    // disable interrupts:
+    cli();
+
+    // clear the 1ms timer flag;
+    tick = 0;
+
+    // set up timers for 1 msec intervals
+    asdf_arch_init_clock();
+    asdf_arch_tick_timer_init();
+
+    // set up ASCII output port
+    asdf_arch_init_ascii_output();
+
+    // initialize keyboard data and strobe to positive polairy
+    data_polarity = ASDF_DEFAULT_DATA_POLARITY;
+    strobe_polarity = ASDF_DEFAULT_STROBE_POLARITY;
+
+    asdf_arch_init_strobe();
+    asdf_arch_init_leds();
+
+    // set up row output port
+    asdf_arch_init_row_outputs();
+
+    // set up column control lines
+    asdf_arch_init_column_control();
+
+    // enable interrupts:
+    sei();
   }
-}
 
-// PROCEDURE: asdf_arch_init_caps_led
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Initialize CAPSLOCK LED to off.
-//
-// SIDE EFFECTS: See DESCRIPTION
-//
-// SCOPE: private
-//
-// COMPLEXITY: 1
-//
-static void asdf_arch_init_caps_led(void)
-{
-  asdf_arch_caps_led(0);
-  set_bit(&ASDF_CAPS_LED_DDR, ASDF_CAPS_LED_BIT);
-}
-
-
-// PROCEDURE: asdf_arch_init_power_led
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Initialize CAPSLOCK LED to off.
-//
-// SIDE EFFECTS: See DESCRIPTION
-//
-// SCOPE: private
-//
-// COMPLEXITY: 1
-//
-static void asdf_arch_init_power_led(void)
-{
-  clear_bit(&ASDF_POWER_LED_PORT, ASDF_POWER_LED_BIT);
-  set_bit(&ASDF_POWER_LED_DDR, ASDF_POWER_LED_BIT);
-}
-
-// PROCEDURE: asdf_arch_init
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: sets up all the hardware for the keyboard
-//
-// SIDE EFFECTS: see DESCRIPTION
-//
-// SCOPE: public
-//
-// COMPLEXITY: 1
-//
-void asdf_arch_init(void)
-{
-  // disable interrupts:
-  cli();
-
-  // clear the 1ms timer flag;
-  tick = 0;
-
-  // set up timers for 1 msec intervals
-  asdf_arch_init_clock();
-  asdf_arch_tick_timer_init();
-
-  // set up ASCII output port
-  asdf_arch_init_ascii_output();
-
-  // initialize keyboard data and strobe to positive polairy
-  data_polarity = ASDF_DEFAULT_DATA_POLARITY;
-  strobe_polarity = ASDF_DEFAULT_STROBE_POLARITY;
-
-  asdf_arch_init_strobe();
-  asdf_arch_init_screen_clear();
-  asdf_arch_init_sys_reset();
-  asdf_arch_init_caps_led();
-  asdf_arch_init_power_led();
-
-  // set up row output port
-  asdf_arch_init_row_outputs();
-
-  // set up column control lines
-  asdf_arch_init_column_control();
-
-  // enable interrupts:
-  sei();
-}
-
-
-// PROCEDURE: asdf_arch_send_screen_clear
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Toggles the SCREEN_CLEAR output.
-//
-// SIDE EFFECTS: see DESCRIPTION
-//
-// NOTES:
-//
-// SCOPE: public
-//
-// COMPLEXITY: 1
-//
-void asdf_arch_send_screen_clear(void)
-{
-  set_bit(&ASDF_SCREEN_CLEAR_PIN, ASDF_SCREEN_CLEAR_BIT);
-  _delay_us(ASDF_STROBE_LENGTH_US);
-  set_bit(&ASDF_SCREEN_CLEAR_PIN, ASDF_SCREEN_CLEAR_BIT);
-}
-
-// PROCEDURE: asdf_arch_send_reset
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Pulses the SYS_RESET output. This emulates open collector, so
-// PORT is set to LOW also briefly disabling the weak pullup but also preventing
-// even a brief conflict on the output, in case the line is pulled low
-// elsewhere. Then, DDR is set to output. After the pulse duration, the DDR is
-// set back to input, and PORT is set to HIGH to activate the weak pullup.
-//
-// SIDE EFFECTS: see DESCRIPTION
-//
-// NOTES:
-//
-// SCOPE: public
-//
-// COMPLEXITY: 1
-//
-void asdf_arch_send_reset(void)
-{
-  clear_bit(&ASDF_SYS_RESET_PORT, ASDF_SYS_RESET_BIT);
-  set_bit(&ASDF_SYS_RESET_DDR, ASDF_SYS_RESET_BIT);
-  _delay_us(ASDF_STROBE_LENGTH_US);
-  clear_bit(&ASDF_SYS_RESET_DDR, ASDF_SYS_RESET_BIT);
-  set_bit(&ASDF_SYS_RESET_PORT, ASDF_SYS_RESET_BIT);
-}
 
 // PROCEDURE: asdf_arch_read_row
 // INPUTS: (uint8_t) row: the row number to be scanned

@@ -56,10 +56,10 @@
 
 #define ASDF_LAST_ROW (ASDF_NUM_ROWS - 1)
 
-#define ASDF_TEST_MAP_DIP_SWITCHES                                      \
+#define ASDF_TEST_MAP_DIP_SWITCHES                                                                 \
   [ASDF_LAST_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
 
-#define ASDF_TEST2_PLAIN_MAP                                                                        \
+#define ASDF_TEST2_PLAIN_MAP                                                                       \
   {                                                                                                \
     { PLAIN_MATRIX_2, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_CAPS,    ASCII_ESC,    ACTION_CTRL,  ASCII_BACKSLASH },                               \
@@ -73,7 +73,7 @@
       { ACTION_NOTHING, '7', '6', '5', '4', '3', '2', '1' }, ASDF_TEST_MAP_DIP_SWITCHES            \
   }
 
-#define ASDF_TEST2_CAPS_MAP                                                                         \
+#define ASDF_TEST2_CAPS_MAP                                                                        \
   {                                                                                                \
     { CAPS_MATRIX_2,  ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  ASCII_BACKSLASH },                               \
@@ -87,7 +87,7 @@
       { ACTION_NOTHING, '7', '6', '5', '4', '3', '2', '1' }, ASDF_TEST_MAP_DIP_SWITCHES            \
   }
 
-#define ASDF_TEST2_SHIFT_MAP                                                                        \
+#define ASDF_TEST2_SHIFT_MAP                                                                       \
   {                                                                                                \
                                                                                                    \
     { SHIFT_MATRIX_2, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
@@ -104,7 +104,7 @@
   }
 
 
-#define ASDF_TEST2_CTRL_MAP                                                                         \
+#define ASDF_TEST2_CTRL_MAP                                                                        \
   {                                                                                                \
     { CTRL_MATRIX_2,  ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  0x1c },                                          \
@@ -126,27 +126,37 @@
   }
 
 
-#define ASDF_TEST2_DECLARATIONS                                                                     \
-  static const FLASH keycode_matrix_t test2_PLAIN_matrix = ASDF_TEST2_PLAIN_MAP;                     \
-  static const FLASH keycode_matrix_t test2_SHIFT_matrix = ASDF_TEST2_SHIFT_MAP;                     \
-  static const FLASH keycode_matrix_t test2_CAPS_matrix = ASDF_TEST2_CAPS_MAP;                       \
+#define ASDF_TEST2_DECLARATIONS                                                                    \
+  static const FLASH keycode_matrix_t test2_PLAIN_matrix = ASDF_TEST2_PLAIN_MAP;                   \
+  static const FLASH keycode_matrix_t test2_SHIFT_matrix = ASDF_TEST2_SHIFT_MAP;                   \
+  static const FLASH keycode_matrix_t test2_CAPS_matrix = ASDF_TEST2_CAPS_MAP;                     \
   static const FLASH keycode_matrix_t test2_CTRL_matrix = ASDF_TEST2_CTRL_MAP;
 
-#define ASDF_TEST2_MAP_DEFS                                                                         \
+#define ASDF_TEST2_MAP_DEFS                                                                        \
   {                                                                                                \
-    &test2_PLAIN_matrix, &test2_SHIFT_matrix, &test2_CAPS_matrix, &test2_CTRL_matrix                   \
+    &test2_PLAIN_matrix, &test2_SHIFT_matrix, &test2_CAPS_matrix, &test2_CTRL_matrix               \
   }
 
-#define ASDF_TEST2_CAPS_MAP_DEFS                                                                    \
+#define ASDF_TEST2_CAPS_MAP_DEFS                                                                   \
   {                                                                                                \
-    &test2_CAPS_matrix, &test2_SHIFT_matrix, &test2_CAPS_matrix, &test2_CTRL_matrix                    \
+    &test2_CAPS_matrix, &test2_SHIFT_matrix, &test2_CAPS_matrix, &test2_CTRL_matrix                \
   }
 
-#define ASDF_TEST2_KEYMAPS  ASDF_TEST2_MAP_DEFS, ASDF_TEST2_CAPS_MAP_DEFS
+#define ASDF_TEST2_KEYMAPS ASDF_TEST2_MAP_DEFS, ASDF_TEST2_CAPS_MAP_DEFS
 
 #define ASDF_TEST2_KEYMAPS_COUNT 2
 #define ASDF_TEST2_PLAIN_MAP_INDEX (ASDF_TEST2_BASE + 0)
 #define ASDF_TEST2_CAPS_MAP_INDEX (ASDF_TEST2_BASE + 1)
+
+#define ASDF_TEST2_KEYMAP_INITIALIZER_LENGTH 4
+#define ASDF_TEST2_KEYMAP_INITIALIZER \
+  {                                                                     \
+   { .virtual_device = VCAPS_LED, .device = VMAP_LED2, .initial_value = 1 }, \
+   { .virtual_device = VOUT1, .device = VMAP_OUT2, .initial_value = 1 }, \
+   { .virtual_device = VOUT2, .device = VMAP_OUT3, .initial_value = 0 }, \
+   { .virtual_device = VOUT2, .device = NUM_VIRTUAL_OUTPUTS, .initial_value = 0 } \
+  }
+
 
 // The following preprocessor "code" permits various keymaps to be created and
 // included without generating a lot of complicating code dependencies. The use
@@ -164,6 +174,12 @@
 #if !defined(ASDF_NUM_COLS) || (ASDF_NUM_COLS < ASDF_TEST2_NUM_COLS)
 #undef ASDF_NUM_COLS
 #define ASDF_NUM_COLS ASDF_TEST2_NUM_COLS
+#endif
+
+#if !defined(ASDF_KEYMAP_INITIALIZER_LENGTH)                                                       \
+  || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_TEST2_KEYMAP_INITIALIZER_LENGTH)
+#undef ASDF_KEYMAP_INITIALIZER_LENGTH
+#define ASDF_KEYMAP_INITIALIZER_LENGTH ASDF_TEST2_KEYMAP_INITIALIZER_LENGTH
 #endif
 
 
