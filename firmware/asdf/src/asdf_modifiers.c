@@ -44,6 +44,23 @@ static const modifier_index_t modifier_indices[] = {
   MOD_CTRL_MAP,  MOD_CTRL_MAP, MOD_CTRL_MAP
 };
 
+
+// PROCEDURE: set_shiftlock_state
+// INPUTS: (uint8_t) state: the new shift state
+// OUTPUTS: none
+//
+// DESCRIPTION: sets SHIFT state to specified value, and also set shiftlock LED
+//
+// SIDE EFFECTS: see DESCRIPTION
+//
+// COMPLEXITY: 1
+//
+void asdf_modifier_set_shiftlock_state(uint8_t new_state)
+{
+  shift_state = new_state;
+  asdf_virtual_action(VSHIFT_LED, (shift_state ? V_SET_HI : V_SET_LO));
+}
+
 // PROCEDURE: asdf_modifier_shift_activate
 // INPUTS: none
 // OUTPUTS: none
@@ -56,7 +73,7 @@ static const modifier_index_t modifier_indices[] = {
 //
 void asdf_modifier_shift_activate(void)
 {
-  shift_state = SHIFT_ON_ST;
+  asdf_modifier_set_shift_state(SHIFT_ON_ST);
 }
 
 
@@ -83,13 +100,13 @@ void asdf_modifier_shift_activate(void)
 //
 // COMPLEXITY: 2
 //
-void asdf_modifier_shiftlock_activate(void)
+void asdf_modifier_shiftlock_activate();
 {
   if (asdf_toggle_shiftlock) {
-    shift_state ^= SHIFT_LOCKED_ST;
+    asdf_modifier_set_shift_state(shift_state ^ SHIFT_LOCKED_ST);
   }
   else {
-    shift_state |= SHIFT_LOCKED_ST;
+    asdf_modifier_set_shift_state(shift_state | SHIFT_LOCKED_ST);
   }
 }
 
@@ -103,40 +120,10 @@ void asdf_modifier_shiftlock_activate(void)
 //
 // COMPLEXITY: 1
 //
-void asdf_modifier_set_caps_state(uint8_t new_state)
+static void asdf_modifier_set_caps_state(uint8_t new_state);
 {
   uint8_t caps_state = new_state;
-  asdf_arch_caps_led(caps_state);
-}
-
-// PROCEDURE: asdf_modifier_caps_activate
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: sets CAPS state to ON (without disturbing the caps lock state)
-//
-// SIDE EFFECTS: see DESCRIPTION
-//
-// COMPLEXITY: 1
-//
-void asdf_modifier_caps_activate(void)
-{
-  asdf_modifier_set_caps_state(caps_state |= CAPS_ON_ST);
-}
-
-// PROCEDURE: asdf_modifier_caps_deactivate
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: sets CAPS state to OFF (without disturbing the caps lock state)
-//
-// SIDE EFFECTS: see DESCRIPTION
-//
-// COMPLEXITY: 1
-//
-void asdf_modifier_caps_deactivate(void)
-{
-  asdf_modifier_set_caps_state(caps_state &= ~CAPS_ON_ST);
+  asdf_virtual_action(VCAPS_LED, (caps_state ? V_SET_HI : V_SET_LO );
 }
 
 // PROCEDURE: asdf_modifier_capslock_activate
@@ -183,7 +170,7 @@ void asdf_modifier_ctrl_activate(void)
 //
 void asdf_modifier_shift_deactivate(void)
 {
-  shift_state = SHIFT_OFF_ST;
+  asdf_modifier_set_shift_state(SHIFT_OFF_ST);
 }
 
 // PROCEDURE: asdf_modifier_ctrl_deactivate
@@ -239,8 +226,8 @@ void asdf_modifier_capslock_deactivate(void) {}
 //
 void asdf_modifiers_init(void)
 {
-  shift_state = SHIFT_OFF_ST;
-  caps_state = CAPS_OFF_ST;
+  asdf_modifier_set_shift_state(SHIFT_OFF_ST);
+  asdf_modifier_set_caps_state(CAPS_OFF_ST);
   ctrl_state = CTRL_OFF_ST;
 
   asdf_toggle_shiftlock = HOLD_SHIFTLOCK;
