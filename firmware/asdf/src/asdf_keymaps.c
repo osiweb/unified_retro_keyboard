@@ -43,7 +43,7 @@ static keycode_matrix_t const *keymap_matrix[ASDF_NUM_KEYMAPS][ASDF_MOD_NUM_MODI
   ASDF_KEYMAP_DEFS;
 
 
-static const FLASH virtual_initializer_t keymap_initializer_list[ASDF_NUM_KEYMAPS][ASDF_INITIALIZER_LENGTH] =
+static const asdf_virtual_initializer_t keymap_initializer_list[ASDF_NUM_KEYMAPS][ASDF_KEYMAP_INITIALIZER_LENGTH] =
   ASDF_KEYMAP_INITIALIZERS;
 
 static uint8_t keymap_index;
@@ -68,7 +68,7 @@ void asdf_keymaps_select_keymap(uint8_t index)
 {
   if (index < ASDF_NUM_KEYMAPS) {
     keymap_index = index;
-    asdf_virtual_init(keymap_initializer_list[keymap_index]);
+    asdf_virtual_init((asdf_virtual_initializer_t *const) keymap_initializer_list[keymap_index]);
   }
 }
 

@@ -34,7 +34,7 @@
 #define ASDF_KEYMAP_BIT_2 4
 #define ASDF_KEYMAP_BIT_3 8
 
-typdef enum {
+typedef enum {
              CLEAR_OUT1,
              SET_OUT1,
              CLEAR_OUT2,
@@ -73,7 +73,7 @@ typdef enum {
              SET_VLED2_LED3,
              SET_VLED3_LED3,
 
-} keymap_init_t
+} keymap_init_t;
 
 
 

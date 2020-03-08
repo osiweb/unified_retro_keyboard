@@ -54,6 +54,7 @@ typedef enum {
   VMAP_OUT1,
   VMAP_OUT1_OC,
   VMAP_OUT2,
+  VMAP_OUT2_OC,
   VMAP_OUT3,
   VMAP_OUT3_OC,
   VMAP_LED1,
@@ -62,7 +63,14 @@ typedef enum {
   NUM_REAL_OUTPUTS
 } asdf_virtual_real_dev_t;
 
-typedef enum { V_NOFUNC, V_SET_HI, V_SET_LO, V_PULSE, V_TOGGLE, NUM_VIRTUAL_FUNCTIONS } asdf_virtual_function_t;
+typedef enum {
+  V_NOFUNC,
+  V_SET_HI,
+  V_SET_LO,
+  V_PULSE,
+  V_TOGGLE,
+  NUM_VIRTUAL_FUNCTIONS
+} asdf_virtual_function_t;
 
 // Each keymap specifies an array of initializer structs to configure virtual
 // devices, specifying the mapped real device and initial value.
@@ -71,7 +79,7 @@ typedef struct {
   asdf_virtual_real_dev_t real_device;
   asdf_virtual_function_t function;
   uint8_t initial_value;
-} virtual_initializer_t;
+} asdf_virtual_initializer_t;
 
 // PROCEDURE: asdf_virtual_action
 // INPUTS: (asdf_virtual_output_t) virtual_out: which virtual output to modify
@@ -81,11 +89,19 @@ typedef struct {
 // specified function.
 void asdf_virtual_action(asdf_virtual_output_t virtual_out, asdf_virtual_function_t function);
 
+// PROCEDURE: asdf_virtual_activate
+// INPUTS: asdf_virtual_output_t: The virtual device to be activated
+// OUTPUTS: none
+// DESCRIPTION: for each real output mapped to the virtual output, apply the
+// function assigned to the virtual output at initialization.
+void asdf_virtual_activate(asdf_virtual_output_t virtual_out);
+
 // PROCEDURE: asdf_virtual_init
 // INPUTS: initializers
 // OUTPUTS: none
 // DESCRIPTION: Initializes the LED and output mapping
-void asdf_virtual_init(virtual_initializer_t *initializer_list);
+void asdf_virtual_init(asdf_virtual_initializer_t *const initializer_list);
+
 
 #endif /* !defined (ASDF_VIRTUAL_H) */
 

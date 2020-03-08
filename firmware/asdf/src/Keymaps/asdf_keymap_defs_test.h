@@ -148,11 +148,23 @@
 #define ASDF_TEST_CAPS_MAP_INDEX ASDF_TEST_BASE + 1
 
 #define ASDF_TEST_KEYMAP_INITIALIZER_LENGTH 3
-#define ASDF_TEST_KEYMAP_INITIALIZER                                    \
-  {                                                                     \
-   { .virtual_device = VCAPS_LED, .device = VMAP_LED1, .initial_value = 1 }, \
-   { .virtual_device = VOUT1, .device = VMAP_OUT1, .initial_value = 1 }, \
-   { .virtual_device = VOUT2, .device = VMAP_OUT3, .initial_value = 1 } \
+#define ASDF_TEST_KEYMAP_INITIALIZER                                                               \
+  {                                                                                                \
+    {                                                                                              \
+      .virtual_device = VCAPS_LED,                                                                 \
+      .real_device = VMAP_LED1,                                                                    \
+      .function = V_NOFUNC,                                                                        \
+      .initial_value = 1,                                                                          \
+    },                                                                                             \
+      {                                                                                            \
+        .virtual_device = VOUT1,                                                                   \
+        .real_device = VMAP_OUT1,                                                                  \
+        .function = V_TOGGLE,                                                                      \
+        .initial_value = 1,                                                                        \
+      },                                                                                           \
+    {                                                                                              \
+      .virtual_device = VOUT2, .real_device = VMAP_OUT3, .function = V_PULSE, .initial_value = 1,  \
+    }                                                                                              \
   }
 
 
@@ -174,7 +186,8 @@
 #define ASDF_NUM_COLS ASDF_TEST_NUM_COLS
 #endif
 
-#if !defined(ASDF_KEYMAP_INITIALIZER_LENGTH) || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_TEST_KEYMAP_INITIALIZER_LENGTH)
+#if !defined(ASDF_KEYMAP_INITIALIZER_LENGTH)                                                       \
+  || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_TEST_KEYMAP_INITIALIZER_LENGTH)
 #undef ASDF_KEYMAP_INITIALIZER_LENGTH
 #define ASDF_KEYMAP_INITIALIZER_LENGTH ASDF_TEST_KEYMAP_INITIALIZER_LENGTH
 #endif

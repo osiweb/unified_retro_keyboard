@@ -47,15 +47,38 @@
 #define ASDF_APPLE2_NUM_ROWS 16 // DIP switches are row 15.
 #define ASDF_APPLE2_NUM_COLS 8
 
-#if !defined(ASDF_NUM_ROWS) || (ASDF_NUM_ROWS < ASDF_APPLE2_NUM_ROWS)
-#undef ASDF_NUM_ROWS
-#define ASDF_NUM_ROWS ASDF_APPLE2_NUM_ROWS
-#endif
+#define ASDF_ASCII_NUM_ROWS 16 // DIP switches are row 15.
+#define ASDF_ASCII_NUM_COLS 8
 
-#if !defined(ASDF_NUM_COLS) || (ASDF_NUM_COLS < ASDF_APPLE2_NUM_COLS)
-#undef ASDF_NUM_COLS
-#define ASDF_NUM_COLS ASDF_APPLE2_NUM_COLS
-#endif
+#define VIRTUAL_RESET VOUT1
+#define RESET_OUTPUT VMAP_OUT3_OC
+#define RESET_ACTIVE_VALUE 0
+
+#define VIRTUAL_CLR_SCR VOUT2
+#define CLR_SCR_OUT VMAP_OUT1
+#define CLR_SCR_ACTIVE_VALUE 1
+
+#define VIRTUAL_POWER_LED VLED1
+#define POWER_LED VMAP_LED1
+#define POWER_LED_INIT_VALUE 1
+
+#define ASDF_APPLE2_KEYMAP_INITIALIZER_LENGTH 4
+#define ASDF_APPLE2_KEYMAP_INITIALIZER                                   \
+  {                                                                     \
+   { .virtual_device = VIRTUAL_POWER_LED,                               \
+     .real_device = POWER_LED,                                               \
+     .initial_value = POWER_LED_INIT_VALUE },                           \
+   { .virtual_device = VCAPS_LED,                                       \
+     .real_device = VMAP_LED3 },                                             \
+   { .virtual_device = RESET_OUTPUT,                                       \
+     .real_device = VMAP_OUT1,                                               \
+     .function = V_PULSE,                                               \
+     .initial_value = !CLR_SCR_ACTIVE_VALUE },                          \
+   { .virtual_device = CLR_SCR_OUT,                                     \
+     .real_device = VMAP_OUT3,                                               \
+     .function = V_PULSE,                                               \
+     .initial_value = !RESET_ACTIVE_VALUE }                             \
+  }
 
 // TO ensure consistent DIP switch operation within the keymap, a
 // ASDF_APPLE2_DIP_SWITCHES macro is defined. Keeping the ACTION_MAPSEL0-3
@@ -186,6 +209,21 @@
 #define ASDF_APPLE2_ALL_MAPS ASDF_APPLE2_PLAIN_MAP_DEFS, ASDF_APPLE2_CAPS_MAP_DEFS
 
 #define ASDF_APPLE2_ALL_MAPS_COUNT 2
+
+#if !defined(ASDF_NUM_ROWS) || (ASDF_NUM_ROWS < ASDF_APPLE2_NUM_ROWS)
+#undef ASDF_NUM_ROWS
+#define ASDF_NUM_ROWS ASDF_APPLE2_NUM_ROWS
+#endif
+
+#if !defined(ASDF_NUM_COLS) || (ASDF_NUM_COLS < ASDF_APPLE2_NUM_COLS)
+#undef ASDF_NUM_COLS
+#define ASDF_NUM_COLS ASDF_APPLE2_NUM_COLS
+#endif
+
+#if !defined(ASDF_KEYMAP_INITIALIZER_LENGTH) || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_APPLE2_KEYMAP_INITIALIZER_LENGTH)
+#undef ASDF_KEYMAP_INITIALIZER_LENGTH
+#define ASDF_KEYMAP_INITIALIZER_LENGTH ASDF_APPLE2_KEYMAP_INITIALIZER_LENGTH
+#endif
 
 #endif /* !defined (ASDF_KEYMAP_DEFS_APPLE2_H) */
 

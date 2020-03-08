@@ -243,7 +243,8 @@ void asdf_arch_led1_set(uint8_t value)
 {
   if (value) {
     clear_bit(&ASDF_LED1_PORT, ASDF_LED1_BIT);
-  } else {
+  }
+  else {
     set_bit(&ASDF_LED1_PORT, ASDF_LED1_BIT);
   }
 }
@@ -267,7 +268,8 @@ void asdf_arch_led2_set(uint8_t value)
 {
   if (value) {
     set_bit(&ASDF_LED2_PORT, ASDF_LED2_BIT);
-  } else {
+  }
+  else {
     clear_bit(&ASDF_LED2_PORT, ASDF_LED2_BIT);
   }
 }
@@ -291,7 +293,8 @@ void asdf_arch_led3_set(uint8_t value)
 {
   if (value) {
     set_bit(&ASDF_LED3_PORT, ASDF_LED3_BIT);
-  } else {
+  }
+  else {
     clear_bit(&ASDF_LED3_PORT, ASDF_LED3_BIT);
   }
 }
@@ -314,7 +317,8 @@ void asdf_arch_out1_set(uint8_t value)
 {
   if (value) {
     set_bit(&ASDF_OUT1_PORT, ASDF_OUT1_BIT);
-  } else {
+  }
+  else {
     clear_bit(&ASDF_OUT1_PORT, ASDF_OUT1_BIT);
   }
   set_bit(&ASDF_OUT1_DDR, ASDF_OUT1_BIT);
@@ -339,7 +343,8 @@ void asdf_arch_out1_hi_z_set(uint8_t value)
   if (value) {
     clear_bit(&ASDF_OUT1_DDR, ASDF_OUT1_BIT);
     set_bit(&ASDF_OUT1_PORT, ASDF_OUT1_BIT);
-  } else {
+  }
+  else {
     clear_bit(&ASDF_OUT1_PORT, ASDF_OUT1_BIT);
     set_bit(&ASDF_OUT1_DDR, ASDF_OUT1_BIT);
   }
@@ -353,7 +358,8 @@ void asdf_arch_out1_hi_z_set(uint8_t value)
 //
 // SIDE EFFECTS: See above.
 //
-// NOTES: OUT2 is inverted by the 7404 buffer, so clearing the bit sets the output high.  OUT2 cannot be high impedance.
+// NOTES: OUT2 is inverted by the 7404 buffer, so clearing the bit sets the output high.  OUT2
+// cannot be high impedance.
 //
 // SCOPE: public
 //
@@ -363,10 +369,49 @@ void asdf_arch_out2_set(uint8_t value)
 {
   if (value) {
     clear_bit(&ASDF_OUT2_PORT, ASDF_OUT1_BIT);
-  } else {
+  }
+  else {
     set_bit(&ASDF_OUT2_PORT, ASDF_OUT1_BIT);
   }
   set_bit(&ASDF_OUT2_DDR, ASDF_OUT2_BIT);
+}
+
+// PROCEDURE: asdf_arch_null_output
+// INPUTS: (uint8_t) value - ignored
+// OUTPUTS: none
+//
+// DESCRIPTION: Does nothing.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_null_output(uint8_t value)
+{
+  (void) value;
+}
+
+// PROCEDURE: asdf_arch_out2_hi_z_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: Sets the OUT2 bit to hi-z if value is true, and low if value is false.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES: Not supported for the ATMega-328 ASCII interface.
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_out2_hi_z_set(uint8_t value)
+{
+  asdf_arch_null_output(value);
 }
 
 // PROCEDURE: asdf_arch_out3_set
@@ -387,7 +432,8 @@ void asdf_arch_out3_set(uint8_t value)
 {
   if (value) {
     set_bit(&ASDF_OUT3_PORT, ASDF_OUT3_BIT);
-  } else {
+  }
+  else {
     clear_bit(&ASDF_OUT3_PORT, ASDF_OUT3_BIT);
   }
   set_bit(&ASDF_OUT3_DDR, ASDF_OUT3_BIT);
@@ -412,7 +458,8 @@ void asdf_arch_out3_hi_z_set(uint8_t value)
   if (value) {
     clear_bit(&ASDF_OUT3_DDR, ASDF_OUT3_BIT);
     set_bit(&ASDF_OUT3_PORT, ASDF_OUT3_BIT);
-  } else {
+  }
+  else {
     clear_bit(&ASDF_OUT3_PORT, ASDF_OUT3_BIT);
     set_bit(&ASDF_OUT3_DDR, ASDF_OUT3_BIT);
   }
@@ -508,50 +555,68 @@ static void asdf_arch_init_row_outputs(void)
   ASDF_ROW_DDR |= ASDF_ROW_MASK;
 }
 
+// PROCEDURE: asdf_arch_pulse_delay
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Delays a fixed amount of time for keyboard output pulses.
+//
+// SIDE EFFECTS: see above.
+//
+// NOTES: Set ASDF_PULSE_DELAY_US in asdf_config.h
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_pulse_delay(void)
+{
+  _delay_us(ASDF_PULSE_DELAY_US);
+}
 
-  // PROCEDURE: asdf_arch_init
-  // INPUTS: none
-  // OUTPUTS: none
-  //
-  // DESCRIPTION: sets up all the hardware for the keyboard
-  //
-  // SIDE EFFECTS: see DESCRIPTION
-  //
-  // SCOPE: public
-  //
-  // COMPLEXITY: 1
-  //
-  void asdf_arch_init(void)
-  {
-    // disable interrupts:
-    cli();
+// PROCEDURE: asdf_arch_init
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: sets up all the hardware for the keyboard
+//
+// SIDE EFFECTS: see DESCRIPTION
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_init(void)
+{
+  // disable interrupts:
+  cli();
 
-    // clear the 1ms timer flag;
-    tick = 0;
+  // clear the 1ms timer flag;
+  tick = 0;
 
-    // set up timers for 1 msec intervals
-    asdf_arch_init_clock();
-    asdf_arch_tick_timer_init();
+  // set up timers for 1 msec intervals
+  asdf_arch_init_clock();
+  asdf_arch_tick_timer_init();
 
-    // set up ASCII output port
-    asdf_arch_init_ascii_output();
+  // set up ASCII output port
+  asdf_arch_init_ascii_output();
 
-    // initialize keyboard data and strobe to positive polairy
-    data_polarity = ASDF_DEFAULT_DATA_POLARITY;
-    strobe_polarity = ASDF_DEFAULT_STROBE_POLARITY;
+  // initialize keyboard data and strobe to positive polairy
+  data_polarity = ASDF_DEFAULT_DATA_POLARITY;
+  strobe_polarity = ASDF_DEFAULT_STROBE_POLARITY;
 
-    asdf_arch_init_strobe();
-    asdf_arch_init_leds();
+  asdf_arch_init_strobe();
+  asdf_arch_init_leds();
 
-    // set up row output port
-    asdf_arch_init_row_outputs();
+  // set up row output port
+  asdf_arch_init_row_outputs();
 
-    // set up column control lines
-    asdf_arch_init_column_control();
+  // set up column control lines
+  asdf_arch_init_column_control();
 
-    // enable interrupts:
-    sei();
-  }
+  // enable interrupts:
+  sei();
+}
 
 
 // PROCEDURE: asdf_arch_read_row

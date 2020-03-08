@@ -279,82 +279,6 @@ void ctrl_double_shiftlock_returns_to_ctrl_map(void)
   TESTMAP(MOD_CTRL_MAP);
 }
 
-// CAPS give caps
-void caps_gives_caps(void)
-{
-  asdf_modifier_caps_activate();
-  TESTMAP(MOD_CAPS_MAP);
-}
-
-// CAPS and release gives plain
-void caps_and_release_gives_plain(void)
-{
-  asdf_modifier_caps_activate();
-  TESTMAP(MOD_CAPS_MAP);
-  asdf_modifier_caps_deactivate();
-  TESTMAP(MOD_PLAIN_MAP);
-}
-
-
-// CAPSLOCK and CAPS gives caps
-void capslock_and_caps_gives_caps(void)
-{
-  asdf_modifier_capslock_activate();
-  asdf_modifier_capslock_deactivate();
-  TESTMAP(MOD_CAPS_MAP);
-  asdf_modifier_caps_activate();
-  TESTMAP(MOD_CAPS_MAP);
-}
-
-// CAPSLOCK and CAPS and release CAPS gives caps
-void capslock_and_caps_and_release_gives_caps(void)
-{
-  asdf_modifier_capslock_activate();
-  asdf_modifier_capslock_deactivate();
-  TESTMAP(MOD_CAPS_MAP);
-  asdf_modifier_caps_activate();
-  TESTMAP(MOD_CAPS_MAP);
-  asdf_modifier_caps_deactivate();
-  TESTMAP(MOD_CAPS_MAP);
-}
-
-// CAPS and CAPSLOCK gives caps
-void caps_and_capslock_gives_caps(void)
-{
-  asdf_modifier_caps_activate();
-  TESTMAP(MOD_CAPS_MAP);
-  asdf_modifier_capslock_activate();
-  asdf_modifier_capslock_deactivate();
-  TESTMAP(MOD_CAPS_MAP);
-}
-
-// CAPS and CAPSLOCK and release CAPS gives caps
-void caps_and_capslock_and_release_gives_caps(void)
-{
-  asdf_modifier_caps_activate();
-  TESTMAP(MOD_CAPS_MAP);
-  asdf_modifier_capslock_activate();
-  TESTMAP(MOD_CAPS_MAP);
-  asdf_modifier_caps_deactivate();
-  TESTMAP(MOD_CAPS_MAP);
-}
-
-// CAPS and CAPSLOCK and release CAPS then CAPSLOCK gives plain
-void caps_and_capslock_and_release_and_capslock_gives_plain(void)
-{
-  asdf_modifier_caps_activate();
-  TESTMAP(MOD_CAPS_MAP);
-  asdf_modifier_capslock_activate();
-  asdf_modifier_capslock_deactivate();
-  TESTMAP(MOD_CAPS_MAP);
-  asdf_modifier_caps_deactivate();
-  TESTMAP(MOD_CAPS_MAP);
-  asdf_modifier_capslock_activate();
-  asdf_modifier_capslock_deactivate();
-  TESTMAP(MOD_PLAIN_MAP);
-}
-
-
 int main(void)
 {
   UNITY_BEGIN();
@@ -381,13 +305,6 @@ int main(void)
   RUN_TEST(ctrl_shiftlock_gives_ctrl_map);
   RUN_TEST(ctrl_double_caps_returns_to_ctrl_map);
   RUN_TEST(ctrl_double_shiftlock_returns_to_ctrl_map);
-  RUN_TEST(caps_gives_caps);
-  RUN_TEST(caps_and_release_gives_plain);
-  RUN_TEST(capslock_and_caps_gives_caps);
-  RUN_TEST(capslock_and_caps_and_release_gives_caps);
-  RUN_TEST(caps_and_capslock_gives_caps);
-  RUN_TEST(caps_and_capslock_and_release_gives_caps);
-  RUN_TEST(caps_and_capslock_and_release_and_capslock_gives_plain);
   // toggle shiftlock_mode switches the shiftlock behavior to toggle_mode
   // calling toggle_shiftlock_mode twice leaves shiftlock behavior in hold mode
   // calling toggle_shiftlock_mode three times leaves shiftlock behavior in toggle mode

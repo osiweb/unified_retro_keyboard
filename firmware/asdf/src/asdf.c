@@ -33,6 +33,7 @@
 #include <stdint.h>
 #include "asdf.h"
 #include "asdf_ascii.h"
+#include "asdf_virtual.h"
 #include "asdf_keymaps.h"
 #include "asdf_keymap_defs.h"
 #include "asdf_repeat.h"
@@ -136,6 +137,7 @@ asdf_keycode_t asdf_lookup_keycode(uint8_t row, uint8_t col)
 static void asdf_activate_action(action_t keycode)
 {
   switch (keycode) {
+
     case ACTION_SHIFT: {
       asdf_modifier_shift_activate();
       break;
@@ -156,14 +158,6 @@ static void asdf_activate_action(action_t keycode)
       asdf_repeat_activate();
       break;
     }
-    case ACTION_CLEAR: {
-      asdf_send_screen_clear();
-      break;
-    }
-    case ACTION_RESET: {
-      asdf_send_reset();
-      break;
-    }
     case ACTION_MAPSEL_0: {
       asdf_keymaps_map_select_0_set();
       break;
@@ -178,6 +172,42 @@ static void asdf_activate_action(action_t keycode)
     }
     case ACTION_MAPSEL_3: {
       asdf_keymaps_map_select_3_set();
+      break;
+    }
+    case ACTION_VLED1: {
+      asdf_virtual_activate(VLED1);
+      break;
+    }
+    case ACTION_VLED2: {
+      asdf_virtual_activate(VLED2);
+      break;
+    }
+    case ACTION_VLED3: {
+      asdf_virtual_activate(VLED3);
+      break;
+    }
+    case ACTION_VOUT1: {
+      asdf_virtual_activate(VOUT1);
+      break;
+    }
+    case ACTION_VOUT2: {
+      asdf_virtual_activate(VOUT2);
+      break;
+    }
+    case ACTION_VOUT3: {
+      asdf_virtual_activate(VOUT3);
+      break;
+    }
+    case ACTION_VOUT4: {
+      asdf_virtual_activate(VOUT4);
+      break;
+    }
+    case ACTION_VOUT5: {
+      asdf_virtual_activate(VOUT5);
+      break;
+    }
+    case ACTION_VOUT6: {
+      asdf_virtual_activate(VOUT6);
       break;
     }
     case ACTION_NOTHING:

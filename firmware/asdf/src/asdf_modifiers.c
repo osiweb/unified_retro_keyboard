@@ -26,6 +26,7 @@
 
 #include <stdint.h>
 #include "asdf_modifiers.h"
+#include "asdf_virtual.h"
 #include "asdf_arch.h"
 
 static shift_state_t shift_state;
@@ -45,7 +46,7 @@ static const modifier_index_t modifier_indices[] = {
 };
 
 
-// PROCEDURE: set_shiftlock_state
+// PROCEDURE: set_shift_state
 // INPUTS: (uint8_t) state: the new shift state
 // OUTPUTS: none
 //
@@ -55,10 +56,13 @@ static const modifier_index_t modifier_indices[] = {
 //
 // COMPLEXITY: 1
 //
-void asdf_modifier_set_shiftlock_state(uint8_t new_state)
+void asdf_modifier_set_shift_state(uint8_t new_state)
 {
+  uint8_t shiftlock_status = new_state & SHIFT_LOCKED_ST;
+
   shift_state = new_state;
-  asdf_virtual_action(VSHIFT_LED, (shift_state ? V_SET_HI : V_SET_LO));
+
+  asdf_virtual_action(VSHIFT_LED, (shiftlock_status ? V_SET_HI : V_SET_LO));
 }
 
 // PROCEDURE: asdf_modifier_shift_activate
@@ -100,7 +104,7 @@ void asdf_modifier_shift_activate(void)
 //
 // COMPLEXITY: 2
 //
-void asdf_modifier_shiftlock_activate();
+void asdf_modifier_shiftlock_activate(void)
 {
   if (asdf_toggle_shiftlock) {
     asdf_modifier_set_shift_state(shift_state ^ SHIFT_LOCKED_ST);
@@ -120,17 +124,17 @@ void asdf_modifier_shiftlock_activate();
 //
 // COMPLEXITY: 1
 //
-static void asdf_modifier_set_caps_state(uint8_t new_state);
+static void asdf_modifier_set_caps_state(uint8_t new_state)
 {
-  uint8_t caps_state = new_state;
-  asdf_virtual_action(VCAPS_LED, (caps_state ? V_SET_HI : V_SET_LO );
+  caps_state = new_state;
+  asdf_virtual_action(VCAPS_LED, (caps_state ? V_SET_HI : V_SET_LO ));
 }
 
 // PROCEDURE: asdf_modifier_capslock_activate
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Turns on Capslock state
+// DESCRIPTION: Toggles Capslock state
 //
 // SIDE EFFECTS: see DESCRIPTION
 //

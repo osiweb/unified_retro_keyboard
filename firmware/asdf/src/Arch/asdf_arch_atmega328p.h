@@ -248,6 +248,13 @@
 // For 1 ms tick, (8000000 / 64(prescale)) / 1000(usec) - 1 = 124
 #define TICK_COUNT 124
 
+// PROCEDURE: asdf_arch_null_output
+// INPUTS: (uint8_t) value - ignored
+// OUTPUTS: none
+// DESCRIPTION: null/dummy output function
+// NOTES: Not supported for the ATMega-328 ASCII interface.
+void asdf_arch_null_output(uint8_t value);
+
 // PROCEDURE: asdf_arch_led1_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
@@ -290,6 +297,14 @@ void asdf_arch_out2_set(uint8_t value);
 // DESCRIPTION: Sets the OUT3 bit if value is true, and clear OUT3 if value is false.
 void asdf_arch_out3_set(uint8_t value);
 
+// PROCEDURE: asdf_arch_out2_hi_z_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Sets the OUT2 bit to hi-z if value is true, and low if value is false.
+// NOTES: Not supported for the ATMega-328 ASCII interface.
+void asdf_arch_out2_hi_z_set(uint8_t value);
+
+
 // PROCEDURE: asdf_arch_out3_hi_z_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
@@ -303,6 +318,13 @@ void asdf_arch_out3_hi_z_set(uint8_t value);
 // and returns the value. The value is a binary representation of the keys
 // pressed within the row, with 1=pressed, 0=released.
 asdf_cols_t asdf_arch_read_row(uint8_t row);
+
+// PROCEDURE: asdf_arch_pulse_delay
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Delays a fixed amount of time for keyboard output pulses.
+// NOTES: Set ASDF_PULSE_DELAY_US in asdf_config.h
+void asdf_arch_pulse_delay(void);
 
 // PROCEDURE: asdf_arch_tick
 // INPUTS: none

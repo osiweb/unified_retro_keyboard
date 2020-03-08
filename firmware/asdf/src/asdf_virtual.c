@@ -27,8 +27,10 @@
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-
+#include <stdint.h>
 #include "asdf_virtual.h"
+#include "asdf_keymap_defs.h"
+#include "asdf_config.h"
 #include "asdf_arch.h"
 
 // For each virtual out, maintain a "shadow" register for the output value. This
@@ -55,17 +57,17 @@ static real_dev_t real_device_table[NUM_REAL_OUTPUTS];
 
 
 // vout_set[] contains the set() function for each real output device.
-static const void (*vout_set[])(uint8_t) = {
-  [VMAP_NO_OUT] = NULL,                      //
+static void (*const vout_set[])(uint8_t) = {
+  [VMAP_NO_OUT] = &asdf_arch_null_output,    //
   [VMAP_OUT1] = &asdf_arch_out1_set,         //
   [VMAP_OUT2] = &asdf_arch_out2_set,         //
   [VMAP_OUT3] = &asdf_arch_out3_set,         //
   [VMAP_OUT1_OC] = &asdf_arch_out1_hi_z_set, //
   [VMAP_OUT2_OC] = &asdf_arch_out2_hi_z_set, //
   [VMAP_OUT3_OC] = &asdf_arch_out3_hi_z_set, //
-  [VMAP_VLED1] = &asdf_arch_led1_set,        //
-  [VMAP_VLED2] = &asdf_arch_led2_set,        //
-  [VMAP_VLED3] = &asdf_arch_led3_set         //
+  [VMAP_LED1] = &asdf_arch_led1_set,        //
+  [VMAP_LED2] = &asdf_arch_led2_set,        //
+  [VMAP_LED3] = &asdf_arch_led3_set         //
 };
 
 // virtual_out[] contains all the virtual outputs. An asdf_virtual_output_t
@@ -94,7 +96,7 @@ static virtual_dev_t virtual_device_table[NUM_VIRTUAL_OUTPUTS];
 static void asdf_virtual_real_set(asdf_virtual_real_dev_t real_out, uint8_t value)
 {
   vout_set[real_out](value);
-  shadow_out[real_out] = value;
+  real_device_table[real_out].shadow = value;
 }
 
 
@@ -113,7 +115,7 @@ static void asdf_virtual_real_set(asdf_virtual_real_dev_t real_out, uint8_t valu
 //
 // COMPLEXITY: 1
 //
-static void asdf_virtual_real_assert(asdf_virtual_real_dev_t real_out);
+static void asdf_virtual_real_assert(asdf_virtual_real_dev_t real_out)
 {
   uint8_t value = real_device_table[real_out].shadow;
   vout_set[real_out](value);
@@ -134,7 +136,7 @@ static void asdf_virtual_real_assert(asdf_virtual_real_dev_t real_out);
 //
 // COMPLEXITY: 1
 //
-static void asdf_virtual_real_toggle(asdf_virtual_real_dev_t real_out);
+static void asdf_virtual_real_toggle(asdf_virtual_real_dev_t real_out)
 {
   uint8_t value = real_device_table[real_out].shadow;
 
@@ -160,7 +162,7 @@ static void asdf_virtual_real_toggle(asdf_virtual_real_dev_t real_out);
 //
 void asdf_virtual_action(asdf_virtual_output_t virtual_out, asdf_virtual_function_t function)
 {
-  real_dev_t device = virtual_device_table[virtual_out].real_device;
+  asdf_virtual_real_dev_t device = virtual_device_table[virtual_out].real_device;
 
   while (VMAP_NO_OUT != device) {
     switch (function) {
@@ -192,6 +194,26 @@ void asdf_virtual_action(asdf_virtual_output_t virtual_out, asdf_virtual_functio
   }
 }
 
+// PROCEDURE: asdf_virtual_activate
+// INPUTS: asdf_virtual_output_t: The virtual device to be activated
+// OUTPUTS: none
+//
+// DESCRIPTION: for each real output mapped to the virtual output, apply the
+// function assigned to the virtual output at initialization.
+//
+// SIDE EFFECTS: see above
+//
+// NOTES: The virtual output points to a linked list of real devices.
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_virtual_activate(asdf_virtual_output_t virtual_out)
+{
+  asdf_virtual_action(virtual_out, virtual_device_table[virtual_out].function);
+}
+
 // PROCEDURE: asdf_virtual_assign
 // INPUTS: (asdf_vout_t) virtual_out
 //         (uint8_t) real_out
@@ -209,9 +231,9 @@ void asdf_virtual_action(asdf_virtual_output_t virtual_out, asdf_virtual_functio
 // COMPLEXITY: 2
 //
 static void asdf_virtual_assign(asdf_virtual_output_t virtual_out, asdf_virtual_real_dev_t real_out,
-                         asdf_virtual_function_t function, uint8_t initial_value)
+                                asdf_virtual_function_t function, uint8_t initial_value)
 {
-  virtual_device_table[virtual_device].function = function;
+  virtual_device_table[virtual_out].function = function;
 
   // add real device to the list associated with the virtual device:
 
@@ -220,25 +242,25 @@ static void asdf_virtual_assign(asdf_virtual_output_t virtual_out, asdf_virtual_
 
   // The real device shadow value is set here. The shadow values are asserted to
   // the outputs only after all the assignments have been performed.
-  real_device_table[real_out].shadow = value;
+  real_device_table[real_out].shadow = initial_value;
 }
 
 // PROCEDURE: asdf_virtual_init
-// INPUTS: initializers
+// INPUTS: (asdf_virtual_initializer_t *) initializer_list - contains the
+//         initializer list for the selected keymap.
 // OUTPUTS: none
 //
 // DESCRIPTION: Initializes the LED and output mapping
 //
 // SIDE EFFECTS: see above
 //
-// NOTES: The table of real devices is initialized as a linked list of available
-// devices.
+// NOTES: 1) //        2) ASDF_VIRTUAL_OUT_DEFAULT_VALUE is defined in asdf_config.h
 //
 // SCOPE: public
 //
 // COMPLEXITY: 2
 //
-void asdf_virtual_init(virtual_initializer_t *initializer_list)
+void asdf_virtual_init(asdf_virtual_initializer_t *const initializer_list)
 {
 
   // initialize list of virtual outputs
@@ -250,19 +272,19 @@ void asdf_virtual_init(virtual_initializer_t *initializer_list)
   // initialize the linked list of free devices
   for (uint8_t i = 0; i < NUM_REAL_OUTPUTS; i++) {
     real_device_table[i].shadow = ASDF_VIRTUAL_OUT_DEFAULT_VALUE;
-    real_device_table[i].next = i + 1 // initialize pointer to next in table
+    real_device_table[i].next = i + 1; // initialize pointer to next in table
   }
   // The last item in the table is left with a bogus next pointer (beyond the
   // end of the array) after the above loop. Make the last element point to
-  // NULL.
+  // V_NULL.
   real_device_table[NUM_REAL_OUTPUTS - 1].next = VMAP_NO_OUT; // end of list.
 
 
   // run through the keymap specific setup
   for (uint8_t i = 0; //
-       i < NUM_INITIALIZERS && initializers[i].virtual_device != V_NULL; i++) {
+       i < ASDF_KEYMAP_INITIALIZER_LENGTH && initializer_list[i].virtual_device != V_NULL; i++) {
 
-    asdf_virtual_assign(intializer_list[i].virtual_device, intializer_list[i].real_device,
+    asdf_virtual_assign(initializer_list[i].virtual_device, initializer_list[i].real_device,
                         initializer_list[i].function, initializer_list[i].initial_value);
   }
 

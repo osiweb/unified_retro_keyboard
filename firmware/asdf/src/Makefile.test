@@ -41,7 +41,7 @@ OBJ_FILES = $(SRC_FILES:.c=.o)
 ARCH_FILES = asdf_arch.c asdf_arch.h
 CLEAN_FILES += ARCH_FILES
 
-TESTS = repeat modifiers keymaps interface keyscan
+TESTS = repeat modifiers keymaps interface keyscan virtual
 
 TEST1 = asdf_repeat
 TEST1_SRC = $(TEST_DIR)/test_$(TEST1).c
@@ -49,13 +49,13 @@ TEST1_DEPS = ./$(TEST1).c $(UNITY_DIR)/unity.c
 TEST1_BUILD = $(BUILD_DIR)/test_$(TEST1)
 
 TEST2 = asdf_modifiers
-TEST2_SRC = $(TEST_DIR)/test_$(TEST2).c ./asdf_arch.c
+TEST2_SRC = $(TEST_DIR)/test_$(TEST2).c ./asdf_arch.c ./asdf_virtual.c
 TEST2_DEPS = ./$(TEST2).c $(UNITY_DIR)/unity.c
 TEST2_BUILD = $(BUILD_DIR)/test_$(TEST2)
 
 TEST3 = asdf_keymaps
 TEST3_SRC = $(TEST_DIR)/test_$(TEST3).c
-TEST3_DEPS = ./$(TEST3).c $(UNITY_DIR)/unity.c
+TEST3_DEPS = ./$(TEST3).c $(UNITY_DIR)/unity.c ./asdf_virtual.c ./asdf_arch.c
 TEST3_BUILD = $(BUILD_DIR)/test_$(TEST3)
 
 TEST4 = asdf_buffer
@@ -63,10 +63,15 @@ TEST4_SRC = $(TEST_DIR)/test_$(TEST4).c
 TEST4_DEPS = ./$(TEST4).c $(UNITY_DIR)/unity.c
 TEST4_BUILD = $(BUILD_DIR)/test_$(TEST4)
 
-TEST5 = asdf
-TEST5_SRC = $(TEST_DIR)/test_$(TEST5).c
-TEST5_DEPS = ./$(TEST5).c $(UNITY_DIR)/unity.c ./asdf_actions.c ./asdf_arch.c ./$(TEST1).c $(TEST2).c $(TEST3).c $(TEST4).c
-TEST5_BUILD = $(BUILD_DIR)/test_$(TEST5)
+TEST5 = asdf_virtual
+TEST5_SRC = $(TEST_DIR)/test_$(TEST4).c
+TEST5_DEPS = ./$(TEST4).c $(UNITY_DIR)/unity.c
+TEST5_BUILD = $(BUILD_DIR)/test_$(TEST4)
+
+TEST6 = asdf
+TEST6_SRC = $(TEST_DIR)/test_$(TEST5).c
+TEST6_DEPS = ./$(TEST5).c $(UNITY_DIR)/unity.c ./asdf_arch.c ./$(TEST1).c $(TEST2).c $(TEST3).c $(TEST4).c
+TEST6_BUILD = $(BUILD_DIR)/test_$(TEST5)
 
 .SUFFIXES:
 .SUFFIXES: .c .o .bin .hex
@@ -96,12 +101,13 @@ $(ARCH_TOKEN):
 asdf_keymaps.c: asdf.h asdf_ascii.h asdf_modifiers.h asdf_arch.h asdf_keymaps.h asdf_keymap_defs.h
 asdf_modifiers.c: asdf_modifiers.h asdf_arch.h asdf_keymap_defs.h
 asdf_arch.h: asdf_arch.h
+asdf_virtual.c: asdf_virtual.h asdf_arch.h asdf_keymap_defs.h
 
 tags:   $(SRC_FILES)
 	etags $(SRC_FILES)
 
 .PHONY: test
-test: test1 test2 test3 test4 test5
+test: test1 test2 test3 test4 test6 test5
 
 .PHONY: test1
 test1: $(TEST1_BUILD)
@@ -123,6 +129,10 @@ test4: $(TEST4_BUILD)
 test5: $(TEST5_BUILD)
 	$(TEST5_BUILD)
 
+.PHONY: test6
+test5: $(TEST6_BUILD)
+	$(TEST6_BUILD)
+
 
 $(TEST1_BUILD): $(TEST1_SRC) $(TEST1_DEPS)
 	$(CC) -o $@ -I. -I$(TEST_DIR) -I$(UNITY_DIR) $(CFLAGS) $(TEST1_SRC) $(TEST1_DEPS)
@@ -139,7 +149,10 @@ $(TEST4_BUILD): $(TEST4_SRC) $(TEST4_DEPS)
 $(TEST5_BUILD): $(TEST5_SRC) $(TEST5_DEPS)
 	$(CC) -o $@ -I. -I$(TEST_DIR) -I$(UNITY_DIR) $(CFLAGS) $(TEST5_SRC) $(TEST5_DEPS)
 
-TEST_BUILD_FILES += $(TEST1_BUILD) $(TEST2_BUILD) $(TEST3_BUILD) $(TEST4_BUILD) $(TEST5_BUILD)
+$(TEST6_BUILD): $(TEST6_SRC) $(TEST6_DEPS)
+	$(CC) -o $@ -I. -I$(TEST_DIR) -I$(UNITY_DIR) $(CFLAGS) $(TEST6_SRC) $(TEST6_DEPS)
+
+TEST_BUILD_FILES += $(TEST1_BUILD) $(TEST2_BUILD) $(TEST3_BUILD) $(TEST4_BUILD) $(TEST5_BUILD) $(TEST6_BUILD)
 
 CLEAN_FILES += $(TEST_BUILD_FILES) _Arch_* *.o
 CLEAN_FILES += ~* *\#

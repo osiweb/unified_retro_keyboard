@@ -68,7 +68,7 @@ MAKEDEPEND = $(CPP) $(DEPFLAGS) $(CPPFLAGS) $< \
              | sort -u > $*.d
 
 SRC_FILES = main.c asdf.c asdf_modifiers.c asdf_repeat.c asdf_keymaps.c
-SRC_FILES += asdf_buffer.c asdf_arch.c asdf_actions.c
+SRC_FILES += asdf_buffer.c asdf_arch.c asdf_virtual.c
 
 OBJ_FILES := $(SRC_FILES:.c=.o)
 DEP_FILES := $(SRC_FILES:%.c=$(DEP_DIR)/%.d)
@@ -141,7 +141,7 @@ asdf.o: asdf.c asdf.h asdf_arch.h asdf_keymaps.h asdf_config.h asdf_keymap_defs.
 asdf_repeat.o: asdf_repeat.c asdf_repeat.h asdf_config.h
 asdf_buffer.o: asdf_buffer.c asdf.h asdf_config.h
 asdf_modifiers.o: asdf_modifiers.c asdf_modifiers.h
-asdf_actions.o: asdf_actions.h asdf.h asdf_arch.h
+asdf_virtual.o: asdf_virtual.c asdf_virtual.h asdf_arch.h
 
 tags:   $(SRC_FILES)
 	etags $(SRC_FILES)

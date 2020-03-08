@@ -149,12 +149,14 @@
 #define ASDF_TEST2_CAPS_MAP_INDEX (ASDF_TEST2_BASE + 1)
 
 #define ASDF_TEST2_KEYMAP_INITIALIZER_LENGTH 4
-#define ASDF_TEST2_KEYMAP_INITIALIZER \
-  {                                                                     \
-   { .virtual_device = VCAPS_LED, .device = VMAP_LED2, .initial_value = 1 }, \
-   { .virtual_device = VOUT1, .device = VMAP_OUT2, .initial_value = 1 }, \
-   { .virtual_device = VOUT2, .device = VMAP_OUT3, .initial_value = 0 }, \
-   { .virtual_device = VOUT2, .device = NUM_VIRTUAL_OUTPUTS, .initial_value = 0 } \
+#define ASDF_TEST2_KEYMAP_INITIALIZER                                                              \
+  {                                                                                                \
+    { .virtual_device = VCAPS_LED, .real_device = VMAP_LED2, .initial_value = 1 },                 \
+      { .virtual_device = VOUT1, .real_device = VMAP_OUT2, .initial_value = 1 },                   \
+      { .virtual_device = VOUT2, .real_device = VMAP_OUT3, .initial_value = 0 },                   \
+    {                                                                                              \
+     .virtual_device = VOUT2, .real_device = NUM_REAL_OUTPUTS, .initial_value = 0   \
+    }                                                                                              \
   }
 
 
