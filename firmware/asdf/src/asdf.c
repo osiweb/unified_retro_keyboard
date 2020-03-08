@@ -40,7 +40,6 @@
 #include "asdf_modifiers.h"
 #include "asdf_buffer.h"
 #include "asdf_arch.h"
-#include "asdf_actions.h"
 
 static asdf_cols_t last_stable_key_state[ASDF_NUM_ROWS];
 
