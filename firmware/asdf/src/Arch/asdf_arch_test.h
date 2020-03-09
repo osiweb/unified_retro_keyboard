@@ -74,6 +74,27 @@
 #include "asdf_virtual.h"
 #include "asdf_arch.h"
 
+
+typedef enum {
+              PD_ST_INITIAL_STATE = 0,
+              PD_ST_STABLE_LOW = 1,
+              PD_ST_STABLE_HIGH = 2,
+              PD_ST_TRANSITION_LOW = 3,
+              PD_ST_TRANSITION_HIGH = 4,
+              PD_ST_PULSE_DELAY_LOW = 5,
+              PD_ST_PULSE_DELAY_HIGH = 6,
+              PD_ST_PULSE_HIGH_DETECTED = 7,
+              PD_ST_PULSE_LOW_DETECTED = 8,
+              PD_ST_NUM_VALID_PULSE_STATES = 9, // error states below this
+              PD_ST_ERROR_DOUBLE_DELAY = 10,
+              PD_ST_ERROR_DOUBLE_SET = 11,
+              PD_ST_ERROR_NO_TRANSITION_BEFORE_DELAY = 12, 
+              PD_ST_ERROR_NO_TRANSITION_AFTER_DELAY = 13,
+              PD_ST_ERROR_DOUBLE_TRANSITION = 14, // fast pulse without delay
+              PD_ST_ERROR_PULSE_FROM_INITIAL_STATE = 15,
+} pulse_state_t;
+
+
 static uint8_t outputs[NUM_REAL_OUTPUTS];
 
 // PROCEDURE: asdf_arch_null_output
@@ -141,6 +162,12 @@ void asdf_arch_out3_hi_z_set(uint8_t value);
 // OUTPUTS: the value of the device setting.
 // DESCRIPTION: For a given real device, return the current setting (true or false)
 uint8_t asdf_arch_check_output(asdf_virtual_real_dev_t device);
+
+// PROCEDURE: asdf_arch_check_pulse
+// INPUTS:(asdf_virtual_real_dev_t) device - which device to check
+// OUTPUTS: the value of the device pulse detector
+// DESCRIPTION: For a given real device, return the state of the pulse detector
+uint8_t asdf_arch_check_pulse(asdf_virtual_real_dev_t device);
 
 // PROCEDURE: asdf_arch_pulse_delay
 // INPUTS: none

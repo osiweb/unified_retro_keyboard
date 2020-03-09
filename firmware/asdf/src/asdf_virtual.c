@@ -140,8 +140,7 @@ static void asdf_virtual_real_toggle(asdf_virtual_real_dev_t real_out)
 {
   uint8_t value = real_device_table[real_out].shadow;
 
-  real_device_table[real_out].shadow = !value;
-  vout_set[real_out](value);
+  asdf_virtual_real_set(real_out, !value);
 }
 
 // PROCEDURE: asdf_virtual_action

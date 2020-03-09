@@ -148,25 +148,51 @@
 #define ASDF_TEST_CAPS_MAP_INDEX ASDF_TEST_BASE + 1
 
 #define ASDF_TEST_KEYMAP_INITIALIZER_LENGTH 3
-#define ASDF_TEST_KEYMAP_INITIALIZER                                                               \
+#define ASDF_TEST_KEYMAP_INITIALIZER_1                                                             \
   {                                                                                                \
     {                                                                                              \
-      .virtual_device = VCAPS_LED,                                                                 \
-      .real_device = VMAP_LED1,                                                                    \
+      /* Single assignment */                                                                      \
+      .virtual_device = VOUT1,                                                                     \
+      .real_device = VMAP_OUT1,                                                                    \
       .function = V_NOFUNC,                                                                        \
-      .initial_value = 1,                                                                          \
+      .initial_value = 0,                                                                          \
+    },                                                                                             \
+      {                                                                                            \
+        /* single toggle */                                                                        \
+        .virtual_device = VOUT2,                                                                   \
+        .real_device = VMAP_OUT2,                                                                  \
+        .function = V_TOGGLE,                                                                      \
+        .initial_value = 0,                                                                        \
+      },                                                                                           \
+      {                                                                                            \
+        /* single pulse */                                                                         \
+        .virtual_device = VOUT3,                                                                   \
+        .real_device = VMAP_OUT3,                                                                  \
+        .function = V_PULSE,                                                                       \
+        .initial_value = 0,                                                                        \
+      },                                                                                           \
+  }
+#define ASDF_TEST_KEYMAP_INITIALIZER_2                                                             \
+  {                                                                                                \
+    {                                                                                              \
+      /* Triple assignment */                                                                      \
+      .virtual_device = VOUT1,                                                                     \
+      .real_device = VMAP_OUT1,                                                                        \
+      .function = V_TOGGLE,                                                                        \
+      .initial_value = 0,                                                                          \
     },                                                                                             \
       {                                                                                            \
         .virtual_device = VOUT1,                                                                   \
-        .real_device = VMAP_OUT1,                                                                  \
+        .real_device = VMAP_OUT2,                                                                      \
         .function = V_TOGGLE,                                                                      \
         .initial_value = 1,                                                                        \
       },                                                                                           \
     {                                                                                              \
-      .virtual_device = VOUT2, .real_device = VMAP_OUT3, .function = V_PULSE, .initial_value = 1,  \
+      .virtual_device = VOUT1, .real_device = VMAP_OUT3, .function = V_TOGGLE, .initial_value = 0,   \
     }                                                                                              \
   }
 
+#define ASDF_TEST_KEYMAP_INITIALIZER ASDF_TEST_KEYMAP_INITIALIZER_1, ASDF_TEST_KEYMAP_INITIALIZER_2
 
 // The following preprocessor "code" permits various keymaps to be created and
 // included without generating a lot of complicating code dependencies. The use

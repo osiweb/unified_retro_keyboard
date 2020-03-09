@@ -33,7 +33,7 @@
 // 23-25        PORTC0-2  ROW outputs (row number)
 // 27           PORTC4
 
-
+#include <stdio.h>
 #include <stdint.h>
 #include "asdf_keymap_defs.h"
 #include "asdf_config.h"
@@ -41,78 +41,70 @@
 #include "asdf_arch.h"
 
 typedef enum {
-  INITIAL_STATE,
-  STABLE_LOW,
-  STABLE_HIGH,
-  TRANSITION_LOW,
-  TRANSITION_HIGH,
-  PULSE_DELAY_LOW,
-  PULSE_DELAY_HIGH,
-  PULSE_HIGH_DETECTED,
-  PULSE_LOW_DETECTED,
-  NUM_VALID_PULSE_STATES, // error states below this
-  ERROR_DOUBLE_DELAY,
-  ERROR_DOUBLE_SET,
-  ERROR_NO_TRANSITION_BEFORE_DELAY, 
-  ERROR_NO_TRANSITION_AFTER_DELAY,
-  ERROR_DOUBLE_TRANSITION, // fast pulse without delay
-  ERROR_DOUBLE_PULSE,
-} pulse_state_t;
+  PULSE_EVENT_SET_HIGH,
+  PULSE_EVENT_SET_LOW,
+  PULSE_EVENT_DELAY,
+  NUM_PULSE_EVENTS
+} pulse_event_t;
 
-typedef enum { SET_HIGH, SET_LOW, PULSE_DELAY, NUM_PULSE_STATE_INPUTS } pulse_state_event_t;
-
-static pulse_state_t pulse_transition_table[NUM_VALID_PULSE_STATES][NUM_PULSE_STATE_INPUTS] =
+static pulse_state_t pulse_transition_table[PD_ST_NUM_VALID_PULSE_STATES][NUM_PULSE_EVENTS] =
   {
-   [STABLE_LOW] =
+   [PD_ST_INITIAL_STATE] =
    {
-    [SET_HIGH] = TRANSITION_HIGH,
-    [SET_LOW] = ERROR_DOUBLE_SET,
-    [PULSE_DELAY] = ERROR_NO_TRANSITION_BEFORE_DELAY,
+    [PULSE_EVENT_SET_HIGH] = PD_ST_STABLE_HIGH,
+    [PULSE_EVENT_SET_LOW] = PD_ST_STABLE_LOW,
+    [PULSE_EVENT_DELAY] = PD_ST_ERROR_PULSE_FROM_INITIAL_STATE,
    },
-   [STABLE_HIGH] =
+   [PD_ST_STABLE_LOW] =
    {
-    [SET_HIGH] = ERROR_DOUBLE_SET,
-    [SET_LOW] = TRANSITION_LOW,
-    [PULSE_DELAY] = ERROR_NO_TRANSITION_BEFORE_DELAY,
+    [PULSE_EVENT_SET_HIGH] = PD_ST_TRANSITION_HIGH,
+    [PULSE_EVENT_SET_LOW] = PD_ST_STABLE_LOW,
+    [PULSE_EVENT_DELAY] = PD_ST_ERROR_NO_TRANSITION_BEFORE_DELAY,
    },
-   [TRANSITION_LOW] =
+   [PD_ST_STABLE_HIGH] =
    {
-    [SET_HIGH] = ERROR_DOUBLE_TRANSITION,
-    [SET_LOW] = ERROR_DOUBLE_SET,
-    [PULSE_DELAY] = PULSE_DELAY_LOW,
+    [PULSE_EVENT_SET_HIGH] = PD_ST_STABLE_HIGH,
+    [PULSE_EVENT_SET_LOW] = PD_ST_TRANSITION_LOW,
+    [PULSE_EVENT_DELAY] = PD_ST_ERROR_NO_TRANSITION_BEFORE_DELAY,
    },
-   [TRANSITION_HIGH] =
+   [PD_ST_TRANSITION_LOW] =
    {
-    [SET_HIGH] = ERROR_DOUBLE_SET,
-    [SET_LOW] = ERROR_DOUBLE_TRANSITION,
-    [PULSE_DELAY] = PULSE_DELAY_HIGH,
+    [PULSE_EVENT_SET_HIGH] = PD_ST_TRANSITION_HIGH,
+    [PULSE_EVENT_SET_LOW] = PD_ST_STABLE_LOW,
+    [PULSE_EVENT_DELAY] = PD_ST_PULSE_DELAY_LOW,
    },
-   [PULSE_DELAY_LOW] =
+   [PD_ST_TRANSITION_HIGH] =
    {
-    [SET_HIGH] = PULSE_LOW_DETECTED,
-    [SET_LOW] = ERROR_NO_TRANSITION_AFTER_DELAY,
-    [PULSE_DELAY] = ERROR_DOUBLE_PULSE,
+    [PULSE_EVENT_SET_HIGH] = PD_ST_STABLE_HIGH,
+    [PULSE_EVENT_SET_LOW] = PD_ST_TRANSITION_LOW,
+    [PULSE_EVENT_DELAY] = PD_ST_PULSE_DELAY_HIGH,
    },
-   [PULSE_DELAY_HIGH] = 
+   [PD_ST_PULSE_DELAY_LOW] =
    {
-    [SET_HIGH] = ERROR_NO_TRANSITION_AFTER_DELAY,
-    [SET_LOW] = PULSE_HIGH_DETECTED,
-    [PULSE_DELAY] = ERROR_DOUBLE_PULSE,
+    [PULSE_EVENT_SET_HIGH] = PD_ST_PULSE_LOW_DETECTED,
+    [PULSE_EVENT_SET_LOW] = PD_ST_ERROR_NO_TRANSITION_AFTER_DELAY,
+    [PULSE_EVENT_DELAY] = PD_ST_ERROR_DOUBLE_DELAY,
    },
-   [PULSE_HIGH_DETECTED] = 
+   [PD_ST_PULSE_DELAY_HIGH] = 
    {
-    [SET_HIGH] = STABLE_HIGH,
-    [SET_LOW] = STABLE_LOW,
-    [PULSE_DELAY] = ERROR_NO_TRANSITION_BEFORE_DELAY
+    [PULSE_EVENT_SET_HIGH] = PD_ST_ERROR_NO_TRANSITION_AFTER_DELAY,
+    [PULSE_EVENT_SET_LOW] = PD_ST_PULSE_HIGH_DETECTED,
+    [PULSE_EVENT_DELAY] = PD_ST_ERROR_DOUBLE_DELAY,
    },
-   [PULSE_LOW_DETECTED] = 
+   [PD_ST_PULSE_HIGH_DETECTED] = 
    {
-    [SET_HIGH] = STABLE_HIGH,
-    [SET_LOW] = STABLE_LOW,
-    [PULSE_DELAY] = ERROR_NO_TRANSITION_BEFORE_DELAY
+    [PULSE_EVENT_SET_HIGH] = PD_ST_TRANSITION_HIGH,
+    [PULSE_EVENT_SET_LOW] = PD_ST_STABLE_LOW,
+    [PULSE_EVENT_DELAY] = PD_ST_ERROR_NO_TRANSITION_BEFORE_DELAY
+   },
+   [PD_ST_PULSE_LOW_DETECTED] = 
+   {
+    [PULSE_EVENT_SET_HIGH] = PD_ST_STABLE_HIGH,
+    [PULSE_EVENT_SET_LOW] = PD_ST_TRANSITION_LOW,
+    [PULSE_EVENT_DELAY] = PD_ST_ERROR_NO_TRANSITION_BEFORE_DELAY
    },
   };
-  
+
 static uint8_t outputs[NUM_REAL_OUTPUTS];
 static pulse_state_t pulses[NUM_REAL_OUTPUTS];
 
@@ -151,12 +143,12 @@ void asdf_arch_null_output(uint8_t value)
 //
 // COMPLEXITY: 2
 //
-static pulse_state_t pulse_detect(pulse_state_t current_state, pulse_state_event_t event)
+static pulse_state_t pulse_detect(pulse_state_t current_state, pulse_event_t event)
 {
   pulse_state_t next_state = current_state;
 
   // advance state if current state is valid (not an error state)
-  if (current_state < NUM_VALID_PULSE_STATES) {
+  if (current_state < PD_ST_NUM_VALID_PULSE_STATES) {
     next_state = pulse_transition_table[current_state][event];
   }
   return next_state;
@@ -181,7 +173,7 @@ static pulse_state_t pulse_detect(pulse_state_t current_state, pulse_state_event
 //
 static void set_output(asdf_virtual_real_dev_t output_dev, uint8_t value)
 {
-  pulse_state_event_t pulse_event = value ? SET_HIGH : SET_LOW;
+  pulse_event_t pulse_event = value ? PULSE_EVENT_SET_HIGH : PULSE_EVENT_SET_LOW;
 
   outputs[output_dev] = value;
   pulses[output_dev] = pulse_detect(pulses[output_dev], pulse_event);
@@ -372,6 +364,25 @@ uint8_t asdf_arch_check_output(asdf_virtual_real_dev_t device)
   return outputs[device];
 }
 
+// PROCEDURE: asdf_arch_check_pulse
+// INPUTS:(asdf_virtual_real_dev_t) device - which device to check
+// OUTPUTS: the value of the device pulse detector
+//
+// DESCRIPTION: For a given real device, return the state of the pulse detector
+//
+// SIDE EFFECTS: none
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+uint8_t asdf_arch_check_pulse(asdf_virtual_real_dev_t device)
+{
+  return pulses[device];
+}
+
 // PROCEDURE: asdf_arch_pulse_delay
 // INPUTS: none
 // OUTPUTS: none
@@ -390,7 +401,7 @@ uint8_t asdf_arch_check_output(asdf_virtual_real_dev_t device)
 void asdf_arch_pulse_delay(void)
 {
   for (uint8_t i = 0; i < NUM_REAL_OUTPUTS; i++) {
-    pulses[i] = pulse_detect(pulses[i], PULSE_DELAY);
+    pulses[i] = pulse_detect(pulses[i], PULSE_EVENT_DELAY);
   }
 }
 
@@ -410,7 +421,7 @@ void asdf_arch_init(void)
 {
   for (uint8_t i = 0; i < NUM_REAL_OUTPUTS; i++) {
     outputs[i] = 0;
-    pulses[i] = INITIAL_STATE;
+    pulses[i] = PD_ST_INITIAL_STATE;
   }
 }
 
