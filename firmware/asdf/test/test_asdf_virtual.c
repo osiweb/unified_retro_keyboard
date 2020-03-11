@@ -46,7 +46,7 @@ void test_single_virtual_output_is_initialized(void)
 
 void test_uninitialized_virtual_out_is_default(void)
 {
-  TEST_ASSERT_EQUAL_INT32(ASDF_VIRTUAL_OUT_DEFAULT_VALUE, asdf_arch_check_output(VMAP_LED1));
+  TEST_ASSERT_EQUAL_INT32(ASDF_VIRTUAL_OUT_DEFAULT_VALUE, asdf_arch_check_output(VMAP_LED2));
 }
 
 void test_set_virtual_output(void)
@@ -107,7 +107,8 @@ void test_pulse_low_virtual_output(void)
 // output.
 void test_toggle_triple_output(void)
 {
-  asdf_keymaps_select_keymap(1);
+  asdf_keymaps_select_keymap(TRIPLE_TESTS_KEYMAP);
+
   // check that initial values have been set:
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_OUT1));
   TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(VMAP_OUT2));
@@ -128,7 +129,8 @@ void test_toggle_triple_output(void)
 // output high and low
 void test_set_triple_output(void)
 {
-  asdf_keymaps_select_keymap(1);
+  asdf_keymaps_select_keymap(TRIPLE_TESTS_KEYMAP);
+
   // check that initial values have been set:
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_OUT1));
   TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(VMAP_OUT2));
@@ -149,7 +151,7 @@ void test_set_triple_output(void)
 // output high and low
 void test_pulse_triple_output(void)
 {
-  asdf_keymaps_select_keymap(1);
+  asdf_keymaps_select_keymap(TRIPLE_TESTS_KEYMAP);
   // check that initial values have been set:
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_OUT1));
   TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(VMAP_OUT2));
@@ -173,16 +175,111 @@ void test_pulse_triple_output(void)
   TEST_ASSERT_EQUAL_INT32(PD_ST_TRANSITION_LOW, asdf_arch_check_pulse(VMAP_OUT1));
   TEST_ASSERT_EQUAL_INT32(PD_ST_TRANSITION_LOW, asdf_arch_check_pulse(VMAP_OUT2));
   TEST_ASSERT_EQUAL_INT32(PD_ST_TRANSITION_LOW, asdf_arch_check_pulse(VMAP_OUT3));
-  
-  //  asdf_virtual_activate(VOUT1); // funtion is set to toggle
-  //TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(VMAP_OUT1));
-  //TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_OUT2));
-  //TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(VMAP_OUT3));
+}
 
-  //asdf_virtual_action(VOUT1, V_TOGGLE);
-  //TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_OUT1));
-  //TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(VMAP_OUT2));
-  //TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_OUT3));
+uint8_t *output_array(void)
+{
+  static uint8_t outputs[NUM_REAL_OUTPUTS] = {};
+  for (uint8_t i = 0; i < NUM_REAL_OUTPUTS; i++) {
+    outputs[i] = asdf_arch_check_output(i);
+    printf("output %d: %d\n", i, outputs[i]);
+  }
+  return outputs;
+}
+
+uint8_t *all_set_array(void)
+{
+  static uint8_t outputs[NUM_REAL_OUTPUTS] = {};
+  for (uint8_t i = 0; i < NUM_REAL_OUTPUTS; i++) {
+    outputs[i] = 1;
+  }
+  return outputs;
+}
+
+uint8_t *all_zero_array(void)
+{
+  static uint8_t outputs[NUM_REAL_OUTPUTS] = {};
+  for (uint8_t i = 0; i < NUM_REAL_OUTPUTS; i++) {
+    outputs[i] = 0;
+  }
+  return outputs;
+}
+
+uint8_t *single_zero_array(asdf_virtual_real_dev_t set_element)
+{
+  static uint8_t outputs[NUM_REAL_OUTPUTS] = {};
+  for (uint8_t i = 0; i < NUM_REAL_OUTPUTS; i++) {
+    outputs[i] = 1;
+  }
+  outputs[set_element] = 0;
+  return outputs;
+}
+
+
+void test_virtual_capslock_indicator(void)
+{
+
+  asdf_keymaps_select_keymap(VCAPS_TEST_KEYMAP);
+
+  // CAPS LED output should be initialized to zero:
+  TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_LED1));
+
+  // emulate capslock press and release.  Should set LED1
+  asdf_modifier_capslock_activate();
+  asdf_modifier_capslock_deactivate();
+
+  TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(VMAP_LED1));
+
+
+  // emulate capslock press and release.  clear LED1
+  asdf_modifier_capslock_activate();
+  asdf_modifier_capslock_deactivate();
+
+  TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_LED1));
+}
+
+void test_virtual_shiftlock_indicator(void)
+{
+
+  asdf_keymaps_select_keymap(VSHIFT_TEST_KEYMAP);
+
+  // CAPS LED output should be initialized to zero:
+  TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_LED2));
+
+  // emulate shiftlock press and release.  Should set LED2
+  asdf_modifier_shiftlock_activate();
+  asdf_modifier_shiftlock_deactivate();
+
+  TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(VMAP_LED2));
+
+
+  // emulate shift press and release.  clear LED2
+  asdf_modifier_shift_activate();
+  asdf_modifier_shift_deactivate();
+
+  TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_LED2));
+}
+
+
+void test_cant_assign_real_output_twice(void)
+{
+  asdf_keymaps_select_keymap(DOUBLE_ASSIGN_TEST_KEYMAP);
+
+  // initial value should be set to 0:
+  TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_LED1));
+
+  // set LED1 high from valid VOUT4
+  asdf_virtual_action(VOUT4, V_SET_HI);
+  TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(VMAP_LED1));
+
+  // set LED1 low from valid VOUT4
+  asdf_virtual_action(VOUT4, V_SET_LO);
+  TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_LED1));
+
+  // set LED1 high from invalid VOUT5
+  asdf_virtual_action(VOUT5, V_SET_HI);
+  // Should not have changed.
+  TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(VMAP_LED1));
 }
 
 int main(void)
@@ -198,5 +295,8 @@ int main(void)
   RUN_TEST(test_toggle_triple_output);
   RUN_TEST(test_set_triple_output);
   RUN_TEST(test_pulse_triple_output);
+  RUN_TEST(test_virtual_capslock_indicator);
+  RUN_TEST(test_virtual_shiftlock_indicator);
+  RUN_TEST(test_cant_assign_real_output_twice);
   return UNITY_END();
 }
