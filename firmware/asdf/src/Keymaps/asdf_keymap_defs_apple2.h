@@ -64,7 +64,11 @@
 #define POWER_LED VMAP_LED1
 #define POWER_LED_INIT_VALUE 1
 
-#define ASDF_APPLE2_KEYMAP_INITIALIZER_LENGTH 3
+#define VIRTUAL_DISABLED_LED VLED2
+#define DISABLED_LED VMAP_LED3
+#define DISABLED_INIT_VALUE 0
+
+#define ASDF_APPLE2_KEYMAP_INITIALIZER_LENGTH 4
 
 
 // The PLAIN map uses the "power" button as a caps-lock, so map the CAPS LED to
@@ -73,6 +77,9 @@
   {                                                                     \
    { .virtual_device = VCAPS_LED,                                       \
      .real_device = POWER_LED,                                          \
+     .initial_value = 0 },                                              \
+   { .virtual_device = VIRTUAL_DISABLED_LED,                            \
+     .real_device = DISABLED_LED,                                       \
      .initial_value = 0 },                                              \
    { .virtual_device = VIRTUAL_RESET,                                   \
      .real_device = RESET_OUTPUT,                                       \
@@ -90,6 +97,9 @@
    { .virtual_device = VIRTUAL_POWER_LED,                               \
      .real_device = POWER_LED,                                          \
      .initial_value = POWER_LED_INIT_VALUE },                           \
+   { .virtual_device = VIRTUAL_DISABLED_LED,                            \
+     .real_device = DISABLED_LED,                                       \
+     .initial_value = 0 },                                              \
    { .virtual_device = VIRTUAL_RESET,                                   \
      .real_device = RESET_OUTPUT,                                       \
      .function = V_PULSE,                                               \
@@ -153,7 +163,7 @@
     [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },        \
     [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },          \
     [5] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ASCII_CR, ACTION_REPEAT, 'O', 'L', ASCII_PERIOD }, \
-    [6] = { ACTION_NOTHING, ASCII_RT_SQUARE_BRACE, ACTION_NOTHING, '-', ':', ASCII_ZERO, '9', '8' }, \
+    [6] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, '-', ':', ASCII_ZERO, '9', '8' }, \
     [7] = { APPLE_LEFT_ARROW, '7', '6', '5', '4', '3', '2', '1' },              \
     ASDF_APPLE2_DIP_SWITCHES                                          \
   }
