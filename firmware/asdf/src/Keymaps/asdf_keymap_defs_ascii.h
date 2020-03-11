@@ -51,23 +51,50 @@
 #define POWER_LED VMAP_LED1
 #define POWER_LED_INIT_VALUE 1
 
+#define CAPS_LED VMAP_LED3
+#define CAPS_LED_INIT_VALUE 0
+
+
 #define ASDF_ASCII_KEYMAP_INITIALIZER_LENGTH 4
-#define ASDF_ASCII_KEYMAP_INITIALIZER                                   \
+
+#define ASDF_ASCII_PLAIN_KEYMAP_INITIALIZER                             \
   {                                                                     \
    { .virtual_device = VIRTUAL_POWER_LED,                               \
-     .real_device = POWER_LED,                                               \
+       .real_device = POWER_LED,                                        \
      .initial_value = POWER_LED_INIT_VALUE },                           \
    { .virtual_device = VCAPS_LED,                                       \
-     .real_device = VMAP_LED3 },                                             \
-   { .virtual_device = RESET_OUTPUT,                                       \
-     .real_device = VMAP_OUT1,                                               \
+     .real_device = CAPS_LED,                                           \
+     .initial_value = CAPS_LED_INIT_VALUE },                            \
+   { .virtual_device = VIRTUAL_RESET,                                   \
+       .real_device = RESET_OUTPUT,                                     \
      .function = V_PULSE,                                               \
-     .initial_value = !CLR_SCR_ACTIVE_VALUE },                          \
-   { .virtual_device = CLR_SCR_OUT,                                     \
-     .real_device = VMAP_OUT3,                                               \
-     .function = V_PULSE,                                               \
-     .initial_value = !RESET_ACTIVE_VALUE }                             \
+     .initial_value = !RESET_ACTIVE_VALUE },                            \
+   { .virtual_device = VIRTUAL_CLR_SCR,                                 \
+    .real_device = CLR_SCR_OUT,                                         \
+    .function = V_PULSE,                                                \
+       .initial_value = !CLR_SCR_ACTIVE_VALUE },                        \
   }
+
+#define ASDF_ASCII_CAPS_KEYMAP_INITIALIZER                              \
+  {                                                                     \
+   { .virtual_device = VIRTUAL_POWER_LED,                               \
+     .real_device = POWER_LED,                                          \
+     .initial_value = POWER_LED_INIT_VALUE },                           \
+   { .virtual_device = VCAPS_LED,                                       \
+     .real_device = CAPS_LED,                                           \
+     .initial_value = CAPS_LED_INIT_VALUE },                             \
+   { .virtual_device = VIRTUAL_RESET,                                   \
+     .real_device = RESET_OUTPUT,                                       \
+     .function = V_PULSE,                                               \
+     .initial_value = !RESET_ACTIVE_VALUE },                            \
+   { .virtual_device = VIRTUAL_CLR_SCR,                                 \
+    .real_device = CLR_SCR_OUT,                                         \
+    .function = V_PULSE,                                                \
+     .initial_value = !CLR_SCR_ACTIVE_VALUE },                          \
+  }
+
+
+#define ASDF_ASCII_KEYMAP_INITIALIZER ASDF_ASCII_PLAIN_KEYMAP_INITIALIZER, ASDF_ASCII_CAPS_KEYMAP_INITIALIZER
 
 
 // TO ensure consistent DIP switch operation within the keymap, a

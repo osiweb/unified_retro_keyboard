@@ -108,24 +108,6 @@ static pulse_state_t pulse_transition_table[PD_ST_NUM_VALID_PULSE_STATES][NUM_PU
 static uint8_t outputs[NUM_REAL_OUTPUTS];
 static pulse_state_t pulses[NUM_REAL_OUTPUTS];
 
-// PROCEDURE: asdf_arch_null_output
-// INPUTS: (uint8_t) value - ignored
-// OUTPUTS: none
-//
-// DESCRIPTION: Does nothing.
-//
-// SIDE EFFECTS: See above.
-//
-// NOTES:
-//
-// SCOPE: public
-//
-// COMPLEXITY: 2
-//
-void asdf_arch_null_output(uint8_t value)
-{
-  (void) value;
-}
 
 // PROCEDURE: pulse_detect
 // INPUTS: (pulse_state_t) current_state
@@ -177,6 +159,25 @@ static void set_output(asdf_virtual_real_dev_t output_dev, uint8_t value)
 
   outputs[output_dev] = value;
   pulses[output_dev] = pulse_detect(pulses[output_dev], pulse_event);
+}
+
+// PROCEDURE: asdf_arch_null_output
+// INPUTS: (uint8_t) value - ignored
+// OUTPUTS: none
+//
+// DESCRIPTION: Does nothing.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_null_output(uint8_t value)
+{
+  set_output(VMAP_NO_OUT, value);
 }
 
 

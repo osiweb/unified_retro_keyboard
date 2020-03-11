@@ -50,35 +50,59 @@
 #define ASDF_ASCII_NUM_ROWS 16 // DIP switches are row 15.
 #define ASDF_ASCII_NUM_COLS 8
 
+#define ACTION_RESET ACTION_VOUT1
 #define VIRTUAL_RESET VOUT1
 #define RESET_OUTPUT VMAP_OUT3_OC
 #define RESET_ACTIVE_VALUE 0
 
+#define ACTION_CLEAR ACTION_VOUT2
 #define VIRTUAL_CLR_SCR VOUT2
-#define CLR_SCR_OUT VMAP_OUT1
+#define CLR_SCR_OUTPUT VMAP_OUT1
 #define CLR_SCR_ACTIVE_VALUE 1
 
 #define VIRTUAL_POWER_LED VLED1
 #define POWER_LED VMAP_LED1
 #define POWER_LED_INIT_VALUE 1
 
-#define ASDF_APPLE2_KEYMAP_INITIALIZER_LENGTH 4
-#define ASDF_APPLE2_KEYMAP_INITIALIZER                                   \
+#define ASDF_APPLE2_KEYMAP_INITIALIZER_LENGTH 3
+
+
+// The PLAIN map uses the "power" button as a caps-lock, so map the CAPS LED to
+// the power button LED.
+#define ASDF_APPLE2_PLAIN_KEYMAP_INITIALIZER                            \
+  {                                                                     \
+   { .virtual_device = VCAPS_LED,                                       \
+     .real_device = POWER_LED,                                          \
+     .initial_value = 0 },                                              \
+   { .virtual_device = VIRTUAL_RESET,                                   \
+     .real_device = RESET_OUTPUT,                                       \
+     .function = V_PULSE,                                               \
+     .initial_value = !RESET_ACTIVE_VALUE },                            \
+   { .virtual_device = VIRTUAL_CLR_SCR,                                 \
+     .real_device = CLR_SCR_OUTPUT,                                     \
+     .function = V_PULSE,                                               \
+     .initial_value = !CLR_SCR_ACTIVE_VALUE }                           \
+  }
+
+// The ALL CAPS map is the classic Apple II/II+ map.
+#define ASDF_APPLE2_CAPS_KEYMAP_INITIALIZER                             \
   {                                                                     \
    { .virtual_device = VIRTUAL_POWER_LED,                               \
-     .real_device = POWER_LED,                                               \
+     .real_device = POWER_LED,                                          \
      .initial_value = POWER_LED_INIT_VALUE },                           \
-   { .virtual_device = VCAPS_LED,                                       \
-     .real_device = VMAP_LED3 },                                             \
-   { .virtual_device = RESET_OUTPUT,                                       \
-     .real_device = VMAP_OUT1,                                               \
+   { .virtual_device = VIRTUAL_RESET,                                   \
+     .real_device = RESET_OUTPUT,                                       \
      .function = V_PULSE,                                               \
-     .initial_value = !CLR_SCR_ACTIVE_VALUE },                          \
-   { .virtual_device = CLR_SCR_OUT,                                     \
-     .real_device = VMAP_OUT3,                                               \
+     .initial_value = !RESET_ACTIVE_VALUE },                            \
+   { .virtual_device = VIRTUAL_CLR_SCR,                                 \
+     .real_device = CLR_SCR_OUTPUT,                                     \
      .function = V_PULSE,                                               \
-     .initial_value = !RESET_ACTIVE_VALUE }                             \
+     .initial_value = !CLR_SCR_ACTIVE_VALUE }                           \
   }
+
+
+#define ASDF_APPLE2_KEYMAP_INITIALIZER ASDF_APPLE2_PLAIN_KEYMAP_INITIALIZER, ASDF_APPLE2_CAPS_KEYMAP_INITIALIZER 
+
 
 // TO ensure consistent DIP switch operation within the keymap, a
 // ASDF_APPLE2_DIP_SWITCHES macro is defined. Keeping the ACTION_MAPSEL0-3
