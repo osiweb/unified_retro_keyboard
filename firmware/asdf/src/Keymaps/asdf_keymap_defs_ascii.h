@@ -31,28 +31,29 @@
 #if !defined(ASDF_KEYMAP_DEFS_ASCII_H)
 #define ASDF_KEYMAP_DEFS_ASCII_H
 
-#include "../asdf_modifiers.h"
-
 // Edit the number of rows and columns used in this map. If the number is less
 // than the maxium, the unused elements will be initialized to 0.
 
 #define ASDF_ASCII_NUM_ROWS 16 // DIP switches are row 15.
 #define ASDF_ASCII_NUM_COLS 8
 
+#define ACTION_BREAK ACTION_NOTHING
+
 #define VIRTUAL_RESET VOUT1
-#define RESET_OUTPUT VMAP_OUT3_OC
+#define RESET_OUTPUT PHYSICAL_OUT3_OC
 #define RESET_ACTIVE_VALUE 0
 
 #define VIRTUAL_CLR_SCR VOUT2
-#define CLR_SCR_OUT VMAP_OUT1
+#define CLR_SCR_OUT PHYSICAL_OUT1
 #define CLR_SCR_ACTIVE_VALUE 1
 
 #define VIRTUAL_POWER_LED VLED1
-#define POWER_LED VMAP_LED1
+#define POWER_LED PHYSICAL_LED1
 #define POWER_LED_INIT_VALUE 1
 
-#define CAPS_LED VMAP_LED3
+#define CAPS_LED PHYSICAL_LED3
 #define CAPS_LED_INIT_VALUE 0
+
 
 
 #define ASDF_ASCII_KEYMAP_INITIALIZER_LENGTH 4
@@ -60,17 +61,17 @@
 #define ASDF_ASCII_PLAIN_KEYMAP_INITIALIZER                             \
   {                                                                     \
    { .virtual_device = VIRTUAL_POWER_LED,                               \
-       .real_device = POWER_LED,                                        \
+       .physical_device = POWER_LED,                                        \
      .initial_value = POWER_LED_INIT_VALUE },                           \
    { .virtual_device = VCAPS_LED,                                       \
-     .real_device = CAPS_LED,                                           \
+     .physical_device = CAPS_LED,                                           \
      .initial_value = CAPS_LED_INIT_VALUE },                            \
    { .virtual_device = VIRTUAL_RESET,                                   \
-       .real_device = RESET_OUTPUT,                                     \
+       .physical_device = RESET_OUTPUT,                                     \
      .function = V_PULSE,                                               \
      .initial_value = !RESET_ACTIVE_VALUE },                            \
    { .virtual_device = VIRTUAL_CLR_SCR,                                 \
-    .real_device = CLR_SCR_OUT,                                         \
+    .physical_device = CLR_SCR_OUT,                                         \
     .function = V_PULSE,                                                \
        .initial_value = !CLR_SCR_ACTIVE_VALUE },                        \
   }
@@ -78,17 +79,17 @@
 #define ASDF_ASCII_CAPS_KEYMAP_INITIALIZER                              \
   {                                                                     \
    { .virtual_device = VIRTUAL_POWER_LED,                               \
-     .real_device = POWER_LED,                                          \
+     .physical_device = POWER_LED,                                          \
      .initial_value = POWER_LED_INIT_VALUE },                           \
    { .virtual_device = VCAPS_LED,                                       \
-     .real_device = CAPS_LED,                                           \
+     .physical_device = CAPS_LED,                                           \
      .initial_value = CAPS_LED_INIT_VALUE },                             \
    { .virtual_device = VIRTUAL_RESET,                                   \
-     .real_device = RESET_OUTPUT,                                       \
+     .physical_device = RESET_OUTPUT,                                       \
      .function = V_PULSE,                                               \
      .initial_value = !RESET_ACTIVE_VALUE },                            \
    { .virtual_device = VIRTUAL_CLR_SCR,                                 \
-    .real_device = CLR_SCR_OUT,                                         \
+    .physical_device = CLR_SCR_OUT,                                         \
     .function = V_PULSE,                                                \
      .initial_value = !CLR_SCR_ACTIVE_VALUE },                          \
   }

@@ -28,194 +28,94 @@
 //
 
 #include <stdint.h>
-#include <stdio.h>
+#include "asdf_physical.h"
 #include "asdf_virtual.h"
 #include "asdf_keymap_defs.h"
 #include "asdf_config.h"
 #include "asdf_arch.h"
 
-// For each virtual out, maintain a "shadow" register for the output value. This
-// permits machine independent implementations of the toggle and pulse functions
-// to be implemented in this module, requiring only a "set" function for each
-// virtual output in the architecture-dependent layer. This implementation is
-// not as efficient, but the timing is not critical, and the events are so
-// infrequent that the benefits of the refactoring far outweigh any performance
-// penalty.
-
-typedef struct {
-  uint8_t shadow;
-  asdf_virtual_real_dev_t next;
-} real_dev_t;
-
-typedef struct {
-  asdf_virtual_real_dev_t real_device; // Each virtual device points to a linked
-                                       // list of any number of real devices.
-  asdf_virtual_function_t function;
-} virtual_dev_t;
-
-
-static real_dev_t real_device_table[NUM_REAL_OUTPUTS];
-
-
-// vout_set[] contains the set() function for each real output device.
-static void (*const vout_set[])(uint8_t) = {
-  [VMAP_NO_OUT] = &asdf_arch_null_output,    //
-  [VMAP_OUT1] = &asdf_arch_out1_set,         //
-  [VMAP_OUT2] = &asdf_arch_out2_set,         //
-  [VMAP_OUT3] = &asdf_arch_out3_set,         //
-  [VMAP_OUT1_OC] = &asdf_arch_out1_hi_z_set, //
-  [VMAP_OUT2_OC] = &asdf_arch_out2_hi_z_set, //
-  [VMAP_OUT3_OC] = &asdf_arch_out3_hi_z_set, //
-  [VMAP_LED1] = &asdf_arch_led1_set,         //
-  [VMAP_LED2] = &asdf_arch_led2_set,         //
-  [VMAP_LED3] = &asdf_arch_led3_set          //
-};
-
-// virtual_out[] contains all the virtual outputs. An asdf_virtual_output_t
+// virtual_device_table[] contains all the virtual outputs. An asdf_virtual_output_t
 // value is used to identify each element. Each element is a virtual device,
-// containing an asdf_virtual_real_dev_t value indicating the real device (if
+// containing an asdf_virtual_physical_dev_t value indicating the physical device (if
 // any) assigned to the virtual device.
-static virtual_dev_t virtual_device_table[NUM_VIRTUAL_OUTPUTS];
-
-
-// PROCEDURE: asdf_virtual_real_set
-// INPUTS: (asdf_virtual_real_dev_t) real_out: which real output to set or clear
-// INPUTS: (uint8_t) value
-// OUTPUTS: none
-//
-// DESCRIPTION: If the real output is valid, set to high if value is true, low
-// if false.
-//
-// SIDE EFFECTS: see above
-//
-// NOTES: No bounds checking.  The caller must ensure a valid device
-//
-// SCOPE: private
-//
-// COMPLEXITY: 1
-//
-static void asdf_virtual_real_set(asdf_virtual_real_dev_t real_out, uint8_t value)
-{
-  vout_set[real_out](value);
-  real_device_table[real_out].shadow = value;
-}
-
-
-// PROCEDURE: asdf_virtual_real_assert
-// INPUTS: (asdf_virtual_real_dev_t) real_out: which real output to set or clear
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Assert the value of the real output shadow register on the output.
-//
-// SIDE EFFECTS: see above
-//
-// NOTES: No bounds checking.  Only called from initialization code.
-//
-// SCOPE: private
-//
-// COMPLEXITY: 1
-//
-static void asdf_virtual_real_assert(asdf_virtual_real_dev_t real_out)
-{
-  uint8_t value = real_device_table[real_out].shadow;
-  vout_set[real_out](value);
-}
-
-// PROCEDURE: asdf_virtual_real_toggle
-// INPUTS: (asdf_virtual_real_dev_t) real_out: which real output to toggle
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Toggle the value of the real output.
-//
-// SIDE EFFECTS: see above
-//
-// NOTES: No bounds checking.  Only called from initialization code.
-//
-// SCOPE: private
-//
-// COMPLEXITY: 1
-//
-static void asdf_virtual_real_toggle(asdf_virtual_real_dev_t real_out)
-{
-  uint8_t value = real_device_table[real_out].shadow;
-
-  asdf_virtual_real_set(real_out, !value);
-}
+static struct {
+  asdf_physical_dev_t physical_device; // Each virtual device points to a linked
+                                       // list of any number of physical devices.
+  asdf_virtual_function_t function;
+} virtual_device_table[ASDF_VIRTUAL_NUM_RESOURCES];
 
 // PROCEDURE: asdf_virtual_action
 // INPUTS: (asdf_virtual_output_t) virtual_out: which virtual output to modify
 // INPUTS: (asdf_virtual_function_t) function: what function to apply to the virtual output
 // OUTPUTS: none
 //
-// DESCRIPTION: for each real output mapped to the virtual output, apply the
+// DESCRIPTION: for each physical output mapped to the virtual output, apply the
 // specified function.
 //
 // SIDE EFFECTS: see above
 //
-// NOTES: The virtual output points to a linked list of real devices.
+// NOTES: The virtual output points to a linked list of physical devices.
 //
 // SCOPE: public
 //
 // COMPLEXITY: 7
 //
-void asdf_virtual_action(asdf_virtual_output_t virtual_out, asdf_virtual_function_t function)
+void asdf_virtual_action(asdf_virtual_dev_t virtual_out, asdf_virtual_function_t function)
 {
-  asdf_virtual_real_dev_t device = virtual_device_table[virtual_out].real_device;
+  asdf_physical_dev_t device = virtual_device_table[virtual_out].physical_device;
 
-  while (VMAP_NO_OUT != device) {
+  while (PHYSICAL_NO_OUT != device) {
     switch (function) {
 
       case V_PULSE: {
-        asdf_virtual_real_toggle(device);
+        asdf_physical_toggle(device);
         asdf_arch_pulse_delay();
         // yes we could omit the next two lines and fall through, but we will
         // spend a few bytes of redundant code for the sake of consistency and
         // readability.
-        asdf_virtual_real_toggle(device);
+        asdf_physical_toggle(device);
         break;
       }
       case V_TOGGLE: {
-        asdf_virtual_real_toggle(device);
+        asdf_physical_toggle(device);
         break;
       }
       case V_SET_HI: {
-        asdf_virtual_real_set(device, 1);
+        asdf_physical_set(device, 1);
         break;
       }
       case V_SET_LO: {
-        asdf_virtual_real_set(device, 0);
+        asdf_physical_set(device, 0);
       }
       case V_NOFUNC:
       default: break;
     }
-    device = real_device_table[device].next;
+    device = asdf_physical_next_device(device);
   }
 }
 
 // PROCEDURE: asdf_virtual_activate
-// INPUTS: asdf_virtual_output_t: The virtual device to be activated
+// INPUTS: asdf_virtual_dev_t: The virtual device to be activated
 // OUTPUTS: none
 //
-// DESCRIPTION: for each real output mapped to the virtual output, apply the
+// DESCRIPTION: for each physical output mapped to the virtual output, apply the
 // function assigned to the virtual output at initialization.
 //
 // SIDE EFFECTS: see above
 //
-// NOTES: The virtual output points to a linked list of real devices.
+// NOTES: The virtual output points to a linked list of physical devices.
 //
 // SCOPE: public
 //
 // COMPLEXITY: 1
 //
-void asdf_virtual_activate(asdf_virtual_output_t virtual_out)
+void asdf_virtual_activate(asdf_virtual_dev_t virtual_out)
 {
   asdf_virtual_action(virtual_out, virtual_device_table[virtual_out].function);
 }
 
 // PROCEDURE: valid_virtual_device
-// INPUTS: (asdf_virtual_output_t) device
+// INPUTS: (asdf_virtual_dev_t) device
 // OUTPUTS: returns true (1) if the device is valid, false (0) if not valid.
 //
 // DESCRIPTION: test to see if device is a valid device value.
@@ -228,98 +128,43 @@ void asdf_virtual_activate(asdf_virtual_output_t virtual_out)
 //
 // COMPLEXITY: 1
 //
-static uint8_t valid_virtual_device(asdf_virtual_output_t device)
+static uint8_t valid_virtual_device(asdf_virtual_dev_t device)
 {
-  return (device > V_NULL && device < NUM_VIRTUAL_OUTPUTS);
-}
-
-// PROCEDURE: valid_real_device
-// INPUTS: (asdf_virtual_real_dev_t) device
-// OUTPUTS: returns true (1) if the device is valid, false (0) if not valid.
-//
-// DESCRIPTION: test to see if device is a valid device value.
-//
-// SIDE EFFECTS:
-//
-// NOTES:
-//
-// SCOPE: private
-//
-// COMPLEXITY: 1
-//
-static uint8_t valid_real_device(asdf_virtual_real_dev_t device)
-{
-  return (device > VMAP_NO_OUT && device < NUM_REAL_OUTPUTS);
-}
-
-// PROCEDURE: real_device_is_available
-// INPUTS: asdf_virtual_real_dev_t requiested_device
-// OUTPUTS: returns VMAP_NO_OUT if device is alreay allocated. If not yet allocated,
-// returns the index of the device in the available list before the requested
-// device.
-//
-// DESCRIPTION: iterates through the linked list of available devices. If the
-// requested_device is encountered, return the element before the requested
-// device in the list.  If the end of the list is reached, return VMAP_NO_OUT.
-//
-// SIDE EFFECTS: none
-//
-// NOTES:
-//
-// SCOPE: private
-//
-// COMPLEXITY: 3
-//
-static uint8_t real_device_is_available(asdf_virtual_real_dev_t device)
-{
-  asdf_virtual_real_dev_t current_out = VMAP_NO_OUT;
-  asdf_virtual_real_dev_t next_out = real_device_table[current_out].next;
-
-  while (next_out != VMAP_NO_OUT && next_out != device) {
-    current_out = next_out;
-    next_out = real_device_table[current_out].next;
-  }
-  return (VMAP_NO_OUT == next_out) ? NUM_REAL_OUTPUTS : current_out;
+  return (device > V_NULL && device < ASDF_VIRTUAL_NUM_RESOURCES);
 }
 
 // PROCEDURE: asdf_virtual_assign
-// INPUTS: (asdf_vout_t) virtual_out
-//         (uint8_t) real_out
+// INPUTS: (asdf_virtual_dev_t) virtual_out - virtual output to be paired with the physical output
+//         (asdf_physical_dev_t) physical_out to be assigned to the virtual output.
+//         (asdf_virtual_function_t) - the function to be applied to the virtual
+//              device when activated by a keypress.
+//         (uint8_t) initial_value - the initial state of the physical output.
+//
 // OUTPUTS: none
 //
-// DESCRIPTION: map the virtual output specified by new_vout to real_out, if
+// DESCRIPTION: map the virtual output specified by new_vout to physical_out, if
 // both arguments are valid. Ignore if not valid.
 //
 // SIDE EFFECTS: see above.
 //
-// NOTES: if the virtual device is invalid, or the real device is invalid, or
-// the real device is already assigned, then nothing happens.
+// NOTES: if the virtual device is invalid, or the physical device is invalid, or
+// the physical device is already assigned, then nothing happens.
 //
 // SCOPE: private
 //
 // COMPLEXITY: 2
 //
-static void asdf_virtual_assign(asdf_virtual_output_t virtual_out, asdf_virtual_real_dev_t real_out,
+static void asdf_virtual_assign(asdf_virtual_dev_t virtual_out, asdf_physical_dev_t physical_out,
                                 asdf_virtual_function_t function, uint8_t initial_value)
 {
-  asdf_virtual_real_dev_t predecessor = real_device_is_available(real_out);
+  if (valid_virtual_device(virtual_out)) {
+    asdf_physical_dev_t tail = virtual_device_table[virtual_out].physical_device;
 
-  if (valid_virtual_device(virtual_out)
-      && valid_real_device(real_out)
-      && (NUM_REAL_OUTPUTS != predecessor)) {
-    virtual_device_table[virtual_out].function = function;
+    if (asdf_physical_allocate(physical_out, tail, initial_value)) {
 
-    // remove from available list:
-    real_device_table[predecessor].next = real_device_table[real_out].next;
-
-    // add real device to the list associated with the virtual device:
-
-    real_device_table[real_out].next = virtual_device_table[virtual_out].real_device;
-    virtual_device_table[virtual_out].real_device = real_out;
-
-    // The real device shadow value is set here. The shadow values are asserted to
-    // the outputs only after all the assignments have been performed.
-    real_device_table[real_out].shadow = initial_value;
+      virtual_device_table[virtual_out].physical_device = physical_out;
+      virtual_device_table[virtual_out].function = function;
+    }
   }
 }
 
@@ -340,35 +185,27 @@ static void asdf_virtual_assign(asdf_virtual_output_t virtual_out, asdf_virtual_
 //
 void asdf_virtual_init(asdf_virtual_initializer_t *const initializer_list)
 {
+  // initial the physical device table every time virtual device table is
+  // initialized.
+  asdf_physical_init();
 
   // initialize list of virtual outputs
-  for (uint8_t i = 0; i < NUM_VIRTUAL_OUTPUTS; i++) {
+  for (uint8_t i = 0; i < ASDF_VIRTUAL_NUM_RESOURCES; i++) {
     virtual_device_table[i].function = V_NOFUNC;
-    virtual_device_table[i].real_device = VMAP_NO_OUT;
+    virtual_device_table[i].physical_device = PHYSICAL_NO_OUT;
   }
-
-  // initialize the linked list of free devices
-  for (uint8_t i = 0; i < NUM_REAL_OUTPUTS; i++) {
-    real_device_table[i].shadow = ASDF_VIRTUAL_OUT_DEFAULT_VALUE;
-    real_device_table[i].next = i + 1; // initialize pointer to next in table
-  }
-  // The last item in the table is left with a bogus next pointer (beyond the
-  // end of the array) after the above loop. Make the last element point to
-  // V_NULL.
-  real_device_table[NUM_REAL_OUTPUTS - 1].next = VMAP_NO_OUT; // end of list.
-
 
   // run through the keymap specific setup
   for (uint8_t i = 0; //
        i < ASDF_KEYMAP_INITIALIZER_LENGTH && initializer_list[i].virtual_device != V_NULL; i++) {
 
-    asdf_virtual_assign(initializer_list[i].virtual_device, initializer_list[i].real_device,
+    asdf_virtual_assign(initializer_list[i].virtual_device, initializer_list[i].physical_device,
                         initializer_list[i].function, initializer_list[i].initial_value);
   }
 
   // Now set all the initial LED and output values
-  for (uint8_t i = 0; i < NUM_REAL_OUTPUTS; i++) {
-    asdf_virtual_real_assert((asdf_virtual_real_dev_t) i);
+  for (uint8_t i = 0; i < ASDF_PHYSICAL_NUM_RESOURCES; i++) {
+    asdf_physical_assert((asdf_physical_dev_t) i);
   }
 }
 

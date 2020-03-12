@@ -31,6 +31,8 @@
 
 #include "asdf.h"
 #include "asdf_ascii.h"
+#include "asdf_physical.h"
+#include "asdf_virtual.h"
 #include "asdf_modifiers.h"
 
 #include "Keymaps/asdf_keymap_defs_ascii.h"

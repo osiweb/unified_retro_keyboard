@@ -26,6 +26,7 @@
 
 #include <stdint.h>
 #include "asdf_modifiers.h"
+#include "asdf_physical.h"
 #include "asdf_virtual.h"
 #include "asdf_arch.h"
 

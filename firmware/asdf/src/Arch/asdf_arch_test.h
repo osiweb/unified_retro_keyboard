@@ -71,6 +71,7 @@
 #include <stdint.h>
 #include "asdf_keymap_defs.h"
 #include "asdf_config.h"
+#include "asdf_physical.h"
 #include "asdf_virtual.h"
 #include "asdf_arch.h"
 
@@ -94,8 +95,6 @@ typedef enum {
               PD_ST_ERROR_PULSE_FROM_INITIAL_STATE = 15,
 } pulse_state_t;
 
-
-static uint8_t outputs[NUM_REAL_OUTPUTS];
 
 // PROCEDURE: asdf_arch_null_output
 // INPUTS: (uint8_t) value - ignored
@@ -158,16 +157,16 @@ void asdf_arch_out3_set(uint8_t value);
 void asdf_arch_out3_hi_z_set(uint8_t value);
 
 // PROCEDURE: asdf_arch_check_output
-// INPUTS:(asdf_virtual_real_dev_t) device - which device to check
+// INPUTS:(asdf_physical_dev_t) device - which device to check
 // OUTPUTS: the value of the device setting.
 // DESCRIPTION: For a given real device, return the current setting (true or false)
-uint8_t asdf_arch_check_output(asdf_virtual_real_dev_t device);
+uint8_t asdf_arch_check_output(asdf_physical_dev_t device);
 
 // PROCEDURE: asdf_arch_check_pulse
-// INPUTS:(asdf_virtual_real_dev_t) device - which device to check
+// INPUTS:(asdf_physical_dev_t) device - which device to check
 // OUTPUTS: the value of the device pulse detector
 // DESCRIPTION: For a given real device, return the state of the pulse detector
-uint8_t asdf_arch_check_pulse(asdf_virtual_real_dev_t device);
+uint8_t asdf_arch_check_pulse(asdf_physical_dev_t device);
 
 // PROCEDURE: asdf_arch_pulse_delay
 // INPUTS: none
@@ -175,6 +174,14 @@ uint8_t asdf_arch_check_pulse(asdf_virtual_real_dev_t device);
 // DESCRIPTION: Emulates a delay by advancing the pulse detector state machine
 // for each output.
 void asdf_arch_pulse_delay(void);
+
+// PROCEDURE: asdf_arch_read_row
+// INPUTS: (uint8_t) row: the row number to be scanned
+// OUTPUTS: returns a word containing the emulated active (pressed) columns
+// DESCRIPTION: reads the word from the key state emulation array and returns
+// the value. The value is a binary representation of the keys pressed within
+// the row, with 1=pressed, 0=released.
+asdf_cols_t asdf_arch_read_row(uint8_t row);
 
 
 // PROCEDURE: asdf_arch_init

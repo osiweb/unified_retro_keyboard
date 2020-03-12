@@ -25,7 +25,6 @@
 #if !defined(ASDF_VIRTUAL_H)
 #define ASDF_VIRTUAL_H
 
-
 // These are "virtual" output identifiers that can be mapped to the real outputs using
 // keymap initializer commands.
 typedef enum {
@@ -41,27 +40,9 @@ typedef enum {
   VLED3,
   VCAPS_LED,
   VSHIFT_LED,
-  NUM_VIRTUAL_OUTPUTS
-} asdf_virtual_output_t;
+  ASDF_VIRTUAL_NUM_RESOURCES
+} asdf_virtual_dev_t;
 
-// The asdf_virtual_real_dev_t enumerates real outputs that can be assigned to
-// virtual outputs via the asdf_virtual_assign() function. The name is a bit
-// confusing, containing virtual and real. The "virtual" part refers to the
-// module and the "real_dev" part attempts to clarify that these are the
-// hardware outputs implemented by the architecture-specific module.
-typedef enum {
-  VMAP_NO_OUT = 0,
-  VMAP_OUT1,
-  VMAP_OUT1_OC,
-  VMAP_OUT2,
-  VMAP_OUT2_OC,
-  VMAP_OUT3,
-  VMAP_OUT3_OC,
-  VMAP_LED1,
-  VMAP_LED2,
-  VMAP_LED3,
-  NUM_REAL_OUTPUTS
-} asdf_virtual_real_dev_t;
 
 typedef enum {
   V_NOFUNC,
@@ -69,32 +50,32 @@ typedef enum {
   V_SET_LO,
   V_PULSE,
   V_TOGGLE,
-  NUM_VIRTUAL_FUNCTIONS
+  ASDF_VIRTUAL_NUM_FUNCTIONS
 } asdf_virtual_function_t;
 
 // Each keymap specifies an array of initializer structs to configure virtual
 // devices, specifying the mapped real device and initial value.
 typedef struct {
-  asdf_virtual_output_t virtual_device;
-  asdf_virtual_real_dev_t real_device;
+  asdf_virtual_dev_t virtual_device;
+  asdf_physical_dev_t physical_device;
   asdf_virtual_function_t function;
   uint8_t initial_value;
 } asdf_virtual_initializer_t;
 
 // PROCEDURE: asdf_virtual_action
-// INPUTS: (asdf_virtual_output_t) virtual_out: which virtual output to modify
+// INPUTS: (asdf_virtual_dev_t) virtual_out: which virtual output to modify
 // INPUTS: (asdf_virtual_function_t) function: what function to apply to the virtual output
 // OUTPUTS: none
 // DESCRIPTION: for each real output mapped to the virtual output, apply the
 // specified function.
-void asdf_virtual_action(asdf_virtual_output_t virtual_out, asdf_virtual_function_t function);
+void asdf_virtual_action(asdf_virtual_dev_t virtual_out, asdf_virtual_function_t function);
 
 // PROCEDURE: asdf_virtual_activate
-// INPUTS: asdf_virtual_output_t: The virtual device to be activated
+// INPUTS: asdf_virtual_dev_t: The virtual device to be activated
 // OUTPUTS: none
 // DESCRIPTION: for each real output mapped to the virtual output, apply the
 // function assigned to the virtual output at initialization.
-void asdf_virtual_activate(asdf_virtual_output_t virtual_out);
+void asdf_virtual_activate(asdf_virtual_dev_t virtual_out);
 
 // PROCEDURE: asdf_virtual_init
 // INPUTS: initializers

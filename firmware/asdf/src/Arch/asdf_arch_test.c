@@ -37,6 +37,7 @@
 #include <stdint.h>
 #include "asdf_keymap_defs.h"
 #include "asdf_config.h"
+#include "asdf_physical.h"
 #include "asdf_virtual.h"
 #include "asdf_arch.h"
 
@@ -105,8 +106,8 @@ static pulse_state_t pulse_transition_table[PD_ST_NUM_VALID_PULSE_STATES][NUM_PU
    },
   };
 
-static uint8_t outputs[NUM_REAL_OUTPUTS];
-static pulse_state_t pulses[NUM_REAL_OUTPUTS];
+static uint8_t outputs[ASDF_PHYSICAL_NUM_RESOURCES];
+static pulse_state_t pulses[ASDF_PHYSICAL_NUM_RESOURCES];
 
 
 // PROCEDURE: pulse_detect
@@ -138,7 +139,7 @@ static pulse_state_t pulse_detect(pulse_state_t current_state, pulse_event_t eve
 
 
 // PROCEDURE: set_output
-// INPUTS: (asdf_virtual_real_dev_t) output_dev - the output to set
+// INPUTS: (asdf_physical_dev_t) output_dev - the output to set
 //         (uint8_t) value - value to assert on the output
 // OUTPUTS: none
 //
@@ -153,7 +154,7 @@ static pulse_state_t pulse_detect(pulse_state_t current_state, pulse_event_t eve
 //
 // COMPLEXITY: 1
 //
-static void set_output(asdf_virtual_real_dev_t output_dev, uint8_t value)
+static void set_output(asdf_physical_dev_t output_dev, uint8_t value)
 {
   pulse_event_t pulse_event = value ? PULSE_EVENT_SET_HIGH : PULSE_EVENT_SET_LOW;
 
@@ -177,7 +178,7 @@ static void set_output(asdf_virtual_real_dev_t output_dev, uint8_t value)
 //
 void asdf_arch_null_output(uint8_t value)
 {
-  set_output(VMAP_NO_OUT, value);
+  set_output(PHYSICAL_NO_OUT, value);
 }
 
 
@@ -195,7 +196,7 @@ void asdf_arch_null_output(uint8_t value)
 //
 void asdf_arch_led1_set(uint8_t value)
 {
-  set_output(VMAP_LED1, value);
+  set_output(PHYSICAL_LED1, value);
 }
 
 // PROCEDURE: asdf_arch_led2_set
@@ -212,7 +213,7 @@ void asdf_arch_led1_set(uint8_t value)
 //
 void asdf_arch_led2_set(uint8_t value)
 {
-  set_output(VMAP_LED2, value);
+  set_output(PHYSICAL_LED2, value);
 }
 
 // PROCEDURE: asdf_arch_led3_set
@@ -229,7 +230,7 @@ void asdf_arch_led2_set(uint8_t value)
 //
 void asdf_arch_led3_set(uint8_t value)
 {
-  set_output(VMAP_LED3, value);
+  set_output(PHYSICAL_LED3, value);
 }
 
 // PROCEDURE: asdf_arch_out1_set
@@ -248,7 +249,7 @@ void asdf_arch_led3_set(uint8_t value)
 //
 void asdf_arch_out1_set(uint8_t value)
 {
-  set_output(VMAP_OUT1, value);
+  set_output(PHYSICAL_OUT1, value);
 }
 
 // PROCEDURE: asdf_arch_out1_hi_z_set
@@ -267,7 +268,7 @@ void asdf_arch_out1_set(uint8_t value)
 //
 void asdf_arch_out1_hi_z_set(uint8_t value)
 {
-  set_output(VMAP_OUT1_OC, value);
+  set_output(PHYSICAL_OUT1_OC, value);
 }
 
 // PROCEDURE: asdf_arch_out2_set
@@ -284,7 +285,7 @@ void asdf_arch_out1_hi_z_set(uint8_t value)
 //
 void asdf_arch_out2_set(uint8_t value)
 {
-  set_output(VMAP_OUT2, value);
+  set_output(PHYSICAL_OUT2, value);
 }
 
 
@@ -304,7 +305,7 @@ void asdf_arch_out2_set(uint8_t value)
 //
 void asdf_arch_out2_hi_z_set(uint8_t value)
 {
-  set_output(VMAP_OUT2_OC, value);
+  set_output(PHYSICAL_OUT2_OC, value);
 }
 
 // PROCEDURE: asdf_arch_out3_set
@@ -323,7 +324,7 @@ void asdf_arch_out2_hi_z_set(uint8_t value)
 //
 void asdf_arch_out3_set(uint8_t value)
 {
-  set_output(VMAP_OUT3, value);
+  set_output(PHYSICAL_OUT3, value);
 }
 
 
@@ -343,14 +344,14 @@ void asdf_arch_out3_set(uint8_t value)
 //
 void asdf_arch_out3_hi_z_set(uint8_t value)
 {
-  set_output(VMAP_OUT3_OC, value);
+  set_output(PHYSICAL_OUT3_OC, value);
 }
 
 // PROCEDURE: asdf_arch_check_output
-// INPUTS:(asdf_virtual_real_dev_t) device - which device to check
+// INPUTS:(asdf_physical_dev_t) device - which device to check
 // OUTPUTS: the value of the device setting.
 //
-// DESCRIPTION: For a given real device, return the current setting (true or false)
+// DESCRIPTION: For a given physical device, return the current setting (true or false)
 //
 // SIDE EFFECTS: none
 //
@@ -360,16 +361,16 @@ void asdf_arch_out3_hi_z_set(uint8_t value)
 //
 // COMPLEXITY: 1
 //
-uint8_t asdf_arch_check_output(asdf_virtual_real_dev_t device)
+uint8_t asdf_arch_check_output(asdf_physical_dev_t device)
 {
   return outputs[device];
 }
 
 // PROCEDURE: asdf_arch_check_pulse
-// INPUTS:(asdf_virtual_real_dev_t) device - which device to check
+// INPUTS:(asdf_physical_dev_t) device - which device to check
 // OUTPUTS: the value of the device pulse detector
 //
-// DESCRIPTION: For a given real device, return the state of the pulse detector
+// DESCRIPTION: For a given physical device, return the state of the pulse detector
 //
 // SIDE EFFECTS: none
 //
@@ -379,7 +380,7 @@ uint8_t asdf_arch_check_output(asdf_virtual_real_dev_t device)
 //
 // COMPLEXITY: 1
 //
-uint8_t asdf_arch_check_pulse(asdf_virtual_real_dev_t device)
+uint8_t asdf_arch_check_pulse(asdf_physical_dev_t device)
 {
   return pulses[device];
 }
@@ -401,7 +402,7 @@ uint8_t asdf_arch_check_pulse(asdf_virtual_real_dev_t device)
 //
 void asdf_arch_pulse_delay(void)
 {
-  for (uint8_t i = 0; i < NUM_REAL_OUTPUTS; i++) {
+  for (uint8_t i = 0; i < ASDF_PHYSICAL_NUM_RESOURCES; i++) {
     pulses[i] = pulse_detect(pulses[i], PULSE_EVENT_DELAY);
   }
 }
@@ -420,7 +421,7 @@ void asdf_arch_pulse_delay(void)
 //
 void asdf_arch_init(void)
 {
-  for (uint8_t i = 0; i < NUM_REAL_OUTPUTS; i++) {
+  for (uint8_t i = 0; i < ASDF_PHYSICAL_NUM_RESOURCES; i++) {
     outputs[i] = 0;
     pulses[i] = PD_ST_INITIAL_STATE;
   }

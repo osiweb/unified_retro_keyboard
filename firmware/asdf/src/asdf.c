@@ -33,6 +33,7 @@
 #include <stdint.h>
 #include "asdf.h"
 #include "asdf_ascii.h"
+#include "asdf_physical.h"
 #include "asdf_virtual.h"
 #include "asdf_keymaps.h"
 #include "asdf_keymap_defs.h"
@@ -210,8 +211,6 @@ static void asdf_activate_action(action_t keycode)
       break;
     }
     case ACTION_NOTHING:
-    case ACTION_LOCAL:
-    case ACTION_BREAK:
     case ACTION_HERE_IS:
     case ACTION_FN_1:
     case ACTION_FN_2:
@@ -282,8 +281,6 @@ static void asdf_deactivate_action(action_t keycode)
       break;
     }
     case ACTION_NOTHING:
-    case ACTION_LOCAL:
-    case ACTION_BREAK:
     case ACTION_HERE_IS:
     case ACTION_FN_1:
     case ACTION_FN_2:
@@ -295,7 +292,6 @@ static void asdf_deactivate_action(action_t keycode)
     case ACTION_FN_8:
     case ACTION_FN_9:
     case ACTION_FN_10:
-    case ACTION_CLEAR:
     default: break;
   }
 }

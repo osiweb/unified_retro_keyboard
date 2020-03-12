@@ -64,7 +64,7 @@
     { PLAIN_MATRIX_2, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_CAPS,    ASCII_ESC,    ACTION_CTRL,  ASCII_BACKSLASH },                               \
       { ACTION_NOTHING, 'p', ';', '/', ASCII_SPACE, 'z', 'a', 'q' },                               \
-      { ACTION_BREAK, ASCII_COMMA, 'm', 'n', 'b', 'v', 'c', 'x' },                                 \
+      { ACTION_NOTHING, ASCII_COMMA, 'm', 'n', 'b', 'v', 'c', 'x' },                                 \
       { ACTION_NOTHING, 'k', 'j', 'h', 'g', 'f', 'd', 's' },                                       \
       { ACTION_NOTHING, 'i', 'u', 'y', 't', 'r', 'e', 'w' },                                       \
       /**/ { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR, ASCII_LF, 'o',            \
@@ -78,7 +78,7 @@
     { CAPS_MATRIX_2,  ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  ASCII_BACKSLASH },                               \
       { ACTION_NOTHING, 'P', ';', '/', ASCII_SPACE, 'Z', 'A', 'Q' },                               \
-      { ACTION_BREAK, ASCII_COMMA, 'M', 'N', 'B', 'V', 'C', 'X' },                                 \
+      { ACTION_NOTHING, ASCII_COMMA, 'M', 'N', 'B', 'V', 'C', 'X' },                                 \
       { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },                                       \
       { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                       \
       /**/ { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR, ASCII_LF, 'O',            \
@@ -93,7 +93,7 @@
     { SHIFT_MATRIX_2, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  ASCII_VERT_BAR },                                \
       { ACTION_NOTHING, 'P', '+', '?', ASCII_SPACE, 'Z', 'A', 'Q' },                               \
-      { ACTION_BREAK, '>', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
+      { ACTION_NOTHING, '>', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
       { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },                                       \
       { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                       \
       { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR, ASCII_LF, 'O', 'L', '<' },     \
@@ -110,7 +110,7 @@
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  0x1c },                                          \
       { ACTION_NOTHING, ASCII_CTRL_P, ACTION_NOTHING, ACTION_NOTHING,                              \
         ASCII_SPACE,    ASCII_CTRL_Z, ASCII_CTRL_A,   ASCII_CTRL_Q },                              \
-      { ACTION_BREAK, ASCII_COMMA,  ASCII_CTRL_M, ASCII_CTRL_N,                                    \
+      { ACTION_NOTHING, ASCII_COMMA,  ASCII_CTRL_M, ASCII_CTRL_N,                                    \
         ASCII_CTRL_B, ASCII_CTRL_V, ASCII_CTRL_C, ASCII_CTRL_X },                                  \
       { ACTION_NOTHING, ASCII_CTRL_K, ASCII_CTRL_J, ASCII_CTRL_H,                                  \
         ASCII_CTRL_G,   ASCII_CTRL_F, ASCII_CTRL_D, ASCII_CTRL_S },                                \
@@ -154,21 +154,21 @@
 #define ASDF_TEST2_KEYMAP_INITIALIZER_LENGTH 4
 #define ASDF_TEST2_KEYMAP_INITIALIZER_1                                                            \
   {                                                                                                \
-    { .virtual_device = VCAPS_LED, .real_device = VMAP_LED1, .initial_value = 0 },                 \
-      { .virtual_device = VSHIFT_LED, .real_device = VMAP_LED2, .initial_value = 0 },              \
-      { .virtual_device = VOUT2, .real_device = VMAP_OUT3, .initial_value = 0 },                   \
+    { .virtual_device = VCAPS_LED, .physical_device = PHYSICAL_LED1, .initial_value = 0 },                 \
+      { .virtual_device = VSHIFT_LED, .physical_device = PHYSICAL_LED2, .initial_value = 0 },              \
+      { .virtual_device = VOUT2, .physical_device = PHYSICAL_OUT3, .initial_value = 0 },                   \
     {                                                                                              \
-      .virtual_device = VOUT2, .real_device = NUM_REAL_OUTPUTS, .initial_value = 0                 \
+      .virtual_device = VOUT2, .physical_device = ASDF_PHYSICAL_NUM_RESOURCES, .initial_value = 0                 \
     }                                                                                              \
   }
 
 #define ASDF_TEST2_KEYMAP_INITIALIZER_2                                                            \
   {                                                                                                \
-    { .virtual_device = VCAPS_LED, .real_device = VMAP_LED1, .initial_value = 0 },                 \
-      { .virtual_device = VSHIFT_LED, .real_device = VMAP_LED2, .initial_value = 0 },              \
-      { .virtual_device = VOUT2, .real_device = VMAP_OUT3, .initial_value = 0 },                   \
+    { .virtual_device = VCAPS_LED, .physical_device = PHYSICAL_LED1, .initial_value = 0 },                 \
+      { .virtual_device = VSHIFT_LED, .physical_device = PHYSICAL_LED2, .initial_value = 0 },              \
+      { .virtual_device = VOUT2, .physical_device = PHYSICAL_OUT3, .initial_value = 0 },                   \
     {                                                                                              \
-      .virtual_device = VOUT2, .real_device = NUM_REAL_OUTPUTS, .initial_value = 0                 \
+      .virtual_device = VOUT2, .physical_device = ASDF_PHYSICAL_NUM_RESOURCES, .initial_value = 0                 \
     }                                                                                              \
   }
 
