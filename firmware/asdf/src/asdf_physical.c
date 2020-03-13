@@ -5,7 +5,7 @@
 //
 // asdf_physical.c
 //
-// This file contains code to manage physical outputs and serves as an API
+// This file contains code to manage physical resources and serves as an API
 // between the virtual layer and the architecture specific code.
 //
 // Copyright 2019 David Fenyes
@@ -65,7 +65,7 @@ static struct {
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
 //
-// DESCRIPTION: If the physical output is valid, set to high if value is true, low
+// DESCRIPTION: If the physical resource is valid, set to high if value is true, low
 // if false.
 //
 // SIDE EFFECTS: see above
@@ -84,11 +84,11 @@ void asdf_physical_set(asdf_physical_dev_t physical_out, uint8_t value)
 
 
 // PROCEDURE: asdf_physical_assert
-// INPUTS: (asdf_physical_dev_t) physical_out: which physical output to set or clear
+// INPUTS: (asdf_physical_dev_t) physical_out: which physical resource to set or clear
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Assert the value of the physical output shadow register on the output.
+// DESCRIPTION: Assert the value of the physical resource shadow register on the output.
 //
 // SIDE EFFECTS: see above
 //
@@ -105,11 +105,11 @@ void asdf_physical_assert(asdf_physical_dev_t physical_out)
 }
 
 // PROCEDURE: asdf_physical_toggle
-// INPUTS: (asdf_physical_dev_t) physical_out: which physical output to toggle
+// INPUTS: (asdf_physical_dev_t) physical_out: which physical resource to toggle
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Toggle the value of the physical output.
+// DESCRIPTION: Toggle the value of the physical resource.
 //
 // SIDE EFFECTS: see above
 //
@@ -161,7 +161,7 @@ static uint8_t valid_physical_device(asdf_physical_dev_t device)
 //
 // SCOPE: public
 //
-// COMPLEXITY: 2
+// COMPLEXITY: 3
 //
 uint8_t physical_device_is_available(asdf_physical_dev_t device)
 {
@@ -176,11 +176,11 @@ uint8_t physical_device_is_available(asdf_physical_dev_t device)
 }
 
 // PROCEDURE: asdf_physical_next_device
-// INPUTS: (asdf_physical_dev_t) device - the current physical device attached
-// to the virtual device being operated on
+// INPUTS: (asdf_physical_dev_t) device - the current physical resource attached
+// to the virtual output being operated on
 //
-// OUTPUTS: (asdf_physical_dev_t) returns the next physical device assigned to
-// the virtual device.
+// OUTPUTS: (asdf_physical_dev_t) returns the next physical resource assigned to
+// the virtual output.
 //
 // DESCRIPTION: See above.
 //
@@ -200,7 +200,7 @@ asdf_physical_dev_t asdf_physical_next_device(asdf_physical_dev_t device)
 // PROCEDURE: asdf_physical_allocate
 
 // INPUTS: (asdf_physical_out_t) physical_out - the desired physical resource to allocate.
-//         (asdf_physical_out_t) tail - the list of physical devices to tack on
+//         (asdf_physical_out_t) tail - the list of physical resources to tack on
 //         to the requested resource, if available.
 //
 // OUTPUTS: (asdf_physical_out_t) returns TRUE if the allocation is succesful,
@@ -228,11 +228,11 @@ uint8_t asdf_physical_allocate(asdf_physical_dev_t physical_out, asdf_physical_d
     // remove from available list:
     physical_device_table[predecessor].next = physical_device_table[physical_out].next;
 
-    // tack the tail on to the physical device
+    // tack the tail on to the physical resource
 
     physical_device_table[physical_out].next = tail;
 
-    // The physical device shadow value is set here. The shadow values are
+    // The physical resource shadow value is set here. The shadow values are
     // asserted to the outputs only after all the assignments have been
     // performed.
     physical_device_table[physical_out].shadow = initial_value;
@@ -246,7 +246,7 @@ uint8_t asdf_physical_allocate(asdf_physical_dev_t physical_out, asdf_physical_d
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Initialize physical device table
+// DESCRIPTION: Initialize physical resource table
 //
 // SIDE EFFECTS: see above
 //

@@ -132,7 +132,17 @@ asdf_keycode_t asdf_lookup_keycode(uint8_t row, uint8_t col)
 //
 // SCOPE: private
 //
-// COMPLEXITY: 1
+// NOTES: The switch() could be implemented as an array of function pointers,
+// essentially a jump table. However, the switch statement will also be
+// implemented as a jump table, and may be more efficiently implemented as a
+// code jump table than an array of pointers stored in flash that would require
+// an additional flash-read operation. Also, the switch jumptable will make more
+// efficient use of space than a sparse array of function pointers. The
+// reduction in cyclometric complexity by using an array is a technicality,
+// since the elements must still be entered as lines of code in some part of the
+// program.  Here, they are arranged in the place they are used.
+//
+// COMPLEXITY: 1 (+18 for the switch)
 //
 static void asdf_activate_action(action_t keycode)
 {
@@ -238,7 +248,11 @@ static void asdf_activate_action(action_t keycode)
 //
 // SCOPE: private
 //
-// COMPLEXITY: 1
+// NOTES: See NOTE for asdf_activate_action(). The Virtual Outputs have
+// activate() functions, but no deactivate() functions, and are handled by the
+// default case.
+//
+// COMPLEXITY: 1 (+9 for the switch, see note)
 //
 static void asdf_deactivate_action(action_t keycode)
 {
@@ -281,17 +295,6 @@ static void asdf_deactivate_action(action_t keycode)
       break;
     }
     case ACTION_NOTHING:
-    case ACTION_HERE_IS:
-    case ACTION_FN_1:
-    case ACTION_FN_2:
-    case ACTION_FN_3:
-    case ACTION_FN_4:
-    case ACTION_FN_5:
-    case ACTION_FN_6:
-    case ACTION_FN_7:
-    case ACTION_FN_8:
-    case ACTION_FN_9:
-    case ACTION_FN_10:
     default: break;
   }
 }
@@ -310,7 +313,7 @@ static void asdf_deactivate_action(action_t keycode)
 //
 // SCOPE: private
 //
-// COMPLEXITY: 2
+// COMPLEXITY: 3
 //
 static void asdf_activate_key(asdf_keycode_t keycode)
 {
@@ -342,7 +345,7 @@ static void asdf_activate_key(asdf_keycode_t keycode)
 //
 // SCOPE: private
 //
-// COMPLEXITY: 2
+// COMPLEXITY: 3
 //
 static void asdf_deactivate_key(asdf_keycode_t keycode)
 {

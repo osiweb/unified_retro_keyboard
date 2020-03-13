@@ -34,13 +34,15 @@
 #include "asdf_config.h"
 #include "asdf_arch.h"
 
-// virtual_device_table[] contains all the virtual outputs. An asdf_virtual_output_t
-// value is used to identify each element. Each element is a virtual device,
-// containing an asdf_virtual_physical_dev_t value indicating the physical device (if
-// any) assigned to the virtual device.
+// virtual_device_table[] contains all the virtual outputs. An
+// asdf_virtual_output_t value is used to identify each element. Each element is
+// a virtual output, containing an asdf_virtual_physical_dev_t value indicating
+// the first in the list of physical resources (if any) assigned to the virtual
+// device. Each element also contains a function that can be applied to the
+// physical resources when the virtual output is activated by a keypress.
 static struct {
-  asdf_physical_dev_t physical_device; // Each virtual device points to a linked
-                                       // list of any number of physical devices.
+  asdf_physical_dev_t physical_device; // Each virtual output points to a linked
+                                       // list of any number of physical resources.
   asdf_virtual_function_t function;
 } virtual_device_table[ASDF_VIRTUAL_NUM_RESOURCES];
 
@@ -49,12 +51,12 @@ static struct {
 // INPUTS: (asdf_virtual_function_t) function: what function to apply to the virtual output
 // OUTPUTS: none
 //
-// DESCRIPTION: for each physical output mapped to the virtual output, apply the
+// DESCRIPTION: for each physical resource mapped to the virtual output, apply the
 // specified function.
 //
 // SIDE EFFECTS: see above
 //
-// NOTES: The virtual output points to a linked list of physical devices.
+// NOTES: The virtual output points to a linked list of physical resources.
 //
 // SCOPE: public
 //
@@ -95,15 +97,15 @@ void asdf_virtual_action(asdf_virtual_dev_t virtual_out, asdf_virtual_function_t
 }
 
 // PROCEDURE: asdf_virtual_activate
-// INPUTS: asdf_virtual_dev_t: The virtual device to be activated
+// INPUTS: asdf_virtual_dev_t: The virtual output to be activated
 // OUTPUTS: none
 //
-// DESCRIPTION: for each physical output mapped to the virtual output, apply the
+// DESCRIPTION: for each physical resource mapped to the virtual output, apply the
 // function assigned to the virtual output at initialization.
 //
 // SIDE EFFECTS: see above
 //
-// NOTES: The virtual output points to a linked list of physical devices.
+// NOTES: The virtual output points to a linked list of physical resources.
 //
 // SCOPE: public
 //
@@ -134,11 +136,11 @@ static uint8_t valid_virtual_device(asdf_virtual_dev_t device)
 }
 
 // PROCEDURE: asdf_virtual_assign
-// INPUTS: (asdf_virtual_dev_t) virtual_out - virtual output to be paired with the physical output
+// INPUTS: (asdf_virtual_dev_t) virtual_out - virtual output to be paired with the physical resource
 //         (asdf_physical_dev_t) physical_out to be assigned to the virtual output.
 //         (asdf_virtual_function_t) - the function to be applied to the virtual
 //              device when activated by a keypress.
-//         (uint8_t) initial_value - the initial state of the physical output.
+//         (uint8_t) initial_value - the initial state of the physical resource.
 //
 // OUTPUTS: none
 //
@@ -147,12 +149,12 @@ static uint8_t valid_virtual_device(asdf_virtual_dev_t device)
 //
 // SIDE EFFECTS: see above.
 //
-// NOTES: if the virtual device is invalid, or the physical device is invalid, or
-// the physical device is already assigned, then nothing happens.
+// NOTES: if the virtual output is invalid, or the physical resource is invalid, or
+// the physical resource is already assigned, then nothing happens.
 //
 // SCOPE: private
 //
-// COMPLEXITY: 2
+// COMPLEXITY: 3
 //
 static void asdf_virtual_assign(asdf_virtual_dev_t virtual_out, asdf_physical_dev_t physical_out,
                                 asdf_virtual_function_t function, uint8_t initial_value)
@@ -177,15 +179,15 @@ static void asdf_virtual_assign(asdf_virtual_dev_t virtual_out, asdf_physical_de
 //
 // SIDE EFFECTS: see above
 //
-// NOTES: 1) //        2) ASDF_VIRTUAL_OUT_DEFAULT_VALUE is defined in asdf_config.h
+// NOTES:  ASDF_VIRTUAL_OUT_DEFAULT_VALUE is defined in asdf_config.h
 //
 // SCOPE: public
 //
-// COMPLEXITY: 2
+// COMPLEXITY: 4
 //
 void asdf_virtual_init(asdf_virtual_initializer_t *const initializer_list)
 {
-  // initial the physical device table every time virtual device table is
+  // initialize the physical resource table every time virtual output table is
   // initialized.
   asdf_physical_init();
 

@@ -35,17 +35,18 @@
 // the keymap definitions to be incorporated in a fairly modular fashion, using
 // the limited capabilities of the C preprocessor. One alternative is to use a
 // program (in C or at the expense of additional build dependencies, in python
-// or bash) to generate the keymap definitions and declarations. But then the
-// keymap declarations would not be private. constexpr in C++ may be an
-// alternative option as well.
+// or bash) to generate the keymap definitions and declarations from a
+// definition file. But then the keymap declarations would not be private.
+// constexpr in C++ may be an alternative option as well.
 ASDF_KEYMAP_DECLARATIONS;
 
 static keycode_matrix_t const *keymap_matrix[ASDF_NUM_KEYMAPS][ASDF_MOD_NUM_MODIFIERS] =
   ASDF_KEYMAP_DEFS;
 
 
-static const asdf_virtual_initializer_t keymap_initializer_list[ASDF_NUM_KEYMAPS][ASDF_KEYMAP_INITIALIZER_LENGTH] =
-  ASDF_KEYMAP_INITIALIZERS;
+static const asdf_virtual_initializer_t keymap_initializer_list[ASDF_NUM_KEYMAPS]
+                                                               [ASDF_KEYMAP_INITIALIZER_LENGTH] =
+                                                                 ASDF_KEYMAP_INITIALIZERS;
 
 static uint8_t keymap_index;
 
@@ -55,7 +56,8 @@ static uint8_t keymap_index;
 // OUTPUTS: none
 //
 // DESCRIPTION: accepts a index value. If the requested keymap index is valid,
-// then assign the value to the global (to the module) keymap_index variable.
+// then assign the value to the global (to the module) keymap_index variable,
+// and initialize the virtual outputs for the selected keymap.
 //
 // SIDE EFFECTS: May change the module-global keymap_index variable.
 //
@@ -77,8 +79,7 @@ void asdf_keymaps_select_keymap(uint8_t index)
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Assigns the keymaps to the indices specified by the modifier
-// index, to avoid hard-coding constant index values.
+// DESCRIPTION: Selects the base keymap.
 //
 // SIDE EFFECTS: builds up the private map table.
 //
