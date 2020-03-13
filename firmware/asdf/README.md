@@ -60,9 +60,8 @@ Features:
 
 * ASCII output - supported via output_value function.
 
-* Indicator LEDs and other direct logic-level hardware controls: supported via
-  per-key activate/deactivate functions, and also via hooks to standard key
-  functions.
+* Virtual Output layer: Indicator LEDs and other direct logic-level hardware controls: supported via
+ a virtual output layer.  The keymaps (and certain functions such as shiftlock and capslock) may bind virtual outputs.  The keymaps may then specify how the virtual outputs map to the available physical resources.  This allows one keymap to place the capslock LED in one position, and another keymap may place the capslock LED elswhere.  This simplifies support of multiple keyboards and keymaps.
 
 Compiling and configuration
 --
@@ -111,4 +110,6 @@ hardware, exporting the following functions:
   a scheduler, would be to schedule the keyscan every 1 ms, rather than poll. In
   that case, this function is not needed, and the "superloop" in main.c would
   contain a call to the scheduler.
+  
+- asdf_arch_XXXX_set: The hardware provides a number of physical resources, such as TTL or tri-state outputs, which can be used to drive LEDs, TTL logic output lines, etc.  These are driven by a virtual output layer.  The virtual layer requires a function to set the state of the physical resources.  One function is provided for each such resource.  For example, if a TTL output is called OUT1, then the function asdf_arch_out1_set() must be defined.
 
