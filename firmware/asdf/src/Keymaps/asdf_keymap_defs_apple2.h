@@ -91,7 +91,8 @@
      .initial_value = !CLR_SCR_ACTIVE_VALUE }                           \
   }
 
-// The ALL CAPS map is the classic Apple II/II+ map.
+// The ALL CAPS map is the classic Apple II/II+ map. There is no CAPS LED, since
+// CAPS doesn't matter in the ALL CAPS keymap.
 #define ASDF_APPLE2_CAPS_KEYMAP_INITIALIZER                             \
   {                                                                     \
    { .virtual_device = VIRTUAL_POWER_LED,                               \
@@ -113,12 +114,36 @@
 
 #define ASDF_APPLE2_KEYMAP_INITIALIZER ASDF_APPLE2_PLAIN_KEYMAP_INITIALIZER, ASDF_APPLE2_CAPS_KEYMAP_INITIALIZER 
 
-
-// TO ensure consistent DIP switch operation within the keymap, a
-// ASDF_APPLE2_DIP_SWITCHES macro is defined. Keeping the ACTION_MAPSEL0-3
-// definitions in positions 0-3 ensures consistent map selection among all
-// keymaps.
-
+// Key Matrix for combination of ASCII controller (ATMega328P version) and Classic ASCII matrix
+//
+// Col->   0          1          2          3          4          5          6          7
+// Row 0   POWER      R-Shift    L-Shift    (no key)   ESC        TAB        CTRL       \(backslash)
+// Row 1   Rubout     P          ;          /          SPACEBAR   Z          A          Q
+// Row 2   Break      ,(comma)   M          N          B          V          C          X
+// Row 3   Spare      K          J          H          G          F          D          A
+// Row 4   Rt arrow   I          U          Y          T          R          E          W
+// Row 5   LT arrow   Repeat     CapsLock   Return     LineFeed   O(alpha)   L          .(period)
+// Row 6   ~(tilde)   ]          [          -(dash)    :(colon)   0(numeral) 9          8
+// Row 7   @(at)      7          6          5          4          3          2          1
+//
+// Row 15 DIP switches 0-7
+//
+// Notes:
+//
+// 1) The keys above correspond to the silk screen on the PCB. For the OSI and
+//    Apple layouts, the keys may not all match the silk screen. When creating a
+//    layout different from the silk screen, look up the row and column for the
+//    silk screen label at the desired position, and then place the desired
+//    function in the keymap definition at the desired row and column. For
+//    example, the Apple 2 keymap places the "RESET" key at the "[" silk-screen
+//    position, Row 6, Col 2. The keymap places ACTION_RESET at Row 6, Col 2 in
+//    the "ASDF_APPLE2_CTRL_MAP" to map the RESET function to the CTRL-RESET key
+//    combination.
+//
+// 2) To ensure consistent DIP switch operation within the keymap, a
+//    ASDF_ASCII_DIP_SWITCHES macro is defined. Keeping the ACTION_MAPSEL0-3
+//    definitions in positions 0-3 ensures consistent map selection among all
+//    keymaps.
 
 #define ASDF_APPLE2_DIP_SWITCHES [ASDF_NUM_ROWS - 1] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
 
