@@ -45,9 +45,6 @@
 #define ASDF_APPLE2_NUM_ROWS 16 // DIP switches are row 15.
 #define ASDF_APPLE2_NUM_COLS 8
 
-#define ASDF_ASCII_NUM_ROWS 16 // DIP switches are row 15.
-#define ASDF_ASCII_NUM_COLS 8
-
 #define ACTION_BREAK ACTION_NOTHING
 
 #define ACTION_RESET ACTION_VOUT1
