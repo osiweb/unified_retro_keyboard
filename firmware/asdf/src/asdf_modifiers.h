@@ -56,9 +56,6 @@ typedef enum {
   ASDF_MOD_NUM_MODIFIERS
 } modifier_index_t;
 
-typedef enum { TOGGLE_SHIFTLOCK = 0, HOLD_SHIFTLOCK = 1 } shiftlock_mode_t;
-
-
 // PROCEDURE: asdf_modifier_shift_activate
 // INPUTS: none
 // OUTPUTS: none
@@ -66,12 +63,17 @@ typedef enum { TOGGLE_SHIFTLOCK = 0, HOLD_SHIFTLOCK = 1 } shiftlock_mode_t;
 //
 void asdf_modifier_shift_activate(void);
 
-// PROCEDURE: asdf_modifier_shiftlock_activate
+// PROCEDURE: asdf_modifier_shiftlock_on_activate
 // INPUTS: none
 // OUTPUTS: none
-// DESCRIPTION: sets SHIFTLOCK state if in NORMAL mode, and toggle shiftlock if in TOGGLE mode.
-//
-void asdf_modifier_shiftlock_activate(void);
+// DESCRIPTION: sets SHIFTLOCK state to ON
+void asdf_modifier_shiftlock_on_activate(void);
+
+// PROCEDURE: asdf_modifier_shiftlock_toggle_activate
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Toggles SHIFTLOCK state.
+void asdf_modifier_shiftlock_toggle_activate(void);
 
 // PROCEDURE: asdf_modifier_capslock_activate
 // INPUTS: none
@@ -79,12 +81,6 @@ void asdf_modifier_shiftlock_activate(void);
 // DESCRIPTION: Turns on Capslock state
 //
 void asdf_modifier_capslock_activate(void);
-
-// PROCEDURE: asdf_modifier_caps_activate
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: sets CAPS state to ON (without disturbing the caps lock state)
-void asdf_modifier_caps_activate(void);
 
 // PROCEDURE: asdf_modifier_ctrl_activate
 // INPUTS: none
@@ -106,26 +102,6 @@ void asdf_modifier_shift_deactivate(void);
 // DESCRIPTION: Turns off CTRL mode
 //
 void asdf_modifier_ctrl_deactivate(void);
-
-// PROCEDURE: asdf_modifier_shiftlock_deactivate
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: No action. This is called when releasing the SHIFT LOCK key,
-//
-void asdf_modifier_shiftlock_deactivate(void);
-
-// PROCEDURE: asdf_modifier_capslock_deactivate
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: No action.  Called when releasing the CAPS LOCK key.
-//
-void asdf_modifier_capslock_deactivate(void);
-
-// PROCEDURE: asdf_modifier_caps_deactivate
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: sets CAPS state to OFF (without disturbing the caps lock state)
-void asdf_modifier_caps_deactivate(void);
 
 // PROCEDURE: asdf_modifiers_init
 // INPUTS: none

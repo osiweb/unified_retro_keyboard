@@ -34,8 +34,6 @@ static shift_state_t shift_state;
 static caps_state_t caps_state;
 static ctrl_state_t ctrl_state;
 
-static shiftlock_mode_t asdf_toggle_shiftlock;
-
 static const modifier_index_t modifier_indices[] = {
 
   MOD_PLAIN_MAP, // 0x00: no modifiers
@@ -59,11 +57,8 @@ static const modifier_index_t modifier_indices[] = {
 //
 void asdf_modifier_set_shift_state(uint8_t new_state)
 {
-  uint8_t shiftlock_status = new_state & SHIFT_LOCKED_ST;
-
   shift_state = new_state;
-
-  asdf_virtual_action(VSHIFT_LED, (shiftlock_status ? V_SET_HI : V_SET_LO));
+  asdf_virtual_action(VSHIFT_LED, (shift_state ? V_SET_HI : V_SET_LO));
 }
 
 // PROCEDURE: asdf_modifier_shift_activate
@@ -82,37 +77,38 @@ void asdf_modifier_shift_activate(void)
 }
 
 
-// PROCEDURE: asdf_modifier_shiftlock_activate
+// PROCEDURE: asdf_modifier_shiftlock_on_activate
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: sets SHIFTLOCK state depending on the mode.
+// DESCRIPTION: sets SHIFTLOCK state to ON
 //
-//              SHIFTLOCK normal mode:
-//              - SHIFTLOCK always activates shift mode
-//              - Pressing and Relasing SHIFT deactivates shift mode.
-//
-//              SHIFTLOCK toggle mode:
-//              - Pressing SHIFTLOCK toggles the shift mode on and off
-//              - Pressing and Relasing SHIFT deactivates shift mode.
-//
-// NOTES: The test of the shiftlock mode constant always has the same result and
-// will therefore be optimized by the compiler, so technically no added
-// cyclometric complexity, but count it anyway, in case this is made into a
-// user-definable behavior later.
+// NOTES:
 //
 // SIDE EFFECTS: affects shift_state as described.
 //
-// COMPLEXITY: 2
+// COMPLEXITY: 1
 //
-void asdf_modifier_shiftlock_activate(void)
+void asdf_modifier_shiftlock_on_activate(void)
 {
-  if (asdf_toggle_shiftlock) {
-    asdf_modifier_set_shift_state(shift_state ^ SHIFT_LOCKED_ST);
-  }
-  else {
-    asdf_modifier_set_shift_state(shift_state | SHIFT_LOCKED_ST);
-  }
+  asdf_modifier_set_shift_state(shift_state | SHIFT_LOCKED_ST);
+}
+
+// PROCEDURE: asdf_modifier_shiftlock_toggle_activate
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Toggles SHIFTLOCK state.
+//
+// NOTES:
+//
+// SIDE EFFECTS: see DESCRIPTION
+//
+// COMPLEXITY: 1
+//
+void asdf_modifier_shiftlock_toggle_activate(void)
+{
+  asdf_modifier_set_shift_state(shift_state ^ SHIFT_LOCKED_ST);
 }
 
 // PROCEDURE: asdf_modifier_set_caps_state
@@ -193,32 +189,6 @@ void asdf_modifier_ctrl_deactivate(void)
   ctrl_state = CTRL_OFF_ST;
 }
 
-// PROCEDURE: asdf_modifier_shiftlock_deactivate
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Does nothing. This is called when releasing the SHIFT LOCK key,
-// and no action is performed on releasing a SHIFT LOCK key
-//
-// SIDE EFFECTS: none
-//
-// COMPLEXITY: 1
-//
-void asdf_modifier_shiftlock_deactivate(void) {}
-
-// PROCEDURE: asdf_modifier_capslock_deactivate
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Does nothing. This is called when releasing the CAPS LOCK key,
-// and no action is performed on releasing the CAPS LOCK key.
-//
-// SIDE EFFECTS: none
-//
-// COMPLEXITY: 1
-//
-void asdf_modifier_capslock_deactivate(void) {}
-
 // PROCEDURE: asdf_modifiers_init
 // INPUTS: none
 // OUTPUTS: none
@@ -234,8 +204,6 @@ void asdf_modifiers_init(void)
   asdf_modifier_set_shift_state(SHIFT_OFF_ST);
   asdf_modifier_set_caps_state(CAPS_OFF_ST);
   ctrl_state = CTRL_OFF_ST;
-
-  asdf_toggle_shiftlock = HOLD_SHIFTLOCK;
 }
 
 // PROCEDURE: asdf_modifier_index

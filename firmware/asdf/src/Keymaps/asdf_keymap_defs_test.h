@@ -66,7 +66,7 @@
       { ACTION_NOTHING, ASCII_COMMA, 'm', 'n', 'b', 'v', 'c', 'x' },                                 \
       { ACTION_NOTHING, 'k', 'j', 'h', 'g', 'f', 'd', 's' },                                       \
       { ACTION_NOTHING, 'i', 'u', 'y', 't', 'r', 'e', 'w' },                                       \
-      /**/ { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR, ASCII_LF, 'o',            \
+      /**/ { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFTLOCK_ON, ASCII_CR, ASCII_LF, 'o',            \
              'l',           ASCII_PERIOD },                                                        \
       { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', '0', '9', '8' },      \
       { ACTION_NOTHING, '7', '6', '5', '4', '3', '2', '1' }, ASDF_TEST_MAP_DIP_SWITCHES            \
@@ -80,7 +80,7 @@
       { ACTION_NOTHING, ASCII_COMMA, 'M', 'N', 'B', 'V', 'C', 'X' },                                 \
       { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },                                       \
       { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                       \
-      /**/ { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR, ASCII_LF, 'O',            \
+      /**/ { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFTLOCK_ON, ASCII_CR, ASCII_LF, 'O',            \
              'L',           ASCII_PERIOD },                                                        \
       { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', '0', '9', '8' },      \
       { ACTION_NOTHING, '7', '6', '5', '4', '3', '2', '1' }, ASDF_TEST_MAP_DIP_SWITCHES            \
@@ -95,7 +95,7 @@
       { ACTION_NOTHING, '>', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
       { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },                                       \
       { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                       \
-      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR, ASCII_LF, 'O', 'L', '<' },     \
+      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFTLOCK_ON, ASCII_CR, ASCII_LF, 'O', 'L', '<' },     \
       { ASCII_TILDE, ASCII_RT_CURLY_BRACE, ASCII_LT_CURLY_BRACE, '=', '*',                         \
         '0',         ASCII_RT_PAREN,       ASCII_LT_PAREN },                                       \
       { ACTION_NOTHING, ASCII_SINGLE_QUOTE, '&', '%', '$', '#', ASCII_DOUBLE_QUOTE, '!' },         \
@@ -115,7 +115,7 @@
         ASCII_CTRL_G,   ASCII_CTRL_F, ASCII_CTRL_D, ASCII_CTRL_S },                                \
       { ACTION_NOTHING, ASCII_CTRL_I, ASCII_CTRL_U, ASCII_CTRL_Y,                                  \
         ASCII_CTRL_T,   ASCII_CTRL_R, ASCII_CTRL_E, ASCII_CTRL_W },                                \
-      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFT_LOCK, ASCII_CR,                                \
+      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFTLOCK_ON, ASCII_CR,                                \
         ASCII_LF,      ASCII_CTRL_O,   ASCII_CTRL_L,      ACTION_NOTHING },                        \
       { ACTION_NOTHING, 0x1d,        ASCII_ESC,   ACTION_NOTHING,                                  \
         ACTION_NOTHING, ACTION_FN_1, ACTION_FN_9, ACTION_FN_8 },                                   \

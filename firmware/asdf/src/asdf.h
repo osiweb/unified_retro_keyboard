@@ -24,7 +24,7 @@
 #if !defined(ASDF_H)
 #define ASDF_H
 
-#define ASDF_ACTION 0x80
+#define ASDF_ACTION 0x90 // SOL-20 uses codes 0x80-0x8f
 #define ASDF_INVALID_CODE ASDF_ACTION
 // an action code is not a valid keycode.
 
@@ -41,7 +41,8 @@ typedef uint8_t asdf_keycode_t;
 typedef enum {
   ACTION_NOTHING = ASDF_ACTION,
   ACTION_SHIFT,
-  ACTION_SHIFT_LOCK,
+  ACTION_SHIFTLOCK_ON,
+  ACTION_SHIFTLOCK_TOGGLE,
   ACTION_CAPS,
   ACTION_CTRL,
   ACTION_REPEAT,

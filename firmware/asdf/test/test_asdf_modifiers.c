@@ -54,7 +54,6 @@ void capslock_and_release_gives_caps(void)
   asdf_modifier_capslock_activate();
   TESTMAP(MOD_CAPS_MAP);
 
-  asdf_modifier_capslock_deactivate();
   TESTMAP(MOD_CAPS_MAP);
 }
 
@@ -62,9 +61,6 @@ void capslock_and_release_gives_caps(void)
 void caps_release_caps_gives_plain(void)
 {
   asdf_modifier_capslock_activate();
-  TESTMAP(MOD_CAPS_MAP);
-
-  asdf_modifier_capslock_deactivate();
   TESTMAP(MOD_CAPS_MAP);
 
   asdf_modifier_capslock_activate();
@@ -78,13 +74,7 @@ void caps_release_caps_release_gives_plain(void)
   asdf_modifier_capslock_activate();
   TESTMAP(MOD_CAPS_MAP);
 
-  asdf_modifier_capslock_deactivate();
-  TESTMAP(MOD_CAPS_MAP);
-
   asdf_modifier_capslock_activate();
-  TESTMAP(MOD_PLAIN_MAP);
-
-  asdf_modifier_capslock_deactivate();
   TESTMAP(MOD_PLAIN_MAP);
 }
 
@@ -92,9 +82,6 @@ void caps_release_caps_release_gives_plain(void)
 void shift_and_caps_gives_shift(void)
 {
   asdf_modifier_capslock_activate();
-  TESTMAP(MOD_CAPS_MAP);
-
-  asdf_modifier_capslock_deactivate();
   TESTMAP(MOD_CAPS_MAP);
 
   asdf_modifier_shift_activate();
@@ -105,9 +92,6 @@ void shift_and_caps_gives_shift(void)
 void caps_shift_unshift_gives_caps(void)
 {
   asdf_modifier_capslock_activate();
-  TESTMAP(MOD_CAPS_MAP);
-
-  asdf_modifier_capslock_deactivate();
   TESTMAP(MOD_CAPS_MAP);
 
   asdf_modifier_shift_activate();
@@ -121,11 +105,9 @@ void caps_shift_unshift_gives_caps(void)
 void capslock_shiftlock_gives_shift(void)
 {
   asdf_modifier_capslock_activate();
-  asdf_modifier_capslock_deactivate();
   TESTMAP(MOD_CAPS_MAP);
 
-  asdf_modifier_shiftlock_activate();
-  asdf_modifier_shiftlock_deactivate();
+  asdf_modifier_shiftlock_on_activate();
   TESTMAP(MOD_SHIFT_MAP);
 }
 
@@ -133,15 +115,12 @@ void capslock_shiftlock_gives_shift(void)
 void capslock_shiftlock_capslock_gives_shift(void)
 {
   asdf_modifier_capslock_activate();
-  asdf_modifier_capslock_deactivate();
   TESTMAP(MOD_CAPS_MAP);
 
-  asdf_modifier_shiftlock_activate();
-  asdf_modifier_shiftlock_deactivate();
+  asdf_modifier_shiftlock_on_activate();
   TESTMAP(MOD_SHIFT_MAP);
 
   asdf_modifier_capslock_activate();
-  asdf_modifier_capslock_deactivate();
   TESTMAP(MOD_SHIFT_MAP);
 }
 
@@ -150,11 +129,9 @@ void capslock_shiftlock_capslock_gives_shift(void)
 void capslock_shiftlock_shift_gives_caps(void)
 {
   asdf_modifier_capslock_activate();
-  asdf_modifier_capslock_deactivate();
-  TESTMAP(MOD_CAPS_MAP);
+    TESTMAP(MOD_CAPS_MAP);
 
-  asdf_modifier_shiftlock_activate();
-  asdf_modifier_shiftlock_deactivate();
+  asdf_modifier_shiftlock_on_activate();
   TESTMAP(MOD_SHIFT_MAP);
 
   asdf_modifier_shift_activate();
@@ -165,15 +142,14 @@ void capslock_shiftlock_shift_gives_caps(void)
 // SHIFTLOCK press gives shift map
 void shiftlock_gives_shift(void)
 {
-  asdf_modifier_shiftlock_activate();
+  asdf_modifier_shiftlock_on_activate();
   TESTMAP(MOD_SHIFT_MAP);
 }
 
 // SHIFTLOCK press and release gives shift map
 void shiftlock_and_release_gives_shift(void)
 {
-  asdf_modifier_shiftlock_activate();
-  asdf_modifier_shiftlock_deactivate();
+  asdf_modifier_shiftlock_on_activate();
   TESTMAP(MOD_SHIFT_MAP);
 }
 
@@ -181,8 +157,7 @@ void shiftlock_and_release_gives_shift(void)
 // SHIFTLOCK and SHIFT gives shift map
 void shiftlock_shift_gives_shift(void)
 {
-  asdf_modifier_shiftlock_activate();
-  asdf_modifier_shiftlock_deactivate();
+  asdf_modifier_shiftlock_on_activate();
   TESTMAP(MOD_SHIFT_MAP);
 
   asdf_modifier_shift_activate();
@@ -192,8 +167,7 @@ void shiftlock_shift_gives_shift(void)
 // SHIFTLOCK and SHIFT press and release gives plain map
 void shiftlock_shift_release_gives_plain(void)
 {
-  asdf_modifier_shiftlock_activate();
-  asdf_modifier_shiftlock_deactivate();
+  asdf_modifier_shiftlock_on_activate();
   TESTMAP(MOD_SHIFT_MAP);
 
   asdf_modifier_shift_activate();
@@ -247,7 +221,7 @@ void ctrl_shiftlock_gives_ctrl_map(void)
   asdf_modifier_ctrl_activate();
   TESTMAP(MOD_CTRL_MAP);
 
-  asdf_modifier_shiftlock_activate();
+  asdf_modifier_shiftlock_on_activate();
   TESTMAP(MOD_CTRL_MAP);
 }
 
@@ -257,11 +231,9 @@ void ctrl_double_caps_returns_to_ctrl_map(void)
   TESTMAP(MOD_CTRL_MAP);
 
   asdf_modifier_capslock_activate();
-  asdf_modifier_capslock_deactivate();
   TESTMAP(MOD_CTRL_MAP);
 
   asdf_modifier_capslock_activate();
-  asdf_modifier_capslock_deactivate();
   TESTMAP(MOD_CTRL_MAP);
 }
 
@@ -270,12 +242,10 @@ void ctrl_double_shiftlock_returns_to_ctrl_map(void)
   asdf_modifier_ctrl_activate();
   TESTMAP(MOD_CTRL_MAP);
 
-  asdf_modifier_shiftlock_activate();
-  asdf_modifier_shiftlock_deactivate();
+  asdf_modifier_shiftlock_on_activate();
   TESTMAP(MOD_CTRL_MAP);
 
-  asdf_modifier_shiftlock_activate();
-  asdf_modifier_shiftlock_deactivate();
+  asdf_modifier_shiftlock_on_activate();
   TESTMAP(MOD_CTRL_MAP);
 }
 

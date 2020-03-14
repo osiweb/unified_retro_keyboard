@@ -152,8 +152,12 @@ static void asdf_activate_action(action_t keycode)
       asdf_modifier_shift_activate();
       break;
     }
-    case ACTION_SHIFT_LOCK: {
-      asdf_modifier_shiftlock_activate();
+    case ACTION_SHIFTLOCK_ON: {
+      asdf_modifier_shiftlock_on_activate();
+      break;
+    }
+    case ACTION_SHIFTLOCK_TOGGLE: {
+      asdf_modifier_shiftlock_toggle_activate();
       break;
     }
     case ACTION_CAPS: {
@@ -261,15 +265,6 @@ static void asdf_deactivate_action(action_t keycode)
       asdf_modifier_shift_deactivate();
       break;
     }
-    case ACTION_SHIFT_LOCK: {
-      asdf_modifier_shiftlock_deactivate();
-      break;
-    }
-    case ACTION_CAPS: {
-      asdf_modifier_capslock_deactivate();
-      break;
-    }
-
     case ACTION_CTRL: {
       asdf_modifier_ctrl_deactivate();
       break;
@@ -317,7 +312,7 @@ static void asdf_deactivate_action(action_t keycode)
 //
 static void asdf_activate_key(asdf_keycode_t keycode)
 {
-  if (keycode & ASDF_ACTION) {
+  if (keycode > ASDF_ACTION) { // ASDF_ACTION = ASDF_NOTHING = no action.
     asdf_activate_action((action_t) keycode);
   }
   else {
