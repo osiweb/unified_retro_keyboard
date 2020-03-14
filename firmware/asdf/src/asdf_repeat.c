@@ -46,7 +46,7 @@ static key_timer_t key_repeat_timer;
 void asdf_repeat_init(void)
 {
   repeat_state = base_repeat_state = ASDF_DEFAULT_REPEAT_STATE;
-  key_repeat_timer = (key_repeat_timer) repeat_state;
+  key_repeat_timer = (key_timer_t) repeat_state;
 }
 
 // PROCEDURE: asdf_repeast_reset_count
