@@ -46,10 +46,10 @@ static void (*const physical_out_set[])(uint8_t) = {
 };
 
 
-// For each virtual out, maintain a "shadow" register for the output value. This
+// For each physical resource, maintain a "shadow" register for the output value. This
 // permits machine independent implementations of the toggle and pulse functions
 // to be implemented in this module, requiring only a "set" function for each
-// virtual output in the architecture-dependent layer. This implementation is
+// physical resource in the architecture-dependent layer. This implementation is
 // not as efficient, but the timing is not critical, and the events are so
 // infrequent that the benefits of the refactoring far outweigh any performance
 // penalty.
