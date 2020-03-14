@@ -41,12 +41,12 @@ static key_timer_t key_repeat_timer;
 //
 // SIDE EFFECTS: see DESCRIPTION
 //
-// COMPLEXITY: 1
+// COMPLEXITY: 
 //
 void asdf_repeat_init(void)
 {
   repeat_state = base_repeat_state = ASDF_DEFAULT_REPEAT_STATE;
-  key_repeat_timer = (uint16_t) repeat_state;
+  key_repeat_timer = (key_repeat_timer) repeat_state;
 }
 
 // PROCEDURE: asdf_repeast_reset_count
@@ -57,6 +57,8 @@ void asdf_repeat_init(void)
 // repeat cycle.  Resest is based on repeat state (no repeat, autorepeat, normal repeat).
 //
 // SIDE EFFECTS: see DESCRIPTION
+//
+// SCOPE: Public
 //
 // COMPLEXITY: 1
 //
@@ -144,6 +146,8 @@ void asdf_repeat_activate(void)
 // down after REPEAT is released, and autorepeat mode is enabled, then restart
 // the autorepeat timer. Otherwise disable repeat.
 //
+// SCOPE: Public
+//
 // COMPLEXITY: 1
 //
 void asdf_repeat_deactivate(void)
@@ -162,6 +166,8 @@ void asdf_repeat_deactivate(void)
 // SIDE EFFECTS: none
 //
 // NOTES: The key_repeat_timer is only decremented if it is nonzero.
+//
+// SCOPE: Public
 //
 // COMPLEXITY: 2
 //
