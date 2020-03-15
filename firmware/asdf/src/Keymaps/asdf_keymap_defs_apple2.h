@@ -170,7 +170,7 @@
    [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },               \
    [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                         \
    [5] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ASCII_CR, ASCII_AT, 'O', 'L', '>' },           \
-   [6] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, '=', \
+   [6] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_CLEAR, '=', \
            '*',         ASCII_ZERO,           ASCII_RT_PAREN,       ASCII_LT_PAREN }, \
    [7] = { APPLE_LEFT_ARROW, ASCII_SINGLE_QUOTE, '&', '%', '$', '#', ASCII_DOUBLE_QUOTE, '!' }, \
    ASDF_APPLE2_DIP_SWITCHES                                           \
@@ -200,7 +200,7 @@
    [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },               \
    [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                         \
    [5] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ASCII_CR, ACTION_REPEAT, 'O', 'L', '>' },           \
-   [6] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, '=', \
+   [6] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_CLEAR, '=', \
            '*',         ASCII_ZERO,           ASCII_RT_PAREN,       ASCII_LT_PAREN }, \
    [7] = { APPLE_LEFT_ARROW, ASCII_SINGLE_QUOTE, '&', '%', '$', '#', ASCII_DOUBLE_QUOTE, '!' }, \
    ASDF_APPLE2_DIP_SWITCHES                                           \
