@@ -107,7 +107,7 @@ U 1 1 5D1E4169
 P 8100 2150
 F 0 "J1" H 8150 3267 50  0000 C CNN
 F 1 "Controller" H 8150 3176 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_2x20_P2.54mm_Vertical" H 8100 2150 50  0001 C CNN
+F 2 "unikbd:kbd_header_two_mounting_holes" H 8100 2150 50  0001 C CNN
 F 3 "~" H 8100 2150 50  0001 C CNN
 	1    8100 2150
 	1    0    0    -1  
@@ -329,10 +329,10 @@ F6 "Col4" I R 5370 1410 50
 F7 "Col5" I R 5370 1310 50 
 F8 "Col6" I R 5370 1210 50 
 F9 "Col7" I R 5370 1110 50 
-F10 "Row8" I R 5370 2310 50 
-F11 "Row9" I R 5370 2210 50 
-F12 "Row10" I R 5370 2110 50 
-F13 "Row11" I R 5370 2010 50 
+F10 "Row9" I R 5370 2310 50 
+F11 "Row10" I R 5370 2210 50 
+F12 "Row11" I R 5370 2110 50 
+F13 "Row12" I R 5370 2010 50 
 $EndSheet
 Text Label 5620 1810 2    50   ~ 0
 Col0
@@ -349,13 +349,13 @@ Col5
 Text Label 5620 1210 2    50   ~ 0
 Col6
 Text Label 5610 2310 2    50   ~ 0
-Row8
-Text Label 5610 2210 2    50   ~ 0
 Row9
-Text Label 5660 2110 2    50   ~ 0
+Text Label 5655 2210 2    50   ~ 0
 Row10
-Text Label 5660 2010 2    50   ~ 0
+Text Label 5660 2110 2    50   ~ 0
 Row11
+Text Label 5660 2010 2    50   ~ 0
+Row12
 Text Label 5620 1110 2    50   ~ 0
 Col7
 Entry Wire Line
@@ -526,7 +526,7 @@ NoConn ~ 8400 1650
 Wire Bus Line
 	9180 700  9180 2975
 Wire Bus Line
-	5820 700  5820 2260
+	5820 700  5820 2210
 Wire Bus Line
 	7400 700  7400 3050
 Wire Bus Line

@@ -14,13 +14,13 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 Text HLabel 1450 4500 0    60   Input ~ 0
-Row9
-Text HLabel 1450 5400 0    60   Input ~ 0
 Row10
-Text HLabel 1450 6300 0    60   Input ~ 0
+Text HLabel 1450 5400 0    60   Input ~ 0
 Row11
+Text HLabel 1450 6300 0    60   Input ~ 0
+Row12
 Text HLabel 1450 3600 0    60   Input ~ 0
-Row8
+Row9
 Text HLabel 1450 1100 0    60   Input ~ 0
 Col7
 Text HLabel 1450 1300 0    60   Input ~ 0
@@ -674,11 +674,11 @@ Connection ~ 3200 5400
 Text Notes 1100 7100 0    50   ~ 0
 (Install either Row diodes or switch diodes.  Jumper uninstalled diodes.
 Text Label 2300 3600 0    50   ~ 0
-Row0_keys
+Row9_keys
 Text Label 2300 4500 0    50   ~ 0
-Row1_keys
+Row10_keys
 Text Label 2300 5400 0    50   ~ 0
-Row2_keys
+Row11_keys
 Wire Wire Line
 	5200 1900 5200 3200
 Wire Wire Line
@@ -686,7 +686,7 @@ Wire Wire Line
 Wire Wire Line
 	4800 3600 5600 3600
 Text Label 2300 6300 0    50   ~ 0
-Row3_keys
+Row12_keys
 Wire Wire Line
 	1450 4500 3200 4500
 Wire Wire Line
