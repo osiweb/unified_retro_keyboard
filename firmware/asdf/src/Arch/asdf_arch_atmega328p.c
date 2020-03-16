@@ -324,7 +324,7 @@ void asdf_arch_out1_set(uint8_t value)
   set_bit(&ASDF_OUT1_DDR, ASDF_OUT1_BIT);
 }
 
-// PROCEDURE: asdf_arch_out1_hi_z_set
+// PROCEDURE: asdf_arch_out1_open_hi_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
 //
@@ -338,7 +338,7 @@ void asdf_arch_out1_set(uint8_t value)
 //
 // COMPLEXITY: 2
 //
-void asdf_arch_out1_hi_z_set(uint8_t value)
+void asdf_arch_out1_open_hi_set(uint8_t value)
 {
   if (value) {
     clear_bit(&ASDF_OUT1_DDR, ASDF_OUT1_BIT);
@@ -347,6 +347,32 @@ void asdf_arch_out1_hi_z_set(uint8_t value)
   else {
     clear_bit(&ASDF_OUT1_PORT, ASDF_OUT1_BIT);
     set_bit(&ASDF_OUT1_DDR, ASDF_OUT1_BIT);
+  }
+}
+
+// PROCEDURE: asdf_arch_out1_open_lo_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: Sets the OUT1 bit to high if value is true, and hi-z if value is false.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_out1_open_lo_set(uint8_t value)
+{
+  if (value) {
+    set_bit(&ASDF_OUT1_PORT, ASDF_OUT1_BIT);
+    set_bit(&ASDF_OUT1_DDR, ASDF_OUT1_BIT);
+  }
+  else {
+    clear_bit(&ASDF_OUT1_DDR, ASDF_OUT1_BIT);
+    clear_bit(&ASDF_OUT1_PORT, ASDF_OUT1_BIT);
   }
 }
 
@@ -395,7 +421,7 @@ void asdf_arch_null_output(uint8_t value)
   (void) value;
 }
 
-// PROCEDURE: asdf_arch_out2_hi_z_set
+// PROCEDURE: asdf_arch_out2_open_hi_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
 //
@@ -409,7 +435,26 @@ void asdf_arch_null_output(uint8_t value)
 //
 // COMPLEXITY: 2
 //
-void asdf_arch_out2_hi_z_set(uint8_t value)
+void asdf_arch_out2_open_hi_set(uint8_t value)
+{
+  asdf_arch_null_output(value);
+}
+
+// PROCEDURE: asdf_arch_out2_open_lo_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: Sets the OUT2 bit to high if value is true, and hi-z if value is false.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES: Not supported for the ATMega-328 ASCII interface.
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_out2_open_lo_set(uint8_t value)
 {
   asdf_arch_null_output(value);
 }
@@ -439,7 +484,7 @@ void asdf_arch_out3_set(uint8_t value)
   set_bit(&ASDF_OUT3_DDR, ASDF_OUT3_BIT);
 }
 
-// PROCEDURE: asdf_arch_out3_hi_z_set
+// PROCEDURE: asdf_arch_out3_open_hi_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
 //
@@ -453,7 +498,7 @@ void asdf_arch_out3_set(uint8_t value)
 //
 // COMPLEXITY: 2
 //
-void asdf_arch_out3_hi_z_set(uint8_t value)
+void asdf_arch_out3_open_hi_set(uint8_t value)
 {
   if (value) {
     clear_bit(&ASDF_OUT3_DDR, ASDF_OUT3_BIT);
@@ -462,6 +507,32 @@ void asdf_arch_out3_hi_z_set(uint8_t value)
   else {
     clear_bit(&ASDF_OUT3_PORT, ASDF_OUT3_BIT);
     set_bit(&ASDF_OUT3_DDR, ASDF_OUT3_BIT);
+  }
+}
+
+// PROCEDURE: asdf_arch_out3_open_lo_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: Sets the OUT3 bit to high if value is true, and hi-z if value is false.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_arch_out3_open_lo_set(uint8_t value)
+{
+  if (value) {
+    set_bit(&ASDF_OUT3_PORT, ASDF_OUT3_BIT);
+    set_bit(&ASDF_OUT3_DDR, ASDF_OUT3_BIT);
+  }
+  else {
+    clear_bit(&ASDF_OUT3_DDR, ASDF_OUT3_BIT);
+    clear_bit(&ASDF_OUT3_PORT, ASDF_OUT3_BIT);
   }
 }
 

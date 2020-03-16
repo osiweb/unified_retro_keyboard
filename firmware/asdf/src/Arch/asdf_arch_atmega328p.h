@@ -279,11 +279,17 @@ void asdf_arch_led3_set(uint8_t value);
 // DESCRIPTION: Sets the OUT1 bit if value is true, and clear OUT1 if value is false.
 void asdf_arch_out1_set(uint8_t value);
 
-// PROCEDURE: asdf_arch_out1_hi_z_set
+// PROCEDURE: asdf_arch_out1_open_hi_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
 // DESCRIPTION: Sets the OUT1 bit to hi-z if value is true, and low if value is false.
-void asdf_arch_out1_hi_z_set(uint8_t value);
+void asdf_arch_out1_open_hi_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_out1_open_lo_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Sets the OUT1 bit to hi-z if value is true, and low if value is false.
+void asdf_arch_out1_open_lo_set(uint8_t value);
 
 // PROCEDURE: asdf_arch_out2_set
 // INPUTS: (uint8_t) value
@@ -291,25 +297,36 @@ void asdf_arch_out1_hi_z_set(uint8_t value);
 // DESCRIPTION: Sets the OUT2 bit if value is true, and clear OUT2 if value is false.
 void asdf_arch_out2_set(uint8_t value);
 
+// PROCEDURE: asdf_arch_out2_open_hi_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Sets the OUT2 bit to hi-z if value is true, and low if value is false.
+// NOTES: Not supported for the ATMega-328 ASCII interface.
+void asdf_arch_out2_open_hi_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_out2_open_lo_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Sets the OUT2 bit to high if value is true, and hi-z if value is false.
+void asdf_arch_out2_open_lo_set(uint8_t value);
+
 // PROCEDURE: asdf_arch_out3_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
 // DESCRIPTION: Sets the OUT3 bit if value is true, and clear OUT3 if value is false.
 void asdf_arch_out3_set(uint8_t value);
 
-// PROCEDURE: asdf_arch_out2_hi_z_set
-// INPUTS: (uint8_t) value
-// OUTPUTS: none
-// DESCRIPTION: Sets the OUT2 bit to hi-z if value is true, and low if value is false.
-// NOTES: Not supported for the ATMega-328 ASCII interface.
-void asdf_arch_out2_hi_z_set(uint8_t value);
-
-
-// PROCEDURE: asdf_arch_out3_hi_z_set
+// PROCEDURE: asdf_arch_out3_open_hi_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
 // DESCRIPTION: Sets the OUT3 bit to hi-z if value is true, and low if value is false.
-void asdf_arch_out3_hi_z_set(uint8_t value);
+void asdf_arch_out3_open_hi_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_out3_open_lo_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Sets the OUT3 bit to hi-z if value is true, and low if value is false.
+void asdf_arch_out3_open_lo_set(uint8_t value);
 
 // PROCEDURE: asdf_arch_read_row
 // INPUTS: (uint8_t) row: the row number to be scanned
