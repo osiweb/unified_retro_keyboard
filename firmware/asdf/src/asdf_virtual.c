@@ -69,12 +69,15 @@ void asdf_virtual_action(asdf_virtual_dev_t virtual_out, asdf_virtual_function_t
   while (PHYSICAL_NO_OUT != device) {
     switch (function) {
 
-      case V_PULSE: {
+      case V_PULSE_LONG: {
         asdf_physical_toggle(device);
-        asdf_arch_pulse_delay();
-        // yes we could omit the next two lines and fall through, but we will
-        // spend a few bytes of redundant code for the sake of consistency and
-        // readability.
+        asdf_arch_pulse_delay_long();
+        asdf_physical_toggle(device);
+        break;
+      }
+      case V_PULSE_SHORT: {
+        asdf_physical_toggle(device);
+        asdf_arch_pulse_delay_short();
         asdf_physical_toggle(device);
         break;
       }

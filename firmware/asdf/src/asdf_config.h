@@ -64,7 +64,10 @@
 #define ASDF_REPEAT_TIME_MS (1000 / 15) // l5 characters per sec.
 
 // duration of keyboard output pulses (RESET, SCREEN CLEAR, BREAK, etc.)
-#define ASDF_PULSE_DELAY_US 100
+#define ASDF_PULSE_DELAY_SHORT_US 10
+
+// duration of keyboard output pulses (RESET, SCREEN CLEAR, BREAK, etc.)
+#define ASDF_PULSE_DELAY_LONG_MS 50
 
 // DEFAULT value of keyboard outputs
 #define ASDF_VIRTUAL_OUT_DEFAULT_VALUE 1 // High if not used.

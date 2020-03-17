@@ -336,12 +336,19 @@ void asdf_arch_out3_open_lo_set(uint8_t value);
 // pressed within the row, with 1=pressed, 0=released.
 asdf_cols_t asdf_arch_read_row(uint8_t row);
 
-// PROCEDURE: asdf_arch_pulse_delay
+// PROCEDURE: asdf_arch_pulse_delay_short
 // INPUTS: none
 // OUTPUTS: none
-// DESCRIPTION: Delays a fixed amount of time for keyboard output pulses.
-// NOTES: Set ASDF_PULSE_DELAY_US in asdf_config.h
-void asdf_arch_pulse_delay(void);
+// DESCRIPTION: Delays a fixed amount of time for keyboard output pulses specified by ASDF_PULSE_DELAY_SHORT_US
+void asdf_arch_pulse_delay_short(void);
+
+
+// PROCEDURE: asdf_arch_pulse_delay_long
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Delays a fixed amount of time for keyboard output pulses specified by ASDF_PULSE_DELAY_LONG_MS
+void asdf_arch_pulse_delay_long(void);
+
 
 // PROCEDURE: asdf_arch_tick
 // INPUTS: none

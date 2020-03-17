@@ -45,25 +45,23 @@
 #define ASDF_APPLE2_NUM_ROWS 16 // DIP switches are row 15.
 #define ASDF_APPLE2_NUM_COLS 8
 
-#define ACTION_BREAK ACTION_NOTHING
+#define APPLE_ACTION_RESET ACTION_VOUT1
+#define APPLE_VIRTUAL_RESET VOUT1
+#define APPLE_RESET_OUTPUT PHYSICAL_OUT3_OPEN_HI
+#define APPLE_RESET_ACTIVE_VALUE 0
 
-#define ACTION_RESET ACTION_VOUT1
-#define VIRTUAL_RESET VOUT1
-#define RESET_OUTPUT PHYSICAL_OUT3_OPEN_HI
-#define RESET_ACTIVE_VALUE 0
+#define APPLE_ACTION_CLEAR ACTION_VOUT2
+#define APPLE_VIRTUAL_CLR_SCR VOUT2
+#define APPLE_CLR_SCR_OUTPUT PHYSICAL_OUT1_OPEN_LO
+#define APPLE_CLR_SCR_ACTIVE_VALUE 1
 
-#define ACTION_CLEAR ACTION_VOUT2
-#define VIRTUAL_CLR_SCR VOUT2
-#define CLR_SCR_OUTPUT PHYSICAL_OUT1_OPEN_LO
-#define CLR_SCR_ACTIVE_VALUE 1
+#define APPLE_VIRTUAL_POWER_LED VLED1
+#define APPLE_POWER_LED PHYSICAL_LED1
+#define APPLE_POWER_LED_INIT_VALUE 1
 
-#define VIRTUAL_POWER_LED VLED1
-#define POWER_LED PHYSICAL_LED1
-#define POWER_LED_INIT_VALUE 1
-
-#define VIRTUAL_DISABLED_LED VLED2
-#define DISABLED_LED PHYSICAL_LED3
-#define DISABLED_INIT_VALUE 0
+#define APPLE_VIRTUAL_DISABLED_LED VLED2
+#define APPLE_DISABLED_LED PHYSICAL_LED3
+#define APPLE_DISABLED_INIT_VALUE 0
 
 #define ASDF_APPLE2_KEYMAP_INITIALIZER_LENGTH 4
 
@@ -73,39 +71,39 @@
 #define ASDF_APPLE2_PLAIN_KEYMAP_INITIALIZER                            \
   {                                                                     \
    { .virtual_device = VCAPS_LED,                                       \
-     .physical_device = POWER_LED,                                          \
+     .physical_device = APPLE_POWER_LED,                                \
      .initial_value = 0 },                                              \
-   { .virtual_device = VIRTUAL_DISABLED_LED,                            \
-     .physical_device = DISABLED_LED,                                       \
+   { .virtual_device = APPLE_VIRTUAL_DISABLED_LED,                      \
+     .physical_device = APPLE_DISABLED_LED,                             \
      .initial_value = 0 },                                              \
-   { .virtual_device = VIRTUAL_RESET,                                   \
-     .physical_device = RESET_OUTPUT,                                       \
-     .function = V_PULSE,                                               \
-     .initial_value = !RESET_ACTIVE_VALUE },                            \
-   { .virtual_device = VIRTUAL_CLR_SCR,                                 \
-     .physical_device = CLR_SCR_OUTPUT,                                     \
-     .function = V_PULSE,                                               \
-     .initial_value = !CLR_SCR_ACTIVE_VALUE }                           \
+   { .virtual_device = APPLE_VIRTUAL_RESET,                             \
+     .physical_device = APPLE_RESET_OUTPUT,                             \
+     .function = V_PULSE_SHORT,                                         \
+     .initial_value = !APPLE_RESET_ACTIVE_VALUE },                      \
+   { .virtual_device = APPLE_VIRTUAL_CLR_SCR,                           \
+     .physical_device = APPLE_CLR_SCR_OUTPUT,                           \
+     .function = V_PULSE_LONG,                                          \
+     .initial_value = !APPLE_CLR_SCR_ACTIVE_VALUE }                     \
   }
 
 // The ALL CAPS map is the classic Apple II/II+ map. There is no CAPS LED, since
 // CAPS doesn't matter in the ALL CAPS keymap.
 #define ASDF_APPLE2_CAPS_KEYMAP_INITIALIZER                             \
   {                                                                     \
-   { .virtual_device = VIRTUAL_POWER_LED,                               \
-     .physical_device = POWER_LED,                                          \
-     .initial_value = POWER_LED_INIT_VALUE },                           \
-   { .virtual_device = VIRTUAL_DISABLED_LED,                            \
-     .physical_device = DISABLED_LED,                                       \
+   { .virtual_device = APPLE_VIRTUAL_POWER_LED,                         \
+     .physical_device = APPLE_POWER_LED,                                \
+     .initial_value = APPLE_POWER_LED_INIT_VALUE },                     \
+   { .virtual_device = APPLE_VIRTUAL_DISABLED_LED,                      \
+     .physical_device = APPLE_DISABLED_LED,                             \
      .initial_value = 0 },                                              \
-   { .virtual_device = VIRTUAL_RESET,                                   \
-     .physical_device = RESET_OUTPUT,                                       \
-     .function = V_PULSE,                                               \
-     .initial_value = !RESET_ACTIVE_VALUE },                            \
-   { .virtual_device = VIRTUAL_CLR_SCR,                                 \
-     .physical_device = CLR_SCR_OUTPUT,                                     \
-     .function = V_PULSE,                                               \
-     .initial_value = !CLR_SCR_ACTIVE_VALUE }                           \
+   { .virtual_device = APPLE_VIRTUAL_RESET,                             \
+     .physical_device = APPLE_RESET_OUTPUT,                             \
+     .function = V_PULSE_SHORT,                                         \
+     .initial_value = !APPLE_RESET_ACTIVE_VALUE },                      \
+   { .virtual_device = APPLE_VIRTUAL_CLR_SCR,                           \
+     .physical_device = APPLE_CLR_SCR_OUTPUT,                           \
+     .function = V_PULSE_LONG,                                          \
+     .initial_value = !APPLE_CLR_SCR_ACTIVE_VALUE }                     \
   }
 
 
@@ -170,7 +168,7 @@
    [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },               \
    [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                         \
    [5] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ASCII_CR, ASCII_AT, 'O', 'L', '>' },           \
-   [6] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_CLEAR, '=', \
+   [6] = { ACTION_NOTHING, ACTION_NOTHING, APPLE_ACTION_CLEAR, '=',     \
            '*',         ASCII_ZERO,           ASCII_RT_PAREN,       ASCII_LT_PAREN }, \
    [7] = { APPLE_LEFT_ARROW, ASCII_SINGLE_QUOTE, '&', '%', '$', '#', ASCII_DOUBLE_QUOTE, '!' }, \
    ASDF_APPLE2_DIP_SWITCHES                                           \
@@ -200,7 +198,7 @@
    [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },               \
    [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                         \
    [5] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ASCII_CR, ACTION_REPEAT, 'O', 'L', '>' },           \
-   [6] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_CLEAR, '=', \
+   [6] = { ACTION_NOTHING, ACTION_NOTHING, APPLE_ACTION_CLEAR, '=',     \
            '*',         ASCII_ZERO,           ASCII_RT_PAREN,       ASCII_LT_PAREN }, \
    [7] = { APPLE_LEFT_ARROW, ASCII_SINGLE_QUOTE, '&', '%', '$', '#', ASCII_DOUBLE_QUOTE, '!' }, \
    ASDF_APPLE2_DIP_SWITCHES                                           \
@@ -220,7 +218,7 @@
            ASCII_CTRL_T, ASCII_CTRL_R, ASCII_CTRL_E, ASCII_CTRL_W },    \
    [5] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING,  ASCII_CR,       \
            ACTION_REPEAT,      ASCII_CTRL_O,   ASCII_CTRL_L, ACTION_NOTHING }, \
-   [6] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_RESET,   ACTION_NOTHING,   \
+   [6] = { ACTION_NOTHING, ACTION_NOTHING, APPLE_ACTION_RESET,   ACTION_NOTHING, \
            ACTION_NOTHING, ACTION_FN_10, ACTION_FN_9, ACTION_FN_8 },    \
    [7] = { APPLE_LEFT_ARROW, ACTION_FN_7, ACTION_FN_6, ACTION_FN_5, \
             ACTION_FN_4, ACTION_FN_3, ACTION_FN_2, ACTION_FN_1 }, \

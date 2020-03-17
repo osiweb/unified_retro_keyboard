@@ -626,11 +626,11 @@ static void asdf_arch_init_row_outputs(void)
   ASDF_ROW_DDR |= ASDF_ROW_MASK;
 }
 
-// PROCEDURE: asdf_arch_pulse_delay
+// PROCEDURE: asdf_arch_pulse_delay_short
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Delays a fixed amount of time for keyboard output pulses.
+// DESCRIPTION: Delays a fixed amount of time for keyboard output pulses specified by ASDF_PULSE_DELAY_SHORT_US
 //
 // SIDE EFFECTS: see above.
 //
@@ -640,9 +640,28 @@ static void asdf_arch_init_row_outputs(void)
 //
 // COMPLEXITY: 1
 //
-void asdf_arch_pulse_delay(void)
+void asdf_arch_pulse_delay_short(void)
 {
-  _delay_us(ASDF_PULSE_DELAY_US);
+  _delay_us(ASDF_PULSE_DELAY_SHORT_US);
+}
+
+// PROCEDURE: asdf_arch_pulse_delay_long
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Delays a fixed amount of time for keyboard output pulses specified by ASDF_PULSE_DELAY_LONG_MS
+//
+// SIDE EFFECTS: see above.
+//
+// NOTES: Set ASDF_PULSE_DELAY_US in asdf_config.h
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_pulse_delay_long(void)
+{
+  _delay_us(ASDF_PULSE_DELAY_LONG_MS);
 }
 
 // PROCEDURE: asdf_arch_init

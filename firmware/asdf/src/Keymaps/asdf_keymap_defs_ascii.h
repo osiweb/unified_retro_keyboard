@@ -37,22 +37,24 @@
 #define ASDF_ASCII_NUM_ROWS 16 // DIP switches are row 15.
 #define ASDF_ASCII_NUM_COLS 8
 
-#define ACTION_BREAK ACTION_NOTHING
+#define ASCII_ACTION_BREAK ACTION_NOTHING
 
-#define VIRTUAL_RESET VOUT1
-#define RESET_OUTPUT PHYSICAL_OUT3_OPEN_HI
-#define RESET_ACTIVE_VALUE 0
+#define ASCII_VIRTUAL_RESET VOUT1
+#define ASCII_ACTION_RESET ACTION_VOUT1
+#define ASCII_RESET_OUTPUT PHYSICAL_OUT3_OPEN_HI
+#define ASCII_RESET_ACTIVE_VALUE 0
 
-#define VIRTUAL_CLR_SCR VOUT2
-#define CLR_SCR_OUT PHYSICAL_OUT1_OPEN_LO
-#define CLR_SCR_ACTIVE_VALUE 1
+#define ASCII_VIRTUAL_CLR_SCR VOUT2
+#define ASCII_ACTION_CLEAR ACTION_VOUT2
+#define ASCII_CLR_SCR_OUT PHYSICAL_OUT1_OPEN_LO
+#define ASCII_CLR_SCR_ACTIVE_VALUE 1
 
-#define VIRTUAL_POWER_LED VLED1
-#define POWER_LED PHYSICAL_LED1
-#define POWER_LED_INIT_VALUE 1
+#define ASCII_VIRTUAL_POWER_LED VLED1
+#define ASCII_POWER_LED PHYSICAL_LED1
+#define ASCII_POWER_LED_INIT_VALUE 1
 
-#define CAPS_LED PHYSICAL_LED3
-#define CAPS_LED_INIT_VALUE 0
+#define ASCII_CAPS_LED PHYSICAL_LED3
+#define ASCII_CAPS_LED_INIT_VALUE 0
 
 
 
@@ -60,20 +62,20 @@
 
 #define ASDF_ASCII_PLAIN_KEYMAP_INITIALIZER                             \
   {                                                                     \
-   { .virtual_device = VIRTUAL_POWER_LED,                               \
-       .physical_device = POWER_LED,                                        \
-     .initial_value = POWER_LED_INIT_VALUE },                           \
+   { .virtual_device = ASCII_VIRTUAL_POWER_LED,                               \
+       .physical_device = ASCII_POWER_LED,                                        \
+     .initial_value = ASCII_POWER_LED_INIT_VALUE },                     \
    { .virtual_device = VCAPS_LED,                                       \
-     .physical_device = CAPS_LED,                                           \
-     .initial_value = CAPS_LED_INIT_VALUE },                            \
-   { .virtual_device = VIRTUAL_RESET,                                   \
-       .physical_device = RESET_OUTPUT,                                     \
-     .function = V_PULSE,                                               \
-     .initial_value = !RESET_ACTIVE_VALUE },                            \
-   { .virtual_device = VIRTUAL_CLR_SCR,                                 \
-    .physical_device = CLR_SCR_OUT,                                         \
-    .function = V_PULSE,                                                \
-       .initial_value = !CLR_SCR_ACTIVE_VALUE },                        \
+     .physical_device = ASCII_CAPS_LED,                                 \
+     .initial_value = ASCII_CAPS_LED_INIT_VALUE },                      \
+   { .virtual_device = ASCII_VIRTUAL_RESET,                             \
+     .physical_device = ASCII_RESET_OUTPUT,                             \
+     .function = V_PULSE_SHORT,                                               \
+     .initial_value = !ASCII_RESET_ACTIVE_VALUE },                      \
+   { .virtual_device = ASCII_VIRTUAL_CLR_SCR,                           \
+     .physical_device = ASCII_CLR_SCR_OUT,                              \
+    .function = V_PULSE_LONG,                                                \
+     .initial_value = !ASCII_CLR_SCR_ACTIVE_VALUE },                    \
   }
 
 // For the CAPS map, no LED is mapped to the CapsLock virtual LED, since
@@ -81,20 +83,20 @@
 // an unused LED output, initialized to OFF, to ensure the LED is dark.
 #define ASDF_ASCII_CAPS_KEYMAP_INITIALIZER                              \
   {                                                                     \
-   { .virtual_device = VIRTUAL_POWER_LED,                               \
-     .physical_device = POWER_LED,                                          \
-     .initial_value = POWER_LED_INIT_VALUE },                           \
+   { .virtual_device = ASCII_VIRTUAL_POWER_LED,                         \
+     .physical_device = ASCII_POWER_LED,                                \
+     .initial_value = ASCII_POWER_LED_INIT_VALUE },                     \
    { .virtual_device = VLED1,                                       \
-     .physical_device = CAPS_LED,                                       \
-     .initial_value = CAPS_LED_INIT_VALUE },                            \
-   { .virtual_device = VIRTUAL_RESET,                                   \
-     .physical_device = RESET_OUTPUT,                                       \
-     .function = V_PULSE,                                               \
-     .initial_value = !RESET_ACTIVE_VALUE },                            \
-   { .virtual_device = VIRTUAL_CLR_SCR,                                 \
-    .physical_device = CLR_SCR_OUT,                                         \
-    .function = V_PULSE,                                                \
-     .initial_value = !CLR_SCR_ACTIVE_VALUE },                          \
+     .physical_device = ASCII_CAPS_LED,                                 \
+     .initial_value = ASCII_CAPS_LED_INIT_VALUE },                      \
+   { .virtual_device = ASCII_VIRTUAL_RESET,                             \
+     .physical_device = ASCII_RESET_OUTPUT,                             \
+     .function = V_PULSE_SHORT,                                               \
+     .initial_value = !ASCII_RESET_ACTIVE_VALUE },                      \
+   { .virtual_device = ASCII_VIRTUAL_CLR_SCR,                           \
+     .physical_device = ASCII_CLR_SCR_OUT,                              \
+    .function = V_PULSE_LONG,                                                \
+     .initial_value = !ASCII_CLR_SCR_ACTIVE_VALUE },                    \
   }
 
 
@@ -140,9 +142,9 @@
    [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,  \
            ASCII_ESC, ASCII_TAB,    ACTION_CTRL,  ASCII_BACKSLASH }, \
    [1] = { ASCII_DEL, 'p', ';', '/', ASCII_SPACE, 'z', 'a', 'q' },      \
-   [2] = { ACTION_BREAK, ASCII_COMMA, 'm', 'n', 'b', 'v', 'c', 'x' },   \
+   [2] = { ASCII_ACTION_BREAK, ASCII_COMMA, 'm', 'n', 'b', 'v', 'c', 'x' },   \
    [3] = { ACTION_NOTHING, 'k', 'j', 'h', 'g', 'f', 'd', 's' },         \
-   [4] = { ACTION_CLEAR, 'i', 'u', 'y', 't', 'r', 'e', 'w' },           \
+   [4] = { ACTION_NOTHING, 'i', 'u', 'y', 't', 'r', 'e', 'w' },           \
    [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, 'o', 'l', ASCII_PERIOD }, \
    [6] = { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', ASCII_ZERO, '9', '8' }, \
    [7] = { ASCII_AT, '7', '6', '5', '4', '3', '2', '1' }, \
@@ -154,9 +156,9 @@
     [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING, \
             ASCII_ESC, ASCII_TAB,    ACTION_CTRL,  ASCII_BACKSLASH }, \
     [1] = { ASCII_DEL, 'P', ';', '/', ASCII_SPACE, 'Z', 'A', 'Q' },     \
-    [2] = { ACTION_BREAK, ASCII_COMMA, 'M', 'N', 'B', 'V', 'C', 'X' },  \
+    [2] = { ASCII_ACTION_BREAK, ASCII_COMMA, 'M', 'N', 'B', 'V', 'C', 'X' },  \
     [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },        \
-    [4] = { ACTION_CLEAR, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },          \
+    [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },          \
     [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', ASCII_PERIOD }, \
     [6] = { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', ASCII_ZERO, '9', '8' }, \
     [7] = { ASCII_AT, '7', '6', '5', '4', '3', '2', '1' },              \
@@ -168,9 +170,9 @@
    [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,        \
      ASCII_ESC, ASCII_TAB,    ACTION_CTRL,  ASCII_VERT_BAR },      \
    [1] = { ASCII_DEL, 'P', '+', '?', ASCII_SPACE, 'Z', 'A', 'Q' },            \
-   [2] = { ACTION_BREAK, '<', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
+   [2] = { ASCII_ACTION_CLEAR, '<', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
    [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },               \
-   [4] = { ACTION_CLEAR, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                         \
+   [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                         \
    [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', '>' },           \
    [6] = { ASCII_TILDE, ASCII_RT_CURLY_BRACE, ASCII_LT_CURLY_BRACE, '=', \
            '*',         ASCII_ZERO,           ASCII_RT_PAREN,       ASCII_LT_PAREN }, \
@@ -184,11 +186,11 @@
       ASCII_ESC, ASCII_TAB,    ACTION_CTRL,  0x1c },                                          \
    [1] = { ACTION_NOTHING, ASCII_CTRL_P, ACTION_NOTHING, ACTION_NOTHING,      \
         ASCII_SPACE,    ASCII_CTRL_Z, ASCII_CTRL_A,   ASCII_CTRL_Q },                              \
-   [2] = { ACTION_RESET, ASCII_COMMA, ASCII_CTRL_M, ASCII_CTRL_N,       \
+   [2] = { ASCII_ACTION_RESET, ASCII_COMMA, ASCII_CTRL_M, ASCII_CTRL_N,       \
            ASCII_CTRL_B, ASCII_CTRL_V, ASCII_CTRL_C, ASCII_CTRL_X },    \
    [3] = { ACTION_NOTHING, ASCII_CTRL_K, ASCII_CTRL_J, ASCII_CTRL_H, \
            ASCII_CTRL_G, ASCII_CTRL_F, ASCII_CTRL_D, ASCII_CTRL_S }, \
-   [4] = { ACTION_CLEAR, ASCII_CTRL_I, ASCII_CTRL_U, ASCII_CTRL_Y,      \
+   [4] = { ACTION_NOTHING, ASCII_CTRL_I, ASCII_CTRL_U, ASCII_CTRL_Y,      \
         ASCII_CTRL_T, ASCII_CTRL_R, ASCII_CTRL_E, ASCII_CTRL_W },                                  \
    [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS,  ASCII_CR,       \
         ASCII_LF,      ASCII_CTRL_O,   ASCII_CTRL_L, ACTION_NOTHING },                             \

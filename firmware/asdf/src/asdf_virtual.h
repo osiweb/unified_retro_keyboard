@@ -48,7 +48,8 @@ typedef enum {
   V_NOFUNC,
   V_SET_HI,
   V_SET_LO,
-  V_PULSE,
+  V_PULSE_SHORT,
+  V_PULSE_LONG,
   V_TOGGLE,
   ASDF_VIRTUAL_NUM_FUNCTIONS
 } asdf_virtual_function_t;
