@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 11)
+    (drawings 9)
     (tracks 0)
     (zones 0)
     (modules 88)
@@ -1501,12 +1501,6 @@
     (pad "" np_thru_hole circle (at 0 0) (size 3.81 3.81) (drill 3.81) (layers *.Cu *.Mask))
   )
 
-  (gr_text "SOL-20 Cherry aligner.  rev 1.0" (at 182.118 111.6584) (layer F.SilkS) (tstamp 5E707691)
-    (effects (font (size 2.032 2.032) (thickness 0.2032)))
-  )
-  (gr_text "Unified Keyboard    https://github.com/osiweb/unified_retro_keyboard" (at 370.713 112.014) (layer F.SilkS)
-    (effects (font (size 2.032 2.032) (thickness 0.2032)))
-  )
   (gr_circle (center 103.1875 206.7706) (end 105.7075 206.7706) (layer Edge.Cuts) (width 0.05) (tstamp 5E709850))
   (gr_circle (center 103.1748 187.6952) (end 105.6948 187.6952) (layer Edge.Cuts) (width 0.05) (tstamp 5E709850))
   (gr_circle (center 122.2756 168.6706) (end 124.7956 168.6706) (layer Edge.Cuts) (width 0.05))
