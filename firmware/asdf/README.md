@@ -47,8 +47,6 @@ Features:
   * (2): Apple 2 ASCII keyboard (upper/lower)
   * (3): Apple 2 ASCII keyboard (standard all caps)
 
-* Indicators: Controlled via activate() and deactivate() functions for the various keys.
-
 * Debounce and Repeat functions: The main keyscan logic implements key
   debouncing. Multiple keys may be debounced simultaneously using a separate
   debounce counter for each key in the matrix.
