@@ -374,9 +374,8 @@ void asdf_init(void)
 
   last_key = ACTION_NOTHING;
 
-  asdf_modifiers_init();
   asdf_repeat_init();
-  asdf_keymaps_init();
+  asdf_keymaps_init(); // also initializes modifier states.
   asdf_buffer_init();
 
   // reserve a buffer:

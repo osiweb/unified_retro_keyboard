@@ -56,8 +56,10 @@ static uint8_t keymap_index;
 // OUTPUTS: none
 //
 // DESCRIPTION: accepts a index value. If the requested keymap index is valid,
-// then assign the value to the global (to the module) keymap_index variable,
-// and initialize the virtual outputs for the selected keymap.
+// then:
+// 1) assign the value to the global (to the module) keymap_index variable
+// 2) initialize the virtual outputs for the selected keymap.
+// 3) initialize the modifier key states.
 //
 // SIDE EFFECTS: May change the module-global keymap_index variable.
 //
@@ -72,6 +74,7 @@ void asdf_keymaps_select_keymap(uint8_t index)
   if (index < ASDF_NUM_KEYMAPS) {
     keymap_index = index;
     asdf_virtual_init((asdf_virtual_initializer_t *const) keymap_initializer_list[keymap_index]);
+    asdf_modifiers_init();
   }
 }
 
