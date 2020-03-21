@@ -24,7 +24,7 @@
 #if !defined(ASDF_H)
 #define ASDF_H
 
-#define ASDF_ACTION 0x90 // SOL-20 uses codes 0x80-0x8f
+#define ASDF_ACTION 0xA0 // SOL-20 uses codes 0x80-0x9A
 #define ASDF_INVALID_CODE ASDF_ACTION
 // an action code is not a valid keycode.
 

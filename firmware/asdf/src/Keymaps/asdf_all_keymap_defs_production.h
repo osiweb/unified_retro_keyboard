@@ -37,15 +37,25 @@
 
 #include "Keymaps/asdf_keymap_defs_ascii.h"
 #include "Keymaps/asdf_keymap_defs_apple2.h"
+#include "Keymaps/asdf_keymap_defs_sol.h"
 
-#define ASDF_NUM_KEYMAPS (ASDF_ASCII_ALL_MAPS_COUNT + ASDF_APPLE2_ALL_MAPS_COUNT)
-#define ASDF_KEYMAP_DEFS { ASDF_ASCII_ALL_MAPS , ASDF_APPLE2_ALL_MAPS }
-#define ASDF_KEYMAP_DECLARATIONS ASDF_ASCII_MAP_DECLARATIONS ASDF_APPLE2_MAP_DECLARATIONS
+#define ASDF_NUM_KEYMAPS                                                                           \
+  (ASDF_ASCII_ALL_MAPS_COUNT + ASDF_APPLE2_ALL_MAPS_COUNT + ASDF_SOL_ALL_MAPS_COUNT)
 
-#define ASDF_KEYMAP_INITIALIZERS { ASDF_ASCII_KEYMAP_INITIALIZER , ASDF_APPLE2_KEYMAP_INITIALIZER }
+#define ASDF_KEYMAP_DEFS                                                \
+  {                                                                                                \
+    ASDF_ASCII_ALL_MAPS, ASDF_APPLE2_ALL_MAPS, ASDF_SOL_ALL_MAPS                                   \
+  }
+
+#define ASDF_KEYMAP_DECLARATIONS                                        \
+  ASDF_ASCII_MAP_DECLARATIONS ASDF_APPLE2_MAP_DECLARATIONS ASDF_SOL_MAP_DECLARATIONS
+
+#define ASDF_KEYMAP_INITIALIZERS                                                                   \
+  {                                                                                                \
+    ASDF_ASCII_KEYMAP_INITIALIZER, ASDF_APPLE2_KEYMAP_INITIALIZER, ASDF_SOL_KEYMAP_INITIALIZER     \
+  }
 
 typedef asdf_keycode_t keycode_matrix_t[ASDF_NUM_ROWS][ASDF_NUM_COLS];
-
 
 
 #endif /* !defined (ASDF_KEYMAP_DEFS_H) */
