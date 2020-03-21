@@ -21,3 +21,7 @@ classic ASCII keyset, with a special SOL-20 add-on keyset.
    aesthetic difference. There is s tiny bit of space between keys using
    straight keycaps, so an 11 degree adapter may not require any change to the
    layout.
+
+## Notes
+
+1. Some services balk at the number of cutouts in the full SOL-20 aligners, so in addition to the full aligner plates, the aligners for cherry MX and futaba keys have also been broken out into separate aligners for the main keyboard and numeric keypad.
