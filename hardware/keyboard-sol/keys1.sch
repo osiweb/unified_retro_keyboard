@@ -634,7 +634,7 @@ AR Path="/5E163BE9/5BC6D0C2" Ref="SW?"  Part="1"
 AR Path="/5E16AC8E/5BC6D0C2" Ref="SW?"  Part="1" 
 F 0 "SW55" H 6200 6185 50  0000 C CNN
 F 1 "RT Shift: 2x" H 6240 6090 50  0000 C CNN
-F 2 "unikbd:Key_MX" H 6200 6100 50  0001 C CNN
+F 2 "unikbd:Key_MX_2u" H 6200 6100 50  0001 C CNN
 F 3 "" H 6200 6100 50  0001 C CNN
 	1    6200 5900
 	1    0    0    -1  
