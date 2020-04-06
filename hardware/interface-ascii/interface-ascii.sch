@@ -1550,19 +1550,6 @@ Text Notes 9495 1740 0    50   ~ 0
 @
 Text Notes 9445 1340 0    50   ~ 0
 Power
-$Comp
-L Device:R_US R5
-U 1 1 5EE753E3
-P 9330 2350
-F 0 "R5" V 9295 2435 50  0000 L CNN
-F 1 "330" V 9405 2280 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 9370 2340 50  0001 C CNN
-F 3 "~" H 9330 2350 50  0001 C CNN
-	1    9330 2350
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	9060 2350 9180 2350
 Wire Wire Line
 	4355 4850 3900 4850
 Wire Wire Line
@@ -1587,16 +1574,12 @@ F 3 "" H 9115 1065 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9190 1550 9060 1550
-Wire Wire Line
 	9060 2250 9115 2250
 Wire Wire Line
 	9115 2250 9115 1850
 Connection ~ 9115 1450
 Wire Wire Line
 	9975 1650 9060 1650
-Wire Wire Line
-	9480 2350 9680 2350
 $Comp
 L Device:C C5
 U 1 1 5E4F4413
@@ -1818,39 +1801,11 @@ F 3 "www.ti.com/lit/ds/symlink/sn74ls04.pdf" H 4730 7320 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4035 1655 4035 3650
-$Comp
-L Device:R_US R1
-U 1 1 5E779921
-P 9340 1550
-F 0 "R1" V 9380 1635 50  0000 L CNN
-F 1 "330" V 9265 1470 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 9380 1540 50  0001 C CNN
-F 3 "~" H 9340 1550 50  0001 C CNN
-	1    9340 1550
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	9190 1950 9060 1950
-$Comp
-L Device:R_US R2
-U 1 1 5EFBE67B
-P 9340 1950
-F 0 "R2" V 9380 2035 50  0000 L CNN
-F 1 "330" V 9265 1870 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 9380 1940 50  0001 C CNN
-F 3 "~" H 9340 1950 50  0001 C CNN
-	1    9340 1950
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	9115 1850 9060 1850
 Connection ~ 9115 1850
 Wire Wire Line
 	9115 1850 9115 1450
-Wire Wire Line
-	9490 1550 9975 1550
-Wire Wire Line
-	9490 1950 9705 1950
 Wire Wire Line
 	9705 4195 9410 4195
 Wire Wire Line
@@ -2161,6 +2116,12 @@ Wire Wire Line
 	1150 2685 1875 2685
 Text Label 1260 2685 0    50   ~ 0
 OUT1
+Wire Wire Line
+	9060 2350 9680 2350
+Wire Wire Line
+	9060 1950 9705 1950
+Wire Wire Line
+	9060 1550 9975 1550
 Wire Bus Line
 	5200 3850 5200 6640
 Wire Bus Line
