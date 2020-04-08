@@ -6,7 +6,7 @@ encoding utf-8
 Sheet 1 1
 Title "ASCII Interface for Unified Retro Keyboard"
 Date "2019-08-25"
-Rev "2.4"
+Rev "2.5"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
