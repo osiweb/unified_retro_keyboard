@@ -24,9 +24,13 @@
 #if !defined(ASDF_H)
 #define ASDF_H
 
+// Define the code at which keyboard actions begin. Codes below this value are
+// values to be transmitted to the host machine. Codes above this value are
+// actions to be performed.
 #define ASDF_ACTION 0xA0 // SOL-20 uses codes 0x80-0x9A
-#define ASDF_INVALID_CODE ASDF_ACTION
+
 // an action code is not a valid keycode.
+#define ASDF_INVALID_CODE ASDF_ACTION
 
 // for efficiency on 8-bit machines, use 8 columns per row. For 16 columns per
 // row, change cols_t to uint16_t and increase ASDF_NUM_COLS.
@@ -38,6 +42,8 @@ typedef uint8_t asdf_cols_t;
 // codes (enumerated in action_t) do not conflict with the encoding scheme.
 typedef uint8_t asdf_keycode_t;
 
+
+// This typedef enumerates the valid ACTIONS than can be specified in a keymap.
 typedef enum {
   ACTION_NOTHING = ASDF_ACTION,
   ACTION_SHIFT,

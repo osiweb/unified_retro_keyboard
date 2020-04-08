@@ -5,9 +5,10 @@
 //
 //  asdf_ascii.h
 //
-// This file contains definitions of ASCII control cods and certain symbols, in
-// order to avoid escaping special characters in the keymap definitions, and to
-// improve keymap readability.
+// This file contains definitions of ASCII control codes and certain symbols for
+// keymap definitions. The purpose is to improve readability and consistency of
+// the keymap matrices, and avoid escaping special characters in the keymap
+// definitions.
 //
 // Copyright 2019 David Fenyes
 //
@@ -28,6 +29,7 @@
 #if !defined(ASDF_ASCII_H)
 #define ASDF_ASCII_H
 
+// List of all ASCII control codes
 typedef enum {
   ASCII_NULL = 0x00,
   ASCII_CTRL_A = 0x01,

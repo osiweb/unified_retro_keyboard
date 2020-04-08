@@ -5,8 +5,10 @@
 //
 // asdf_buffer.c
 //
-// Provides an interface between the generation of keycodes and the
-// hardware-level keycode transmission. Any buffering, etcc. occurs here.
+// This is a circular buffer module that can be used by any part of the code
+// that requires buffering. Buffering provides an interface between the
+// generation of keycodes and the hardware-level keycode transmission, which may
+// occur at different rates.
 //
 // Copyright 2019 David Fenyes
 //
@@ -29,6 +31,19 @@
 #include "asdf.h"
 #include "asdf_buffer.h"
 
+// Implementation Notes:
+//
+// 1) Note that this implementation does not support dynamic allocation and
+// freeing of buffers. Each buffer is allocated at startup and is stable forever
+// afterwards.
+//
+// 2) Buffer handles are indices into an array of buffer-tracking structures.
+// Using indices rather than pointers incurs a small performance penalty for the
+// extra level of indirection, but affords the advantage of testing the buffer
+// handle for validity.
+
+
+// Define the low-level details for each buffer.
 typedef struct {
   asdf_keycode_t *buf;
   int16_t size;
@@ -37,11 +52,18 @@ typedef struct {
   uint8_t count;
 } asdf_buffer_t;
 
-
+// This is the pool of codes available for buffering. This pool is divided among
+// the allocated buffers.
 static asdf_keycode_t buffer_pool[ASDF_BUFFER_POOL_SIZE];
+
+// This array stores the buffering details for each allocated buffer. The number
+// of available buffers is defined in the header file.
 static asdf_buffer_t buffers[ASDF_BUFFER_NUM_HANDLES];
 
-static int16_t buffer_free;
+// Index of the beginning of unallocated part of the buffer pool.
+static int16_t buffer_pool_next_available;
+
+// Index of the next available buffer handle
 static asdf_buffer_handle_t next_handle;
 
 
@@ -61,7 +83,7 @@ static asdf_buffer_handle_t next_handle;
 //
 void asdf_buffer_init(void)
 {
-  buffer_free = 0;
+  buffer_pool_next_available = 0;
   next_handle = 0;
 }
 
@@ -106,16 +128,16 @@ asdf_buffer_handle_t asdf_buffer_new(int16_t size)
   asdf_buffer_handle_t handle = ASDF_BUFFER_INVALID;
 
   if (next_handle < ASDF_BUFFER_NUM_HANDLES) {
-    if (size <= (ASDF_BUFFER_POOL_SIZE - buffer_free)) {
+    if (size <= (ASDF_BUFFER_POOL_SIZE - buffer_pool_next_available)) {
       handle = next_handle++;
 
       buffers[handle].size = size;
-      buffers[handle].buf = &buffer_pool[buffer_free];
+      buffers[handle].buf = &buffer_pool[buffer_pool_next_available];
       buffers[handle].head = 0;
       buffers[handle].tail = 0;
       buffers[handle].count = 0;
 
-      buffer_free += size;
+      buffer_pool_next_available += size;
     }
   }
   return handle;

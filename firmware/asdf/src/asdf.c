@@ -42,6 +42,9 @@
 #include "asdf_buffer.h"
 #include "asdf_arch.h"
 
+
+// The key scanner keeps track of the last stable (debounced) state of each key
+// in the matrix, one bit per key, 8 bits per row.
 static asdf_cols_t last_stable_key_state[ASDF_NUM_ROWS];
 
 // Each key is debounced separately, supporting true N-key rollover, allowing a
@@ -55,10 +58,10 @@ static asdf_cols_t last_stable_key_state[ASDF_NUM_ROWS];
 // CAPS_LOCK.
 static uint8_t debounce_counters[ASDF_NUM_ROWS][ASDF_NUM_COLS];
 
-// store the last key pressed
+// Stores the last key pressed
 static asdf_keycode_t last_key;
 
-// handle for the char output buffer
+// This is the handle for the char output buffer
 static asdf_buffer_handle_t asdf_keycode_buffer;
 
 
@@ -374,13 +377,16 @@ void asdf_init(void)
 
   last_key = ACTION_NOTHING;
 
-  asdf_repeat_init();
-  asdf_keymaps_init(); // also initializes modifier states.
-  asdf_buffer_init();
+  asdf_repeat_init();  // initialize the repeat counters
+  asdf_keymaps_init(); // initialize keymaps. This also initializes the modifier
+                       // key states.
+  asdf_buffer_init(); // initialize the buffers
 
-  // reserve a buffer:
+  // reserve a buffer for the ASCII output:
   asdf_keycode_buffer = asdf_buffer_new(ASDF_KEYCODE_BUFFER_SIZE);
 
+  // Initialize all the keys to the unpressed state, and initialze the debounce
+  // counters. 
   for (uint8_t row = 0; row < ASDF_NUM_ROWS; row++) {
     last_stable_key_state[row] = 0;
     for (uint8_t col = 0; col < ASDF_NUM_COLS; col++) {

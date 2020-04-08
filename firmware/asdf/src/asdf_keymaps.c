@@ -88,6 +88,12 @@ void asdf_keymaps_select_keymap(uint8_t index)
 //
 // SCOPE: public
 //
+// NOTES: Note that the DIP switches are keys in the key matrix, which is
+// initialized to the all unpressed state at startup. Since the keymap is
+// initialized to 0, the keymap is consistent with the presumed initial state of
+// the DIP switches. If the DIP switches are not set to Keymap 0, then their
+// position will be detected as keypresses, and the correct keymap will be set.
+
 // COMPLEXITY: 1
 //
 void asdf_keymaps_init(void)
