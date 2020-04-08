@@ -74,7 +74,7 @@
     (grid_origin 62.1538 75.2602)
     (visible_elements 7FFFEFFF)
     (pcbplotparams
-      (layerselection 0x010fc_ffffffff)
+      (layerselection 0x010f0_ffffffff)
       (usegerberextensions false)
       (usegerberattributes false)
       (usegerberadvancedattributes false)
@@ -99,7 +99,7 @@
       (mirror false)
       (drillshape 0)
       (scaleselection 1)
-      (outputdirectory "cherry-aligner-outputs"))
+      (outputdirectory "outputs"))
   )
 
   (net 0 "")
