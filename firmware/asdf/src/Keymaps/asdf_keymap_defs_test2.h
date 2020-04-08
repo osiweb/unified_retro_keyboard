@@ -110,7 +110,7 @@
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  0x1c },                                          \
       { ACTION_NOTHING, ASCII_CTRL_P, ACTION_NOTHING, ACTION_NOTHING,                              \
         ASCII_SPACE,    ASCII_CTRL_Z, ASCII_CTRL_A,   ASCII_CTRL_Q },                              \
-      { ACTION_NOTHING, ASCII_COMMA,  ASCII_CTRL_M, ASCII_CTRL_N,                                    \
+      { ACTION_NOTHING, ASCII_COMMA,  ASCII_CTRL_M, ASCII_CTRL_N,         \
         ASCII_CTRL_B, ASCII_CTRL_V, ASCII_CTRL_C, ASCII_CTRL_X },                                  \
       { ACTION_NOTHING, ASCII_CTRL_K, ASCII_CTRL_J, ASCII_CTRL_H,                                  \
         ASCII_CTRL_G,   ASCII_CTRL_F, ASCII_CTRL_D, ASCII_CTRL_S },                                \

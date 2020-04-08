@@ -55,7 +55,7 @@ TEST2_BUILD = $(BUILD_DIR)/test_$(TEST2)
 
 TEST3 = asdf_keymaps
 TEST3_SRC = $(TEST_DIR)/test_$(TEST3).c
-TEST3_DEPS = ./$(TEST3).c $(UNITY_DIR)/unity.c ./asdf_physical.c ./asdf_virtual.c ./asdf_arch.c
+TEST3_DEPS = ./$(TEST3).c $(UNITY_DIR)/unity.c ./asdf_physical.c ./asdf_virtual.c ./asdf_modifiers.c ./asdf_arch.c
 TEST3_BUILD = $(BUILD_DIR)/test_$(TEST3)
 
 TEST4 = asdf_buffer

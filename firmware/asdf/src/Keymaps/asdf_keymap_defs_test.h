@@ -173,7 +173,7 @@
         /* single pulse */                                                                         \
         .virtual_device = VOUT3,                                                                   \
         .physical_device = PHYSICAL_OUT3,                                                                  \
-        .function = V_PULSE,                                                                       \
+        .function = V_PULSE_SHORT,                                                                       \
         .initial_value = 0,                                                                        \
       },                                                                                           \
       { /* first of double assignment attempt */                                                   \

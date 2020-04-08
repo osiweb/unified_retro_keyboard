@@ -80,7 +80,7 @@ void test_pulse_high_virtual_output(void)
   TEST_ASSERT_EQUAL_INT32(PD_ST_STABLE_LOW, asdf_arch_check_pulse(PHYSICAL_OUT1));
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_OUT1));
 
-  asdf_virtual_action(VOUT1, V_PULSE);
+  asdf_virtual_action(VOUT1, V_PULSE_SHORT);
 
   // output should be low
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_OUT1));
@@ -95,7 +95,7 @@ void test_pulse_low_virtual_output(void)
   TEST_ASSERT_EQUAL_INT32(PD_ST_STABLE_HIGH, asdf_arch_check_pulse(PHYSICAL_OUT1));
   TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(PHYSICAL_OUT1));
 
-  asdf_virtual_action(VOUT1, V_PULSE);
+  asdf_virtual_action(VOUT1, V_PULSE_SHORT);
 
   // output should be high
   TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(PHYSICAL_OUT1));

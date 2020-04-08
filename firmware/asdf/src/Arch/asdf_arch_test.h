@@ -95,7 +95,6 @@ typedef enum {
               PD_ST_ERROR_PULSE_FROM_INITIAL_STATE = 15,
 } pulse_state_t;
 
-
 // PROCEDURE: asdf_arch_null_output
 // INPUTS: (uint8_t) value - ignored
 // OUTPUTS: none
@@ -126,11 +125,19 @@ void asdf_arch_led3_set(uint8_t value);
 // DESCRIPTION: Sets the OUT1 bit if value is true, and clear OUT1 if value is false.
 void asdf_arch_out1_set(uint8_t value);
 
-// PROCEDURE: asdf_arch_out1_hi_z_set
+// PROCEDURE: asdf_arch_out1_open_hi_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
-// DESCRIPTION: Sets the OUT1 bit to hi-z if value is true, and low if value is false.
-void asdf_arch_out1_hi_z_set(uint8_t value);
+// DESCRIPTION: Emulates setting the OUT1 bit to high if value is true, and hi-z
+// if value is false. For testing, set PHYSICAL_OUT1_OPEN_LO to the value.
+void asdf_arch_out1_open_hi_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_out1_open_lo_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Emulates setting the OUT1 bit to high if value is true, and hi-z
+// if value is false. For testing, set PHYSICAL_OUT1_OPEN_LO to the value.
+void asdf_arch_out1_open_lo_set(uint8_t value);
 
 // PROCEDURE: asdf_arch_out2_set
 // INPUTS: (uint8_t) value
@@ -138,11 +145,19 @@ void asdf_arch_out1_hi_z_set(uint8_t value);
 // DESCRIPTION: Sets the OUT2 bit if value is true, and clear OUT2 if value is false.
 void asdf_arch_out2_set(uint8_t value);
 
-// PROCEDURE: asdf_arch_out2_hi_z_set
+// PROCEDURE: asdf_arch_out2_open_hi_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
-// DESCRIPTION: Sets the OUT2 bit to hi-z if value is true, and low if value is false.
-void asdf_arch_out2_hi_z_set(uint8_t value);
+// DESCRIPTION: Emulates setting the OUT2 bit to hi-z if value is true, and low
+// if value is false. For testing, set PHYSICAL_OUT2_OPEN_HI to the value.
+void asdf_arch_out2_open_hi_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_out2_open_lo_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Emulates setting the OUT2 bit to high if value is true, and hi-z
+// if value is false. For testing, set PHYSICAL_OUT2_OPEN_LO to the value.
+void asdf_arch_out2_open_lo_set(uint8_t value);
 
 // PROCEDURE: asdf_arch_out3_set
 // INPUTS: (uint8_t) value
@@ -150,11 +165,19 @@ void asdf_arch_out2_hi_z_set(uint8_t value);
 // DESCRIPTION: Sets the OUT3 bit if value is true, and clear OUT3 if value is false.
 void asdf_arch_out3_set(uint8_t value);
 
-// PROCEDURE: asdf_arch_out3_hi_z_set
+// PROCEDURE: asdf_arch_out3_open_hi_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
-// DESCRIPTION: Sets the OUT3 bit to hi-z if value is true, and low if value is false.
-void asdf_arch_out3_hi_z_set(uint8_t value);
+// DESCRIPTION: Emulates setting the OUT3 bit to high if value is true, and hi-z
+// if value is false. For testing, set PHYSICAL_OUT3_OPEN_LO to the value.
+void asdf_arch_out3_open_hi_set(uint8_t value);
+
+// PROCEDURE: asdf_arch_out3_open_lo_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+// DESCRIPTION: Emulates setting the OUT3 bit to high if value is true, and hi-z
+// if value is false. For testing, set PHYSICAL_OUT3_OPEN_LO to the value.
+void asdf_arch_out3_open_lo_set(uint8_t value);
 
 // PROCEDURE: asdf_arch_check_output
 // INPUTS:(asdf_physical_dev_t) device - which device to check
@@ -168,12 +191,19 @@ uint8_t asdf_arch_check_output(asdf_physical_dev_t device);
 // DESCRIPTION: For a given real device, return the state of the pulse detector
 uint8_t asdf_arch_check_pulse(asdf_physical_dev_t device);
 
-// PROCEDURE: asdf_arch_pulse_delay
+// PROCEDURE: asdf_arch_pulse_delay_short
 // INPUTS: none
 // OUTPUTS: none
-// DESCRIPTION: Emulates a delay by advancing the pulse detector state machine
+// DESCRIPTION: Emulates a short delay by advancing the pulse detector state machine
 // for each output.
-void asdf_arch_pulse_delay(void);
+void asdf_arch_pulse_delay_short(void);
+
+// PROCEDURE: asdf_arch_pulse_delay_long
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Emulates a long delay by advancing the pulse detector state machine
+// for each output.
+void asdf_arch_pulse_delay_long(void);
 
 // PROCEDURE: asdf_arch_read_row
 // INPUTS: (uint8_t) row: the row number to be scanned

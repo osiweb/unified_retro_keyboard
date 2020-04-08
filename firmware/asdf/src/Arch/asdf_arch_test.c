@@ -252,11 +252,12 @@ void asdf_arch_out1_set(uint8_t value)
   set_output(PHYSICAL_OUT1, value);
 }
 
-// PROCEDURE: asdf_arch_out1_hi_z_set
+// PROCEDURE: asdf_arch_out1_open_hi_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
 //
-// DESCRIPTION: Sets the OUT1 bit to hi-z if value is true, and low if value is false.
+// DESCRIPTION: Emulates setting the OUT1 bit to hi-z if value is true, and low
+// if value is false. For testing, set PHYSICAL_OUT1_OPEN_HI to the value.
 //
 // SIDE EFFECTS: See above.
 //
@@ -266,9 +267,27 @@ void asdf_arch_out1_set(uint8_t value)
 //
 // COMPLEXITY: 1
 //
-void asdf_arch_out1_hi_z_set(uint8_t value)
-{
-  set_output(PHYSICAL_OUT1_OC, value);
+void asdf_arch_out1_open_hi_set(uint8_t value)
+{set_output(PHYSICAL_OUT1_OPEN_HI, value);
+}
+
+// PROCEDURE: asdf_arch_out1_open_lo_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: Emulates setting the OUT1 bit to high if value is true, and hi-z
+// if value is false. For testing, set PHYSICAL_OUT1_OPEN_LO to the value.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_out1_open_lo_set(uint8_t value)
+{set_output(PHYSICAL_OUT1_OPEN_HI, value);
 }
 
 // PROCEDURE: asdf_arch_out2_set
@@ -289,11 +308,12 @@ void asdf_arch_out2_set(uint8_t value)
 }
 
 
-// PROCEDURE: asdf_arch_out2_hi_z_set
+// PROCEDURE: asdf_arch_out2_open_hi_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
 //
-// DESCRIPTION: Sets the OUT2 bit to hi-z if value is true, and low if value is false.
+// DESCRIPTION: Emulates setting the OUT2 bit to hi-z if value is true, and low
+// if value is false. For testing, set PHYSICAL_OUT2_OPEN_HI to the value.
 //
 // SIDE EFFECTS: See above.
 //
@@ -303,9 +323,27 @@ void asdf_arch_out2_set(uint8_t value)
 //
 // COMPLEXITY: 1
 //
-void asdf_arch_out2_hi_z_set(uint8_t value)
-{
-  set_output(PHYSICAL_OUT2_OC, value);
+void asdf_arch_out2_open_hi_set(uint8_t value)
+{set_output(PHYSICAL_OUT1_OPEN_HI, value);
+}
+
+// PROCEDURE: asdf_arch_out2_open_lo_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: Emulates setting the OUT2 bit to high if value is true, and hi-z
+// if value is false. For testing, set PHYSICAL_OUT2_OPEN_LO to the value.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_out2_open_lo_set(uint8_t value)
+{set_output(PHYSICAL_OUT1_OPEN_HI, value);
 }
 
 // PROCEDURE: asdf_arch_out3_set
@@ -327,12 +365,12 @@ void asdf_arch_out3_set(uint8_t value)
   set_output(PHYSICAL_OUT3, value);
 }
 
-
-// PROCEDURE: asdf_arch_out3_hi_z_set
+// PROCEDURE: asdf_arch_out3_open_hi_set
 // INPUTS: (uint8_t) value
 // OUTPUTS: none
 //
-// DESCRIPTION: Sets the OUT3 bit to hi-z if value is true, and low if value is false.
+// DESCRIPTION: Emulates setting the OUT3 bit to hi-z if value is true, and low
+// if value is false. For testing, set PHYSICAL_OUT3_OPEN_HI to the value.
 //
 // SIDE EFFECTS: See above.
 //
@@ -342,9 +380,27 @@ void asdf_arch_out3_set(uint8_t value)
 //
 // COMPLEXITY: 1
 //
-void asdf_arch_out3_hi_z_set(uint8_t value)
-{
-  set_output(PHYSICAL_OUT3_OC, value);
+void asdf_arch_out3_open_hi_set(uint8_t value)
+{set_output(PHYSICAL_OUT1_OPEN_HI, value);
+}
+
+// PROCEDURE: asdf_arch_out3_open_lo_set
+// INPUTS: (uint8_t) value
+// OUTPUTS: none
+//
+// DESCRIPTION: Emulates setting the OUT3 bit to high if value is true, and hi-z
+// if value is false. For testing, set PHYSICAL_OUT3_OPEN_LO to the value.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_out3_open_lo_set(uint8_t value)
+{set_output(PHYSICAL_OUT1_OPEN_HI, value);
 }
 
 // PROCEDURE: asdf_arch_check_output
@@ -396,15 +452,55 @@ uint8_t asdf_arch_check_pulse(asdf_physical_dev_t device)
 //
 // NOTES: Set ASDF_PULSE_DELAY_US in asdf_config.h
 //
-// SCOPE: public
+// SCOPE: private
 //
-// COMPLEXITY: 1
+// COMPLEXITY: 2
 //
 void asdf_arch_pulse_delay(void)
 {
   for (uint8_t i = 0; i < ASDF_PHYSICAL_NUM_RESOURCES; i++) {
     pulses[i] = pulse_detect(pulses[i], PULSE_EVENT_DELAY);
   }
+}
+
+// PROCEDURE: asdf_arch_pulse_delay_long
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Emulates a long delay by advancing the pulse detector state machine
+// for each output.
+//
+// SIDE EFFECTS: see above.
+//
+// NOTES: Set ASDF_PULSE_DELAY_US in asdf_config.h
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_pulse_delay_long(void)
+{
+  asdf_arch_pulse_delay();
+}
+
+// PROCEDURE: asdf_arch_pulse_delay_short
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Emulates a short delay by advancing the pulse detector state machine
+// for each output.
+//
+// SIDE EFFECTS: see above.
+//
+// NOTES: Set ASDF_PULSE_DELAY_US in asdf_config.h
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_pulse_delay_short(void)
+{
+  asdf_arch_pulse_delay();
 }
 
 // PROCEDURE: asdf_arch_init
