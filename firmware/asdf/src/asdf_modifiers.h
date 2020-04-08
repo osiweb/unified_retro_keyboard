@@ -23,6 +23,18 @@
 #if !defined(ASDF_MODIFIERS_H)
 #define ASDF_MODIFIERS_H
 
+// The active modifiers are used to build an index into a map that determinds
+// which modifier map is selected.  The following define the bit position for each modifier.
+// For example, if SHIFT and CTRL are active, the modifier index would be
+//
+// (1 << ASDF_MODIFIERS_SHIFT_POS) | (1 << ASDF_MODIFIERS_CAPS_POS)
+// = (1 << 0) | (1 << 1)
+// = (1 | 2)
+// = 3
+//
+// So, if CTRL+SHIFT is a special modifier, then modifier_mapping[3] will point
+// to the CTRL+SHIFT map. Alternatively, if CTRL+SHIFT is the same as just CTRL,
+// then modifier_mapping[3] will point to the CTRL map.
 #define ASDF_MODIFIERS_SHIFT_POS 0
 #define ASDF_MODIFIERS_CAPS_POS 1
 #define ASDF_MODIFIERS_CTRL_POS 2
@@ -31,6 +43,7 @@
 #define ASDF_MODIFIERS_CAPS_MASK (1 << ASDF_MODIFIERS_CAPS_POS)
 #define ASDF_MODIFIERS_CTRL_MASK (1 << ASDF_MODIFIERS_CTRL_POS)
 
+// Define the legal SHIFT and SHIFTLOCK states
 typedef enum {
   SHIFT_OFF_ST = 0,
   SHIFT_ON_ST = 1,
@@ -39,6 +52,7 @@ typedef enum {
 
 } shift_state_t;
 
+// Define the legal CAPS and CAPSLOCK states
 typedef enum {
   CAPS_OFF_ST = 0,
   CAPS_ON_ST = 1,
@@ -46,8 +60,13 @@ typedef enum {
   CAPS_BOTH_ST = 3 // Never explicitly set. CAPS and CAPSLOCK together.
 } caps_state_t;
 
+// Define the legal CTRL states
 typedef enum { CTRL_OFF_ST = 0, CTRL_ON_ST = 1 } ctrl_state_t;
 
+// Define the legal modifier mappings. In this case, we define 4 maps, for PLAIN
+// (no modifier), SHIFT, CAPS, and CTRL. When combinations of these modifiers
+// are active, then the precedence is determined by the modifier_mapping[]
+// array.
 typedef enum {
   MOD_PLAIN_MAP = 0,
   MOD_SHIFT_MAP,

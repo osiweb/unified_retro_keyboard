@@ -30,12 +30,18 @@
 #include "asdf_virtual.h"
 #include "asdf_arch.h"
 
+// Stores the state of the SHIFT and SHIFTLOCK keys
 static shift_state_t shift_state;
+
+// Stores the state of the CAPS and CAPSLOCK keys
 static caps_state_t caps_state;
+
+// Stores the state of the CTRL keys.
 static ctrl_state_t ctrl_state;
 
-static const modifier_index_t modifier_indices[] = {
-
+// The active modifier map depends on the current state of the modifier
+// variables. The map encodes the order or precedence of the various modifiers.
+static const modifier_index_t modifier_mapping[] = {
   MOD_PLAIN_MAP, // 0x00: no modifiers
   MOD_SHIFT_MAP, // 0x01: only SHIFT active
   MOD_CAPS_MAP,  // 0x02: only CAPS active
@@ -208,28 +214,29 @@ void asdf_modifiers_init(void)
 
 // PROCEDURE: asdf_modifier_index
 // INPUTS: none
-// OUTPUTS: returns uint8_t index into key map, based on modifier key status
+// OUTPUTS: returns uint8_t index into key map, based on which modifiers are active.
 //
 // DESCRIPTION: See OUTPUTS
 //
 // SIDE EFFECTS: none
 //
-// COMPLEXITY: 1
+// COMPLEXITY: 4
 //
 modifier_index_t asdf_modifier_index(void)
 {
-  uint8_t modifier = 0;
+  uint8_t active_modifiers = 0;
+
   if (shift_state) {
-    modifier |= ASDF_MODIFIERS_SHIFT_MASK;
+    active_modifiers |= ASDF_MODIFIERS_SHIFT_MASK;
   }
   if (caps_state) {
-    modifier |= ASDF_MODIFIERS_CAPS_MASK;
+    active_modifiers |= ASDF_MODIFIERS_CAPS_MASK;
   }
   if (ctrl_state) {
-    modifier |= ASDF_MODIFIERS_CTRL_MASK;
+    active_modifiers |= ASDF_MODIFIERS_CTRL_MASK;
   }
 
-  return modifier_indices[modifier];
+  return modifier_mapping[active_modifiers];
 }
 
 

@@ -28,54 +28,14 @@
 #define ASDF_KEYMAPS_H
 
 
-
+// Define the bit position of each keymap DIP switch. The DIP switch values at
+// each bit position can be used to select the current keymap. This requires the
+// DIP switches to be mapped to the asdf_keymaps_select_X_set() and
+// asdf_keymaps_select_X_clear() functions in each keymap.
 #define ASDF_KEYMAP_BIT_0 1
 #define ASDF_KEYMAP_BIT_1 2
 #define ASDF_KEYMAP_BIT_2 4
 #define ASDF_KEYMAP_BIT_3 8
-
-typedef enum {
-             CLEAR_OUT1,
-             SET_OUT1,
-             CLEAR_OUT2,
-             SET_OUT2,
-             CLEAR_OUT3,
-             SET_OUT3,
-             CLEAR_OC1,
-             SET_OC1,
-             CLEAR_OC3,
-             SET_OC3,
-             PULSE_OUT1,
-             PULSE_OUT2,
-             PULSE_OUT3,
-             TOGGLE_OUT1,
-             TOGGLE_OUT2,
-             TOGGLE_OUT3,
-             ON_VLED1,
-             OFF_VLED1,
-             ON_VLED2,
-             OFF_VLED2,
-             ON_VLED3,
-             OFF_VLED3,
-             SET_CAPS_LED1,
-             SET_CAPS_LED2,
-             SET_CAPS_LED3,
-             SET_SHIFTLOCK_LED1,
-             SET_SHIFTLOCK_LED2,
-             SET_SHIFTLOCK_LED3,
-             SET_VLED1_LED1,
-             SET_VLED2_LED1,
-             SET_VLED3_LED1,
-             SET_VLED1_LED2,
-             SET_VLED2_LED2,
-             SET_VLED3_LED2,
-             SET_VLED1_LED3,
-             SET_VLED2_LED3,
-             SET_VLED3_LED3,
-
-} keymap_init_t;
-
-
 
 // PROCEDURE: asdf_keymaps_select_keymap
 // INPUTS: (uint8_t) index - index of the keymap number to select

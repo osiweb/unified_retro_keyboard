@@ -28,8 +28,8 @@
 #include "asdf_keymaps.h"
 #include "asdf_keymap_defs.h"
 
-// ASDF_KEYMAP_DECLARATIONS is defined in asdf_keymap_defs.h, agregated from all
-// the included keymap definition files.
+// ASDF_KEYMAP_DECLARATIONS is defined in asdf_keymap_defs.h, aggregated from
+// all the included keymap definition files.
 //
 // This is a terrible practice, but defining the declarations as a macro permits
 // the keymap definitions to be incorporated in a fairly modular fashion, using
@@ -40,14 +40,26 @@
 // constexpr in C++ may be an alternative option as well.
 ASDF_KEYMAP_DECLARATIONS;
 
+// The keymap arrays organized as follows:
+// * Each keymap matrix is a NUM_ROWS x NUM_COLS mapping of key to code for a given modifier.
+// * Each keymap contains a set of keymap matrices, one for each unique
+//   combination of modifier keys.
+// * All the keymaps (NUM_KEYMAPS) are gathered in the keymap_matrixp[] array.
 static keycode_matrix_t const *keymap_matrix[ASDF_NUM_KEYMAPS][ASDF_MOD_NUM_MODIFIERS] =
   ASDF_KEYMAP_DEFS;
 
 
+// Each keymap (representing a keyboard configuration) has an associated set of
+// keyboard initializers that set up the I/O and LED lines for the keyboard, and
+// other configuration unique to the keyboard defined by the map. This builds
+// the keymap initializer array from the initializer definitions in the keymap
+// definitino files.
 static const asdf_virtual_initializer_t keymap_initializer_list[ASDF_NUM_KEYMAPS]
                                                                [ASDF_KEYMAP_INITIALIZER_LENGTH] =
                                                                  ASDF_KEYMAP_INITIALIZERS;
 
+// Index of the currently active keymap, initialized to zero in the init
+// routine.
 static uint8_t keymap_index;
 
 

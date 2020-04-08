@@ -386,7 +386,7 @@ void asdf_arch_out1_open_lo_set(uint8_t value)
 //
 // NOTES: OUT2 is inverted by the 7404 buffer, so clearing the bit sets the output high.  OUT2
 // cannot be high impedance.
-/
+//
 // SCOPE: public
 //
 // COMPLEXITY: 2
