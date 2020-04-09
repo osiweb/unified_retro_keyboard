@@ -25,11 +25,43 @@
 #include <stdint.h>
 #include "asdf_repeat.h"
 
+// This module keeps track of a single repeat event. It is non-reentrant. This
+// makes sense for a single keyboard, since only one key can repeat at any given
+// time.
+//
+
+
+// counters for key repeat timing are 16-bit unsigned
 typedef uint16_t key_timer_t;
 
+// The "State" of the repeat logic is the current repeat rate. This is the value
+// loaded into the repeat timer when in repeat mode (autorepeat or repeat key)
+// and a key is pressed.
+//
+// If the base state is REPEAT_OFF, then key repetition only occurs when the
+// REPEAT key is pressed along with a "code" key.
+//
+// If the base state is REPEAT_AUTO, then key repetition occurs when the REPEAT
+// key is pressed with a "code" key , or when a "code" key is held for the
+// autorepeat delay.
+//
+// Obviously, the base state is never REPEAT_ON, which would instantly repeat
+// any key when pressed.
+typedef enum {
+  REPEAT_OFF = 0,                        // no repeat
+  REPEAT_ON = ASDF_REPEAT_TIME_MS,       // currently repeating
+  REPEAT_AUTO = ASDF_AUTOREPEAT_TIME_MS, // wait for autorepeat delay, then start repeating
+} repeat_state_t;
+
+// Contains the current repeat state
 static repeat_state_t repeat_state;
+
+// Contains the baseline repeat state (either no repeat or autorepeat). When a
+// key is released, or when the repeat key is released, the repeat state is
+// reset to this value.
 static repeat_state_t base_repeat_state;
 
+// The repeat timer counts down to the next repeat event
 static key_timer_t key_repeat_timer;
 
 
@@ -41,7 +73,7 @@ static key_timer_t key_repeat_timer;
 //
 // SIDE EFFECTS: see DESCRIPTION
 //
-// COMPLEXITY: 
+// COMPLEXITY: 1
 //
 void asdf_repeat_init(void)
 {
@@ -54,7 +86,8 @@ void asdf_repeat_init(void)
 // OUTPUTS: none
 //
 // DESCRIPTION: resets the repeat counter for the current key, to begin a new
-// repeat cycle.  Resest is based on repeat state (no repeat, autorepeat, normal repeat).
+// repeat cycle. The counter is reset to the countdown value for the current
+// state (no repeat, autorepeat, normal repeat).
 //
 // SIDE EFFECTS: see DESCRIPTION
 //
@@ -73,7 +106,8 @@ void asdf_repeat_reset_count(void)
 //
 // DESCRIPTION: Turns Autorepeat mode off by setting the base state to
 // autorepeat. If key is repeating, then the new behavior will be realized after
-// the repeat key is released.
+// the repeat key is released. This function can be bound to a key or DIP switch
+// to turn autorepeat off.
 //
 // SIDE EFFECTS: See DESCRIPTION
 //
@@ -95,7 +129,8 @@ void asdf_repeat_auto_off(void)
 //
 // DESCRIPTION: Turns Autorepeat mode on by setting the base state to
 // autorepeat. If key is repeating, then the new behavior will be realized after
-// the repeat key is released.
+// the repeat key is released.  This function can be bound to a key or DIP switch
+// to turn autorepeat on.
 //
 // SIDE EFFECTS: see above
 //
@@ -137,12 +172,12 @@ void asdf_repeat_activate(void)
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Reset repeat state machine to default state. Called when REPEAT
+// DESCRIPTION: Reset repeat state to default state. Called when REPEAT
 // key is released.
 //
 // SIDE EFFECTS: See DESCRIPTION
 //
-// NOTES: Releasing repeat disrupts any repeat timers. aIf a key is still held
+// NOTES: Releasing repeat disrupts any repeat timers. If a key is still held
 // down after REPEAT is released, and autorepeat mode is enabled, then restart
 // the autorepeat timer. Otherwise disable repeat.
 //

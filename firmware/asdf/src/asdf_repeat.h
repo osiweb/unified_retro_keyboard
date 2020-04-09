@@ -27,13 +27,6 @@
 
 #include "asdf_config.h"
 
-typedef enum {
-  REPEAT_OFF = 0,
-  REPEAT_ON = ASDF_REPEAT_TIME_MS,
-  REPEAT_AUTO = ASDF_AUTOREPEAT_TIME_MS
-} repeat_state_t;
-
-
 // PROCEDURE: asdf_repeat_init
 // INPUTS: none
 // OUTPUTS: none
