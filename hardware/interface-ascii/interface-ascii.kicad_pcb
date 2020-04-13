@@ -778,7 +778,7 @@
     (fp_text reference R4 (at -2.286 -0.0762 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value R_US (at 5.08 2.37 90) (layer F.Fab) hide
+    (fp_text value 470 (at 5.08 2.37 90) (layer F.Fab) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start 1.93 -1.25) (end 1.93 1.25) (layer F.Fab) (width 0.1))
