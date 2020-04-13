@@ -296,7 +296,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D55C)
-    (at 451.47738 168.69156)
+    (at 456.11288 168.69156)
     (path /5E16AC8E/5E1BE10C)
     (fp_text reference SW76 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -431,7 +431,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D4BC)
-    (at 432.42738 168.69156)
+    (at 437.06288 168.69156)
     (path /5E16AC8E/5E1BE109)
     (fp_text reference SW68 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -446,7 +446,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D5E8)
-    (at 470.52738 168.69156)
+    (at 475.16288 168.69156)
     (path /5E16AC8E/5E1BE10D)
     (fp_text reference SW83 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -506,7 +506,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E120789)
-    (at 470.52738 149.64156)
+    (at 475.16288 149.64156)
     (path /5E16AC8E/5E1BE103)
     (fp_text reference SW85 (at -4.03098 -8.56996) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -566,7 +566,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D624)
-    (at 470.52738 187.74156)
+    (at 475.16288 187.74156)
     (path /5E16AC8E/5E1BE10E)
     (fp_text reference SW86 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -596,7 +596,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D5D4)
-    (at 470.52738 130.59156)
+    (at 475.16288 130.59156)
     (path /5E16AC8E/5E1BE102)
     (fp_text reference SW82 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -626,7 +626,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D5AC)
-    (at 451.47738 187.74156)
+    (at 456.11288 187.74156)
     (path /5E16AC8E/5E1BE10B)
     (fp_text reference SW80 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -641,7 +641,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D598)
-    (at 451.47738 149.64156)
+    (at 456.11288 149.64156)
     (path /5E16AC8E/5E1BE100)
     (fp_text reference SW79 (at -3.75158 -8.56996) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -656,7 +656,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D570)
-    (at 470.52738 206.79156)
+    (at 475.16288 206.79156)
     (path /5E16AC8E/5E1BE116)
     (fp_text reference SW77 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -671,7 +671,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E114E20)
-    (at 451.47738 130.59156)
+    (at 456.11288 130.59156)
     (path /5E16AC8E/5E1BE101)
     (fp_text reference SW75 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -686,7 +686,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D520)
-    (at 451.47738 206.79156)
+    (at 456.11288 206.79156)
     (path /5E16AC8E/5BC6D0AD)
     (fp_text reference SW73 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -701,7 +701,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D50C)
-    (at 432.42738 187.74156)
+    (at 437.06288 187.74156)
     (path /5E16AC8E/5E1BE10A)
     (fp_text reference SW72 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -716,7 +716,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D4F8)
-    (at 432.42738 149.64156)
+    (at 437.06288 149.64156)
     (path /5E16AC8E/5E1BE0FF)
     (fp_text reference SW71 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -746,7 +746,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D4D0)
-    (at 432.42738 206.79156)
+    (at 437.06288 206.79156)
     (path /5E16AC8E/5E149AE2)
     (fp_text reference SW69 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -761,7 +761,7 @@
   )
 
   (module unikbd:Key_MX_Aligner locked (layer F.Cu) (tedit 5E75767C) (tstamp 5E12D4A8)
-    (at 432.42738 130.59156)
+    (at 437.06288 130.59156)
     (path /5E16AC8E/5E13E76B)
     (fp_text reference SW67 (at -5.7912 -8.6106) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -1521,7 +1521,7 @@
   )
 
   (module MountingHole:MountingHole_3.2mm_M3 locked (layer F.Cu) (tedit 56D1B4CB) (tstamp 5E75490D)
-    (at 432.42738 219.49156)
+    (at 437.06288 219.49156)
     (descr "Mounting Hole 3.2mm, no annular, M3")
     (tags "mounting hole 3.2mm no annular m3")
     (attr virtual)
@@ -1540,7 +1540,7 @@
   )
 
   (module MountingHole:MountingHole_3.2mm_M3 locked (layer F.Cu) (tedit 56D1B4CB) (tstamp 5E75490D)
-    (at 470.52738 219.49156)
+    (at 475.16288 219.49156)
     (descr "Mounting Hole 3.2mm, no annular, M3")
     (tags "mounting hole 3.2mm no annular m3")
     (attr virtual)
@@ -1559,7 +1559,7 @@
   )
 
   (module MountingHole:MountingHole_3.2mm_M3 locked (layer F.Cu) (tedit 56D1B4CB) (tstamp 5E75490D)
-    (at 470.52738 114.08156)
+    (at 475.16288 114.08156)
     (descr "Mounting Hole 3.2mm, no annular, M3")
     (tags "mounting hole 3.2mm no annular m3")
     (attr virtual)
@@ -1578,7 +1578,7 @@
   )
 
   (module MountingHole:MountingHole_3.2mm_M3 locked (layer F.Cu) (tedit 56D1B4CB) (tstamp 5E75490D)
-    (at 432.42738 114.08156)
+    (at 437.06288 114.08156)
     (descr "Mounting Hole 3.2mm, no annular, M3")
     (tags "mounting hole 3.2mm no annular m3")
     (attr virtual)
