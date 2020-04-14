@@ -1,15 +1,7 @@
 # ASCII Interface - Atmega328p
 
 This is is a key scanner module with parallel output, and optional serial
-output, supporting keyboards of up to 16 rows X 8 columns.
-
-The ATMega 328P was selected for the sole reason that it is an architecture
-familiar to many hobbyists, with an accessible programming environment and
-ecosystem, in a DIP format that fits the retro look and is easy to solder for
-most hobbyists. All of the ICs, other than the microcontroller, are only present
-to compensate for the limited number of GPIO lines on this small 28-pin
-microcontroller. Using a bigger chip would greatly simplify the hardware and
-even slightly simplify the hardware layer of the firmware.
+output, supporting keyboards of up to 16 rows X 8 columns.  This design uses the ATMega2560, since it's an easy port from the ATMega328P, which was initially selected for the sole reason of being familiar to hobbyists. The 2560 has much more I/O, which simplifies the design, assembly, and firmware, and opens up some additional possibilities. 
 
 <img alt="Assembly Rendering" src="images/PCB-assembly-rendering.png" height=75% width=75%>
 
@@ -22,23 +14,32 @@ even slightly simplify the hardware layer of the firmware.
 - Supports up to 3 keyboard LEDs
 - Supports up to 3 "special" host outputs, such as RESET, SCREEN_CLEAR, BREAK, etc.
 
+## Differences from ATMega328P version
+- Backward compatible with the ATMega328P version, with following enhancements:
+1. The Output2 can be a regualar TTL, open-collector, or open-emitter. In the
+   328P version, changing between regulary TTL output and open-collector on
+   Output2 required changing an IC.
+1. The serial port no longer shares lines with the parallel output port, so both
+   serial I/O and parallel output can be used at the same time without risk of
+   conflict. However, serial I/O is not yet supported in the firmware.
+1. Because the rows are no longer driven by a 4-to-16 decoder circuit, and the
+   columns are no longer read via a shift register, the row and column lines can
+   be used for both input and output, which allows this board to interface with
+   OSI keyboards directly (not yet supported in firmware).
+   
 ## Overview
-- The keyboard rows are driven by a pair of 74LS138 decoders, allowing 4 GPIO
-  lines to drive 16 rows.
-- The columns are read in via an 8-bit shift register, controlled by 3 GPIO lines.
+- Two GPIO ports are used to drive the row outputs, and one GPIO port is used to
+  read the columns.
 - One 8-bit port is used for the parallel ASCII output.
 - Three GPIO lines are used to generate special outputs to the host. These could
   be RESET, BREAK, CLEAR, etc. These may be configured as open-collector (Hi-Z
   for HI, GND for LO), or open-emitter (5V for high, Hi-Z for LO).
-- Three GPIO lines are used to control keyboard LEDs. 
-
-- The DIP switch is wired into row 15 (last row) of the matrix. In the future,
-the DIP switch will be moved to row 9 to reduce RAM usage and speed up key scanning.
-
+- Three GPIO lines are used to control keyboard LED, or other keyboard functions.
+- The DIP switch is wired into row 8 (of 0-15), to reduce RAM usage and speed up
+  key scanning.
 - A serial (UART) port is provided. This could be used to provide serial output
 instead or parallel output, to support a bootloader, or even to accept a serial
 input stream from another source to send to the host as parallel ASCII data.
-
 
 ## Assembly Notes
 

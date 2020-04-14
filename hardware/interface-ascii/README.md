@@ -32,8 +32,8 @@ even slightly simplify the hardware layer of the firmware.
   open-collector drivers.
 - Three GPIO lines are used to control keyboard LEDs. 
 
-- The DIP switch is wired into row 15 (last row) of the matrix. In the future,
-the DIP switch will be moved to row 9 to reduce RAM usage and speed up key scanning.
+- The DIP switch is wired into row 8 (of 0-15) to reduce RAM usage and speed up
+  key scanning.
 
 - The top two parallel I/O bits can also be configured as UART I/O. This could
 be used to provide serial output instead or parallel output, to support a
