@@ -93,26 +93,4 @@ those diodes. Otherwise the diodes do nothing.
 
 If you are attaching a keyboard with a diode per key, then the diodes on the keys perform the same function, in addition to preventing "ghosting", so the per-row diodes do not need to be installed.
 
-### DIP switch and associated diodes
-The DIP switch is optional. If you don't want to be able to set options via the
-DIP switches, you can set all your preferences in the firmware, or just accept
-the default behavior, and skip the DIP switch and Diodes D17-D20 and D24-D27.
 
-### Second 74LS138 multiplexer (U4)
-Only needed if you have more than 8 rows (including the DIP switch).
-
-### The 74LS07 hex buffer (U5) and pullup R6
-The 74LS07 is only needed if you are using LED2 or LED3 on the keyboard, or the OUT2 open
-collector output.
-
-### Diodes D21, D22, D23
-Some keyboards may not wire all keys into the matrix. For example, some other
-interface modules may assign special hardware functions to certain keys. Those
-keys are brought directly to the keyboard connector. For the classic keyboard,
-the POWER key, the '@' key, and the RUBOUT key are not directly wired. This
-module wires them into the matrix via D21, D22, and D23, respectively. For
-keyboards with no separately wired keys, these diodes may be omitted.
-
-### Resistors R1, R2, R5
-These resistors provide current limiting for up to three keyboard LEDs. If no
-keyboard LEDs are installed, then these resistors can be ommitted.
