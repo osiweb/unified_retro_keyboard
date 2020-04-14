@@ -1,4 +1,4 @@
-# ASCII Interface - Atmega328p
+# ASCII Interface - Atmega2560
 
 This is is a key scanner module with parallel output, and optional serial
 output, supporting keyboards of up to 16 rows X 8 columns.  This design uses the ATMega2560, since it's an easy port from the ATMega328P, which was initially selected for the sole reason of being familiar to hobbyists. The 2560 has much more I/O, which simplifies the design, assembly, and firmware, and opens up some additional possibilities. 
