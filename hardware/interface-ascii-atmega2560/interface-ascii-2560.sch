@@ -578,7 +578,7 @@ NoConn ~ 1400 6300
 NoConn ~ 1400 6400
 NoConn ~ 1400 6500
 Text Notes 3395 9280 0    50   ~ 0
-SOL-20:\nRESET (PIN 13) = OUT1 \nBREAK (PIN 4) = OUT2 \nLOCAL (PIN 14) = OUT3 \n\n\nApple 1:\nD7 on socket is tied high\n~RESET = OUT3\nCLRSCR = OUT1\n\nApple 2:\n~RESET = OUT3\n\n
+SOL-20:\n/RESET (PIN 13) = OUT1 \nBREAK (PIN 4) = OUT2 \nLOCAL (PIN 14) = OUT3 \n\n\nApple 1:\nD7 on socket is tied high\n/RESET = OUT3\nCLRSCR = OUT1\n\nApple 2:\n/RESET = OUT3\n\n
 $Comp
 L Connector_Generic:Conn_01x20 J5
 U 1 1 5E5FA80F
@@ -1927,6 +1927,19 @@ $EndComp
 Connection ~ 11500 9900
 Wire Wire Line
 	11500 9900 11300 9900
+$Comp
+L power:VCC #PWR0112
+U 1 1 5F86A206
+P 4700 2900
+F 0 "#PWR0112" H 4700 2750 50  0001 C CNN
+F 1 "VCC" H 4717 3073 50  0000 C CNN
+F 2 "" H 4700 2900 50  0001 C CNN
+F 3 "" H 4700 2900 50  0001 C CNN
+	1    4700 2900
+	1    0    0    -1  
+$EndComp
+Text Label 13800 7300 0    50   ~ 0
+Row8
 Wire Bus Line
 	6000 3600 6000 4600
 Wire Bus Line
@@ -1941,17 +1954,4 @@ Wire Bus Line
 	15900 2200 15900 8200
 Wire Bus Line
 	10700 2600 10700 8200
-$Comp
-L power:VCC #PWR0112
-U 1 1 5F86A206
-P 4700 2900
-F 0 "#PWR0112" H 4700 2750 50  0001 C CNN
-F 1 "VCC" H 4717 3073 50  0000 C CNN
-F 2 "" H 4700 2900 50  0001 C CNN
-F 3 "" H 4700 2900 50  0001 C CNN
-	1    4700 2900
-	1    0    0    -1  
-$EndComp
-Text Label 13800 7300 0    50   ~ 0
-Row8
 $EndSCHEMATC
