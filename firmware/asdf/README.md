@@ -22,13 +22,13 @@ Features:
 --
 * modifiers: A set of modifier keys may be specified. When only a few modifiers
   are used, this mechanism is a low-overhead alternative to a keymap overlay for
-  keyboard states that only change the key value, such as SHIFT, CAPS LOCK, CONTROL,
-  etc. The state of each modifier key is kept in a state variable. In most
-  cases, pressing the key will set the value to a "pressed" state, and releasing
-  will reset the value to an "unpressed" state. However some functions interact.
-  For example, Shift Lock is sticky, so pressing Shift Lock toggles the Shift
-  Lock state, and Releasing Shift Lock does nothing; but pressing "Shift" will
-  reset the "Shift Lock" state.
+  keyboard states that only change the key codes produced by a keypress, such as
+  SHIFT, CAPS LOCK, CONTROL, etc. The state of each modifier key is kept in a
+  state variable. In most cases, pressing the key will set the value to a
+  "pressed" state, and releasing will reset the value to an "unpressed" state.
+  However some functions interact. For example, Shift Lock is sticky, so
+  pressing Shift Lock toggles the Shift Lock state, and Releasing Shift Lock
+  does nothing; but pressing "Shift" will reset the "Shift Lock" state.
 
   All modifier state variables are kept in a modifier state variable array. On a
   regular keypress, all of the modifier state variables are OR'ed together to
@@ -46,6 +46,7 @@ Features:
   * (1): ADM-style ASCII keyboard (all caps)
   * (2): Apple 2 ASCII keyboard (upper/lower)
   * (3): Apple 2 ASCII keyboard (standard all caps)
+  * (4): Sol-20 ASCII keyboard
 
 * Debounce and Repeat functions: The main keyscan logic implements key
   debouncing. Multiple keys may be debounced simultaneously using a separate
@@ -78,7 +79,7 @@ Porting
 This firmware was written in modular, portable C99, to be compiled with GCC
 (avr-gcc for the Atmega). The hardware-sepecific files are in Arch/*.[ch]. To
 adapt the Atmega port for additional hardware, enter the ./src/Arch directory,
-and copy the files asdf_arch_atmega328p.c and asdf_arch_astmega328p.h to new
+and copy the files asdf_arch_atmega2560.c and asdf_arch_astmeg2560.h to new
 filenames, and edit them to suit the hardware changes.
 
 The firmware is designed to run from ROM on a slow vintage processor, with a
@@ -90,7 +91,7 @@ The code was written to favor readability over cleverness. While tempted to
 optimize bit testing via bithacks, I opted for code simplicity since the
 performance benefit was not there for 8-bit values.
 
-To port to a new processor architecture, you may use the atmega328p files as an
+To port to a new processor architecture, you may use the atmega2560 files as an
 example, and create a pair of architecture-specific .c and .h files for the new
 hardware, exporting the following functions:
 
@@ -109,5 +110,15 @@ hardware, exporting the following functions:
   that case, this function is not needed, and the "superloop" in main.c would
   contain a call to the scheduler.
   
-- asdf_arch_XXXX_set: The hardware provides a number of physical resources, such as TTL or tri-state outputs, which can be used to drive LEDs, TTL logic output lines, etc.  These are driven by a virtual output layer.  The virtual layer requires a function to set the state of the physical resources.  One function is provided for each such resource.  For example, if a TTL output is called OUT1, then the function asdf_arch_out1_set() must be defined.
+- asdf_arch_XXXX_set: The hardware provides a number of physical resources, such
+  as TTL or tri-state outputs, which can be used to drive LEDs, TTL logic output
+  lines, etc. These are driven by a virtual output layer. The virtual layer
+  requires a function to set the state of the physical resources. One function
+  is provided for each such resource. For example, if a TTL output is called
+  OUT1, then the function asdf_arch_out1_set() must be defined. For now, the
+  required devices are: 
+- LED1, LED2, LED3 (LED outputs)
+- OUT1, OUT2, OUT3 (TTL outputs)
+- OUT1\_OPEN\_HI, OUT2\_OPEN\_HI, OUT3\_OPEN\_HI (Open collector outputs)
+- OUT1\_OPEN\_LO, OUT2\_OPEN\_LO, OUT3\_OPEN\_LO (Open emitter outputs)
 
