@@ -19,7 +19,6 @@ clean:
 	make -f Makefile.test clean
 
 cleanall:
-	make -f $(TARGET_MAKEFILE)
-cleanall
+	make -f $(TARGET_MAKEFILE) cleanall
 	make -f Makefile.test cleanall
 
