@@ -5,7 +5,7 @@ KEYMAP ?= production
 
 ARCH_TOKEN = _Arch_$(ARCH)
 
-TARGET = asdf
+TARGET = asdf-$(ARCH)
 
 TEST_DIR = ../test
 UNITY_DIR = $(TEST_DIR)/unity
