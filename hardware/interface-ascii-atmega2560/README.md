@@ -13,6 +13,7 @@ output, supporting keyboards of up to 16 rows X 8 columns.  This design uses the
 - Can decode arbitrary keyboards up 16 rows by 8 columns.
 - Supports up to 3 keyboard LEDs
 - Supports up to 3 "special" host outputs, such as RESET, SCREEN_CLEAR, BREAK, etc.
+- Socket for custom connector
 
 ## Differences from ATMega328P version
 - Backward compatible with the ATMega328P version, with following enhancements:
