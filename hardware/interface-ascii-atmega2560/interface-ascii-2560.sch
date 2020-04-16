@@ -5,8 +5,8 @@ $Descr USLedger 17000 11000
 encoding utf-8
 Sheet 1 1
 Title "Unified Retro Keyboard ASCII Interface (2560)"
-Date "2020-04-13"
-Rev "3.0"
+Date "2020-04-16"
+Rev "3.1"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -1940,6 +1940,33 @@ F 3 "" H 4700 2900 50  0001 C CNN
 $EndComp
 Text Label 13800 7300 0    50   ~ 0
 Row8
+$Comp
+L Connector_Generic:Conn_02x08_Counter_Clockwise J8
+U 1 1 5E9AC1D6
+P 12000 1650
+F 0 "J8" H 12050 2167 50  0000 C CNN
+F 1 "Custom Connector / Proto" H 12050 2076 50  0000 C CNN
+F 2 "unikbd:DIP-16_W7.62mm_Proto" H 12000 1650 50  0001 C CNN
+F 3 "~" H 12000 1650 50  0001 C CNN
+	1    12000 1650
+	1    0    0    -1  
+$EndComp
+NoConn ~ 12300 1350
+NoConn ~ 12300 1450
+NoConn ~ 12300 1550
+NoConn ~ 12300 1650
+NoConn ~ 12300 1750
+NoConn ~ 12300 1850
+NoConn ~ 12300 1950
+NoConn ~ 12300 2050
+NoConn ~ 11800 2050
+NoConn ~ 11800 1950
+NoConn ~ 11800 1850
+NoConn ~ 11800 1750
+NoConn ~ 11800 1650
+NoConn ~ 11800 1550
+NoConn ~ 11800 1450
+NoConn ~ 11800 1350
 Wire Bus Line
 	6000 3600 6000 4600
 Wire Bus Line
