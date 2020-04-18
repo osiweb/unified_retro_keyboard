@@ -18,7 +18,7 @@ output, supporting keyboards of up to 16 rows X 8 columns.  This design uses the
 ## Differences from ATMega328P version
 - Backward compatible with the ATMega328P version, with following enhancements:
 1. The Output2 can be a regualar TTL, open-collector, or open-emitter. In the
-   328P version, changing between regulary TTL output and open-collector on
+   328P version, changing between regular TTL output and open-collector on
    Output2 required changing an IC.
 1. The serial port no longer shares lines with the parallel output port, so both
    serial I/O and parallel output can be used at the same time without risk of
