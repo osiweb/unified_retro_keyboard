@@ -1,0 +1,27 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 74HC240
+D 8-bit Buffer/Line Driver 3-state Inverting
+K TTL BUFFER 3State inv
+F https://assets.nexperia.com/documents/data-sheet/74HC_HCT240.pdf
+$ENDCMP
+#
+$CMP 74HCT240
+D 8-bit buffer; 3-state; inverting
+K octal buffer line driver inverting
+F https://assets.nexperia.com/documents/data-sheet/74HC_HCT240.pdf
+$ENDCMP
+#
+$CMP 74LS192
+D Synchronous 4-bit Up/Down (2 clk) counter
+K TTL CNT CNT4
+F http://www.ti.com/lit/ds/symlink/sn74ls193.pdf
+$ENDCMP
+#
+$CMP 74LS193
+D Synchronous 4-bit Up/Down (2 clk) counter
+K TTL CNT CNT4
+F http://www.ti.com/lit/ds/symlink/sn74ls193.pdf
+$ENDCMP
+#
+#End Doc Library
