@@ -31,36 +31,39 @@
 #include "asdf_arch.h"
 
 
-// physical_out_set[] contains the set() function for each real output device.
-static void (*const physical_out_set[])(uint8_t) = {
-  [PHYSICAL_NO_OUT] = &asdf_arch_null_output,    //
-  [PHYSICAL_OUT1] = &asdf_arch_out1_set,         //
-  [PHYSICAL_OUT2] = &asdf_arch_out2_set,         //
-  [PHYSICAL_OUT3] = &asdf_arch_out3_set,         //
-  [PHYSICAL_OUT1_OPEN_HI] = &asdf_arch_out1_open_hi_set, //
-  [PHYSICAL_OUT2_OPEN_HI] = &asdf_arch_out2_open_hi_set, //
-  [PHYSICAL_OUT3_OPEN_HI] = &asdf_arch_out3_open_hi_set, //
-  [PHYSICAL_OUT1_OPEN_LO] = &asdf_arch_out1_open_lo_set, //
-  [PHYSICAL_OUT2_OPEN_LO] = &asdf_arch_out2_open_lo_set, //
-  [PHYSICAL_OUT3_OPEN_LO] = &asdf_arch_out3_open_lo_set, //
-  [PHYSICAL_LED1] = &asdf_arch_led1_set,         //
-  [PHYSICAL_LED2] = &asdf_arch_led2_set,         //
-  [PHYSICAL_LED3] = &asdf_arch_led3_set          //
-};
+// For each physical resource, there is a handler and a "shadow" register for the output value.
+//
+// For line outputs, the shadow register permits machine independent
+// implementations of the toggle and pulse functions to be implemented in this
+// module, requiring only a "set" function for each physical resource in the
+// architecture-dependent layer. This implementation is not as efficient, but
+// the timing is not critical, and the events are so infrequent that the
+// benefits of the refactoring far outweigh any performance penalty.
 
-
-// For each physical resource, maintain a "shadow" register for the output value. This
-// permits machine independent implementations of the toggle and pulse functions
-// to be implemented in this module, requiring only a "set" function for each
-// physical resource in the architecture-dependent layer. This implementation is
-// not as efficient, but the timing is not critical, and the events are so
-// infrequent that the benefits of the refactoring far outweigh any performance
-// penalty.
-
-static struct {
+typedef struct {
+  void (*handler)(uint8_t);
   uint8_t shadow;
   asdf_physical_dev_t next;
-} physical_device_table[ASDF_PHYSICAL_NUM_RESOURCES];
+} physical_device_table_entry_t;
+
+
+// physical_handler[] contains the set() function for each real output device.
+static physical_device_table_entry_t physical_device_table[ASDF_PHYSICAL_NUM_RESOURCES] = {
+  [PHYSICAL_NO_OUT] = {.handler = &asdf_arch_null_output,},
+  [PHYSICAL_OUT1] = {.handler = &asdf_arch_out1_set,},
+  [PHYSICAL_OUT2] = {.handler = &asdf_arch_out2_set,},
+  [PHYSICAL_OUT3] = {.handler = &asdf_arch_out3_set,},
+  [PHYSICAL_OUT1_OPEN_HI] = {.handler = &asdf_arch_out1_open_hi_set,},
+  [PHYSICAL_OUT2_OPEN_HI] = {.handler = &asdf_arch_out2_open_hi_set,},
+  [PHYSICAL_OUT3_OPEN_HI] = {.handler = &asdf_arch_out3_open_hi_set,},
+  [PHYSICAL_OUT1_OPEN_LO] = {.handler = &asdf_arch_out1_open_lo_set,},
+  [PHYSICAL_OUT2_OPEN_LO] = {.handler = &asdf_arch_out2_open_lo_set,},
+  [PHYSICAL_OUT3_OPEN_LO] = {.handler = &asdf_arch_out3_open_lo_set,},
+  [PHYSICAL_LED1] = {.handler = &asdf_arch_led1_set,},
+  [PHYSICAL_LED2] = {.handler = &asdf_arch_led2_set,},
+  [PHYSICAL_LED3] = {.handler = &asdf_arch_led3_set,},
+};
+
 
 
 // PROCEDURE: asdf_physical_set
@@ -81,7 +84,7 @@ static struct {
 //
 void asdf_physical_set(asdf_physical_dev_t physical_out, uint8_t value)
 {
-  physical_out_set[physical_out](value);
+  physical_device_table[physical_out].handler(value);
   physical_device_table[physical_out].shadow = value;
 }
 
@@ -104,7 +107,7 @@ void asdf_physical_set(asdf_physical_dev_t physical_out, uint8_t value)
 void asdf_physical_assert(asdf_physical_dev_t physical_out)
 {
   uint8_t value = physical_device_table[physical_out].shadow;
-  physical_out_set[physical_out](value);
+  physical_device_table[physical_out].handler(value);
 }
 
 // PROCEDURE: asdf_physical_toggle
