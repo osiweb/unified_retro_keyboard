@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "ASCII Interface for Unified Retro Keyboard"
-Date "2019-08-25"
-Rev "2.5"
+Date "2020-04-25"
+Rev "2.6"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -922,7 +922,7 @@ Wire Wire Line
 	6450 4845 6450 4830
 Connection ~ 5840 4450
 Wire Wire Line
-	5785 5470 5785 4355
+	5785 5470 5785 4350
 Connection ~ 5735 4250
 Wire Wire Line
 	5860 6070 5960 6070
@@ -2122,6 +2122,7 @@ Wire Wire Line
 	9060 1950 9705 1950
 Wire Wire Line
 	9060 1550 9975 1550
+Connection ~ 5785 4350
 Wire Bus Line
 	5200 3850 5200 6640
 Wire Bus Line
