@@ -738,7 +738,55 @@ asdf_cols_t asdf_arch_read_row(uint8_t row)
   ASDF_HIROW_PORT = rows >> 8;
   ASDF_LOROW_PORT = rows & 0xff;
 
-  return (asdf_cols_t) ASDF_COLUMNS_PORT;
+  return (asdf_cols_t) ASDF_COLUMNS_PIN;
+}
+
+// PROCEDURE: asdf_arch_read_row
+// INPUTS: (uint8_t) row: the row number to be scanned
+// OUTPUTS: returns a word containing the active (pressed) columns
+//
+// DESCRIPTION: Outputs the argument to the ROW ports, then reads the column
+// port and returns the value. The value is a binary representation of the keys
+// pressed within the row, with 1=pressed, 0=released.
+//
+// SIDE EFFECTS: Sets ROW output port.
+//
+// NOTES:
+//
+// 1) The keymap represents an unpressed key as a "0" and a pressed key as a
+//    "1". So, if a keypress pulls the column line low, then the reading of the
+//    physical bits must be inverted.
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+asdf_cols_t asdf_arch_osi_read_row(uint8_t row)
+{
+  asdf_cols_t cols;
+
+  if (row > 7) {
+    cols = asdf_arch_read_row(row);
+  } else {
+    // enable the OSI keyboard
+    clear_bit(&ASDF_OSI_KBE_PORT, ASDF_OSI_KBE_BIT);
+
+    // register the row to be read
+    ASDF_COLUMNS_DDR = ALL_OUTPUTS;
+
+    ASDF_COLUMNS_PORT = (1 << row);
+    clear_bit(&ASDF_OSI_RW_PORT, ASDF_OSI_RW_BIT);
+    set_bit(&ASDF_OSI_RW_PORT, ASDF_OSI_RW_BIT);
+
+    // Read in the columns
+    ASDF_COLUMNS_DDR = ALL_INPUTS;
+    return ASDF_COLUMNS_PIN;
+
+    ASDF_LOROW_PORT = row & 0xff;
+
+    cols = (asdf_cols_t) ASDF_COLUMNS_PORT; 
+  }
+  return cols;
 }
 
 
