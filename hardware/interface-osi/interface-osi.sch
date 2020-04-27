@@ -1466,14 +1466,14 @@ Wire Wire Line
 Wire Wire Line
 	6650 9550 7050 9550
 Text Notes 7800 9650 0    50   ~ 0
-S1 is from Video timing chain.  \n- For 540A board, this must be jumpered to pin 15, and Jumper J1 must be set to “S1”.\n- For 540B board, set jumper to “~S1~”
+S1 is from Video timing chain.  \n- For 540A board, this must be jumpered to pin 15, and Jumper JP1 must be set to “S1”.\n- For 540B board, set jumper JP1 to “~S1~”
 $Comp
 L Jumper:Jumper_3_Open JP?
 U 1 1 62069817
 P 5650 8550
 AR Path="/5D770C6B/62069817" Ref="JP?"  Part="1" 
-AR Path="/62069817" Ref="JP?"  Part="1" 
-F 0 "JP?" V 5650 8774 50  0000 C CNN
+AR Path="/62069817" Ref="JP1"  Part="1" 
+F 0 "JP1" V 5650 8774 50  0000 C CNN
 F 1 "Jumper_3_Open" V 6000 8700 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Horizontal" H 5650 8550 50  0001 C CNN
 F 3 "~" H 5650 8550 50  0001 C CNN
