@@ -64,7 +64,7 @@ static const modifier_index_t modifier_mapping[] = {
 void asdf_modifier_set_shift_state(uint8_t new_state)
 {
   shift_state = new_state;
-  asdf_virtual_action(VSHIFT_LED, (shift_state ? V_SET_HI : V_SET_LO));
+  asdf_virtual_action(VSHIFT_LED, ((shift_state & SHIFT_LOCKED_ST) ? V_SET_HI : V_SET_LO));
 }
 
 // PROCEDURE: asdf_modifier_shift_activate

@@ -55,9 +55,7 @@ typedef enum {
 // Define the legal CAPS and CAPSLOCK states
 typedef enum {
   CAPS_OFF_ST = 0,
-  CAPS_ON_ST = 1,
-  CAPS_LOCKED_ST = 2,
-  CAPS_BOTH_ST = 3 // Never explicitly set. CAPS and CAPSLOCK together.
+  CAPS_LOCKED_ST = 1,
 } caps_state_t;
 
 // Define the legal CTRL states
