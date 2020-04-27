@@ -157,6 +157,7 @@ void test_pulse_triple_output(void)
   TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(PHYSICAL_OUT2));
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_OUT3));
 
+  // create stable (non-pulse) hi state by asserting high twice.
   asdf_virtual_action(VOUT1, V_SET_HI);
   asdf_virtual_action(VOUT1, V_SET_HI);
   TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(PHYSICAL_OUT1));
@@ -175,6 +176,27 @@ void test_pulse_triple_output(void)
   TEST_ASSERT_EQUAL_INT32(PD_ST_TRANSITION_LOW, asdf_arch_check_pulse(PHYSICAL_OUT1));
   TEST_ASSERT_EQUAL_INT32(PD_ST_TRANSITION_LOW, asdf_arch_check_pulse(PHYSICAL_OUT2));
   TEST_ASSERT_EQUAL_INT32(PD_ST_TRANSITION_LOW, asdf_arch_check_pulse(PHYSICAL_OUT3));
+}
+
+// This test ties three real outputs to a virtual output and pulses the virtual
+// output high and low
+void test_activate_triple_output(void)
+{
+  asdf_keymaps_select_keymap(TRIPLE_TESTS_KEYMAP);
+  // check that initial values have been set:
+  TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_OUT1));
+  TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(PHYSICAL_OUT2));
+  TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_OUT3));
+
+  asdf_virtual_activate(VOUT1);
+  TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(PHYSICAL_OUT1));
+  TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_OUT2));
+  TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(PHYSICAL_OUT3));
+
+  asdf_virtual_activate(VOUT1);
+  TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_OUT1));
+  TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(PHYSICAL_OUT2));
+  TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_OUT3));
 }
 
 uint8_t *output_array(void)
@@ -291,6 +313,7 @@ int main(void)
   RUN_TEST(test_pulse_low_virtual_output);
   RUN_TEST(test_toggle_triple_output);
   RUN_TEST(test_set_triple_output);
+  RUN_TEST(test_activate_triple_output);
   RUN_TEST(test_pulse_triple_output);
   RUN_TEST(test_virtual_capslock_indicator);
   RUN_TEST(test_virtual_shiftlock_indicator);
