@@ -72,15 +72,21 @@
 //    keymaps.
 
 
-#define SOL_KBD_VRESET VOUT2
-#define SOL_KBD_VBREAK VOUT3
-#define SOL_KBD_VLOCAL VOUT4
+#define SOL_KBD_VRESET VOUT1
+#define SOL_KBD_VBREAK VOUT2
+#define SOL_KBD_VLOCAL VOUT3
 #define SOL_KBD_LED_ON 1
 #define SOL_KBD_LED_OFF 0
 
 // The SOL manual (sec. 7.7.8) indicates shiftlock locks SHIFT on, and SHIFT
 // returns to unshifted. For Toggle behavior, change to ACTION_SHIFTLOCK_TOGGLE.
-#define SOL_KBD_SHIFTLOCK ACTION_SHIFTLOCK_ON
+#define SOL_KBD_SHIFTLOCK_ACTION ACTION_SHIFTLOCK_ON
+
+// The weird C preprocessor expansion behavior requires one dereference for each
+// expansion.
+#define SOL_KBD_VIRTUAL_SUB1(SOL_VDEVICE) ACTION_ ## SOL_VDEVICE
+#define SOL_KBD_VIRTUAL_SUB(SOL_VDEVICE) SOL_KBD_VIRTUAL_SUB1(SOL_VDEVICE)
+#define SOL_KBD_LOCAL_ACTION SOL_KBD_VIRTUAL_SUB(SOL_KBD_VLOCAL)
 
 #define SOL_ASCII_LOAD 0x8C
 #define SOL_ASCII_MODE_SELECT 0x80
@@ -109,26 +115,26 @@
   {                                                                                                \
     { .virtual_device = VCAPS_LED,                                                                 \
       .physical_device = SOL_KBD_LED_UPPERCASE,                                                    \
-      .initial_value = SOL_KBD_LED_ON },                                                               \
+      .initial_value = SOL_KBD_LED_ON },                                                           \
       { .virtual_device = VSHIFT_LED,                                                              \
-        .physical_device = SOL_KBD_LED_SHIFTLOCK,                                                          \
-        .initial_value = SOL_KBD_LED_OFF },                                                            \
-      { .virtual_device = SOL_KBD_VLOCAL,                                                              \
-        .physical_device = SOL_KBD_TTLOUT_LOCAL,                                                           \
+        .physical_device = SOL_KBD_LED_SHIFTLOCK,                                                  \
+        .initial_value = SOL_KBD_LED_OFF },                                                        \
+      { .virtual_device = SOL_KBD_VLOCAL,                                                          \
+        .physical_device = SOL_KBD_TTLOUT_LOCAL,                                                   \
         .function = V_TOGGLE,                                                                      \
-        .initial_value = SOL_KBD_TTL_HIGH },                                                               \
-      { .virtual_device = SOL_KBD_VLOCAL,                                                              \
-        .physical_device = SOL_KBD_LED_LOCAL,                                                              \
+        .initial_value = SOL_KBD_TTL_HIGH },                                                       \
+      { .virtual_device = SOL_KBD_VLOCAL,                                                          \
+        .physical_device = SOL_KBD_LED_LOCAL,                                                      \
         .function = V_TOGGLE,                                                                      \
-        .initial_value = SOL_KBD_LED_OFF },                                                                \
-      { .virtual_device = SOL_KBD_VRESET,                                                              \
-        .physical_device = SOL_KBD_TTLOUT_RESET,                                                           \
-        .function = V_PULSE_SHORT,                                                                       \
-        .initial_value = SOL_KBD_TTL_HIGH },                                                               \
-      { .virtual_device = SOL_KBD_VBREAK,                                                              \
-        .physical_device = SOL_KBD_TTLOUT_BREAK,                                                            \
-        .function = V_PULSE_LONG,                                                                       \
-        .initial_value = SOL_KBD_TTL_HIGH },                                                               \
+        .initial_value = SOL_KBD_LED_OFF },                                                        \
+      { .virtual_device = SOL_KBD_VRESET,                                                          \
+        .physical_device = SOL_KBD_TTLOUT_RESET,                                                   \
+        .function = V_PULSE_SHORT,                                                                 \
+        .initial_value = SOL_KBD_TTL_HIGH },                                                       \
+      { .virtual_device = SOL_KBD_VBREAK,                                                          \
+        .physical_device = SOL_KBD_TTLOUT_BREAK,                                                   \
+        .function = V_PULSE_LONG,                                                                  \
+        .initial_value = SOL_KBD_TTL_HIGH },                                                       \
   }
 
 #define DIP_SWITCH_ROW 15
@@ -139,7 +145,7 @@
 // clang-format off
 #define ASDF_SOL_PLAIN_MAP                                              \
   {                                                                     \
-    [0] = { ACTION_CTRL, SOL_KBD_SHIFTLOCK, 'a', 's', 'd', 'f', 'g', 'h' }, \
+    [0] = { ACTION_CTRL, SOL_KBD_SHIFTLOCK_ACTION, 'a', 's', 'd', 'f', 'g', 'h' }, \
     [1] = { 'j', 'k', 'l', ';', ':', ASCII_DEL, ACTION_REPEAT, ACTION_CTRL }, \
     [2] = { ACTION_CAPS, ACTION_SHIFT, 'z', 'x', 'c', 'v', 'b', 'n' },  \
     [3] = { 'm',          ASCII_COMMA,           ASCII_PERIOD,   '/',   \
@@ -149,7 +155,7 @@
             ASCII_LT_SQUARE_BRACE, ASCII_BACKSLASH, ASCII_RT_SQUARE_BRACE }, \
     [6] = { SOL_KBD_VBREAK, ASCII_TAB, 'q', 'w', 'e', 'r', 't', 'y' }, /**/     \
     [7] = { 'u', 'i', 'o', 'p', ASCII_AT, ASCII_CR, ASCII_LF, SOL_ASCII_LOAD }, \
-    [9] = { SOL_KBD_VLOCAL,         SOL_ASCII_UP_ARROW, SOL_ASCII_LT_ARROW,     \
+    [9] = { SOL_KBD_LOCAL_ACTION,         SOL_ASCII_UP_ARROW, SOL_ASCII_LT_ARROW,     \
             ASCII_SPACE,    SOL_ASCII_RT_ARROW, SOL_ASCII_DN_ARROW,     \
             SOL_ASCII_HOME, SOL_ASCII_CLEAR },                          \
     [10] = { '-', '7', '*', '8', '/', '9', ACTION_NOTHING, ACTION_NOTHING }, \
@@ -161,7 +167,7 @@
 
 #define ASDF_SOL_CAPS_MAP                                               \
   {                                                                     \
-    [0] = { ACTION_CTRL, SOL_KBD_SHIFTLOCK, 'A', 'S', 'D', 'F', 'G', 'H' }, \
+    [0] = { ACTION_CTRL, SOL_KBD_SHIFTLOCK_ACTION, 'A', 'S', 'D', 'F', 'G', 'H' }, \
     [1] = { 'J', 'K', 'L', ';', ':', ASCII_DEL, ACTION_REPEAT, ACTION_CTRL }, \
     [2] = { ACTION_CAPS, ACTION_SHIFT, 'Z', 'X', 'C', 'V', 'B', 'N' },  \
     [3] = { 'M',          ASCII_COMMA,           ASCII_PERIOD,   '/',   \
@@ -171,7 +177,7 @@
             ASCII_LT_SQUARE_BRACE, ASCII_BACKSLASH, ASCII_RT_SQUARE_BRACE }, \
     [6] = { SOL_KBD_VBREAK, ASCII_TAB, 'Q', 'W', 'E', 'R', 'T', 'Y' }, /**/     \
     [7] = { 'U', 'I', 'O', 'P', ASCII_AT, ASCII_CR, ASCII_LF, SOL_ASCII_LOAD }, \
-    [9] = { SOL_KBD_VLOCAL,         SOL_ASCII_UP_ARROW, SOL_ASCII_LT_ARROW,     \
+    [9] = { SOL_KBD_LOCAL_ACTION,         SOL_ASCII_UP_ARROW, SOL_ASCII_LT_ARROW,     \
             ASCII_SPACE,    SOL_ASCII_RT_ARROW, SOL_ASCII_DN_ARROW,     \
             SOL_ASCII_HOME, SOL_ASCII_CLEAR },                          \
     [10] = { '-', '7', '*', '8', '/', '9', ACTION_NOTHING, ACTION_NOTHING }, \
@@ -183,7 +189,7 @@
 
 #define ASDF_SOL_SHIFT_MAP                                              \
   {                                                                     \
-    [0] = { ACTION_CTRL, SOL_KBD_SHIFTLOCK, 'A', 'S', 'D', 'F', 'G', 'H' }, \
+    [0] = { ACTION_CTRL, SOL_KBD_SHIFTLOCK_ACTION, 'A', 'S', 'D', 'F', 'G', 'H' }, \
     [1] = { 'J', 'K', 'L', ';', ':', ASCII_UNDERSCORE, ACTION_REPEAT, ACTION_CTRL }, \
     [2] = { ACTION_CAPS, ACTION_SHIFT, 'Z', 'X', 'C', 'V', 'B', 'N' },  \
     [3] = { 'M',          '<',           '>',   '?',   \
@@ -193,7 +199,7 @@
             ASCII_LT_SQUARE_BRACE, ASCII_BACKSLASH, ASCII_RT_SQUARE_BRACE }, \
     [6] = { SOL_KBD_VBREAK, ASCII_TAB, 'Q', 'W', 'E', 'R', 'T', 'Y' },          \
     [7] = { 'U', 'I', 'O', 'P', ASCII_GRAVE_ACCENT, ASCII_CR, ASCII_LF, SOL_ASCII_LOAD }, \
-    [9] = { SOL_KBD_VLOCAL,         SOL_ASCII_UP_ARROW, SOL_ASCII_LT_ARROW,     \
+    [9] = { SOL_KBD_LOCAL_ACTION,         SOL_ASCII_UP_ARROW, SOL_ASCII_LT_ARROW,     \
             ASCII_SPACE,    SOL_ASCII_RT_ARROW, SOL_ASCII_DN_ARROW,     \
             SOL_ASCII_HOME, SOL_ASCII_CLEAR },                          \
     [10] = { '-', '7', '*', '8', '/', '9', ACTION_NOTHING, ACTION_NOTHING }, \
@@ -205,7 +211,7 @@
 
 #define ASDF_SOL_CTRL_MAP                                               \
   {                                                                     \
-    [0] = { ACTION_CTRL, SOL_KBD_SHIFTLOCK, ASCII_CTRL_A, ASCII_CTRL_S, \
+    [0] = { ACTION_CTRL, SOL_KBD_SHIFTLOCK_ACTION, ASCII_CTRL_A, ASCII_CTRL_S, \
             ASCII_CTRL_D, ASCII_CTRL_F, ASCII_CTRL_G, ASCII_CTRL_H },       \
     [1] = { ASCII_CTRL_J, ASCII_CTRL_K, ASCII_CTRL_L, ASCII_VT,         \
             ASCII_LF, ASCII_DEL, ACTION_REPEAT, ACTION_CTRL },          \
@@ -221,7 +227,7 @@
             ASCII_CTRL_E, ASCII_CTRL_R, ASCII_CTRL_T, ASCII_CTRL_Y },   \
     [7] = { ASCII_CTRL_U, ASCII_CTRL_I, ASCII_CTRL_O, ASCII_CTRL_P,     \
             ASCII_NULL, ASCII_CR, ASCII_LF, SOL_ASCII_LOAD },             \
-    [9] = { SOL_KBD_VLOCAL,         SOL_ASCII_UP_ARROW, SOL_ASCII_LT_ARROW,     \
+    [9] = { SOL_KBD_LOCAL_ACTION,         SOL_ASCII_UP_ARROW, SOL_ASCII_LT_ARROW,     \
             ASCII_SPACE,    SOL_ASCII_RT_ARROW, SOL_ASCII_DN_ARROW,     \
             SOL_ASCII_HOME, SOL_ASCII_CLEAR },                          \
     [10] = { '-', '7', '*', '8', '/', '9', ACTION_NOTHING, ACTION_NOTHING }, \
@@ -234,9 +240,9 @@
 // clang-format on
 
 #define ASDF_SOL_MAP_DECLARATIONS                                                                  \
-  static const FLASH keycode_matrix_t asdf_sol_plain_matrix = ASDF_SOL_PLAIN_MAP;                     \
-  static const FLASH keycode_matrix_t asdf_sol_shift_matrix = ASDF_SOL_SHIFT_MAP;                     \
-  static const FLASH keycode_matrix_t asdf_sol_caps_matrix = ASDF_SOL_CAPS_MAP;                       \
+  static const FLASH keycode_matrix_t asdf_sol_plain_matrix = ASDF_SOL_PLAIN_MAP;                  \
+  static const FLASH keycode_matrix_t asdf_sol_shift_matrix = ASDF_SOL_SHIFT_MAP;                  \
+  static const FLASH keycode_matrix_t asdf_sol_caps_matrix = ASDF_SOL_CAPS_MAP;                    \
   static const FLASH keycode_matrix_t asdf_sol_ctrl_matrix = ASDF_SOL_CTRL_MAP;
 
 
@@ -253,8 +259,8 @@
 
 #define ASDF_SOL_MAP_DEFS                                                                          \
   {                                                                                                \
-    [MOD_PLAIN_MAP] = &asdf_sol_plain_matrix, [MOD_SHIFT_MAP] = &asdf_sol_shift_matrix,                    \
-    [MOD_CAPS_MAP] = &asdf_sol_caps_matrix, [MOD_CTRL_MAP] = &asdf_sol_ctrl_matrix                       \
+    [MOD_PLAIN_MAP] = &asdf_sol_plain_matrix, [MOD_SHIFT_MAP] = &asdf_sol_shift_matrix,            \
+    [MOD_CAPS_MAP] = &asdf_sol_caps_matrix, [MOD_CTRL_MAP] = &asdf_sol_ctrl_matrix                 \
   }
 
 #define ASDF_SOL_ALL_MAPS ASDF_SOL_MAP_DEFS
