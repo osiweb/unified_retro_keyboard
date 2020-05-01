@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLedger 17000 11000
 encoding utf-8
-Sheet 1 1
+Sheet 1 2
 Title "Unified Retro Keyboard ASCII Interface (2560)"
 Date "2020-04-16"
 Rev "3.1"
@@ -1976,9 +1976,15 @@ Wire Bus Line
 Wire Bus Line
 	2500 4600 2500 8400
 Wire Bus Line
-	13500 2150 13500 8200
+	13500 2200 13500 8200
 Wire Bus Line
 	15900 2200 15900 8200
 Wire Bus Line
 	10700 2600 10700 8200
+$Sheet
+S 4600 9150 1000 800 
+U 60C30592
+F0 "Pinouts" 50
+F1 "Pinouts.sch" 50
+$EndSheet
 $EndSCHEMATC
