@@ -84,7 +84,7 @@
 
 // The weird C preprocessor expansion behavior requires one dereference for each
 // expansion.
-#define SOL_KBD_VIRTUAL_SUB1(SOL_VDEVICE) ACTION_ ## SOL_VDEVICE
+#define SOL_KBD_VIRTUAL_SUB1(SOL_VDEVICE) ACTION_##SOL_VDEVICE
 #define SOL_KBD_VIRTUAL_SUB(SOL_VDEVICE) SOL_KBD_VIRTUAL_SUB1(SOL_VDEVICE)
 #define SOL_KBD_LOCAL_ACTION SOL_KBD_VIRTUAL_SUB(SOL_KBD_VLOCAL)
 
@@ -136,6 +136,18 @@
         .function = V_PULSE_LONG,                                                                  \
         .initial_value = SOL_KBD_TTL_HIGH },                                                       \
   }
+
+// function hooks for the SOL keyboard. At Setup, activate CAPSLOCK to emulate
+// original keyboard.
+#define ASDF_SOL_KEYMAP_HOOK_INITIALIZER_LENGTH 1
+#define ASDF_SOL_KEYMAP_HOOK_INITIALIZER                                                           \
+  {                                                                                                \
+    {                                                                                              \
+      .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                           \
+      .hook_func = asdf_modifier_capslock_activate,                                                \
+    },                                                                                             \
+  }
+
 
 #define DIP_SWITCH_ROW 15
 
@@ -281,6 +293,12 @@
   || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_SOL_KEYMAP_INITIALIZER_LENGTH)
 #undef ASDF_KEYMAP_INITIALIZER_LENGTH
 #define ASDF_KEYMAP_INITIALIZER_LENGTH ASDF_SOL_KEYMAP_INITIALIZER_LENGTH
+#endif
+
+#if !defined(ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH)                                                  \
+  || (ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH < ASDF_SOL_KEYMAP_HOOK_INITIALIZER_LENGTH)
+#undef ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH
+#define ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH ASDF_SOL_KEYMAP_HOOK_INITIALIZER_LENGTH
 #endif
 
 #endif /* !defined (ASDF_KEYMAP_DEFS_SOL20_H) */

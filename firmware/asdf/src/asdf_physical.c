@@ -204,7 +204,7 @@ asdf_physical_dev_t asdf_physical_next_device(asdf_physical_dev_t device)
 }
 
 // PROCEDURE: asdf_physical_allocate
-
+//
 // INPUTS: (asdf_physical_out_t) physical_out - the desired physical resource to allocate.
 //         (asdf_physical_out_t) tail - the list of physical resources to tack on
 //         to the requested resource, if available.

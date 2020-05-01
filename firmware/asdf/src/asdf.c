@@ -41,7 +41,7 @@
 #include "asdf_modifiers.h"
 #include "asdf_buffer.h"
 #include "asdf_arch.h"
-
+#include "asdf_hook.h"
 
 // The key scanner keeps track of the last stable (debounced) state of each key
 // in the matrix, one bit per key, 8 bits per row.
@@ -380,13 +380,13 @@ void asdf_init(void)
   asdf_repeat_init();  // initialize the repeat counters
   asdf_keymaps_init(); // initialize keymaps. This also initializes the modifier
                        // key states.
-  asdf_buffer_init(); // initialize the buffers
+  asdf_buffer_init();  // initialize the buffers
 
   // reserve a buffer for the ASCII output:
   asdf_keycode_buffer = asdf_buffer_new(ASDF_KEYCODE_BUFFER_SIZE);
 
   // Initialize all the keys to the unpressed state, and initialze the debounce
-  // counters. 
+  // counters.
   for (uint8_t row = 0; row < ASDF_NUM_ROWS; row++) {
     last_stable_key_state[row] = 0;
     for (uint8_t col = 0; col < ASDF_NUM_COLS; col++) {
@@ -496,8 +496,12 @@ static void asdf_handle_key_held_pressed(uint8_t row, uint8_t col)
 //
 void asdf_keyscan(void)
 {
+  //asdf_hook_get(ASDF_HOOK_EACH_SCAN)();
   for (uint8_t row = 0; row < ASDF_NUM_ROWS; row++) {
-    asdf_cols_t row_key_state = asdf_arch_read_row(row);
+    //asdf_cols_t (*row_reader)(uint8_t) =
+    //(asdf_cols_t (*) (uint8_t)) asdf_hook_get(ASDF_HOOK_SCANNER);
+    //asdf_cols_t row_key_state = (*row_reader)(row);
+
     asdf_cols_t changed = row_key_state ^ last_stable_key_state[row];
 
     // loop over the bits until all changed or pressed keys in the row are handled.
