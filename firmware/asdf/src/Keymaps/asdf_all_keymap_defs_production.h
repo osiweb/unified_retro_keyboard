@@ -30,6 +30,7 @@
 #define ASDF_KEYMAP_DEFS_H
 
 #include "asdf.h"
+#include "asdf_arch.h"
 #include "asdf_ascii.h"
 #include "asdf_physical.h"
 #include "asdf_virtual.h"

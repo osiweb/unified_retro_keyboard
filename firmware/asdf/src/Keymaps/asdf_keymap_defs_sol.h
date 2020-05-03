@@ -137,10 +137,8 @@
         .initial_value = SOL_KBD_TTL_HIGH },                                                       \
   }
 
-#define DIP_SWITCH_ROW 15
-
 #define ASDF_SOL_DIP_SWITCHES                                                                      \
-  [DIP_SWITCH_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+  [ASDF_ARCH_DIP_SWITCH_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
 
 // clang-format off
 #define ASDF_SOL_PLAIN_MAP                                              \

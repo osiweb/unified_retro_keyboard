@@ -135,7 +135,8 @@
 //    keymaps.
 
 
-#define ASDF_ASCII_DIP_SWITCHES [ASDF_NUM_ROWS - 1] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+#define ASDF_ASCII_DIP_SWITCHES [ASDF_ARCH_DIP_SWITCH_ROW] = \
+    { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
 
 #define ASDF_ASCII_PLAIN_MAP                                                                       \
   {                                                                     \

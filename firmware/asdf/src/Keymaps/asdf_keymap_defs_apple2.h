@@ -140,7 +140,8 @@
 //    definitions in positions 0-3 ensures consistent map selection among all
 //    keymaps.
 
-#define ASDF_APPLE2_DIP_SWITCHES [ASDF_NUM_ROWS - 1] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+#define ASDF_APPLE2_DIP_SWITCHES [ASDF_ARCH_DIP_SWITCH_ROW] =            \
+    { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
 
 #define APPLE_LEFT_ARROW ASCII_CTRL_H
 #define APPLE_RIGHT_ARROW ASCII_CTRL_U
