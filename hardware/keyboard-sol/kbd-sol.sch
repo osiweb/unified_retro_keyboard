@@ -552,13 +552,12 @@ NoConn ~ 7900 2850
 NoConn ~ 7900 2950
 NoConn ~ 7900 3050
 NoConn ~ 8400 2850
-NoConn ~ 7100 2900
 Wire Bus Line
 	9800 700  9800 2975
 Wire Bus Line
 	5820 700  5820 2210
 Wire Bus Line
-	2925 700  2925 4700
-Wire Bus Line
 	7400 700  7400 3050
+Wire Bus Line
+	2925 700  2925 4700
 $EndSCHEMATC
