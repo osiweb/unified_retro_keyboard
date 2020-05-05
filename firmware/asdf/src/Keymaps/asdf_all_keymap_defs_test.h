@@ -30,6 +30,7 @@
 #define ASDF_KEYMAP_DEFS_H
 
 #include "asdf.h"
+#include "test_asdf_lib.h"
 #include "asdf_ascii.h"
 #include "asdf_modifiers.h"
 #include "Keymaps/asdf_keymap_defs_test.h"
@@ -41,14 +42,24 @@
 
 #define ASDF_NUM_KEYMAPS (ASDF_TEST_BASE + ASDF_TEST_KEYMAPS_COUNT + ASDF_TEST2_KEYMAPS_COUNT)
 
-#define ASDF_KEYMAP_DEFS { ASDF_TEST_KEYMAPS, ASDF_TEST2_KEYMAPS }
+#define ASDF_KEYMAP_DEFS                                                                           \
+  {                                                                                                \
+    ASDF_TEST_KEYMAPS, ASDF_TEST2_KEYMAPS                                                          \
+  }
 
 #define ASDF_KEYMAP_DECLARATIONS ASDF_TEST_DECLARATIONS ASDF_TEST2_DECLARATIONS
 
-#define ASDF_KEYMAP_INITIALIZERS { ASDF_TEST_KEYMAP_INITIALIZER , ASDF_TEST2_KEYMAP_INITIALIZER }
+#define ASDF_KEYMAP_INITIALIZERS                                                                   \
+  {                                                                                                \
+    ASDF_TEST_KEYMAP_INITIALIZER, ASDF_TEST2_KEYMAP_INITIALIZER                                    \
+  }
+
+#define ASDF_KEYMAP_HOOK_INITIALIZERS                                                              \
+  {                                                                                                \
+    ASDF_TEST_KEYMAP_HOOK_INITIALIZER, ASDF_TEST2_KEYMAP_HOOK_INITIALIZER                          \
+  }
 
 typedef asdf_keycode_t keycode_matrix_t[ASDF_NUM_ROWS][ASDF_NUM_COLS];
-
 
 
 #endif /* !defined (ASDF_KEYMAP_DEFS_H) */

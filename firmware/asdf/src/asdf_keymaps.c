@@ -25,6 +25,7 @@
 #include "asdf_arch.h"
 #include "asdf_physical.h"
 #include "asdf_virtual.h"
+#include "asdf_hook.h"
 #include "asdf_keymaps.h"
 #include "asdf_keymap_defs.h"
 
@@ -50,13 +51,19 @@ static keycode_matrix_t const *keymap_matrix[ASDF_NUM_KEYMAPS][ASDF_MOD_NUM_MODI
 
 
 // Each keymap (representing a keyboard configuration) has an associated set of
-// keyboard initializers that set up the I/O and LED lines for the keyboard, and
-// other configuration unique to the keyboard defined by the map. This builds
-// the keymap initializer array from the initializer definitions in the keymap
-// definitino files.
+// virtual device initializers that set up the I/O and LED lines for the
+// keyboard, unique to each keymap. This builds the virtual device initializer
+// array from the initializer definitions in the keymap definition files.
 static const asdf_virtual_initializer_t keymap_initializer_list[ASDF_NUM_KEYMAPS]
                                                                [ASDF_KEYMAP_INITIALIZER_LENGTH] =
                                                                  ASDF_KEYMAP_INITIALIZERS;
+
+// Each keymap (representing a keyboard configuration) has an associated set of
+// function hooks unique to the keyboard defined by the map. This builds the
+// function hook initializer array from the definitions in the keymap definition
+// files.
+static const asdf_hook_initializer_t keymap_hook_initializer_list[ASDF_NUM_KEYMAPS] [ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH] =
+  ASDF_KEYMAP_HOOK_INITIALIZERS;
 
 // Index of the currently active keymap, initialized to zero in the init
 // routine.
@@ -87,6 +94,7 @@ void asdf_keymaps_select_keymap(uint8_t index)
     keymap_index = index;
     asdf_virtual_init((asdf_virtual_initializer_t *const) keymap_initializer_list[keymap_index]);
     asdf_modifiers_init();
+    asdf_hook_init((asdf_hook_initializer_t *const) keymap_hook_initializer_list[keymap_index]);
   }
 }
 

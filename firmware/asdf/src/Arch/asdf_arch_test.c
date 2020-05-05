@@ -110,6 +110,68 @@ static uint8_t outputs[ASDF_PHYSICAL_NUM_RESOURCES];
 static pulse_state_t pulses[ASDF_PHYSICAL_NUM_RESOURCES];
 
 
+
+static asdf_keycode_t code_register;
+static uint8_t code_sent;
+
+// PROCEDURE: asdf_arch_send_code
+// INPUTS: asdf_keycode_t code
+// OUTPUTS: none
+// DESCRIPTION: emulates sending a code, by copying code to a register that can
+// be tested.
+//
+// SIDE_EFFECTS: sets code_sent variable and alters code_register
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_send_code(asdf_keycode_t code)
+{
+  code_register = code;
+  code_sent = 1;
+}
+
+// PROCEDURE: asdf_arch_get_sent_code
+// INPUTS: none
+// OUTPUTS: returns type (asdf_keycode_t) in register and zeros the register.
+// DESCRIPTION: faciliates test of sending a code, by reporting contents of the
+// "sent register".  Resets code_sent variable.
+// 
+// SIDE_EFFECTS: alters code_sent variable
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+asdf_keycode_t asdf_arch_get_sent_code(void)
+{
+  code_sent = 0;
+  return code_register;
+}
+
+// PROCEDURE: asdf_arch_was_code_sent
+// INPUTS: none
+// OUTPUTS: returns TRUE if a code was sent, FALSE otherwise.
+// DESCRIPTION: returns status of code_sent variable.
+//
+// SIDE_EFFECTS: sets code_sent variable and alters code_register
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+uint8_t asdf_arch_was_code_sent(void){
+  return code_sent;
+}
+
+
 // PROCEDURE: pulse_detect
 // INPUTS: (pulse_state_t) current_state
 //         (pulse_event_t) event - current input to the state machine
@@ -521,6 +583,9 @@ void asdf_arch_init(void)
     outputs[i] = 0;
     pulses[i] = PD_ST_INITIAL_STATE;
   }
+
+  // initially, no keycodes have been sent via asdf_arch_send_code:
+  code_sent = 0;
 }
 
 

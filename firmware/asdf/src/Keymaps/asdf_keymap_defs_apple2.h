@@ -3,7 +3,7 @@
 // Unfified Keyboard Project
 // ASDF keyboard firmware
 //
-// asdf_keymaps_apple2.h 
+// asdf_keymaps_apple2.h
 //
 // Apple 2 keymaps
 //
@@ -42,7 +42,7 @@
 // Edit the number of rows and columns used in this map. If the number is less
 // than the maxium, the unused elements will be initialized to 0.
 
-#define ASDF_APPLE2_NUM_ROWS 16 // DIP switches are row 15.
+#define ASDF_APPLE2_NUM_ROWS 9 // DIP switches are row 8 (zero-based)
 #define ASDF_APPLE2_NUM_COLS 8
 
 #define APPLE_ACTION_RESET ACTION_VOUT1
@@ -68,48 +68,59 @@
 
 // The PLAIN map uses the "power" button as a caps-lock, so map the CAPS LED to
 // the power button LED.
-#define ASDF_APPLE2_PLAIN_KEYMAP_INITIALIZER                            \
-  {                                                                     \
-   { .virtual_device = VCAPS_LED,                                       \
-     .physical_device = APPLE_POWER_LED,                                \
-     .initial_value = 0 },                                              \
-   { .virtual_device = APPLE_VIRTUAL_DISABLED_LED,                      \
-     .physical_device = APPLE_DISABLED_LED,                             \
-     .initial_value = 0 },                                              \
-   { .virtual_device = APPLE_VIRTUAL_RESET,                             \
-     .physical_device = APPLE_RESET_OUTPUT,                             \
-     .function = V_PULSE_SHORT,                                         \
-     .initial_value = !APPLE_RESET_ACTIVE_VALUE },                      \
-   { .virtual_device = APPLE_VIRTUAL_CLR_SCR,                           \
-     .physical_device = APPLE_CLR_SCR_OUTPUT,                           \
-     .function = V_PULSE_LONG,                                          \
-     .initial_value = !APPLE_CLR_SCR_ACTIVE_VALUE }                     \
+#define ASDF_APPLE2_PLAIN_KEYMAP_INITIALIZER                                                       \
+  {                                                                                                \
+    { .virtual_device = VCAPS_LED, .physical_device = APPLE_POWER_LED, .initial_value = 0 },       \
+      { .virtual_device = APPLE_VIRTUAL_DISABLED_LED,                                              \
+        .physical_device = APPLE_DISABLED_LED,                                                     \
+        .initial_value = 0 },                                                                      \
+      { .virtual_device = APPLE_VIRTUAL_RESET,                                                     \
+        .physical_device = APPLE_RESET_OUTPUT,                                                     \
+        .function = V_PULSE_SHORT,                                                                 \
+        .initial_value = !APPLE_RESET_ACTIVE_VALUE },                                              \
+    {                                                                                              \
+      .virtual_device = APPLE_VIRTUAL_CLR_SCR, .physical_device = APPLE_CLR_SCR_OUTPUT,            \
+      .function = V_PULSE_LONG, .initial_value = !APPLE_CLR_SCR_ACTIVE_VALUE                       \
+    }                                                                                              \
   }
 
 // The ALL CAPS map is the classic Apple II/II+ map. There is no CAPS LED, since
 // CAPS doesn't matter in the ALL CAPS keymap.
-#define ASDF_APPLE2_CAPS_KEYMAP_INITIALIZER                             \
-  {                                                                     \
-   { .virtual_device = APPLE_VIRTUAL_POWER_LED,                         \
-     .physical_device = APPLE_POWER_LED,                                \
-     .initial_value = APPLE_POWER_LED_INIT_VALUE },                     \
-   { .virtual_device = APPLE_VIRTUAL_DISABLED_LED,                      \
-     .physical_device = APPLE_DISABLED_LED,                             \
-     .initial_value = 0 },                                              \
-   { .virtual_device = APPLE_VIRTUAL_RESET,                             \
-     .physical_device = APPLE_RESET_OUTPUT,                             \
-     .function = V_PULSE_SHORT,                                         \
-     .initial_value = !APPLE_RESET_ACTIVE_VALUE },                      \
-   { .virtual_device = APPLE_VIRTUAL_CLR_SCR,                           \
-     .physical_device = APPLE_CLR_SCR_OUTPUT,                           \
-     .function = V_PULSE_LONG,                                          \
-     .initial_value = !APPLE_CLR_SCR_ACTIVE_VALUE }                     \
+#define ASDF_APPLE2_CAPS_KEYMAP_INITIALIZER                                                        \
+  {                                                                                                \
+    { .virtual_device = APPLE_VIRTUAL_POWER_LED,                                                   \
+      .physical_device = APPLE_POWER_LED,                                                          \
+      .initial_value = APPLE_POWER_LED_INIT_VALUE },                                               \
+      { .virtual_device = APPLE_VIRTUAL_DISABLED_LED,                                              \
+        .physical_device = APPLE_DISABLED_LED,                                                     \
+        .initial_value = 0 },                                                                      \
+      { .virtual_device = APPLE_VIRTUAL_RESET,                                                     \
+        .physical_device = APPLE_RESET_OUTPUT,                                                     \
+        .function = V_PULSE_SHORT,                                                                 \
+        .initial_value = !APPLE_RESET_ACTIVE_VALUE },                                              \
+    {                                                                                              \
+      .virtual_device = APPLE_VIRTUAL_CLR_SCR, .physical_device = APPLE_CLR_SCR_OUTPUT,            \
+      .function = V_PULSE_LONG, .initial_value = !APPLE_CLR_SCR_ACTIVE_VALUE                       \
+    }                                                                                              \
   }
 
 
-#define ASDF_APPLE2_KEYMAP_INITIALIZER ASDF_APPLE2_PLAIN_KEYMAP_INITIALIZER, ASDF_APPLE2_CAPS_KEYMAP_INITIALIZER 
+#define ASDF_APPLE2_KEYMAP_INITIALIZER                                                             \
+  ASDF_APPLE2_PLAIN_KEYMAP_INITIALIZER, ASDF_APPLE2_CAPS_KEYMAP_INITIALIZER
 
-// Key Matrix for combination of ASCII controller (ATMega328P version) and Classic ASCII matrix
+// Structure to initialize hooks.  No hook functions are needed for APPLE2 keyboard.
+#define ASDF_APPLE2_KEYMAP_HOOK_INITIALIZER_LENGTH 0
+#define ASDF_APPLE2_PLAIN_KEYMAP_HOOK_INITIALIZER                                                  \
+  {                                                                                                \
+  }
+#define ASDF_APPLE2_CAPS_KEYMAP_HOOK_INITIALIZER                                                   \
+  {                                                                                                \
+  }
+#define ASDF_APPLE2_KEYMAP_HOOK_INITIALIZER                                                        \
+  ASDF_APPLE2_PLAIN_KEYMAP_HOOK_INITIALIZER, ASDF_APPLE2_CAPS_KEYMAP_HOOK_INITIALIZER
+
+
+// Key Matrix for combination of ASCII controller and Classic ASCII matrix
 //
 // Col->   0          1          2          3          4          5          6          7
 // Row 0   POWER      R-Shift    L-Shift    (no key)   ESC        TAB        CTRL       \(backslash)
@@ -140,12 +151,13 @@
 //    definitions in positions 0-3 ensures consistent map selection among all
 //    keymaps.
 
-#define ASDF_APPLE2_DIP_SWITCHES [ASDF_ARCH_DIP_SWITCH_ROW] =            \
-    { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+#define ASDF_APPLE2_DIP_SWITCHES                                                                   \
+  [ASDF_ARCH_DIPSWITCH_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
 
 #define APPLE_LEFT_ARROW ASCII_CTRL_H
 #define APPLE_RIGHT_ARROW ASCII_CTRL_U
 
+// clang-format off
 #define ASDF_APPLE2_PLAIN_MAP                                                                       \
   {                                                                     \
    [0] = { ACTION_CAPS, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,  \
@@ -225,12 +237,13 @@
             ACTION_FN_4, ACTION_FN_3, ACTION_FN_2, ACTION_FN_1 }, \
    ASDF_APPLE2_DIP_SWITCHES                                        \
   }
+// clang-format on
 
-#define ASDF_APPLE2_MAP_DECLARATIONS                                                                \
-  static const FLASH keycode_matrix_t apple2_plain_matrix = ASDF_APPLE2_PLAIN_MAP;                        \
-  static const FLASH keycode_matrix_t apple2_shift_matrix = ASDF_APPLE2_SHIFT_MAP;                        \
-  static const FLASH keycode_matrix_t apple2_caps_matrix = ASDF_APPLE2_CAPS_MAP; \
-  static const FLASH keycode_matrix_t apple2_caps_shift_matrix = ASDF_APPLE2_SHIFT_CAPS_MAP; \
+#define ASDF_APPLE2_MAP_DECLARATIONS                                                               \
+  static const FLASH keycode_matrix_t apple2_plain_matrix = ASDF_APPLE2_PLAIN_MAP;                 \
+  static const FLASH keycode_matrix_t apple2_shift_matrix = ASDF_APPLE2_SHIFT_MAP;                 \
+  static const FLASH keycode_matrix_t apple2_caps_matrix = ASDF_APPLE2_CAPS_MAP;                   \
+  static const FLASH keycode_matrix_t apple2_caps_shift_matrix = ASDF_APPLE2_SHIFT_CAPS_MAP;       \
   static const FLASH keycode_matrix_t apple2_ctrl_matrix = ASDF_APPLE2_CTRL_MAP;
 
 
@@ -245,20 +258,16 @@
 // [2]: caps (caps lock active)
 // [3]: ctrl: (control key active)
 
-#define ASDF_APPLE2_PLAIN_MAP_DEFS                                    \
-  {                                                                     \
-   [MOD_PLAIN_MAP] = &apple2_plain_matrix,                                        \
-   [MOD_SHIFT_MAP] = &apple2_shift_matrix,                                        \
-   [MOD_CAPS_MAP] = &apple2_caps_matrix,                                         \
-   [MOD_CTRL_MAP] = &apple2_ctrl_matrix                                          \
+#define ASDF_APPLE2_PLAIN_MAP_DEFS                                                                 \
+  {                                                                                                \
+    [MOD_PLAIN_MAP] = &apple2_plain_matrix, [MOD_SHIFT_MAP] = &apple2_shift_matrix,                \
+    [MOD_CAPS_MAP] = &apple2_caps_matrix, [MOD_CTRL_MAP] = &apple2_ctrl_matrix                     \
   }
 
-#define ASDF_APPLE2_CAPS_MAP_DEFS            \
-  {                                             \
-   [MOD_PLAIN_MAP] = &apple2_caps_matrix,    \
-   [MOD_SHIFT_MAP] = &apple2_caps_shift_matrix,    \
-   [MOD_CAPS_MAP] = &apple2_caps_matrix,      \
-   [MOD_CTRL_MAP] = &apple2_ctrl_matrix       \
+#define ASDF_APPLE2_CAPS_MAP_DEFS                                                                  \
+  {                                                                                                \
+    [MOD_PLAIN_MAP] = &apple2_caps_matrix, [MOD_SHIFT_MAP] = &apple2_caps_shift_matrix,            \
+    [MOD_CAPS_MAP] = &apple2_caps_matrix, [MOD_CTRL_MAP] = &apple2_ctrl_matrix                     \
   }
 
 #define ASDF_APPLE2_ALL_MAPS ASDF_APPLE2_PLAIN_MAP_DEFS, ASDF_APPLE2_CAPS_MAP_DEFS
@@ -275,13 +284,19 @@
 #define ASDF_NUM_COLS ASDF_APPLE2_NUM_COLS
 #endif
 
-#if !defined(ASDF_KEYMAP_INITIALIZER_LENGTH) || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_APPLE2_KEYMAP_INITIALIZER_LENGTH)
+#if !defined(ASDF_KEYMAP_INITIALIZER_LENGTH)                                                       \
+  || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_APPLE2_KEYMAP_INITIALIZER_LENGTH)
 #undef ASDF_KEYMAP_INITIALIZER_LENGTH
 #define ASDF_KEYMAP_INITIALIZER_LENGTH ASDF_APPLE2_KEYMAP_INITIALIZER_LENGTH
+#endif
+
+#if !defined(ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH)                                                  \
+  || (ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH < ASDF_APPLE2_KEYMAP_HOOK_INITIALIZER_LENGTH)
+#undef ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH
+#define ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH ASDF_APPLE2_KEYMAP_HOOK_INITIALIZER_LENGTH
 #endif
 
 #endif /* !defined (ASDF_KEYMAP_DEFS_APPLE2_H) */
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-

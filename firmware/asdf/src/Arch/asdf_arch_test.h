@@ -26,54 +26,14 @@
 #if !defined (ASDF_ARCH_H)
 #define ASDF_ARCH_H
 
-#include "asdf.h"
-
-#define FLASH
-#define FLASH_READ (a) (*(a))
-#define FLASH_READ_MATRIX_ELEMENT(mat,row,col) (mat)[(row)][(col)]
-
-// -*- mode: C; tab-width: 2 ; indent-tabs-mode: nil -*-
-//
-// Unfified Keyboard Project
-// ASDF keyboard firmware
-//
-// asdf_arch.c
-//
-// This file contains all the architecture dependent code, including register
-// setup, I/O, timers, etc.
-//
-// Copyright 2019 David Fenyes
-//
-// This program is free software: you can redistribute it and/or modify it under
-// the terms of the GNU General Public License as published by the Free Software
-// Foundation, either version 3 of the License, or (at your option) any later
-// version.
-//
-// This program is distributed in the hope that it will be useful, but WITHOUT
-// ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-// FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-// details.
-//
-// You should have received a copy of the GNU General Public License along with
-// this program. If not, see <https://www.gnu.org/licenses/>.
-
-
-// Wiring Information:
-// Chip: {Microcontroller type and version}
-//
-// Example:
-// PIN          NAME      FUNCTION
-// 14-19,9,10   PORTB     COLUMN inputs (1 bit per column)
-// 23-25        PORTC0-2  ROW outputs (row number)
-// 27           PORTC4
-
-
 #include <stdint.h>
+#include "asdf.h"
 #include "asdf_keymap_defs.h"
 #include "asdf_config.h"
 #include "asdf_physical.h"
 #include "asdf_virtual.h"
 #include "asdf_arch.h"
+
 
 
 typedef enum {
@@ -94,6 +54,12 @@ typedef enum {
               PD_ST_ERROR_DOUBLE_TRANSITION = 14, // fast pulse without delay
               PD_ST_ERROR_PULSE_FROM_INITIAL_STATE = 15,
 } pulse_state_t;
+
+#define FLASH
+#define FLASH_READ (a) (*(a))
+#define FLASH_READ_MATRIX_ELEMENT(mat,row,col) (mat)[(row)][(col)]
+#define ASDF_ARCH_DEFAULT_SCANNER asdf_arch_read_row
+#define ASDF_ARCH_DEFAULT_OUTPUT asdf_arch_send_code
 
 // PROCEDURE: asdf_arch_null_output
 // INPUTS: (uint8_t) value - ignored
@@ -213,6 +179,24 @@ void asdf_arch_pulse_delay_long(void);
 // the row, with 1=pressed, 0=released.
 asdf_cols_t asdf_arch_read_row(uint8_t row);
 
+// PROCEDURE: asdf_arch_send_code
+// INPUTS: asdf_keycode_t code
+// OUTPUTS: none
+// DESCRIPTION: emulates sending a code, by copying code to a register that can
+// be tested.
+void asdf_arch_send_code(asdf_keycode_t);
+
+// PROCEDURE: asdf_arch_get_sent_code
+// INPUTS: none
+// OUTPUTS: returns type (asdf_keycode_t) in register and zeros the register.
+// DESCRIPTION: faciliates test of sending a code, by reporting contents of the
+// "sent register"
+asdf_keycode_t asdf_arch_get_sent_code(void);
+
+// PROCEDURE: asdf_arch_was_code_sent
+// INPUTS: none
+// OUTPUTS: returns TRUE if a code was sent, FALSE otherwise.
+uint8_t asdf_arch_was_code_sent(void);
 
 // PROCEDURE: asdf_arch_init
 // INPUTS: none

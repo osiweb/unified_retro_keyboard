@@ -63,10 +63,10 @@
     { PLAIN_MATRIX_1, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_CAPS,    ASCII_ESC,    ACTION_CTRL,  ASCII_BACKSLASH },                               \
       { ACTION_NOTHING, 'p', ';', '/', ASCII_SPACE, 'z', 'a', 'q' },                               \
-      { ACTION_NOTHING, ASCII_COMMA, 'm', 'n', 'b', 'v', 'c', 'x' },                                 \
+      { ACTION_NOTHING, ASCII_COMMA, 'm', 'n', 'b', 'v', 'c', 'x' },                               \
       { ACTION_NOTHING, 'k', 'j', 'h', 'g', 'f', 'd', 's' },                                       \
       { ACTION_NOTHING, 'i', 'u', 'y', 't', 'r', 'e', 'w' },                                       \
-      /**/ { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFTLOCK_ON, ASCII_CR, ASCII_LF, 'o',            \
+      /**/ { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFTLOCK_ON, ASCII_CR, ASCII_LF, 'o',          \
              'l',           ASCII_PERIOD },                                                        \
       { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', '0', '9', '8' },      \
       { ACTION_NOTHING, '7', '6', '5', '4', '3', '2', '1' }, ASDF_TEST_MAP_DIP_SWITCHES            \
@@ -77,10 +77,10 @@
     { CAPS_MATRIX_1,  ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  ASCII_BACKSLASH },                               \
       { ACTION_NOTHING, 'P', ';', '/', ASCII_SPACE, 'Z', 'A', 'Q' },                               \
-      { ACTION_NOTHING, ASCII_COMMA, 'M', 'N', 'B', 'V', 'C', 'X' },                                 \
+      { ACTION_NOTHING, ASCII_COMMA, 'M', 'N', 'B', 'V', 'C', 'X' },                               \
       { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },                                       \
       { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                       \
-      /**/ { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFTLOCK_ON, ASCII_CR, ASCII_LF, 'O',            \
+      /**/ { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFTLOCK_ON, ASCII_CR, ASCII_LF, 'O',          \
              'L',           ASCII_PERIOD },                                                        \
       { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', '0', '9', '8' },      \
       { ACTION_NOTHING, '7', '6', '5', '4', '3', '2', '1' }, ASDF_TEST_MAP_DIP_SWITCHES            \
@@ -92,10 +92,10 @@
     { SHIFT_MATRIX_1, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  ASCII_VERT_BAR },                                \
       { ACTION_NOTHING, 'P', '+', '?', ASCII_SPACE, 'Z', 'A', 'Q' },                               \
-      { ACTION_NOTHING, '>', 'M', 'N', 'B', 'V', 'C', 'X' },                                         \
+      { ACTION_NOTHING, '>', 'M', 'N', 'B', 'V', 'C', 'X' },                                       \
       { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },                                       \
       { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },                                       \
-      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFTLOCK_ON, ASCII_CR, ASCII_LF, 'O', 'L', '<' },     \
+      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFTLOCK_ON, ASCII_CR, ASCII_LF, 'O', 'L', '<' },   \
       { ASCII_TILDE, ASCII_RT_CURLY_BRACE, ASCII_LT_CURLY_BRACE, '=', '*',                         \
         '0',         ASCII_RT_PAREN,       ASCII_LT_PAREN },                                       \
       { ACTION_NOTHING, ASCII_SINGLE_QUOTE, '&', '%', '$', '#', ASCII_DOUBLE_QUOTE, '!' },         \
@@ -109,14 +109,14 @@
       ACTION_NOTHING, ASCII_ESC,    ACTION_CTRL,  0x1c },                                          \
       { ACTION_NOTHING, ASCII_CTRL_P, ACTION_NOTHING, ACTION_NOTHING,                              \
         ASCII_SPACE,    ASCII_CTRL_Z, ASCII_CTRL_A,   ASCII_CTRL_Q },                              \
-      { ACTION_NOTHING, ASCII_COMMA,  ASCII_CTRL_M, ASCII_CTRL_N,                                    \
-        ASCII_CTRL_B, ASCII_CTRL_V, ASCII_CTRL_C, ASCII_CTRL_X },                                  \
+      { ACTION_NOTHING, ASCII_COMMA,  ASCII_CTRL_M, ASCII_CTRL_N,                                  \
+        ASCII_CTRL_B,   ASCII_CTRL_V, ASCII_CTRL_C, ASCII_CTRL_X },                                \
       { ACTION_NOTHING, ASCII_CTRL_K, ASCII_CTRL_J, ASCII_CTRL_H,                                  \
         ASCII_CTRL_G,   ASCII_CTRL_F, ASCII_CTRL_D, ASCII_CTRL_S },                                \
       { ACTION_NOTHING, ASCII_CTRL_I, ASCII_CTRL_U, ASCII_CTRL_Y,                                  \
         ASCII_CTRL_T,   ASCII_CTRL_R, ASCII_CTRL_E, ASCII_CTRL_W },                                \
-      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFTLOCK_ON, ASCII_CR,                                \
-        ASCII_LF,      ASCII_CTRL_O,   ASCII_CTRL_L,      ACTION_NOTHING },                        \
+      { ACTION_REPEAT, ACTION_HERE_IS, ACTION_SHIFTLOCK_ON, ASCII_CR,                              \
+        ASCII_LF,      ASCII_CTRL_O,   ASCII_CTRL_L,        ACTION_NOTHING },                      \
       { ACTION_NOTHING, 0x1d,        ASCII_ESC,   ACTION_NOTHING,                                  \
         ACTION_NOTHING, ACTION_FN_1, ACTION_FN_9, ACTION_FN_8 },                                   \
       { ACTION_NOTHING, ACTION_FN_7, ACTION_FN_6, ACTION_FN_5,                                     \
@@ -158,31 +158,31 @@
     {                                                                                              \
       /* Single assignment */                                                                      \
       .virtual_device = VOUT1,                                                                     \
-      .physical_device = PHYSICAL_OUT1,                                                                    \
+      .physical_device = PHYSICAL_OUT1,                                                            \
       .function = V_NOFUNC,                                                                        \
       .initial_value = 0,                                                                          \
     },                                                                                             \
       {                                                                                            \
         /* single toggle */                                                                        \
         .virtual_device = VOUT2,                                                                   \
-        .physical_device = PHYSICAL_OUT2,                                                                  \
+        .physical_device = PHYSICAL_OUT2,                                                          \
         .function = V_TOGGLE,                                                                      \
         .initial_value = 0,                                                                        \
       },                                                                                           \
       {                                                                                            \
         /* single pulse */                                                                         \
         .virtual_device = VOUT3,                                                                   \
-        .physical_device = PHYSICAL_OUT3,                                                                  \
-        .function = V_PULSE_SHORT,                                                                       \
+        .physical_device = PHYSICAL_OUT3,                                                          \
+        .function = V_PULSE_SHORT,                                                                 \
         .initial_value = 0,                                                                        \
       },                                                                                           \
       { /* first of double assignment attempt */                                                   \
         .virtual_device = VOUT4,                                                                   \
-        .physical_device = PHYSICAL_LED1,                                                                  \
+        .physical_device = PHYSICAL_LED1,                                                          \
         .initial_value = 0                                                                         \
       },                                                                                           \
     { /* second of double assignment attempt */                                                    \
-      .virtual_device = VOUT5, .physical_device = PHYSICAL_LED1, .initial_value = 1                        \
+      .virtual_device = VOUT5, .physical_device = PHYSICAL_LED1, .initial_value = 1                \
     }                                                                                              \
   }
 
@@ -191,22 +191,53 @@
     {                                                                                              \
       /* Triple assignment */                                                                      \
       .virtual_device = VOUT1,                                                                     \
-      .physical_device = PHYSICAL_OUT1,                                                                    \
+      .physical_device = PHYSICAL_OUT1,                                                            \
       .function = V_TOGGLE,                                                                        \
       .initial_value = 0,                                                                          \
     },                                                                                             \
       {                                                                                            \
         .virtual_device = VOUT1,                                                                   \
-        .physical_device = PHYSICAL_OUT2,                                                                  \
+        .physical_device = PHYSICAL_OUT2,                                                          \
         .function = V_TOGGLE,                                                                      \
         .initial_value = 1,                                                                        \
       },                                                                                           \
     {                                                                                              \
-      .virtual_device = VOUT1, .physical_device = PHYSICAL_OUT3, .function = V_TOGGLE, .initial_value = 0, \
+      .virtual_device = VOUT1, .physical_device = PHYSICAL_OUT3, .function = V_TOGGLE,             \
+      .initial_value = 0,                                                                          \
     }                                                                                              \
   }
 
 #define ASDF_TEST_KEYMAP_INITIALIZER ASDF_TEST_KEYMAP_INITIALIZER_1, ASDF_TEST_KEYMAP_INITIALIZER_2
+
+#define ASDF_TEST_KEYMAP_HOOK_INITIALIZER_LENGTH 2
+
+#define ASDF_TEST_KEYMAP_HOOK_INITIALIZER_1                                                        \
+  {                                                                                                \
+    {                                                                                              \
+      .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                           \
+      .hook_func = &test_hook_1,                                                                    \
+    },                                                                                             \
+      {                                                                                            \
+        .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                         \
+        .hook_func = &test_hook_2,                                                                  \
+      },                                                                                           \
+  }
+
+#define ASDF_TEST_KEYMAP_HOOK_INITIALIZER_2                                                        \
+  {                                                                                                \
+    {                                                                                              \
+      .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                           \
+      .hook_func = &test_hook_3,                                                                    \
+    },                                                                                             \
+      {                                                                                            \
+        .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                         \
+        .hook_func = &test_hook_4,                                                                  \
+      },                                                                                           \
+  }
+
+#define ASDF_TEST_KEYMAP_HOOK_INITIALIZER                                                          \
+  ASDF_TEST_KEYMAP_HOOK_INITIALIZER_1, ASDF_TEST_KEYMAP_HOOK_INITIALIZER_2
+
 
 // The following preprocessor "code" permits various keymaps to be created and
 // included without generating a lot of complicating code dependencies. The use
@@ -230,6 +261,12 @@
   || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_TEST_KEYMAP_INITIALIZER_LENGTH)
 #undef ASDF_KEYMAP_INITIALIZER_LENGTH
 #define ASDF_KEYMAP_INITIALIZER_LENGTH ASDF_TEST_KEYMAP_INITIALIZER_LENGTH
+#endif
+
+#if !defined(ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH)                                                  \
+  || (ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH < ASDF_TEST2_KEYMAP_HOOK_INITIALIZER_LENGTH)
+#undef ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH
+#define ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH ASDF_TEST2_KEYMAP_HOOK_INITIALIZER_LENGTH
 #endif
 
 #endif /* !defined (ASDF_KEYMAP_DEFS_TEST_H) */

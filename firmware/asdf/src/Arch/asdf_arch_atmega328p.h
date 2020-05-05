@@ -250,6 +250,16 @@
 // For 1 ms tick, (8000000 / 64(prescale)) / 1000(usec) - 1 = 124
 #define TICK_COUNT 124
 
+
+// Default key matrix row scanner
+#define ASDF_ARCH_DEFAULT_SCANNER asdf_arch_read_row
+
+// Default keyboard output
+#define ASDF_ARCH_DEFAULT_OUTPUT asdf_arch_send_code
+
+// DIP switch is on row 8
+#define ASDF_ARCH_DIPSWITCH_ROW 8
+
 // PROCEDURE: asdf_arch_null_output
 // INPUTS: (uint8_t) value - ignored
 // OUTPUTS: none

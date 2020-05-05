@@ -82,15 +82,6 @@ static coord_t alpha_sample;
 static coord_t num_sample;
 static coord_t keymap_tag;
 
-uint32_t max(uint8_t first, uint8_t second)
-{
-  uint32_t max = first;
-  if (second > max) {
-    max = second;
-  }
-  return max;
-}
-
 coord_t *find_code(asdf_keycode_t code)
 {
   uint32_t done = 0;
@@ -146,6 +137,12 @@ void complicated_set_keymap(uint8_t mapnum)
     }
     mapnum >>= 1;
   }
+}
+
+// dummy function, to resolve reference in keymap hook initialization.
+asdf_cols_t asdf_arch_read_row(uint8_t row)
+{
+  return (asdf_cols_t) (row+1);
 }
 
 // the next two test check the preprocessor mechanism for allocating space for

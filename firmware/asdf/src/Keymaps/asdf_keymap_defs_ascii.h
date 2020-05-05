@@ -34,7 +34,7 @@
 // Edit the number of rows and columns used in this map. If the number is less
 // than the maxium, the unused elements will be initialized to 0.
 
-#define ASDF_ASCII_NUM_ROWS 16 // DIP switches are row 15.
+#define ASDF_ASCII_NUM_ROWS 9 // DIP switches are row 8 (zero based)
 #define ASDF_ASCII_NUM_COLS 8
 
 #define ASCII_ACTION_BREAK ACTION_NOTHING
@@ -103,7 +103,13 @@
 #define ASDF_ASCII_KEYMAP_INITIALIZER ASDF_ASCII_PLAIN_KEYMAP_INITIALIZER, ASDF_ASCII_CAPS_KEYMAP_INITIALIZER
 
 
-// Key Matrix for combination of ASCII controller (ATMega328P version) and Classic ASCII matrix
+// Structure to initialize hooks.  No hook functions are needed for ASCII keyboard.
+#define ASDF_ASCII_KEYMAP_HOOK_INITIALIZER_LENGTH 0
+#define ASDF_ASCII_PLAIN_KEYMAP_HOOK_INITIALIZER {}
+#define ASDF_ASCII_CAPS_KEYMAP_HOOK_INITIALIZER {}
+#define ASDF_ASCII_KEYMAP_HOOK_INITIALIZER ASDF_ASCII_PLAIN_KEYMAP_HOOK_INITIALIZER, ASDF_ASCII_CAPS_KEYMAP_HOOK_INITIALIZER
+
+// Key Matrix for combination of ASCII controller and Classic ASCII matrix
 //
 // Col->   0          1          2          3          4          5          6          7
 // Row 0   POWER      R-Shift    L-Shift    (no key)   ESC        TAB        CTRL       \(backslash)
@@ -135,10 +141,11 @@
 //    keymaps.
 
 
-#define ASDF_ASCII_DIP_SWITCHES [ASDF_ARCH_DIP_SWITCH_ROW] = \
-    { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+#define ASDF_ASCII_DIP_SWITCHES                                        \
+  [ASDF_ARCH_DIPSWITCH_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
 
-#define ASDF_ASCII_PLAIN_MAP                                                                       \
+// clang-format off
+#define ASDF_ASCII_PLAIN_MAP                                            \
   {                                                                     \
    [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,  \
            ASCII_ESC, ASCII_TAB,    ACTION_CTRL,  ASCII_BACKSLASH }, \
@@ -201,6 +208,7 @@
             ACTION_FN_4, ACTION_FN_3, ACTION_FN_2, ACTION_FN_1 }, \
    ASDF_ASCII_DIP_SWITCHES                                        \
   }
+// clang-format on
 
 #define ASDF_ASCII_MAP_DECLARATIONS                                                                \
   static const FLASH keycode_matrix_t ascii_plain_matrix = ASDF_ASCII_PLAIN_MAP;                        \
@@ -253,6 +261,11 @@
 #if !defined(ASDF_KEYMAP_INITIALIZER_LENGTH) || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_ASCII_KEYMAP_INITIALIZER_LENGTH)
 #undef ASDF_KEYMAP_INITIALIZER_LENGTH
 #define ASDF_KEYMAP_INITIALIZER_LENGTH ASDF_ASCII_KEYMAP_INITIALIZER_LENGTH
+#endif
+
+#if !defined(ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH) || (ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH < ASDF_ASCII_KEYMAP_HOOK_INITIALIZER_LENGTH)
+#undef ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH
+#define ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH ASDF_ASCII_KEYMAP_HOOK_INITIALIZER_LENGTH
 #endif
 
 #endif /* !defined (ASDF_KEYMAP_DEFS_ASCII_H) */

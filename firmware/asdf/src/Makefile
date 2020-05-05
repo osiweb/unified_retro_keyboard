@@ -1,6 +1,6 @@
 # -*- makefile -*-
 
-ARCH ?= atmega2560
+ARCH ?= atmega328p
 TARGET_KEYMAP ?= production
 TARGET_MAKEFILE ?= Makefile.$(ARCH)
 

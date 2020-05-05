@@ -8,17 +8,9 @@
 #include "asdf_keymaps.h"
 #include "asdf_keymap_defs.h"
 #include "asdf_config.h"
+#include "test_asdf_lib.h"
 
 
-
-uint32_t max(uint8_t first, uint8_t second)
-{
-  uint32_t max = first;
-  if (second > max) {
-    max = second;
-  }
-  return max;
-}
 
 void setUp(void)
 {
@@ -28,6 +20,11 @@ void setUp(void)
 
 void tearDown(void) {}
 
+// needed for keymap.
+asdf_cols_t asdf_arch_read_row(uint8_t row)
+{
+  return (asdf_cols_t) row;
+}
 
 // check to see that the longest keymap initializer sequence initia is detected.
 void test_inizializer_length_is_max_length(void)

@@ -34,7 +34,7 @@
 // Edit the number of rows and columns used in this map. If the number is less
 // than the maxium, the unused elements will be initialized to 0.
 
-#define ASDF_SOL_NUM_ROWS 16 // DIP switches are row 9
+#define ASDF_SOL_NUM_ROWS 13 // DIP switches are row 9
 #define ASDF_SOL_NUM_COLS 8
 
 
@@ -84,7 +84,7 @@
 
 // The weird C preprocessor expansion behavior requires one dereference for each
 // expansion.
-#define SOL_KBD_VIRTUAL_SUB1(SOL_VDEVICE) ACTION_ ## SOL_VDEVICE
+#define SOL_KBD_VIRTUAL_SUB1(SOL_VDEVICE) ACTION_##SOL_VDEVICE
 #define SOL_KBD_VIRTUAL_SUB(SOL_VDEVICE) SOL_KBD_VIRTUAL_SUB1(SOL_VDEVICE)
 #define SOL_KBD_LOCAL_ACTION SOL_KBD_VIRTUAL_SUB(SOL_KBD_VLOCAL)
 
@@ -137,8 +137,19 @@
         .initial_value = SOL_KBD_TTL_HIGH },                                                       \
   }
 
+// function hooks for the SOL keyboard. At Setup, activate CAPSLOCK to emulate
+// original keyboard.
+#define ASDF_SOL_KEYMAP_HOOK_INITIALIZER_LENGTH 1
+#define ASDF_SOL_KEYMAP_HOOK_INITIALIZER                                                           \
+  {                                                                                                \
+    {                                                                                              \
+      .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                           \
+      .hook_func = asdf_modifier_capslock_activate,                                                \
+    },                                                                                             \
+  }
+
 #define ASDF_SOL_DIP_SWITCHES                                                                      \
-  [ASDF_ARCH_DIP_SWITCH_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+  [ASDF_ARCH_DIPSWITCH_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
 
 // clang-format off
 #define ASDF_SOL_PLAIN_MAP                                              \
@@ -279,6 +290,12 @@
   || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_SOL_KEYMAP_INITIALIZER_LENGTH)
 #undef ASDF_KEYMAP_INITIALIZER_LENGTH
 #define ASDF_KEYMAP_INITIALIZER_LENGTH ASDF_SOL_KEYMAP_INITIALIZER_LENGTH
+#endif
+
+#if !defined(ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH)                                                  \
+  || (ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH < ASDF_SOL_KEYMAP_HOOK_INITIALIZER_LENGTH)
+#undef ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH
+#define ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH ASDF_SOL_KEYMAP_HOOK_INITIALIZER_LENGTH
 #endif
 
 #endif /* !defined (ASDF_KEYMAP_DEFS_SOL20_H) */
