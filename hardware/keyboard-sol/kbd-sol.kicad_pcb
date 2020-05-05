@@ -708,7 +708,7 @@
   )
 
   (module MountingHole:MountingHole_3.2mm_M3 locked (layer F.Cu) (tedit 56D1B4CB) (tstamp 5E74EA7B)
-    (at 408.61488 113.9952)
+    (at 408.61488 114.08156)
     (descr "Mounting Hole 3.2mm, no annular, M3")
     (tags "mounting hole 3.2mm no annular m3")
     (attr virtual)
@@ -727,7 +727,7 @@
   )
 
   (module MountingHole:MountingHole_3.2mm_M3 locked (layer F.Cu) (tedit 56D1B4CB) (tstamp 5E75034B)
-    (at 115.72113 113.9952)
+    (at 115.72113 114.08156)
     (descr "Mounting Hole 3.2mm, no annular, M3")
     (tags "mounting hole 3.2mm no annular m3")
     (attr virtual)
@@ -746,7 +746,7 @@
   )
 
   (module MountingHole:MountingHole_3.2mm_M3 locked (layer F.Cu) (tedit 56D1B4CB) (tstamp 5E74EA33)
-    (at 262.168005 113.9952)
+    (at 256.21488 114.08156)
     (descr "Mounting Hole 3.2mm, no annular, M3")
     (tags "mounting hole 3.2mm no annular m3")
     (attr virtual)
