@@ -6,7 +6,7 @@ encoding utf-8
 Sheet 2 4
 Title "Universal Retro Keyboard"
 Date "2019-08-25"
-Rev "1.0"
+Rev "1.4"
 Comp "OSIWeb.org"
 Comment1 ""
 Comment2 ""

@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 4
 Title "Unified Retro Keyboard"
-Date "2019-08-25"
-Rev "1.3"
+Date "2020-05-05"
+Rev "1.4"
 Comp "OSIWeb.org"
 Comment1 "Main sheet with connector"
 Comment2 ""
@@ -407,22 +407,6 @@ Wire Wire Line
 Connection ~ 5820 700 
 Wire Bus Line
 	5820 700  7400 700 
-Entry Wire Line
-	7500 3150 7400 3050
-Entry Wire Line
-	7500 3050 7400 2950
-Entry Wire Line
-	7500 2950 7400 2850
-Entry Wire Line
-	7500 2850 7400 2750
-Wire Wire Line
-	7900 2850 7500 2850
-Wire Wire Line
-	7900 2950 7500 2950
-Wire Wire Line
-	7500 3050 7900 3050
-Wire Wire Line
-	7900 3150 7500 3150
 Text Label 7650 2850 0    50   ~ 0
 Row15
 Text Label 7650 2950 0    50   ~ 0
@@ -431,10 +415,6 @@ Text Label 7650 3050 0    50   ~ 0
 Row13
 Text Label 7650 3150 0    50   ~ 0
 Row12
-Entry Wire Line
-	9700 2950 9800 2850
-Entry Wire Line
-	9700 2850 9800 2750
 Text Label 8550 2850 0    50   ~ 0
 Row8
 Text Label 8550 2950 0    50   ~ 0
@@ -445,8 +425,6 @@ Text Label 8550 3150 0    50   ~ 0
 Row11
 Wire Bus Line
 	7400 700  6280 700 
-Wire Wire Line
-	8400 2850 9700 2850
 Wire Wire Line
 	9700 2950 8400 2950
 Wire Wire Line
@@ -562,12 +540,25 @@ Wire Wire Line
 	8830 2250 9025 2250
 Wire Wire Line
 	9325 2250 9610 2250
+Entry Wire Line
+	9700 2950 9800 2850
+Entry Wire Line
+	9700 2850 9800 2750
+Entry Wire Line
+	7500 3150 7400 3050
+Wire Wire Line
+	7900 3150 7500 3150
+NoConn ~ 7900 2850
+NoConn ~ 7900 2950
+NoConn ~ 7900 3050
+NoConn ~ 8400 2850
+NoConn ~ 7100 2900
 Wire Bus Line
 	9800 700  9800 2975
 Wire Bus Line
 	5820 700  5820 2210
 Wire Bus Line
-	7400 700  7400 3050
-Wire Bus Line
 	2925 700  2925 4700
+Wire Bus Line
+	7400 700  7400 3050
 $EndSCHEMATC
