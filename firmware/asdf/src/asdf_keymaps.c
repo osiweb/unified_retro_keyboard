@@ -93,8 +93,8 @@ void asdf_keymaps_select_keymap(uint8_t index)
   if (index < ASDF_NUM_KEYMAPS) {
     keymap_index = index;
     asdf_virtual_init((asdf_virtual_initializer_t *const) keymap_initializer_list[keymap_index]);
-    asdf_hook_init((asdf_hook_initializer_t *const) keymap_hook_initializer_list[keymap_index]);
     asdf_modifiers_init();
+    asdf_hook_init((asdf_hook_initializer_t *const) keymap_hook_initializer_list[keymap_index]);
   }
 }
 

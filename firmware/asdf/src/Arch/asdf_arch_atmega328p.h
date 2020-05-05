@@ -255,6 +255,9 @@
 // Default keyboard output
 #define ASDF_ARCH_DEFAULT_OUTPUT asdf_arch_send_code
 
+// DIP switch is on row 8
+#define ASDF_ARCH_DIPSWITCH_ROW 8
+
 // PROCEDURE: asdf_arch_null_output
 // INPUTS: (uint8_t) value - ignored
 // OUTPUTS: none

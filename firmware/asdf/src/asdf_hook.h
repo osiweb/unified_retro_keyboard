@@ -28,6 +28,7 @@
 // These are "hooks" output identifiers that can be mapped to the real outputs using
 // keymap initializer commands.
 typedef enum {
+  ASDF_HOOK_NULL,
   ASDF_HOOK_SCANNER,
   ASDF_HOOK_OUTPUT,
   ASDF_HOOK_EACH_SCAN,

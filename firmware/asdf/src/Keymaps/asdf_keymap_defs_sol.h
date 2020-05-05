@@ -34,7 +34,7 @@
 // Edit the number of rows and columns used in this map. If the number is less
 // than the maxium, the unused elements will be initialized to 0.
 
-#define ASDF_SOL_NUM_ROWS 16 // DIP switches are row 9
+#define ASDF_SOL_NUM_ROWS 13 // DIP switches are row 9
 #define ASDF_SOL_NUM_COLS 8
 
 
@@ -148,11 +148,8 @@
     },                                                                                             \
   }
 
-
-#define DIP_SWITCH_ROW 15
-
 #define ASDF_SOL_DIP_SWITCHES                                                                      \
-  [DIP_SWITCH_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+  [ASDF_ARCH_DIPSWITCH_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
 
 // clang-format off
 #define ASDF_SOL_PLAIN_MAP                                              \

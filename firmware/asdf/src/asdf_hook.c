@@ -76,7 +76,7 @@ void asdf_hook_null_func(void) {}
 //
 static uint8_t asdf_hook_valid_id(asdf_hook_id_t id)
 {
-  return (id < ASDF_NUM_HOOKS);
+  return (id > ASDF_HOOK_NULL && id < ASDF_NUM_HOOKS);
 }
 
 // PROCEDURE: asdf_hook_do
@@ -166,8 +166,7 @@ static void asdf_hook_assign(asdf_hook_id_t hook_id, asdf_hook_function_t func)
 //
 void asdf_hook_init(asdf_hook_initializer_t *const initializer_list)
 {
-
-  // initialize hooks to NULL
+  // initialize hooks to null function
   for (uint8_t i = 0; i < ASDF_NUM_HOOKS; i++) {
     hook_map[i] = asdf_hook_null_func;
   }

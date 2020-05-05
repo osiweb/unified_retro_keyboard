@@ -34,7 +34,7 @@
 // Edit the number of rows and columns used in this map. If the number is less
 // than the maxium, the unused elements will be initialized to 0.
 
-#define ASDF_ASCII_NUM_ROWS 16 // DIP switches are row 15.
+#define ASDF_ASCII_NUM_ROWS 9 // DIP switches are row 8 (zero based)
 #define ASDF_ASCII_NUM_COLS 8
 
 #define ASCII_ACTION_BREAK ACTION_NOTHING
@@ -141,9 +141,11 @@
 //    keymaps.
 
 
-#define ASDF_ASCII_DIP_SWITCHES [ASDF_NUM_ROWS - 1] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+#define ASDF_ASCII_DIP_SWITCHES                                        \
+  [ASDF_ARCH_DIPSWITCH_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
 
-#define ASDF_ASCII_PLAIN_MAP                                                                       \
+// clang-format off
+#define ASDF_ASCII_PLAIN_MAP                                            \
   {                                                                     \
    [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,  \
            ASCII_ESC, ASCII_TAB,    ACTION_CTRL,  ASCII_BACKSLASH }, \
@@ -206,6 +208,7 @@
             ACTION_FN_4, ACTION_FN_3, ACTION_FN_2, ACTION_FN_1 }, \
    ASDF_ASCII_DIP_SWITCHES                                        \
   }
+// clang-format on
 
 #define ASDF_ASCII_MAP_DECLARATIONS                                                                \
   static const FLASH keycode_matrix_t ascii_plain_matrix = ASDF_ASCII_PLAIN_MAP;                        \
