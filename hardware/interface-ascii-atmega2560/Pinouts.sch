@@ -45,17 +45,6 @@ Text Label 2650 2200 0    50   ~ 0
 Col1
 Text Label 2650 2300 0    50   ~ 0
 Col0
-$Comp
-L Diode:1N4148 D?
-U 1 1 60C3825A
-P 3950 1700
-F 0 "D?" H 4085 1665 50  0000 C CNN
-F 1 "1N4148" H 3950 1545 40  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3950 1525 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 3950 1700 50  0001 C CNN
-	1    3950 1700
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	2500 1800 3200 1800
 Wire Wire Line
@@ -112,28 +101,6 @@ Wire Wire Line
 	3200 3500 2500 3500
 Wire Wire Line
 	2500 2700 3200 2700
-$Comp
-L Diode:1N4148 D?
-U 1 1 60C382A2
-P 3955 2100
-F 0 "D?" H 4090 2070 50  0000 C CNN
-F 1 "1N4148" H 4130 2140 40  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3955 1925 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 3955 2100 50  0001 C CNN
-	1    3955 2100
-	-1   0    0    1   
-$EndComp
-$Comp
-L Diode:1N4148 D?
-U 1 1 60C382A8
-P 3955 2500
-F 0 "D?" H 4090 2470 50  0000 C CNN
-F 1 "1N4148" H 4130 2535 40  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3955 2325 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 3955 2500 50  0001 C CNN
-	1    3955 2500
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	3700 1700 3800 1700
 Wire Wire Line
@@ -207,10 +174,10 @@ Wire Wire Line
 Wire Wire Line
 	3700 1800 4700 1800
 $Comp
-L Connector_Generic:Conn_02x20_Odd_Even J?
+L Connector_Generic:Conn_02x20_Odd_Even J9
 U 1 1 60C38260
 P 3400 2500
-F 0 "J?" H 3435 3525 50  0000 C CNN
+F 0 "J9" H 3435 3525 50  0000 C CNN
 F 1 "Keyboard Connector" H 3530 1310 100 0000 C CNN
 F 2 "unikbd:PinHeader_2x20_P2.54mm_Vertical" H 3400 2500 50  0001 C CNN
 F 3 "~" H 3400 2500 50  0001 C CNN
