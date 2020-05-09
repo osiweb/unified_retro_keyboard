@@ -271,10 +271,10 @@ void asdf_arch_led1_set(uint8_t value)
 void asdf_arch_led2_set(uint8_t value)
 {
   if (value) {
-    set_bit(&ASDF_LED2_PORT, ASDF_LED2_BIT);
+    clear_bit(&ASDF_LED2_PORT, ASDF_LED2_BIT);
   }
   else {
-    clear_bit(&ASDF_LED2_PORT, ASDF_LED2_BIT);
+    set_bit(&ASDF_LED2_PORT, ASDF_LED2_BIT);
   }
 }
 
@@ -296,10 +296,10 @@ void asdf_arch_led2_set(uint8_t value)
 void asdf_arch_led3_set(uint8_t value)
 {
   if (value) {
-    set_bit(&ASDF_LED3_PORT, ASDF_LED3_BIT);
+    clear_bit(&ASDF_LED3_PORT, ASDF_LED3_BIT);
   }
   else {
-    clear_bit(&ASDF_LED3_PORT, ASDF_LED3_BIT);
+    set_bit(&ASDF_LED3_PORT, ASDF_LED3_BIT);
   }
 }
 
@@ -599,7 +599,7 @@ static void asdf_arch_init_ascii_output(void)
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Sets up columns port as input.
+// DESCRIPTION: Sets up columns port as input and enable weak pullups.
 //
 // SIDE EFFECTS: See DESCRIPTION
 //
@@ -610,6 +610,7 @@ static void asdf_arch_init_ascii_output(void)
 static void asdf_arch_init_columns(void)
 {
   ASDF_COLUMNS_DDR = ALL_INPUTS;
+  ASDF_COLUMNS_PORT = ALL_PULLUPS;
 }
 
 // PROCEDURE: asdf_arch_init_row_outputs
@@ -733,15 +734,13 @@ void asdf_arch_init(void)
 //
 asdf_cols_t asdf_arch_read_row(uint8_t row)
 {
-  uint16_t rows = (1 << row);
-
-  ASDF_HIROW_PORT = rows >> 8;
-  ASDF_LOROW_PORT = rows & 0xff;
-
-  return (asdf_cols_t) ASDF_COLUMNS_PIN;
+  uint32_t rows = ~(((uint32_t) 1) << row);
+  ASDF_LOROW_PORT = (uint8_t)(rows & 0xff);
+  ASDF_HIROW_PORT = (uint8_t)((rows >> 8) & 0xff);
+  return ~(asdf_cols_t) ASDF_COLUMNS_PIN;
 }
 
-// PROCEDURE: asdf_arch_read_row
+// PROCEDURE: asdf_arch_osi_read_row
 // INPUTS: (uint8_t) row: the row number to be scanned
 // OUTPUTS: returns a word containing the active (pressed) columns
 //
