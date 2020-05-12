@@ -23,8 +23,6 @@ VERSION =
 RELEASE=
 SIZE_COMMAND = avr-size
 
-CLOCK = 8000000L
-
 CLEAN_FILES =
 CLEANALL_FILES =
 
@@ -53,7 +51,6 @@ CFLAGS += -Wstrict-prototypes
 CFLAGS += -Wundef
 CFLAGS += -Wold-style-definition
 CFLAGS += -mmcu=$(ARCH)
-CFLAGS += -DF_CPU=$(CLOCK)
 
 LDFLAGS = -Wl,-Map=$(TARGET_MAP)
 LDFLAGS += -Wl,--start-group

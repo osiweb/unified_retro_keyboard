@@ -9,7 +9,7 @@ BUILD_DIR = ../build
 all: app
 
 app:
-	make -f $(TARGET_MAKEFILE) ARCH=$(ARCH) KEYMAP=$(KEYMAP)y
+	make -f $(TARGET_MAKEFILE) ARCH=$(ARCH) KEYMAP=$(KEYMAP)
 
 test:
 	make -f Makefile.test 
