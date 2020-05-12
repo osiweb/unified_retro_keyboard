@@ -6,7 +6,7 @@ encoding utf-8
 Sheet 1 2
 Title "Unified Retro Keyboard ASCII Interface (2560)"
 Date "2020-04-16"
-Rev "3.1"
+Rev "3.2"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -112,10 +112,10 @@ Col0
 Text Label 15450 2200 0    50   ~ 0
 Row0
 $Comp
-L Diode:1N4148 D1
+L Diode:1N4148 D17
 U 1 1 5D9CCE74
 P 15050 2200
-F 0 "D1" H 15185 2165 50  0000 C CNN
+F 0 "D17" H 15185 2165 50  0000 C CNN
 F 1 "1N4148" H 15050 2045 40  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 15050 2025 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15050 2200 50  0001 C CNN
@@ -123,10 +123,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15050
 	-1   0    0    1   
 $EndComp
 $Comp
-L Connector_Generic:Conn_02x20_Odd_Even J7
+L Connector_Generic:Conn_02x20_Odd_Even J10
 U 1 1 5D1EDC84
 P 14500 3000
-F 0 "J7" H 14535 4025 50  0000 C CNN
+F 0 "J10" H 14535 4025 50  0000 C CNN
 F 1 "Keyboard" H 14540 1900 50  0000 C CNN
 F 2 "unikbd:PinHeader_2x20_P2.54mm_Vertical" H 14500 3000 50  0001 C CNN
 F 3 "~" H 14500 3000 50  0001 C CNN
@@ -314,10 +314,10 @@ Entry Wire Line
 Entry Wire Line
 	15800 7200 15900 7100
 $Comp
-L Diode:1N4148 D11
+L Diode:1N4148 D27
 U 1 1 5DFACD33
 P 15460 7300
-F 0 "D11" H 15305 7350 50  0000 C CNN
+F 0 "D27" H 15305 7350 50  0000 C CNN
 F 1 "1N4148" H 15280 7400 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 15460 7125 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15460 7300 50  0001 C CNN
@@ -325,10 +325,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15460
 	1    0    0    1   
 $EndComp
 $Comp
-L Diode:1N4148 D9
+L Diode:1N4148 D26
 U 1 1 5DF9A8E3
 P 15460 7100
-F 0 "D9" H 15345 7060 50  0000 C CNN
+F 0 "D26" H 15345 7060 50  0000 C CNN
 F 1 "1N4148" H 15258 7140 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 15460 6925 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15460 7100 50  0001 C CNN
@@ -336,10 +336,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15460
 	1    0    0    1   
 $EndComp
 $Comp
-L Diode:1N4148 D7
+L Diode:1N4148 D25
 U 1 1 5DF87A8E
 P 15460 6900
-F 0 "D7" H 15335 6860 50  0000 C CNN
+F 0 "D25" H 15335 6860 50  0000 C CNN
 F 1 "1N4148" H 15258 6940 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 15460 6725 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15460 6900 50  0001 C CNN
@@ -347,10 +347,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15460
 	1    0    0    1   
 $EndComp
 $Comp
-L Diode:1N4148 D10
+L Diode:1N4148 D23
 U 1 1 5DF6B891
 P 15150 7200
-F 0 "D10" H 15025 7160 50  0000 C CNN
+F 0 "D23" H 15025 7160 50  0000 C CNN
 F 1 "1N4148" H 14948 7240 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 15150 7025 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15150 7200 50  0001 C CNN
@@ -358,10 +358,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15150
 	1    0    0    1   
 $EndComp
 $Comp
-L Diode:1N4148 D8
+L Diode:1N4148 D22
 U 1 1 5DF5903F
 P 15150 7000
-F 0 "D8" H 15025 6960 50  0000 C CNN
+F 0 "D22" H 15025 6960 50  0000 C CNN
 F 1 "1N4148" H 14948 7040 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 15150 6825 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15150 7000 50  0001 C CNN
@@ -369,10 +369,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15150
 	1    0    0    1   
 $EndComp
 $Comp
-L Diode:1N4148 D4
+L Diode:1N4148 D20
 U 1 1 5DF45137
 P 15150 6600
-F 0 "D4" H 15035 6550 50  0000 C CNN
+F 0 "D20" H 15035 6550 50  0000 C CNN
 F 1 "1N4148" H 15040 6470 50  0000 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 15150 6425 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15150 6600 50  0001 C CNN
@@ -380,10 +380,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15150
 	1    0    0    1   
 $EndComp
 $Comp
-L Diode:1N4148 D6
+L Diode:1N4148 D21
 U 1 1 5DF31D18
 P 15150 6800
-F 0 "D6" H 15025 6750 50  0000 C CNN
+F 0 "D21" H 15025 6750 50  0000 C CNN
 F 1 "1N4148" H 14948 6840 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 15150 6625 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15150 6800 50  0001 C CNN
@@ -391,10 +391,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15150
 	1    0    0    1   
 $EndComp
 $Comp
-L Diode:1N4148 D5
+L Diode:1N4148 D24
 U 1 1 5DF29274
 P 15450 6700
-F 0 "D5" H 15325 6660 50  0000 C CNN
+F 0 "D24" H 15325 6660 50  0000 C CNN
 F 1 "1N4148" H 15248 6740 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 15450 6525 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15450 6700 50  0001 C CNN
@@ -441,10 +441,10 @@ Row7
 Text Label 15445 2500 0    50   ~ 0
 Col0
 $Comp
-L Diode:1N4148 D2
+L Diode:1N4148 D18
 U 1 1 5D9C0280
 P 15055 2600
-F 0 "D2" H 15190 2570 50  0000 C CNN
+F 0 "D18" H 15190 2570 50  0000 C CNN
 F 1 "1N4148" H 15230 2640 40  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 15055 2425 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15055 2600 50  0001 C CNN
@@ -452,10 +452,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15055
 	-1   0    0    1   
 $EndComp
 $Comp
-L Diode:1N4148 D3
+L Diode:1N4148 D19
 U 1 1 5EB56F93
 P 15055 3000
-F 0 "D3" H 15190 2970 50  0000 C CNN
+F 0 "D19" H 15190 2970 50  0000 C CNN
 F 1 "1N4148" H 15230 3035 40  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 15055 2825 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15055 3000 50  0001 C CNN
@@ -578,7 +578,7 @@ NoConn ~ 1400 6300
 NoConn ~ 1400 6400
 NoConn ~ 1400 6500
 Text Notes 3395 9280 0    50   ~ 0
-SOL-20:\n/RESET (PIN 13) = OUT1 \nBREAK (PIN 4) = OUT2 \nLOCAL (PIN 14) = OUT3 \n\n\nApple 1:\nD7 on socket is tied high\n/RESET = OUT3\nCLRSCR = OUT1\n\nApple 2:\n/RESET = OUT3\n\n
+SOL-20:\n/RESET (PIN 13) = OUT3\nBREAK (PIN 4) = OUT2 \nLOCAL (PIN 14) = OUT1\n\n\nApple 1:\nD7 on socket is tied high\n/RESET = OUT3\nCLRSCR = OUT1\n\nApple 2:\n/RESET = OUT3\n\n
 $Comp
 L Connector_Generic:Conn_01x20 J5
 U 1 1 5E5FA80F
@@ -643,57 +643,22 @@ Connection ~ 8000 1600
 Wire Wire Line
 	8000 1600 8100 1600
 $Comp
-L Connector_Generic:Conn_01x06 J6
-U 1 1 5DA566B2
-P 4300 3200
-F 0 "J6" H 4380 3192 50  0000 L CNN
-F 1 "ISP header" H 4380 3101 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Horizontal" H 4300 3200 50  0001 C CNN
-F 3 "~" H 4300 3200 50  0001 C CNN
-	1    4300 3200
-	-1   0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR012
+L power:GND #PWR011
 U 1 1 5EFF9297
-P 4700 3700
-F 0 "#PWR012" H 4700 3450 50  0001 C CNN
-F 1 "GND" H 4705 3527 50  0000 C CNN
-F 2 "" H 4700 3700 50  0001 C CNN
-F 3 "" H 4700 3700 50  0001 C CNN
-	1    4700 3700
+P 4700 3950
+F 0 "#PWR011" H 4700 3700 50  0001 C CNN
+F 1 "GND" H 4705 3777 50  0000 C CNN
+F 2 "" H 4700 3950 50  0001 C CNN
+F 3 "" H 4700 3950 50  0001 C CNN
+	1    4700 3950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4500 3100 4700 3100
+	4050 3200 4850 3200
 Wire Wire Line
-	4700 3100 4700 2900
+	4850 3200 4850 2600
 Wire Wire Line
-	4500 3200 7300 3200
-Wire Wire Line
-	4500 3000 5800 3000
-Wire Wire Line
-	5800 3000 5800 3400
-Wire Wire Line
-	5800 3400 7300 3400
-Wire Wire Line
-	4500 3300 7300 3300
-Wire Wire Line
-	4500 3400 5600 3400
-Wire Wire Line
-	5600 3400 5600 2700
-Text Label 4900 3000 0    50   ~ 0
-ISP-MISO
-Text Label 4900 3200 0    50   ~ 0
-ISP-SCK
-Text Label 4900 3300 0    50   ~ 0
-ISP-MOSI
-Text Label 4900 3400 0    50   ~ 0
-ISP-RESET
-Wire Wire Line
-	4500 3500 4700 3500
-Wire Wire Line
-	4700 3500 4700 3700
+	4050 3400 5600 3400
 Wire Wire Line
 	7300 2700 5600 2700
 Text Label 1710 1300 0    50   ~ 0
@@ -875,7 +840,6 @@ Wire Wire Line
 	2400 6100 1400 6100
 Wire Wire Line
 	2400 6200 1400 6200
-Connection ~ 5600 2700
 $Comp
 L Device:R_US R1
 U 1 1 5E9E37FE
@@ -976,10 +940,10 @@ Entry Wire Line
 Entry Wire Line
 	10700 3900 10600 3800
 $Comp
-L Diode:1N4148 D20
+L Diode:1N4148 D9
 U 1 1 5E301C34
 P 10150 3500
-F 0 "D20" H 11000 3500 50  0000 C CNN
+F 0 "D9" H 11000 3500 50  0000 C CNN
 F 1 "1N4148" H 10090 3610 50  0000 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 3325 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 3500 50  0001 C CNN
@@ -987,10 +951,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D14
+L Diode:1N4148 D1
 U 1 1 5E36B862
 P 9950 3600
-F 0 "D14" H 11000 3600 50  0000 C CNN
+F 0 "D1" H 11000 3600 50  0000 C CNN
 F 1 "1N4148" H 9748 3640 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 3425 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 3600 50  0001 C CNN
@@ -998,10 +962,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D21
+L Diode:1N4148 D10
 U 1 1 5E3942E4
 P 10150 3700
-F 0 "D21" H 11000 3700 50  0000 C CNN
+F 0 "D10" H 11000 3700 50  0000 C CNN
 F 1 "1N4148" H 9948 3740 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 3525 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 3700 50  0001 C CNN
@@ -1009,10 +973,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D23
+L Diode:1N4148 D2
 U 1 1 5E357678
 P 9950 3800
-F 0 "D23" H 11000 3800 50  0000 C CNN
+F 0 "D2" H 11000 3800 50  0000 C CNN
 F 1 "1N4148" H 9748 3840 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 3625 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 3800 50  0001 C CNN
@@ -1020,10 +984,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D22
+L Diode:1N4148 D11
 U 1 1 5E37FC86
 P 10150 3900
-F 0 "D22" H 11000 3900 50  0000 C CNN
+F 0 "D11" H 11000 3900 50  0000 C CNN
 F 1 "1N4148" H 9948 3940 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 3725 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 3900 50  0001 C CNN
@@ -1031,10 +995,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D12
+L Diode:1N4148 D3
 U 1 1 5E34160D
 P 9950 4000
-F 0 "D12" H 11000 4000 50  0000 C CNN
+F 0 "D3" H 11000 4000 50  0000 C CNN
 F 1 "1N4148" H 9748 4040 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 3825 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 4000 50  0001 C CNN
@@ -1042,10 +1006,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D13
+L Diode:1N4148 D12
 U 1 1 5E32CB02
 P 10150 4100
-F 0 "D13" H 11000 4100 50  0000 C CNN
+F 0 "D12" H 11000 4100 50  0000 C CNN
 F 1 "1N4148" H 9948 4140 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 3925 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 4100 50  0001 C CNN
@@ -1053,10 +1017,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D15
+L Diode:1N4148 D4
 U 1 1 5E316F0B
 P 9950 4200
-F 0 "D15" H 11000 4200 50  0000 C CNN
+F 0 "D4" H 11000 4200 50  0000 C CNN
 F 1 "1N4148" H 9748 4240 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 4025 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 4200 50  0001 C CNN
@@ -1153,10 +1117,10 @@ Entry Wire Line
 Entry Wire Line
 	10700 2900 10600 2800
 $Comp
-L Diode:1N4148 D24
+L Diode:1N4148 D13
 U 1 1 5F1EFED9
 P 10150 4500
-F 0 "D24" H 11000 4500 50  0000 C CNN
+F 0 "D13" H 11000 4500 50  0000 C CNN
 F 1 "1N4148" H 10090 4610 50  0000 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 4325 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 4500 50  0001 C CNN
@@ -1164,10 +1128,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D16
+L Diode:1N4148 D5
 U 1 1 5F1EFEDF
 P 9950 4600
-F 0 "D16" H 11000 4600 50  0000 C CNN
+F 0 "D5" H 11000 4600 50  0000 C CNN
 F 1 "1N4148" H 9748 4640 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 4425 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 4600 50  0001 C CNN
@@ -1175,10 +1139,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D25
+L Diode:1N4148 D14
 U 1 1 5F1EFEE5
 P 10150 4700
-F 0 "D25" H 11000 4700 50  0000 C CNN
+F 0 "D14" H 11000 4700 50  0000 C CNN
 F 1 "1N4148" H 9948 4740 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 4525 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 4700 50  0001 C CNN
@@ -1186,10 +1150,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D17
+L Diode:1N4148 D6
 U 1 1 5F1EFEEB
 P 9950 4800
-F 0 "D17" H 11000 4800 50  0000 C CNN
+F 0 "D6" H 11000 4800 50  0000 C CNN
 F 1 "1N4148" H 9748 4840 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 4625 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 4800 50  0001 C CNN
@@ -1197,10 +1161,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D26
+L Diode:1N4148 D15
 U 1 1 5F1EFEF1
 P 10150 4900
-F 0 "D26" H 11000 4900 50  0000 C CNN
+F 0 "D15" H 11000 4900 50  0000 C CNN
 F 1 "1N4148" H 9948 4940 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 4725 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 4900 50  0001 C CNN
@@ -1208,10 +1172,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D18
+L Diode:1N4148 D7
 U 1 1 5F1EFEF7
 P 9950 5000
-F 0 "D18" H 11000 5000 50  0000 C CNN
+F 0 "D7" H 11000 5000 50  0000 C CNN
 F 1 "1N4148" H 9748 5040 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 4825 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 5000 50  0001 C CNN
@@ -1219,10 +1183,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D27
+L Diode:1N4148 D16
 U 1 1 5F1EFEFD
 P 10150 5100
-F 0 "D27" H 11000 5100 50  0000 C CNN
+F 0 "D16" H 11000 5100 50  0000 C CNN
 F 1 "1N4148" H 9948 5140 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 4925 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 5100 50  0001 C CNN
@@ -1230,10 +1194,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:1N4148 D19
+L Diode:1N4148 D8
 U 1 1 5F1EFF03
 P 9950 5200
-F 0 "D19" H 11000 5200 50  0000 C CNN
+F 0 "D8" H 11000 5200 50  0000 C CNN
 F 1 "1N4148" H 9748 5240 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 5025 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 5200 50  0001 C CNN
@@ -1548,29 +1512,28 @@ LED2
 Text Label 9400 7900 0    50   ~ 0
 LED3
 Entry Wire Line
-	6000 3600 6100 3500
+	6000 5400 6100 5300
 Entry Wire Line
-	6000 3700 6100 3600
+	6000 5500 6100 5400
 Entry Wire Line
-	6000 3800 6100 3700
+	6000 5600 6100 5500
 Entry Wire Line
-	6000 3900 6100 3800
+	6000 5700 6100 5600
 Wire Wire Line
-	6100 3500 7300 3500
+	6100 5300 7300 5300
 Wire Wire Line
-	7300 3600 6100 3600
+	7300 5400 6100 5400
 Wire Wire Line
-	6100 3700 7300 3700
+	6100 5500 7300 5500
 Wire Wire Line
-	6100 3800 7300 3800
-Connection ~ 6000 4600
-Text Label 6400 3500 0    50   ~ 0
+	6100 5600 7300 5600
+Text Label 6400 5300 0    50   ~ 0
 ~STROBE
-Text Label 6400 3600 0    50   ~ 0
+Text Label 6400 5400 0    50   ~ 0
 OUT1
-Text Label 6400 3700 0    50   ~ 0
+Text Label 6400 5500 0    50   ~ 0
 OUT2
-Text Label 6400 3800 0    50   ~ 0
+Text Label 6400 5600 0    50   ~ 0
 OUT3
 Wire Wire Line
 	14800 3700 15800 3700
@@ -1666,10 +1629,6 @@ NoConn ~ 7300 6400
 NoConn ~ 7300 6300
 NoConn ~ 7300 6200
 NoConn ~ 7300 6100
-NoConn ~ 7300 5600
-NoConn ~ 7300 5500
-NoConn ~ 7300 5400
-NoConn ~ 7300 5300
 NoConn ~ 7300 5200
 NoConn ~ 7300 5100
 NoConn ~ 7300 5000
@@ -1700,10 +1659,10 @@ NoConn ~ 7300 2900
 NoConn ~ 7300 3100
 NoConn ~ 2000 8900
 $Comp
-L power:GND #PWR0101
+L power:GND #PWR03
 U 1 1 5F4E6EA5
 P 1900 6500
-F 0 "#PWR0101" H 1900 6250 50  0001 C CNN
+F 0 "#PWR03" H 1900 6250 50  0001 C CNN
 F 1 "GND" H 1905 6327 50  0000 C CNN
 F 2 "" H 1900 6500 50  0001 C CNN
 F 3 "" H 1900 6500 50  0001 C CNN
@@ -1713,10 +1672,10 @@ $EndComp
 Wire Wire Line
 	1900 5700 1900 6500
 $Comp
-L power:GND #PWR0102
+L power:GND #PWR015
 U 1 1 5F52426A
 P 6650 2350
-F 0 "#PWR0102" H 6650 2100 50  0001 C CNN
+F 0 "#PWR015" H 6650 2100 50  0001 C CNN
 F 1 "GND" H 6655 2177 50  0000 C CNN
 F 2 "" H 6650 2350 50  0001 C CNN
 F 3 "" H 6650 2350 50  0001 C CNN
@@ -1724,10 +1683,10 @@ F 3 "" H 6650 2350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR0103
+L power:GND #PWR02
 U 1 1 5F545084
 P 1500 9800
-F 0 "#PWR0103" H 1500 9550 50  0001 C CNN
+F 0 "#PWR02" H 1500 9550 50  0001 C CNN
 F 1 "GND" H 1505 9627 50  0000 C CNN
 F 2 "" H 1500 9800 50  0001 C CNN
 F 3 "" H 1500 9800 50  0001 C CNN
@@ -1750,10 +1709,10 @@ Wire Wire Line
 Wire Wire Line
 	9900 9900 9900 10000
 $Comp
-L power:GND #PWR0104
+L power:GND #PWR020
 U 1 1 5F67BB8A
 P 9900 10000
-F 0 "#PWR0104" H 9900 9750 50  0001 C CNN
+F 0 "#PWR020" H 9900 9750 50  0001 C CNN
 F 1 "GND" H 9905 9827 50  0000 C CNN
 F 2 "" H 9900 10000 50  0001 C CNN
 F 3 "" H 9900 10000 50  0001 C CNN
@@ -1761,10 +1720,10 @@ F 3 "" H 9900 10000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR0105
+L power:VCC #PWR019
 U 1 1 5F67CB37
 P 9900 9100
-F 0 "#PWR0105" H 9900 8950 50  0001 C CNN
+F 0 "#PWR019" H 9900 8950 50  0001 C CNN
 F 1 "VCC" H 9917 9273 50  0000 C CNN
 F 2 "" H 9900 9100 50  0001 C CNN
 F 3 "" H 9900 9100 50  0001 C CNN
@@ -1772,10 +1731,10 @@ F 3 "" H 9900 9100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR0106
+L power:VCC #PWR09
 U 1 1 5F6991B1
 P 2200 800
-F 0 "#PWR0106" H 2200 650 50  0001 C CNN
+F 0 "#PWR09" H 2200 650 50  0001 C CNN
 F 1 "VCC" H 2217 973 50  0000 C CNN
 F 2 "" H 2200 800 50  0001 C CNN
 F 3 "" H 2200 800 50  0001 C CNN
@@ -1783,10 +1742,10 @@ F 3 "" H 2200 800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR0107
+L power:VCC #PWR017
 U 1 1 5F6B5112
 P 8400 1500
-F 0 "#PWR0107" H 8400 1350 50  0001 C CNN
+F 0 "#PWR017" H 8400 1350 50  0001 C CNN
 F 1 "VCC" H 8417 1673 50  0000 C CNN
 F 2 "" H 8400 1500 50  0001 C CNN
 F 3 "" H 8400 1500 50  0001 C CNN
@@ -1805,10 +1764,10 @@ F 3 "" H 5600 1550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR0108
+L power:VCC #PWR018
 U 1 1 5F6EF09C
 P 9400 1100
-F 0 "#PWR0108" H 9400 950 50  0001 C CNN
+F 0 "#PWR018" H 9400 950 50  0001 C CNN
 F 1 "VCC" H 9417 1273 50  0000 C CNN
 F 2 "" H 9400 1100 50  0001 C CNN
 F 3 "" H 9400 1100 50  0001 C CNN
@@ -1816,10 +1775,10 @@ F 3 "" H 9400 1100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR0109
+L power:VCC #PWR010
 U 1 1 5F70BC32
 P 2200 2000
-F 0 "#PWR0109" H 2200 1850 50  0001 C CNN
+F 0 "#PWR010" H 2200 1850 50  0001 C CNN
 F 1 "VCC" H 2217 2173 50  0000 C CNN
 F 2 "" H 2200 2000 50  0001 C CNN
 F 3 "" H 2200 2000 50  0001 C CNN
@@ -1827,10 +1786,10 @@ F 3 "" H 2200 2000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR0110
+L power:VCC #PWR07
 U 1 1 5F727A3A
 P 2100 4800
-F 0 "#PWR0110" H 2100 4650 50  0001 C CNN
+F 0 "#PWR07" H 2100 4650 50  0001 C CNN
 F 1 "VCC" H 2117 4973 50  0000 C CNN
 F 2 "" H 2100 4800 50  0001 C CNN
 F 3 "" H 2100 4800 50  0001 C CNN
@@ -1849,10 +1808,10 @@ F 3 "" H 1500 9250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR0111
+L power:VCC #PWR08
 U 1 1 5F7602B8
 P 2100 7100
-F 0 "#PWR0111" H 2100 6950 50  0001 C CNN
+F 0 "#PWR08" H 2100 6950 50  0001 C CNN
 F 1 "VCC" H 2117 7273 50  0000 C CNN
 F 2 "" H 2100 7100 50  0001 C CNN
 F 3 "" H 2100 7100 50  0001 C CNN
@@ -1900,10 +1859,10 @@ Connection ~ 10100 9900
 Wire Wire Line
 	10100 9900 9900 9900
 $Comp
-L power:PWR_FLAG #FLG0101
+L power:PWR_FLAG #FLG01
 U 1 1 5F848CA1
 P 11500 9200
-F 0 "#FLG0101" H 11500 9275 50  0001 C CNN
+F 0 "#FLG01" H 11500 9275 50  0001 C CNN
 F 1 "PWR_FLAG" H 11500 9373 50  0000 C CNN
 F 2 "" H 11500 9200 50  0001 C CNN
 F 3 "~" H 11500 9200 50  0001 C CNN
@@ -1914,10 +1873,10 @@ Connection ~ 11500 9200
 Wire Wire Line
 	11500 9200 11300 9200
 $Comp
-L power:PWR_FLAG #FLG0102
+L power:PWR_FLAG #FLG02
 U 1 1 5F84A535
 P 11500 9900
-F 0 "#FLG0102" H 11500 9975 50  0001 C CNN
+F 0 "#FLG02" H 11500 9975 50  0001 C CNN
 F 1 "PWR_FLAG" H 11500 10073 50  0000 C CNN
 F 2 "" H 11500 9900 50  0001 C CNN
 F 3 "~" H 11500 9900 50  0001 C CNN
@@ -1928,24 +1887,24 @@ Connection ~ 11500 9900
 Wire Wire Line
 	11500 9900 11300 9900
 $Comp
-L power:VCC #PWR0112
+L power:VCC #PWR012
 U 1 1 5F86A206
-P 4700 2900
-F 0 "#PWR0112" H 4700 2750 50  0001 C CNN
-F 1 "VCC" H 4717 3073 50  0000 C CNN
-F 2 "" H 4700 2900 50  0001 C CNN
-F 3 "" H 4700 2900 50  0001 C CNN
-	1    4700 2900
+P 4850 2600
+F 0 "#PWR012" H 4850 2450 50  0001 C CNN
+F 1 "VCC" H 4867 2773 50  0000 C CNN
+F 2 "" H 4850 2600 50  0001 C CNN
+F 3 "" H 4850 2600 50  0001 C CNN
+	1    4850 2600
 	1    0    0    -1  
 $EndComp
 Text Label 13800 7300 0    50   ~ 0
 Row8
 $Comp
-L Connector_Generic:Conn_02x08_Counter_Clockwise J8
+L Connector_Generic:Conn_02x08_Counter_Clockwise J7
 U 1 1 5E9AC1D6
 P 12000 1650
-F 0 "J8" H 12050 2167 50  0000 C CNN
-F 1 "Custom Connector / Proto" H 12050 2076 50  0000 C CNN
+F 0 "J7" H 12050 2167 50  0000 C CNN
+F 1 "Custom Connector 1 / Proto" H 12050 2076 50  0000 C CNN
 F 2 "unikbd:DIP-16_W7.62mm_Proto" H 12000 1650 50  0001 C CNN
 F 3 "~" H 12000 1650 50  0001 C CNN
 	1    12000 1650
@@ -1967,12 +1926,114 @@ NoConn ~ 11800 1650
 NoConn ~ 11800 1550
 NoConn ~ 11800 1450
 NoConn ~ 11800 1350
-Wire Bus Line
-	6000 3600 6000 4600
-Wire Bus Line
-	6000 4600 6000 7700
+$Sheet
+S 4600 9150 1000 800 
+U 60C30592
+F0 "Pinouts" 50
+F1 "Pinouts.sch" 50
+$EndSheet
+Connection ~ 5600 2700
+Wire Wire Line
+	5600 3400 5600 2700
+$Comp
+L Connector_Generic:Conn_01x10 J6
+U 1 1 5ED79E96
+P 3850 3300
+F 0 "J6" H 3768 3917 50  0000 C CNN
+F 1 "Conn_01x10" H 3768 3826 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Horizontal" H 3850 3300 50  0001 C CNN
+F 3 "~" H 3850 3300 50  0001 C CNN
+	1    3850 3300
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4050 3000 4700 3000
+Wire Wire Line
+	4050 3800 4700 3800
+Connection ~ 4700 3800
+Wire Wire Line
+	4700 3800 4700 3950
+Wire Wire Line
+	4700 3000 4700 3800
+Wire Wire Line
+	4050 2900 5100 2900
+Wire Wire Line
+	5100 2900 5100 3500
+Wire Wire Line
+	5100 3500 7300 3500
+Wire Wire Line
+	7300 3600 5000 3600
+Wire Wire Line
+	5000 3600 5000 3300
+Wire Wire Line
+	5000 3300 4050 3300
+Wire Wire Line
+	7300 3700 4900 3700
+Wire Wire Line
+	4900 3700 4900 3100
+Wire Wire Line
+	4900 3100 4050 3100
+Wire Wire Line
+	7300 3800 4800 3800
+Wire Wire Line
+	4800 3800 4800 3700
+Wire Wire Line
+	4800 3700 4050 3700
+Text Label 4200 2900 0    50   ~ 0
+TCK
+Text Label 4200 3100 0    50   ~ 0
+TDO
+Text Label 4200 3300 0    50   ~ 0
+TMS
+Text Label 4200 3400 0    50   ~ 0
+~RESET
+Text Label 4200 3700 0    50   ~ 0
+TDI
+NoConn ~ 4050 3500
+NoConn ~ 4050 3600
+NoConn ~ 7300 3200
+NoConn ~ 7300 3300
+NoConn ~ 7300 3400
+$Comp
+L Connector_Generic:Conn_01x25 J8
+U 1 1 5F355459
+P 11950 4650
+F 0 "J8" H 11868 6067 50  0000 C CNN
+F 1 "Conn_01x25" H 11868 5976 50  0000 C CNN
+F 2 "unikbd:ExpansionHeader_1x25_P2.54" H 11950 4650 50  0001 C CNN
+F 3 "~" H 11950 4650 50  0001 C CNN
+	1    11950 4650
+	-1   0    0    -1  
+$EndComp
+NoConn ~ 12150 3450
+NoConn ~ 12150 3550
+NoConn ~ 12150 3650
+NoConn ~ 12150 3750
+NoConn ~ 12150 3850
+NoConn ~ 12150 3950
+NoConn ~ 12150 4050
+NoConn ~ 12150 4150
+NoConn ~ 12150 4250
+NoConn ~ 12150 4350
+NoConn ~ 12150 4450
+NoConn ~ 12150 4550
+NoConn ~ 12150 5850
+NoConn ~ 12150 5750
+NoConn ~ 12150 5650
+NoConn ~ 12150 5550
+NoConn ~ 12150 5450
+NoConn ~ 12150 5350
+NoConn ~ 12150 5250
+NoConn ~ 12150 5150
+NoConn ~ 12150 5050
+NoConn ~ 12150 4950
+NoConn ~ 12150 4850
+NoConn ~ 12150 4750
+NoConn ~ 12150 4650
 Wire Bus Line
 	2500 1200 2500 4600
+Wire Bus Line
+	6000 4600 6000 7700
 Wire Bus Line
 	2500 4600 2500 8400
 Wire Bus Line
@@ -1981,10 +2042,4 @@ Wire Bus Line
 	15900 2200 15900 8200
 Wire Bus Line
 	10700 2600 10700 8200
-$Sheet
-S 4600 9150 1000 800 
-U 60C30592
-F0 "Pinouts" 50
-F1 "Pinouts.sch" 50
-$EndSheet
 $EndSCHEMATC
