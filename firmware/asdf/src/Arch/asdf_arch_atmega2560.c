@@ -33,6 +33,7 @@
 // 23-25        PORTC0-2  ROW outputs (row number)
 // 27           PORTC4
 
+#include "asdf_arch.h"
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -40,7 +41,6 @@
 #include <stdint.h>
 
 #include "asdf_config.h"
-#include "asdf_arch.h"
 #include "asdf_keymap_defs.h"
 
 // Tick is true every 1 ms.
@@ -728,6 +728,10 @@ void asdf_arch_init(void)
 //    "1". So, if a keypress pulls the column line low, then the reading of the
 //    physical bits must be inverted.
 //
+// 2) A small delay (2usec) is required between setting the keyboard row outputs
+//    and reading the columns, which I think is due to capacitance across the
+//    reverse-biased diodes.
+//
 // SCOPE: public
 //
 // COMPLEXITY: 1
@@ -735,13 +739,13 @@ void asdf_arch_init(void)
 asdf_cols_t asdf_arch_read_row(uint8_t row)
 {
   uint32_t rows = ~(1L << row);
-  asdf_cols_t cols;
+
   ASDF_LOROW_PORT = (uint8_t)(rows & 0xff);
   ASDF_HIROW_PORT = (uint8_t)((rows >> 8) & 0xff);
-  cols = ~(asdf_cols_t) ASDF_COLUMNS_PIN;
-  ASDF_HIROW_PORT = 0xff;
-  ASDF_LOROW_PORT = 0xff;
-  return cols;
+
+  _delay_us(ASDF_KEYBOARD_ROW_SETTLING_TIME_US);
+
+  return ~(asdf_cols_t) ASDF_COLUMNS_PIN;
 }
 
 // PROCEDURE: asdf_arch_osi_read_row

@@ -33,8 +33,11 @@
 
 // ASDF keyboard definitions:
 
-#define ASDF_STROBE_LENGTH_US 10 // strobe length in microseconds
+#define F_CPU 16000000L
 
+#define ASDF_STROBE_LENGTH_US 10 // strobe length in microseconds
+#define ASDF_KEYBOARD_ROW_SETTLING_TIME_US 2 // time for keyboard capacitance to
+                                             // settle before sampling
 
 // Clock definitions:
 #define SYSCLK_DIV1 0

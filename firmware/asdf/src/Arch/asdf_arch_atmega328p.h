@@ -33,6 +33,8 @@
 
 // ASDF keyboard definitions:
 
+#define F_CPU 8000000L
+
 #define ASDF_STROBE_LENGTH_US 10 // strobe length in microseconds
 
 

@@ -33,13 +33,13 @@
 // 23-25        PORTC0-2  ROW outputs (row number)
 // 27           PORTC4
 
+#include "asdf_arch.h"
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <stdint.h>
 #include "asdf_config.h"
-#include "asdf_arch.h"
 #include "asdf_keymap_defs.h"
 
 static volatile uint8_t tick = 0;
