@@ -38,6 +38,7 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <stdint.h>
+
 #include "asdf_config.h"
 #include "asdf_arch.h"
 #include "asdf_keymap_defs.h"
@@ -711,7 +712,6 @@ void asdf_arch_init(void)
   sei();
 }
 
-
 // PROCEDURE: asdf_arch_read_row
 // INPUTS: (uint8_t) row: the row number to be scanned
 // OUTPUTS: returns a word containing the active (pressed) columns
@@ -734,10 +734,14 @@ void asdf_arch_init(void)
 //
 asdf_cols_t asdf_arch_read_row(uint8_t row)
 {
-  uint32_t rows = ~(((uint32_t) 1) << row);
+  uint32_t rows = ~(1L << row);
+  asdf_cols_t cols;
   ASDF_LOROW_PORT = (uint8_t)(rows & 0xff);
   ASDF_HIROW_PORT = (uint8_t)((rows >> 8) & 0xff);
-  return ~(asdf_cols_t) ASDF_COLUMNS_PIN;
+  cols = ~(asdf_cols_t) ASDF_COLUMNS_PIN;
+  ASDF_HIROW_PORT = 0xff;
+  ASDF_LOROW_PORT = 0xff;
+  return cols;
 }
 
 // PROCEDURE: asdf_arch_osi_read_row
