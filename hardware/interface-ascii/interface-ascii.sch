@@ -1946,8 +1946,6 @@ NoConn ~ 1150 4325
 NoConn ~ 1150 4825
 NoConn ~ 1150 4925
 NoConn ~ 1150 5025
-Text Notes 2055 6585 0    50   ~ 0
-SOL-20:\nRESET=OUT1\nLOCAL=OUT3\nBREAK=OUT2\n\nApple 1:\nD7 on socket is tied high\n~RESET = OUT3\nCLRSCR = OUT1\n\nApple 2:\n~RESET = OUT3\n\n
 Wire Wire Line
 	2805 655  3050 655 
 Wire Wire Line
@@ -2056,8 +2054,6 @@ Text Label 1260 1585 0    50   ~ 0
 ~STROBE
 Wire Wire Line
 	1875 2585 1150 2585
-Text Label 1260 2585 0    50   ~ 0
-OUT3
 Wire Wire Line
 	1150 7320 1860 7320
 Wire Wire Line
@@ -2114,8 +2110,6 @@ Entry Wire Line
 	1875 2085 1975 2185
 Wire Wire Line
 	1150 2685 1875 2685
-Text Label 1260 2685 0    50   ~ 0
-OUT1
 Wire Wire Line
 	9060 2350 9680 2350
 Wire Wire Line
@@ -2131,4 +2125,10 @@ Wire Bus Line
 	1975 875  1975 6640
 Wire Bus Line
 	7800 1350 7800 6705
+Text Notes 2055 6585 0    50   ~ 0
+SOL-20:\n~RESET~ = OUT3\nLOCAL = OUT1\nBREAK = OUT2\n\nApple 1:\nD7 on socket is tied high\n~RESET~ = OUT3\nCLRSCR = OUT1\n\nApple 2:\n~RESET~ = OUT3\n\n
+Text Label 1260 2685 0    50   ~ 0
+OUT1
+Text Label 1260 2585 0    50   ~ 0
+OUT3
 $EndSCHEMATC
