@@ -17,9 +17,9 @@ output, supporting keyboards of up to 16 rows X 8 columns.  This design uses the
 
 ## Differences from ATMega328P version
 - Backward compatible with the ATMega328P version, with following enhancements:
-1. The Output2 can be a regualar TTL, open-collector, or open-emitter. In the
+1. All the TTL outputs can be regualar push-pull TTL, open-collector, or open-emitter. In the
    328P version, changing between regular TTL output and open-collector on
-   Output2 required changing an IC.
+   Output 2 required changing an IC.
 1. The serial port no longer shares lines with the parallel output port, so both
    serial I/O and parallel output can be used at the same time without risk of
    conflict. However, serial I/O is not yet supported in the firmware.
@@ -36,12 +36,13 @@ output, supporting keyboards of up to 16 rows X 8 columns.  This design uses the
   be RESET, BREAK, CLEAR, etc. These may be configured as open-collector (Hi-Z
   for HI, GND for LO), or open-emitter (5V for high, Hi-Z for LO).
 - Three GPIO lines are used to control keyboard LED, or other keyboard functions.
-- The DIP switch is wired into row 8 (of 0-15), to reduce RAM usage and speed up
-  key scanning.
 - A serial (UART) port is provided. This could be used to provide serial output
 instead or parallel output, to support a bootloader, or even to accept a serial
 input stream from another source to send to the host as parallel ASCII data.
-
+- JTAG port is provided for programming and debugging
+- Two custom connectors (16-pin DIP and 1x25 0.1" header) are provided to allow
+  custom ASCII interfaces, or custom keyboard matrix interface.
+  
 ## Assembly Notes
 
 1. Solder the surface-mount microcontroller first. Be sure to match pin 1 to the
