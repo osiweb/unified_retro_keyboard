@@ -103,9 +103,9 @@
 #define SOL_KBD_LED_UPPERCASE PHYSICAL_LED1
 #define SOL_KBD_LED_LOCAL PHYSICAL_LED2
 #define SOL_KBD_LED_SHIFTLOCK PHYSICAL_LED3
-#define SOL_KBD_TTLOUT_RESET PHYSICAL_OUT1_OPEN_HI // Emulate open collector output.
+#define SOL_KBD_TTLOUT_RESET PHYSICAL_OUT3_OPEN_HI // Emulate open collector output.
 #define SOL_KBD_TTLOUT_BREAK PHYSICAL_OUT2
-#define SOL_KBD_TTLOUT_LOCAL PHYSICAL_OUT3
+#define SOL_KBD_TTLOUT_LOCAL PHYSICAL_OUT1
 
 #define ASDF_SOL_KEYMAP_INITIALIZER_LENGTH 6
 
@@ -115,7 +115,7 @@
   {                                                                                                \
     { .virtual_device = VCAPS_LED,                                                                 \
       .physical_device = SOL_KBD_LED_UPPERCASE,                                                    \
-      .initial_value = SOL_KBD_LED_ON },                                                           \
+      .initial_value = SOL_KBD_LED_OFF },                                                           \
       { .virtual_device = VSHIFT_LED,                                                              \
         .physical_device = SOL_KBD_LED_SHIFTLOCK,                                                  \
         .initial_value = SOL_KBD_LED_OFF },                                                        \
