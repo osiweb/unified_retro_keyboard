@@ -1,2 +1,10 @@
 .DS_Store
 *scratch*
+*.bak
+*.sch-bak
+*-cache.lib
+*.kicad_pcb-bak
+fp-lib-table
+fp-info-cache
+*.o
+*-rescue.lib
