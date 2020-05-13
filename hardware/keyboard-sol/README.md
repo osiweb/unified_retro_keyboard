@@ -15,12 +15,12 @@ classic ASCII keyset, with a special SOL-20 add-on keyset.
    feel, but there is a difference.
    
 1. The original keycaps have an 11 degree angled stem. It may be possible to
-   find such keycaps, or to create an 11-degree adapter, but I was unable to do
-   so, so this keyboard was tested with straight keycaps. I have tried both, and
-   do not find a difference in typing comfort or speed, althought there is an
-   aesthetic difference. There is s tiny bit of space between keys using
-   straight keycaps, so an 11 degree adapter may not require any change to the
-   layout.
+   find such keycaps, but I was unable to find any. It also may be possible to
+   create 11 degree adapters. But this keyboard uses straight keycaps. I have
+   tried both styles, and do not find a difference in typing comfort or speed,
+   althought there is an aesthetic difference. There is s tiny bit of space
+   between keys using straight keycaps, so an 11 degree adapter may not require
+   any change to the layout.
 
 ## Notes
 
