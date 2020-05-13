@@ -87,6 +87,8 @@
 #define SOL_KBD_VIRTUAL_SUB1(SOL_VDEVICE) ACTION_##SOL_VDEVICE
 #define SOL_KBD_VIRTUAL_SUB(SOL_VDEVICE) SOL_KBD_VIRTUAL_SUB1(SOL_VDEVICE)
 #define SOL_KBD_LOCAL_ACTION SOL_KBD_VIRTUAL_SUB(SOL_KBD_VLOCAL)
+#define SOL_KBD_RESET_ACTION SOL_KBD_VIRTUAL_SUB(SOL_KBD_VRESET)
+#define SOL_KBD_BREAK_ACTION SOL_KBD_VIRTUAL_SUB(SOL_KBD_VBREAK)
 
 #define SOL_ASCII_LOAD 0x8C
 #define SOL_ASCII_MODE_SELECT 0x80
@@ -162,7 +164,7 @@
     [4] = { ASCII_ESC, '1', '2', '3', '4', '5', '6', '7' }, /**/          \
     [5] = { '8', '9', ASCII_ZERO, '-', '^',                             \
             ASCII_LT_SQUARE_BRACE, ASCII_BACKSLASH, ASCII_RT_SQUARE_BRACE }, \
-    [6] = { SOL_KBD_VBREAK, ASCII_TAB, 'q', 'w', 'e', 'r', 't', 'y' }, /**/     \
+    [6] = { SOL_KBD_BREAK_ACTION, ASCII_TAB, 'q', 'w', 'e', 'r', 't', 'y' }, /**/     \
     [7] = { 'u', 'i', 'o', 'p', ASCII_AT, ASCII_CR, ASCII_LF, SOL_ASCII_LOAD }, \
     [9] = { SOL_KBD_LOCAL_ACTION,         SOL_ASCII_UP_ARROW, SOL_ASCII_LT_ARROW,     \
             ASCII_SPACE,    SOL_ASCII_RT_ARROW, SOL_ASCII_DN_ARROW,     \
@@ -184,7 +186,7 @@
     [4] = { ASCII_ESC, '1', '2', '3', '4', '5', '6', '7' }, /**/          \
     [5] = { '8', '9', ASCII_ZERO, '-', '^',                             \
             ASCII_LT_SQUARE_BRACE, ASCII_BACKSLASH, ASCII_RT_SQUARE_BRACE }, \
-    [6] = { SOL_KBD_VBREAK, ASCII_TAB, 'Q', 'W', 'E', 'R', 'T', 'Y' }, /**/     \
+    [6] = { SOL_KBD_BREAK_ACTION, ASCII_TAB, 'Q', 'W', 'E', 'R', 'T', 'Y' }, /**/     \
     [7] = { 'U', 'I', 'O', 'P', ASCII_AT, ASCII_CR, ASCII_LF, SOL_ASCII_LOAD }, \
     [9] = { SOL_KBD_LOCAL_ACTION,         SOL_ASCII_UP_ARROW, SOL_ASCII_LT_ARROW,     \
             ASCII_SPACE,    SOL_ASCII_RT_ARROW, SOL_ASCII_DN_ARROW,     \
@@ -206,7 +208,7 @@
     [4] = { ASCII_ESC, '!', ASCII_DOUBLE_QUOTE, '#', '$', '%', '&', ASCII_SINGLE_QUOTE }, \
     [5] = { ASCII_LT_PAREN, ASCII_RT_PAREN, ASCII_SPACE, '=', ASCII_TILDE,                             \
             ASCII_LT_SQUARE_BRACE, ASCII_BACKSLASH, ASCII_RT_SQUARE_BRACE }, \
-    [6] = { SOL_KBD_VBREAK, ASCII_TAB, 'Q', 'W', 'E', 'R', 'T', 'Y' },          \
+    [6] = { SOL_KBD_BREAK_ACTION, ASCII_TAB, 'Q', 'W', 'E', 'R', 'T', 'Y' }, \
     [7] = { 'U', 'I', 'O', 'P', ASCII_GRAVE_ACCENT, ASCII_CR, ASCII_LF, SOL_ASCII_LOAD }, \
     [9] = { SOL_KBD_LOCAL_ACTION,         SOL_ASCII_UP_ARROW, SOL_ASCII_LT_ARROW,     \
             ASCII_SPACE,    SOL_ASCII_RT_ARROW, SOL_ASCII_DN_ARROW,     \
@@ -220,10 +222,10 @@
 
 #define ASDF_SOL_CTRL_MAP                                               \
   {                                                                     \
-    [0] = { ACTION_CTRL, SOL_KBD_SHIFTLOCK_ACTION, ASCII_CTRL_A, ASCII_CTRL_S, \
+    [0] = { ACTION_CTRL, SOL_KBD_SHIFTLOCK_ACTION, ASCII_CTRL_A, ASCII_CTRL_S,                                                     \
             ASCII_CTRL_D, ASCII_CTRL_F, ASCII_CTRL_G, ASCII_CTRL_H },       \
     [1] = { ASCII_CTRL_J, ASCII_CTRL_K, ASCII_CTRL_L, ASCII_VT,         \
-            ASCII_LF, ASCII_DEL, ACTION_REPEAT, ACTION_CTRL },          \
+            ASCII_LF, ASCII_DEL, SOL_KBD_RESET_ACTION, ACTION_CTRL },            \
     [2] = { ACTION_CAPS, ACTION_SHIFT, ASCII_CTRL_Z, ASCII_CTRL_X, \
             ASCII_CTRL_C, ASCII_CTRL_V, ASCII_CTRL_B, ASCII_CTRL_N },                                       \
     [3] = { ASCII_CTRL_M, ASCII_FF, ASCII_SO,   ASCII_SI,   \
@@ -232,7 +234,7 @@
             ASCII_EOT, ASCII_ENQ, ASCII_ACK, ASCII_BEL },               \
     [5] = { ASCII_BS, ASCII_TAB, ASCII_NULL, ASCII_CR, ASCII_RS,        \
             ASCII_ESC, ASCII_FS, ASCII_GS },                            \
-    [6] = { SOL_KBD_VBREAK, ASCII_TAB, ASCII_CTRL_Q, ASCII_CTRL_W,              \
+    [6] = { SOL_KBD_BREAK_ACTION, ASCII_TAB, ASCII_CTRL_Q, ASCII_CTRL_W,              \
             ASCII_CTRL_E, ASCII_CTRL_R, ASCII_CTRL_T, ASCII_CTRL_Y },   \
     [7] = { ASCII_CTRL_U, ASCII_CTRL_I, ASCII_CTRL_O, ASCII_CTRL_P,     \
             ASCII_NULL, ASCII_CR, ASCII_LF, SOL_ASCII_LOAD },             \
