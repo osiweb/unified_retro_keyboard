@@ -1,10 +1,21 @@
+#MacOS related
 .DS_Store
-*scratch*
+
+#KiCAD related
 *.bak
+*.bck
 *.sch-bak
+*.dcm
 *-cache.lib
 *.kicad_pcb-bak
 fp-lib-table
 fp-info-cache
-*.o
 *-rescue.lib
+
+#C related
+*.o
+*.elf
+*.map
+
+#misc
+\*scratch\*
