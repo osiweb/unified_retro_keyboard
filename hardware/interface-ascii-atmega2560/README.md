@@ -47,11 +47,8 @@ input stream from another source to send to the host as parallel ASCII data.
 
 1. Solder the surface-mount microcontroller first. Be sure to match pin 1 to the
    dot on the silk-screen layer.
-1. Next, install the surface mount crysta, Y1.  The orientation is not important.
-1. Next, solder in the Diodes D1-D3 and D4-D11
-1. Do not populate diodes D12-D27. These diodes are jumpered short. If you are
-   using a key matrix with no diodes, then cut the jumpers with an x-acto knife
-   and populate the diodes.
+1. Next, install the surface mount crystal, Y1.  The orientation is not important.
+1. Next, solder in the Diodes D17-D19 and D20-D27
 1. Install all the capacitors. These are all 0.1 uF ceramic capacitors with 0.1"
    lead spacing. Many capacitors with 0.2" lead spacing are actually 0.1"
    emerging from the body, bent to 0.2", and can be straightened back to 0.1".
@@ -62,7 +59,7 @@ input stream from another source to send to the host as parallel ASCII data.
    0.100")
 1. (Optional) If you will be the digital outputs, or if you will be attaching
    switches or other sources of open-collector signals (such as RESET), then
-   install connector J4 (right-angle, 1x5 0.100")
+   install connector J4 (riginht-angle, 1x5 0.100")
 1. (Optional) If you will be using the serial port, install the serial header
    J3. (right angle, 1x4 0.100")
 1. If you will be using the Apple 1 connector, install the DIP socket J1 (16-pin
@@ -74,6 +71,12 @@ input stream from another source to send to the host as parallel ASCII data.
    dip).  The note for the Apple 1 connector selection applies here as well.
 1. If you will be using the SOL-20 connector, install connector J5 (vertical
    2x10 0.100")
+1. Do not populate diodes D1-D16. These diodes are jumpered short. If you are
+   using a key matrix with no diodes, then cut the jumpers with an x-acto knife
+   and populate the diodes.
+1. Do not populate RN1. The Microprocessor uses internal pullups, so this
+   network is not required. The footprint is left in place in case a stronger
+   pullup (in the 1K-10K range) is needed.
 
 configuration or only a serial configuration, then you can jumper these
 resistors with a piece of wire.

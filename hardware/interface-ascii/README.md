@@ -71,7 +71,7 @@ those diodes. Otherwise the diodes do nothing.
 If you are attaching a keyboard with a diode per key, then the diodes on the keys perform the same function, in addition to preventing "ghosting", so the per-row diodes do not need to be installed.
 
 ### DIP switch and associated diodes
-The DIP switch is optional. If you don't want to be able to set options via the
+If you don't want to select keymaps or options via the DIP switch, then you may omit the DIP switch and diodes.  If you do this, then you will have to set the keymap and all preferences in the firmware.
 DIP switches, you can set all your preferences in the firmware, or just accept
 the default behavior, and skip the DIP switch and Diodes D17-D20 and D24-D27.
 

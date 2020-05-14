@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "ASCII Interface for Unified Retro Keyboard"
-Date "2020-04-25"
-Rev "2.6"
+Date "2020-05-13"
+Rev "2.7"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -271,10 +271,10 @@ Col0
 Text Label 9750 1350 0    50   ~ 0
 Row0
 $Comp
-L Diode:1N4148 D21
+L Diode:1N4148 D25
 U 1 1 5D9CCE74
 P 9350 1350
-F 0 "D21" H 9485 1315 50  0000 C CNN
+F 0 "D25" H 9485 1315 50  0000 C CNN
 F 1 "1N4148" H 9350 1195 40  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9350 1175 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9350 1350 50  0001 C CNN
@@ -1098,10 +1098,10 @@ Entry Wire Line
 Entry Wire Line
 	9975 6400 10075 6300
 $Comp
-L Diode:1N4148 D27
+L Diode:1N4148 D24
 U 1 1 5DFACD33
 P 9635 6500
-F 0 "D27" H 9480 6550 50  0000 C CNN
+F 0 "D24" H 9480 6550 50  0000 C CNN
 F 1 "1N4148" H 9455 6600 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9635 6325 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9635 6500 50  0001 C CNN
@@ -1109,10 +1109,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9635 
 	1    0    0    1   
 $EndComp
 $Comp
-L Diode:1N4148 D26
+L Diode:1N4148 D23
 U 1 1 5DF9A8E3
 P 9635 6300
-F 0 "D26" H 9520 6260 50  0000 C CNN
+F 0 "D23" H 9520 6260 50  0000 C CNN
 F 1 "1N4148" H 9433 6340 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9635 6125 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9635 6300 50  0001 C CNN
@@ -1120,10 +1120,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9635 
 	1    0    0    1   
 $EndComp
 $Comp
-L Diode:1N4148 D25
+L Diode:1N4148 D22
 U 1 1 5DF87A8E
 P 9635 6100
-F 0 "D25" H 9510 6060 50  0000 C CNN
+F 0 "D22" H 9510 6060 50  0000 C CNN
 F 1 "1N4148" H 9433 6140 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9635 5925 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9635 6100 50  0001 C CNN
@@ -1175,10 +1175,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9325 
 	1    0    0    1   
 $EndComp
 $Comp
-L Diode:1N4148 D24
+L Diode:1N4148 D21
 U 1 1 5DF29274
 P 9625 5900
-F 0 "D24" H 9500 5860 50  0000 C CNN
+F 0 "D21" H 9500 5860 50  0000 C CNN
 F 1 "1N4148" H 9423 5940 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9625 5725 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9625 5900 50  0001 C CNN
@@ -1509,10 +1509,10 @@ Row7
 Text Label 9745 1650 0    50   ~ 0
 Col0
 $Comp
-L Diode:1N4148 D22
+L Diode:1N4148 D26
 U 1 1 5D9C0280
 P 9355 1750
-F 0 "D22" H 9490 1720 50  0000 C CNN
+F 0 "D26" H 9490 1720 50  0000 C CNN
 F 1 "1N4148" H 9530 1790 40  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9355 1575 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9355 1750 50  0001 C CNN
@@ -1520,10 +1520,10 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9355 
 	-1   0    0    1   
 $EndComp
 $Comp
-L Diode:1N4148 D23
+L Diode:1N4148 D27
 U 1 1 5EB56F93
 P 9355 2150
-F 0 "D23" H 9490 2120 50  0000 C CNN
+F 0 "D27" H 9490 2120 50  0000 C CNN
 F 1 "1N4148" H 9530 2185 40  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9355 1975 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9355 2150 50  0001 C CNN
@@ -2117,6 +2117,12 @@ Wire Wire Line
 Wire Wire Line
 	9060 1550 9975 1550
 Connection ~ 5785 4350
+Text Notes 2055 6585 0    50   ~ 0
+SOL-20:\n~RESET~ = OUT3\nLOCAL = OUT1\nBREAK = OUT2\n\nApple 1:\nD7 on socket is tied high\n~RESET~ = OUT3\nCLRSCR = OUT1\n\nApple 2:\n~RESET~ = OUT3\n\n
+Text Label 1260 2685 0    50   ~ 0
+OUT1
+Text Label 1260 2585 0    50   ~ 0
+OUT3
 Wire Bus Line
 	5200 3850 5200 6640
 Wire Bus Line
@@ -2125,10 +2131,4 @@ Wire Bus Line
 	1975 875  1975 6640
 Wire Bus Line
 	7800 1350 7800 6705
-Text Notes 2055 6585 0    50   ~ 0
-SOL-20:\n~RESET~ = OUT3\nLOCAL = OUT1\nBREAK = OUT2\n\nApple 1:\nD7 on socket is tied high\n~RESET~ = OUT3\nCLRSCR = OUT1\n\nApple 2:\n~RESET~ = OUT3\n\n
-Text Label 1260 2685 0    50   ~ 0
-OUT1
-Text Label 1260 2585 0    50   ~ 0
-OUT3
 $EndSCHEMATC

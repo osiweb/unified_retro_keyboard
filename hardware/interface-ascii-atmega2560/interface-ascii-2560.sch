@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLedger 17000 11000
 encoding utf-8
-Sheet 1 2
+Sheet 1 1
 Title "Unified Retro Keyboard ASCII Interface (2560)"
 Date "2020-04-16"
 Rev "3.2"
@@ -1926,12 +1926,6 @@ NoConn ~ 11800 1650
 NoConn ~ 11800 1550
 NoConn ~ 11800 1450
 NoConn ~ 11800 1350
-$Sheet
-S 4600 9150 1000 800 
-U 60C30592
-F0 "Pinouts" 50
-F1 "Pinouts.sch" 50
-$EndSheet
 Connection ~ 5600 2700
 Wire Wire Line
 	5600 3400 5600 2700
