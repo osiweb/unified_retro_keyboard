@@ -40,7 +40,7 @@
 #include "Keymaps/asdf_keymap_defs_apple2.h"
 #include "Keymaps/asdf_keymap_defs_sol.h"
 
-#define ASDF_NUM_KEYMAPS                                                                           \
+#define ASDF_NUM_KEYMAPS                                                \
   (ASDF_ASCII_ALL_MAPS_COUNT + ASDF_APPLE2_ALL_MAPS_COUNT + ASDF_SOL_ALL_MAPS_COUNT)
 
 #define ASDF_KEYMAP_DEFS                                                                           \

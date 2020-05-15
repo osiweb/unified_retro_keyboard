@@ -31,6 +31,9 @@
 #if !defined(ASDF_KEYMAP_DEFS_SOL20_H)
 #define ASDF_KEYMAP_DEFS_SOL20_H
 
+// include DIP switch definitions
+#include "asdf_keymap_defs_dipswitch.h"
+
 // Edit the number of rows and columns used in this map. If the number is less
 // than the maxium, the unused elements will be initialized to 0.
 
@@ -117,7 +120,7 @@
   {                                                                                                \
     { .virtual_device = VCAPS_LED,                                                                 \
       .physical_device = SOL_KBD_LED_UPPERCASE,                                                    \
-      .initial_value = SOL_KBD_LED_OFF },                                                           \
+      .initial_value = SOL_KBD_LED_OFF },                                                          \
       { .virtual_device = VSHIFT_LED,                                                              \
         .physical_device = SOL_KBD_LED_SHIFTLOCK,                                                  \
         .initial_value = SOL_KBD_LED_OFF },                                                        \
@@ -139,19 +142,21 @@
         .initial_value = SOL_KBD_TTL_HIGH },                                                       \
   }
 
-// function hooks for the SOL keyboard. At Setup, activate CAPSLOCK to emulate
-// original keyboard.
-#define ASDF_SOL_KEYMAP_HOOK_INITIALIZER_LENGTH 1
+// function hooks for the SOL keyboard:
+// - At Setup, activate CAPSLOCK to emulate original keyboard.
+// - At Setup, configure negative strobe
+#define ASDF_SOL_KEYMAP_HOOK_INITIALIZER_LENGTH 2
 #define ASDF_SOL_KEYMAP_HOOK_INITIALIZER                                                           \
   {                                                                                                \
-    {                                                                                              \
-      .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                           \
+    { .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                           \
       .hook_func = asdf_modifier_capslock_activate,                                                \
+    },                                                                                             \
+    { .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                           \
+      .hook_func = asdf_arch_set_neg_strobe,                                                       \
     },                                                                                             \
   }
 
-#define ASDF_SOL_DIP_SWITCHES                                                                      \
-  [ASDF_ARCH_DIPSWITCH_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+#define ASDF_SOL_DIP_SWITCHES ASDF_KEYMAP_DIP_SWITCHES
 
 // clang-format off
 #define ASDF_SOL_PLAIN_MAP                                              \

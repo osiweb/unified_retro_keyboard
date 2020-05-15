@@ -191,6 +191,14 @@ static void asdf_activate_action(action_t keycode)
       asdf_keymaps_map_select_3_set();
       break;
     }
+    case ACTION_STROBE_POLARITY_SELECT: {
+      asdf_arch_set_pos_strobe();
+      break;
+    }
+    case ACTION_AUTOREPEAT_SELECT: {
+      asdf_repeat_auto_on();
+      break;
+    }
     case ACTION_VLED1: {
       asdf_virtual_activate(VLED1);
       break;
@@ -290,6 +298,14 @@ static void asdf_deactivate_action(action_t keycode)
     }
     case ACTION_MAPSEL_3: {
       asdf_keymaps_map_select_3_clear();
+      break;
+    }
+    case ACTION_STROBE_POLARITY_SELECT: {
+      asdf_arch_set_neg_strobe();
+      break;
+    }
+    case ACTION_AUTOREPEAT_SELECT: {
+      asdf_repeat_auto_off();
       break;
     }
     case ACTION_NOTHING:
@@ -498,8 +514,7 @@ void asdf_keyscan(void)
 {
   asdf_hook_get(ASDF_HOOK_EACH_SCAN)();
   for (uint8_t row = 0; row < ASDF_NUM_ROWS; row++) {
-    asdf_cols_t (*row_reader)(uint8_t) =
-    (asdf_cols_t (*) (uint8_t)) asdf_hook_get(ASDF_HOOK_SCANNER);
+    asdf_cols_t (*row_reader)(uint8_t) = (asdf_cols_t(*)(uint8_t)) asdf_hook_get(ASDF_HOOK_SCANNER);
     asdf_cols_t row_key_state = (*row_reader)(row);
 
     asdf_cols_t changed = row_key_state ^ last_stable_key_state[row];

@@ -3,7 +3,7 @@
 // Unfified Keyboard Project
 // ASDF keyboard firmware
 //
-// asdf_keymaps_ascii.h 
+// asdf_keymaps_ascii.h
 //
 // Ascii keymaps
 //
@@ -31,6 +31,9 @@
 #if !defined(ASDF_KEYMAP_DEFS_ASCII_H)
 #define ASDF_KEYMAP_DEFS_ASCII_H
 
+// include DIP switch definitions
+#include "asdf_keymap_defs_dipswitch.h"
+
 // Edit the number of rows and columns used in this map. If the number is less
 // than the maxium, the unused elements will be initialized to 0.
 
@@ -57,57 +60,62 @@
 #define ASCII_CAPS_LED_INIT_VALUE 0
 
 
-
 #define ASDF_ASCII_KEYMAP_INITIALIZER_LENGTH 4
 
-#define ASDF_ASCII_PLAIN_KEYMAP_INITIALIZER                             \
-  {                                                                     \
-   { .virtual_device = ASCII_VIRTUAL_POWER_LED,                               \
-       .physical_device = ASCII_POWER_LED,                                        \
-     .initial_value = ASCII_POWER_LED_INIT_VALUE },                     \
-   { .virtual_device = VCAPS_LED,                                       \
-     .physical_device = ASCII_CAPS_LED,                                 \
-     .initial_value = ASCII_CAPS_LED_INIT_VALUE },                      \
-   { .virtual_device = ASCII_VIRTUAL_RESET,                             \
-     .physical_device = ASCII_RESET_OUTPUT,                             \
-     .function = V_PULSE_SHORT,                                               \
-     .initial_value = !ASCII_RESET_ACTIVE_VALUE },                      \
-   { .virtual_device = ASCII_VIRTUAL_CLR_SCR,                           \
-     .physical_device = ASCII_CLR_SCR_OUT,                              \
-    .function = V_PULSE_LONG,                                                \
-     .initial_value = !ASCII_CLR_SCR_ACTIVE_VALUE },                    \
+#define ASDF_ASCII_PLAIN_KEYMAP_INITIALIZER                                                        \
+  {                                                                                                \
+    { .virtual_device = ASCII_VIRTUAL_POWER_LED,                                                   \
+      .physical_device = ASCII_POWER_LED,                                                          \
+      .initial_value = ASCII_POWER_LED_INIT_VALUE },                                               \
+      { .virtual_device = VCAPS_LED,                                                               \
+        .physical_device = ASCII_CAPS_LED,                                                         \
+        .initial_value = ASCII_CAPS_LED_INIT_VALUE },                                              \
+      { .virtual_device = ASCII_VIRTUAL_RESET,                                                     \
+        .physical_device = ASCII_RESET_OUTPUT,                                                     \
+        .function = V_PULSE_SHORT,                                                                 \
+        .initial_value = !ASCII_RESET_ACTIVE_VALUE },                                              \
+      { .virtual_device = ASCII_VIRTUAL_CLR_SCR,                                                   \
+        .physical_device = ASCII_CLR_SCR_OUT,                                                      \
+        .function = V_PULSE_LONG,                                                                  \
+        .initial_value = !ASCII_CLR_SCR_ACTIVE_VALUE },                                            \
   }
 
 // For the CAPS map, no LED is mapped to the CapsLock virtual LED, since
 // Capslock has no observable effect. The LED on the CAPSLOCK key is mapped to
 // an unused LED output, initialized to OFF, to ensure the LED is dark.
-#define ASDF_ASCII_CAPS_KEYMAP_INITIALIZER                              \
-  {                                                                     \
-   { .virtual_device = ASCII_VIRTUAL_POWER_LED,                         \
-     .physical_device = ASCII_POWER_LED,                                \
-     .initial_value = ASCII_POWER_LED_INIT_VALUE },                     \
-   { .virtual_device = VLED1,                                       \
-     .physical_device = ASCII_CAPS_LED,                                 \
-     .initial_value = ASCII_CAPS_LED_INIT_VALUE },                      \
-   { .virtual_device = ASCII_VIRTUAL_RESET,                             \
-     .physical_device = ASCII_RESET_OUTPUT,                             \
-     .function = V_PULSE_SHORT,                                               \
-     .initial_value = !ASCII_RESET_ACTIVE_VALUE },                      \
-   { .virtual_device = ASCII_VIRTUAL_CLR_SCR,                           \
-     .physical_device = ASCII_CLR_SCR_OUT,                              \
-    .function = V_PULSE_LONG,                                                \
-     .initial_value = !ASCII_CLR_SCR_ACTIVE_VALUE },                    \
+#define ASDF_ASCII_CAPS_KEYMAP_INITIALIZER                                                         \
+  {                                                                                                \
+    { .virtual_device = ASCII_VIRTUAL_POWER_LED,                                                   \
+      .physical_device = ASCII_POWER_LED,                                                          \
+      .initial_value = ASCII_POWER_LED_INIT_VALUE },                                               \
+      { .virtual_device = VLED1,                                                                   \
+        .physical_device = ASCII_CAPS_LED,                                                         \
+        .initial_value = ASCII_CAPS_LED_INIT_VALUE },                                              \
+      { .virtual_device = ASCII_VIRTUAL_RESET,                                                     \
+        .physical_device = ASCII_RESET_OUTPUT,                                                     \
+        .function = V_PULSE_SHORT,                                                                 \
+        .initial_value = !ASCII_RESET_ACTIVE_VALUE },                                              \
+      { .virtual_device = ASCII_VIRTUAL_CLR_SCR,                                                   \
+        .physical_device = ASCII_CLR_SCR_OUT,                                                      \
+        .function = V_PULSE_LONG,                                                                  \
+        .initial_value = !ASCII_CLR_SCR_ACTIVE_VALUE },                                            \
   }
 
 
-#define ASDF_ASCII_KEYMAP_INITIALIZER ASDF_ASCII_PLAIN_KEYMAP_INITIALIZER, ASDF_ASCII_CAPS_KEYMAP_INITIALIZER
+#define ASDF_ASCII_KEYMAP_INITIALIZER                                                              \
+  ASDF_ASCII_PLAIN_KEYMAP_INITIALIZER, ASDF_ASCII_CAPS_KEYMAP_INITIALIZER
 
 
 // Structure to initialize hooks.  No hook functions are needed for ASCII keyboard.
 #define ASDF_ASCII_KEYMAP_HOOK_INITIALIZER_LENGTH 0
-#define ASDF_ASCII_PLAIN_KEYMAP_HOOK_INITIALIZER {}
-#define ASDF_ASCII_CAPS_KEYMAP_HOOK_INITIALIZER {}
-#define ASDF_ASCII_KEYMAP_HOOK_INITIALIZER ASDF_ASCII_PLAIN_KEYMAP_HOOK_INITIALIZER, ASDF_ASCII_CAPS_KEYMAP_HOOK_INITIALIZER
+#define ASDF_ASCII_PLAIN_KEYMAP_HOOK_INITIALIZER                                                   \
+  {                                                                                                \
+  }
+#define ASDF_ASCII_CAPS_KEYMAP_HOOK_INITIALIZER                                                    \
+  {                                                                                                \
+  }
+#define ASDF_ASCII_KEYMAP_HOOK_INITIALIZER                                                         \
+  ASDF_ASCII_PLAIN_KEYMAP_HOOK_INITIALIZER, ASDF_ASCII_CAPS_KEYMAP_HOOK_INITIALIZER
 
 // Key Matrix for combination of ASCII controller and Classic ASCII matrix
 //
@@ -140,9 +148,7 @@
 //    definitions in positions 0-3 ensures consistent map selection among all
 //    keymaps.
 
-
-#define ASDF_ASCII_DIP_SWITCHES                                        \
-  [ASDF_ARCH_DIPSWITCH_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+#define ASDF_ASCII_DIP_SWITCHES ASDF_KEYMAP_DIP_SWITCHES
 
 // clang-format off
 #define ASDF_ASCII_PLAIN_MAP                                            \
@@ -211,9 +217,9 @@
 // clang-format on
 
 #define ASDF_ASCII_MAP_DECLARATIONS                                                                \
-  static const FLASH keycode_matrix_t ascii_plain_matrix = ASDF_ASCII_PLAIN_MAP;                        \
-  static const FLASH keycode_matrix_t ascii_shift_matrix = ASDF_ASCII_SHIFT_MAP;                        \
-  static const FLASH keycode_matrix_t ascii_caps_matrix = ASDF_ASCII_CAPS_MAP;                          \
+  static const FLASH keycode_matrix_t ascii_plain_matrix = ASDF_ASCII_PLAIN_MAP;                   \
+  static const FLASH keycode_matrix_t ascii_shift_matrix = ASDF_ASCII_SHIFT_MAP;                   \
+  static const FLASH keycode_matrix_t ascii_caps_matrix = ASDF_ASCII_CAPS_MAP;                     \
   static const FLASH keycode_matrix_t ascii_ctrl_matrix = ASDF_ASCII_CTRL_MAP;
 
 
@@ -228,20 +234,16 @@
 // [2]: caps (caps lock active)
 // [3]: ctrl: (control key active)
 
-#define ASDF_ASCII_PLAIN_MAP_DEFS                                    \
-  {                                                                     \
-   [MOD_PLAIN_MAP] = &ascii_plain_matrix,                                        \
-   [MOD_SHIFT_MAP] = &ascii_shift_matrix,                                        \
-   [MOD_CAPS_MAP] = &ascii_caps_matrix,                                         \
-   [MOD_CTRL_MAP] = &ascii_ctrl_matrix                                          \
+#define ASDF_ASCII_PLAIN_MAP_DEFS                                                                  \
+  {                                                                                                \
+    [MOD_PLAIN_MAP] = &ascii_plain_matrix, [MOD_SHIFT_MAP] = &ascii_shift_matrix,                  \
+    [MOD_CAPS_MAP] = &ascii_caps_matrix, [MOD_CTRL_MAP] = &ascii_ctrl_matrix                       \
   }
 
-#define ASDF_ASCII_CAPS_MAP_DEFS            \
-  {                                             \
-   [MOD_PLAIN_MAP] = &ascii_caps_matrix,    \
-   [MOD_SHIFT_MAP] = &ascii_shift_matrix,    \
-   [MOD_CAPS_MAP] = &ascii_caps_matrix,      \
-   [MOD_CTRL_MAP] = &ascii_ctrl_matrix       \
+#define ASDF_ASCII_CAPS_MAP_DEFS                                                                   \
+  {                                                                                                \
+    [MOD_PLAIN_MAP] = &ascii_caps_matrix, [MOD_SHIFT_MAP] = &ascii_shift_matrix,                   \
+    [MOD_CAPS_MAP] = &ascii_caps_matrix, [MOD_CTRL_MAP] = &ascii_ctrl_matrix                       \
   }
 
 #define ASDF_ASCII_ALL_MAPS ASDF_ASCII_PLAIN_MAP_DEFS, ASDF_ASCII_CAPS_MAP_DEFS
@@ -258,12 +260,14 @@
 #define ASDF_NUM_COLS ASDF_ASCII_NUM_COLS
 #endif
 
-#if !defined(ASDF_KEYMAP_INITIALIZER_LENGTH) || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_ASCII_KEYMAP_INITIALIZER_LENGTH)
+#if !defined(ASDF_KEYMAP_INITIALIZER_LENGTH)                                                       \
+  || (ASDF_KEYMAP_INITIALIZER_LENGTH < ASDF_ASCII_KEYMAP_INITIALIZER_LENGTH)
 #undef ASDF_KEYMAP_INITIALIZER_LENGTH
 #define ASDF_KEYMAP_INITIALIZER_LENGTH ASDF_ASCII_KEYMAP_INITIALIZER_LENGTH
 #endif
 
-#if !defined(ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH) || (ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH < ASDF_ASCII_KEYMAP_HOOK_INITIALIZER_LENGTH)
+#if !defined(ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH)                                                  \
+  || (ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH < ASDF_ASCII_KEYMAP_HOOK_INITIALIZER_LENGTH)
 #undef ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH
 #define ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH ASDF_ASCII_KEYMAP_HOOK_INITIALIZER_LENGTH
 #endif
@@ -272,4 +276,3 @@
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-

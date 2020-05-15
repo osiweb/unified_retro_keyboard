@@ -45,7 +45,6 @@
 static volatile uint8_t tick = 0;
 
 static uint8_t data_polarity = ASDF_DEFAULT_DATA_POLARITY;
-static uint8_t strobe_polarity = ASDF_DEFAULT_STROBE_POLARITY;
 
 
 // PROCEDURE: ISR for Timer 0 overflow
@@ -536,7 +535,26 @@ void asdf_arch_out3_open_lo_set(uint8_t value)
   }
 }
 
-// PROCEDURE: asdf_arch_init_strobe
+// PROCEDURE: asdf_arch_pos_strobe
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Initialize strobe output to positive polarity. Initial state is
+// LOW
+//
+// SIDE EFFECTS: See DESCRIPTION
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_set_pos_strobe(void)
+{
+  clear_bit(&ASDF_STROBE_PORT, ASDF_STROBE_BIT);
+  set_bit(&ASDF_STROBE_DDR, ASDF_STROBE_BIT);
+}
+
+// PROCEDURE: asdf_arch_neg_strobe
 // INPUTS: none
 // OUTPUTS: none
 //
@@ -548,14 +566,9 @@ void asdf_arch_out3_open_lo_set(uint8_t value)
 //
 // COMPLEXITY: 1
 //
-static void asdf_arch_init_strobe(void)
+void asdf_arch_set_neg_strobe(void)
 {
-  if (strobe_polarity == ASDF_POSITIVE_POLARITY) {
-    clear_bit(&ASDF_STROBE_PORT, ASDF_STROBE_BIT);
-  }
-  else {
-    set_bit(&ASDF_STROBE_PORT, ASDF_STROBE_BIT);
-  }
+  set_bit(&ASDF_STROBE_PORT, ASDF_STROBE_BIT);
   set_bit(&ASDF_STROBE_DDR, ASDF_STROBE_BIT);
 }
 
@@ -691,11 +704,17 @@ void asdf_arch_init(void)
   // set up ASCII output port
   asdf_arch_init_ascii_output();
 
-  // initialize keyboard data and strobe to positive polairy
+  // initialize keyboard data polarity and strobe polarity
   data_polarity = ASDF_DEFAULT_DATA_POLARITY;
-  strobe_polarity = ASDF_DEFAULT_STROBE_POLARITY;
 
-  asdf_arch_init_strobe();
+  if (ASDF_DEFAULT_STROBE_POLARITY == ASDF_POSITIVE_POLARITY) {
+    asdf_arch_set_pos_strobe();
+  } else {
+    asdf_arch_set_neg_strobe();
+  }
+
+  asdf_arch_init_leds();
+
   asdf_arch_init_leds();
 
   // set up row output port

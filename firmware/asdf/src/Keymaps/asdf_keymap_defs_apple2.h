@@ -39,6 +39,9 @@
 #if !defined(ASDF_KEYMAP_DEFS_APPLE2_H)
 #define ASDF_KEYMAP_DEFS_APPLE2_H
 
+// include DIP switch definitions
+#include "asdf_keymap_defs_dipswitch.h"
+
 // Edit the number of rows and columns used in this map. If the number is less
 // than the maxium, the unused elements will be initialized to 0.
 
@@ -151,8 +154,7 @@
 //    definitions in positions 0-3 ensures consistent map selection among all
 //    keymaps.
 
-#define ASDF_APPLE2_DIP_SWITCHES                                                                   \
-  [ASDF_ARCH_DIPSWITCH_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+#define ASDF_APPLE2_DIP_SWITCHES ASDF_KEYMAP_DIP_SWITCHES
 
 #define APPLE_LEFT_ARROW ASCII_CTRL_H
 #define APPLE_RIGHT_ARROW ASCII_CTRL_U
