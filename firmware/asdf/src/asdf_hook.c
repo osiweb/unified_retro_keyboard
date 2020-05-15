@@ -36,8 +36,6 @@
 #include "asdf_keymap_defs.h"
 
 
-
-
 // hooks_table[] contains all the function hooks. The entry for each ID contains
 // a pointer to the first in the list of functions (if any) assigned to the hook
 // ID.

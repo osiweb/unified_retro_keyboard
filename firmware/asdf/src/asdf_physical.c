@@ -65,7 +65,6 @@ static physical_device_table_entry_t physical_device_table[ASDF_PHYSICAL_NUM_RES
 };
 
 
-
 // PROCEDURE: asdf_physical_set
 // INPUTS: (asdf_physical_dev_t) physical_out: which real output to set or clear
 // INPUTS: (uint8_t) value
@@ -223,13 +222,13 @@ asdf_physical_dev_t asdf_physical_next_device(asdf_physical_dev_t device)
 //
 // COMPLEXITY: 2
 //
-uint8_t asdf_physical_allocate(asdf_physical_dev_t physical_out, asdf_physical_dev_t tail, uint8_t initial_value)
+uint8_t asdf_physical_allocate(asdf_physical_dev_t physical_out, asdf_physical_dev_t tail,
+                               uint8_t initial_value)
 {
   uint8_t success = 0;
   asdf_physical_dev_t predecessor = physical_device_is_available(physical_out);
 
-  if (valid_physical_device(physical_out)
-      && (ASDF_PHYSICAL_NUM_RESOURCES != predecessor)) {
+  if (valid_physical_device(physical_out) && (ASDF_PHYSICAL_NUM_RESOURCES != predecessor)) {
 
     // remove from available list:
     physical_device_table[predecessor].next = physical_device_table[physical_out].next;

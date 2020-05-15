@@ -97,7 +97,8 @@ asdf_physical_dev_t asdf_physical_next_device(asdf_physical_dev_t device);
 // available. If so, then remove the resource from the physical resource table
 // and assign an initial value, then return a TRUE (1). Return FALSE (0) if
 // allocation was not successful.
-uint8_t asdf_physical_allocate(asdf_physical_dev_t physical_out, asdf_physical_dev_t tail, uint8_t initial_value);
+uint8_t asdf_physical_allocate(asdf_physical_dev_t physical_out, asdf_physical_dev_t tail,
+                               uint8_t initial_value);
 
 // PROCEDURE: asdf_physical_init
 // INPUTS: none

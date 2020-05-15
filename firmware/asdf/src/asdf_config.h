@@ -1,4 +1,4 @@
-// -*- mode: C; tab-width: 4 ; indent-tabs-mode: nil -*- 
+// -*- mode: C; tab-width: 4 ; indent-tabs-mode: nil -*-
 //
 //  Universal Keyboard Project
 //  ASDF keyboard firmware
@@ -28,7 +28,7 @@
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#if !defined (CONFIG_H)
+#if !defined(CONFIG_H)
 #define CONFIG_H
 
 #define ASDF_POSITIVE_POLARITY 0
@@ -58,7 +58,7 @@
 #define ASDF_DEFAULT_REPEAT_STATE REPEAT_AUTO
 
 // time to hold down a key in milliseconds before autorepeat starts
-#define ASDF_AUTOREPEAT_TIME_MS 525     // 525 msec.
+#define ASDF_AUTOREPEAT_TIME_MS 525 // 525 msec.
 
 // time between repeats of a character with repeat key held, or in autorepeat (milliseconds)
 #define ASDF_REPEAT_TIME_MS (1000 / 15) // l5 characters per sec.
@@ -76,4 +76,3 @@
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-

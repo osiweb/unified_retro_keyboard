@@ -41,14 +41,12 @@ static ctrl_state_t ctrl_state;
 
 // The active modifier map depends on the current state of the modifier
 // variables. The map encodes the order or precedence of the various modifiers.
-static const modifier_index_t modifier_mapping[] = {
-  MOD_PLAIN_MAP, // 0x00: no modifiers
-  MOD_SHIFT_MAP, // 0x01: only SHIFT active
-  MOD_CAPS_MAP,  // 0x02: only CAPS active
-  MOD_SHIFT_MAP, // 0x03: CAPS and SHIFT active
-  MOD_CTRL_MAP,  // CTRL overrides SHIFT and CAPS
-  MOD_CTRL_MAP,  MOD_CTRL_MAP, MOD_CTRL_MAP
-};
+static const modifier_index_t modifier_mapping[] = { MOD_PLAIN_MAP, // 0x00: no modifiers
+                                                     MOD_SHIFT_MAP, // 0x01: only SHIFT active
+                                                     MOD_CAPS_MAP,  // 0x02: only CAPS active
+                                                     MOD_SHIFT_MAP, // 0x03: CAPS and SHIFT active
+                                                     MOD_CTRL_MAP,  // CTRL overrides SHIFT and CAPS
+                                                     MOD_CTRL_MAP,  MOD_CTRL_MAP, MOD_CTRL_MAP };
 
 
 // PROCEDURE: set_shift_state
@@ -130,7 +128,7 @@ void asdf_modifier_shiftlock_toggle_activate(void)
 static void asdf_modifier_set_caps_state(uint8_t new_state)
 {
   caps_state = new_state;
-  asdf_virtual_action(VCAPS_LED, (caps_state ? V_SET_HI : V_SET_LO ));
+  asdf_virtual_action(VCAPS_LED, (caps_state ? V_SET_HI : V_SET_LO));
 }
 
 // PROCEDURE: asdf_modifier_capslock_activate

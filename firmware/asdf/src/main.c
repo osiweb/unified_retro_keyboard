@@ -73,8 +73,8 @@ int main(void)
 
       if (code != ASDF_INVALID_CODE) {
         void (*output_function)(asdf_keycode_t) =
-                  (void (*)(asdf_keycode_t)) asdf_hook_get(ASDF_HOOK_OUTPUT);
-                (*output_function)(code);
+          (void (*)(asdf_keycode_t)) asdf_hook_get(ASDF_HOOK_OUTPUT);
+        (*output_function)(code);
       }
       asdf_keyscan();
     }

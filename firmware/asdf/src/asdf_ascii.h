@@ -92,14 +92,14 @@ typedef enum {
 #define ASCII_ENQ ASCII_CTRL_E // Enquiry
 #define ASCII_ACK ASCII_CTRL_F // Acknlowledge
 #define ASCII_BEL ASCII_CTRL_G // Bell
-#define ASCII_BS ASCII_CTRL_H // Backspace
+#define ASCII_BS ASCII_CTRL_H  // Backspace
 #define ASCII_TAB ASCII_CTRL_I // Horizontal Tab
-#define ASCII_LF ASCII_CTRL_J // Line Feed
-#define ASCII_VT ASCII_CTRL_K // Vertical Tab
-#define ASCII_FF ASCII_CTRL_L // Form Feed
-#define ASCII_CR ASCII_CTRL_M // Carriage Return
-#define ASCII_SO ASCII_CTRL_N // Shift Out
-#define ASCII_SI ASCII_CTRL_O // Shift In
+#define ASCII_LF ASCII_CTRL_J  // Line Feed
+#define ASCII_VT ASCII_CTRL_K  // Vertical Tab
+#define ASCII_FF ASCII_CTRL_L  // Form Feed
+#define ASCII_CR ASCII_CTRL_M  // Carriage Return
+#define ASCII_SO ASCII_CTRL_N  // Shift Out
+#define ASCII_SI ASCII_CTRL_O  // Shift In
 #define ASCII_DLE ASCII_CTRL_P // Data Link Escape
 #define ASCII_DC1 ASCII_CTRL_Q // Device Control 1
 #define ASCII_DC2 ASCII_CTRL_R // Device Control 2
@@ -109,7 +109,7 @@ typedef enum {
 #define ASCII_SYN ASCII_CTRL_V // Synchronous Idle
 #define ASCII_ETB ASCII_CTRL_W // End of Transmission Block
 #define ASCII_CAN ASCII_CTRL_X // Cancel
-#define ASCII_EM ASCII_CTRL_Y // End of Medium
+#define ASCII_EM ASCII_CTRL_Y  // End of Medium
 #define ASCII_SUB ASCII_CTRL_Z // Substitute
 #define ASCII_ESC 0x1b
 

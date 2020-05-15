@@ -62,8 +62,9 @@ static const asdf_virtual_initializer_t keymap_initializer_list[ASDF_NUM_KEYMAPS
 // function hooks unique to the keyboard defined by the map. This builds the
 // function hook initializer array from the definitions in the keymap definition
 // files.
-static const asdf_hook_initializer_t keymap_hook_initializer_list[ASDF_NUM_KEYMAPS] [ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH] =
-  ASDF_KEYMAP_HOOK_INITIALIZERS;
+static const asdf_hook_initializer_t
+  keymap_hook_initializer_list[ASDF_NUM_KEYMAPS][ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH] =
+    ASDF_KEYMAP_HOOK_INITIALIZERS;
 
 // Index of the currently active keymap, initialized to zero in the init
 // routine.
@@ -77,10 +78,14 @@ static uint8_t keymap_index;
 // DESCRIPTION: accepts a index value. If the requested keymap index is valid,
 // then:
 // 1) assign the value to the global (to the module) keymap_index variable
-// 2) initialize the virtual outputs for the selected keymap.
-// 3) initialize the modifier key states.
+// 2) execute the architecture-dependent init routine, to undo any settings
+//    from the previous keymap
+// 3) initialize the virtual outputs for the selected keymap.
+// 4) initialize the modifier key states.
 //
-// SIDE EFFECTS: May change the module-global keymap_index variable.
+// SIDE EFFECTS:
+// - May change the module-global keymap_index variable.
+// - Architecture is initialized to default configuration.
 //
 // NOTES: If the requested index is not valid, then no action is performed.
 //
@@ -92,6 +97,7 @@ void asdf_keymaps_select_keymap(uint8_t index)
 {
   if (index < ASDF_NUM_KEYMAPS) {
     keymap_index = index;
+    asdf_arch_init();
     asdf_virtual_init((asdf_virtual_initializer_t *const) keymap_initializer_list[keymap_index]);
     asdf_modifiers_init();
     asdf_hook_init((asdf_hook_initializer_t *const) keymap_hook_initializer_list[keymap_index]);
