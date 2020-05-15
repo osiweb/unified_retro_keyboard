@@ -61,6 +61,19 @@ typedef enum {
 #define ASDF_ARCH_DEFAULT_SCANNER asdf_arch_read_row
 #define ASDF_ARCH_DEFAULT_OUTPUT asdf_arch_send_code
 
+// PROCEDURE: asdf_arch_pos_strobe
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Initialize strobe output to positive polarity. Initial state is
+// LOW
+void asdf_arch_set_pos_strobe(void);
+
+// PROCEDURE: asdf_arch_neg_strobe
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Initialize strobe output
+void asdf_arch_set_neg_strobe(void);
+
 // PROCEDURE: asdf_arch_null_output
 // INPUTS: (uint8_t) value - ignored
 // OUTPUTS: none

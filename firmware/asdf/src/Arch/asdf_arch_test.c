@@ -565,6 +565,20 @@ void asdf_arch_pulse_delay_short(void)
   asdf_arch_pulse_delay();
 }
 
+// PROCEDURE: asdf_arch_pos_strobe
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Initialize strobe output to positive polarity. Initial state is
+// LOW
+void asdf_arch_set_pos_strobe(void) {}
+
+// PROCEDURE: asdf_arch_neg_strobe
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Initialize strobe output
+void asdf_arch_set_neg_strobe(void) {}
+
+
 // PROCEDURE: asdf_arch_init
 // INPUTS: none
 // OUTPUTS: none
