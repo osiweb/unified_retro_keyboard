@@ -512,9 +512,11 @@ static void asdf_handle_key_held_pressed(uint8_t row, uint8_t col)
 //
 void asdf_keyscan(void)
 {
-  asdf_hook_get(ASDF_HOOK_EACH_SCAN)();
+  asdf_cols_t (*row_reader)(uint8_t) = (asdf_cols_t(*)(uint8_t)) asdf_hook_get(ASDF_HOOK_SCANNER);
+
+  asdf_hook_execute(ASDF_HOOK_EACH_SCAN);
+
   for (uint8_t row = 0; row < ASDF_NUM_ROWS; row++) {
-    asdf_cols_t (*row_reader)(uint8_t) = (asdf_cols_t(*)(uint8_t)) asdf_hook_get(ASDF_HOOK_SCANNER);
     asdf_cols_t row_key_state = (*row_reader)(row);
 
     asdf_cols_t changed = row_key_state ^ last_stable_key_state[row];

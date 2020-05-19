@@ -77,7 +77,7 @@ static uint8_t asdf_hook_valid_id(asdf_hook_id_t id)
   return (id > ASDF_HOOK_NULL && id < ASDF_NUM_HOOKS);
 }
 
-// PROCEDURE: asdf_hook_do
+// PROCEDURE: asdf_hook_execute
 // INPUTS: (asdf_hook_id_t) hook_id: The hook for which to execute the attached
 // function.
 //
@@ -93,7 +93,7 @@ static uint8_t asdf_hook_valid_id(asdf_hook_id_t id)
 //
 // COMPLEXITY: 2
 //
-void asdf_hook_do(asdf_hook_id_t hook_id)
+void asdf_hook_execute(asdf_hook_id_t hook_id)
 {
   if (asdf_hook_valid_id(hook_id)) {
     hook_map[hook_id]();

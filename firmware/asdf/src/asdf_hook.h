@@ -48,12 +48,12 @@ typedef struct {
 } asdf_hook_initializer_t;
 
 
-// PROCEDURE: asdf_hook_do
+// PROCEDURE: asdf_hook_execute
 // INPUTS: (asdf_hook_id_t) hook_id: The hook for which to execute attache functions.
 // OUTPUTS: none
 // DESCRIPTION: if the hook ID is valid, then execute the function attached to the hook.
 // SIDE EFFECTS: variable depending on the hooks.
-void asdf_hook_do(asdf_hook_id_t hook_id);
+void asdf_hook_execute(asdf_hook_id_t hook_id);
 
 // PROCEDURE: asdf_hook_get
 // INPUTS: (asdf_hook_id_t) hook_id: The hook for which to retrieve the attached
