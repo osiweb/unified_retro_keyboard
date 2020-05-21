@@ -467,7 +467,7 @@ L Device:R_US R12
 U 1 1 61058683
 P 2700 4600
 F 0 "R12" H 2600 4750 50  0000 L CNN
-F 1 "56K" H 2450 4550 50  0000 L CNN
+F 1 "100k" H 2450 4550 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2740 4590 50  0001 C CNN
 F 3 "~" H 2700 4600 50  0001 C CNN
 	1    2700 4600
@@ -479,7 +479,7 @@ L Device:R_US R11
 U 1 1 61C4846D
 P 2700 4050
 F 0 "R11" H 2600 4200 50  0000 L CNN
-F 1 "4.7K" H 2450 4000 50  0000 L CNN
+F 1 "1k" H 2450 4000 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2740 4040 50  0001 C CNN
 F 3 "~" H 2700 4050 50  0001 C CNN
 	1    2700 4050
@@ -492,65 +492,65 @@ Wire Wire Line
 Connection ~ 2700 4250
 Text Notes 1350 5150 0    50   ~ 0
 Debounce Time approx 40 msec
-Text Notes 2600 2850 0    50   ~ 0
-Reset Delay time: about 3.3 sec\nReset delay is approx. proportional to 10sec/uF * C1 value
-Text Notes 6400 3150 0    50   ~ 0
-~RESET~ pulse is approx 50 usec.
+Text Notes 3190 2440 0    50   ~ 0
+Reset Delay time: about 3 sec\n
+Text Notes 4830 3110 0    50   ~ 0
+~RESET~ pulse is approx 100 usec.
 $Comp
 L 4xxx:4066 U11
 U 5 1 61CB40DD
-P 3150 6800
-F 0 "U11" H 3380 6846 50  0000 L CNN
-F 1 "4066" H 3380 6755 50  0000 L CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 3150 6800 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/cd4066b.pdf" H 3150 6800 50  0001 C CNN
-	5    3150 6800
+P 5410 6860
+F 0 "U11" H 5640 6906 50  0000 L CNN
+F 1 "4066" H 5640 6815 50  0000 L CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 5410 6860 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4066b.pdf" H 5410 6860 50  0001 C CNN
+	5    5410 6860
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3150 6300 3150 6200
+	5410 6360 5410 6260
 Wire Wire Line
-	3150 6200 3500 6200
+	5410 6260 5760 6260
 Wire Wire Line
-	3850 6200 3850 6300
+	6110 6260 6110 6360
 Wire Wire Line
-	3850 7300 3850 7350
+	6110 7360 6110 7410
 Wire Wire Line
-	3850 7350 3500 7350
+	6110 7410 5760 7410
 Wire Wire Line
-	3150 7350 3150 7300
+	5410 7410 5410 7360
 $Comp
 L power:GND #PWR038
 U 1 1 61CB40E9
-P 3500 7400
-F 0 "#PWR038" H 3500 7150 50  0001 C CNN
-F 1 "GND" H 3505 7227 50  0000 C CNN
-F 2 "" H 3500 7400 50  0001 C CNN
-F 3 "" H 3500 7400 50  0001 C CNN
-	1    3500 7400
+P 5760 7460
+F 0 "#PWR038" H 5760 7210 50  0001 C CNN
+F 1 "GND" H 5765 7287 50  0000 C CNN
+F 2 "" H 5760 7460 50  0001 C CNN
+F 3 "" H 5760 7460 50  0001 C CNN
+	1    5760 7460
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3500 7400 3500 7350
-Connection ~ 3500 7350
+	5760 7460 5760 7410
+Connection ~ 5760 7410
 Wire Wire Line
-	3500 7350 3150 7350
+	5760 7410 5410 7410
 $Comp
 L power:+5V #PWR037
 U 1 1 61CB40F2
-P 3500 6100
-F 0 "#PWR037" H 3500 5950 50  0001 C CNN
-F 1 "+5V" H 3515 6273 50  0000 C CNN
-F 2 "" H 3500 6100 50  0001 C CNN
-F 3 "" H 3500 6100 50  0001 C CNN
-	1    3500 6100
+P 5760 6160
+F 0 "#PWR037" H 5760 6010 50  0001 C CNN
+F 1 "+5V" H 5775 6333 50  0000 C CNN
+F 2 "" H 5760 6160 50  0001 C CNN
+F 3 "" H 5760 6160 50  0001 C CNN
+	1    5760 6160
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3500 6100 3500 6200
-Connection ~ 3500 6200
+	5760 6160 5760 6260
+Connection ~ 5760 6260
 Wire Wire Line
-	3500 6200 3850 6200
+	5760 6260 6110 6260
 $Comp
 L Diode:1N914 D19
 U 1 1 61FD244F
@@ -723,12 +723,14 @@ $EndComp
 $Comp
 L 74xx:74LS14 U10
 U 7 1 61CB40D7
-P 3850 6800
-F 0 "U10" H 4080 6846 50  0000 L CNN
-F 1 "74HC14" H 4080 6755 50  0000 L CNN
-F 2 "" H 3850 6800 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 3850 6800 50  0001 C CNN
-	7    3850 6800
+P 6110 6860
+F 0 "U10" H 6340 6906 50  0000 L CNN
+F 1 "74HC14" H 6340 6815 50  0000 L CNN
+F 2 "" H 6110 6860 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 6110 6860 50  0001 C CNN
+	7    6110 6860
 	1    0    0    -1  
 $EndComp
+Text Notes 800  7475 0    50   ~ 0
+Notes: \n\n1) Schmitt trigger is a CMOS 74HC part.  Do not use a\n    bipolar 7414/74LS14 for the schmitt trigger.  \n\n2) A 74HCT14 or CD40106 may be substituted for 74HC14.\n    If so, some resistor/capacitor values may\n    need to be adjusted.\n\n3) ~RESET~ time delay is determined by R14 and C18\n\n4) ~RESET~ pulse duration is determined by R17 and C20.\n\n5) SHIFTLOCK debounce time is determined by R12 and C17.
 $EndSCHEMATC
