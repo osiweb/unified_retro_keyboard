@@ -14,61 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L 74xx:74LS14 U2
-U 5 1 60F8E3EB
-P 6500 4300
-F 0 "U2" H 6500 4617 50  0000 C CNN
-F 1 "74LS14" H 6500 4526 50  0000 C CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 6500 4300 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74LS14" H 6500 4300 50  0001 C CNN
-	5    6500 4300
-	1    0    0    -1  
-$EndComp
-$Comp
-L 74xx:74LS14 U2
-U 4 1 60F90788
-P 6500 5150
-F 0 "U2" H 6500 5467 50  0000 C CNN
-F 1 "74LS14" H 6500 5376 50  0000 C CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 6500 5150 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74LS14" H 6500 5150 50  0001 C CNN
-	4    6500 5150
-	1    0    0    -1  
-$EndComp
-$Comp
-L 74xx:74LS14 U2
-U 6 1 60F91229
-P 4550 4700
-F 0 "U2" H 4550 5017 50  0000 C CNN
-F 1 "74LS14" H 4550 4926 50  0000 C CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 4550 4700 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74LS14" H 4550 4700 50  0001 C CNN
-	6    4550 4700
-	1    0    0    -1  
-$EndComp
-$Comp
-L 74xx:74LS14 U2
-U 2 1 60F9322B
-P 4950 1750
-F 0 "U2" H 4950 2067 50  0000 C CNN
-F 1 "74LS14" H 4950 1976 50  0000 C CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 4950 1750 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74LS14" H 4950 1750 50  0001 C CNN
-	2    4950 1750
-	1    0    0    -1  
-$EndComp
-$Comp
-L 74xx:74LS14 U2
-U 1 1 60F956F9
-P 9300 2500
-F 0 "U2" H 9300 2817 50  0000 C CNN
-F 1 "74LS14" H 9300 2726 50  0000 C CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 9300 2500 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74LS14" H 9300 2500 50  0001 C CNN
-	1    9300 2500
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:R_US R6
 U 1 1 60F9ED41
 P 5900 5150
@@ -383,17 +328,6 @@ Wire Wire Line
 	6950 2500 6950 2700
 Wire Wire Line
 	7900 1750 7900 2200
-$Comp
-L 74xx:74LS14 U2
-U 3 1 6168AA55
-P 6050 2500
-F 0 "U2" H 6050 2817 50  0000 C CNN
-F 1 "74LS14" H 6050 2726 50  0000 C CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 6050 2500 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74LS14" H 6050 2500 50  0001 C CNN
-	3    6050 2500
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	6950 2500 6850 2500
 Connection ~ 6950 2500
@@ -517,17 +451,6 @@ Text Notes 3400 2800 0    50   ~ 0
 Reset Delay time: about 3.3 sec\nReset delay is approx. proportional to 10sec/uF * C1 value
 Text Notes 7200 3100 0    50   ~ 0
 ~RESET~ pulse is approx 50 usec.
-$Comp
-L 74xx:74LS14 U2
-U 7 1 61CB40D7
-P 1800 6900
-F 0 "U2" H 2030 6946 50  0000 L CNN
-F 1 "74LS14" H 2030 6855 50  0000 L CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 1800 6900 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74LS14" H 1800 6900 50  0001 C CNN
-	7    1800 6900
-	1    0    0    -1  
-$EndComp
 $Comp
 L 4xxx:4066 U1
 U 5 1 61CB40DD
@@ -876,4 +799,81 @@ Wire Wire Line
 Wire Wire Line
 	2500 7450 1800 7450
 Connection ~ 1800 7450
+$Comp
+L 74xx:74HC14 U2
+U 2 1 5FD482AC
+P 4950 1750
+F 0 "U2" H 4950 2067 50  0000 C CNN
+F 1 "74HC14" H 4950 1976 50  0000 C CNN
+F 2 "" H 4950 1750 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 4950 1750 50  0001 C CNN
+	2    4950 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74HC14 U2
+U 1 1 5FD4B9BD
+P 9300 2500
+F 0 "U2" H 9300 2817 50  0000 C CNN
+F 1 "74HC14" H 9300 2726 50  0000 C CNN
+F 2 "" H 9300 2500 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 9300 2500 50  0001 C CNN
+	1    9300 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74HC14 U2
+U 3 1 5FD4C240
+P 6050 2500
+F 0 "U2" H 6050 2817 50  0000 C CNN
+F 1 "74HC14" H 6050 2726 50  0000 C CNN
+F 2 "" H 6050 2500 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 6050 2500 50  0001 C CNN
+	3    6050 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74HC14 U2
+U 4 1 5FD4CE49
+P 6500 5150
+F 0 "U2" H 6500 5467 50  0000 C CNN
+F 1 "74HC14" H 6500 5376 50  0000 C CNN
+F 2 "" H 6500 5150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 6500 5150 50  0001 C CNN
+	4    6500 5150
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74HC14 U2
+U 5 1 5FD4D9F0
+P 6500 4300
+F 0 "U2" H 6500 4617 50  0000 C CNN
+F 1 "74HC14" H 6500 4526 50  0000 C CNN
+F 2 "" H 6500 4300 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 6500 4300 50  0001 C CNN
+	5    6500 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74HC14 U2
+U 6 1 5FD4E6ED
+P 4550 4700
+F 0 "U2" H 4550 5017 50  0000 C CNN
+F 1 "74HC14" H 4550 4926 50  0000 C CNN
+F 2 "" H 4550 4700 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 4550 4700 50  0001 C CNN
+	6    4550 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74LS14 U2
+U 7 1 61CB40D7
+P 1800 6900
+F 0 "U2" H 2030 6946 50  0000 L CNN
+F 1 "74HC14" H 2030 6855 50  0000 L CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 1800 6900 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 1800 6900 50  0001 C CNN
+	7    1800 6900
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
