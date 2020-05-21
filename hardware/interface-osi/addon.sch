@@ -448,7 +448,7 @@ Connection ~ 3600 4050
 Text Notes 2350 4950 0    50   ~ 0
 Debounce Time approx 40 msec
 Text Notes 3400 2800 0    50   ~ 0
-Reset Delay time: about 3.3 sec\nReset delay is approx. proportional to 10sec/uF * C1 value
+Reset Delay time: about 3.3 sec\nReset delay is approx. proportional to 5 sec/uF * C1 value
 Text Notes 7200 3100 0    50   ~ 0
 ~RESET~ pulse is approx 50 usec.
 $Comp
