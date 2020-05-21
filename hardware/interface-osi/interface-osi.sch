@@ -1493,6 +1493,10 @@ Wire Wire Line
 	7150 8550 7150 8300
 Wire Wire Line
 	7150 8300 10400 8300
+Text Notes 5750 8800 0    50   ~ 0
+S1
+Text Notes 5750 8350 0    50   ~ 0
+~S1
 Wire Bus Line
 	12800 1150 12800 1600
 Wire Bus Line
@@ -1501,8 +1505,4 @@ Wire Bus Line
 	13000 5800 13000 7300
 Wire Bus Line
 	11200 1150 11200 5800
-Text Notes 5750 8800 0    50   ~ 0
-S1
-Text Notes 5750 8350 0    50   ~ 0
-~S1
 $EndSCHEMATC
