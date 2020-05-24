@@ -674,7 +674,7 @@ void asdf_arch_pulse_delay_short(void)
 //
 void asdf_arch_pulse_delay_long(void)
 {
-  _delay_us(ASDF_PULSE_DELAY_LONG_MS);
+  _delay_ms(ASDF_PULSE_DELAY_LONG_MS);
 }
 
 // PROCEDURE: asdf_arch_init
