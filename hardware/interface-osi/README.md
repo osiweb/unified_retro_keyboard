@@ -18,8 +18,8 @@ the Classic ASCII keyboard, configured with the OSI keycaps.
 1. The RESET delay is about 3 seconds with a 6.8 uF capacitor at C20.  4.7 uF gives about
 2 seconds, and 3.3 uF gives about a 1 second delay.
 
-1. If you want to use the sound circuit with an older 540A video board, then jumper pin 13
-of IC E4 to pin 15 of the keyboard connector, and set JP1 to "S1".
+1. If you want to use the sound circuit with an older 540A video board, then on the 540A board, jumper pin 13
+of IC E4 to pin 15 of the keyboard connector, and on the OSI interface board, set JP1 to "S1".
 
 1. If you use a 540B video board, then set JP1 to "/S1"
 
