@@ -1,10 +1,13 @@
 * OSI Compatible interface
+
 An interface for OSI computers that is compatible with the OSI 542C keyboard, including sound circuits.  
 
 This interface also permits substitution of a soft-shiftlock function using 
 a regular momentary keyswitch, instead of the hard-to-fine latchine keyswitch.
 An LED is provided to indicate SHIFT LOCK status.  This interface mates with
 the Classic ASCII keyboard, configured with the OSI keycaps.  
+
+<img alt="Assembly Rendering" src="images/pcb-render.png" height=50% width=50%>
 
 **Construction Notes:
 
