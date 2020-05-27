@@ -17,9 +17,9 @@ Text HLabel 1800 4250 0    50   UnSpc ~ 0
 ShiftLock_1
 Text HLabel 1750 5350 0    50   UnSpc ~ 0
 ShiftLock_2
-Text HLabel 8000 5350 2    50   Output ~ 0
+Text HLabel 8400 5350 2    50   Output ~ 0
 ShiftLock_LED+
-Text HLabel 8000 5550 2    50   Output ~ 0
+Text HLabel 8400 5550 2    50   Output ~ 0
 ShiftLock_LED-
 Text HLabel 1750 1400 0    50   UnSpc ~ 0
 Break_1
@@ -141,12 +141,12 @@ Wire Wire Line
 $Comp
 L 4xxx:4066 U11
 U 1 1 60FFF569
-P 7350 4250
-F 0 "U11" V 7396 4122 50  0000 R CNN
-F 1 "4066" V 7305 4122 50  0000 R CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 7350 4250 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/cd4066b.pdf" H 7350 4250 50  0001 C CNN
-	1    7350 4250
+P 7750 4250
+F 0 "U11" V 7796 4122 50  0000 R CNN
+F 1 "4066" V 7705 4122 50  0000 R CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 7750 4250 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4066b.pdf" H 7750 4250 50  0001 C CNN
+	1    7750 4250
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -163,12 +163,12 @@ $EndComp
 $Comp
 L 4xxx:4066 U11
 U 3 1 61001D7C
-P 7250 5550
-F 0 "U11" V 7296 5422 50  0000 R CNN
-F 1 "4066" V 7205 5422 50  0000 R CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 7250 5550 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/cd4066b.pdf" H 7250 5550 50  0001 C CNN
-	3    7250 5550
+P 7650 5550
+F 0 "U11" V 7696 5422 50  0000 R CNN
+F 1 "4066" V 7605 5422 50  0000 R CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 7650 5550 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4066b.pdf" H 7650 5550 50  0001 C CNN
+	3    7650 5550
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -181,19 +181,6 @@ F 2 "Package_DIP:DIP-14_W7.62mm" H 7100 2550 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/cd4066b.pdf" H 7100 2550 50  0001 C CNN
 	4    7100 2550
 	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	6000 4500 6650 4500
-$Comp
-L Diode:1N914 D18
-U 1 1 61026B80
-P 7700 4750
-F 0 "D18" H 7700 4534 50  0000 C CNN
-F 1 "1N914" H 7700 4625 50  0000 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7700 4575 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/85622/1n914.pdf" H 7700 4750 50  0001 C CNN
-	1    7700 4750
-	-1   0    0    1   
 $EndComp
 Wire Wire Line
 	4350 5350 4350 5200
@@ -259,20 +246,9 @@ Connection ~ 4000 4900
 Wire Wire Line
 	4000 4900 4050 4900
 Wire Wire Line
-	7350 3950 7350 3850
-$Comp
-L Jumper:Jumper_3_Open JP2
-U 1 1 6116CC01
-P 6650 4250
-F 0 "JP2" V 6600 4450 50  0000 C CNN
-F 1 "ShiftLock Select" V 6700 4650 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Horizontal" H 6650 4250 50  0001 C CNN
-F 3 "~" H 6650 4250 50  0001 C CNN
-	1    6650 4250
-	0    -1   1    0   
-$EndComp
+	7750 3950 7750 3850
 Wire Wire Line
-	7350 4550 7350 4750
+	7750 4550 7750 4750
 $Comp
 L power:+5V #PWR029
 U 1 1 6119EF3F
@@ -287,21 +263,21 @@ $EndComp
 $Comp
 L power:+5V #PWR035
 U 1 1 61245055
-P 7850 5150
-F 0 "#PWR035" H 7850 5000 50  0001 C CNN
-F 1 "+5V" H 7865 5323 50  0000 C CNN
-F 2 "" H 7850 5150 50  0001 C CNN
-F 3 "" H 7850 5150 50  0001 C CNN
-	1    7850 5150
+P 8250 5150
+F 0 "#PWR035" H 8250 5000 50  0001 C CNN
+F 1 "+5V" H 8265 5323 50  0000 C CNN
+F 2 "" H 8250 5150 50  0001 C CNN
+F 3 "" H 8250 5150 50  0001 C CNN
+	1    8250 5150
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7850 5150 7850 5350
+	8250 5150 8250 5350
 Wire Wire Line
-	7850 5350 8000 5350
-Text HLabel 8000 3850 2    50   Input ~ 0
+	8250 5350 8400 5350
+Text HLabel 8400 3850 2    50   Input ~ 0
 Col0
-Text HLabel 8000 4750 2    50   Output ~ 0
+Text HLabel 8400 4750 2    50   Output ~ 0
 Row0
 $Comp
 L Device:C C20
@@ -413,17 +389,6 @@ F 2 "" H 7800 3150 50  0001 C CNN
 F 3 "" H 7800 3150 50  0001 C CNN
 	1    7800 3150
 	1    0    0    -1  
-$EndComp
-$Comp
-L Diode:1N914 D17
-U 1 1 6170E5F0
-P 3400 1600
-F 0 "D17" V 3500 1550 50  0000 C CNN
-F 1 "1N914" V 3300 1450 50  0000 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3400 1425 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/85622/1n914.pdf" H 3400 1600 50  0001 C CNN
-	1    3400 1600
-	0    -1   -1   0   
 $EndComp
 Wire Wire Line
 	3400 1450 3400 1350
@@ -552,17 +517,6 @@ Connection ~ 5760 6260
 Wire Wire Line
 	5760 6260 6110 6260
 $Comp
-L Diode:1N914 D19
-U 1 1 61FD244F
-P 8050 2300
-F 0 "D19" V 8150 2400 50  0000 C CNN
-F 1 "1N914" V 7950 2150 50  0000 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8050 2125 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/85622/1n914.pdf" H 8050 2300 50  0001 C CNN
-	1    8050 2300
-	0    -1   -1   0   
-$EndComp
-$Comp
 L Device:C C21
 U 1 1 61FD5372
 P 8050 1900
@@ -574,8 +528,6 @@ F 3 "~" H 8050 1900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8050 1750 8050 1550
-Wire Wire Line
 	8050 2550 8050 2450
 Connection ~ 8050 2550
 Wire Wire Line
@@ -585,73 +537,57 @@ Wire Wire Line
 Text Notes 5950 1400 0    50   ~ 0
 Power on ~RESET~ approx. 18 msec for 10 uF C21.
 Wire Wire Line
-	7350 3850 8000 3850
+	7750 3850 8400 3850
 Wire Wire Line
 	4000 3950 4000 4900
 Wire Wire Line
-	4000 3950 6650 3950
+	4000 3950 6000 3950
 Wire Wire Line
-	6650 3950 6650 4000
+	7450 4250 7350 4250
 Wire Wire Line
-	7050 4250 6950 4250
+	7750 4750 7950 4750
 Wire Wire Line
-	7350 4750 7550 4750
+	8400 4750 8250 4750
 Wire Wire Line
-	8000 4750 7850 4750
+	7350 5550 7250 5550
 Wire Wire Line
-	6950 5550 6850 5550
-Wire Wire Line
-	6850 5550 6850 5850
+	7250 5550 7250 5850
 $Comp
 L power:GND #PWR033
 U 1 1 62047B17
-P 6850 5850
-F 0 "#PWR033" H 6850 5600 50  0001 C CNN
-F 1 "GND" H 6855 5677 50  0000 C CNN
-F 2 "" H 6850 5850 50  0001 C CNN
-F 3 "" H 6850 5850 50  0001 C CNN
-	1    6850 5850
+P 7250 5850
+F 0 "#PWR033" H 7250 5600 50  0001 C CNN
+F 1 "GND" H 7255 5677 50  0000 C CNN
+F 2 "" H 7250 5850 50  0001 C CNN
+F 3 "" H 7250 5850 50  0001 C CNN
+	1    7250 5850
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6950 4250 6950 5200
+	7350 4250 7350 4400
 Wire Wire Line
-	6950 5200 7250 5200
+	7350 5200 7650 5200
 Wire Wire Line
-	7250 5200 7250 5250
-Connection ~ 6950 4250
+	7650 5200 7650 5250
 Wire Wire Line
-	6950 4250 6800 4250
-Wire Wire Line
-	8000 5550 7550 5550
-Text Notes 6200 4050 0    50   ~ 0
+	8400 5550 7950 5550
+Text Notes 6100 4400 0    50   ~ 0
 Mechanical
-Text Notes 6400 4500 0    50   ~ 0
-Soft
+Text Notes 6090 4500 0    50   ~ 0
+Soft Start ON
 Wire Wire Line
 	2700 4900 3350 4900
-$Comp
-L Diode:1N914 D20
-U 1 1 621136A6
-P 9150 2550
-F 0 "D20" H 9100 2650 50  0000 C CNN
-F 1 "1N914" H 9350 2600 50  0000 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9150 2375 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/85622/1n914.pdf" H 9150 2550 50  0001 C CNN
-	1    9150 2550
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	9000 2550 8800 2550
 $Comp
-L power:+5V #PWR?
+L power:+5V #PWR039
 U 1 1 621280EA
-P 8050 1550
-F 0 "#PWR?" H 8050 1400 50  0001 C CNN
-F 1 "+5V" H 8065 1723 50  0000 C CNN
-F 2 "" H 8050 1550 50  0001 C CNN
-F 3 "" H 8050 1550 50  0001 C CNN
-	1    8050 1550
+P 8050 1350
+F 0 "#PWR039" H 8050 1200 50  0001 C CNN
+F 1 "+5V" H 8065 1523 50  0000 C CNN
+F 2 "" H 8050 1350 50  0001 C CNN
+F 3 "" H 8050 1350 50  0001 C CNN
+	1    8050 1350
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -715,7 +651,7 @@ U 5 1 6168AA55
 P 5250 2550
 F 0 "U10" H 5250 2867 50  0000 C CNN
 F 1 "74HC14" H 5250 2776 50  0000 C CNN
-F 2 "" H 5250 2550 50  0001 C CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 5250 2550 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 5250 2550 50  0001 C CNN
 	5    5250 2550
 	1    0    0    -1  
@@ -733,4 +669,100 @@ F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 6110 6860 50  0001 C CNN
 $EndComp
 Text Notes 800  7475 0    50   ~ 0
 Notes: \n\n1) Schmitt trigger is a CMOS 74HC part.  Do not use a\n    bipolar 7414/74LS14 for the schmitt trigger.  \n\n2) A 74HCT14 or CD40106 may be substituted for 74HC14.\n    If so, some resistor/capacitor values may\n    need to be adjusted.\n\n3) ~RESET~ time delay is determined by R14 and C18\n\n4) ~RESET~ pulse duration is determined by R17 and C20.\n\n5) SHIFTLOCK debounce time is determined by R12 and C17.
+Wire Wire Line
+	8050 1450 8050 1350
+$Comp
+L Connector_Generic:Conn_02x03_Odd_Even JP2
+U 1 1 5ECEFBD7
+P 6950 4500
+F 0 "JP2" H 7000 4817 50  0000 C CNN
+F 1 "Shiftlock_Select" H 7000 4726 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Horizontal" H 6950 4500 50  0001 C CNN
+F 3 "~" H 6950 4500 50  0001 C CNN
+	1    6950 4500
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	6000 3950 6000 4400
+Wire Wire Line
+	6150 4850 6150 4600
+Connection ~ 6150 4850
+Wire Wire Line
+	7150 4400 7350 4400
+Connection ~ 7350 4400
+Wire Wire Line
+	7350 4400 7350 4500
+Wire Wire Line
+	7150 4500 7350 4500
+Connection ~ 7350 4500
+Wire Wire Line
+	7350 4500 7350 4600
+Wire Wire Line
+	7150 4600 7350 4600
+Connection ~ 7350 4600
+Wire Wire Line
+	7350 4600 7350 5200
+Wire Wire Line
+	6000 4400 6650 4400
+Wire Wire Line
+	6000 4500 6650 4500
+Wire Wire Line
+	6150 4600 6650 4600
+Text Notes 6090 4600 0    50   ~ 0
+Soft Start OFF
+$Comp
+L Diode:1N4148 D20
+U 1 1 5F514866
+P 9150 2550
+F 0 "D20" H 9150 2767 50  0000 C CNN
+F 1 "1N4148" H 9150 2676 50  0000 C CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9150 2375 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9150 2550 50  0001 C CNN
+	1    9150 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D19
+U 1 1 5F51C8C1
+P 8050 2300
+F 0 "D19" V 8096 2220 50  0000 R CNN
+F 1 "1N4148" V 8005 2220 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8050 2125 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 8050 2300 50  0001 C CNN
+	1    8050 2300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Diode:1N4148 D21
+U 1 1 5F523DE9
+P 8050 1600
+F 0 "D21" V 8096 1520 50  0000 R CNN
+F 1 "1N4148" V 8005 1520 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8050 1425 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 8050 1600 50  0001 C CNN
+	1    8050 1600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Diode:1N4148 D17
+U 1 1 5F52739D
+P 3400 1600
+F 0 "D17" V 3446 1520 50  0000 R CNN
+F 1 "1N4148" V 3355 1520 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3400 1425 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 3400 1600 50  0001 C CNN
+	1    3400 1600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Diode:1N4148 D18
+U 1 1 5F5300D9
+P 8100 4750
+F 0 "D18" H 8160 4580 50  0000 R CNN
+F 1 "1N4148" H 8220 4660 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8100 4575 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 8100 4750 50  0001 C CNN
+	1    8100 4750
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC

@@ -157,8 +157,6 @@ Wire Wire Line
 	8550 4200 8550 3600
 Wire Wire Line
 	8600 4300 8600 3700
-Wire Wire Line
-	7400 4900 7300 4900
 Text Label 6200 2650 0    50   ~ 0
 Col0
 Text Label 6200 2550 0    50   ~ 0
@@ -269,93 +267,6 @@ Wire Wire Line
 Wire Wire Line
 	8750 4100 8750 4000
 $Comp
-L power:+5V #PWR02
-U 1 1 5BFDC5C3
-P 2500 9100
-F 0 "#PWR02" H 2500 8950 50  0001 C CNN
-F 1 "+5V" H 2515 9273 50  0000 C CNN
-F 2 "" H 2500 9100 50  0001 C CNN
-F 3 "" H 2500 9100 50  0001 C CNN
-	1    2500 9100
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR03
-U 1 1 5BFDC5C9
-P 2500 9700
-F 0 "#PWR03" H 2500 9450 50  0001 C CNN
-F 1 "GND" H 2505 9527 50  0000 C CNN
-F 2 "" H 2500 9700 50  0001 C CNN
-F 3 "" H 2500 9700 50  0001 C CNN
-	1    2500 9700
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C1
-U 1 1 5BFE9C80
-P 3100 9400
-F 0 "C1" H 3215 9446 50  0000 L CNN
-F 1 "C" H 3215 9355 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 3138 9250 50  0001 C CNN
-F 3 "~" H 3100 9400 50  0001 C CNN
-	1    3100 9400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C2
-U 1 1 5BFE9D13
-P 3500 9400
-F 0 "C2" H 3615 9446 50  0000 L CNN
-F 1 "C" H 3615 9355 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 3538 9250 50  0001 C CNN
-F 3 "~" H 3500 9400 50  0001 C CNN
-	1    3500 9400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C3
-U 1 1 5BFF0892
-P 3900 9400
-F 0 "C3" H 4015 9446 50  0000 L CNN
-F 1 "C" H 4015 9355 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 3938 9250 50  0001 C CNN
-F 3 "~" H 3900 9400 50  0001 C CNN
-	1    3900 9400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C4
-U 1 1 5BFF0898
-P 4300 9400
-F 0 "C4" H 4415 9446 50  0000 L CNN
-F 1 "C" H 4415 9355 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 4338 9250 50  0001 C CNN
-F 3 "~" H 4300 9400 50  0001 C CNN
-	1    4300 9400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2500 9100 2500 9250
-Wire Wire Line
-	3100 9250 3500 9250
-Connection ~ 3500 9250
-Wire Wire Line
-	3500 9250 3900 9250
-Connection ~ 3900 9250
-Wire Wire Line
-	3900 9250 4300 9250
-Wire Wire Line
-	2500 9550 2500 9700
-Connection ~ 3100 9550
-Wire Wire Line
-	3100 9550 3500 9550
-Connection ~ 3500 9550
-Wire Wire Line
-	3500 9550 3900 9550
-Connection ~ 3900 9550
-Wire Wire Line
-	3900 9550 4300 9550
-$Comp
 L Device:R_Network08_US RN1
 U 1 1 5C0319BC
 P 7000 1350
@@ -385,22 +296,6 @@ Wire Wire Line
 	5600 3650 5600 3700
 Wire Wire Line
 	8600 1750 8600 3000
-Wire Wire Line
-	6600 1550 6600 2350
-Wire Wire Line
-	6700 1550 6700 2450
-Wire Wire Line
-	6900 1550 6900 2650
-Wire Wire Line
-	6800 1550 6800 2550
-Wire Wire Line
-	7000 1550 7000 4600
-Wire Wire Line
-	7100 1550 7100 4700
-Wire Wire Line
-	7200 1550 7200 4800
-Wire Wire Line
-	7300 1550 7300 4900
 Text Label 10800 3000 0    50   ~ 0
 Row0
 Text Label 10800 3100 0    50   ~ 0
@@ -540,44 +435,6 @@ Entry Wire Line
 	7400 4700 7500 4800
 Entry Wire Line
 	7400 4600 7500 4700
-Wire Wire Line
-	6100 2350 6600 2350
-Connection ~ 6600 2350
-Wire Wire Line
-	6600 2350 7400 2350
-Wire Wire Line
-	6100 2450 6700 2450
-Connection ~ 6700 2450
-Wire Wire Line
-	6700 2450 7400 2450
-Wire Wire Line
-	6100 2550 6800 2550
-Connection ~ 6800 2550
-Wire Wire Line
-	6800 2550 7400 2550
-Wire Wire Line
-	6100 2650 6900 2650
-Connection ~ 6900 2650
-Wire Wire Line
-	6900 2650 7400 2650
-Wire Wire Line
-	6100 4600 7000 4600
-Connection ~ 7000 4600
-Wire Wire Line
-	7000 4600 7400 4600
-Wire Wire Line
-	6100 4700 7100 4700
-Connection ~ 7100 4700
-Wire Wire Line
-	7100 4700 7400 4700
-Wire Wire Line
-	6100 4800 7200 4800
-Connection ~ 7200 4800
-Wire Wire Line
-	7200 4800 7400 4800
-Connection ~ 7300 4900
-Wire Wire Line
-	7300 4900 6100 4900
 $Comp
 L 74xx:74LS373 U5
 U 1 1 5EE34D09
@@ -593,8 +450,8 @@ $Comp
 L 74xx:74LS138 U1
 U 1 1 5EE9FB59
 P 3200 7000
-F 0 "U1" H 3200 7781 50  0000 C CNN
-F 1 "74LS138" H 3200 7690 50  0000 C CNN
+F 0 "U1" H 3000 7600 50  0000 C CNN
+F 1 "74LS138" H 2900 7500 50  0000 C CNN
 F 2 "Package_DIP:DIP-16_W7.62mm" H 3200 7000 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74LS138" H 3200 7000 50  0001 C CNN
 	1    3200 7000
@@ -650,41 +507,6 @@ Wire Wire Line
 	3700 7400 3950 7400
 Wire Wire Line
 	3950 7400 3950 7700
-Wire Wire Line
-	1800 8300 3450 8300
-Wire Wire Line
-	2500 9550 2800 9550
-Wire Wire Line
-	2500 9250 2800 9250
-Connection ~ 3100 9250
-$Comp
-L power:PWR_FLAG #FLG01
-U 1 1 5F0E8BB3
-P 2800 9250
-F 0 "#FLG01" H 2800 9325 50  0001 C CNN
-F 1 "PWR_FLAG" H 2800 9423 50  0000 C CNN
-F 2 "" H 2800 9250 50  0001 C CNN
-F 3 "~" H 2800 9250 50  0001 C CNN
-	1    2800 9250
-	1    0    0    -1  
-$EndComp
-Connection ~ 2800 9250
-Wire Wire Line
-	2800 9250 3100 9250
-$Comp
-L power:PWR_FLAG #FLG02
-U 1 1 5F0E9D7D
-P 2800 9550
-F 0 "#FLG02" H 2800 9625 50  0001 C CNN
-F 1 "PWR_FLAG" H 2800 9723 50  0000 C CNN
-F 2 "" H 2800 9550 50  0001 C CNN
-F 3 "~" H 2800 9550 50  0001 C CNN
-	1    2800 9550
-	1    0    0    -1  
-$EndComp
-Connection ~ 2800 9550
-Wire Wire Line
-	2800 9550 3100 9550
 $Comp
 L Connector_Generic:Conn_01x16 J1
 U 1 1 5F2900DF
@@ -867,94 +689,6 @@ Text Label 11450 4500 0    50   ~ 0
 Row4
 Wire Bus Line
 	7500 5800 11200 5800
-$Comp
-L Diode:1N4148 D4
-U 1 1 5F662E5C
-P 10050 3000
-F 0 "D4" H 10000 2150 50  0000 C CNN
-F 1 "1N4148" H 10050 3125 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10050 2825 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10050 3000 50  0001 C CNN
-	1    10050 3000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Diode:1N4148 D8
-U 1 1 5F665916
-P 10350 3100
-F 0 "D8" H 10300 2350 50  0000 C CNN
-F 1 "1N4148" H 10350 3225 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10350 2925 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10350 3100 50  0001 C CNN
-	1    10350 3100
-	1    0    0    -1  
-$EndComp
-$Comp
-L Diode:1N4148 D1
-U 1 1 5F6799F8
-P 10000 3200
-F 0 "D1" H 10000 2450 50  0000 C CNN
-F 1 "1N4148" H 10000 3325 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10000 3025 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10000 3200 50  0001 C CNN
-	1    10000 3200
-	1    0    0    -1  
-$EndComp
-$Comp
-L Diode:1N4148 D5
-U 1 1 5F6799FE
-P 10300 3300
-F 0 "D5" H 10300 2650 50  0000 C CNN
-F 1 "1N4148" H 10300 3425 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10300 3125 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10300 3300 50  0001 C CNN
-	1    10300 3300
-	1    0    0    -1  
-$EndComp
-$Comp
-L Diode:1N4148 D2
-U 1 1 5F68D360
-P 10000 3400
-F 0 "D2" H 10000 2750 50  0000 C CNN
-F 1 "1N4148" H 10000 3525 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10000 3225 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10000 3400 50  0001 C CNN
-	1    10000 3400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Diode:1N4148 D6
-U 1 1 5F68D366
-P 10300 3500
-F 0 "D6" H 10300 2950 50  0000 C CNN
-F 1 "1N4148" H 10300 3625 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10300 3325 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10300 3500 50  0001 C CNN
-	1    10300 3500
-	1    0    0    -1  
-$EndComp
-$Comp
-L Diode:1N4148 D3
-U 1 1 5F6A06A8
-P 10000 3600
-F 0 "D3" H 10000 3050 50  0000 C CNN
-F 1 "1N4148" H 10000 3725 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10000 3425 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10000 3600 50  0001 C CNN
-	1    10000 3600
-	1    0    0    -1  
-$EndComp
-$Comp
-L Diode:1N4148 D7
-U 1 1 5F6A06AE
-P 10300 3700
-F 0 "D7" H 10300 3250 50  0000 C CNN
-F 1 "1N4148" H 10300 4460 50  0000 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10300 3525 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10300 3700 50  0001 C CNN
-	1    10300 3700
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	9750 3700 10150 3700
 Wire Wire Line
@@ -1069,8 +803,6 @@ Wire Wire Line
 Wire Wire Line
 	3250 4600 4900 4600
 Wire Wire Line
-	4700 8300 5650 8300
-Wire Wire Line
 	1900 8000 10400 8000
 Wire Wire Line
 	6100 4000 7950 4000
@@ -1169,89 +901,6 @@ Wire Wire Line
 	7050 7100 7050 7500
 Wire Wire Line
 	7050 7500 8650 7500
-$Comp
-L Device:C C5
-U 1 1 6064F317
-P 4650 9400
-F 0 "C5" H 4765 9446 50  0000 L CNN
-F 1 "C" H 4765 9355 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 4688 9250 50  0001 C CNN
-F 3 "~" H 4650 9400 50  0001 C CNN
-	1    4650 9400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C6
-U 1 1 6064F31D
-P 5050 9400
-F 0 "C6" H 5165 9446 50  0000 L CNN
-F 1 "C" H 5165 9355 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 5088 9250 50  0001 C CNN
-F 3 "~" H 5050 9400 50  0001 C CNN
-	1    5050 9400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C7
-U 1 1 6064F323
-P 5450 9400
-F 0 "C7" H 5565 9446 50  0000 L CNN
-F 1 "C" H 5565 9355 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 5488 9250 50  0001 C CNN
-F 3 "~" H 5450 9400 50  0001 C CNN
-	1    5450 9400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C8
-U 1 1 6064F329
-P 5850 9400
-F 0 "C8" H 5965 9446 50  0000 L CNN
-F 1 "C" H 5965 9355 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 5888 9250 50  0001 C CNN
-F 3 "~" H 5850 9400 50  0001 C CNN
-	1    5850 9400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4650 9250 5050 9250
-Connection ~ 5050 9250
-Wire Wire Line
-	5050 9250 5450 9250
-Connection ~ 5450 9250
-Wire Wire Line
-	5450 9250 5850 9250
-Connection ~ 4650 9550
-Wire Wire Line
-	4650 9550 5050 9550
-Connection ~ 5050 9550
-Wire Wire Line
-	5050 9550 5450 9550
-Connection ~ 5450 9550
-Wire Wire Line
-	5450 9550 5850 9550
-Connection ~ 4650 9250
-Wire Wire Line
-	4300 9250 4650 9250
-Connection ~ 4300 9250
-Wire Wire Line
-	4300 9550 4650 9550
-Connection ~ 4300 9550
-$Comp
-L Device:C C9
-U 1 1 606D38CE
-P 6250 9400
-F 0 "C9" H 6365 9446 50  0000 L CNN
-F 1 "C" H 6365 9355 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 6288 9250 50  0001 C CNN
-F 3 "~" H 6250 9400 50  0001 C CNN
-	1    6250 9400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5850 9250 6250 9250
-Wire Wire Line
-	5850 9550 6250 9550
 Entry Wire Line
 	13000 7200 13100 7300
 Entry Wire Line
@@ -1334,7 +983,7 @@ U 1 1 60A345E3
 P 14500 7100
 F 0 "J4" H 14460 7720 50  0000 L CNN
 F 1 "Sound" H 14180 6390 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x12_P2.54mm_Horizontal" H 14500 7100 50  0001 C CNN
+F 2 "Connector_Molex:Molex_KK-396_A-41791-0012_1x12_P3.96mm_Vertical" H 14500 7100 50  0001 C CNN
 F 3 "~" H 14500 7100 50  0001 C CNN
 	1    14500 7100
 	1    0    0    -1  
@@ -1435,38 +1084,344 @@ Wire Wire Line
 	12500 2650 13400 2650
 Wire Wire Line
 	12500 2750 13400 2750
+Text Notes 5940 9100 0    50   ~ 0
+S1 is from Video timing chain.  \n- To enable sound on a 540A board, Jumper the\n   S1 signal (Pin 13 of E4) to pin 15 of the keyboard \n   connector, and set JP1 to “S1”\n\n- For 540B board, set jumper JP1 to “~S1~”
 $Comp
-L Device:C C10
-U 1 1 61CE638B
-P 6650 9400
-F 0 "C10" H 6765 9446 50  0000 L CNN
-F 1 "C" H 6765 9355 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 6688 9250 50  0001 C CNN
-F 3 "~" H 6650 9400 50  0001 C CNN
-	1    6650 9400
+L Connector_Generic:Conn_01x02 J5
+U 1 1 5EC9C46D
+P 15750 1700
+F 0 "J5" H 15700 1800 50  0000 L CNN
+F 1 "~RESET~" H 15650 1450 50  0000 L CNN
+F 2 "Connector_Molex:Molex_KK-396_A-41791-0002_1x02_P3.96mm_Vertical" H 15750 1700 50  0001 C CNN
+F 3 "~" H 15750 1700 50  0001 C CNN
+	1    15750 1700
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6250 9250 6650 9250
+	15000 1700 15550 1700
+$Comp
+L power:GND #PWR036
+U 1 1 5ECBC368
+P 15400 1950
+F 0 "#PWR036" H 15400 1700 50  0001 C CNN
+F 1 "GND" H 15405 1777 50  0000 C CNN
+F 2 "" H 15400 1950 50  0001 C CNN
+F 3 "" H 15400 1950 50  0001 C CNN
+	1    15400 1950
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	6250 9550 6650 9550
+	15400 1950 15400 1800
+Wire Wire Line
+	15400 1800 15550 1800
+Wire Wire Line
+	7000 1550 7000 4900
+Wire Wire Line
+	7100 1550 7100 4800
+Wire Wire Line
+	7200 1550 7200 4700
+Wire Wire Line
+	7300 1550 7300 4600
+Wire Wire Line
+	6100 2550 6700 2550
+Wire Wire Line
+	6700 1550 6700 2550
+Wire Wire Line
+	6600 1550 6600 2650
+Wire Wire Line
+	6800 1550 6800 2450
+Wire Wire Line
+	6900 1550 6900 2350
+Connection ~ 6900 2350
+Wire Wire Line
+	6900 2350 7400 2350
+Wire Wire Line
+	6100 2350 6900 2350
+Connection ~ 6700 2550
+Wire Wire Line
+	6700 2550 7400 2550
+Connection ~ 6600 2650
+Wire Wire Line
+	6600 2650 7400 2650
+Wire Wire Line
+	6100 2650 6600 2650
+Connection ~ 6800 2450
+Wire Wire Line
+	6800 2450 7400 2450
+Wire Wire Line
+	6100 2450 6800 2450
+Wire Wire Line
+	6100 4900 7000 4900
+Wire Wire Line
+	6100 4800 7100 4800
+Wire Wire Line
+	6100 4700 7200 4700
+Wire Wire Line
+	6100 4600 7300 4600
+Connection ~ 7300 4600
+Wire Wire Line
+	7300 4600 7400 4600
+Connection ~ 7200 4700
+Wire Wire Line
+	7200 4700 7400 4700
+Connection ~ 7100 4800
+Wire Wire Line
+	7100 4800 7400 4800
+Connection ~ 7000 4900
+Wire Wire Line
+	7000 4900 7400 4900
+$Comp
+L power:GND #PWR03
+U 1 1 5BFDC5C9
+P 1350 10150
+F 0 "#PWR03" H 1350 9900 50  0001 C CNN
+F 1 "GND" H 1355 9977 50  0000 C CNN
+F 2 "" H 1350 10150 50  0001 C CNN
+F 3 "" H 1350 10150 50  0001 C CNN
+	1    1350 10150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR02
+U 1 1 5BFDC5C3
+P 1350 9550
+F 0 "#PWR02" H 1350 9400 50  0001 C CNN
+F 1 "+5V" H 1365 9723 50  0000 C CNN
+F 2 "" H 1350 9550 50  0001 C CNN
+F 3 "" H 1350 9550 50  0001 C CNN
+	1    1350 9550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5500 10000 5900 10000
+Wire Wire Line
+	5500 9700 5900 9700
 $Comp
 L Device:C C11
 U 1 1 61CE6393
-P 7050 9400
-F 0 "C11" H 7165 9446 50  0000 L CNN
-F 1 "C" H 7165 9355 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 7088 9250 50  0001 C CNN
-F 3 "~" H 7050 9400 50  0001 C CNN
-	1    7050 9400
+P 5900 9850
+F 0 "C11" H 6015 9896 50  0000 L CNN
+F 1 "0.1 uF" H 5950 9750 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 5938 9700 50  0001 C CNN
+F 3 "~" H 5900 9850 50  0001 C CNN
+	1    5900 9850
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6650 9250 7050 9250
+	5100 10000 5500 10000
 Wire Wire Line
-	6650 9550 7050 9550
-Text Notes 7800 9650 0    50   ~ 0
-S1 is from Video timing chain.  \n- For 540A board, this must be jumpered to pin 15, and Jumper JP1 must be set to “S1”.\n- For 540B board, set jumper JP1 to “~S1~”
+	5100 9700 5500 9700
+$Comp
+L Device:C C10
+U 1 1 61CE638B
+P 5500 9850
+F 0 "C10" H 5615 9896 50  0000 L CNN
+F 1 "0.1 uF" H 5550 9750 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 5538 9700 50  0001 C CNN
+F 3 "~" H 5500 9850 50  0001 C CNN
+	1    5500 9850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4700 10000 5100 10000
+Wire Wire Line
+	4700 9700 5100 9700
+$Comp
+L Device:C C9
+U 1 1 606D38CE
+P 5100 9850
+F 0 "C9" H 5215 9896 50  0000 L CNN
+F 1 "0.1uF" H 5150 9750 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 5138 9700 50  0001 C CNN
+F 3 "~" H 5100 9850 50  0001 C CNN
+	1    5100 9850
+	1    0    0    -1  
+$EndComp
+Connection ~ 3150 10000
+Wire Wire Line
+	3150 10000 3500 10000
+Connection ~ 3150 9700
+Wire Wire Line
+	3150 9700 3500 9700
+Connection ~ 3500 9700
+Wire Wire Line
+	4300 10000 4700 10000
+Connection ~ 4300 10000
+Wire Wire Line
+	3900 10000 4300 10000
+Connection ~ 3900 10000
+Wire Wire Line
+	3500 10000 3900 10000
+Connection ~ 3500 10000
+Wire Wire Line
+	4300 9700 4700 9700
+Connection ~ 4300 9700
+Wire Wire Line
+	3900 9700 4300 9700
+Connection ~ 3900 9700
+Wire Wire Line
+	3500 9700 3900 9700
+$Comp
+L Device:C C8
+U 1 1 6064F329
+P 4700 9850
+F 0 "C8" H 4815 9896 50  0000 L CNN
+F 1 "0.1uF" H 4800 9750 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 4738 9700 50  0001 C CNN
+F 3 "~" H 4700 9850 50  0001 C CNN
+	1    4700 9850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C7
+U 1 1 6064F323
+P 4300 9850
+F 0 "C7" H 4415 9896 50  0000 L CNN
+F 1 "0.1uF" H 4350 9750 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 4338 9700 50  0001 C CNN
+F 3 "~" H 4300 9850 50  0001 C CNN
+	1    4300 9850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C6
+U 1 1 6064F31D
+P 3900 9850
+F 0 "C6" H 4015 9896 50  0000 L CNN
+F 1 "0.1uF" H 3950 9750 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 3938 9700 50  0001 C CNN
+F 3 "~" H 3900 9850 50  0001 C CNN
+	1    3900 9850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C5
+U 1 1 6064F317
+P 3500 9850
+F 0 "C5" H 3615 9896 50  0000 L CNN
+F 1 "0.1uF" H 3550 9750 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 3538 9700 50  0001 C CNN
+F 3 "~" H 3500 9850 50  0001 C CNN
+	1    3500 9850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1650 10000 1950 10000
+Connection ~ 1650 10000
+$Comp
+L power:PWR_FLAG #FLG02
+U 1 1 5F0E9D7D
+P 1650 10000
+F 0 "#FLG02" H 1650 10075 50  0001 C CNN
+F 1 "PWR_FLAG" H 1650 10173 50  0000 C CNN
+F 2 "" H 1650 10000 50  0001 C CNN
+F 3 "~" H 1650 10000 50  0001 C CNN
+	1    1650 10000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1650 9700 1950 9700
+Connection ~ 1650 9700
+$Comp
+L power:PWR_FLAG #FLG01
+U 1 1 5F0E8BB3
+P 1650 9700
+F 0 "#FLG01" H 1650 9775 50  0001 C CNN
+F 1 "PWR_FLAG" H 1650 9873 50  0000 C CNN
+F 2 "" H 1650 9700 50  0001 C CNN
+F 3 "~" H 1650 9700 50  0001 C CNN
+	1    1650 9700
+	1    0    0    -1  
+$EndComp
+Connection ~ 1950 9700
+Wire Wire Line
+	1350 9700 1650 9700
+Wire Wire Line
+	1350 10000 1650 10000
+Wire Wire Line
+	2750 10000 3150 10000
+Connection ~ 2750 10000
+Wire Wire Line
+	2350 10000 2750 10000
+Connection ~ 2350 10000
+Wire Wire Line
+	1950 10000 2350 10000
+Connection ~ 1950 10000
+Wire Wire Line
+	1350 10000 1350 10150
+Wire Wire Line
+	2750 9700 3150 9700
+Connection ~ 2750 9700
+Wire Wire Line
+	2350 9700 2750 9700
+Connection ~ 2350 9700
+Wire Wire Line
+	1950 9700 2350 9700
+Wire Wire Line
+	1350 9550 1350 9700
+$Comp
+L Device:C C4
+U 1 1 5BFF0898
+P 3150 9850
+F 0 "C4" H 3265 9896 50  0000 L CNN
+F 1 "0.1uF" H 3200 9750 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 3188 9700 50  0001 C CNN
+F 3 "~" H 3150 9850 50  0001 C CNN
+	1    3150 9850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C3
+U 1 1 5BFF0892
+P 2750 9850
+F 0 "C3" H 2865 9896 50  0000 L CNN
+F 1 "0.1uF" H 2800 9750 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 2788 9700 50  0001 C CNN
+F 3 "~" H 2750 9850 50  0001 C CNN
+	1    2750 9850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C2
+U 1 1 5BFE9D13
+P 2350 9850
+F 0 "C2" H 2465 9896 50  0000 L CNN
+F 1 "0.1uF" H 2400 9750 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 2388 9700 50  0001 C CNN
+F 3 "~" H 2350 9850 50  0001 C CNN
+	1    2350 9850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C1
+U 1 1 5BFE9C80
+P 1950 9850
+F 0 "C1" H 2065 9896 50  0000 L CNN
+F 1 "0.1uF" H 2000 9750 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 1988 9700 50  0001 C CNN
+F 3 "~" H 1950 9850 50  0001 C CNN
+	1    1950 9850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4700 8300 5650 8300
+Wire Wire Line
+	7150 8300 10400 8300
+Wire Wire Line
+	7150 8550 7150 8300
+Wire Wire Line
+	5800 8550 7150 8550
+Text Notes 5750 8350 0    50   ~ 0
+~S1
+Text Notes 5750 8800 0    50   ~ 0
+S1
+Wire Wire Line
+	3450 8300 4100 8300
+Connection ~ 3450 8300
+Wire Wire Line
+	3450 8300 3450 8800
+Wire Wire Line
+	3450 8800 5650 8800
 $Comp
 L Jumper:Jumper_3_Open JP?
 U 1 1 62069817
@@ -1480,23 +1435,130 @@ F 3 "~" H 5650 8550 50  0001 C CNN
 	1    5650 8550
 	0    -1   -1   0   
 $EndComp
+Connection ~ 4700 9700
+Connection ~ 4700 10000
+Connection ~ 5100 9700
+Connection ~ 5100 10000
+Connection ~ 5500 9700
+Connection ~ 5500 10000
+NoConn ~ 3700 6700
+NoConn ~ 3700 6800
+NoConn ~ 3700 7100
+NoConn ~ 3700 7200
+NoConn ~ 3700 7300
+NoConn ~ 12000 1850
+$Comp
+L power:+5V #PWR0102
+U 1 1 5F03D9D8
+P 3200 6200
+F 0 "#PWR0102" H 3200 6050 50  0001 C CNN
+F 1 "+5V" H 3215 6373 50  0000 C CNN
+F 2 "" H 3200 6200 50  0001 C CNN
+F 3 "" H 3200 6200 50  0001 C CNN
+	1    3200 6200
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	3450 8300 3450 8800
+	3200 6400 3200 6350
 Wire Wire Line
-	3450 8800 5650 8800
-Connection ~ 3450 8300
+	2700 7200 2650 7200
 Wire Wire Line
-	3450 8300 4100 8300
+	2650 7200 2650 6350
 Wire Wire Line
-	5800 8550 7150 8550
+	2650 6350 3200 6350
+Connection ~ 3200 6350
 Wire Wire Line
-	7150 8550 7150 8300
+	3200 6350 3200 6200
 Wire Wire Line
-	7150 8300 10400 8300
-Text Notes 5750 8800 0    50   ~ 0
-S1
-Text Notes 5750 8350 0    50   ~ 0
-~S1
+	1800 8300 3450 8300
+$Comp
+L Diode:1N4148 D6
+U 1 1 5F68D366
+P 10300 3500
+F 0 "D6" H 10300 2950 50  0000 C CNN
+F 1 "1N4148" H 10300 3625 50  0001 C CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10300 3325 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10300 3500 50  0001 C CNN
+	1    10300 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D7
+U 1 1 5F6A06AE
+P 10300 3700
+F 0 "D7" H 10300 3250 50  0000 C CNN
+F 1 "1N4148" H 10300 4460 50  0000 C CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10300 3525 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10300 3700 50  0001 C CNN
+	1    10300 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D3
+U 1 1 5F6A06A8
+P 10000 3600
+F 0 "D3" H 10000 3050 50  0000 C CNN
+F 1 "1N4148" H 10000 3725 50  0001 C CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10000 3425 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10000 3600 50  0001 C CNN
+	1    10000 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D2
+U 1 1 5F68D360
+P 10000 3400
+F 0 "D2" H 10000 2750 50  0000 C CNN
+F 1 "1N4148" H 10000 3525 50  0001 C CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10000 3225 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10000 3400 50  0001 C CNN
+	1    10000 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D1
+U 1 1 5F6799F8
+P 10000 3200
+F 0 "D1" H 10000 2450 50  0000 C CNN
+F 1 "1N4148" H 10000 3325 50  0001 C CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10000 3025 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10000 3200 50  0001 C CNN
+	1    10000 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D5
+U 1 1 5F6799FE
+P 10300 3300
+F 0 "D5" H 10300 2650 50  0000 C CNN
+F 1 "1N4148" H 10300 3425 50  0001 C CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10300 3125 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10300 3300 50  0001 C CNN
+	1    10300 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D8
+U 1 1 5F665916
+P 10350 3100
+F 0 "D8" H 10300 2350 50  0000 C CNN
+F 1 "1N4148" H 10350 3225 50  0001 C CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10350 2925 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10350 3100 50  0001 C CNN
+	1    10350 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N4148 D4
+U 1 1 5F662E5C
+P 10050 3000
+F 0 "D4" H 10000 2150 50  0000 C CNN
+F 1 "1N4148" H 10050 3125 50  0001 C CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10050 2825 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10050 3000 50  0001 C CNN
+	1    10050 3000
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	12800 1150 12800 1600
 Wire Bus Line
