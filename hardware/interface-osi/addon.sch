@@ -5,8 +5,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "OSI ~RESET~ and SHIFTLOCK circuits"
-Date "2020-05-21"
-Rev "1.0"
+Date "2020-05-27"
+Rev "1.1"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -144,17 +144,6 @@ F 2 "Package_DIP:DIP-14_W7.62mm" H 7900 2500 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/cd4066b.pdf" H 7900 2500 50  0001 C CNN
 	1    7900 2500
 	-1   0    0    -1  
-$EndComp
-$Comp
-L Diode:1N914 D2
-U 1 1 61026B80
-P 9600 4900
-F 0 "D2" H 9600 4684 50  0000 C CNN
-F 1 "1N914" H 9600 4775 50  0000 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9600 4725 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/85622/1n914.pdf" H 9600 4900 50  0001 C CNN
-	1    9600 4900
-	-1   0    0    1   
 $EndComp
 Wire Wire Line
 	5250 5150 5250 5000
@@ -443,53 +432,53 @@ Text Notes 7200 3100 0    50   ~ 0
 $Comp
 L 4xxx:4066 U1
 U 5 1 61CB40DD
-P 1250 7550
-F 0 "U1" H 1480 7596 50  0000 L CNN
-F 1 "4066" H 1480 7505 50  0000 L CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 1250 7550 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/cd4066b.pdf" H 1250 7550 50  0001 C CNN
-	5    1250 7550
+P 830 6930
+F 0 "U1" H 1060 6976 50  0000 L CNN
+F 1 "4066" H 1060 6885 50  0000 L CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 830 6930 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4066b.pdf" H 830 6930 50  0001 C CNN
+	5    830  6930
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1250 7050 1250 6950
+	830  6430 830  6330
 Wire Wire Line
-	1250 6950 1550 6950
+	830  6330 1130 6330
 Wire Wire Line
-	1950 6950 1950 7050
+	1530 6330 1530 6430
 Wire Wire Line
-	1950 8050 1950 8100
+	1530 7430 1530 7480
 Wire Wire Line
-	1250 8100 1250 8050
+	830  7480 830  7430
 $Comp
 L power:GND #PWR04
 U 1 1 61CB40E9
-P 1550 8150
-F 0 "#PWR04" H 1550 7900 50  0001 C CNN
-F 1 "GND" H 1555 7977 50  0000 C CNN
-F 2 "" H 1550 8150 50  0001 C CNN
-F 3 "" H 1550 8150 50  0001 C CNN
-	1    1550 8150
+P 1130 7530
+F 0 "#PWR04" H 1130 7280 50  0001 C CNN
+F 1 "GND" H 1135 7357 50  0000 C CNN
+F 2 "" H 1130 7530 50  0001 C CNN
+F 3 "" H 1130 7530 50  0001 C CNN
+	1    1130 7530
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1550 8150 1550 8100
+	1130 7530 1130 7480
 $Comp
 L power:+5V #PWR03
 U 1 1 61CB40F2
-P 1550 6850
-F 0 "#PWR03" H 1550 6700 50  0001 C CNN
-F 1 "+5V" H 1565 7023 50  0000 C CNN
-F 2 "" H 1550 6850 50  0001 C CNN
-F 3 "" H 1550 6850 50  0001 C CNN
-	1    1550 6850
+P 1130 6230
+F 0 "#PWR03" H 1130 6080 50  0001 C CNN
+F 1 "+5V" H 1145 6403 50  0000 C CNN
+F 2 "" H 1130 6230 50  0001 C CNN
+F 3 "" H 1130 6230 50  0001 C CNN
+	1    1130 6230
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1550 6850 1550 6950
-Connection ~ 1550 6950
+	1130 6230 1130 6330
+Connection ~ 1130 6330
 Wire Wire Line
-	1550 6950 1800 6950
+	1130 6330 1380 6330
 Wire Wire Line
 	950  2100 2300 2100
 Wire Wire Line
@@ -546,10 +535,6 @@ Wire Wire Line
 	2250 5150 3150 5150
 Text Label 1150 2500 0    50   ~ 0
 ShiftLock1
-Text Label 1150 2700 0    50   ~ 0
-ShiftLock2
-Text Label 1150 2300 0    50   ~ 0
-Break2
 Text Label 1150 2100 0    50   ~ 0
 Break1
 Wire Wire Line
@@ -571,8 +556,6 @@ ShifLockLED+
 Text GLabel 9800 5700 2    50   Input ~ 0
 ShiftLockLED-
 Wire Wire Line
-	9800 4900 9750 4900
-Wire Wire Line
 	1550 3000 950  3000
 Wire Wire Line
 	1550 3100 950  3100
@@ -592,41 +575,41 @@ Wire Wire Line
 $Comp
 L power:PWR_FLAG #FLG01
 U 1 1 61EB4CE6
-P 1800 6950
-F 0 "#FLG01" H 1800 7025 50  0001 C CNN
-F 1 "PWR_FLAG" H 1800 7123 50  0000 C CNN
-F 2 "" H 1800 6950 50  0001 C CNN
-F 3 "~" H 1800 6950 50  0001 C CNN
-	1    1800 6950
+P 1380 6330
+F 0 "#FLG01" H 1380 6405 50  0001 C CNN
+F 1 "PWR_FLAG" H 1380 6503 50  0000 C CNN
+F 2 "" H 1380 6330 50  0001 C CNN
+F 3 "~" H 1380 6330 50  0001 C CNN
+	1    1380 6330
 	1    0    0    -1  
 $EndComp
-Connection ~ 1800 6950
+Connection ~ 1380 6330
 Wire Wire Line
-	1800 6950 1950 6950
-Connection ~ 1550 8100
+	1380 6330 1530 6330
+Connection ~ 1130 7480
 Wire Wire Line
-	1550 8100 1900 8100
+	1130 7480 1480 7480
 Wire Wire Line
-	1250 8100 1550 8100
+	830  7480 1130 7480
 $Comp
 L power:PWR_FLAG #FLG02
 U 1 1 61EC3E1F
-P 1900 8100
-F 0 "#FLG02" H 1900 8175 50  0001 C CNN
-F 1 "PWR_FLAG" H 1900 8273 50  0000 C CNN
-F 2 "" H 1900 8100 50  0001 C CNN
-F 3 "~" H 1900 8100 50  0001 C CNN
-	1    1900 8100
+P 1480 7480
+F 0 "#FLG02" H 1480 7555 50  0001 C CNN
+F 1 "PWR_FLAG" H 1480 7653 50  0000 C CNN
+F 2 "" H 1480 7480 50  0001 C CNN
+F 3 "~" H 1480 7480 50  0001 C CNN
+	1    1480 7480
 	-1   0    0    1   
 $EndComp
-Connection ~ 1900 8100
+Connection ~ 1480 7480
 Wire Wire Line
-	1900 8100 1950 8100
+	1480 7480 1530 7480
 NoConn ~ 950  2200
 NoConn ~ 950  2400
 NoConn ~ 950  2600
 NoConn ~ 950  3300
-Text Label 1300 6950 0    50   ~ 0
+Text Label 880  6330 0    50   ~ 0
 +5V
 $Comp
 L Diode:1N914 D3
@@ -659,8 +642,6 @@ Wire Wire Line
 Connection ~ 8750 2500
 Wire Wire Line
 	8750 2500 9000 2500
-Wire Wire Line
-	9300 4900 9450 4900
 Wire Wire Line
 	9300 3650 9800 3650
 Wire Wire Line
@@ -747,24 +728,24 @@ Wire Wire Line
 $Comp
 L Device:C C6
 U 1 1 5FCCE85D
-P 2650 7550
-F 0 "C6" H 2700 7450 50  0000 L CNN
-F 1 "0.1uF" H 2300 7650 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 2688 7400 50  0001 C CNN
-F 3 "~" H 2650 7550 50  0001 C CNN
-	1    2650 7550
+P 2230 6930
+F 0 "C6" H 2280 6830 50  0000 L CNN
+F 1 "0.1uF" H 1880 7030 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 2268 6780 50  0001 C CNN
+F 3 "~" H 2230 6930 50  0001 C CNN
+	1    2230 6930
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	1950 6950 2650 6950
+	1530 6330 2230 6330
 Wire Wire Line
-	2650 6950 2650 7400
-Connection ~ 1950 6950
+	2230 6330 2230 6780
+Connection ~ 1530 6330
 Wire Wire Line
-	2650 7700 2650 8100
+	2230 7080 2230 7480
 Wire Wire Line
-	2650 8100 1950 8100
-Connection ~ 1950 8100
+	2230 7480 1530 7480
+Connection ~ 1530 7480
 $Comp
 L 74xx:74HC14 U2
 U 2 1 5FD482AC
@@ -834,12 +815,12 @@ $EndComp
 $Comp
 L 74xx:74LS14 U2
 U 7 1 61CB40D7
-P 1950 7550
-F 0 "U2" H 2180 7596 50  0000 L CNN
-F 1 "74HC14" H 2180 7505 50  0000 L CNN
-F 2 "Package_DIP:DIP-14_W7.62mm" H 1950 7550 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 1950 7550 50  0001 C CNN
-	7    1950 7550
+P 1530 6930
+F 0 "U2" H 1760 6976 50  0000 L CNN
+F 1 "74HC14" H 1760 6885 50  0000 L CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 1530 6930 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC14" H 1530 6930 50  0001 C CNN
+	7    1530 6930
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -861,10 +842,10 @@ U 1 1 5F1F3BF6
 P 8400 4300
 F 0 "JP1" H 8450 4617 50  0000 C CNN
 F 1 "ShiftLock_Select" H 8450 4526 50  0000 C CNN
-F 2 "" H 8400 4300 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical" H 8400 4300 50  0001 C CNN
 F 3 "~" H 8400 4300 50  0001 C CNN
 	1    8400 4300
-	1    0    0    -1  
+	1    0    0    1   
 $EndComp
 Wire Wire Line
 	7150 4200 8200 4200
@@ -896,4 +877,10 @@ Wire Wire Line
 Connection ~ 8900 4400
 Wire Wire Line
 	8900 4400 8900 5400
+Wire Wire Line
+	9300 4900 9800 4900
+Text Notes 1150 2690 0    50   ~ 0
+ShiftLock2
+Text Notes 1150 2290 0    50   ~ 0
+Break2
 $EndSCHEMATC
