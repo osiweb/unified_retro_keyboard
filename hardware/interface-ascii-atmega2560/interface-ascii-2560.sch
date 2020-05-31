@@ -5,8 +5,8 @@ $Descr USLedger 17000 11000
 encoding utf-8
 Sheet 1 1
 Title "Unified Retro Keyboard ASCII Interface (2560)"
-Date "2020-04-16"
-Rev "3.2"
+Date "2020-05-31"
+Rev "3.3"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -497,17 +497,6 @@ Wire Wire Line
 	14815 3100 14815 2700
 Connection ~ 14815 2300
 $Comp
-L Device:C C7
-U 1 1 5E4F4413
-P 11700 9550
-F 0 "C7" H 11705 9630 50  0000 L CNN
-F 1 "0.1 uF" H 11715 9465 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 11738 9400 50  0001 C CNN
-F 3 "~" H 11700 9550 50  0001 C CNN
-	1    11700 9550
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:C C4
 U 1 1 5BFE9D13
 P 10500 9550
@@ -645,20 +634,20 @@ Wire Wire Line
 $Comp
 L power:GND #PWR011
 U 1 1 5EFF9297
-P 4700 3950
-F 0 "#PWR011" H 4700 3700 50  0001 C CNN
-F 1 "GND" H 4705 3777 50  0000 C CNN
-F 2 "" H 4700 3950 50  0001 C CNN
-F 3 "" H 4700 3950 50  0001 C CNN
-	1    4700 3950
+P 4200 3850
+F 0 "#PWR011" H 4200 3600 50  0001 C CNN
+F 1 "GND" H 4205 3677 50  0000 C CNN
+F 2 "" H 4200 3850 50  0001 C CNN
+F 3 "" H 4200 3850 50  0001 C CNN
+	1    4200 3850
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4050 3200 4850 3200
+	3550 2500 4850 2500
 Wire Wire Line
-	4850 3200 4850 2600
+	4850 2500 4850 1950
 Wire Wire Line
-	4050 3400 5600 3400
+	3550 2700 4050 2700
 Wire Wire Line
 	7300 2700 5600 2700
 Text Label 1710 1300 0    50   ~ 0
@@ -1629,9 +1618,6 @@ NoConn ~ 7300 6400
 NoConn ~ 7300 6300
 NoConn ~ 7300 6200
 NoConn ~ 7300 6100
-NoConn ~ 7300 5200
-NoConn ~ 7300 5100
-NoConn ~ 7300 5000
 NoConn ~ 7300 4900
 NoConn ~ 7300 4700
 NoConn ~ 7300 4600
@@ -1697,15 +1683,7 @@ Wire Wire Line
 	8400 2000 8400 1600
 Connection ~ 8400 1600
 Wire Wire Line
-	11700 9400 11700 9200
-Wire Wire Line
-	11700 9200 11500 9200
-Wire Wire Line
 	9900 9200 9900 9100
-Wire Wire Line
-	11700 9700 11700 9900
-Wire Wire Line
-	11700 9900 11500 9900
 Wire Wire Line
 	9900 9900 9900 10000
 $Comp
@@ -1869,7 +1847,6 @@ F 3 "~" H 11500 9200 50  0001 C CNN
 	1    11500 9200
 	1    0    0    -1  
 $EndComp
-Connection ~ 11500 9200
 Wire Wire Line
 	11500 9200 11300 9200
 $Comp
@@ -1883,18 +1860,17 @@ F 3 "~" H 11500 9900 50  0001 C CNN
 	1    11500 9900
 	-1   0    0    1   
 $EndComp
-Connection ~ 11500 9900
 Wire Wire Line
 	11500 9900 11300 9900
 $Comp
 L power:VCC #PWR012
 U 1 1 5F86A206
-P 4850 2600
-F 0 "#PWR012" H 4850 2450 50  0001 C CNN
-F 1 "VCC" H 4867 2773 50  0000 C CNN
-F 2 "" H 4850 2600 50  0001 C CNN
-F 3 "" H 4850 2600 50  0001 C CNN
-	1    4850 2600
+P 4850 1950
+F 0 "#PWR012" H 4850 1800 50  0001 C CNN
+F 1 "VCC" H 4867 2123 50  0000 C CNN
+F 2 "" H 4850 1950 50  0001 C CNN
+F 3 "" H 4850 1950 50  0001 C CNN
+	1    4850 1950
 	1    0    0    -1  
 $EndComp
 Text Label 13800 7300 0    50   ~ 0
@@ -1926,65 +1902,51 @@ NoConn ~ 11800 1650
 NoConn ~ 11800 1550
 NoConn ~ 11800 1450
 NoConn ~ 11800 1350
-Connection ~ 5600 2700
 Wire Wire Line
-	5600 3400 5600 2700
-$Comp
-L Connector_Generic:Conn_01x10 J6
-U 1 1 5ED79E96
-P 3850 3300
-F 0 "J6" H 3768 3917 50  0000 C CNN
-F 1 "Conn_01x10" H 3768 3826 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Horizontal" H 3850 3300 50  0001 C CNN
-F 3 "~" H 3850 3300 50  0001 C CNN
-	1    3850 3300
-	-1   0    0    -1  
-$EndComp
+	3550 2300 4200 2300
 Wire Wire Line
-	4050 3000 4700 3000
+	3550 3100 4200 3100
+Connection ~ 4200 3100
 Wire Wire Line
-	4050 3800 4700 3800
-Connection ~ 4700 3800
+	4200 3100 4200 3700
 Wire Wire Line
-	4700 3800 4700 3950
+	4200 2300 4200 3100
 Wire Wire Line
-	4700 3000 4700 3800
+	3550 2200 4600 2200
 Wire Wire Line
-	4050 2900 5100 2900
+	4600 2200 4600 2800
 Wire Wire Line
-	5100 2900 5100 3500
+	4600 2800 5850 2800
 Wire Wire Line
-	5100 3500 7300 3500
+	5800 2900 4500 2900
 Wire Wire Line
-	7300 3600 5000 3600
+	4500 2900 4500 2600
 Wire Wire Line
-	5000 3600 5000 3300
+	4500 2600 3550 2600
 Wire Wire Line
-	5000 3300 4050 3300
+	5750 3000 4400 3000
 Wire Wire Line
-	7300 3700 4900 3700
+	4400 3000 4400 2400
 Wire Wire Line
-	4900 3700 4900 3100
+	4400 2400 3550 2400
 Wire Wire Line
-	4900 3100 4050 3100
+	5700 3100 4300 3100
 Wire Wire Line
-	7300 3800 4800 3800
+	4300 3100 4300 3000
 Wire Wire Line
-	4800 3800 4800 3700
-Wire Wire Line
-	4800 3700 4050 3700
-Text Label 4200 2900 0    50   ~ 0
+	4300 3000 3550 3000
+Text Label 3700 2200 0    50   ~ 0
 TCK
-Text Label 4200 3100 0    50   ~ 0
+Text Label 3700 2400 0    50   ~ 0
 TDO
-Text Label 4200 3300 0    50   ~ 0
+Text Label 3700 2600 0    50   ~ 0
 TMS
-Text Label 4200 3400 0    50   ~ 0
+Text Label 3700 2700 0    50   ~ 0
 ~RESET
-Text Label 4200 3700 0    50   ~ 0
+Text Label 3700 3000 0    50   ~ 0
 TDI
-NoConn ~ 4050 3500
-NoConn ~ 4050 3600
+NoConn ~ 3550 2800
+NoConn ~ 3550 2900
 NoConn ~ 7300 3200
 NoConn ~ 7300 3300
 NoConn ~ 7300 3400
@@ -2024,6 +1986,87 @@ NoConn ~ 12150 4950
 NoConn ~ 12150 4850
 NoConn ~ 12150 4750
 NoConn ~ 12150 4650
+$Comp
+L Connector_Generic:Conn_01x16 J6
+U 1 1 5ED55F89
+P 3350 2900
+F 0 "J6" H 3268 3817 50  0000 C CNN
+F 1 "Conn_01x16" H 3268 3726 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Horizontal" H 3350 2900 50  0001 C CNN
+F 3 "~" H 3350 2900 50  0001 C CNN
+	1    3350 2900
+	-1   0    0    -1  
+$EndComp
+Connection ~ 5600 2700
+Wire Wire Line
+	5700 3100 5700 3800
+Wire Wire Line
+	5700 3800 7300 3800
+Wire Wire Line
+	5750 3000 5750 3700
+Wire Wire Line
+	5750 3700 7300 3700
+Wire Wire Line
+	7300 3600 5800 3600
+Wire Wire Line
+	5800 3600 5800 2900
+Wire Wire Line
+	5850 2800 5850 3500
+Wire Wire Line
+	5850 3500 7300 3500
+Wire Wire Line
+	3550 3200 5500 3200
+Wire Wire Line
+	5500 3200 5500 4000
+Wire Wire Line
+	5500 4000 6250 4000
+Wire Wire Line
+	6250 4000 6250 5200
+Wire Wire Line
+	6250 5200 7300 5200
+Wire Wire Line
+	5200 3500 5200 4100
+Wire Wire Line
+	5200 4100 6150 4100
+Wire Wire Line
+	6150 4100 6150 5100
+Wire Wire Line
+	6150 5100 7300 5100
+Wire Wire Line
+	5200 3500 3550 3500
+Wire Wire Line
+	3550 3300 4850 3300
+Wire Wire Line
+	4850 3300 4850 2500
+Connection ~ 4850 2500
+Wire Wire Line
+	3550 3700 4200 3700
+Connection ~ 4200 3700
+Wire Wire Line
+	4200 3700 4200 3850
+Wire Wire Line
+	3550 3600 4050 3600
+Wire Wire Line
+	4050 3600 4050 2700
+Connection ~ 4050 2700
+Wire Wire Line
+	4050 2700 5600 2700
+Wire Wire Line
+	3550 3400 5350 3400
+Wire Wire Line
+	5350 3400 5350 4050
+Wire Wire Line
+	5350 4050 6200 4050
+Wire Wire Line
+	6200 4050 6200 5000
+Wire Wire Line
+	6200 5000 7300 5000
+Text Label 3700 3400 0    50   ~ 0
+SCK
+Text Label 3700 3200 0    50   ~ 0
+MISO
+Text Label 3700 3500 0    50   ~ 0
+MOSI
 Wire Bus Line
 	2500 1200 2500 4600
 Wire Bus Line
