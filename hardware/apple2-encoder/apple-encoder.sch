@@ -1954,7 +1954,7 @@ U 1 1 5F355459
 P 11950 4650
 F 0 "J8" H 11868 6067 50  0000 C CNN
 F 1 "Conn_01x25" H 11868 5976 50  0000 C CNN
-F 2 "unikbd:ExpansionHeader_1x25_P2.54" H 11950 4650 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x25_P2.54mm_Vertical" H 11950 4650 50  0001 C CNN
 F 3 "~" H 11950 4650 50  0001 C CNN
 	1    11950 4650
 	-1   0    0    -1  
@@ -2196,18 +2196,18 @@ Text Label 12550 3750 0    50   ~ 0
 LED1
 NoConn ~ 12150 5850
 NoConn ~ 12150 3450
+Text Notes 3395 9280 0    50   ~ 0
+SOL-20:\n/RESET (PIN 13) = OUT3\nBREAK (PIN 4) = OUT2 \nLOCAL (PIN 14) = OUT1\n\n\nApple 1:\nD7 on socket is tied high\n/RESET = OUT3\nCLRSCR = OUT1\n\nApple 2:\n/RESET = OUT3\n\n
+Wire Bus Line
+	2500 1200 2500 4600
 Wire Bus Line
 	6000 4600 6000 7700
 Wire Bus Line
 	2500 4600 2500 8400
 Wire Bus Line
-	2500 1200 2500 4600
+	15900 2200 15900 8200
 Wire Bus Line
 	10700 2600 10700 8200
 Wire Bus Line
 	13500 2200 13500 8200
-Wire Bus Line
-	15900 2200 15900 8200
-Text Notes 3395 9280 0    50   ~ 0
-SOL-20:\n/RESET (PIN 13) = OUT3\nBREAK (PIN 4) = OUT2 \nLOCAL (PIN 14) = OUT1\n\n\nApple 1:\nD7 on socket is tied high\n/RESET = OUT3\nCLRSCR = OUT1\n\nApple 2:\n/RESET = OUT3\n\n
 $EndSCHEMATC
