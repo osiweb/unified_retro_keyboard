@@ -6,10 +6,18 @@ The keyboard allows use of Cherry MX keys, or Futaba MD-4PCS (aka George Risk KB
 
 The keyboard is designed using KiCad in order to be the most useful for anybody wishing to modify the keyboard for more specific uses, or to add to the project.
 
-This keyboard project so far consists of:
+### Capabilities so far:
+- Replacement keyboard for OSI computers
+- Replacement keyboard for Apple II/II+ computers
+- Apple I keyboard
+- Sol-20 keyboard
+- (hardware complete, firmware in development) Replace encoder board on Apple II/II+ keyboards
+- (hardware complete, firmware in development) Convert an OSI 542 keyboard into a generic ASCII keyboard
+
+### This keyboard project so far consists of:
 - A classic retro-style ASCII keyboard, modeled after the ADM-3A keyboard, which
   can be also be populated to fit perfectly in an Apple II/II+ case (with corresponding Apple II keymaps), or an OSI
   case (with OSI adapter).
 - A Sol-20 compatible keyboard.
-- Keyscan/decoder interface modules that can output parallel ASCII, and can be adapted for other protocols.  The interface modules support multiple keymaps (switch selectable) and can be used with the Classic and Sol-20 keybaords, and can also replace the Apple II/II+ keyboard encoder, or drive an OSI 542 keyboard.
-- An OSI-compatible interface module.
+- Keyscan/decoder interface modules that can output parallel ASCII, and can be adapted for other protocols.
+
