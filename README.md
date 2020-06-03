@@ -11,5 +11,5 @@ This keyboard project so far consists of:
   can be also be populated to fit perfectly in an Apple II/II+ case (with corresponding Apple II keymaps), or an OSI
   case (with OSI adapter).
 - A Sol-20 compatible keyboard.
-- A keyscan/decoder interface module that can output parallel ASCII, and can be adapted for other protocols.
+- Keyscan/decoder interface modules that can output parallel ASCII, and can be adapted for other protocols.  The interface modules support multiple keymaps (switch selectable) and can be used with the Classic and Sol-20 keybaords, and can also replace the Apple II/II+ keyboard encoder, or drive an OSI 542 keyboard.
 - An OSI-compatible interface module.
