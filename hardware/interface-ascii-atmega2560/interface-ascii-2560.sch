@@ -5,8 +5,8 @@ $Descr USLedger 17000 11000
 encoding utf-8
 Sheet 1 1
 Title "Unified Retro Keyboard ASCII Interface (2560)"
-Date "2020-05-31"
-Rev "3.3"
+Date "2020-06-02"
+Rev "3.4"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
