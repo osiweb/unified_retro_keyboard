@@ -9,10 +9,13 @@ The keyboard is designed using KiCad in order to be the most useful for anybody 
 ### Capabilities so far:
 - Replacement keyboard for OSI computers
 - Replacement keyboard for Apple II/II+ computers
-- Apple I keyboard
-- Sol-20 keyboard
-- (hardware complete, firmware in development) Replace encoder board on Apple II/II+ keyboards
-- (hardware complete, firmware in development) Convert an OSI 542 keyboard into a generic ASCII keyboard
+- Replacement keyboard for the Sol-20 computer
+- Generic ADM-3A/Teletype style keyboard
+- Apple I keyboard (multiple styles)
+
+### Coming soon:
+- Replace encoder board on Apple II/II+ keyboards
+- Convert an OSI 542 keyboard into a generic ASCII keyboard
 
 ### This keyboard project so far consists of:
 - A classic retro-style ASCII keyboard, modeled after the ADM-3A keyboard, which
