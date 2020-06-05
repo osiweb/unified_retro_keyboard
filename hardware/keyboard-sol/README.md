@@ -11,8 +11,7 @@ classic ASCII keyset, with a special SOL-20 add-on keyset.
 ## Differences from the original include:
 
 1. The original keyboard is a capacitive keyboard. This keyboard uses standard
-   switches (either Cherry or Futaba). The Futaba keys approach the original
-   feel, but there is a difference.
+   switches (either Cherry or Futaba).
    
 1. The original keycaps have an 11 degree angled stem. It may be possible to
    find such keycaps, but I was unable to find any. It also may be possible to
