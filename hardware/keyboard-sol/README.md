@@ -20,6 +20,9 @@ classic ASCII keyset, with a special SOL-20 add-on keyset.
    althought there is an aesthetic difference. There is s tiny bit of space
    between keys using straight keycaps, so an 11 degree adapter may not require
    any change to the layout.
+   
+1. The original uses UPPERCASE+REPEAT to reset the system. For technical
+   reasons, this version uses CTRL+MODE_SELECT to RESET the system. 
 
 ## Notes
 
