@@ -25,3 +25,5 @@ classic ASCII keyset, with a special SOL-20 add-on keyset.
 ## Notes
 
 1. Some services balk at the number of cutouts in the full SOL-20 aligners, so in addition to the full aligner plates, the aligners for cherry MX and futaba keys have also been broken out into separate aligners for the main keyboard and numeric keypad.
+
+<img alt="Sol 20 Keyboard" src="images/sol_20_kbd.jpg" height=50% width=50%>
