@@ -24,8 +24,4 @@ classic ASCII keyset, with a special SOL-20 add-on keyset.
 1. The original uses UPPERCASE+REPEAT to reset the system. For technical
    reasons, this version uses CTRL+MODE_SELECT to RESET the system. 
 
-## Notes
-
-1. Some services balk at the number of cutouts in the full SOL-20 aligners, so in addition to the full aligner plates, the aligners for cherry MX and futaba keys have also been broken out into separate aligners for the main keyboard and numeric keypad.
-
 <img alt="Sol 20 Keyboard" src="images/sol_20_kbd.jpg" width=90%>
