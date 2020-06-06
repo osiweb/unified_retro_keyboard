@@ -23,4 +23,4 @@ The keyboard is designed using KiCad in order to be the most useful for anybody 
   case (with OSI adapter).
 - A Sol-20 compatible keyboard.
 - Keyscan/decoder interface modules that can output parallel ASCII, and can be adapted for other protocols.
-
+- An OSI interface module, to connect the classic keyboard to an OSI computer.
