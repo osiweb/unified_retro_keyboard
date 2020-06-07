@@ -21,7 +21,9 @@ classic ASCII keyset, with a special SOL-20 add-on keyset.
    between keys using straight keycaps, so an 11 degree adapter may not require
    any change to the layout.
    
+   
 1. The original uses UPPERCASE+REPEAT to reset the system. For technical
    reasons, this version uses CTRL+MODE_SELECT to RESET the system. 
 
 <img alt="Sol 20 Keyboard" src="images/sol_20_kbd.jpg" width=90%>
+<img alt="Sol 20 Keyboard" src="images/kbd_fit.jpg" width=90%>
