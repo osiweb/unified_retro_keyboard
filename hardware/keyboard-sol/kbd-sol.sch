@@ -4,9 +4,9 @@ EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 4
-Title "Unified Retro Keyboard"
+Title "Sol-20 keyboard"
 Date "2020-05-05"
-Rev "1.4"
+Rev "1.5"
 Comp "OSIWeb.org"
 Comment1 "Main sheet with connector"
 Comment2 ""
@@ -557,7 +557,7 @@ Wire Bus Line
 Wire Bus Line
 	5820 700  5820 2210
 Wire Bus Line
-	7400 700  7400 3050
-Wire Bus Line
 	2925 700  2925 4700
+Wire Bus Line
+	7400 700  7400 3050
 $EndSCHEMATC
