@@ -24,4 +24,10 @@ K TTL CNT CNT4
 F http://www.ti.com/lit/ds/symlink/sn74ls193.pdf
 $ENDCMP
 #
+$CMP SW_Push_LED
+D Push button switch with LED, generic
+K switch normally-open pushbutton push-button LED
+F ~
+$ENDCMP
+#
 #End Doc Library
