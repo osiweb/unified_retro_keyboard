@@ -4,9 +4,9 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 3
-Title "Universal Retro Keyboard"
-Date "2019-08-25"
-Rev "1.0"
+Title "Unified Retro Keyboard"
+Date "2020-06-11"
+Rev "1.6"
 Comp "OSIWeb.org"
 Comment1 ""
 Comment2 ""
@@ -305,20 +305,6 @@ F 3 "" H 5650 4250 50  0001 C CNN
 $EndComp
 $Comp
 L Switch:SW_Push SW?
-U 1 1 5BCAF39B
-P 6450 4050
-AR Path="/5BC3E99D/5BCAF39B" Ref="SW?"  Part="1" 
-AR Path="/5BC3EA0A/5BCAF39B" Ref="SW17"  Part="1" 
-AR Path="/5BCAF39B" Ref="SW?"  Part="1" 
-F 0 "SW17" H 6450 4335 50  0000 C CNN
-F 1 "Line Feed" H 6450 4244 50  0000 C CNN
-F 2 "unikbd:Key_MX" H 6450 4250 50  0001 C CNN
-F 3 "" H 6450 4250 50  0001 C CNN
-	1    6450 4050
-	1    0    0    -1  
-$EndComp
-$Comp
-L Switch:SW_Push SW?
 U 1 1 5BCAF3A2
 P 7250 4050
 AR Path="/5BC3E99D/5BCAF3A2" Ref="SW?"  Part="1" 
@@ -399,20 +385,6 @@ F 1 "1N4148" V 5805 4221 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5850 4125 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 5850 4300 50  0001 C CNN
 	1    5850 4300
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Diode:1N4148 D?
-U 1 1 5BCAF3D3
-P 6650 4300
-AR Path="/5BC3E99D/5BCAF3D3" Ref="D?"  Part="1" 
-AR Path="/5BC3EA0A/5BCAF3D3" Ref="D18"  Part="1" 
-AR Path="/5BCAF3D3" Ref="D?"  Part="1" 
-F 0 "D18" V 6696 4221 50  0000 R CNN
-F 1 "1N4148" V 6605 4221 50  0000 R CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 6650 4125 50  0001 C CNN
-F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 6650 4300 50  0001 C CNN
-	1    6650 4300
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -901,11 +873,6 @@ Wire Wire Line
 	3450 4450 4250 4450
 Connection ~ 4250 4450
 Connection ~ 5850 4450
-Wire Wire Line
-	5850 4450 6650 4450
-Connection ~ 6650 4450
-Wire Wire Line
-	6650 4450 7450 4450
 Connection ~ 7450 4450
 Wire Wire Line
 	7450 4450 8250 4450
@@ -991,8 +958,6 @@ Wire Wire Line
 Wire Wire Line
 	5850 4150 5850 4050
 Wire Wire Line
-	6650 4150 6650 4050
-Wire Wire Line
 	7450 4150 7450 4050
 Wire Wire Line
 	8250 4150 8250 4050
@@ -1059,11 +1024,6 @@ Wire Wire Line
 Wire Wire Line
 	6250 1650 6250 3150
 Connection ~ 6250 3150
-Wire Wire Line
-	6250 3150 6250 4050
-Connection ~ 6250 4050
-Wire Wire Line
-	6250 4050 6250 4950
 Connection ~ 6250 4950
 Wire Wire Line
 	6250 4950 6250 5850
@@ -1135,4 +1095,10 @@ Text Notes 4700 4200 0    50   ~ 0
 Caps Lock
 Text Notes 3320 5830 0    50   ~ 0
 @
+Wire Wire Line
+	6250 3150 6250 4950
+Wire Wire Line
+	5850 4450 7450 4450
+Text Notes 6340 4185 0    50   ~ 0
+Line Feed
 $EndSCHEMATC

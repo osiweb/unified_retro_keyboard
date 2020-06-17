@@ -4,9 +4,9 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 3 3
-Title "Universal Retro Keyboard"
-Date "2019-08-25"
-Rev "1.0"
+Title "Unified Retro Keyboard"
+Date "2020-06-11"
+Rev "1.6"
 Comp "OSIWeb.org"
 Comment1 "Key Matrix part 2"
 Comment2 ""
@@ -186,7 +186,7 @@ U 1 1 5BC6CD72
 P 6200 4100
 F 0 "SW46" H 6200 4385 50  0000 C CNN
 F 1 "SPACE" H 6200 4294 50  0000 C CNN
-F 2 "unikbd:Key_MX" H 6200 4300 50  0001 C CNN
+F 2 "unikbd:Key_MX_Spacebar_5.25" H 6200 4300 50  0001 C CNN
 F 3 "" H 6200 4300 50  0001 C CNN
 	1    6200 4100
 	1    0    0    -1  

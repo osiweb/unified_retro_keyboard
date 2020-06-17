@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 3
 Title "Unified Retro Keyboard"
-Date "2019-08-25"
-Rev "1.4"
+Date "2020-06-11"
+Rev "1.6"
 Comp "OSIWeb.org"
 Comment1 "Main sheet with connector"
 Comment2 ""
@@ -110,48 +110,12 @@ F 3 "~" H 8085 3175 50  0001 C CNN
 	1    8085 2875
 	0    1    -1   0   
 $EndComp
-$Comp
-L Switch:SW_Push_LED SW32
-U 1 1 5DF7DA75
-P 8525 1850
-F 0 "SW32" H 8250 2025 50  0000 C CNN
-F 1 "@ (OSI shift lock)" H 8400 2125 50  0000 C CNN
-F 2 "unikbd:Key_MX_LED" H 8525 2150 50  0001 C CNN
-F 3 "~" H 8525 2150 50  0001 C CNN
-	1    8525 1850
-	-1   0    0    -1  
-$EndComp
 NoConn ~ 6045 2850
 NoConn ~ 6045 2950
 NoConn ~ 6045 3050
 NoConn ~ 6045 3150
-$Comp
-L Switch:SW_Push_LED SW61
-U 1 1 5DF0C543
-P 7635 1450
-F 0 "SW61" H 7505 1660 50  0000 C CNN
-F 1 "Power light" H 7665 1750 50  0000 C CNN
-F 2 "unikbd:Key_MX_LED" H 7635 1750 50  0001 C CNN
-F 3 "~" H 7635 1750 50  0001 C CNN
-	1    7635 1450
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
-	8120 1550 7200 1550
-Wire Wire Line
-	8120 1450 8120 1550
-Wire Wire Line
-	7835 1450 8120 1450
-Wire Wire Line
-	8120 1350 7835 1350
-Wire Wire Line
-	8120 1070 8120 1350
-Wire Wire Line
-	6545 1070 8120 1070
-Wire Wire Line
-	6545 1250 6545 1070
-Wire Wire Line
-	7435 1350 6545 1350
+	6545 1250 6545 895 
 NoConn ~ 6545 3150
 NoConn ~ 6545 3050
 NoConn ~ 6545 2950
@@ -367,8 +331,6 @@ Entry Wire Line
 	9035 2670 9135 2570
 Entry Wire Line
 	9035 3075 9135 2975
-Wire Bus Line
-	9135 695  5545 700 
 Text Label 8685 2670 2    50   ~ 0
 Row5
 Text Label 8685 3075 2    50   ~ 0
@@ -403,13 +365,13 @@ F 3 "" H 7490 2250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8725 1750 9000 1750
+	8755 1750 9000 1750
 Wire Wire Line
 	9000 1750 9000 1525
 Wire Wire Line
-	9000 1525 8275 1525
+	9000 1525 8295 1525
 Wire Wire Line
-	8275 1525 8275 1650
+	8295 1525 8295 1650
 Wire Wire Line
 	7690 2050 7740 2050
 Wire Wire Line
@@ -429,7 +391,7 @@ L Device:LED D33
 U 1 1 5E12925F
 P 8535 2045
 F 0 "D33" H 8750 2095 50  0000 R CNN
-F 1 "LED" H 8445 2100 50  0000 R CNN
+F 1 "LED" H 8445 2100 50  0001 R CNN
 F 2 "LED_THT:LED_D5.0mm" H 8535 2045 50  0001 C CNN
 F 3 "~" H 8535 2045 50  0001 C CNN
 	1    8535 2045
@@ -442,9 +404,9 @@ Wire Wire Line
 Wire Wire Line
 	6850 2350 6850 3075
 Wire Wire Line
-	6545 1650 8275 1650
+	6545 1650 8295 1650
 Wire Wire Line
-	6545 1750 8325 1750
+	6545 1750 8355 1750
 Wire Wire Line
 	7740 2150 6545 2150
 Wire Wire Line
@@ -454,13 +416,7 @@ Wire Wire Line
 Wire Wire Line
 	6745 1905 8190 1905
 Wire Wire Line
-	8190 1905 8190 2150
-Wire Wire Line
-	8190 2150 8995 2150
-Wire Wire Line
-	8995 2150 8995 2045
-Wire Wire Line
-	8995 1850 8725 1850
+	8995 1850 8755 1850
 Wire Wire Line
 	6545 1950 6745 1950
 Wire Wire Line
@@ -468,17 +424,14 @@ Wire Wire Line
 Wire Wire Line
 	8245 2045 8385 2045
 Wire Wire Line
-	8245 1850 8325 1850
+	8245 1850 8355 1850
 Wire Wire Line
 	8685 2045 8995 2045
 Connection ~ 8995 2045
 Wire Wire Line
 	8995 2045 8995 1850
 Wire Wire Line
-	6850 3075 8085 3075
-Wire Wire Line
-	6545 2250 8085 2250
-Connection ~ 5545 700 
+	6850 3075 7435 3075
 $Comp
 L Device:R_US R2
 U 1 1 5FEAB402
@@ -495,40 +448,236 @@ Wire Wire Line
 Wire Wire Line
 	7650 1850 8245 1850
 Connection ~ 8245 1850
-Wire Wire Line
-	8085 2250 8085 2320
-$Comp
-L Device:R_US R3
-U 1 1 5FED3098
-P 8085 2470
-F 0 "R3" H 7940 2575 50  0000 L CNN
-F 1 "470" H 7890 2405 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8125 2460 50  0001 C CNN
-F 3 "~" H 8085 2470 50  0001 C CNN
-	1    8085 2470
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8085 2620 8085 2675
 $Comp
 L Device:R_US R1
 U 1 1 5FED4095
-P 7050 1550
-F 0 "R1" V 7010 1355 50  0000 C CNN
-F 1 "470" V 7010 1690 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7090 1540 50  0001 C CNN
-F 3 "~" H 7050 1550 50  0001 C CNN
-	1    7050 1550
+P 7050 1450
+F 0 "R1" V 7010 1255 50  0000 C CNN
+F 1 "470" V 7010 1590 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7090 1440 50  0001 C CNN
+F 3 "~" H 7050 1450 50  0001 C CNN
+	1    7050 1450
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6900 1550 6545 1550
-Wire Wire Line
-	6545 1450 7435 1450
+	6545 1450 6900 1450
 Wire Bus Line
-	9135 700  9135 2975
+	5545 700  9135 700 
+Connection ~ 5545 700 
+$Comp
+L unikbd:SW_Push_LED SW32
+U 1 1 5EEA388A
+P 8555 1850
+F 0 "SW32" H 8660 2050 50  0000 C CNN
+F 1 "@ (OSI ShiftLock)" H 8645 2115 50  0000 C CNN
+F 2 "unikbd:Key_MX_LED" H 8555 2150 50  0001 C CNN
+F 3 "~" H 8555 2150 50  0001 C CNN
+	1    8555 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L unikbd:SW_Push_LED SW61
+U 1 1 5EE9EA4F
+P 7830 1260
+F 0 "SW61" H 7960 1465 50  0000 C CNN
+F 1 "Power Light" H 7830 1550 50  0000 C CNN
+F 2 "unikbd:Key_MX_LED" H 7830 1560 50  0001 C CNN
+F 3 "~" H 7830 1560 50  0001 C CNN
+	1    7830 1260
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7200 1450 7490 1450
+Wire Wire Line
+	7490 1450 7490 1260
+Wire Wire Line
+	7490 1260 7630 1260
+Wire Wire Line
+	6545 1350 7120 1350
+Wire Wire Line
+	7120 1350 7120 1160
+Wire Wire Line
+	7120 1160 7630 1160
+Wire Wire Line
+	6545 895  8270 895 
+Wire Wire Line
+	8270 895  8270 1160
+Wire Wire Line
+	8270 1160 8030 1160
+Wire Wire Line
+	6545 1550 8270 1550
+Wire Wire Line
+	8270 1260 8030 1260
+Wire Wire Line
+	8270 1260 8270 1450
+$Comp
+L Device:LED D62
+U 1 1 5EE7A83E
+P 7825 1450
+F 0 "D62" H 8040 1500 50  0000 R CNN
+F 1 "LED" H 7735 1505 50  0001 R CNN
+F 2 "LED_THT:LED_D2.0mm_W4.8mm_H2.5mm_FlatTop" H 7825 1450 50  0001 C CNN
+F 3 "~" H 7825 1450 50  0001 C CNN
+	1    7825 1450
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	7675 1450 7490 1450
+Connection ~ 7490 1450
+Wire Wire Line
+	7975 1450 8270 1450
+Connection ~ 8270 1450
+Wire Wire Line
+	8270 1450 8270 1550
+$Comp
+L Device:LED D63
+U 1 1 5EE84B07
+P 7745 2870
+F 0 "D63" V 7830 3015 50  0000 R CNN
+F 1 "LED" V 7845 2845 50  0001 R CNN
+F 2 "LED_THT:LED_D2.0mm_W4.8mm_H2.5mm_FlatTop" H 7745 2870 50  0001 C CNN
+F 3 "~" H 7745 2870 50  0001 C CNN
+	1    7745 2870
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	7745 3020 7745 3075
+Connection ~ 7745 3075
+Wire Wire Line
+	7745 3075 8085 3075
+Wire Wire Line
+	7745 2720 7745 2655
+Wire Wire Line
+	7745 2655 8085 2655
+Connection ~ 8085 2655
+Wire Wire Line
+	8085 2655 8085 2675
+Wire Wire Line
+	8995 2370 8995 2245
+Wire Wire Line
+	8190 1905 8190 2370
+Wire Wire Line
+	8190 2370 8995 2370
+$Comp
+L Device:LED D64
+U 1 1 5EE9DF56
+P 8535 2245
+F 0 "D64" H 8735 2295 50  0000 R CNN
+F 1 "LED" V 8635 2220 50  0001 R CNN
+F 2 "LED_THT:LED_D2.0mm_W4.8mm_H2.5mm_FlatTop" H 8535 2245 50  0001 C CNN
+F 3 "~" H 8535 2245 50  0001 C CNN
+	1    8535 2245
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	8385 2245 8245 2245
+Wire Wire Line
+	8245 2245 8245 2045
+Connection ~ 8245 2045
+Wire Wire Line
+	8685 2245 8995 2245
+Connection ~ 8995 2245
+Wire Wire Line
+	8995 2245 8995 2045
+$Comp
+L Switch:SW_Push_LED SW17
+U 1 1 5EE923F1
+P 8085 3675
+F 0 "SW17" V 8005 3915 50  0000 C CNN
+F 1 "Line_Feed" V 7835 3675 50  0000 C CNN
+F 2 "unikbd:Key_MX_LED" H 8085 3975 50  0001 C CNN
+F 3 "~" H 8085 3975 50  0001 C CNN
+	1    8085 3675
+	0    1    -1   0   
+$EndComp
+Entry Wire Line
+	9035 3470 9135 3370
+Entry Wire Line
+	9035 3875 9135 3775
+Text Label 8685 3470 2    50   ~ 0
+Row5
+Text Label 8685 3875 2    50   ~ 0
+Col4
+$Comp
+L Diode:1N4148 D?
+U 1 1 5EE923FB
+P 8385 3470
+AR Path="/5BC3E99D/5EE923FB" Ref="D?"  Part="1" 
+AR Path="/5BC3EA0A/5EE923FB" Ref="D?"  Part="1" 
+AR Path="/5EE923FB" Ref="D18"  Part="1" 
+F 0 "D18" H 8431 3391 50  0000 R CNN
+F 1 "1N4148" H 8460 3570 50  0000 R CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8385 3295 50  0001 C CNN
+F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 8385 3470 50  0001 C CNN
+	1    8385 3470
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	9035 3470 8535 3470
+Wire Wire Line
+	8185 3875 9035 3875
+Wire Wire Line
+	8235 3470 8185 3470
+Wire Wire Line
+	8185 3470 8185 3475
+Wire Wire Line
+	8085 3455 8085 3475
+$Comp
+L Device:R_US R3
+U 1 1 5FED3098
+P 7500 2250
+F 0 "R3" H 7355 2355 50  0000 L CNN
+F 1 "470" H 7305 2185 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7540 2240 50  0001 C CNN
+F 3 "~" H 7500 2250 50  0001 C CNN
+	1    7500 2250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6545 2250 7350 2250
+Wire Wire Line
+	7650 2250 8085 2250
+Wire Wire Line
+	7435 3875 7435 3075
+Connection ~ 7435 3075
+Wire Wire Line
+	7435 3075 7745 3075
+Wire Wire Line
+	8085 2250 8085 2655
+Wire Wire Line
+	7745 2655 7605 2655
+Wire Wire Line
+	7605 2655 7605 3455
+Wire Wire Line
+	7605 3455 7745 3455
+Connection ~ 7745 2655
+$Comp
+L Device:LED D65
+U 1 1 5EECE7DC
+P 7745 3670
+F 0 "D65" V 7830 3815 50  0000 R CNN
+F 1 "LED" V 7845 3645 50  0001 R CNN
+F 2 "LED_THT:LED_D2.0mm_W4.8mm_H2.5mm_FlatTop" H 7745 3670 50  0001 C CNN
+F 3 "~" H 7745 3670 50  0001 C CNN
+	1    7745 3670
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	7745 3820 7745 3875
+Wire Wire Line
+	7435 3875 7745 3875
+Connection ~ 7745 3875
+Wire Wire Line
+	7745 3875 8085 3875
+Wire Wire Line
+	7745 3520 7745 3455
+Wire Bus Line
+	9135 700  9135 3775
 Wire Bus Line
 	5545 700  5545 2650
 Wire Bus Line
 	2925 700  2925 4700
+Connection ~ 7745 3455
+Wire Wire Line
+	7745 3455 8085 3455
 $EndSCHEMATC
