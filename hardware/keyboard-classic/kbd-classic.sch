@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 3
 Title "Unified Retro Keyboard"
-Date "2020-06-11"
-Rev "1.6"
+Date "2020-06-17"
+Rev "1.7"
 Comp "OSIWeb.org"
 Comment1 "Main sheet with connector"
 Comment2 ""
@@ -671,13 +671,13 @@ Wire Wire Line
 	7745 3875 8085 3875
 Wire Wire Line
 	7745 3520 7745 3455
+Connection ~ 7745 3455
+Wire Wire Line
+	7745 3455 8085 3455
 Wire Bus Line
 	9135 700  9135 3775
 Wire Bus Line
 	5545 700  5545 2650
 Wire Bus Line
 	2925 700  2925 4700
-Connection ~ 7745 3455
-Wire Wire Line
-	7745 3455 8085 3455
 $EndSCHEMATC
