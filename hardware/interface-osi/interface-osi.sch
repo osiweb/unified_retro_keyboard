@@ -6,7 +6,7 @@ encoding utf-8
 Sheet 1 3
 Title "OSI Interface"
 Date "2019-08-25"
-Rev "1.0"
+Rev "1.2"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -324,7 +324,7 @@ U 1 1 5D1EDC84
 P 12200 2750
 F 0 "J2" H 12230 3760 50  0000 C CNN
 F 1 "Key Matrix" H 12270 1660 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_2x20_P2.54mm_Vertical" H 12200 2750 50  0001 C CNN
+F 2 "unikbd:kbd_header_and_mounting_holes" H 12200 2750 50  0001 C CNN
 F 3 "~" H 12200 2750 50  0001 C CNN
 	1    12200 2750
 	1    0    0    -1  

@@ -6,7 +6,7 @@ encoding utf-8
 Sheet 3 3
 Title "OSI Interface"
 Date "2020-04-23"
-Rev ""
+Rev "1.2"
 Comp "OSIWeb.org"
 Comment1 "Reset and ShiftLock circuits"
 Comment2 ""

@@ -5,8 +5,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 3
 Title "OSI Interface"
-Date "2020-04-23"
-Rev "2"
+Date "2020-06-23"
+Rev "1.2"
 Comp "OSIWeb.org"
 Comment1 "Sound Circuit"
 Comment2 ""

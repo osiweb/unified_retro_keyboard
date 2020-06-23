@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "ASCII Interface for Unified Retro Keyboard"
-Date "2020-05-13"
-Rev "2.7"
+Date "2020-06-22"
+Rev "2.8"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -287,7 +287,7 @@ U 1 1 5D1EDC84
 P 8760 2150
 F 0 "J6" H 8795 3175 50  0000 C CNN
 F 1 "Keyboard" H 8800 1050 50  0000 C CNN
-F 2 "unikbd:PinHeader_2x20_P2.54mm_Vertical" H 8760 2150 50  0001 C CNN
+F 2 "unikbd:kbd_header_and_mounting_holes" H 8760 2150 50  0001 C CNN
 F 3 "~" H 8760 2150 50  0001 C CNN
 	1    8760 2150
 	1    0    0    -1  

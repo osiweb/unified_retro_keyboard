@@ -5,8 +5,8 @@ $Descr USLedger 17000 11000
 encoding utf-8
 Sheet 1 1
 Title "Unified Retro Keyboard ASCII Interface (2560)"
-Date "2020-06-02"
-Rev "3.4"
+Date "2020-06-23"
+Rev "3.5"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -128,7 +128,7 @@ U 1 1 5D1EDC84
 P 14500 3000
 F 0 "J10" H 14535 4025 50  0000 C CNN
 F 1 "Keyboard" H 14540 1900 50  0000 C CNN
-F 2 "unikbd:PinHeader_2x20_P2.54mm_Vertical" H 14500 3000 50  0001 C CNN
+F 2 "unikbd:kbd_header_and_mounting_holes" H 14500 3000 50  0001 C CNN
 F 3 "~" H 14500 3000 50  0001 C CNN
 	1    14500 3000
 	1    0    0    -1  

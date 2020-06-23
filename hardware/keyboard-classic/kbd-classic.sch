@@ -128,7 +128,7 @@ U 1 1 5D1E4169
 P 6245 2150
 F 0 "J1" H 6295 3267 50  0000 C CNN
 F 1 "Controller" H 6295 3176 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x20_P2.54mm_Vertical" H 6245 2150 50  0001 C CNN
+F 2 "unikbd:kbd_header_and_mounting_holes" H 6245 2150 50  0001 C CNN
 F 3 "~" H 6245 2150 50  0001 C CNN
 	1    6245 2150
 	1    0    0    -1  
@@ -354,15 +354,15 @@ Wire Wire Line
 $Comp
 L Switch:SW_Push SW?
 U 1 1 5D6C3751
-P 7490 2050
+P 7500 2275
 AR Path="/5BC3E99D/5D6C3751" Ref="SW?"  Part="1" 
 AR Path="/5D6C3751" Ref="SW34"  Part="1" 
-F 0 "SW34" H 7240 2100 50  0000 C CNN
-F 1 "Rubout (OSI Break)" H 7360 2000 50  0000 C CNN
-F 2 "unikbd:Key_MX" H 7490 2250 50  0001 C CNN
-F 3 "" H 7490 2250 50  0001 C CNN
-	1    7490 2050
-	1    0    0    -1  
+F 0 "SW34" H 7250 2325 50  0000 C CNN
+F 1 "Rubout (OSI Break)" H 7370 2225 50  0000 C CNN
+F 2 "unikbd:Key_MX" H 7500 2475 50  0001 C CNN
+F 3 "" H 7500 2475 50  0001 C CNN
+	1    7500 2275
+	-1   0    0    -1  
 $EndComp
 Wire Wire Line
 	8755 1750 9000 1750
@@ -372,10 +372,6 @@ Wire Wire Line
 	9000 1525 8295 1525
 Wire Wire Line
 	8295 1525 8295 1650
-Wire Wire Line
-	7690 2050 7740 2050
-Wire Wire Line
-	7740 2050 7740 2150
 NoConn ~ 6545 2550
 NoConn ~ 6545 2450
 Text Notes 580  6180 0    79   ~ 0
@@ -400,25 +396,15 @@ $EndComp
 Wire Bus Line
 	2925 700  5545 700 
 Wire Wire Line
-	6545 2350 6850 2350
+	6545 2350 6700 2350
 Wire Wire Line
-	6850 2350 6850 3075
+	6700 2350 6700 3075
 Wire Wire Line
 	6545 1650 8295 1650
 Wire Wire Line
 	6545 1750 8355 1750
 Wire Wire Line
-	7740 2150 6545 2150
-Wire Wire Line
-	6545 2050 7290 2050
-Wire Wire Line
-	6745 1950 6745 1905
-Wire Wire Line
-	6745 1905 8190 1905
-Wire Wire Line
 	8995 1850 8755 1850
-Wire Wire Line
-	6545 1950 6745 1950
 Wire Wire Line
 	8245 1850 8245 2045
 Wire Wire Line
@@ -431,7 +417,7 @@ Connection ~ 8995 2045
 Wire Wire Line
 	8995 2045 8995 1850
 Wire Wire Line
-	6850 3075 7435 3075
+	6700 3075 7435 3075
 $Comp
 L Device:R_US R2
 U 1 1 5FEAB402
@@ -444,9 +430,9 @@ F 3 "~" H 7500 1850 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6545 1850 7350 1850
+	6545 1850 7115 1850
 Wire Wire Line
-	7650 1850 8245 1850
+	7650 1850 7850 1850
 Connection ~ 8245 1850
 $Comp
 L Device:R_US R1
@@ -460,7 +446,7 @@ F 3 "~" H 7050 1450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6545 1450 6900 1450
+	6545 1450 6750 1450
 Wire Bus Line
 	5545 700  9135 700 
 Connection ~ 5545 700 
@@ -487,17 +473,17 @@ F 3 "~" H 7830 1560 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7200 1450 7490 1450
+	7200 1450 7400 1450
 Wire Wire Line
 	7490 1450 7490 1260
 Wire Wire Line
 	7490 1260 7630 1260
 Wire Wire Line
-	6545 1350 7120 1350
+	6545 1350 6620 1350
 Wire Wire Line
-	7120 1350 7120 1160
+	6620 1350 6620 1160
 Wire Wire Line
-	7120 1160 7630 1160
+	6620 1160 7630 1160
 Wire Wire Line
 	6545 895  8270 895 
 Wire Wire Line
@@ -554,8 +540,6 @@ Wire Wire Line
 	8085 2655 8085 2675
 Wire Wire Line
 	8995 2370 8995 2245
-Wire Wire Line
-	8190 1905 8190 2370
 Wire Wire Line
 	8190 2370 8995 2370
 $Comp
@@ -625,25 +609,23 @@ Wire Wire Line
 $Comp
 L Device:R_US R3
 U 1 1 5FED3098
-P 7500 2250
-F 0 "R3" H 7355 2355 50  0000 L CNN
-F 1 "470" H 7305 2185 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7540 2240 50  0001 C CNN
-F 3 "~" H 7500 2250 50  0001 C CNN
-	1    7500 2250
+P 7500 2540
+F 0 "R3" V 7450 2645 50  0000 L CNN
+F 1 "470" V 7455 2290 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7540 2530 50  0001 C CNN
+F 3 "~" H 7500 2540 50  0001 C CNN
+	1    7500 2540
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	6545 2250 7350 2250
+	6545 2250 6800 2250
 Wire Wire Line
-	7650 2250 8085 2250
+	7650 2540 8085 2540
 Wire Wire Line
 	7435 3875 7435 3075
 Connection ~ 7435 3075
 Wire Wire Line
 	7435 3075 7745 3075
-Wire Wire Line
-	8085 2250 8085 2655
 Wire Wire Line
 	7745 2655 7605 2655
 Wire Wire Line
@@ -674,6 +656,109 @@ Wire Wire Line
 Connection ~ 7745 3455
 Wire Wire Line
 	7745 3455 8085 3455
+Wire Wire Line
+	8085 2540 8085 2655
+Wire Wire Line
+	6800 2250 6800 2540
+Wire Wire Line
+	6800 2540 7200 2540
+$Comp
+L Device:R_US R6
+U 1 1 5F057BC7
+P 7500 2425
+F 0 "R6" V 7455 2540 50  0000 L CNN
+F 1 "470" V 7460 2185 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 7540 2415 50  0001 C CNN
+F 3 "~" H 7500 2425 50  0001 C CNN
+	1    7500 2425
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8190 2085 8190 2370
+$Comp
+L Device:R_US R5
+U 1 1 5F082E1F
+P 7500 1950
+F 0 "R5" V 7465 1735 50  0000 C CNN
+F 1 "470" V 7465 2110 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 7540 1940 50  0001 C CNN
+F 3 "~" H 7500 1950 50  0001 C CNN
+	1    7500 1950
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_US R4
+U 1 1 5F08C312
+P 7050 1350
+F 0 "R4" V 7010 1155 50  0000 C CNN
+F 1 "470" V 7010 1490 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 7090 1340 50  0001 C CNN
+F 3 "~" H 7050 1350 50  0001 C CNN
+	1    7050 1350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6750 1450 6750 1350
+Wire Wire Line
+	6750 1350 6900 1350
+Connection ~ 6750 1450
+Wire Wire Line
+	6750 1450 6900 1450
+Wire Wire Line
+	7200 1350 7400 1350
+Wire Wire Line
+	7400 1350 7400 1450
+Connection ~ 7400 1450
+Wire Wire Line
+	7400 1450 7490 1450
+Wire Wire Line
+	7350 2425 7200 2425
+Wire Wire Line
+	7200 2425 7200 2540
+Connection ~ 7200 2540
+Wire Wire Line
+	7200 2540 7350 2540
+Wire Wire Line
+	7650 2425 8085 2425
+Wire Wire Line
+	8085 2540 8085 2425
+Connection ~ 8085 2540
+Wire Wire Line
+	7650 1950 7850 1950
+Wire Wire Line
+	7850 1950 7850 1850
+Connection ~ 7850 1850
+Wire Wire Line
+	7850 1850 8245 1850
+Wire Wire Line
+	7350 1950 7115 1950
+Wire Wire Line
+	7115 1950 7115 1850
+Connection ~ 7115 1850
+Wire Wire Line
+	7115 1850 7350 1850
+Wire Wire Line
+	6545 1950 7075 1950
+Wire Wire Line
+	7075 1950 7075 2085
+Wire Wire Line
+	7075 2085 8190 2085
+Wire Wire Line
+	6545 2050 6990 2050
+Wire Wire Line
+	6990 2050 6990 2115
+Wire Wire Line
+	6990 2115 7825 2115
+Wire Wire Line
+	7825 2115 7825 2275
+Wire Wire Line
+	7825 2275 7700 2275
+Wire Wire Line
+	7300 2275 6850 2275
+Wire Wire Line
+	6850 2275 6850 2150
+Wire Wire Line
+	6850 2150 6545 2150
 Wire Bus Line
 	9135 700  9135 3775
 Wire Bus Line
