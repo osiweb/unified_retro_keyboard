@@ -11,17 +11,17 @@ The aligner PCB includes a guide for bending the stabilizer.
 
 1. Start by creating a 90 degree bend about 2 cm from the end of the rod.  This allows enough room to clip the end down to the correct length later.
 
-<img alt="First Bend" src="build_images/rod_first_bend.jpg" height=75% width=75%>
+<img alt="First Bend" src="build-images/rod_first_bend.jpg" height=75% width=75%>
 
 1. Insert the bent end into one guide hole, and, keeping the rod as flat to the board as possible, use the second guide hole to estimate the position of the second bend.  Your estimate should be about 1mm short to allow for a bending radius.  Once you have the pliers positioned on the rod, make your 90 degree bend.
 
-<img alt="Insert Rod in Guide" src="build_images/rod_insert_first_arm.jpg.jpg" height=75% width=75%>
+<img alt="Insert Rod in Guide" src="build-images/rod_insert_first_arm.jpg" height=75% width=75%>
 
 1. Look along the length of the rod to make sure that both "arms" are in line.  If necessary, align the two arms by twisting about the axis of the axis of the rod.
 
 1. Test the fit of the rod by inserting it into the guide holes.  You can see, in this example, the rod is a tad long.
 
-<img alt="Test Fit" src="/build_images/test_fit_too_long.jpg" height=75% width=75%>
+<img alt="Test Fit" src="build-images/test_fit_too_long.jpg" height=75% width=75%>
 
 1. You can correct a slightly long rod by making three small bends near the center of the rod to produce a "mountain peak."  Start with a shallow angle, and increase the angle until the rod fits easily in the guide holes.
 
