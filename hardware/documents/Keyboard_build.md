@@ -40,7 +40,7 @@ See the Cherry MX section above for notes on installing the Cherry MX stabilizer
 
 The Futaba aligner PCB includes two stabilizer posts, allowing the futaba keys to be used with the Cherry MX PCB-mount stabilizers.
 
-<img alt="Futaba stabilizer adapter posts" src="pre-breakaway.jpg" height=50% width=50%>
+<img alt="Futaba stabilizer adapter posts" src="build-images/pre-breakaway.jpg" height=50% width=50%>
 
 1. Remove both posts from the PCB.  Newer revisions of the aligner board include perforations for easier break-away of the posts.
 
