@@ -11,21 +11,21 @@ The aligner PCB includes a guide for bending the stabilizer.
 
 1. Start by creating a 90 degree bend about 2 cm from the end of the rod.  This allows enough room to clip the end down to the correct length later.
 
-<img alt="First Bend" src="build-images/rod_first_bend.jpg" height=75% width=75%>
+    <img alt="First Bend" src="build-images/rod_first_bend.jpg" height=75% width=75%>
 
 1. Insert the bent end into one guide hole, and, keeping the rod as flat to the board as possible, use the second guide hole to estimate the position of the second bend.  Your estimate should be about 1mm short to allow for a bending radius.  Once you have the pliers positioned on the rod, make your 90 degree bend.
 
-<img alt="Insert Rod in Guide" src="build-images/rod_insert_first_arm.jpg" height=75% width=75%>
+    <img alt="Insert Rod in Guide" src="build-images/rod_insert_first_arm.jpg" height=75% width=75%>
 
 1. Look along the length of the rod to make sure that both "arms" are in line.  If necessary, align the two arms by twisting about the axis of the axis of the rod.
 
 1. Test the fit of the rod by inserting it into the guide holes.  You can see, in this example, the rod is a tad long.
 
-<img alt="Test Fit" src="build-images/test_fit_too_long.jpg" height=75% width=75%>
+    <img alt="Test Fit" src="build-images/test_fit_too_long.jpg" height=75% width=75%>
 
 1. Clip the arms of the rod to about 11 mm.
 
-<img alt="Clip Arms to Length" src="build-images/stabilizer_rod_timmed_arms.jpg" height=75% width=75%>
+    <img alt="Clip Arms to Length" src="build-images/stabilizer_rod_timmed_arms.jpg" height=75% width=75%>
 
 
 1. Install the Cherry MX stabilizers to the board.
@@ -41,12 +41,11 @@ The Futaba aligner PCB includes two stabilizer posts, allowing the futaba keys t
 
 1. Remove both posts from the PCB.  Newer revisions of the aligner board include perforations for easier break-away of the posts.
 
-<img alt="Break away posts from aligner" src="build-images/cutting_post.jpg" height=75% width=75%>
+    <img alt="Break away posts from aligner" src="build-images/cutting_post.jpg" height=75% width=75%>
 
 1. Be sure to file away any excess material from the breakaway tab.
-<img alt="Broken offfiling" src="build-images/futaba_posts_before_filing.jpg" height=75% width=75%>
 
-<img alt="Removed breakaway tabs" src="build-images/futaba_posts_breakaway_filed_off.jpg" height=75% width=75%>
+    <img alt="Broken offfiling" src="build-images/futaba_posts_before_filing.jpg" height=38% width=38%> <img alt="Removed breakaway tabs" src="build-images/futaba_posts_breakaway_filed_off.jpg" height=38% width=38%>
 
 1. File away the area marked "File to 1.5mm".  The aligner includes a thickness gauge to test fitting, but it turns out that manufacturing tolerances are not adequate, and the gauge is not reliable.  Use a spare key to test the thickness.  The post should require some pressure to inert into the keycap base.
 
@@ -58,7 +57,7 @@ The Futaba aligner PCB includes two stabilizer posts, allowing the futaba keys t
 
 1. Here is an example of posts before and after filing.  You may notice the small bump along the left side of the upper left post.  That got filed off after the photo was taken.
 
-<img alt="" src="" height=75% width=75%>
+   <img alt="" src="" height=75% width=75%>
 
 1. The posts should be just tight enough to require a pair of pliers to insert.  Use pliers to insert both posts fully.  Use a ruler or caliper to ensure the prodruding portions of both posts are the same length.
 
