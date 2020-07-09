@@ -1,6 +1,8 @@
 ## Unified Retrocomputer Keyboard Project
 
-This project aims to provide a (near) universal collection of keyboards for vintage computers.  Home computers of the 1970's typically either polled a switch matrix, or interfaced to a parallel ASCII keyboard via a parallel port.
+This project aims to provide a unified collection of keyboards and encoders for vintage computers, with modular design to reuse as many elements as possible across the designs.  
+
+Home computers of the 1970's typically either polled a switch matrix, or interfaced to a parallel ASCII keyboard via a parallel port.
 
 The keyboard allows use of Cherry MX keys, or Futaba MD-4PCS (aka George Risk KBM-01-01) keys.
 
