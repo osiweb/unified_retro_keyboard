@@ -37,13 +37,15 @@ The aligner PCB includes a guide for bending the stabilizer.
 See the Cherry MX section above for notes on installing the Cherry MX stabilizer hardware and bending the spacebar stabilizer rod.
 
 ##### Longer Stabilizer posts for Futaba
+
 The Futaba aligner PCB includes two stabilizer posts, allowing the futaba keys to be used with the Cherry MX PCB-mount stabilizers.
 
-    <img alt="Futaba stabilizer adapter posts" src="pre-breakaway.jpg" height=50% width=50%>
+<img alt="Futaba stabilizer adapter posts" src="pre-breakaway.jpg" height=50% width=50%>
 
 1. Remove both posts from the PCB.  Newer revisions of the aligner board include perforations for easier break-away of the posts.
 
     <img alt="Break away posts from aligner" src="build-images/cutting_post.jpg" height=50% width=50%>
+    <img alt="Futaba stabilizer adapter posts" src="pre-breakaway.jpg" height=50% width=50%>
 
 1. Be sure to file away any excess material from the breakaway tab.
 
