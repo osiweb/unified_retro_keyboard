@@ -21,6 +21,11 @@ F 0 "J2" H 1210 8710 50  0000 C CNN
 F 1 "Apple 1" H 1415 7875 50  0000 C CNN
 F 2 "Package_DIP:DIP-16_W7.62mm_Socket" H 1200 7900 50  0001 C CNN
 F 3 "~" H 1200 7900 50  0001 C CNN
+F 4 "YES" H 1200 7900 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 1200 7900 50  0001 C CNN "Fitted"
+F 6 "16-pin DIP socket" H 1200 7900 50  0001 C CNN "Parameters"
+F 7 "TH" H 1200 7900 50  0001 C CNN "Mount Style"
+F 8 "16-pin DIP socket" H 1200 7900 50  0001 C CNN "Package"
 	1    1200 7900
 	-1   0    0    -1  
 $EndComp
@@ -64,6 +69,11 @@ F 0 "J1" H 1200 6510 50  0000 C CNN
 F 1 "Apple 2" H 1425 5655 50  0000 C CNN
 F 2 "Package_DIP:DIP-16_W7.62mm_Socket" H 1200 5700 50  0001 C CNN
 F 3 "~" H 1200 5700 50  0001 C CNN
+F 4 "YES" H 1200 5700 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 1200 5700 50  0001 C CNN "Fitted"
+F 6 "16-pin DIP socket" H 1200 5700 50  0001 C CNN "Parameters"
+F 7 "TH" H 1200 5700 50  0001 C CNN "Mount Style"
+F 8 "16-pin DIP socket" H 1200 5700 50  0001 C CNN "Package"
 	1    1200 5700
 	-1   0    0    -1  
 $EndComp
@@ -119,6 +129,11 @@ F 0 "D17" H 15185 2165 50  0000 C CNN
 F 1 "1N4148" H 15050 2045 40  0001 C CNN
 F 2 "Diode_SMD:D_SOT-23_ANK" H 15050 2025 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15050 2200 50  0001 C CNN
+F 4 "YES" H 15050 2200 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 15050 2200 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15050 2200 50  0001 C CNN "Parameters"
+F 7 "SMT" H 15050 2200 50  0001 C CNN "Mount Style"
+F 8 "SMT: SOT-23-3" H 15050 2200 50  0001 C CNN "Package"
 	1    15050 2200
 	-1   0    0    1   
 $EndComp
@@ -130,6 +145,10 @@ F 0 "J10" H 14535 4025 50  0000 C CNN
 F 1 "Keyboard" H 14540 1900 50  0000 C CNN
 F 2 "unikbd:kbd_header_and_mounting_holes" H 14500 3000 50  0001 C CNN
 F 3 "~" H 14500 3000 50  0001 C CNN
+F 4 "YES" H 14500 3000 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 14500 3000 50  0001 C CNN "Fitted"
+F 6 "Keyboard" H 14500 3000 50  0001 C CNN "Parameters"
+F 7 "TH" H 14500 3000 50  0001 C CNN "Mount Style"
 	1    14500 3000
 	1    0    0    -1  
 $EndComp
@@ -173,6 +192,11 @@ F 0 "C5" H 10905 9630 50  0000 L CNN
 F 1 "0.1 uF" H 10915 9465 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 10938 9400 50  0001 C CNN
 F 3 "~" H 10900 9550 50  0001 C CNN
+F 4 "YES" H 10900 9550 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 10900 9550 50  0001 C CNN "Fitted"
+F 6 "0.1 uF" H 10900 9550 50  0001 C CNN "Parameters"
+F 7 "SMT" H 10900 9550 50  0001 C CNN "Mount Style"
+F 8 "0603" H 10900 9550 50  0001 C CNN "Package"
 	1    10900 9550
 	1    0    0    -1  
 $EndComp
@@ -246,6 +270,11 @@ F 0 "C6" H 11305 9630 50  0000 L CNN
 F 1 "0.1 uF" H 11315 9465 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 11338 9400 50  0001 C CNN
 F 3 "~" H 11300 9550 50  0001 C CNN
+F 4 "YES" H 11300 9550 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 11300 9550 50  0001 C CNN "Fitted"
+F 6 "0.1 uF" H 11300 9550 50  0001 C CNN "Parameters"
+F 7 "SMT" H 11300 9550 50  0001 C CNN "Mount Style"
+F 8 "0603" H 11300 9550 50  0001 C CNN "Package"
 	1    11300 9550
 	1    0    0    -1  
 $EndComp
@@ -321,6 +350,11 @@ F 0 "D27" H 15305 7350 50  0000 C CNN
 F 1 "1N4148" H 15280 7400 50  0001 C CNN
 F 2 "Diode_SMD:D_SOT-23_ANK" H 15460 7125 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15460 7300 50  0001 C CNN
+F 4 "YES" H 15460 7300 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 15460 7300 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15460 7300 50  0001 C CNN "Parameters"
+F 7 "SMT" H 15460 7300 50  0001 C CNN "Mount Style"
+F 8 "SMT: SOT-23-3" H 15460 7300 50  0001 C CNN "Package"
 	1    15460 7300
 	1    0    0    1   
 $EndComp
@@ -332,6 +366,11 @@ F 0 "D26" H 15345 7060 50  0000 C CNN
 F 1 "1N4148" H 15258 7140 50  0001 C CNN
 F 2 "Diode_SMD:D_SOT-23_ANK" H 15460 6925 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15460 7100 50  0001 C CNN
+F 4 "YES" H 15460 7100 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 15460 7100 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15460 7100 50  0001 C CNN "Parameters"
+F 7 "SMT" H 15460 7100 50  0001 C CNN "Mount Style"
+F 8 "SMT: SOT-23-3" H 15460 7100 50  0001 C CNN "Package"
 	1    15460 7100
 	1    0    0    1   
 $EndComp
@@ -343,6 +382,11 @@ F 0 "D25" H 15335 6860 50  0000 C CNN
 F 1 "1N4148" H 15258 6940 50  0001 C CNN
 F 2 "Diode_SMD:D_SOT-23_ANK" H 15460 6725 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15460 6900 50  0001 C CNN
+F 4 "YES" H 15460 6900 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 15460 6900 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15460 6900 50  0001 C CNN "Parameters"
+F 7 "SMT" H 15460 6900 50  0001 C CNN "Mount Style"
+F 8 "SMT: SOT-23-3" H 15460 6900 50  0001 C CNN "Package"
 	1    15460 6900
 	1    0    0    1   
 $EndComp
@@ -354,6 +398,11 @@ F 0 "D23" H 15025 7160 50  0000 C CNN
 F 1 "1N4148" H 14948 7240 50  0001 C CNN
 F 2 "Diode_SMD:D_SOT-23_ANK" H 15150 7025 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15150 7200 50  0001 C CNN
+F 4 "YES" H 15150 7200 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 15150 7200 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15150 7200 50  0001 C CNN "Parameters"
+F 7 "SMT" H 15150 7200 50  0001 C CNN "Mount Style"
+F 8 "SMT: SOT-23-3" H 15150 7200 50  0001 C CNN "Package"
 	1    15150 7200
 	1    0    0    1   
 $EndComp
@@ -365,6 +414,11 @@ F 0 "D22" H 15025 6960 50  0000 C CNN
 F 1 "1N4148" H 14948 7040 50  0001 C CNN
 F 2 "Diode_SMD:D_SOT-23_ANK" H 15150 6825 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15150 7000 50  0001 C CNN
+F 4 "YES" H 15150 7000 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 15150 7000 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15150 7000 50  0001 C CNN "Parameters"
+F 7 "SMT" H 15150 7000 50  0001 C CNN "Mount Style"
+F 8 "SMT: SOT-23-3" H 15150 7000 50  0001 C CNN "Package"
 	1    15150 7000
 	1    0    0    1   
 $EndComp
@@ -376,6 +430,11 @@ F 0 "D20" H 15035 6550 50  0000 C CNN
 F 1 "1N4148" H 15040 6470 50  0000 C CNN
 F 2 "Diode_SMD:D_SOT-23_ANK" H 15150 6425 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15150 6600 50  0001 C CNN
+F 4 "YES" H 15150 6600 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 15150 6600 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15150 6600 50  0001 C CNN "Parameters"
+F 7 "SMT" H 15150 6600 50  0001 C CNN "Mount Style"
+F 8 "SMT: SOT-23-3" H 15150 6600 50  0001 C CNN "Package"
 	1    15150 6600
 	1    0    0    1   
 $EndComp
@@ -387,6 +446,11 @@ F 0 "D21" H 15025 6750 50  0000 C CNN
 F 1 "1N4148" H 14948 6840 50  0001 C CNN
 F 2 "Diode_SMD:D_SOT-23_ANK" H 15150 6625 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15150 6800 50  0001 C CNN
+F 4 "YES" H 15150 6800 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 15150 6800 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15150 6800 50  0001 C CNN "Parameters"
+F 7 "SMT" H 15150 6800 50  0001 C CNN "Mount Style"
+F 8 "SMT: SOT-23-3" H 15150 6800 50  0001 C CNN "Package"
 	1    15150 6800
 	1    0    0    1   
 $EndComp
@@ -398,6 +462,11 @@ F 0 "D24" H 15325 6660 50  0000 C CNN
 F 1 "1N4148" H 15248 6740 50  0001 C CNN
 F 2 "Diode_SMD:D_SOT-23_ANK" H 15450 6525 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15450 6700 50  0001 C CNN
+F 4 "YES" H 15450 6700 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 15450 6700 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15450 6700 50  0001 C CNN "Parameters"
+F 7 "SMT" H 15450 6700 50  0001 C CNN "Mount Style"
+F 8 "SMT: SOT-23-3" H 15450 6700 50  0001 C CNN "Package"
 	1    15450 6700
 	1    0    0    1   
 $EndComp
@@ -409,6 +478,10 @@ F 0 "SW1" H 14600 7667 50  0000 C CNN
 F 1 "Options" H 14600 7576 50  0000 C CNN
 F 2 "Button_Switch_THT:SW_DIP_SPSTx08_Piano_CTS_Series194-8MSTN_W7.62mm_P2.54mm" H 14600 7000 50  0001 C CNN
 F 3 "~" H 14600 7000 50  0001 C CNN
+F 4 "YES" H 14600 7000 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 14600 7000 50  0001 C CNN "Fitted"
+F 6 "8-pos DIP switch, piano style" H 14600 7000 50  0001 C CNN "Parameters"
+F 7 "TH" H 14600 7000 50  0001 C CNN "Mount Style"
 	1    14600 7000
 	1    0    0    -1  
 $EndComp
@@ -448,6 +521,11 @@ F 0 "D18" H 15190 2570 50  0000 C CNN
 F 1 "1N4148" H 15230 2640 40  0001 C CNN
 F 2 "Diode_SMD:D_SOT-23_ANK" H 15055 2425 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15055 2600 50  0001 C CNN
+F 4 "YES" H 15055 2600 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 15055 2600 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15055 2600 50  0001 C CNN "Parameters"
+F 7 "SMT" H 15055 2600 50  0001 C CNN "Mount Style"
+F 8 "SMT: SOT-23-3" H 15055 2600 50  0001 C CNN "Package"
 	1    15055 2600
 	-1   0    0    1   
 $EndComp
@@ -459,6 +537,11 @@ F 0 "D19" H 15190 2970 50  0000 C CNN
 F 1 "1N4148" H 15230 3035 40  0001 C CNN
 F 2 "Diode_SMD:D_SOT-23_ANK" H 15055 2825 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 15055 3000 50  0001 C CNN
+F 4 "YES" H 15055 3000 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 15055 3000 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15055 3000 50  0001 C CNN "Parameters"
+F 7 "SMT" H 15055 3000 50  0001 C CNN "Mount Style"
+F 8 "SMT: SOT-23-3" H 15055 3000 50  0001 C CNN "Package"
 	1    15055 3000
 	-1   0    0    1   
 $EndComp
@@ -504,6 +587,11 @@ F 0 "C4" H 10505 9630 50  0000 L CNN
 F 1 "0.1 uF" H 10515 9465 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 10538 9400 50  0001 C CNN
 F 3 "~" H 10500 9550 50  0001 C CNN
+F 4 "YES" H 10500 9550 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 10500 9550 50  0001 C CNN "Fitted"
+F 6 "0.1 uF" H 10500 9550 50  0001 C CNN "Parameters"
+F 7 "SMT" H 10500 9550 50  0001 C CNN "Mount Style"
+F 8 "0603" H 10500 9550 50  0001 C CNN "Package"
 	1    10500 9550
 	1    0    0    -1  
 $EndComp
@@ -515,6 +603,11 @@ F 0 "C3" H 10105 9630 50  0000 L CNN
 F 1 "0.1 uF" H 10110 9470 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 10138 9400 50  0001 C CNN
 F 3 "~" H 10100 9550 50  0001 C CNN
+F 4 "YES" H 10100 9550 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 10100 9550 50  0001 C CNN "Fitted"
+F 6 "0.1 uF" H 10100 9550 50  0001 C CNN "Parameters"
+F 7 "SMT" H 10100 9550 50  0001 C CNN "Mount Style"
+F 8 "0603" H 10100 9550 50  0001 C CNN "Package"
 	1    10100 9550
 	1    0    0    -1  
 $EndComp
@@ -526,6 +619,10 @@ F 0 "J3" H 1118 8975 50  0000 C CNN
 F 1 "UART" H 1118 9066 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Horizontal" H 1200 9400 50  0001 C CNN
 F 3 "~" H 1200 9400 50  0001 C CNN
+F 4 "YES" H 1200 9400 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 1200 9400 50  0001 C CNN "Fitted"
+F 6 "1x4 0.1\" right angle header" H 1200 9400 50  0001 C CNN "Parameters"
+F 7 "TH" H 1200 9400 50  0001 C CNN "Mount Style"
 	1    1200 9400
 	-1   0    0    -1  
 $EndComp
@@ -574,6 +671,10 @@ F 0 "J5" H 1218 4117 50  0000 C CNN
 F 1 "SOL-20" H 1535 2980 50  0000 C CNN
 F 2 "unikbd:SOL20-header-vertical" H 1300 3000 50  0001 C CNN
 F 3 "~" H 1300 3000 50  0001 C CNN
+F 4 "YES" H 1300 3000 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 1300 3000 50  0001 C CNN "Fitted"
+F 6 "2x10 0.1\" right angle pin header" H 1300 3000 50  0001 C CNN "Parameters"
+F 7 "TH" H 1300 3000 50  0001 C CNN "Mount Style"
 	1    1300 3000
 	-1   0    0    -1  
 $EndComp
@@ -657,9 +758,13 @@ L Connector_Generic:Conn_01x05 J4
 U 1 1 5E83DEBE
 P 1300 1200
 F 0 "J4" H 1218 775 50  0000 C CNN
-F 1 "Conn_01x05" H 1218 866 50  0000 C CNN
+F 1 "Outputs" H 1218 866 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Horizontal" H 1300 1200 50  0001 C CNN
 F 3 "~" H 1300 1200 50  0001 C CNN
+F 4 "YES" H 1300 1200 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 1300 1200 50  0001 C CNN "Fitted"
+F 6 "1x5 0.1\" right angle header" H 1300 1200 50  0001 C CNN "Parameters"
+F 7 "TH" H 1300 1200 50  0001 C CNN "Mount Style"
 	1    1300 1200
 	-1   0    0    1   
 $EndComp
@@ -834,7 +939,14 @@ P 5600 1700
 F 0 "R1" H 5668 1746 50  0000 L CNN
 F 1 "10k" H 5668 1655 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 5640 1690 50  0001 C CNN
-F 3 "~" H 5600 1700 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 5600 1700 50  0001 C CNN
+F 4 "Panasonic" H 5600 1700 50  0001 C CNN "Manufacturer"
+F 5 "ERJ-3EKF1002V" H 5600 1700 50  0001 C CNN "Part No."
+F 6 "YES" H 5600 1700 50  0001 C CNN "Substitution OK"
+F 7 "YES" H 5600 1700 50  0001 C CNN "Fitted"
+F 8 "10k, 1%" H 5600 1700 50  0001 C CNN "Parameters"
+F 9 "SMT" H 5600 1700 50  0001 C CNN "Mount Style"
+F 10 "0603" H 5600 1700 50  0001 C CNN "Package"
 	1    5600 1700
 	1    0    0    -1  
 $EndComp
@@ -847,7 +959,14 @@ P 6350 1950
 F 0 "Y1" H 6350 1682 50  0000 C CNN
 F 1 "16.000 MHz" H 6350 1773 50  0000 C CNN
 F 2 "Crystal:Crystal_SMD_HC49-SD" H 6350 1950 50  0001 C CNN
-F 3 "~" H 6350 1950 50  0001 C CNN
+F 3 "https://abracon.com/Resonators/ABLS2.pdf" H 6350 1950 50  0001 C CNN
+F 4 "YES" H 6350 1950 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 6350 1950 50  0001 C CNN "Fitted"
+F 6 "16.000 MHz, parallel resonant" H 6350 1950 50  0001 C CNN "Parameters"
+F 7 "ABRACON" H 6350 1950 50  0001 C CNN "Manufacturer"
+F 8 "SMT" H 6350 1950 50  0001 C CNN "Mount Style"
+F 9 "HC-49/US" H 6350 1950 50  0001 C CNN "Package"
+F 10 "ABLS2-16.000MHz-B1U-T" H 6350 1950 50  0001 C CNN "Part No."
 	1    6350 1950
 	-1   0    0    1   
 $EndComp
@@ -859,6 +978,12 @@ F 0 "C1" H 6165 2246 50  0000 L CNN
 F 1 "36pf" H 6165 2155 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 6088 2050 50  0001 C CNN
 F 3 "~" H 6050 2200 50  0001 C CNN
+F 4 "YES" H 6050 2200 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 6050 2200 50  0001 C CNN "Fitted"
+F 6 "36pf" H 6050 2200 50  0001 C CNN "Parameters"
+F 7 "" H 6050 2200 50  0001 C CNN "hello"
+F 8 "SMT" H 6050 2200 50  0001 C CNN "Mount Style"
+F 9 "0603" H 6050 2200 50  0001 C CNN "Package"
 	1    6050 2200
 	1    0    0    -1  
 $EndComp
@@ -870,6 +995,12 @@ F 0 "C2" H 6765 2246 50  0000 L CNN
 F 1 "36pf" H 6765 2155 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 6688 2050 50  0001 C CNN
 F 3 "~" H 6650 2200 50  0001 C CNN
+F 4 "YES" H 6650 2200 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 6650 2200 50  0001 C CNN "Fitted"
+F 6 "36pf" H 6650 2200 50  0001 C CNN "Parameters"
+F 7 "" H 6650 2200 50  0001 C CNN "hello"
+F 8 "SMT" H 6650 2200 50  0001 C CNN "Mount Style"
+F 9 "0603" H 6650 2200 50  0001 C CNN "Package"
 	1    6650 2200
 	1    0    0    -1  
 $EndComp
@@ -934,6 +1065,13 @@ F 0 "D9" H 11000 3500 50  0000 C CNN
 F 1 "1N4148" H 10090 3610 50  0000 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 3325 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 3500 50  0001 C CNN
+F 4 "YES" H 10150 3500 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 10150 3500 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 3500 50  0001 C CNN "Parameters"
+F 7 "" H 10150 3500 50  0001 C CNN "goodbye"
+F 8 "TH" H 10150 3500 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 10150 3500 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 3500 50  0001 C CNN "Comment"
 	1    10150 3500
 	1    0    0    -1  
 $EndComp
@@ -945,6 +1083,13 @@ F 0 "D1" H 11000 3600 50  0000 C CNN
 F 1 "1N4148" H 9748 3640 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 3425 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 3600 50  0001 C CNN
+F 4 "YES" H 9950 3600 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 9950 3600 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 3600 50  0001 C CNN "Parameters"
+F 7 "" H 9950 3600 50  0001 C CNN "goodbye"
+F 8 "TH" H 9950 3600 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 9950 3600 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 3600 50  0001 C CNN "Comment"
 	1    9950 3600
 	1    0    0    -1  
 $EndComp
@@ -956,6 +1101,13 @@ F 0 "D10" H 11000 3700 50  0000 C CNN
 F 1 "1N4148" H 9948 3740 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 3525 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 3700 50  0001 C CNN
+F 4 "YES" H 10150 3700 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 10150 3700 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 3700 50  0001 C CNN "Parameters"
+F 7 "" H 10150 3700 50  0001 C CNN "goodbye"
+F 8 "TH" H 10150 3700 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 10150 3700 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 3700 50  0001 C CNN "Comment"
 	1    10150 3700
 	1    0    0    -1  
 $EndComp
@@ -967,6 +1119,13 @@ F 0 "D2" H 11000 3800 50  0000 C CNN
 F 1 "1N4148" H 9748 3840 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 3625 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 3800 50  0001 C CNN
+F 4 "YES" H 9950 3800 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 9950 3800 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 3800 50  0001 C CNN "Parameters"
+F 7 "" H 9950 3800 50  0001 C CNN "goodbye"
+F 8 "TH" H 9950 3800 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 9950 3800 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 3800 50  0001 C CNN "Comment"
 	1    9950 3800
 	1    0    0    -1  
 $EndComp
@@ -978,6 +1137,13 @@ F 0 "D11" H 11000 3900 50  0000 C CNN
 F 1 "1N4148" H 9948 3940 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 3725 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 3900 50  0001 C CNN
+F 4 "YES" H 10150 3900 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 10150 3900 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 3900 50  0001 C CNN "Parameters"
+F 7 "" H 10150 3900 50  0001 C CNN "goodbye"
+F 8 "TH" H 10150 3900 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 10150 3900 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 3900 50  0001 C CNN "Comment"
 	1    10150 3900
 	1    0    0    -1  
 $EndComp
@@ -989,6 +1155,13 @@ F 0 "D3" H 11000 4000 50  0000 C CNN
 F 1 "1N4148" H 9748 4040 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 3825 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 4000 50  0001 C CNN
+F 4 "YES" H 9950 4000 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 9950 4000 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 4000 50  0001 C CNN "Parameters"
+F 7 "" H 9950 4000 50  0001 C CNN "goodbye"
+F 8 "TH" H 9950 4000 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 9950 4000 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 4000 50  0001 C CNN "Comment"
 	1    9950 4000
 	1    0    0    -1  
 $EndComp
@@ -1000,6 +1173,13 @@ F 0 "D12" H 11000 4100 50  0000 C CNN
 F 1 "1N4148" H 9948 4140 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 3925 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 4100 50  0001 C CNN
+F 4 "YES" H 10150 4100 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 10150 4100 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 4100 50  0001 C CNN "Parameters"
+F 7 "" H 10150 4100 50  0001 C CNN "goodbye"
+F 8 "TH" H 10150 4100 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 10150 4100 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 4100 50  0001 C CNN "Comment"
 	1    10150 4100
 	1    0    0    -1  
 $EndComp
@@ -1011,6 +1191,13 @@ F 0 "D4" H 11000 4200 50  0000 C CNN
 F 1 "1N4148" H 9748 4240 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 4025 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 4200 50  0001 C CNN
+F 4 "YES" H 9950 4200 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 9950 4200 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 4200 50  0001 C CNN "Parameters"
+F 7 "" H 9950 4200 50  0001 C CNN "goodbye"
+F 8 "TH" H 9950 4200 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 9950 4200 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 4200 50  0001 C CNN "Comment"
 	1    9950 4200
 	1    0    0    -1  
 $EndComp
@@ -1100,6 +1287,13 @@ F 0 "D13" H 11000 4500 50  0000 C CNN
 F 1 "1N4148" H 10090 4610 50  0000 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 4325 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 4500 50  0001 C CNN
+F 4 "YES" H 10150 4500 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 10150 4500 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 4500 50  0001 C CNN "Parameters"
+F 7 "" H 10150 4500 50  0001 C CNN "goodbye"
+F 8 "TH" H 10150 4500 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 10150 4500 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 4500 50  0001 C CNN "Comment"
 	1    10150 4500
 	1    0    0    -1  
 $EndComp
@@ -1111,6 +1305,13 @@ F 0 "D5" H 11000 4600 50  0000 C CNN
 F 1 "1N4148" H 9748 4640 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 4425 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 4600 50  0001 C CNN
+F 4 "YES" H 9950 4600 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 9950 4600 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 4600 50  0001 C CNN "Parameters"
+F 7 "" H 9950 4600 50  0001 C CNN "goodbye"
+F 8 "TH" H 9950 4600 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 9950 4600 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 4600 50  0001 C CNN "Comment"
 	1    9950 4600
 	1    0    0    -1  
 $EndComp
@@ -1122,6 +1323,13 @@ F 0 "D14" H 11000 4700 50  0000 C CNN
 F 1 "1N4148" H 9948 4740 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 4525 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 4700 50  0001 C CNN
+F 4 "YES" H 10150 4700 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 10150 4700 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 4700 50  0001 C CNN "Parameters"
+F 7 "" H 10150 4700 50  0001 C CNN "goodbye"
+F 8 "TH" H 10150 4700 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 10150 4700 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 4700 50  0001 C CNN "Comment"
 	1    10150 4700
 	1    0    0    -1  
 $EndComp
@@ -1133,6 +1341,13 @@ F 0 "D6" H 11000 4800 50  0000 C CNN
 F 1 "1N4148" H 9748 4840 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 4625 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 4800 50  0001 C CNN
+F 4 "YES" H 9950 4800 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 9950 4800 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 4800 50  0001 C CNN "Parameters"
+F 7 "" H 9950 4800 50  0001 C CNN "goodbye"
+F 8 "TH" H 9950 4800 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 9950 4800 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 4800 50  0001 C CNN "Comment"
 	1    9950 4800
 	1    0    0    -1  
 $EndComp
@@ -1144,6 +1359,13 @@ F 0 "D15" H 11000 4900 50  0000 C CNN
 F 1 "1N4148" H 9948 4940 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 4725 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 4900 50  0001 C CNN
+F 4 "YES" H 10150 4900 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 10150 4900 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 4900 50  0001 C CNN "Parameters"
+F 7 "" H 10150 4900 50  0001 C CNN "goodbye"
+F 8 "TH" H 10150 4900 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 10150 4900 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 4900 50  0001 C CNN "Comment"
 	1    10150 4900
 	1    0    0    -1  
 $EndComp
@@ -1155,6 +1377,13 @@ F 0 "D7" H 11000 5000 50  0000 C CNN
 F 1 "1N4148" H 9748 5040 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 4825 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 5000 50  0001 C CNN
+F 4 "YES" H 9950 5000 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 9950 5000 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 5000 50  0001 C CNN "Parameters"
+F 7 "" H 9950 5000 50  0001 C CNN "goodbye"
+F 8 "TH" H 9950 5000 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 9950 5000 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 5000 50  0001 C CNN "Comment"
 	1    9950 5000
 	1    0    0    -1  
 $EndComp
@@ -1166,6 +1395,13 @@ F 0 "D16" H 11000 5100 50  0000 C CNN
 F 1 "1N4148" H 9948 5140 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 4925 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 5100 50  0001 C CNN
+F 4 "YES" H 10150 5100 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 10150 5100 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 5100 50  0001 C CNN "Parameters"
+F 7 "" H 10150 5100 50  0001 C CNN "goodbye"
+F 8 "TH" H 10150 5100 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 10150 5100 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 5100 50  0001 C CNN "Comment"
 	1    10150 5100
 	1    0    0    -1  
 $EndComp
@@ -1177,6 +1413,13 @@ F 0 "D8" H 11000 5200 50  0000 C CNN
 F 1 "1N4148" H 9748 5240 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 5025 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 5200 50  0001 C CNN
+F 4 "YES" H 9950 5200 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 9950 5200 50  0001 C CNN "Fitted"
+F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 5200 50  0001 C CNN "Parameters"
+F 7 "" H 9950 5200 50  0001 C CNN "goodbye"
+F 8 "TH" H 9950 5200 50  0001 C CNN "Mount Style"
+F 9 "Through-hole" H 9950 5200 50  0001 C CNN "Package"
+F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 5200 50  0001 C CNN "Comment"
 	1    9950 5200
 	1    0    0    -1  
 $EndComp
@@ -1623,6 +1866,11 @@ F 0 "U1" H 7500 7800 50  0000 C CNN
 F 1 "ATmega2560-16AU" H 8100 5100 50  0000 C CNN
 F 2 "Package_QFP:TQFP-100_14x14mm_P0.5mm" H 8100 4600 50  0001 C CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2549-8-bit-AVR-Microcontroller-ATmega640-1280-1281-2560-2561_datasheet.pdf" H 8100 4900 50  0001 C CNN
+F 4 "YES" H 8100 4900 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 8100 4900 50  0001 C CNN "Fitted"
+F 6 "ATmega2560-16AU" H 8100 4900 50  0001 C CNN "Parameters"
+F 7 "SMT" H 8100 4900 50  0001 C CNN "Mount Style"
+F 8 "TQFP-100 " H 8100 4900 50  0001 C CNN "Package"
 	1    8100 4900
 	1    0    0    -1  
 $EndComp
@@ -1857,6 +2105,11 @@ F 0 "J7" H 12050 2167 50  0000 C CNN
 F 1 "Custom Connector 1 / Proto" H 12050 2076 50  0000 C CNN
 F 2 "unikbd:DIP-16_W7.62mm_Proto" H 12000 1650 50  0001 C CNN
 F 3 "~" H 12000 1650 50  0001 C CNN
+F 4 "YES" H 12000 1650 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 12000 1650 50  0001 C CNN "Fitted"
+F 6 "16 pin DIP socket" H 12000 1650 50  0001 C CNN "Parameters"
+F 7 "TH" H 12000 1650 50  0001 C CNN "Mount Style"
+F 8 "16-pin DIP socket" H 12000 1650 50  0001 C CNN "Package"
 	1    12000 1650
 	1    0    0    -1  
 $EndComp
@@ -1929,9 +2182,13 @@ L Connector_Generic:Conn_01x25 J8
 U 1 1 5F355459
 P 11950 4650
 F 0 "J8" H 11868 6067 50  0000 C CNN
-F 1 "Conn_01x25" H 11868 5976 50  0000 C CNN
+F 1 "Apple II Matrix" H 11868 5976 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x25_P2.54mm_Vertical" H 11950 4650 50  0001 C CNN
 F 3 "~" H 11950 4650 50  0001 C CNN
+F 4 "YES" H 11950 4650 50  0001 C CNN "Substitution OK"
+F 5 "NO" H 11950 4650 50  0001 C CNN "Fitted"
+F 6 "1x25 0.1\" vertical header, 1\" pins" H 11950 4650 50  0001 C CNN "Parameters"
+F 7 "TH" H 11950 4650 50  0001 C CNN "Mount Style"
 	1    11950 4650
 	-1   0    0    -1  
 $EndComp
@@ -1940,9 +2197,13 @@ L Connector_Generic:Conn_01x16 J6
 U 1 1 5ED55F89
 P 3350 2900
 F 0 "J6" H 3268 3817 50  0000 C CNN
-F 1 "Conn_01x16" H 3268 3726 50  0000 C CNN
+F 1 "Programming" H 3268 3726 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Horizontal" H 3350 2900 50  0001 C CNN
 F 3 "~" H 3350 2900 50  0001 C CNN
+F 4 "YES" H 3350 2900 50  0001 C CNN "Substitution OK"
+F 5 "YES" H 3350 2900 50  0001 C CNN "Fitted"
+F 6 "2x8 0.1\" right angle header" H 3350 2900 50  0001 C CNN "Parameters"
+F 7 "TH" H 3350 2900 50  0001 C CNN "Mount Style"
 	1    3350 2900
 	-1   0    0    -1  
 $EndComp
@@ -2181,7 +2442,14 @@ P 9400 1450
 F 0 "R2" V 9360 1550 50  0000 L CNN
 F 1 "10k" H 9205 1450 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 9440 1440 50  0001 C CNN
-F 3 "~" H 9400 1450 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 9400 1450 50  0001 C CNN
+F 4 "Panasonic" H 9400 1450 50  0001 C CNN "Manufacturer"
+F 5 "ERJ-3EKF1002V" H 9400 1450 50  0001 C CNN "Part No."
+F 6 "YES" H 9400 1450 50  0001 C CNN "Substitution OK"
+F 7 "YES" H 9400 1450 50  0001 C CNN "Fitted"
+F 8 "10k, 1%" H 9400 1450 50  0001 C CNN "Parameters"
+F 9 "SMT" H 9400 1450 50  0001 C CNN "Mount Style"
+F 10 "0603" H 9400 1450 50  0001 C CNN "Package"
 	1    9400 1450
 	1    0    0    -1  
 $EndComp
@@ -2205,7 +2473,14 @@ P 9500 1450
 F 0 "R3" V 9460 1545 50  0000 L CNN
 F 1 "10k" H 9305 1450 50  0001 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 9540 1440 50  0001 C CNN
-F 3 "~" H 9500 1450 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 9500 1450 50  0001 C CNN
+F 4 "Panasonic" H 9500 1450 50  0001 C CNN "Manufacturer"
+F 5 "ERJ-3EKF1002V" H 9500 1450 50  0001 C CNN "Part No."
+F 6 "YES" H 9500 1450 50  0001 C CNN "Substitution OK"
+F 7 "YES" H 9500 1450 50  0001 C CNN "Fitted"
+F 8 "10k, 1%" H 9500 1450 50  0001 C CNN "Parameters"
+F 9 "SMT" H 9500 1450 50  0001 C CNN "Mount Style"
+F 10 "0603" H 9500 1450 50  0001 C CNN "Package"
 	1    9500 1450
 	1    0    0    -1  
 $EndComp
@@ -2216,7 +2491,14 @@ P 9600 1450
 F 0 "R4" V 9560 1545 50  0000 L CNN
 F 1 "10k" H 9405 1450 50  0001 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 9640 1440 50  0001 C CNN
-F 3 "~" H 9600 1450 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 9600 1450 50  0001 C CNN
+F 4 "Panasonic" H 9600 1450 50  0001 C CNN "Manufacturer"
+F 5 "ERJ-3EKF1002V" H 9600 1450 50  0001 C CNN "Part No."
+F 6 "YES" H 9600 1450 50  0001 C CNN "Substitution OK"
+F 7 "YES" H 9600 1450 50  0001 C CNN "Fitted"
+F 8 "10k, 1%" H 9600 1450 50  0001 C CNN "Parameters"
+F 9 "SMT" H 9600 1450 50  0001 C CNN "Mount Style"
+F 10 "0603" H 9600 1450 50  0001 C CNN "Package"
 	1    9600 1450
 	1    0    0    -1  
 $EndComp
@@ -2227,7 +2509,14 @@ P 9700 1450
 F 0 "R5" V 9660 1545 50  0000 L CNN
 F 1 "10k" H 9505 1450 50  0001 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 9740 1440 50  0001 C CNN
-F 3 "~" H 9700 1450 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 9700 1450 50  0001 C CNN
+F 4 "Panasonic" H 9700 1450 50  0001 C CNN "Manufacturer"
+F 5 "ERJ-3EKF1002V" H 9700 1450 50  0001 C CNN "Part No."
+F 6 "YES" H 9700 1450 50  0001 C CNN "Substitution OK"
+F 7 "YES" H 9700 1450 50  0001 C CNN "Fitted"
+F 8 "10k, 1%" H 9700 1450 50  0001 C CNN "Parameters"
+F 9 "SMT" H 9700 1450 50  0001 C CNN "Mount Style"
+F 10 "0603" H 9700 1450 50  0001 C CNN "Package"
 	1    9700 1450
 	1    0    0    -1  
 $EndComp
@@ -2238,7 +2527,14 @@ P 9800 1450
 F 0 "R6" V 9760 1545 50  0000 L CNN
 F 1 "10k" H 9605 1450 50  0001 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 9840 1440 50  0001 C CNN
-F 3 "~" H 9800 1450 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 9800 1450 50  0001 C CNN
+F 4 "Panasonic" H 9800 1450 50  0001 C CNN "Manufacturer"
+F 5 "ERJ-3EKF1002V" H 9800 1450 50  0001 C CNN "Part No."
+F 6 "YES" H 9800 1450 50  0001 C CNN "Substitution OK"
+F 7 "YES" H 9800 1450 50  0001 C CNN "Fitted"
+F 8 "10k, 1%" H 9800 1450 50  0001 C CNN "Parameters"
+F 9 "SMT" H 9800 1450 50  0001 C CNN "Mount Style"
+F 10 "0603" H 9800 1450 50  0001 C CNN "Package"
 	1    9800 1450
 	1    0    0    -1  
 $EndComp
@@ -2249,7 +2545,14 @@ P 9900 1450
 F 0 "R7" V 9860 1545 50  0000 L CNN
 F 1 "10k" H 9705 1450 50  0001 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 9940 1440 50  0001 C CNN
-F 3 "~" H 9900 1450 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 9900 1450 50  0001 C CNN
+F 4 "Panasonic" H 9900 1450 50  0001 C CNN "Manufacturer"
+F 5 "ERJ-3EKF1002V" H 9900 1450 50  0001 C CNN "Part No."
+F 6 "YES" H 9900 1450 50  0001 C CNN "Substitution OK"
+F 7 "YES" H 9900 1450 50  0001 C CNN "Fitted"
+F 8 "10k, 1%" H 9900 1450 50  0001 C CNN "Parameters"
+F 9 "SMT" H 9900 1450 50  0001 C CNN "Mount Style"
+F 10 "0603" H 9900 1450 50  0001 C CNN "Package"
 	1    9900 1450
 	1    0    0    -1  
 $EndComp
@@ -2260,7 +2563,14 @@ P 10000 1450
 F 0 "R8" V 9960 1545 50  0000 L CNN
 F 1 "10k" H 9805 1450 50  0001 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 10040 1440 50  0001 C CNN
-F 3 "~" H 10000 1450 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 10000 1450 50  0001 C CNN
+F 4 "Panasonic" H 10000 1450 50  0001 C CNN "Manufacturer"
+F 5 "ERJ-3EKF1002V" H 10000 1450 50  0001 C CNN "Part No."
+F 6 "YES" H 10000 1450 50  0001 C CNN "Substitution OK"
+F 7 "YES" H 10000 1450 50  0001 C CNN "Fitted"
+F 8 "10k, 1%" H 10000 1450 50  0001 C CNN "Parameters"
+F 9 "SMT" H 10000 1450 50  0001 C CNN "Mount Style"
+F 10 "0603" H 10000 1450 50  0001 C CNN "Package"
 	1    10000 1450
 	1    0    0    -1  
 $EndComp
@@ -2271,7 +2581,14 @@ P 10100 1450
 F 0 "R9" V 10060 1545 50  0000 L CNN
 F 1 "10k" H 9905 1450 50  0001 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 10140 1440 50  0001 C CNN
-F 3 "~" H 10100 1450 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 10100 1450 50  0001 C CNN
+F 4 "Panasonic" H 10100 1450 50  0001 C CNN "Manufacturer"
+F 5 "ERJ-3EKF1002V" H 10100 1450 50  0001 C CNN "Part No."
+F 6 "YES" H 10100 1450 50  0001 C CNN "Substitution OK"
+F 7 "YES" H 10100 1450 50  0001 C CNN "Fitted"
+F 8 "10k, 1%" H 10100 1450 50  0001 C CNN "Parameters"
+F 9 "SMT" H 10100 1450 50  0001 C CNN "Mount Style"
+F 10 "0603" H 10100 1450 50  0001 C CNN "Package"
 	1    10100 1450
 	1    0    0    -1  
 $EndComp
@@ -2312,6 +2629,18 @@ Wire Wire Line
 Connection ~ 10000 1190
 Wire Wire Line
 	10000 1190 9900 1190
+Wire Notes Line style solid
+	3215 3175 3040 3175
+Wire Notes Line style solid
+	3040 3175 3040 3725
+Wire Notes Line style solid
+	3215 3725 3040 3725
+Wire Notes Line style solid
+	3215 2200 3040 2200
+Wire Notes Line style solid
+	3215 3100 3040 3100
+Wire Notes Line style solid
+	3040 3100 3040 2200
 Wire Bus Line
 	2500 1200 2500 4600
 Wire Bus Line
@@ -2324,4 +2653,8 @@ Wire Bus Line
 	10700 2600 10700 8200
 Wire Bus Line
 	13500 2200 13500 8200
+Text Notes 3065 2715 0    50   ~ 0
+JTAG
+Text Notes 3065 3455 0    50   ~ 0
+ISP
 $EndSCHEMATC

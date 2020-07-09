@@ -21,6 +21,13 @@ F 0 "J2" H 960 6750 50  0000 C CNN
 F 1 "Apple 1" H 1165 5915 50  0000 C CNN
 F 2 "Package_DIP:DIP-16_W7.62mm_Socket" H 950 5940 50  0001 C CNN
 F 3 "~" H 950 5940 50  0001 C CNN
+F 4 "Install for Apple 2.  Dual Wipe recommended to reduce insertion force" H 950 5940 50  0001 C CNN "BOM Comment"
+F 5 "Y" H 950 5940 50  0001 C CNN "Fitted"
+F 6 "Apple 1" H 950 5940 50  0001 C CNN "Label"
+F 7 "Y" H 950 5940 50  0001 C CNN "May substitute"
+F 8 "3M" H 950 5940 50  0001 C CNN "Manufacturer"
+F 9 "4816-3000-CP" H 950 5940 50  0001 C CNN "Manufacturer PN"
+F 10 "16-pin Dual-wipe DIP socket" H 950 5940 50  0001 C CNN "Part Value"
 	1    950  5940
 	-1   0    0    -1  
 $EndComp
@@ -87,7 +94,13 @@ P 6930 1615
 F 0 "RN1" H 7310 1661 50  0000 L CNN
 F 1 "4.7k" H 7310 1570 50  0000 L CNN
 F 2 "Resistor_THT:R_Array_SIP9" V 7405 1615 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/31509/csc.pdf" H 6930 1615 50  0001 C CNN
+F 3 "https://www.bourns.com/docs/product-datasheets/4600x.pdf?sfvrsn=92b2512c_2https://www.mouser.com/datasheet/2/54/4600x-776645.pdf" H 6930 1615 50  0001 C CNN
+F 4 "Y" H 6930 1615 50  0001 C CNN "Fitted"
+F 5 "4.7k" H 6930 1615 50  0001 C CNN "Label"
+F 6 "Y" H 6930 1615 50  0001 C CNN "May substitute"
+F 7 "Bourns" H 6930 1615 50  0001 C CNN "Manufacturer"
+F 8 "4609X-101-472LF" H 6930 1615 50  0001 C CNN "Manufacturer PN"
+F 9 "4.7k" H 6930 1615 50  0001 C CNN "Part Value"
 	1    6930 1615
 	1    0    0    -1  
 $EndComp
@@ -142,6 +155,13 @@ F 0 "J1" H 950 5035 50  0000 C CNN
 F 1 "Apple 2" H 1175 4180 50  0000 C CNN
 F 2 "Package_DIP:DIP-16_W7.62mm_Socket" H 950 4225 50  0001 C CNN
 F 3 "~" H 950 4225 50  0001 C CNN
+F 4 "Install for Apple 2.  Dual Wipe recommended to reduce insertion force" H 950 4225 50  0001 C CNN "BOM Comment"
+F 5 "Y" H 950 4225 50  0001 C CNN "Fitted"
+F 6 "Apple 2" H 950 4225 50  0001 C CNN "Label"
+F 7 "Y" H 950 4225 50  0001 C CNN "May substitute"
+F 8 "3M" H 950 4225 50  0001 C CNN "Manufacturer"
+F 9 "4816-3000-CP" H 950 4225 50  0001 C CNN "Manufacturer PN"
+F 10 "16-pin Dual-wipe DIP socket" H 950 4225 50  0001 C CNN "Part Value"
 	1    950  4225
 	-1   0    0    -1  
 $EndComp
@@ -278,6 +298,12 @@ F 0 "D25" H 9485 1315 50  0000 C CNN
 F 1 "1N4148" H 9350 1195 40  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9350 1175 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9350 1350 50  0001 C CNN
+F 4 "Y" H 9350 1350 50  0001 C CNN "Fitted"
+F 5 "1N4148" H 9350 1350 50  0001 C CNN "Label"
+F 6 "Y" H 9350 1350 50  0001 C CNN "May substitute"
+F 7 "Vishay" H 9350 1350 50  0001 C CNN "Manufacturer"
+F 8 "1N4148" H 9350 1350 50  0001 C CNN "Manufacturer PN"
+F 9 "Gen. Purpose/switching" H 9350 1350 50  0001 C CNN "Part Value"
 	1    9350 1350
 	-1   0    0    1   
 $EndComp
@@ -289,6 +315,12 @@ F 0 "J6" H 8795 3175 50  0000 C CNN
 F 1 "Keyboard" H 8800 1050 50  0000 C CNN
 F 2 "unikbd:kbd_header_and_mounting_holes" H 8760 2150 50  0001 C CNN
 F 3 "~" H 8760 2150 50  0001 C CNN
+F 4 "Y" H 8760 2150 50  0001 C CNN "Fitted"
+F 5 "Keyboard" H 8760 2150 50  0001 C CNN "Label"
+F 6 "Y" H 8760 2150 50  0001 C CNN "May substitute"
+F 7 "Molex" H 8760 2150 50  0001 C CNN "Manufacturer"
+F 8 "90131-0140" H 8760 2150 50  0001 C CNN "Manufacturer PN"
+F 9 "2x20 0.1\" vertical header" H 8760 2150 50  0001 C CNN "Part Value"
 	1    8760 2150
 	1    0    0    -1  
 $EndComp
@@ -500,6 +532,12 @@ F 0 "J5" H 2880 1547 50  0000 L CNN
 F 1 "ISP header" H 2880 1456 50  0000 L CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Horizontal" H 2800 1555 50  0001 C CNN
 F 3 "~" H 2800 1555 50  0001 C CNN
+F 4 "Y" H 2800 1555 50  0001 C CNN "Fitted"
+F 5 "ISP header" H 2800 1555 50  0001 C CNN "Label"
+F 6 "Y" H 2800 1555 50  0001 C CNN "May substitute"
+F 7 "Molex" H 2800 1555 50  0001 C CNN "Manufacturer"
+F 8 "90122-0763" H 2800 1555 50  0001 C CNN "Manufacturer PN"
+F 9 "2x3 0.1\" right angle header" H 2800 1555 50  0001 C CNN "Part Value"
 	1    2800 1555
 	-1   0    0    -1  
 $EndComp
@@ -557,6 +595,12 @@ F 0 "U2" H 5400 3470 50  0000 C CNN
 F 1 "74LS166" H 5845 3465 50  0000 C CNN
 F 2 "Package_DIP:DIP-16_W7.62mm" H 5655 2610 50  0001 C CNN
 F 3 "" H 5655 2610 50  0001 C CNN
+F 4 "Y" H 5655 2610 50  0001 C CNN "Fitted"
+F 5 "74LS166" H 5655 2610 50  0001 C CNN "Label"
+F 6 "Y" H 5655 2610 50  0001 C CNN "May substitute"
+F 7 "Texas Instruments" H 5655 2610 50  0001 C CNN "Manufacturer"
+F 8 "SN74LS166AN" H 5655 2610 50  0001 C CNN "Manufacturer PN"
+F 9 "74LS166" H 5655 2610 50  0001 C CNN "Part Value"
 	1    5655 2610
 	1    0    0    -1  
 $EndComp
@@ -615,6 +659,12 @@ F 0 "C3" H 3080 7380 50  0000 L CNN
 F 1 "0.1 uF" H 3090 7215 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 3113 7150 50  0001 C CNN
 F 3 "~" H 3075 7300 50  0001 C CNN
+F 4 "Y" H 3075 7300 50  0001 C CNN "Fitted"
+F 5 "0.1 uF" H 3075 7300 50  0001 C CNN "Label"
+F 6 "Y" H 3075 7300 50  0001 C CNN "May substitute"
+F 7 "Murata" H 3075 7300 50  0001 C CNN "Manufacturer"
+F 8 "RCER71E104K0A2H3B" H 3075 7300 50  0001 C CNN "Manufacturer PN"
+F 9 "0.1 uF" H 3075 7300 50  0001 C CNN "Part Value"
 	1    3075 7300
 	1    0    0    -1  
 $EndComp
@@ -658,6 +708,12 @@ F 0 "U1" H 2980 6025 50  0000 R CNN
 F 1 "ATmega328P" H 3975 3055 50  0000 R CNN
 F 2 "Package_DIP:DIP-28_W7.62mm" H 3300 4550 50  0001 C CIN
 F 3 "" H 3300 4550 50  0001 C CNN
+F 4 "Y" H 3300 4550 50  0001 C CNN "Fitted"
+F 5 "ATmega328P" H 3300 4550 50  0001 C CNN "Label"
+F 6 "N" H 3300 4550 50  0001 C CNN "May substitute"
+F 7 "Atmel (Microchip)" H 3300 4550 50  0001 C CNN "Manufacturer"
+F 8 "ATMEGA328P-PU" H 3300 4550 50  0001 C CNN "Manufacturer PN"
+F 9 "ATmega328P" H 3300 4550 50  0001 C CNN "Part Value"
 	1    3300 4550
 	1    0    0    -1  
 $EndComp
@@ -713,6 +769,12 @@ F 0 "R3" V 4570 4850 50  0000 C CNN
 F 1 "470" V 4520 5050 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4650 5040 50  0001 C CNN
 F 3 "~" H 4610 5050 50  0001 C CNN
+F 4 "Y" H 4610 5050 50  0001 C CNN "Fitted"
+F 5 "470" H 4610 5050 50  0001 C CNN "Label"
+F 6 "Y" H 4610 5050 50  0001 C CNN "May substitute"
+F 7 "Yageo" H 4610 5050 50  0001 C CNN "Manufacturer"
+F 8 "MFR-25FTE52-470R" H 4610 5050 50  0001 C CNN "Manufacturer PN"
+F 9 "470" H 4610 5050 50  0001 C CNN "Part Value"
 	1    4610 5050
 	0    1    1    0   
 $EndComp
@@ -724,6 +786,12 @@ F 0 "R4" V 4570 4950 50  0000 C CNN
 F 1 "470" V 4496 5150 50  0001 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4650 5140 50  0001 C CNN
 F 3 "~" H 4610 5150 50  0001 C CNN
+F 4 "Y" H 4610 5150 50  0001 C CNN "Fitted"
+F 5 "470" H 4610 5150 50  0001 C CNN "Label"
+F 6 "Y" H 4610 5150 50  0001 C CNN "May substitute"
+F 7 "Yageo" H 4610 5150 50  0001 C CNN "Manufacturer"
+F 8 "MFR-25FTE52-470R" H 4610 5150 50  0001 C CNN "Manufacturer PN"
+F 9 "470" H 4610 5150 50  0001 C CNN "Part Value"
 	1    4610 5150
 	0    1    1    0   
 $EndComp
@@ -844,6 +912,12 @@ F 0 "U3" H 6210 4575 50  0000 C CNN
 F 1 "74LS138" H 6655 4580 50  0000 C CNN
 F 2 "Package_DIP:DIP-16_W7.62mm" H 6450 4130 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74LS138" H 6450 4130 50  0001 C CNN
+F 4 "Y" H 6450 4130 50  0001 C CNN "Fitted"
+F 5 "74LS138" H 6450 4130 50  0001 C CNN "Label"
+F 6 "Y" H 6450 4130 50  0001 C CNN "May substitute"
+F 7 "Texas Instruments" H 6450 4130 50  0001 C CNN "Manufacturer"
+F 8 "SN74LS138N" H 6450 4130 50  0001 C CNN "Manufacturer PN"
+F 9 "74LS138" H 6450 4130 50  0001 C CNN "Part Value"
 	1    6450 4130
 	1    0    0    -1  
 $EndComp
@@ -871,6 +945,12 @@ F 0 "U4" H 6220 6115 50  0000 C CNN
 F 1 "74LS138" H 6665 6120 50  0000 C CNN
 F 2 "Package_DIP:DIP-16_W7.62mm" H 6460 5670 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74LS138" H 6460 5670 50  0001 C CNN
+F 4 "Y" H 6460 5670 50  0001 C CNN "Fitted"
+F 5 "74LS138" H 6460 5670 50  0001 C CNN "Label"
+F 6 "Y" H 6460 5670 50  0001 C CNN "May substitute"
+F 7 "Texas Instruments" H 6460 5670 50  0001 C CNN "Manufacturer"
+F 8 "SN74LS138N" H 6460 5670 50  0001 C CNN "Manufacturer PN"
+F 9 "74LS138" H 6460 5670 50  0001 C CNN "Part Value"
 	1    6460 5670
 	1    0    0    -1  
 $EndComp
@@ -1030,6 +1110,12 @@ F 0 "C4" H 3455 7380 50  0000 L CNN
 F 1 "0.1 uF" H 3465 7215 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 3488 7150 50  0001 C CNN
 F 3 "~" H 3450 7300 50  0001 C CNN
+F 4 "Y" H 3450 7300 50  0001 C CNN "Fitted"
+F 5 "0.1 uF" H 3450 7300 50  0001 C CNN "Label"
+F 6 "Y" H 3450 7300 50  0001 C CNN "May substitute"
+F 7 "Murata" H 3450 7300 50  0001 C CNN "Manufacturer"
+F 8 "RCER71E104K0A2H3B" H 3450 7300 50  0001 C CNN "Manufacturer PN"
+F 9 "0.1 uF" H 3450 7300 50  0001 C CNN "Part Value"
 	1    3450 7300
 	1    0    0    -1  
 $EndComp
@@ -1105,6 +1191,12 @@ F 0 "D24" H 9480 6550 50  0000 C CNN
 F 1 "1N4148" H 9455 6600 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9635 6325 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9635 6500 50  0001 C CNN
+F 4 "Y" H 9635 6500 50  0001 C CNN "Fitted"
+F 5 "1N4148" H 9635 6500 50  0001 C CNN "Label"
+F 6 "Y" H 9635 6500 50  0001 C CNN "May substitute"
+F 7 "Vishay" H 9635 6500 50  0001 C CNN "Manufacturer"
+F 8 "1N4148" H 9635 6500 50  0001 C CNN "Manufacturer PN"
+F 9 "Gen. Purpose/switching" H 9635 6500 50  0001 C CNN "Part Value"
 	1    9635 6500
 	1    0    0    1   
 $EndComp
@@ -1116,6 +1208,12 @@ F 0 "D23" H 9520 6260 50  0000 C CNN
 F 1 "1N4148" H 9433 6340 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9635 6125 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9635 6300 50  0001 C CNN
+F 4 "Y" H 9635 6300 50  0001 C CNN "Fitted"
+F 5 "1N4148" H 9635 6300 50  0001 C CNN "Label"
+F 6 "Y" H 9635 6300 50  0001 C CNN "May substitute"
+F 7 "Vishay" H 9635 6300 50  0001 C CNN "Manufacturer"
+F 8 "1N4148" H 9635 6300 50  0001 C CNN "Manufacturer PN"
+F 9 "Gen. Purpose/switching" H 9635 6300 50  0001 C CNN "Part Value"
 	1    9635 6300
 	1    0    0    1   
 $EndComp
@@ -1127,6 +1225,12 @@ F 0 "D22" H 9510 6060 50  0000 C CNN
 F 1 "1N4148" H 9433 6140 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9635 5925 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9635 6100 50  0001 C CNN
+F 4 "Y" H 9635 6100 50  0001 C CNN "Fitted"
+F 5 "1N4148" H 9635 6100 50  0001 C CNN "Label"
+F 6 "Y" H 9635 6100 50  0001 C CNN "May substitute"
+F 7 "Vishay" H 9635 6100 50  0001 C CNN "Manufacturer"
+F 8 "1N4148" H 9635 6100 50  0001 C CNN "Manufacturer PN"
+F 9 "Gen. Purpose/switching" H 9635 6100 50  0001 C CNN "Part Value"
 	1    9635 6100
 	1    0    0    1   
 $EndComp
@@ -1138,6 +1242,12 @@ F 0 "D20" H 9200 6360 50  0000 C CNN
 F 1 "1N4148" H 9123 6440 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9325 6225 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9325 6400 50  0001 C CNN
+F 4 "Y" H 9325 6400 50  0001 C CNN "Fitted"
+F 5 "1N4148" H 9325 6400 50  0001 C CNN "Label"
+F 6 "Y" H 9325 6400 50  0001 C CNN "May substitute"
+F 7 "Vishay" H 9325 6400 50  0001 C CNN "Manufacturer"
+F 8 "1N4148" H 9325 6400 50  0001 C CNN "Manufacturer PN"
+F 9 "Gen. Purpose/switching" H 9325 6400 50  0001 C CNN "Part Value"
 	1    9325 6400
 	1    0    0    1   
 $EndComp
@@ -1149,6 +1259,12 @@ F 0 "D19" H 9200 6160 50  0000 C CNN
 F 1 "1N4148" H 9123 6240 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9325 6025 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9325 6200 50  0001 C CNN
+F 4 "Y" H 9325 6200 50  0001 C CNN "Fitted"
+F 5 "1N4148" H 9325 6200 50  0001 C CNN "Label"
+F 6 "Y" H 9325 6200 50  0001 C CNN "May substitute"
+F 7 "Vishay" H 9325 6200 50  0001 C CNN "Manufacturer"
+F 8 "1N4148" H 9325 6200 50  0001 C CNN "Manufacturer PN"
+F 9 "Gen. Purpose/switching" H 9325 6200 50  0001 C CNN "Part Value"
 	1    9325 6200
 	1    0    0    1   
 $EndComp
@@ -1160,6 +1276,12 @@ F 0 "D17" H 9210 5750 50  0000 C CNN
 F 1 "1N4148" H 9215 5670 50  0000 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9325 5625 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9325 5800 50  0001 C CNN
+F 4 "Y" H 9325 5800 50  0001 C CNN "Fitted"
+F 5 "1N4148" H 9325 5800 50  0001 C CNN "Label"
+F 6 "Y" H 9325 5800 50  0001 C CNN "May substitute"
+F 7 "Vishay" H 9325 5800 50  0001 C CNN "Manufacturer"
+F 8 "1N4148" H 9325 5800 50  0001 C CNN "Manufacturer PN"
+F 9 "Gen. Purpose/switching" H 9325 5800 50  0001 C CNN "Part Value"
 	1    9325 5800
 	1    0    0    1   
 $EndComp
@@ -1171,6 +1293,12 @@ F 0 "D18" H 9200 5950 50  0000 C CNN
 F 1 "1N4148" H 9123 6040 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9325 5825 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9325 6000 50  0001 C CNN
+F 4 "Y" H 9325 6000 50  0001 C CNN "Fitted"
+F 5 "1N4148" H 9325 6000 50  0001 C CNN "Label"
+F 6 "Y" H 9325 6000 50  0001 C CNN "May substitute"
+F 7 "Vishay" H 9325 6000 50  0001 C CNN "Manufacturer"
+F 8 "1N4148" H 9325 6000 50  0001 C CNN "Manufacturer PN"
+F 9 "Gen. Purpose/switching" H 9325 6000 50  0001 C CNN "Part Value"
 	1    9325 6000
 	1    0    0    1   
 $EndComp
@@ -1182,6 +1310,12 @@ F 0 "D21" H 9500 5860 50  0000 C CNN
 F 1 "1N4148" H 9423 5940 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9625 5725 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9625 5900 50  0001 C CNN
+F 4 "Y" H 9625 5900 50  0001 C CNN "Fitted"
+F 5 "1N4148" H 9625 5900 50  0001 C CNN "Label"
+F 6 "Y" H 9625 5900 50  0001 C CNN "May substitute"
+F 7 "Vishay" H 9625 5900 50  0001 C CNN "Manufacturer"
+F 8 "1N4148" H 9625 5900 50  0001 C CNN "Manufacturer PN"
+F 9 "Gen. Purpose/switching" H 9625 5900 50  0001 C CNN "Part Value"
 	1    9625 5900
 	1    0    0    1   
 $EndComp
@@ -1193,6 +1327,12 @@ F 0 "SW1" H 8775 6867 50  0000 C CNN
 F 1 "Options" H 8775 6776 50  0000 C CNN
 F 2 "Button_Switch_THT:SW_DIP_SPSTx08_Piano_CTS_Series194-8MSTN_W7.62mm_P2.54mm" H 8775 6200 50  0001 C CNN
 F 3 "~" H 8775 6200 50  0001 C CNN
+F 4 "Y" H 8775 6200 50  0001 C CNN "Fitted"
+F 5 "Options" H 8775 6200 50  0001 C CNN "Label"
+F 6 "Y" H 8775 6200 50  0001 C CNN "May substitute"
+F 7 "CTS" H 8775 6200 50  0001 C CNN "Manufacturer"
+F 8 "195-8MST" H 8775 6200 50  0001 C CNN "Manufacturer PN"
+F 9 "8-pos DIP switch" H 8775 6200 50  0001 C CNN "Part Value"
 	1    8775 6200
 	1    0    0    -1  
 $EndComp
@@ -1264,6 +1404,13 @@ F 0 "D4" H 7120 4190 50  0000 C CNN
 F 1 "1N4148" H 6948 4570 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7150 4355 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7150 4530 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7150 4530 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7150 4530 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7150 4530 50  0001 C CNN "Label"
+F 7 "Y" H 7150 4530 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7150 4530 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7150 4530 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7150 4530 50  0001 C CNN "Part Value"
 	1    7150 4530
 	1    0    0    -1  
 $EndComp
@@ -1275,6 +1422,13 @@ F 0 "D1" H 7310 3990 50  0000 C CNN
 F 1 "1N4148" H 7078 4470 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7280 4255 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7280 4430 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7280 4430 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7280 4430 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7280 4430 50  0001 C CNN "Label"
+F 7 "Y" H 7280 4430 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7280 4430 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7280 4430 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7280 4430 50  0001 C CNN "Part Value"
 	1    7280 4430
 	1    0    0    -1  
 $EndComp
@@ -1286,6 +1440,13 @@ F 0 "D2" H 7120 3860 50  0000 C CNN
 F 1 "1N4148" H 6948 4370 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7150 4155 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7150 4330 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7150 4330 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7150 4330 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7150 4330 50  0001 C CNN "Label"
+F 7 "Y" H 7150 4330 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7150 4330 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7150 4330 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7150 4330 50  0001 C CNN "Part Value"
 	1    7150 4330
 	1    0    0    -1  
 $EndComp
@@ -1297,6 +1458,13 @@ F 0 "D13" H 7370 4570 50  0000 C CNN
 F 1 "1N4148" H 7240 5480 50  0000 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7300 5195 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7300 5370 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7300 5370 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7300 5370 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7300 5370 50  0001 C CNN "Label"
+F 7 "Y" H 7300 5370 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7300 5370 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7300 5370 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7300 5370 50  0001 C CNN "Part Value"
 	1    7300 5370
 	1    0    0    -1  
 $EndComp
@@ -1308,6 +1476,13 @@ F 0 "D8" H 7150 5730 50  0000 C CNN
 F 1 "1N4148" H 6968 6110 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7170 5895 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7170 6070 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7170 6070 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7170 6070 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7170 6070 50  0001 C CNN "Label"
+F 7 "Y" H 7170 6070 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7170 6070 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7170 6070 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7170 6070 50  0001 C CNN "Part Value"
 	1    7170 6070
 	1    0    0    -1  
 $EndComp
@@ -1319,6 +1494,13 @@ F 0 "D16" H 7370 5530 50  0000 C CNN
 F 1 "1N4148" H 7108 6010 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7310 5795 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7310 5970 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7310 5970 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7310 5970 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7310 5970 50  0001 C CNN "Label"
+F 7 "Y" H 7310 5970 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7310 5970 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7310 5970 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7310 5970 50  0001 C CNN "Part Value"
 	1    7310 5970
 	1    0    0    -1  
 $EndComp
@@ -1330,6 +1512,13 @@ F 0 "D7" H 7150 5410 50  0000 C CNN
 F 1 "1N4148" H 6968 5910 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7170 5695 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7170 5870 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7170 5870 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7170 5870 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7170 5870 50  0001 C CNN "Label"
+F 7 "Y" H 7170 5870 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7170 5870 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7170 5870 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7170 5870 50  0001 C CNN "Part Value"
 	1    7170 5870
 	1    0    0    -1  
 $EndComp
@@ -1341,6 +1530,13 @@ F 0 "D6" H 7150 5090 50  0000 C CNN
 F 1 "1N4148" H 6968 5710 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7170 5495 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7170 5670 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7170 5670 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7170 5670 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7170 5670 50  0001 C CNN "Label"
+F 7 "Y" H 7170 5670 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7170 5670 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7170 5670 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7170 5670 50  0001 C CNN "Part Value"
 	1    7170 5670
 	1    0    0    -1  
 $EndComp
@@ -1352,6 +1548,13 @@ F 0 "D5" H 7150 4770 50  0000 C CNN
 F 1 "1N4148" H 6958 5510 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7160 5295 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7160 5470 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7160 5470 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7160 5470 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7160 5470 50  0001 C CNN "Label"
+F 7 "Y" H 7160 5470 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7160 5470 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7160 5470 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7160 5470 50  0001 C CNN "Part Value"
 	1    7160 5470
 	1    0    0    -1  
 $EndComp
@@ -1363,6 +1566,13 @@ F 0 "D15" H 7370 5210 50  0000 C CNN
 F 1 "1N4148" H 7098 5810 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7300 5595 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7300 5770 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7300 5770 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7300 5770 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7300 5770 50  0001 C CNN "Label"
+F 7 "Y" H 7300 5770 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7300 5770 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7300 5770 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7300 5770 50  0001 C CNN "Part Value"
 	1    7300 5770
 	1    0    0    -1  
 $EndComp
@@ -1374,6 +1584,13 @@ F 0 "D14" H 7370 4890 50  0000 C CNN
 F 1 "1N4148" H 7098 5610 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7300 5395 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7300 5570 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7300 5570 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7300 5570 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7300 5570 50  0001 C CNN "Label"
+F 7 "Y" H 7300 5570 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7300 5570 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7300 5570 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7300 5570 50  0001 C CNN "Part Value"
 	1    7300 5570
 	1    0    0    -1  
 $EndComp
@@ -1445,6 +1662,13 @@ F 0 "D11" H 7310 3660 50  0000 C CNN
 F 1 "1N4148" H 7078 4270 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7280 4055 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7280 4230 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7280 4230 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7280 4230 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7280 4230 50  0001 C CNN "Label"
+F 7 "Y" H 7280 4230 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7280 4230 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7280 4230 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7280 4230 50  0001 C CNN "Part Value"
 	1    7280 4230
 	1    0    0    -1  
 $EndComp
@@ -1456,6 +1680,13 @@ F 0 "D3" H 7120 3540 50  0000 C CNN
 F 1 "1N4148" H 6948 4170 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7150 3955 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7150 4130 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7150 4130 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7150 4130 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7150 4130 50  0001 C CNN "Label"
+F 7 "Y" H 7150 4130 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7150 4130 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7150 4130 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7150 4130 50  0001 C CNN "Part Value"
 	1    7150 4130
 	1    0    0    -1  
 $EndComp
@@ -1467,6 +1698,13 @@ F 0 "D10" H 7310 3340 50  0000 C CNN
 F 1 "1N4148" H 7078 4070 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7280 3855 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7280 4030 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7280 4030 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7280 4030 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7280 4030 50  0001 C CNN "Label"
+F 7 "Y" H 7280 4030 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7280 4030 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7280 4030 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7280 4030 50  0001 C CNN "Part Value"
 	1    7280 4030
 	1    0    0    -1  
 $EndComp
@@ -1478,6 +1716,13 @@ F 0 "D12" H 7120 3210 50  0000 C CNN
 F 1 "1N4148" H 6938 3970 50  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7140 3755 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7140 3930 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7140 3930 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7140 3930 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7140 3930 50  0001 C CNN "Label"
+F 7 "Y" H 7140 3930 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7140 3930 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7140 3930 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7140 3930 50  0001 C CNN "Part Value"
 	1    7140 3930
 	1    0    0    -1  
 $EndComp
@@ -1489,6 +1734,13 @@ F 0 "D9" H 7310 3010 50  0000 C CNN
 F 1 "1N4148" H 7210 3940 50  0000 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7270 3655 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7270 3830 50  0001 C CNN
+F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7270 3830 50  0001 C CNN "BOM Comment"
+F 5 "N" H 7270 3830 50  0001 C CNN "Fitted"
+F 6 "1N4148" H 7270 3830 50  0001 C CNN "Label"
+F 7 "Y" H 7270 3830 50  0001 C CNN "May substitute"
+F 8 "Vishay" H 7270 3830 50  0001 C CNN "Manufacturer"
+F 9 "1N4148" H 7270 3830 50  0001 C CNN "Manufacturer PN"
+F 10 "Gen. Purpose/switching" H 7270 3830 50  0001 C CNN "Part Value"
 	1    7270 3830
 	1    0    0    -1  
 $EndComp
@@ -1516,6 +1768,12 @@ F 0 "D26" H 9490 1720 50  0000 C CNN
 F 1 "1N4148" H 9530 1790 40  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9355 1575 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9355 1750 50  0001 C CNN
+F 4 "Y" H 9355 1750 50  0001 C CNN "Fitted"
+F 5 "1N4148" H 9355 1750 50  0001 C CNN "Label"
+F 6 "Y" H 9355 1750 50  0001 C CNN "May substitute"
+F 7 "Vishay" H 9355 1750 50  0001 C CNN "Manufacturer"
+F 8 "1N4148" H 9355 1750 50  0001 C CNN "Manufacturer PN"
+F 9 "Gen. Purpose/switching" H 9355 1750 50  0001 C CNN "Part Value"
 	1    9355 1750
 	-1   0    0    1   
 $EndComp
@@ -1527,6 +1785,12 @@ F 0 "D27" H 9490 2120 50  0000 C CNN
 F 1 "1N4148" H 9530 2185 40  0001 C CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9355 1975 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9355 2150 50  0001 C CNN
+F 4 "Y" H 9355 2150 50  0001 C CNN "Fitted"
+F 5 "1N4148" H 9355 2150 50  0001 C CNN "Label"
+F 6 "Y" H 9355 2150 50  0001 C CNN "May substitute"
+F 7 "Vishay" H 9355 2150 50  0001 C CNN "Manufacturer"
+F 8 "1N4148" H 9355 2150 50  0001 C CNN "Manufacturer PN"
+F 9 "Gen. Purpose/switching" H 9355 2150 50  0001 C CNN "Part Value"
 	1    9355 2150
 	-1   0    0    1   
 $EndComp
@@ -1588,6 +1852,12 @@ F 0 "C5" H 3845 7380 50  0000 L CNN
 F 1 "0.1 uF" H 3855 7215 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 3878 7150 50  0001 C CNN
 F 3 "~" H 3840 7300 50  0001 C CNN
+F 4 "Y" H 3840 7300 50  0001 C CNN "Fitted"
+F 5 "0.1 uF" H 3840 7300 50  0001 C CNN "Label"
+F 6 "Y" H 3840 7300 50  0001 C CNN "May substitute"
+F 7 "Murata" H 3840 7300 50  0001 C CNN "Manufacturer"
+F 8 "RCER71E104K0A2H3B" H 3840 7300 50  0001 C CNN "Manufacturer PN"
+F 9 "0.1 uF" H 3840 7300 50  0001 C CNN "Part Value"
 	1    3840 7300
 	1    0    0    -1  
 $EndComp
@@ -1615,6 +1885,12 @@ F 0 "C2" H 2655 7380 50  0000 L CNN
 F 1 "0.1 uF" H 2665 7215 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 2688 7150 50  0001 C CNN
 F 3 "~" H 2650 7300 50  0001 C CNN
+F 4 "Y" H 2650 7300 50  0001 C CNN "Fitted"
+F 5 "0.1 uF" H 2650 7300 50  0001 C CNN "Label"
+F 6 "Y" H 2650 7300 50  0001 C CNN "May substitute"
+F 7 "Murata" H 2650 7300 50  0001 C CNN "Manufacturer"
+F 8 "RCER71E104K0A2H3B" H 2650 7300 50  0001 C CNN "Manufacturer PN"
+F 9 "0.1 uF" H 2650 7300 50  0001 C CNN "Part Value"
 	1    2650 7300
 	1    0    0    -1  
 $EndComp
@@ -1626,6 +1902,12 @@ F 0 "C1" H 2255 7380 50  0000 L CNN
 F 1 "0.1 uF" H 2260 7220 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" H 2288 7150 50  0001 C CNN
 F 3 "~" H 2250 7300 50  0001 C CNN
+F 4 "Y" H 2250 7300 50  0001 C CNN "Fitted"
+F 5 "0.1 uF" H 2250 7300 50  0001 C CNN "Label"
+F 6 "Y" H 2250 7300 50  0001 C CNN "May substitute"
+F 7 "Murata" H 2250 7300 50  0001 C CNN "Manufacturer"
+F 8 "RCER71E104K0A2H3B" H 2250 7300 50  0001 C CNN "Manufacturer PN"
+F 9 "0.1 uF" H 2250 7300 50  0001 C CNN "Part Value"
 	1    2250 7300
 	1    0    0    -1  
 $EndComp
@@ -1677,6 +1959,13 @@ F 0 "J3" H 868 6895 50  0000 C CNN
 F 1 "UART" H 868 6986 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Horizontal" H 950 7320 50  0001 C CNN
 F 3 "~" H 950 7320 50  0001 C CNN
+F 4 "Install for UART" H 950 7320 50  0001 C CNN "BOM Comment"
+F 5 "Y" H 950 7320 50  0001 C CNN "Fitted"
+F 6 "UART" H 950 7320 50  0001 C CNN "Label"
+F 7 "Y" H 950 7320 50  0001 C CNN "May substitute"
+F 8 "Molex" H 950 7320 50  0001 C CNN "Manufacturer"
+F 9 "22-28-8040" H 950 7320 50  0001 C CNN "Manufacturer PN"
+F 10 "1x4 0.1\" right angle header" H 950 7320 50  0001 C CNN "Part Value"
 	1    950  7320
 	-1   0    0    -1  
 $EndComp
@@ -1719,9 +2008,15 @@ L Connector_Generic:Conn_01x05 J4
 U 1 1 5E83DEBE
 P 955 875
 F 0 "J4" H 873 450 50  0000 C CNN
-F 1 "Conn_01x05" H 873 541 50  0000 C CNN
+F 1 "Outputs" H 873 541 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Horizontal" H 955 875 50  0001 C CNN
 F 3 "~" H 955 875 50  0001 C CNN
+F 4 "Y" H 955 875 50  0001 C CNN "Fitted"
+F 5 "Outputs" H 955 875 50  0001 C CNN "Label"
+F 6 "Y" H 955 875 50  0001 C CNN "May substitute"
+F 7 "Molex" H 955 875 50  0001 C CNN "Manufacturer"
+F 8 "22-28-8050" H 955 875 50  0001 C CNN "Manufacturer PN"
+F 9 "1x5 0.1\" right angle header" H 955 875 50  0001 C CNN "Part Value"
 	1    955  875 
 	-1   0    0    1   
 $EndComp
@@ -1741,6 +2036,12 @@ F 0 "U5" H 9100 3987 50  0000 C CNN
 F 1 "74LS04" H 9100 3896 50  0000 C CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 9100 3670 50  0001 C CNN
 F 3 "www.ti.com/lit/ds/symlink/sn74ls04.pdf" H 9100 3670 50  0001 C CNN
+F 4 "Y" H 9100 3670 50  0001 C CNN "Fitted"
+F 5 "74LS04" H 9100 3670 50  0001 C CNN "Label"
+F 6 "Y" H 9100 3670 50  0001 C CNN "May substitute"
+F 7 "Texas Instruments" H 9100 3670 50  0001 C CNN "Manufacturer"
+F 8 "SN74LS04N" H 9100 3670 50  0001 C CNN "Manufacturer PN"
+F 9 "74LS04" H 9100 3670 50  0001 C CNN "Part Value"
 	1    9100 3670
 	1    0    0    -1  
 $EndComp
@@ -1752,6 +2053,12 @@ F 0 "U5" H 9110 4512 50  0000 C CNN
 F 1 "74LS04" H 9110 4421 50  0000 C CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 9110 4195 50  0001 C CNN
 F 3 "www.ti.com/lit/ds/symlink/sn74ls04.pdf" H 9110 4195 50  0001 C CNN
+F 4 "Y" H 9110 4195 50  0001 C CNN "Fitted"
+F 5 "74LS04" H 9110 4195 50  0001 C CNN "Label"
+F 6 "Y" H 9110 4195 50  0001 C CNN "May substitute"
+F 7 "Texas Instruments" H 9110 4195 50  0001 C CNN "Manufacturer"
+F 8 "SN74LS04N" H 9110 4195 50  0001 C CNN "Manufacturer PN"
+F 9 "74LS04" H 9110 4195 50  0001 C CNN "Part Value"
 	2    9110 4195
 	1    0    0    -1  
 $EndComp
@@ -1763,6 +2070,12 @@ F 0 "U5" H 8230 4555 50  0000 C CNN
 F 1 "74LS04" H 8750 4710 50  0000 C CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 8550 4610 50  0001 C CNN
 F 3 "www.ti.com/lit/ds/symlink/sn74ls04.pdf" H 8550 4610 50  0001 C CNN
+F 4 "Y" H 8550 4610 50  0001 C CNN "Fitted"
+F 5 "74LS04" H 8550 4610 50  0001 C CNN "Label"
+F 6 "Y" H 8550 4610 50  0001 C CNN "May substitute"
+F 7 "Texas Instruments" H 8550 4610 50  0001 C CNN "Manufacturer"
+F 8 "SN74LS04N" H 8550 4610 50  0001 C CNN "Manufacturer PN"
+F 9 "74LS04" H 8550 4610 50  0001 C CNN "Part Value"
 	3    8550 4610
 	1    0    0    -1  
 $EndComp
@@ -1774,6 +2087,12 @@ F 0 "U5" H 8240 5145 50  0000 C CNN
 F 1 "74LS04" H 8785 5110 50  0000 C CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 8550 5200 50  0001 C CNN
 F 3 "www.ti.com/lit/ds/symlink/sn74ls04.pdf" H 8550 5200 50  0001 C CNN
+F 4 "Y" H 8550 5200 50  0001 C CNN "Fitted"
+F 5 "74LS04" H 8550 5200 50  0001 C CNN "Label"
+F 6 "Y" H 8550 5200 50  0001 C CNN "May substitute"
+F 7 "Texas Instruments" H 8550 5200 50  0001 C CNN "Manufacturer"
+F 8 "SN74LS04N" H 8550 5200 50  0001 C CNN "Manufacturer PN"
+F 9 "74LS04" H 8550 5200 50  0001 C CNN "Part Value"
 	5    8550 5200
 	1    0    0    -1  
 $EndComp
@@ -1785,6 +2104,12 @@ F 0 "U5" H 2520 810 50  0000 C CNN
 F 1 "74LS04" H 2210 720 50  0000 C CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 2505 655 50  0001 C CNN
 F 3 "www.ti.com/lit/ds/symlink/sn74ls04.pdf" H 2505 655 50  0001 C CNN
+F 4 "Y" H 2505 655 50  0001 C CNN "Fitted"
+F 5 "74LS04" H 2505 655 50  0001 C CNN "Label"
+F 6 "Y" H 2505 655 50  0001 C CNN "May substitute"
+F 7 "Texas Instruments" H 2505 655 50  0001 C CNN "Manufacturer"
+F 8 "SN74LS04N" H 2505 655 50  0001 C CNN "Manufacturer PN"
+F 9 "74LS04" H 2505 655 50  0001 C CNN "Part Value"
 	6    2505 655 
 	-1   0    0    1   
 $EndComp
@@ -1796,6 +2121,12 @@ F 0 "U5" H 4960 7366 50  0000 L CNN
 F 1 "74LS04" H 4960 7275 50  0000 L CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 4730 7320 50  0001 C CNN
 F 3 "www.ti.com/lit/ds/symlink/sn74ls04.pdf" H 4730 7320 50  0001 C CNN
+F 4 "Y" H 4730 7320 50  0001 C CNN "Fitted"
+F 5 "74LS04" H 4730 7320 50  0001 C CNN "Label"
+F 6 "Y" H 4730 7320 50  0001 C CNN "May substitute"
+F 7 "Texas Instruments" H 4730 7320 50  0001 C CNN "Manufacturer"
+F 8 "SN74LS04N" H 4730 7320 50  0001 C CNN "Manufacturer PN"
+F 9 "74LS04" H 4730 7320 50  0001 C CNN "Part Value"
 	7    4730 7320
 	1    0    0    -1  
 $EndComp
@@ -1883,6 +2214,12 @@ F 0 "U5" H 8255 4855 50  0000 C CNN
 F 1 "74LS04" H 9175 5010 50  0000 C CNN
 F 2 "Package_DIP:DIP-14_W7.62mm" H 8980 4900 50  0001 C CNN
 F 3 "www.ti.com/lit/ds/symlink/sn74ls04.pdf" H 8980 4900 50  0001 C CNN
+F 4 "Y" H 8980 4900 50  0001 C CNN "Fitted"
+F 5 "74LS04" H 8980 4900 50  0001 C CNN "Label"
+F 6 "Y" H 8980 4900 50  0001 C CNN "May substitute"
+F 7 "Texas Instruments" H 8980 4900 50  0001 C CNN "Manufacturer"
+F 8 "SN74LS04N" H 8980 4900 50  0001 C CNN "Manufacturer PN"
+F 9 "74LS04" H 8980 4900 50  0001 C CNN "Part Value"
 	4    8980 4900
 	1    0    0    -1  
 $EndComp
@@ -1992,6 +2329,13 @@ F 0 "J7" H 868 3402 50  0000 C CNN
 F 1 "SOL-20" H 1185 2265 50  0000 C CNN
 F 2 "unikbd:SOL20-header-vertical" H 950 2285 50  0001 C CNN
 F 3 "~" H 950 2285 50  0001 C CNN
+F 4 "Install for SOL-20" H 950 2285 50  0001 C CNN "BOM Comment"
+F 5 "Y" H 950 2285 50  0001 C CNN "Fitted"
+F 6 "SOL-20" H 950 2285 50  0001 C CNN "Label"
+F 7 "Y" H 950 2285 50  0001 C CNN "May substitute"
+F 8 "Molex" H 950 2285 50  0001 C CNN "Manufacturer"
+F 9 "90122-0770" H 950 2285 50  0001 C CNN "Manufacturer PN"
+F 10 "2x10 0.1\" right angle header" H 950 2285 50  0001 C CNN "Part Value"
 	1    950  2285
 	-1   0    0    -1  
 $EndComp

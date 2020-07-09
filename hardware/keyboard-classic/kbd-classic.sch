@@ -107,6 +107,8 @@ F 0 "SW9" V 8005 3115 50  0000 C CNN
 F 1 "Caps_Lock" V 7835 2875 50  0000 C CNN
 F 2 "unikbd:Key_MX_LED" H 8085 3175 50  0001 C CNN
 F 3 "~" H 8085 3175 50  0001 C CNN
+F 4 "NO" H 8085 2875 50  0001 C CNN "Fitted"
+F 5 "NO" H 8085 2875 50  0001 C CNN "Substitution OK"
 	1    8085 2875
 	0    1    -1   0   
 $EndComp
@@ -130,6 +132,9 @@ F 0 "J1" H 6295 3267 50  0000 C CNN
 F 1 "Controller" H 6295 3176 50  0000 C CNN
 F 2 "unikbd:kbd_header_and_mounting_holes" H 6245 2150 50  0001 C CNN
 F 3 "~" H 6245 2150 50  0001 C CNN
+F 4 "YES" H 6245 2150 50  0001 C CNN "Fitted"
+F 5 " YES " H 6245 2150 50  0001 C CNN "Substitution OK"
+F 6 "20x2 0.1\" socket header. Mount on bottom side" H 6245 2150 50  0001 C CNN "Comment"
 	1    6245 2150
 	1    0    0    -1  
 $EndComp
@@ -346,6 +351,12 @@ F 0 "D10" H 8431 2591 50  0000 R CNN
 F 1 "1N4148" H 8460 2770 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8385 2495 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 8385 2670 50  0001 C CNN
+F 4 "YES" H 8385 2670 50  0001 C CNN "Fitted"
+F 5 " YES " H 8385 2670 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 8385 2670 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 8385 2670 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 8385 2670 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 8385 2670 50  0001 C CNN "Package"
 	1    8385 2670
 	-1   0    0    1   
 $EndComp
@@ -361,6 +372,9 @@ F 0 "SW34" H 7250 2325 50  0000 C CNN
 F 1 "Rubout (OSI Break)" H 7370 2225 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 7500 2475 50  0001 C CNN
 F 3 "" H 7500 2475 50  0001 C CNN
+F 4 "Common to all layouts" H 7500 2275 50  0001 C CNN "Comment"
+F 5 "YES" H 7500 2275 50  0001 C CNN "Fitted"
+F 6 "NO" H 7500 2275 50  0001 C CNN "Substitution OK"
 	1    7500 2275
 	-1   0    0    -1  
 $EndComp
@@ -390,6 +404,9 @@ F 0 "D33" H 8750 2095 50  0000 R CNN
 F 1 "LED" H 8445 2100 50  0001 R CNN
 F 2 "LED_THT:LED_D5.0mm" H 8535 2045 50  0001 C CNN
 F 3 "~" H 8535 2045 50  0001 C CNN
+F 4 "NO" H 8535 2045 50  0001 C CNN "Fitted"
+F 5 " YES " H 8535 2045 50  0001 C CNN "Substitution OK"
+F 6 "3mm Through-hole LED, 0.1\" spacing" H 8535 2045 50  0001 C CNN "Comment"
 	1    8535 2045
 	-1   0    0    -1  
 $EndComp
@@ -426,6 +443,11 @@ F 0 "R2" V 7465 1635 50  0000 C CNN
 F 1 "470" V 7465 2010 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7540 1840 50  0001 C CNN
 F 3 "~" H 7500 1850 50  0001 C CNN
+F 4 "If R1-R3 installed, then DNP R4-R6" H 7500 1850 50  0001 C CNN "Comment"
+F 5 "NO" H 7500 1850 50  0001 C CNN "Fitted"
+F 6 "Generic Through hole" H 7500 1850 50  0001 C CNN "Manufacturer"
+F 7 " YES " H 7500 1850 50  0001 C CNN "Substitution OK"
+F 8 "1%" H 7500 1850 50  0001 C CNN "tolerance"
 	1    7500 1850
 	0    1    1    0   
 $EndComp
@@ -442,6 +464,11 @@ F 0 "R1" V 7010 1255 50  0000 C CNN
 F 1 "470" V 7010 1590 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7090 1440 50  0001 C CNN
 F 3 "~" H 7050 1450 50  0001 C CNN
+F 4 "If R1-R3 installed, then DNP R4-R6" H 7050 1450 50  0001 C CNN "Comment"
+F 5 "NO" H 7050 1450 50  0001 C CNN "Fitted"
+F 6 "Generic Through hole" H 7050 1450 50  0001 C CNN "Manufacturer"
+F 7 " YES " H 7050 1450 50  0001 C CNN "Substitution OK"
+F 8 "1%" H 7050 1450 50  0001 C CNN "tolerance"
 	1    7050 1450
 	0    1    1    0   
 $EndComp
@@ -458,6 +485,9 @@ F 0 "SW32" H 8660 2050 50  0000 C CNN
 F 1 "@ (OSI ShiftLock)" H 8645 2115 50  0000 C CNN
 F 2 "unikbd:Key_MX_LED" H 8555 2150 50  0001 C CNN
 F 3 "~" H 8555 2150 50  0001 C CNN
+F 4 "Common to all layouts" H 8555 1850 50  0001 C CNN "Comment"
+F 5 "YES" H 8555 1850 50  0001 C CNN "Fitted"
+F 6 "NO" H 8555 1850 50  0001 C CNN "Substitution OK"
 	1    8555 1850
 	1    0    0    -1  
 $EndComp
@@ -469,6 +499,8 @@ F 0 "SW61" H 7960 1465 50  0000 C CNN
 F 1 "Power Light" H 7830 1550 50  0000 C CNN
 F 2 "unikbd:Key_MX_LED" H 7830 1560 50  0001 C CNN
 F 3 "~" H 7830 1560 50  0001 C CNN
+F 4 "NO" H 7830 1260 50  0001 C CNN "Fitted"
+F 5 "NO" H 7830 1260 50  0001 C CNN "Substitution OK"
 	1    7830 1260
 	1    0    0    -1  
 $EndComp
@@ -504,6 +536,9 @@ F 0 "D62" H 8040 1500 50  0000 R CNN
 F 1 "LED" H 7735 1505 50  0001 R CNN
 F 2 "LED_THT:LED_D2.0mm_W4.8mm_H2.5mm_FlatTop" H 7825 1450 50  0001 C CNN
 F 3 "~" H 7825 1450 50  0001 C CNN
+F 4 "NO" H 7825 1450 50  0001 C CNN "Fitted"
+F 5 " YES " H 7825 1450 50  0001 C CNN "Substitution OK"
+F 6 "3mm Through-hole LED, 0.1\" spacing" H 7825 1450 50  0001 C CNN "Comment"
 	1    7825 1450
 	-1   0    0    -1  
 $EndComp
@@ -523,6 +558,9 @@ F 0 "D63" V 7830 3015 50  0000 R CNN
 F 1 "LED" V 7845 2845 50  0001 R CNN
 F 2 "LED_THT:LED_D2.0mm_W4.8mm_H2.5mm_FlatTop" H 7745 2870 50  0001 C CNN
 F 3 "~" H 7745 2870 50  0001 C CNN
+F 4 "NO" H 7745 2870 50  0001 C CNN "Fitted"
+F 5 " YES " H 7745 2870 50  0001 C CNN "Substitution OK"
+F 6 "3mm Through-hole LED, 0.1\" spacing" H 7745 2870 50  0001 C CNN "Comment"
 	1    7745 2870
 	0    1    -1   0   
 $EndComp
@@ -550,6 +588,9 @@ F 0 "D64" H 8735 2295 50  0000 R CNN
 F 1 "LED" V 8635 2220 50  0001 R CNN
 F 2 "LED_THT:LED_D2.0mm_W4.8mm_H2.5mm_FlatTop" H 8535 2245 50  0001 C CNN
 F 3 "~" H 8535 2245 50  0001 C CNN
+F 4 "NO" H 8535 2245 50  0001 C CNN "Fitted"
+F 5 " YES " H 8535 2245 50  0001 C CNN "Substitution OK"
+F 6 "3mm Through-hole LED, 0.1\" spacing" H 8535 2245 50  0001 C CNN "Comment"
 	1    8535 2245
 	-1   0    0    -1  
 $EndComp
@@ -571,6 +612,9 @@ F 0 "SW17" V 8005 3915 50  0000 C CNN
 F 1 "Line_Feed" V 7835 3675 50  0000 C CNN
 F 2 "unikbd:Key_MX_LED" H 8085 3975 50  0001 C CNN
 F 3 "~" H 8085 3975 50  0001 C CNN
+F 4 "Common to all layouts" H 8085 3675 50  0001 C CNN "Comment"
+F 5 "YES" H 8085 3675 50  0001 C CNN "Fitted"
+F 6 "NO" H 8085 3675 50  0001 C CNN "Substitution OK"
 	1    8085 3675
 	0    1    -1   0   
 $EndComp
@@ -593,6 +637,12 @@ F 0 "D18" H 8431 3391 50  0000 R CNN
 F 1 "1N4148" H 8460 3570 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8385 3295 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 8385 3470 50  0001 C CNN
+F 4 "YES" H 8385 3470 50  0001 C CNN "Fitted"
+F 5 " YES " H 8385 3470 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 8385 3470 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 8385 3470 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 8385 3470 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 8385 3470 50  0001 C CNN "Package"
 	1    8385 3470
 	-1   0    0    1   
 $EndComp
@@ -614,6 +664,11 @@ F 0 "R3" V 7450 2645 50  0000 L CNN
 F 1 "470" V 7455 2290 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7540 2530 50  0001 C CNN
 F 3 "~" H 7500 2540 50  0001 C CNN
+F 4 "If R1-R3 installed, then DNP R4-R6" H 7500 2540 50  0001 C CNN "Comment"
+F 5 "NO" H 7500 2540 50  0001 C CNN "Fitted"
+F 6 "Generic Through hole" H 7500 2540 50  0001 C CNN "Manufacturer"
+F 7 " YES " H 7500 2540 50  0001 C CNN "Substitution OK"
+F 8 "1%" H 7500 2540 50  0001 C CNN "tolerance"
 	1    7500 2540
 	0    -1   -1   0   
 $EndComp
@@ -641,6 +696,9 @@ F 0 "D65" V 7830 3815 50  0000 R CNN
 F 1 "LED" V 7845 3645 50  0001 R CNN
 F 2 "LED_THT:LED_D2.0mm_W4.8mm_H2.5mm_FlatTop" H 7745 3670 50  0001 C CNN
 F 3 "~" H 7745 3670 50  0001 C CNN
+F 4 "NO" H 7745 3670 50  0001 C CNN "Fitted"
+F 5 " YES " H 7745 3670 50  0001 C CNN "Substitution OK"
+F 6 "3mm Through-hole LED, 0.1\" spacing" H 7745 3670 50  0001 C CNN "Comment"
 	1    7745 3670
 	0    1    -1   0   
 $EndComp
@@ -669,7 +727,13 @@ P 7500 2425
 F 0 "R6" V 7455 2540 50  0000 L CNN
 F 1 "470" V 7460 2185 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 7540 2415 50  0001 C CNN
-F 3 "~" H 7500 2425 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf~" H 7500 2425 50  0001 C CNN
+F 4 "If R4-R6 installed, then DNP R1-R3" H 7500 2425 50  0001 C CNN "Comment"
+F 5 "YES" H 7500 2425 50  0001 C CNN "Fitted"
+F 6 "Panasonic" H 7500 2425 50  0001 C CNN "Manufacturer"
+F 7 "ERJ-3EKF3300V" H 7500 2425 50  0001 C CNN "Manufacturer Part Number"
+F 8 " YES " H 7500 2425 50  0001 C CNN "Substitution OK"
+F 9 "1%" H 7500 2425 50  0001 C CNN "tolerance"
 	1    7500 2425
 	0    -1   -1   0   
 $EndComp
@@ -682,7 +746,13 @@ P 7500 1950
 F 0 "R5" V 7465 1735 50  0000 C CNN
 F 1 "470" V 7465 2110 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 7540 1940 50  0001 C CNN
-F 3 "~" H 7500 1950 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf~" H 7500 1950 50  0001 C CNN
+F 4 "If R4-R6 installed, then DNP R1-R3" H 7500 1950 50  0001 C CNN "Comment"
+F 5 "YES" H 7500 1950 50  0001 C CNN "Fitted"
+F 6 "Panasonic" H 7500 1950 50  0001 C CNN "Manufacturer"
+F 7 "ERJ-3EKF3300V" H 7500 1950 50  0001 C CNN "Manufacturer Part Number"
+F 8 " YES " H 7500 1950 50  0001 C CNN "Substitution OK"
+F 9 "1%" H 7500 1950 50  0001 C CNN "tolerance"
 	1    7500 1950
 	0    1    1    0   
 $EndComp
@@ -693,7 +763,13 @@ P 7050 1350
 F 0 "R4" V 7010 1155 50  0000 C CNN
 F 1 "470" V 7010 1490 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 7090 1340 50  0001 C CNN
-F 3 "~" H 7050 1350 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf~" H 7050 1350 50  0001 C CNN
+F 4 "If R4-R6 installed, then DNP R1-R3" H 7050 1350 50  0001 C CNN "Comment"
+F 5 "YES" H 7050 1350 50  0001 C CNN "Fitted"
+F 6 "Panasonic" H 7050 1350 50  0001 C CNN "Manufacturer"
+F 7 "ERJ-3EKF3300V" H 7050 1350 50  0001 C CNN "Manufacturer Part Number"
+F 8 " YES " H 7050 1350 50  0001 C CNN "Substitution OK"
+F 9 "1%" H 7050 1350 50  0001 C CNN "tolerance"
 	1    7050 1350
 	0    1    1    0   
 $EndComp

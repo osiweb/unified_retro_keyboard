@@ -48,6 +48,10 @@ F 0 "SW1" H 3250 3435 50  0000 C CNN
 F 1 "RT Arrow" H 3250 3344 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 3250 3350 50  0001 C CNN
 F 3 "" H 3250 3350 50  0001 C CNN
+F 4 "NO" H 3250 3150 50  0001 C CNN "Fitted"
+F 5 "NO" H 3250 3150 50  0001 C CNN "Substitution OK"
+F 6 "Futaba(1) or Cherry(2)" H 3250 3150 50  0001 C CNN "Manufacturer"
+F 7 "(1) MD4-PCS (2) Cherry MX or clone" H 3250 3150 50  0001 C CNN "Manufacturer Part Number"
 	1    3250 3150
 	1    0    0    -1  
 $EndComp
@@ -62,6 +66,9 @@ F 0 "SW4" H 4050 3435 50  0000 C CNN
 F 1 "I" H 4050 3344 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 4050 3350 50  0001 C CNN
 F 3 "" H 4050 3350 50  0001 C CNN
+F 4 "Common to all layouts" H 4050 3150 50  0001 C CNN "Comment"
+F 5 "YES" H 4050 3150 50  0001 C CNN "Fitted"
+F 6 "NO" H 4050 3150 50  0001 C CNN "Substitution OK"
 	1    4050 3150
 	1    0    0    -1  
 $EndComp
@@ -76,6 +83,9 @@ F 0 "SW12" H 5650 3435 50  0000 C CNN
 F 1 "Y" H 5650 3344 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 5650 3350 50  0001 C CNN
 F 3 "" H 5650 3350 50  0001 C CNN
+F 4 "Common to all layouts" H 5650 3150 50  0001 C CNN "Comment"
+F 5 "YES" H 5650 3150 50  0001 C CNN "Fitted"
+F 6 "NO" H 5650 3150 50  0001 C CNN "Substitution OK"
 	1    5650 3150
 	1    0    0    -1  
 $EndComp
@@ -90,6 +100,9 @@ F 0 "SW8" H 4850 3435 50  0000 C CNN
 F 1 "U" H 4850 3344 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 4850 3350 50  0001 C CNN
 F 3 "" H 4850 3350 50  0001 C CNN
+F 4 "Common to all layouts" H 4850 3150 50  0001 C CNN "Comment"
+F 5 "YES" H 4850 3150 50  0001 C CNN "Fitted"
+F 6 "NO" H 4850 3150 50  0001 C CNN "Substitution OK"
 	1    4850 3150
 	1    0    0    -1  
 $EndComp
@@ -104,6 +117,9 @@ F 0 "SW16" H 6450 3435 50  0000 C CNN
 F 1 "T" H 6450 3344 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 6450 3350 50  0001 C CNN
 F 3 "" H 6450 3350 50  0001 C CNN
+F 4 "Common to all layouts" H 6450 3150 50  0001 C CNN "Comment"
+F 5 "YES" H 6450 3150 50  0001 C CNN "Fitted"
+F 6 "NO" H 6450 3150 50  0001 C CNN "Substitution OK"
 	1    6450 3150
 	1    0    0    -1  
 $EndComp
@@ -118,6 +134,9 @@ F 0 "SW20" H 7250 3435 50  0000 C CNN
 F 1 "R" H 7250 3344 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 7250 3350 50  0001 C CNN
 F 3 "" H 7250 3350 50  0001 C CNN
+F 4 "Common to all layouts" H 7250 3150 50  0001 C CNN "Comment"
+F 5 "YES" H 7250 3150 50  0001 C CNN "Fitted"
+F 6 "NO" H 7250 3150 50  0001 C CNN "Substitution OK"
 	1    7250 3150
 	1    0    0    -1  
 $EndComp
@@ -132,6 +151,9 @@ F 0 "SW28" H 8850 3435 50  0000 C CNN
 F 1 "W" H 8850 3344 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 8850 3350 50  0001 C CNN
 F 3 "" H 8850 3350 50  0001 C CNN
+F 4 "Common to all layouts" H 8850 3150 50  0001 C CNN "Comment"
+F 5 "YES" H 8850 3150 50  0001 C CNN "Fitted"
+F 6 "NO" H 8850 3150 50  0001 C CNN "Substitution OK"
 	1    8850 3150
 	1    0    0    -1  
 $EndComp
@@ -146,6 +168,9 @@ F 0 "SW24" H 8050 3435 50  0000 C CNN
 F 1 "E" H 8050 3344 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 8050 3350 50  0001 C CNN
 F 3 "" H 8050 3350 50  0001 C CNN
+F 4 "Common to all layouts" H 8050 3150 50  0001 C CNN "Comment"
+F 5 "YES" H 8050 3150 50  0001 C CNN "Fitted"
+F 6 "NO" H 8050 3150 50  0001 C CNN "Substitution OK"
 	1    8050 3150
 	1    0    0    -1  
 $EndComp
@@ -160,6 +185,12 @@ F 0 "D5" V 4296 3321 50  0000 R CNN
 F 1 "1N4148" V 4205 3321 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 4250 3225 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 4250 3400 50  0001 C CNN
+F 4 "YES" H 4250 3400 50  0001 C CNN "Fitted"
+F 5 " YES " H 4250 3400 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 4250 3400 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 4250 3400 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 4250 3400 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 4250 3400 50  0001 C CNN "Package"
 	1    4250 3400
 	0    -1   -1   0   
 $EndComp
@@ -174,6 +205,12 @@ F 0 "D2" V 3496 3321 50  0000 R CNN
 F 1 "1N4148" V 3405 3321 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3450 3225 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 3450 3400 50  0001 C CNN
+F 4 "YES" H 3450 3400 50  0001 C CNN "Fitted"
+F 5 " YES " H 3450 3400 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 3450 3400 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 3450 3400 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 3450 3400 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 3450 3400 50  0001 C CNN "Package"
 	1    3450 3400
 	0    -1   -1   0   
 $EndComp
@@ -188,6 +225,12 @@ F 0 "D9" V 5096 3321 50  0000 R CNN
 F 1 "1N4148" V 5005 3321 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5050 3225 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 5050 3400 50  0001 C CNN
+F 4 "YES" H 5050 3400 50  0001 C CNN "Fitted"
+F 5 " YES " H 5050 3400 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 5050 3400 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 5050 3400 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 5050 3400 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 5050 3400 50  0001 C CNN "Package"
 	1    5050 3400
 	0    -1   -1   0   
 $EndComp
@@ -202,6 +245,12 @@ F 0 "D13" V 5896 3321 50  0000 R CNN
 F 1 "1N4148" V 5805 3321 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5850 3225 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 5850 3400 50  0001 C CNN
+F 4 "YES" H 5850 3400 50  0001 C CNN "Fitted"
+F 5 " YES " H 5850 3400 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 5850 3400 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 5850 3400 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 5850 3400 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 5850 3400 50  0001 C CNN "Package"
 	1    5850 3400
 	0    -1   -1   0   
 $EndComp
@@ -216,6 +265,12 @@ F 0 "D17" V 6696 3321 50  0000 R CNN
 F 1 "1N4148" V 6605 3321 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 6650 3225 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 6650 3400 50  0001 C CNN
+F 4 "YES" H 6650 3400 50  0001 C CNN "Fitted"
+F 5 " YES " H 6650 3400 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 6650 3400 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 6650 3400 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 6650 3400 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 6650 3400 50  0001 C CNN "Package"
 	1    6650 3400
 	0    -1   -1   0   
 $EndComp
@@ -230,6 +285,12 @@ F 0 "D21" V 7496 3321 50  0000 R CNN
 F 1 "1N4148" V 7405 3321 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7450 3225 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 7450 3400 50  0001 C CNN
+F 4 "YES" H 7450 3400 50  0001 C CNN "Fitted"
+F 5 " YES " H 7450 3400 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 7450 3400 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 7450 3400 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 7450 3400 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 7450 3400 50  0001 C CNN "Package"
 	1    7450 3400
 	0    -1   -1   0   
 $EndComp
@@ -244,6 +305,12 @@ F 0 "D25" V 8296 3321 50  0000 R CNN
 F 1 "1N4148" V 8205 3321 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8250 3225 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 8250 3400 50  0001 C CNN
+F 4 "YES" H 8250 3400 50  0001 C CNN "Fitted"
+F 5 " YES " H 8250 3400 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 8250 3400 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 8250 3400 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 8250 3400 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 8250 3400 50  0001 C CNN "Package"
 	1    8250 3400
 	0    -1   -1   0   
 $EndComp
@@ -258,6 +325,12 @@ F 0 "D29" V 9096 3321 50  0000 R CNN
 F 1 "1N4148" V 9005 3321 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9050 3225 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 9050 3400 50  0001 C CNN
+F 4 "YES" H 9050 3400 50  0001 C CNN "Fitted"
+F 5 " YES " H 9050 3400 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 9050 3400 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 9050 3400 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 9050 3400 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 9050 3400 50  0001 C CNN "Package"
 	1    9050 3400
 	0    -1   -1   0   
 $EndComp
@@ -272,6 +345,8 @@ F 0 "SW2" H 3250 4335 50  0000 C CNN
 F 1 "LT Arrow" H 3250 4244 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 3250 4250 50  0001 C CNN
 F 3 "" H 3250 4250 50  0001 C CNN
+F 4 "NO" H 3250 4050 50  0001 C CNN "Fitted"
+F 5 "NO" H 3250 4050 50  0001 C CNN "Substitution OK"
 	1    3250 4050
 	1    0    0    -1  
 $EndComp
@@ -286,6 +361,8 @@ F 0 "SW5" H 4050 4335 50  0000 C CNN
 F 1 "Repeat" H 4050 4244 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 4050 4250 50  0001 C CNN
 F 3 "" H 4050 4250 50  0001 C CNN
+F 4 "NO" H 4050 4050 50  0001 C CNN "Fitted"
+F 5 "NO" H 4050 4050 50  0001 C CNN "Substitution OK"
 	1    4050 4050
 	1    0    0    -1  
 $EndComp
@@ -300,6 +377,9 @@ F 0 "SW13" H 5650 4335 50  0000 C CNN
 F 1 "Return" H 5650 4244 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 5650 4250 50  0001 C CNN
 F 3 "" H 5650 4250 50  0001 C CNN
+F 4 "Common to all layouts" H 5650 4050 50  0001 C CNN "Comment"
+F 5 "YES" H 5650 4050 50  0001 C CNN "Fitted"
+F 6 "NO" H 5650 4050 50  0001 C CNN "Substitution OK"
 	1    5650 4050
 	1    0    0    -1  
 $EndComp
@@ -314,6 +394,9 @@ F 0 "SW21" H 7250 4335 50  0000 C CNN
 F 1 "O" H 7250 4244 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 7250 4250 50  0001 C CNN
 F 3 "" H 7250 4250 50  0001 C CNN
+F 4 "Common to all layouts" H 7250 4050 50  0001 C CNN "Comment"
+F 5 "YES" H 7250 4050 50  0001 C CNN "Fitted"
+F 6 "NO" H 7250 4050 50  0001 C CNN "Substitution OK"
 	1    7250 4050
 	1    0    0    -1  
 $EndComp
@@ -328,6 +411,9 @@ F 0 "SW29" H 8850 4335 50  0000 C CNN
 F 1 "Period" H 8850 4244 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 8850 4250 50  0001 C CNN
 F 3 "" H 8850 4250 50  0001 C CNN
+F 4 "Common to all layouts" H 8850 4050 50  0001 C CNN "Comment"
+F 5 "YES" H 8850 4050 50  0001 C CNN "Fitted"
+F 6 "NO" H 8850 4050 50  0001 C CNN "Substitution OK"
 	1    8850 4050
 	1    0    0    -1  
 $EndComp
@@ -342,6 +428,9 @@ F 0 "SW25" H 8050 4335 50  0000 C CNN
 F 1 "L" H 8050 4244 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 8050 4250 50  0001 C CNN
 F 3 "" H 8050 4250 50  0001 C CNN
+F 4 "Common to all layouts" H 8050 4050 50  0001 C CNN "Comment"
+F 5 "YES" H 8050 4050 50  0001 C CNN "Fitted"
+F 6 "NO" H 8050 4050 50  0001 C CNN "Substitution OK"
 	1    8050 4050
 	1    0    0    -1  
 $EndComp
@@ -356,6 +445,12 @@ F 0 "D6" V 4296 4221 50  0000 R CNN
 F 1 "1N4148" V 4205 4221 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 4250 4125 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 4250 4300 50  0001 C CNN
+F 4 "YES" H 4250 4300 50  0001 C CNN "Fitted"
+F 5 " YES " H 4250 4300 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 4250 4300 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 4250 4300 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 4250 4300 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 4250 4300 50  0001 C CNN "Package"
 	1    4250 4300
 	0    -1   -1   0   
 $EndComp
@@ -370,6 +465,12 @@ F 0 "D3" V 3496 4221 50  0000 R CNN
 F 1 "1N4148" V 3405 4221 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3450 4125 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 3450 4300 50  0001 C CNN
+F 4 "YES" H 3450 4300 50  0001 C CNN "Fitted"
+F 5 " YES " H 3450 4300 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 3450 4300 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 3450 4300 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 3450 4300 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 3450 4300 50  0001 C CNN "Package"
 	1    3450 4300
 	0    -1   -1   0   
 $EndComp
@@ -384,6 +485,12 @@ F 0 "D14" V 5896 4221 50  0000 R CNN
 F 1 "1N4148" V 5805 4221 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5850 4125 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 5850 4300 50  0001 C CNN
+F 4 "YES" H 5850 4300 50  0001 C CNN "Fitted"
+F 5 " YES " H 5850 4300 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 5850 4300 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 5850 4300 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 5850 4300 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 5850 4300 50  0001 C CNN "Package"
 	1    5850 4300
 	0    -1   -1   0   
 $EndComp
@@ -398,6 +505,12 @@ F 0 "D22" V 7496 4221 50  0000 R CNN
 F 1 "1N4148" V 7405 4221 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7450 4125 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 7450 4300 50  0001 C CNN
+F 4 "YES" H 7450 4300 50  0001 C CNN "Fitted"
+F 5 " YES " H 7450 4300 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 7450 4300 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 7450 4300 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 7450 4300 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 7450 4300 50  0001 C CNN "Package"
 	1    7450 4300
 	0    -1   -1   0   
 $EndComp
@@ -412,6 +525,12 @@ F 0 "D26" V 8296 4221 50  0000 R CNN
 F 1 "1N4148" V 8205 4221 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8250 4125 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 8250 4300 50  0001 C CNN
+F 4 "YES" H 8250 4300 50  0001 C CNN "Fitted"
+F 5 " YES " H 8250 4300 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 8250 4300 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 8250 4300 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 8250 4300 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 8250 4300 50  0001 C CNN "Package"
 	1    8250 4300
 	0    -1   -1   0   
 $EndComp
@@ -426,6 +545,12 @@ F 0 "D30" V 9096 4221 50  0000 R CNN
 F 1 "1N4148" V 9005 4221 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9050 4125 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 9050 4300 50  0001 C CNN
+F 4 "YES" H 9050 4300 50  0001 C CNN "Fitted"
+F 5 " YES " H 9050 4300 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 9050 4300 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 9050 4300 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 9050 4300 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 9050 4300 50  0001 C CNN "Package"
 	1    9050 4300
 	0    -1   -1   0   
 $EndComp
@@ -440,6 +565,8 @@ F 0 "SW3" H 3250 5235 50  0000 C CNN
 F 1 "Tilde" H 3250 5144 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 3250 5150 50  0001 C CNN
 F 3 "" H 3250 5150 50  0001 C CNN
+F 4 "NO" H 3250 4950 50  0001 C CNN "Fitted"
+F 5 "NO" H 3250 4950 50  0001 C CNN "Substitution OK"
 	1    3250 4950
 	1    0    0    -1  
 $EndComp
@@ -454,6 +581,8 @@ F 0 "SW6" H 4050 5235 50  0000 C CNN
 F 1 "Bracket_Close" H 4150 5150 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 4050 5150 50  0001 C CNN
 F 3 "" H 4050 5150 50  0001 C CNN
+F 4 "NO" H 4050 4950 50  0001 C CNN "Fitted"
+F 5 "NO" H 4050 4950 50  0001 C CNN "Substitution OK"
 	1    4050 4950
 	1    0    0    -1  
 $EndComp
@@ -468,6 +597,9 @@ F 0 "SW14" H 5650 5235 50  0000 C CNN
 F 1 "Dash" H 5650 5144 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 5650 5150 50  0001 C CNN
 F 3 "" H 5650 5150 50  0001 C CNN
+F 4 "Common to all layouts" H 5650 4950 50  0001 C CNN "Comment"
+F 5 "YES" H 5650 4950 50  0001 C CNN "Fitted"
+F 6 "NO" H 5650 4950 50  0001 C CNN "Substitution OK"
 	1    5650 4950
 	1    0    0    -1  
 $EndComp
@@ -482,6 +614,9 @@ F 0 "SW10" H 4850 5235 50  0000 C CNN
 F 1 "Bracket_Open" H 4950 5150 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 4850 5150 50  0001 C CNN
 F 3 "" H 4850 5150 50  0001 C CNN
+F 4 "Common to all layouts" H 4850 4950 50  0001 C CNN "Comment"
+F 5 "YES" H 4850 4950 50  0001 C CNN "Fitted"
+F 6 "NO" H 4850 4950 50  0001 C CNN "Substitution OK"
 	1    4850 4950
 	1    0    0    -1  
 $EndComp
@@ -496,6 +631,9 @@ F 0 "SW18" H 6450 5235 50  0000 C CNN
 F 1 "Colon" H 6450 5144 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 6450 5150 50  0001 C CNN
 F 3 "" H 6450 5150 50  0001 C CNN
+F 4 "Common to all layouts" H 6450 4950 50  0001 C CNN "Comment"
+F 5 "YES" H 6450 4950 50  0001 C CNN "Fitted"
+F 6 "NO" H 6450 4950 50  0001 C CNN "Substitution OK"
 	1    6450 4950
 	1    0    0    -1  
 $EndComp
@@ -510,6 +648,9 @@ F 0 "SW22" H 7250 5235 50  0000 C CNN
 F 1 "0" H 7250 5144 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 7250 5150 50  0001 C CNN
 F 3 "" H 7250 5150 50  0001 C CNN
+F 4 "Common to all layouts" H 7250 4950 50  0001 C CNN "Comment"
+F 5 "YES" H 7250 4950 50  0001 C CNN "Fitted"
+F 6 "NO" H 7250 4950 50  0001 C CNN "Substitution OK"
 	1    7250 4950
 	1    0    0    -1  
 $EndComp
@@ -524,6 +665,9 @@ F 0 "SW30" H 8850 5235 50  0000 C CNN
 F 1 "8" H 8850 5144 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 8850 5150 50  0001 C CNN
 F 3 "" H 8850 5150 50  0001 C CNN
+F 4 "Common to all layouts" H 8850 4950 50  0001 C CNN "Comment"
+F 5 "YES" H 8850 4950 50  0001 C CNN "Fitted"
+F 6 "NO" H 8850 4950 50  0001 C CNN "Substitution OK"
 	1    8850 4950
 	1    0    0    -1  
 $EndComp
@@ -538,6 +682,9 @@ F 0 "SW26" H 8050 5235 50  0000 C CNN
 F 1 "9" H 8050 5144 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 8050 5150 50  0001 C CNN
 F 3 "" H 8050 5150 50  0001 C CNN
+F 4 "Common to all layouts" H 8050 4950 50  0001 C CNN "Comment"
+F 5 "YES" H 8050 4950 50  0001 C CNN "Fitted"
+F 6 "NO" H 8050 4950 50  0001 C CNN "Substitution OK"
 	1    8050 4950
 	1    0    0    -1  
 $EndComp
@@ -552,6 +699,12 @@ F 0 "D7" V 4296 5121 50  0000 R CNN
 F 1 "1N4148" V 4205 5121 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 4250 5025 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 4250 5200 50  0001 C CNN
+F 4 "YES" H 4250 5200 50  0001 C CNN "Fitted"
+F 5 " YES " H 4250 5200 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 4250 5200 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 4250 5200 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 4250 5200 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 4250 5200 50  0001 C CNN "Package"
 	1    4250 5200
 	0    -1   -1   0   
 $EndComp
@@ -566,6 +719,12 @@ F 0 "D4" V 3496 5121 50  0000 R CNN
 F 1 "1N4148" V 3405 5121 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3450 5025 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 3450 5200 50  0001 C CNN
+F 4 "YES" H 3450 5200 50  0001 C CNN "Fitted"
+F 5 " YES " H 3450 5200 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 3450 5200 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 3450 5200 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 3450 5200 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 3450 5200 50  0001 C CNN "Package"
 	1    3450 5200
 	0    -1   -1   0   
 $EndComp
@@ -580,6 +739,12 @@ F 0 "D11" V 5096 5121 50  0000 R CNN
 F 1 "1N4148" V 5005 5121 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5050 5025 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 5050 5200 50  0001 C CNN
+F 4 "YES" H 5050 5200 50  0001 C CNN "Fitted"
+F 5 " YES " H 5050 5200 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 5050 5200 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 5050 5200 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 5050 5200 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 5050 5200 50  0001 C CNN "Package"
 	1    5050 5200
 	0    -1   -1   0   
 $EndComp
@@ -594,6 +759,12 @@ F 0 "D15" V 5896 5121 50  0000 R CNN
 F 1 "1N4148" V 5805 5121 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5850 5025 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 5850 5200 50  0001 C CNN
+F 4 "YES" H 5850 5200 50  0001 C CNN "Fitted"
+F 5 " YES " H 5850 5200 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 5850 5200 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 5850 5200 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 5850 5200 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 5850 5200 50  0001 C CNN "Package"
 	1    5850 5200
 	0    -1   -1   0   
 $EndComp
@@ -608,6 +779,12 @@ F 0 "D19" V 6696 5121 50  0000 R CNN
 F 1 "1N4148" V 6605 5121 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 6650 5025 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 6650 5200 50  0001 C CNN
+F 4 "YES" H 6650 5200 50  0001 C CNN "Fitted"
+F 5 " YES " H 6650 5200 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 6650 5200 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 6650 5200 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 6650 5200 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 6650 5200 50  0001 C CNN "Package"
 	1    6650 5200
 	0    -1   -1   0   
 $EndComp
@@ -622,6 +799,12 @@ F 0 "D23" V 7496 5121 50  0000 R CNN
 F 1 "1N4148" V 7405 5121 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7450 5025 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 7450 5200 50  0001 C CNN
+F 4 "YES" H 7450 5200 50  0001 C CNN "Fitted"
+F 5 " YES " H 7450 5200 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 7450 5200 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 7450 5200 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 7450 5200 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 7450 5200 50  0001 C CNN "Package"
 	1    7450 5200
 	0    -1   -1   0   
 $EndComp
@@ -636,6 +819,12 @@ F 0 "D27" V 8296 5121 50  0000 R CNN
 F 1 "1N4148" V 8205 5121 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8250 5025 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 8250 5200 50  0001 C CNN
+F 4 "YES" H 8250 5200 50  0001 C CNN "Fitted"
+F 5 " YES " H 8250 5200 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 8250 5200 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 8250 5200 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 8250 5200 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 8250 5200 50  0001 C CNN "Package"
 	1    8250 5200
 	0    -1   -1   0   
 $EndComp
@@ -650,6 +839,12 @@ F 0 "D31" V 9096 5121 50  0000 R CNN
 F 1 "1N4148" V 9005 5121 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9050 5025 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 9050 5200 50  0001 C CNN
+F 4 "YES" H 9050 5200 50  0001 C CNN "Fitted"
+F 5 " YES " H 9050 5200 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 9050 5200 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 9050 5200 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 9050 5200 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 9050 5200 50  0001 C CNN "Package"
 	1    9050 5200
 	0    -1   -1   0   
 $EndComp
@@ -664,6 +859,9 @@ F 0 "SW7" H 4050 6135 50  0000 C CNN
 F 1 "7" H 4050 6044 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 4050 6050 50  0001 C CNN
 F 3 "" H 4050 6050 50  0001 C CNN
+F 4 "Common to all layouts" H 4050 5850 50  0001 C CNN "Comment"
+F 5 "YES" H 4050 5850 50  0001 C CNN "Fitted"
+F 6 "NO" H 4050 5850 50  0001 C CNN "Substitution OK"
 	1    4050 5850
 	1    0    0    -1  
 $EndComp
@@ -678,6 +876,9 @@ F 0 "SW15" H 5650 6135 50  0000 C CNN
 F 1 "5" H 5650 6044 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 5650 6050 50  0001 C CNN
 F 3 "" H 5650 6050 50  0001 C CNN
+F 4 "Common to all layouts" H 5650 5850 50  0001 C CNN "Comment"
+F 5 "YES" H 5650 5850 50  0001 C CNN "Fitted"
+F 6 "NO" H 5650 5850 50  0001 C CNN "Substitution OK"
 	1    5650 5850
 	1    0    0    -1  
 $EndComp
@@ -692,6 +893,9 @@ F 0 "SW11" H 4850 6135 50  0000 C CNN
 F 1 "6" H 4850 6044 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 4850 6050 50  0001 C CNN
 F 3 "" H 4850 6050 50  0001 C CNN
+F 4 "Common to all layouts" H 4850 5850 50  0001 C CNN "Comment"
+F 5 "YES" H 4850 5850 50  0001 C CNN "Fitted"
+F 6 "NO" H 4850 5850 50  0001 C CNN "Substitution OK"
 	1    4850 5850
 	1    0    0    -1  
 $EndComp
@@ -706,6 +910,9 @@ F 0 "SW19" H 6450 6135 50  0000 C CNN
 F 1 "4" H 6450 6044 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 6450 6050 50  0001 C CNN
 F 3 "" H 6450 6050 50  0001 C CNN
+F 4 "Common to all layouts" H 6450 5850 50  0001 C CNN "Comment"
+F 5 "YES" H 6450 5850 50  0001 C CNN "Fitted"
+F 6 "NO" H 6450 5850 50  0001 C CNN "Substitution OK"
 	1    6450 5850
 	1    0    0    -1  
 $EndComp
@@ -720,6 +927,9 @@ F 0 "SW23" H 7250 6135 50  0000 C CNN
 F 1 "3" H 7250 6044 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 7250 6050 50  0001 C CNN
 F 3 "" H 7250 6050 50  0001 C CNN
+F 4 "Common to all layouts" H 7250 5850 50  0001 C CNN "Comment"
+F 5 "YES" H 7250 5850 50  0001 C CNN "Fitted"
+F 6 "NO" H 7250 5850 50  0001 C CNN "Substitution OK"
 	1    7250 5850
 	1    0    0    -1  
 $EndComp
@@ -734,6 +944,9 @@ F 0 "SW31" H 8850 6135 50  0000 C CNN
 F 1 "1" H 8850 6044 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 8850 6050 50  0001 C CNN
 F 3 "" H 8850 6050 50  0001 C CNN
+F 4 "Common to all layouts" H 8850 5850 50  0001 C CNN "Comment"
+F 5 "YES" H 8850 5850 50  0001 C CNN "Fitted"
+F 6 "NO" H 8850 5850 50  0001 C CNN "Substitution OK"
 	1    8850 5850
 	1    0    0    -1  
 $EndComp
@@ -748,6 +961,9 @@ F 0 "SW27" H 8050 6135 50  0000 C CNN
 F 1 "2" H 8050 6044 50  0000 C CNN
 F 2 "unikbd:Key_MX" H 8050 6050 50  0001 C CNN
 F 3 "" H 8050 6050 50  0001 C CNN
+F 4 "Common to all layouts" H 8050 5850 50  0001 C CNN "Comment"
+F 5 "YES" H 8050 5850 50  0001 C CNN "Fitted"
+F 6 "NO" H 8050 5850 50  0001 C CNN "Substitution OK"
 	1    8050 5850
 	1    0    0    -1  
 $EndComp
@@ -762,6 +978,12 @@ F 0 "D8" V 4296 6021 50  0000 R CNN
 F 1 "1N4148" V 4205 6021 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 4250 5925 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 4250 6100 50  0001 C CNN
+F 4 "YES" H 4250 6100 50  0001 C CNN "Fitted"
+F 5 " YES " H 4250 6100 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 4250 6100 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 4250 6100 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 4250 6100 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 4250 6100 50  0001 C CNN "Package"
 	1    4250 6100
 	0    -1   -1   0   
 $EndComp
@@ -776,6 +998,12 @@ F 0 "D12" V 5096 6021 50  0000 R CNN
 F 1 "1N4148" V 5005 6021 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5050 5925 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 5050 6100 50  0001 C CNN
+F 4 "YES" H 5050 6100 50  0001 C CNN "Fitted"
+F 5 " YES " H 5050 6100 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 5050 6100 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 5050 6100 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 5050 6100 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 5050 6100 50  0001 C CNN "Package"
 	1    5050 6100
 	0    -1   -1   0   
 $EndComp
@@ -790,6 +1018,12 @@ F 0 "D16" V 5896 6021 50  0000 R CNN
 F 1 "1N4148" V 5805 6021 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5850 5925 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 5850 6100 50  0001 C CNN
+F 4 "YES" H 5850 6100 50  0001 C CNN "Fitted"
+F 5 " YES " H 5850 6100 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 5850 6100 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 5850 6100 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 5850 6100 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 5850 6100 50  0001 C CNN "Package"
 	1    5850 6100
 	0    -1   -1   0   
 $EndComp
@@ -804,6 +1038,12 @@ F 0 "D20" V 6696 6021 50  0000 R CNN
 F 1 "1N4148" V 6605 6021 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 6650 5925 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 6650 6100 50  0001 C CNN
+F 4 "YES" H 6650 6100 50  0001 C CNN "Fitted"
+F 5 " YES " H 6650 6100 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 6650 6100 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 6650 6100 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 6650 6100 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 6650 6100 50  0001 C CNN "Package"
 	1    6650 6100
 	0    -1   -1   0   
 $EndComp
@@ -818,6 +1058,12 @@ F 0 "D24" V 7496 6021 50  0000 R CNN
 F 1 "1N4148" V 7405 6021 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7450 5925 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 7450 6100 50  0001 C CNN
+F 4 "YES" H 7450 6100 50  0001 C CNN "Fitted"
+F 5 " YES " H 7450 6100 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 7450 6100 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 7450 6100 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 7450 6100 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 7450 6100 50  0001 C CNN "Package"
 	1    7450 6100
 	0    -1   -1   0   
 $EndComp
@@ -832,6 +1078,12 @@ F 0 "D28" V 8296 6021 50  0000 R CNN
 F 1 "1N4148" V 8205 6021 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8250 5925 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 8250 6100 50  0001 C CNN
+F 4 "YES" H 8250 6100 50  0001 C CNN "Fitted"
+F 5 " YES " H 8250 6100 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 8250 6100 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 8250 6100 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 8250 6100 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 8250 6100 50  0001 C CNN "Package"
 	1    8250 6100
 	0    -1   -1   0   
 $EndComp
@@ -846,6 +1098,12 @@ F 0 "D32" V 9096 6021 50  0000 R CNN
 F 1 "1N4148" V 9005 6021 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9050 5925 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 9050 6100 50  0001 C CNN
+F 4 "YES" H 9050 6100 50  0001 C CNN "Fitted"
+F 5 " YES " H 9050 6100 50  0001 C CNN "Substitution OK"
+F 6 "<1.25V forward voltage.  " H 9050 6100 50  0001 C CNN "Comment"
+F 7 "ON Semiconductor" H 9050 6100 50  0001 C CNN "Manufacturer"
+F 8 "MMBD914LT3G " H 9050 6100 50  0001 C CNN "Manufacturer Part Number"
+F 9 " SOT-23-3 " H 9050 6100 50  0001 C CNN "Package"
 	1    9050 6100
 	0    -1   -1   0   
 $EndComp
