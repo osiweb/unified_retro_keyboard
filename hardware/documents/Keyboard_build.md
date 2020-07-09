@@ -19,7 +19,7 @@ The aligner PCB includes a guide for bending the stabilizer.
 
 1. Look along the length of the rod to make sure that both "arms" are in line.  If necessary, align the two arms by twisting about the axis of the axis of the rod.
 
-1. Test the fit of the rod by inserting it into the guide holes.  You can see, in this example, the rod is a tad long.
+1. Test the fit of the rod by inserting it into the guide holes.  Adjust as needed.
 
     <img alt="Test Fit" src="build-images/test_fit_too_long.jpg" height=50% width=50%>
 
@@ -49,23 +49,19 @@ The Futaba aligner PCB includes two stabilizer posts, allowing the futaba keys t
 
     <img alt="Broken offfiling" src="build-images/futaba_posts_before_filing.jpg" height=38% width=38%> <img alt="Removed breakaway tabs" src="build-images/futaba_posts_breakaway_filed_off.jpg" height=38% width=38%>
 
-1. File away the area marked "File to 1.5mm".  The aligner includes a thickness gauge to test fitting, but it turns out that manufacturing tolerances are not adequate, and the gauge is not reliable.  Use a spare key to test the thickness.  The post should require some pressure to inert into the keycap base.
+1. File away the area marked "File to 1.5mm".  The aligner includes a thickness gauge to test fitting, but it turns out that manufacturing tolerances are not adequate, and the gauge is not reliable.  Use a spare key cap to test the thickness.  The post should require some pressure to inert into the keycap base.
 
-<img alt="" src="" height=50% width=50%>
+1. The post should be just under 4mm wide.  The post in this example is an early revision that was specified at 4mm, and ended being a sliver too wide to fit the keycap base.  It required a alittle extra filing along one side to fit properly.  The posts on newer revs are thinner and should not require extra filing to narrow side-to-side width.
 
-1. The post should be just under 4mm wide.  The post in this example is an early revision that was specified at 4mm, and ended being a sliver too wide to fit the keycap base.  It required a alittle extra filing along one side to fit properly.
-
-   <img alt="Posts before and after filing" src="build-images/futaba_posts_before_and_after.jpg" height=50% width=50%>
+    <img alt="Posts before and after filing" src="build-images/futaba_posts_before_and_after.jpg" height=50% width=50%>
 
     <img alt="Posts ready to install" src="build-images/filed_futaba_posts.jpg" height=50% width=50%>
 
 1. The posts should be just tight enough to require a pair of pliers to insert.  Use pliers to insert both posts fully.  Use a ruler or caliper to ensure the prodruding portions of both posts are the same length.
 
-<img alt="" src="" height=50% width=50%>
+<img alt="Press the posts into the spacebar" src="build-images/futaba_posts_press_into_spacebar.jpg" height=50% width=50%>
 
 1. Install the spacebar center mount on the spacebar key, aligning the posts so that they slide into the PCB-mounted stabilizers.
-
-<img alt="" src="" height=50% width=50%>
 
 1. Holding down the spacebar, align the arms stabilizer rod with the holes in the posts, and then snap the rod into place at the front of the stabilizer mounts.
 
