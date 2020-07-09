@@ -45,7 +45,6 @@ The Futaba aligner PCB includes two stabilizer posts, allowing the futaba keys t
 1. Remove both posts from the PCB.  Newer revisions of the aligner board include perforations for easier break-away of the posts.
 
     <img alt="Break away posts from aligner" src="build-images/cutting_post.jpg" height=50% width=50%>
-    <img alt="Futaba stabilizer adapter posts" src="pre-breakaway.jpg" height=50% width=50%>
 
 1. Be sure to file away any excess material from the breakaway tab.
 
