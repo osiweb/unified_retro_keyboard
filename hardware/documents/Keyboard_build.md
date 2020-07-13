@@ -73,7 +73,7 @@ For futaba switches, no standoffs are required between the aligner and PCB,
 
 1. Repeat the above for the spacebar and the middle key on the top row.
 
-   <img alt="Tack down switches at the edges first" src="build-images/solder_switches.jpg" height=50% width=50%>
+   <img alt="Tack down switches at the edges first" src="build-images/solder_switches.jpg" height=7% width=75%>
 
 
 1. Now, solder in all the other keys.
