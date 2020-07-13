@@ -55,7 +55,7 @@ For futaba switches, no standoffs are required between the aligner and PCB,
    
 1. Install the cherry MX PCB-mount stabilizers onto the PCB.
 
-<img alt="build-images/pcb_mount_stabilizers.jpg" height=50% width=50%>
+   <img alt="build-images/pcb_mount_stabilizers.jpg" height=50% width=50%>
 
 1. Line up the pins of the switches in the aligner assembly with the PCB. The
    two assemblies should "zip" together easily. If you feel resistance, take the
@@ -66,11 +66,14 @@ For futaba switches, no standoffs are required between the aligner and PCB,
    switches are seated flush on the PCB. To do this, first tack ONE pin on each
    of the four switches at the corners of the keyboard.
    
-1. Now, one by one, reheat each tacked pin while pressing the corresponding switch tightly against the PCB.  You should feel a small "snap" as the key seats.  Remove the heat, and repeat for the pins on all four corners.  Finally, solder the second pin on each of the four corner keys.
+1. Now, one by one, reheat each tacked pin while pressing the corresponding
+   switch tightly against the PCB. You should feel a small "snap" as the key
+   seats. Remove the heat, and repeat for the pins on all four corners. Finally,
+   solder the second pin on each of the four corner keys.
 
 1. Repeat the above for the spacebar and the middle key on the top row.
 
-<img alt="Tack down switches at the edges first" src="build-images/solder_switches.jpg" height=50% width=50%>
+   <img alt="Tack down switches at the edges first" src="build-images/solder_switches.jpg" height=50% width=50%>
 
 
 1. Now, solder in all the other keys.
