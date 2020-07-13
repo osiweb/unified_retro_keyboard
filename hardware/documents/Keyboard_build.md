@@ -55,7 +55,7 @@ For futaba switches, no standoffs are required between the aligner and PCB,
    
 1. Install the cherry MX PCB-mount stabilizers onto the PCB.
 
-   <img alt="build-images/pcb_mount_stabilizers.jpg" height=50% width=50%>
+   <img alt="Install the stabilizers" src="build-images/pcb_mount_stabilizers.jpg" height=50% width=50%>
 
 1. Line up the pins of the switches in the aligner assembly with the PCB. The
    two assemblies should "zip" together easily. If you feel resistance, take the
