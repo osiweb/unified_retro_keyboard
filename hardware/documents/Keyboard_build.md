@@ -5,27 +5,43 @@ I recommend installing the diodes and resistors at ALL switch positions.  Doing 
 1. The keyboard is too big for most PCB holders. To keep the components flat as
    you insert them, I suggest taping the keyboard PCB to the edge of your bench,
    and install two rows at a time.
-   
+
+   <img alt="Secure the PCB with space for the leads" src="build-images/Tape_to_table.jpg" height=50% width=50%>
+
 1. Using a lead-bender will help speed up the process and can help produce a
    neater result. However, neatness is not critical, as the diodes will be
    mostly hidden.
    
+   <img alt="Lead bending tool" src="build-images/bend_leads.jpg" height=50% width=50%>
+
 1. Check that the diodes are all facing the same (correct) direction.
+
+   <img alt="" src="build-images/Install_Diodes.jpg" height=50% width=50%>
 
 1. Once the diodes are inserted, I suggest using a piece of painters tape to
    keep then in place when you flip over the board for soldering.
-   
+
+   <img alt="Use Painters' tape to secure components" src="build-images/Tape_parts_in_place.jpg" height=50% width=50%>
+
 1. After installing the diodes, install all the through-hole resistors.
+
+   <img alt="All parts installed" src="build-images/All_TH_parts_installed.jpg" height=50% width=50%>
 
 1. Finally, flip over the PCB and install the 40-pin connector on the back side
    (opposite side from the diodes and resistors).
    
+   <img alt="Connector is opposite side fromg the through-hole components"
+   src="build-images/Connector_on_back.jpg" height=50% width=50%>
+
 1. It's important that the connector is seated flat to the PCB. To ensure a
    properly seated connector, first tack pins on opposite corners of the
    connector. Then, applying heat to one tacked pin, press the connector flat
    onto the PCB. You will feel a small "snap" as the connector seats. Repeat for
    the other tacked pin.
-   
+
+   <img alt="Tack corners of connector for flush install" src="build-images/Install_resistors.jpg" height=50% width=50%>
+
+
 ## Preparing the Aligner (futaba)
 
 ## Combining the PCB and aligner (futaba switches)
@@ -38,6 +54,8 @@ For futaba switches, no standoffs are required between the aligner and PCB,
    switch configuration for the Apple II+ keyboard.
    
 1. Install the cherry MX PCB-mount stabilizers onto the PCB.
+
+<img alt="build-images/pcb_mount_stabilizers.jpg" height=50% width=50%>
 
 1. Line up the pins of the switches in the aligner assembly with the PCB. The
    two assemblies should "zip" together easily. If you feel resistance, take the
@@ -52,11 +70,11 @@ For futaba switches, no standoffs are required between the aligner and PCB,
 
 1. Repeat the above for the spacebar and the middle key on the top row.
 
+<img alt="Tack down switches at the edges first" src="build-images/solder_switches.jpg" height=50% width=50%>
+
+
 1. Now, solder in all the other keys.
 
-g
-
-    <img alt="Install switches" src="build-images/Install_switches.jpg" height=50% width=50%>
 
 
 ### The Spacebar Stabilizer
