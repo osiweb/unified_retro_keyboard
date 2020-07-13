@@ -1,7 +1,64 @@
 # Keyboard build notes
 ## Preparing the Keyboard PCB
-## Preparing the Aligner
-## Combining the PCB and aligner
+I recommend installing the diodes and resistors at ALL switch positions.  Doing so will allow you to install additional switches later, and will give you flexibility to modify the keymap.  Installing the components is easiest before the switches are installed.
+
+1. The keyboard is too big for most PCB holders. To keep the components flat as
+   you insert them, I suggest taping the keyboard PCB to the edge of your bench,
+   and install two rows at a time.
+   
+1. Using a lead-bender will help speed up the process and can help produce a
+   neater result. However, neatness is not critical, as the diodes will be
+   mostly hidden.
+   
+1. Check that the diodes are all facing the same (correct) direction.
+
+1. Once the diodes are inserted, I suggest using a piece of painters tape to
+   keep then in place when you flip over the board for soldering.
+   
+1. After installing the diodes, install all the through-hole resistors.
+
+1. Finally, flip over the PCB and install the 40-pin connector on the back side
+   (opposite side from the diodes and resistors).
+   
+1. It's important that the connector is seated flat to the PCB. To ensure a
+   properly seated connector, first tack pins on opposite corners of the
+   connector. Then, applying heat to one tacked pin, press the connector flat
+   onto the PCB. You will feel a small "snap" as the connector seats. Repeat for
+   the other tacked pin.
+   
+## Preparing the Aligner (futaba)
+
+## Combining the PCB and aligner (futaba switches)
+For futaba switches, no standoffs are required between the aligner and PCB,
+   since the futaba switches provide sufficently sturdy mechanical support.
+   
+1. For the futaba aligners, the simplest way to assemble is to install all the
+   key switches in the aligner by press-fitting them into place. Install the
+   switches necessary for the keyboard you plan to build. Shown below is the
+   switch configuration for the Apple II+ keyboard.
+   
+1. Install the cherry MX PCB-mount stabilizers onto the PCB.
+
+1. Line up the pins of the switches in the aligner assembly with the PCB. The
+   two assemblies should "zip" together easily. If you feel resistance, take the
+   assemblies apart and check the pins on all the switches to make sure none are
+   bent.
+
+1. Once the assemblies are combined, it's important to make sure that the
+   switches are seated flush on the PCB. To do this, first tack ONE pin on each
+   of the four switches at the corners of the keyboard.
+   
+1. Now, one by one, reheat each tacked pin while pressing the corresponding switch tightly against the PCB.  You should feel a small "snap" as the key seats.  Remove the heat, and repeat for the pins on all four corners.  Finally, solder the second pin on each of the four corner keys.
+
+1. Repeat the above for the spacebar and the middle key on the top row.
+
+1. Now, solder in all the other keys.
+
+g
+
+    <img alt="Install switches" src="build-images/Install_switches.jpg" height=50% width=50%>
+
+
 ### The Spacebar Stabilizer
 #### Cherry MX keys
 ##### Stabilizer hardware
