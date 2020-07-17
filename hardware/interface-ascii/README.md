@@ -31,7 +31,6 @@ even slightly simplify the hardware layer of the firmware.
   be RESET, BREAK, CLEAR, etc. Two of these may be configured as emulated
   open-collector drivers.
 - Three GPIO lines are used to control keyboard LEDs. 
-
 - The DIP switch is wired into row 8 (of 0-15) to reduce RAM usage and speed up
   key scanning.
 
@@ -43,22 +42,38 @@ careful timing to avoid conflicts.
 
 ## Assembly Notes
 
-The minimum functioning circuit includes 
+A typical build includes:
 1. the Microcontroller (U1)
 1. the 74LS166 shift register (U2)
-1. one 74LS138 decoder (U3). This means no DIP switch, so keymap must be
-   selected at firmware build.
+1. both 74LS138 decoder (U3)
+1. Diodes D17-D24 and D25-D27.
+1. The two resistors R3 and R4. If you are using the keyboard in only a parallel
+   configuration or only a serial configuration, then you can jumper these
+   resistors with a piece of wire.
+1. The resistor network RN1
+1. The DIP switch SW1
+1. The 40-pin keyboard connector (2x20 0.1" pin header)
+1. At least one output connector (Apple 1, Apple 2, or Sol-20)
+1. The 6-pin programming header J5.
+
+The MINIMUM functioning circuit includes 
+1. the Microcontroller (U1)
+1. the 74LS166 shift register (U2)
+1. One 74LS138 decoder (U3). Without the second decoder, the DIP switch is not
+   supported, so only one keymap must be assigned as keymap 0 at compile time.
 1. The resistor network RN1
 1. The two resistors R3 and R4. If you are using the keyboard in only a parallel
-configuration or only a serial configuration, then you can jumper these
-resistors with a piece of wire.
+   configuration or only a serial configuration, then you can jumper these
+   resistors with a piece of wire.
 1. Any connectors required.
 
 ## Optional components
 ### Diodes D1-D16
-These diodes are intended to prevent conflicts between high and low keyboard
-driver outputs. They allow the row drivers to pull rows low, but not high,
-emulating open collector outputs.
+NOT NORMALLY POPULATED. 
+
+These diodes are intended to prevent conflicts between
+high and low keyboard driver outputs. They allow the row drivers to pull rows
+low, but not high, emulating open collector outputs.
 
 If you are attaching a keyboard with no diodes, then you only need to populate
 the diodes corresponding to rows on the keyboard. If the keyboard has 8 rows,
@@ -66,23 +81,39 @@ then you may want to install 8 diodes corresponding to those rows.
 
 Note that the footprints for these diodes include a copper jumper on the TOP
 copper layer. If you install any of these diodes, you should cut the jumpers for
-those diodes. Otherwise the diodes do nothing.
+those diodes. Otherwise the diodes would do nothing.
 
-If you are attaching a keyboard with a diode per key, then the diodes on the keys perform the same function, in addition to preventing "ghosting", so the per-row diodes do not need to be installed.
+If you are attaching a keyboard with a diode per key, then the diodes on the
+keys perform the same function, in addition to preventing "ghosting", so the
+per-row diodes do not need to be installed.
 
 ### DIP switch and associated diodes
-If you don't want to select keymaps or options via the DIP switch, then you may omit the DIP switch and diodes.  If you do this, then you will have to set the keymap and all preferences in the firmware.
-DIP switches, you can set all your preferences in the firmware, or just accept
-the default behavior, and skip the DIP switch and Diodes D17-D20 and D24-D27.
+TYPICALLY INSTALLED.
+
+If you don't want to select keymaps or options via the DIP
+switch, then you may omit the DIP switch and diodes. If you do this, then you
+will have to set the keymap and all preferences in the firmware. DIP switches,
+you can set all your preferences in the firmware, or just accept the default
+behavior, and skip the DIP switch and Diodes D17-D20 and D24-D27.
 
 ### Second 74LS138 multiplexer (U4)
-Only needed if you have more than 8 rows (including the DIP switch).
+TYPICALLY INSTALLED.
+
+You may omit this if 
+1. your keyboard matrix has 8 rows or fewer
+1. AND you don't want any DIP options
+1. AND you only want one pre-compiled keymap.
+
 
 ### The 74LS07 hex buffer (U5) and pullup R6
-The 74LS07 is only needed if you are using LED2 or LED3 on the keyboard, or the OUT2 open
-collector output.
+TYPICALLY INSTALLED.
+
+The 74LS07 is needed if you are using LED2 or LED3 on the keyboard, or the OUT2
+open collector output. If OUT2 is not open collector, then use a 74LS04 instead.
 
 ### Diodes D21, D22, D23
+TYPICALLY INSTALLED.
+
 Some keyboards may not wire all keys into the matrix. For example, some other
 interface modules may assign special hardware functions to certain keys. Those
 keys are brought directly to the keyboard connector. For the classic keyboard,
@@ -90,6 +121,3 @@ the POWER key, the '@' key, and the RUBOUT key are not directly wired. This
 module wires them into the matrix via D21, D22, and D23, respectively. For
 keyboards with no separately wired keys, these diodes may be omitted.
 
-### Resistors R1, R2, R5
-These resistors provide current limiting for up to three keyboard LEDs. If no
-keyboard LEDs are installed, then these resistors can be ommitted.
