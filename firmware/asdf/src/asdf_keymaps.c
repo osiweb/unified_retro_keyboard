@@ -26,6 +26,7 @@
 #include "asdf_physical.h"
 #include "asdf_virtual.h"
 #include "asdf_hook.h"
+#include "asdf_repeat.h"
 #include "asdf_keymaps.h"
 #include "asdf_keymap_defs.h"
 
@@ -87,7 +88,11 @@ static uint8_t keymap_index;
 // - May change the module-global keymap_index variable.
 // - Architecture is initialized to default configuration.
 //
-// NOTES: If the requested index is not valid, then no action is performed.
+// NOTES: 1) If the requested index is not valid, then no action is performed.
+//
+//        2) Hooks are initialized after repeat apparratus and modifiers states
+//        are initialized, so that hooks can be used to modify default modifier
+//        states for a map.
 //
 // SCOPE: public
 //
@@ -97,9 +102,15 @@ void asdf_keymaps_select_keymap(uint8_t index)
 {
   if (index < ASDF_NUM_KEYMAPS) {
     keymap_index = index;
+
     asdf_arch_init();
+
     asdf_virtual_init((asdf_virtual_initializer_t *const) keymap_initializer_list[keymap_index]);
+
     asdf_modifiers_init();
+
+    asdf_repeat_init();
+
     asdf_hook_init((asdf_hook_initializer_t *const) keymap_hook_initializer_list[keymap_index]);
   }
 }
