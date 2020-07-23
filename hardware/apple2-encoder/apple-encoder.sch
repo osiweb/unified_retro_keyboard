@@ -5,8 +5,8 @@ $Descr USLedger 17000 11000
 encoding utf-8
 Sheet 1 1
 Title "Unified Retro Keyboard Apple 2 Encoder"
-Date "2020-06-23"
-Rev "4.0"
+Date "2020-07-23"
+Rev "4.1"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -1517,62 +1517,6 @@ Connection ~ 8200 8700
 Connection ~ 8300 8700
 Wire Wire Line
 	8400 1600 8400 1500
-Wire Wire Line
-	8900 2500 9400 2500
-Wire Wire Line
-	8900 2600 9500 2600
-Wire Wire Line
-	8900 2700 9600 2700
-Wire Wire Line
-	8900 2800 9700 2800
-Wire Wire Line
-	8900 2900 9800 2900
-Wire Wire Line
-	8900 3000 9900 3000
-Wire Wire Line
-	8900 3100 10000 3100
-Wire Wire Line
-	8900 3200 10100 3200
-Wire Wire Line
-	9400 1600 9400 2500
-Connection ~ 9400 2500
-Wire Wire Line
-	9400 2500 10600 2500
-Wire Wire Line
-	9500 1600 9500 2600
-Connection ~ 9500 2600
-Wire Wire Line
-	9500 2600 10600 2600
-Wire Wire Line
-	9600 1600 9600 2700
-Connection ~ 9600 2700
-Wire Wire Line
-	9600 2700 10600 2700
-Wire Wire Line
-	9700 2800 9700 1600
-Connection ~ 9700 2800
-Wire Wire Line
-	9700 2800 10600 2800
-Wire Wire Line
-	9800 1600 9800 2900
-Connection ~ 9800 2900
-Wire Wire Line
-	9800 2900 10600 2900
-Wire Wire Line
-	9900 3000 9900 1600
-Connection ~ 9900 3000
-Wire Wire Line
-	9900 3000 10600 3000
-Wire Wire Line
-	10000 1600 10000 3100
-Connection ~ 10000 3100
-Wire Wire Line
-	10000 3100 10600 3100
-Wire Wire Line
-	10100 3200 10100 1600
-Connection ~ 10100 3200
-Wire Wire Line
-	10100 3200 10600 3200
 Entry Wire Line
 	2400 2300 2500 2400
 Entry Wire Line
@@ -2435,200 +2379,6 @@ NoConn ~ 12150 5850
 NoConn ~ 12150 3450
 Text Notes 3395 9280 0    50   ~ 0
 SOL-20:\n/RESET (PIN 13) = OUT3\nBREAK (PIN 4) = OUT2 \nLOCAL (PIN 14) = OUT1\n\n\nApple 1:\nD7 on socket is tied high\n/RESET = OUT3\nCLRSCR = OUT1\n\nApple 2:\n/RESET = OUT3\n\n
-$Comp
-L Device:R_US R2
-U 1 1 5F1A4C54
-P 9400 1450
-F 0 "R2" V 9360 1550 50  0000 L CNN
-F 1 "10k" H 9205 1450 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 9440 1440 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 9400 1450 50  0001 C CNN
-F 4 "Panasonic" H 9400 1450 50  0001 C CNN "Manufacturer"
-F 5 "ERJ-3EKF1002V" H 9400 1450 50  0001 C CNN "Part No."
-F 6 "YES" H 9400 1450 50  0001 C CNN "Substitution OK"
-F 7 "YES" H 9400 1450 50  0001 C CNN "Fitted"
-F 8 "10k, 1%" H 9400 1450 50  0001 C CNN "Parameters"
-F 9 "SMT" H 9400 1450 50  0001 C CNN "Mount Style"
-F 10 "0603" H 9400 1450 50  0001 C CNN "Package"
-	1    9400 1450
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:VCC #PWR018
-U 1 1 5F1A4C5B
-P 9400 1105
-F 0 "#PWR018" H 9400 955 50  0001 C CNN
-F 1 "VCC" H 9415 1278 50  0000 C CNN
-F 2 "" H 9400 1105 50  0001 C CNN
-F 3 "" H 9400 1105 50  0001 C CNN
-	1    9400 1105
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9400 1300 9400 1190
-$Comp
-L Device:R_US R3
-U 1 1 5F2AA8EC
-P 9500 1450
-F 0 "R3" V 9460 1545 50  0000 L CNN
-F 1 "10k" H 9305 1450 50  0001 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 9540 1440 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 9500 1450 50  0001 C CNN
-F 4 "Panasonic" H 9500 1450 50  0001 C CNN "Manufacturer"
-F 5 "ERJ-3EKF1002V" H 9500 1450 50  0001 C CNN "Part No."
-F 6 "YES" H 9500 1450 50  0001 C CNN "Substitution OK"
-F 7 "YES" H 9500 1450 50  0001 C CNN "Fitted"
-F 8 "10k, 1%" H 9500 1450 50  0001 C CNN "Parameters"
-F 9 "SMT" H 9500 1450 50  0001 C CNN "Mount Style"
-F 10 "0603" H 9500 1450 50  0001 C CNN "Package"
-	1    9500 1450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_US R4
-U 1 1 5F2D72C7
-P 9600 1450
-F 0 "R4" V 9560 1545 50  0000 L CNN
-F 1 "10k" H 9405 1450 50  0001 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 9640 1440 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 9600 1450 50  0001 C CNN
-F 4 "Panasonic" H 9600 1450 50  0001 C CNN "Manufacturer"
-F 5 "ERJ-3EKF1002V" H 9600 1450 50  0001 C CNN "Part No."
-F 6 "YES" H 9600 1450 50  0001 C CNN "Substitution OK"
-F 7 "YES" H 9600 1450 50  0001 C CNN "Fitted"
-F 8 "10k, 1%" H 9600 1450 50  0001 C CNN "Parameters"
-F 9 "SMT" H 9600 1450 50  0001 C CNN "Mount Style"
-F 10 "0603" H 9600 1450 50  0001 C CNN "Package"
-	1    9600 1450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_US R5
-U 1 1 5F302B29
-P 9700 1450
-F 0 "R5" V 9660 1545 50  0000 L CNN
-F 1 "10k" H 9505 1450 50  0001 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 9740 1440 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 9700 1450 50  0001 C CNN
-F 4 "Panasonic" H 9700 1450 50  0001 C CNN "Manufacturer"
-F 5 "ERJ-3EKF1002V" H 9700 1450 50  0001 C CNN "Part No."
-F 6 "YES" H 9700 1450 50  0001 C CNN "Substitution OK"
-F 7 "YES" H 9700 1450 50  0001 C CNN "Fitted"
-F 8 "10k, 1%" H 9700 1450 50  0001 C CNN "Parameters"
-F 9 "SMT" H 9700 1450 50  0001 C CNN "Mount Style"
-F 10 "0603" H 9700 1450 50  0001 C CNN "Package"
-	1    9700 1450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_US R6
-U 1 1 5F32F312
-P 9800 1450
-F 0 "R6" V 9760 1545 50  0000 L CNN
-F 1 "10k" H 9605 1450 50  0001 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 9840 1440 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 9800 1450 50  0001 C CNN
-F 4 "Panasonic" H 9800 1450 50  0001 C CNN "Manufacturer"
-F 5 "ERJ-3EKF1002V" H 9800 1450 50  0001 C CNN "Part No."
-F 6 "YES" H 9800 1450 50  0001 C CNN "Substitution OK"
-F 7 "YES" H 9800 1450 50  0001 C CNN "Fitted"
-F 8 "10k, 1%" H 9800 1450 50  0001 C CNN "Parameters"
-F 9 "SMT" H 9800 1450 50  0001 C CNN "Mount Style"
-F 10 "0603" H 9800 1450 50  0001 C CNN "Package"
-	1    9800 1450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_US R7
-U 1 1 5F32F318
-P 9900 1450
-F 0 "R7" V 9860 1545 50  0000 L CNN
-F 1 "10k" H 9705 1450 50  0001 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 9940 1440 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 9900 1450 50  0001 C CNN
-F 4 "Panasonic" H 9900 1450 50  0001 C CNN "Manufacturer"
-F 5 "ERJ-3EKF1002V" H 9900 1450 50  0001 C CNN "Part No."
-F 6 "YES" H 9900 1450 50  0001 C CNN "Substitution OK"
-F 7 "YES" H 9900 1450 50  0001 C CNN "Fitted"
-F 8 "10k, 1%" H 9900 1450 50  0001 C CNN "Parameters"
-F 9 "SMT" H 9900 1450 50  0001 C CNN "Mount Style"
-F 10 "0603" H 9900 1450 50  0001 C CNN "Package"
-	1    9900 1450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_US R8
-U 1 1 5F32F31E
-P 10000 1450
-F 0 "R8" V 9960 1545 50  0000 L CNN
-F 1 "10k" H 9805 1450 50  0001 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 10040 1440 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 10000 1450 50  0001 C CNN
-F 4 "Panasonic" H 10000 1450 50  0001 C CNN "Manufacturer"
-F 5 "ERJ-3EKF1002V" H 10000 1450 50  0001 C CNN "Part No."
-F 6 "YES" H 10000 1450 50  0001 C CNN "Substitution OK"
-F 7 "YES" H 10000 1450 50  0001 C CNN "Fitted"
-F 8 "10k, 1%" H 10000 1450 50  0001 C CNN "Parameters"
-F 9 "SMT" H 10000 1450 50  0001 C CNN "Mount Style"
-F 10 "0603" H 10000 1450 50  0001 C CNN "Package"
-	1    10000 1450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_US R9
-U 1 1 5F35B4F7
-P 10100 1450
-F 0 "R9" V 10060 1545 50  0000 L CNN
-F 1 "10k" H 9905 1450 50  0001 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 10140 1440 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/DMA0000COL9.pdf" H 10100 1450 50  0001 C CNN
-F 4 "Panasonic" H 10100 1450 50  0001 C CNN "Manufacturer"
-F 5 "ERJ-3EKF1002V" H 10100 1450 50  0001 C CNN "Part No."
-F 6 "YES" H 10100 1450 50  0001 C CNN "Substitution OK"
-F 7 "YES" H 10100 1450 50  0001 C CNN "Fitted"
-F 8 "10k, 1%" H 10100 1450 50  0001 C CNN "Parameters"
-F 9 "SMT" H 10100 1450 50  0001 C CNN "Mount Style"
-F 10 "0603" H 10100 1450 50  0001 C CNN "Package"
-	1    10100 1450
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	10100 1300 10100 1190
-Wire Wire Line
-	10100 1190 10000 1190
-Connection ~ 9400 1190
-Wire Wire Line
-	9400 1190 9400 1105
-Wire Wire Line
-	9500 1300 9500 1190
-Connection ~ 9500 1190
-Wire Wire Line
-	9500 1190 9400 1190
-Wire Wire Line
-	9600 1300 9600 1190
-Connection ~ 9600 1190
-Wire Wire Line
-	9600 1190 9500 1190
-Wire Wire Line
-	9700 1300 9700 1190
-Connection ~ 9700 1190
-Wire Wire Line
-	9700 1190 9600 1190
-Wire Wire Line
-	9800 1300 9800 1190
-Connection ~ 9800 1190
-Wire Wire Line
-	9800 1190 9700 1190
-Wire Wire Line
-	9900 1300 9900 1190
-Connection ~ 9900 1190
-Wire Wire Line
-	9900 1190 9800 1190
-Wire Wire Line
-	10000 1300 10000 1190
-Connection ~ 10000 1190
-Wire Wire Line
-	10000 1190 9900 1190
 Wire Notes Line style solid
 	3215 3175 3040 3175
 Wire Notes Line style solid
@@ -2641,6 +2391,26 @@ Wire Notes Line style solid
 	3215 3100 3040 3100
 Wire Notes Line style solid
 	3040 3100 3040 2200
+Text Notes 3065 2715 0    50   ~ 0
+JTAG
+Text Notes 3065 3455 0    50   ~ 0
+ISP
+Wire Wire Line
+	8900 2500 10600 2500
+Wire Wire Line
+	8900 2600 10600 2600
+Wire Wire Line
+	8900 2700 10600 2700
+Wire Wire Line
+	8900 2800 10600 2800
+Wire Wire Line
+	8900 2900 10600 2900
+Wire Wire Line
+	8900 3000 10600 3000
+Wire Wire Line
+	8900 3100 10600 3100
+Wire Wire Line
+	8900 3200 10600 3200
 Wire Bus Line
 	2500 1200 2500 4600
 Wire Bus Line
@@ -2653,8 +2423,4 @@ Wire Bus Line
 	10700 2600 10700 8200
 Wire Bus Line
 	13500 2200 13500 8200
-Text Notes 3065 2715 0    50   ~ 0
-JTAG
-Text Notes 3065 3455 0    50   ~ 0
-ISP
 $EndSCHEMATC
