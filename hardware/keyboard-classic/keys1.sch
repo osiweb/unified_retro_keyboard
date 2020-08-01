@@ -5,7 +5,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 3 3
 Title "Unified Retro Keyboard"
-Date "2020-06-11"
+Date "2020-07-30"
 Rev "1.6"
 Comp "OSIWeb.org"
 Comment1 "Key Matrix part 2"
@@ -121,6 +121,7 @@ F 6 "<1.25V forward voltage.  " H 4000 3450 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 4000 3450 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 4000 3450 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 4000 3450 50  0001 C CNN "Package"
+F 10 "C118751" H 4000 3450 50  0001 C CNN "LCSC"
 	1    4000 3450
 	0    -1   -1   0   
 $EndComp
@@ -138,6 +139,7 @@ F 6 "<1.25V forward voltage.  " H 4800 3450 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 4800 3450 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 4800 3450 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 4800 3450 50  0001 C CNN "Package"
+F 10 "C118751" H 4800 3450 50  0001 C CNN "LCSC"
 	1    4800 3450
 	0    -1   -1   0   
 $EndComp
@@ -155,6 +157,7 @@ F 6 "<1.25V forward voltage.  " H 7200 3450 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 7200 3450 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 7200 3450 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 7200 3450 50  0001 C CNN "Package"
+F 10 "C118751" H 7200 3450 50  0001 C CNN "LCSC"
 	1    7200 3450
 	0    -1   -1   0   
 $EndComp
@@ -172,6 +175,7 @@ F 6 "<1.25V forward voltage.  " H 8000 3450 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 8000 3450 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 8000 3450 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 8000 3450 50  0001 C CNN "Package"
+F 10 "C118751" H 8000 3450 50  0001 C CNN "LCSC"
 	1    8000 3450
 	0    -1   -1   0   
 $EndComp
@@ -189,6 +193,7 @@ F 6 "<1.25V forward voltage.  " H 8800 3450 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 8800 3450 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 8800 3450 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 8800 3450 50  0001 C CNN "Package"
+F 10 "C118751" H 8800 3450 50  0001 C CNN "LCSC"
 	1    8800 3450
 	0    -1   -1   0   
 $EndComp
@@ -304,6 +309,7 @@ F 6 "<1.25V forward voltage.  " H 4000 4350 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 4000 4350 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 4000 4350 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 4000 4350 50  0001 C CNN "Package"
+F 10 "C118751" H 4000 4350 50  0001 C CNN "LCSC"
 	1    4000 4350
 	0    -1   -1   0   
 $EndComp
@@ -321,6 +327,7 @@ F 6 "<1.25V forward voltage.  " H 4800 4350 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 4800 4350 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 4800 4350 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 4800 4350 50  0001 C CNN "Package"
+F 10 "C118751" H 4800 4350 50  0001 C CNN "LCSC"
 	1    4800 4350
 	0    -1   -1   0   
 $EndComp
@@ -338,6 +345,7 @@ F 6 "<1.25V forward voltage.  " H 5600 4350 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 5600 4350 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 5600 4350 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 5600 4350 50  0001 C CNN "Package"
+F 10 "C118751" H 5600 4350 50  0001 C CNN "LCSC"
 	1    5600 4350
 	0    -1   -1   0   
 $EndComp
@@ -355,6 +363,7 @@ F 6 "<1.25V forward voltage.  " H 6400 4350 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 6400 4350 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 6400 4350 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 6400 4350 50  0001 C CNN "Package"
+F 10 "C118751" H 6400 4350 50  0001 C CNN "LCSC"
 	1    6400 4350
 	0    -1   -1   0   
 $EndComp
@@ -372,6 +381,7 @@ F 6 "<1.25V forward voltage.  " H 7200 4350 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 7200 4350 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 7200 4350 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 7200 4350 50  0001 C CNN "Package"
+F 10 "C118751" H 7200 4350 50  0001 C CNN "LCSC"
 	1    7200 4350
 	0    -1   -1   0   
 $EndComp
@@ -389,6 +399,7 @@ F 6 "<1.25V forward voltage.  " H 8000 4350 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 8000 4350 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 8000 4350 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 8000 4350 50  0001 C CNN "Package"
+F 10 "C118751" H 8000 4350 50  0001 C CNN "LCSC"
 	1    8000 4350
 	0    -1   -1   0   
 $EndComp
@@ -406,6 +417,7 @@ F 6 "<1.25V forward voltage.  " H 8800 4350 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 8800 4350 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 8800 4350 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 8800 4350 50  0001 C CNN "Package"
+F 10 "C118751" H 8800 4350 50  0001 C CNN "LCSC"
 	1    8800 4350
 	0    -1   -1   0   
 $EndComp
@@ -534,6 +546,7 @@ F 6 "<1.25V forward voltage.  " H 4000 5250 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 4000 5250 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 4000 5250 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 4000 5250 50  0001 C CNN "Package"
+F 10 "C118751" H 4000 5250 50  0001 C CNN "LCSC"
 	1    4000 5250
 	0    -1   -1   0   
 $EndComp
@@ -551,6 +564,7 @@ F 6 "<1.25V forward voltage.  " H 3200 5250 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 3200 5250 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 3200 5250 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 3200 5250 50  0001 C CNN "Package"
+F 10 "C118751" H 3200 5250 50  0001 C CNN "LCSC"
 	1    3200 5250
 	0    -1   -1   0   
 $EndComp
@@ -568,6 +582,7 @@ F 6 "<1.25V forward voltage.  " H 4800 5250 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 4800 5250 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 4800 5250 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 4800 5250 50  0001 C CNN "Package"
+F 10 "C118751" H 4800 5250 50  0001 C CNN "LCSC"
 	1    4800 5250
 	0    -1   -1   0   
 $EndComp
@@ -585,6 +600,7 @@ F 6 "<1.25V forward voltage.  " H 5600 5250 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 5600 5250 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 5600 5250 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 5600 5250 50  0001 C CNN "Package"
+F 10 "C118751" H 5600 5250 50  0001 C CNN "LCSC"
 	1    5600 5250
 	0    -1   -1   0   
 $EndComp
@@ -602,6 +618,7 @@ F 6 "<1.25V forward voltage.  " H 6400 5250 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 6400 5250 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 6400 5250 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 6400 5250 50  0001 C CNN "Package"
+F 10 "C118751" H 6400 5250 50  0001 C CNN "LCSC"
 	1    6400 5250
 	0    -1   -1   0   
 $EndComp
@@ -619,6 +636,7 @@ F 6 "<1.25V forward voltage.  " H 7200 5250 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 7200 5250 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 7200 5250 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 7200 5250 50  0001 C CNN "Package"
+F 10 "C118751" H 7200 5250 50  0001 C CNN "LCSC"
 	1    7200 5250
 	0    -1   -1   0   
 $EndComp
@@ -636,6 +654,7 @@ F 6 "<1.25V forward voltage.  " H 8000 5250 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 8000 5250 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 8000 5250 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 8000 5250 50  0001 C CNN "Package"
+F 10 "C118751" H 8000 5250 50  0001 C CNN "LCSC"
 	1    8000 5250
 	0    -1   -1   0   
 $EndComp
@@ -653,6 +672,7 @@ F 6 "<1.25V forward voltage.  " H 8800 5250 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 8800 5250 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 8800 5250 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 8800 5250 50  0001 C CNN "Package"
+F 10 "C118751" H 8800 5250 50  0001 C CNN "LCSC"
 	1    8800 5250
 	0    -1   -1   0   
 $EndComp
@@ -768,6 +788,7 @@ F 6 "<1.25V forward voltage.  " H 4000 6150 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 4000 6150 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 4000 6150 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 4000 6150 50  0001 C CNN "Package"
+F 10 "C118751" H 4000 6150 50  0001 C CNN "LCSC"
 	1    4000 6150
 	0    -1   -1   0   
 $EndComp
@@ -785,6 +806,7 @@ F 6 "<1.25V forward voltage.  " H 4800 6150 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 4800 6150 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 4800 6150 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 4800 6150 50  0001 C CNN "Package"
+F 10 "C118751" H 4800 6150 50  0001 C CNN "LCSC"
 	1    4800 6150
 	0    -1   -1   0   
 $EndComp
@@ -802,6 +824,7 @@ F 6 "<1.25V forward voltage.  " H 5600 6150 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 5600 6150 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 5600 6150 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 5600 6150 50  0001 C CNN "Package"
+F 10 "C118751" H 5600 6150 50  0001 C CNN "LCSC"
 	1    5600 6150
 	0    -1   -1   0   
 $EndComp
@@ -819,6 +842,7 @@ F 6 "<1.25V forward voltage.  " H 6400 6150 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 6400 6150 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 6400 6150 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 6400 6150 50  0001 C CNN "Package"
+F 10 "C118751" H 6400 6150 50  0001 C CNN "LCSC"
 	1    6400 6150
 	0    -1   -1   0   
 $EndComp
@@ -836,6 +860,7 @@ F 6 "<1.25V forward voltage.  " H 7200 6150 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 7200 6150 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 7200 6150 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 7200 6150 50  0001 C CNN "Package"
+F 10 "C118751" H 7200 6150 50  0001 C CNN "LCSC"
 	1    7200 6150
 	0    -1   -1   0   
 $EndComp
@@ -853,6 +878,7 @@ F 6 "<1.25V forward voltage.  " H 8000 6150 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 8000 6150 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 8000 6150 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 8000 6150 50  0001 C CNN "Package"
+F 10 "C118751" H 8000 6150 50  0001 C CNN "LCSC"
 	1    8000 6150
 	0    -1   -1   0   
 $EndComp
@@ -870,6 +896,7 @@ F 6 "<1.25V forward voltage.  " H 8800 6150 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 8800 6150 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 8800 6150 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 8800 6150 50  0001 C CNN "Package"
+F 10 "C118751" H 8800 6150 50  0001 C CNN "LCSC"
 	1    8800 6150
 	0    -1   -1   0   
 $EndComp
@@ -1132,6 +1159,7 @@ F 6 "<1.25V forward voltage.  " H 6400 3450 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 6400 3450 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 6400 3450 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 6400 3450 50  0001 C CNN "Package"
+F 10 "C118751" H 6400 3450 50  0001 C CNN "LCSC"
 	1    6400 3450
 	0    -1   -1   0   
 $EndComp
@@ -1170,6 +1198,7 @@ F 6 "<1.25V forward voltage.  " H 3200 6150 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 3200 6150 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 3200 6150 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 3200 6150 50  0001 C CNN "Package"
+F 10 "C118751" H 3200 6150 50  0001 C CNN "LCSC"
 	1    3200 6150
 	0    -1   -1   0   
 $EndComp

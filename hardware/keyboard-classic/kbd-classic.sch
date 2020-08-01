@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 3
 Title "Unified Retro Keyboard"
-Date "2020-06-17"
-Rev "1.7"
+Date "2020-07-30"
+Rev "1.10"
 Comp "OSIWeb.org"
 Comment1 "Main sheet with connector"
 Comment2 ""
@@ -357,6 +357,7 @@ F 6 "<1.25V forward voltage.  " H 8385 2670 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 8385 2670 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 8385 2670 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 8385 2670 50  0001 C CNN "Package"
+F 10 "C118751" H 8385 2670 50  0001 C CNN "LCSC"
 	1    8385 2670
 	-1   0    0    1   
 $EndComp
@@ -643,6 +644,7 @@ F 6 "<1.25V forward voltage.  " H 8385 3470 50  0001 C CNN "Comment"
 F 7 "ON Semiconductor" H 8385 3470 50  0001 C CNN "Manufacturer"
 F 8 "MMBD914LT3G " H 8385 3470 50  0001 C CNN "Manufacturer Part Number"
 F 9 " SOT-23-3 " H 8385 3470 50  0001 C CNN "Package"
+F 10 "C118751" H 8385 3470 50  0001 C CNN "LCSC"
 	1    8385 3470
 	-1   0    0    1   
 $EndComp
@@ -734,6 +736,7 @@ F 6 "Panasonic" H 7500 2425 50  0001 C CNN "Manufacturer"
 F 7 "ERJ-3EKF3300V" H 7500 2425 50  0001 C CNN "Manufacturer Part Number"
 F 8 " YES " H 7500 2425 50  0001 C CNN "Substitution OK"
 F 9 "1%" H 7500 2425 50  0001 C CNN "tolerance"
+F 10 "C144560" H 7500 2425 50  0001 C CNN "LCSC"
 	1    7500 2425
 	0    -1   -1   0   
 $EndComp
@@ -753,6 +756,7 @@ F 6 "Panasonic" H 7500 1950 50  0001 C CNN "Manufacturer"
 F 7 "ERJ-3EKF3300V" H 7500 1950 50  0001 C CNN "Manufacturer Part Number"
 F 8 " YES " H 7500 1950 50  0001 C CNN "Substitution OK"
 F 9 "1%" H 7500 1950 50  0001 C CNN "tolerance"
+F 10 "C144560" H 7500 1950 50  0001 C CNN "LCSC"
 	1    7500 1950
 	0    1    1    0   
 $EndComp
@@ -770,6 +774,7 @@ F 6 "Panasonic" H 7050 1350 50  0001 C CNN "Manufacturer"
 F 7 "ERJ-3EKF3300V" H 7050 1350 50  0001 C CNN "Manufacturer Part Number"
 F 8 " YES " H 7050 1350 50  0001 C CNN "Substitution OK"
 F 9 "1%" H 7050 1350 50  0001 C CNN "tolerance"
+F 10 "C144560" H 7050 1350 50  0001 C CNN "LCSC"
 	1    7050 1350
 	0    1    1    0   
 $EndComp
