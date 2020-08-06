@@ -363,11 +363,10 @@ static void asdf_activate_key(asdf_keycode_t keycode)
 //
 static void asdf_deactivate_key(asdf_keycode_t keycode)
 {
-  if (keycode & ASDF_ACTION) {
+  if (keycode > ASDF_ACTION) {
     asdf_deactivate_action((action_t) keycode);
   }
   else {
-
     // deactivate a released keypress
     if (last_key == keycode) {
       last_key = ACTION_NOTHING;
@@ -449,7 +448,6 @@ static void asdf_handle_key_press_or_release(uint8_t row, uint8_t col, uint8_t k
     }
     else {
       // key was released
-
       last_stable_key_state[row] &= ~(1 << col);
       asdf_deactivate_key(asdf_lookup_keycode(row, col));
     }
@@ -512,6 +510,7 @@ static void asdf_handle_key_held_pressed(uint8_t row, uint8_t col)
 //
 void asdf_keyscan(void)
 {
+  
   asdf_cols_t (*row_reader)(uint8_t) = (asdf_cols_t(*)(uint8_t)) asdf_hook_get(ASDF_HOOK_SCANNER);
 
   asdf_hook_execute(ASDF_HOOK_EACH_SCAN);
@@ -522,7 +521,7 @@ void asdf_keyscan(void)
     asdf_cols_t changed = row_key_state ^ last_stable_key_state[row];
 
     // loop over the bits until all changed or pressed keys in the row are handled.
-    for (uint8_t col = 0; (changed | row_key_state) && col < ASDF_NUM_COLS; col++) {
+    for (uint8_t col = 0; (changed || row_key_state) && col < ASDF_NUM_COLS; col++) {
       if (changed & 1) {
         // key state is different from last stable state
         asdf_handle_key_press_or_release(row, col, row_key_state & 1);

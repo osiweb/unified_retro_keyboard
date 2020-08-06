@@ -166,7 +166,7 @@ void asdf_hook_init(asdf_hook_initializer_t *const initializer_list)
 {
   // initialize hooks to null function
   for (uint8_t i = 0; i < ASDF_NUM_HOOKS; i++) {
-    hook_map[i] = asdf_hook_null_func;
+    hook_map[i] = &asdf_hook_null_func;
   }
 
   hook_map[ASDF_HOOK_SCANNER] = (asdf_hook_function_t) ASDF_ARCH_DEFAULT_SCANNER;
