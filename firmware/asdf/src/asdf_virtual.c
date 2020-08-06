@@ -46,6 +46,33 @@ static struct {
   asdf_virtual_function_t function;
 } virtual_device_table[ASDF_VIRTUAL_NUM_RESOURCES];
 
+// PROCEDURE: asdf_virtual_map_function
+
+// INPUTS:
+//   (asdf_virtual_function_t) function - function to apply to devices.
+//   (asdf_physical_device_t) device - first physical device in linked list
+//
+// OUTPUTS: none
+//
+// DESCRIPTION: Iterates through a linked list of physical devices, applying the
+// specified function to each device.
+//
+// SIDE EFFECTS: see DESCRIPTION
+//
+// NOTES:
+//
+// SCOPE: private
+//
+// COMPLEXITY: 2
+//
+void asdf_virtual_map_function(void (*function)(asdf_physical_dev_t), asdf_physical_dev_t device)
+{
+  while (PHYSICAL_NO_OUT != device) {
+    (*function)(device);
+    device = asdf_physical_next_device(device);
+  }
+}
+
 // PROCEDURE: asdf_virtual_action
 // INPUTS: (asdf_virtual_output_t) virtual_out: which virtual output to modify
 // INPUTS: (asdf_virtual_function_t) function: what function to apply to the virtual output
@@ -60,42 +87,40 @@ static struct {
 //
 // SCOPE: public
 //
-// COMPLEXITY: 7
+// COMPLEXITY: 6
 //
+
 void asdf_virtual_action(asdf_virtual_dev_t virtual_out, asdf_virtual_function_t function)
 {
-  asdf_physical_dev_t device = virtual_device_table[virtual_out].physical_device;
+  asdf_physical_dev_t device_list = virtual_device_table[virtual_out].physical_device;
 
-  while (PHYSICAL_NO_OUT != device) {
-    switch (function) {
+  switch (function) {
 
-      case V_PULSE_LONG: {
-        asdf_physical_toggle(device);
-        asdf_arch_pulse_delay_long();
-        asdf_physical_toggle(device);
-        break;
-      }
-      case V_PULSE_SHORT: {
-        asdf_physical_toggle(device);
-        asdf_arch_pulse_delay_short();
-        asdf_physical_toggle(device);
-        break;
-      }
-      case V_TOGGLE: {
-        asdf_physical_toggle(device);
-        break;
-      }
-      case V_SET_HI: {
-        asdf_physical_set(device, 1);
-        break;
-      }
-      case V_SET_LO: {
-        asdf_physical_set(device, 0);
-      }
-      case V_NOFUNC:
-      default: break;
+    case V_PULSE_LONG: {
+      asdf_virtual_map_function(&asdf_physical_toggle, device_list);
+      asdf_arch_pulse_delay_long();
+      asdf_virtual_map_function(&asdf_physical_toggle, device_list);
+      break;
     }
-    device = asdf_physical_next_device(device);
+    case V_PULSE_SHORT: {
+      asdf_virtual_map_function(&asdf_physical_toggle, device_list);
+      asdf_arch_pulse_delay_short();
+      asdf_virtual_map_function(&asdf_physical_toggle, device_list);
+      break;
+    }
+    case V_TOGGLE: {
+      asdf_virtual_map_function(&asdf_physical_toggle, device_list);
+      break;
+    }
+    case V_SET_HI: {
+      asdf_virtual_map_function(&asdf_physical_on, device_list);
+      break;
+    }
+    case V_SET_LO: {
+      asdf_virtual_map_function(&asdf_physical_off, device_list);
+    }
+    case V_NOFUNC:
+    default: break;
   }
 }
 

@@ -56,6 +56,18 @@ typedef enum {
 // if false.
 void asdf_physical_set(asdf_physical_dev_t physical_out, uint8_t value);
 
+// PROCEDURE: asdf_physical_on
+// INPUTS: (asdf_physical_dev_t) physical_out: which real output to set to ON
+// OUTPUTS: none
+// DESCRIPTION: If the physical resource is valid, set to high
+void asdf_physical_on(asdf_physical_dev_t physical_out);
+
+// PROCEDURE: asdf_physical_off
+// INPUTS: (asdf_physical_dev_t) physical_out: which real output to set to OFF
+// OUTPUTS: none
+// DESCRIPTION: If the physical resource is valid, set to low
+void asdf_physical_off(asdf_physical_dev_t physical_out);
+
 // PROCEDURE: asdf_physical_assert
 // INPUTS: (asdf_physical_dev_t) physical_out: which physical resource to set or clear
 // INPUTS: none

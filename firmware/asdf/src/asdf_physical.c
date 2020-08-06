@@ -87,6 +87,46 @@ void asdf_physical_set(asdf_physical_dev_t physical_out, uint8_t value)
   physical_device_table[physical_out].shadow = value;
 }
 
+// PROCEDURE: asdf_physical_on
+// INPUTS: (asdf_physical_dev_t) physical_out: which real output to set to ON
+// OUTPUTS: none
+//
+// DESCRIPTION: If the physical resource is valid, set to high
+//
+// SIDE EFFECTS: see above
+//
+// NOTES: No bounds checking.  The caller must ensure a valid device
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_physical_on(asdf_physical_dev_t physical_out)
+{
+  physical_device_table[physical_out].handler(1);
+  physical_device_table[physical_out].shadow = 1;
+}
+
+// PROCEDURE: asdf_physical_off
+// INPUTS: (asdf_physical_dev_t) physical_out: which real output to set to OFF
+// OUTPUTS: none
+//
+// DESCRIPTION: If the physical resource is valid, set to low
+//
+// SIDE EFFECTS: see above
+//
+// NOTES: No bounds checking.  The caller must ensure a valid device
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_physical_off(asdf_physical_dev_t physical_out)
+{
+  physical_device_table[physical_out].handler(0);
+  physical_device_table[physical_out].shadow = 0;
+}
+
 
 // PROCEDURE: asdf_physical_assert
 // INPUTS: (asdf_physical_dev_t) physical_out: which physical resource to set or clear
