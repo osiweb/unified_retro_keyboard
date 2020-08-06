@@ -757,8 +757,8 @@ asdf_cols_t asdf_arch_read_row(uint8_t row)
   uint32_t rows = ~(1L << row);
 
   ASDF_LOROW_PORT = (uint8_t)(rows & 0xff);
+  _delay_us(ASDF_KEYBOARD_ROW_SETTLING_TIME_US);
   ASDF_HIROW_PORT = (uint8_t)((rows >> 8) & 0xff);
-
   _delay_us(ASDF_KEYBOARD_ROW_SETTLING_TIME_US);
 
   return ~(asdf_cols_t) ASDF_COLUMNS_PIN;
