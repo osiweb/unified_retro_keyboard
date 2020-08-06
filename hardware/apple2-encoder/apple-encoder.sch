@@ -134,6 +134,7 @@ F 5 "YES" H 15050 2200 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15050 2200 50  0001 C CNN "Parameters"
 F 7 "SMT" H 15050 2200 50  0001 C CNN "Mount Style"
 F 8 "SMT: SOT-23-3" H 15050 2200 50  0001 C CNN "Package"
+F 9 "C118751" H 15050 2200 50  0001 C CNN "LCSC"
 	1    15050 2200
 	-1   0    0    1   
 $EndComp
@@ -197,6 +198,7 @@ F 5 "YES" H 10900 9550 50  0001 C CNN "Fitted"
 F 6 "0.1 uF" H 10900 9550 50  0001 C CNN "Parameters"
 F 7 "SMT" H 10900 9550 50  0001 C CNN "Mount Style"
 F 8 "0603" H 10900 9550 50  0001 C CNN "Package"
+F 9 "C14663" H 10900 9550 50  0001 C CNN "LCSC"
 	1    10900 9550
 	1    0    0    -1  
 $EndComp
@@ -275,6 +277,7 @@ F 5 "YES" H 11300 9550 50  0001 C CNN "Fitted"
 F 6 "0.1 uF" H 11300 9550 50  0001 C CNN "Parameters"
 F 7 "SMT" H 11300 9550 50  0001 C CNN "Mount Style"
 F 8 "0603" H 11300 9550 50  0001 C CNN "Package"
+F 9 "C14663" H 11300 9550 50  0001 C CNN "LCSC"
 	1    11300 9550
 	1    0    0    -1  
 $EndComp
@@ -355,6 +358,7 @@ F 5 "YES" H 15460 7300 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15460 7300 50  0001 C CNN "Parameters"
 F 7 "SMT" H 15460 7300 50  0001 C CNN "Mount Style"
 F 8 "SMT: SOT-23-3" H 15460 7300 50  0001 C CNN "Package"
+F 9 "C118751" H 15460 7300 50  0001 C CNN "LCSC"
 	1    15460 7300
 	1    0    0    1   
 $EndComp
@@ -371,6 +375,7 @@ F 5 "YES" H 15460 7100 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15460 7100 50  0001 C CNN "Parameters"
 F 7 "SMT" H 15460 7100 50  0001 C CNN "Mount Style"
 F 8 "SMT: SOT-23-3" H 15460 7100 50  0001 C CNN "Package"
+F 9 "C118751" H 15460 7100 50  0001 C CNN "LCSC"
 	1    15460 7100
 	1    0    0    1   
 $EndComp
@@ -387,6 +392,7 @@ F 5 "YES" H 15460 6900 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15460 6900 50  0001 C CNN "Parameters"
 F 7 "SMT" H 15460 6900 50  0001 C CNN "Mount Style"
 F 8 "SMT: SOT-23-3" H 15460 6900 50  0001 C CNN "Package"
+F 9 "C118751" H 15460 6900 50  0001 C CNN "LCSC"
 	1    15460 6900
 	1    0    0    1   
 $EndComp
@@ -403,6 +409,7 @@ F 5 "YES" H 15150 7200 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15150 7200 50  0001 C CNN "Parameters"
 F 7 "SMT" H 15150 7200 50  0001 C CNN "Mount Style"
 F 8 "SMT: SOT-23-3" H 15150 7200 50  0001 C CNN "Package"
+F 9 "C118751" H 15150 7200 50  0001 C CNN "LCSC"
 	1    15150 7200
 	1    0    0    1   
 $EndComp
@@ -419,6 +426,7 @@ F 5 "YES" H 15150 7000 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15150 7000 50  0001 C CNN "Parameters"
 F 7 "SMT" H 15150 7000 50  0001 C CNN "Mount Style"
 F 8 "SMT: SOT-23-3" H 15150 7000 50  0001 C CNN "Package"
+F 9 "C118751" H 15150 7000 50  0001 C CNN "LCSC"
 	1    15150 7000
 	1    0    0    1   
 $EndComp
@@ -435,6 +443,7 @@ F 5 "YES" H 15150 6600 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15150 6600 50  0001 C CNN "Parameters"
 F 7 "SMT" H 15150 6600 50  0001 C CNN "Mount Style"
 F 8 "SMT: SOT-23-3" H 15150 6600 50  0001 C CNN "Package"
+F 9 "C118751" H 15150 6600 50  0001 C CNN "LCSC"
 	1    15150 6600
 	1    0    0    1   
 $EndComp
@@ -451,6 +460,7 @@ F 5 "YES" H 15150 6800 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15150 6800 50  0001 C CNN "Parameters"
 F 7 "SMT" H 15150 6800 50  0001 C CNN "Mount Style"
 F 8 "SMT: SOT-23-3" H 15150 6800 50  0001 C CNN "Package"
+F 9 "C118751" H 15150 6800 50  0001 C CNN "LCSC"
 	1    15150 6800
 	1    0    0    1   
 $EndComp
@@ -467,6 +477,7 @@ F 5 "YES" H 15450 6700 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15450 6700 50  0001 C CNN "Parameters"
 F 7 "SMT" H 15450 6700 50  0001 C CNN "Mount Style"
 F 8 "SMT: SOT-23-3" H 15450 6700 50  0001 C CNN "Package"
+F 9 "C118751" H 15450 6700 50  0001 C CNN "LCSC"
 	1    15450 6700
 	1    0    0    1   
 $EndComp
@@ -526,6 +537,7 @@ F 5 "YES" H 15055 2600 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15055 2600 50  0001 C CNN "Parameters"
 F 7 "SMT" H 15055 2600 50  0001 C CNN "Mount Style"
 F 8 "SMT: SOT-23-3" H 15055 2600 50  0001 C CNN "Package"
+F 9 "C118751" H 15055 2600 50  0001 C CNN "LCSC"
 	1    15055 2600
 	-1   0    0    1   
 $EndComp
@@ -542,6 +554,7 @@ F 5 "YES" H 15055 3000 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 15055 3000 50  0001 C CNN "Parameters"
 F 7 "SMT" H 15055 3000 50  0001 C CNN "Mount Style"
 F 8 "SMT: SOT-23-3" H 15055 3000 50  0001 C CNN "Package"
+F 9 "C118751" H 15055 3000 50  0001 C CNN "LCSC"
 	1    15055 3000
 	-1   0    0    1   
 $EndComp
@@ -592,6 +605,7 @@ F 5 "YES" H 10500 9550 50  0001 C CNN "Fitted"
 F 6 "0.1 uF" H 10500 9550 50  0001 C CNN "Parameters"
 F 7 "SMT" H 10500 9550 50  0001 C CNN "Mount Style"
 F 8 "0603" H 10500 9550 50  0001 C CNN "Package"
+F 9 "C14663" H 10500 9550 50  0001 C CNN "LCSC"
 	1    10500 9550
 	1    0    0    -1  
 $EndComp
@@ -608,6 +622,7 @@ F 5 "YES" H 10100 9550 50  0001 C CNN "Fitted"
 F 6 "0.1 uF" H 10100 9550 50  0001 C CNN "Parameters"
 F 7 "SMT" H 10100 9550 50  0001 C CNN "Mount Style"
 F 8 "0603" H 10100 9550 50  0001 C CNN "Package"
+F 9 "C14663" H 10100 9550 50  0001 C CNN "LCSC"
 	1    10100 9550
 	1    0    0    -1  
 $EndComp
@@ -947,6 +962,7 @@ F 7 "YES" H 5600 1700 50  0001 C CNN "Fitted"
 F 8 "10k, 1%" H 5600 1700 50  0001 C CNN "Parameters"
 F 9 "SMT" H 5600 1700 50  0001 C CNN "Mount Style"
 F 10 "0603" H 5600 1700 50  0001 C CNN "Package"
+F 11 "C98220" H 5600 1700 50  0001 C CNN "LCSC"
 	1    5600 1700
 	1    0    0    -1  
 $EndComp
@@ -967,6 +983,7 @@ F 7 "ABRACON" H 6350 1950 50  0001 C CNN "Manufacturer"
 F 8 "SMT" H 6350 1950 50  0001 C CNN "Mount Style"
 F 9 "HC-49/US" H 6350 1950 50  0001 C CNN "Package"
 F 10 "ABLS2-16.000MHz-B1U-T" H 6350 1950 50  0001 C CNN "Part No."
+F 11 "C326544" H 6350 1950 50  0001 C CNN "LCSC"
 	1    6350 1950
 	-1   0    0    1   
 $EndComp
@@ -984,6 +1001,7 @@ F 6 "36pf" H 6050 2200 50  0001 C CNN "Parameters"
 F 7 "" H 6050 2200 50  0001 C CNN "hello"
 F 8 "SMT" H 6050 2200 50  0001 C CNN "Mount Style"
 F 9 "0603" H 6050 2200 50  0001 C CNN "Package"
+F 10 "C134070" H 6050 2200 50  0001 C CNN "LCSC"
 	1    6050 2200
 	1    0    0    -1  
 $EndComp
@@ -1001,6 +1019,7 @@ F 6 "36pf" H 6650 2200 50  0001 C CNN "Parameters"
 F 7 "" H 6650 2200 50  0001 C CNN "hello"
 F 8 "SMT" H 6650 2200 50  0001 C CNN "Mount Style"
 F 9 "0603" H 6650 2200 50  0001 C CNN "Package"
+F 10 "C134070" H 6650 2200 50  0001 C CNN "LCSC"
 	1    6650 2200
 	1    0    0    -1  
 $EndComp
@@ -1068,7 +1087,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 F 4 "YES" H 10150 3500 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 3500 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 3500 50  0001 C CNN "Parameters"
-F 7 "" H 10150 3500 50  0001 C CNN "goodbye"
+F 7 "" H 10150 3500 50  0001 C CNN "LCSC"
 F 8 "TH" H 10150 3500 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 10150 3500 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 3500 50  0001 C CNN "Comment"
@@ -1086,7 +1105,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 F 4 "YES" H 9950 3600 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 3600 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 3600 50  0001 C CNN "Parameters"
-F 7 "" H 9950 3600 50  0001 C CNN "goodbye"
+F 7 "" H 9950 3600 50  0001 C CNN "LCSC"
 F 8 "TH" H 9950 3600 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 9950 3600 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 3600 50  0001 C CNN "Comment"
@@ -1104,7 +1123,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 F 4 "YES" H 10150 3700 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 3700 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 3700 50  0001 C CNN "Parameters"
-F 7 "" H 10150 3700 50  0001 C CNN "goodbye"
+F 7 "" H 10150 3700 50  0001 C CNN "LCSC"
 F 8 "TH" H 10150 3700 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 10150 3700 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 3700 50  0001 C CNN "Comment"
@@ -1122,7 +1141,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 F 4 "YES" H 9950 3800 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 3800 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 3800 50  0001 C CNN "Parameters"
-F 7 "" H 9950 3800 50  0001 C CNN "goodbye"
+F 7 "" H 9950 3800 50  0001 C CNN "LCSC"
 F 8 "TH" H 9950 3800 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 9950 3800 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 3800 50  0001 C CNN "Comment"
@@ -1140,7 +1159,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 F 4 "YES" H 10150 3900 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 3900 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 3900 50  0001 C CNN "Parameters"
-F 7 "" H 10150 3900 50  0001 C CNN "goodbye"
+F 7 "" H 10150 3900 50  0001 C CNN "LCSC"
 F 8 "TH" H 10150 3900 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 10150 3900 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 3900 50  0001 C CNN "Comment"
@@ -1158,7 +1177,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 F 4 "YES" H 9950 4000 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 4000 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 4000 50  0001 C CNN "Parameters"
-F 7 "" H 9950 4000 50  0001 C CNN "goodbye"
+F 7 "" H 9950 4000 50  0001 C CNN "LCSC"
 F 8 "TH" H 9950 4000 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 9950 4000 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 4000 50  0001 C CNN "Comment"
@@ -1176,7 +1195,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 F 4 "YES" H 10150 4100 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 4100 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 4100 50  0001 C CNN "Parameters"
-F 7 "" H 10150 4100 50  0001 C CNN "goodbye"
+F 7 "" H 10150 4100 50  0001 C CNN "LCSC"
 F 8 "TH" H 10150 4100 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 10150 4100 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 4100 50  0001 C CNN "Comment"
@@ -1194,7 +1213,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 F 4 "YES" H 9950 4200 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 4200 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 4200 50  0001 C CNN "Parameters"
-F 7 "" H 9950 4200 50  0001 C CNN "goodbye"
+F 7 "" H 9950 4200 50  0001 C CNN "LCSC"
 F 8 "TH" H 9950 4200 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 9950 4200 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 4200 50  0001 C CNN "Comment"
@@ -1290,7 +1309,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 F 4 "YES" H 10150 4500 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 4500 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 4500 50  0001 C CNN "Parameters"
-F 7 "" H 10150 4500 50  0001 C CNN "goodbye"
+F 7 "" H 10150 4500 50  0001 C CNN "LCSC"
 F 8 "TH" H 10150 4500 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 10150 4500 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 4500 50  0001 C CNN "Comment"
@@ -1308,7 +1327,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 F 4 "YES" H 9950 4600 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 4600 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 4600 50  0001 C CNN "Parameters"
-F 7 "" H 9950 4600 50  0001 C CNN "goodbye"
+F 7 "" H 9950 4600 50  0001 C CNN "LCSC"
 F 8 "TH" H 9950 4600 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 9950 4600 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 4600 50  0001 C CNN "Comment"
@@ -1326,7 +1345,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 F 4 "YES" H 10150 4700 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 4700 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 4700 50  0001 C CNN "Parameters"
-F 7 "" H 10150 4700 50  0001 C CNN "goodbye"
+F 7 "" H 10150 4700 50  0001 C CNN "LCSC"
 F 8 "TH" H 10150 4700 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 10150 4700 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 4700 50  0001 C CNN "Comment"
@@ -1344,7 +1363,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 F 4 "YES" H 9950 4800 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 4800 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 4800 50  0001 C CNN "Parameters"
-F 7 "" H 9950 4800 50  0001 C CNN "goodbye"
+F 7 "" H 9950 4800 50  0001 C CNN "LCSC"
 F 8 "TH" H 9950 4800 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 9950 4800 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 4800 50  0001 C CNN "Comment"
@@ -1362,7 +1381,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 F 4 "YES" H 10150 4900 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 4900 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 4900 50  0001 C CNN "Parameters"
-F 7 "" H 10150 4900 50  0001 C CNN "goodbye"
+F 7 "" H 10150 4900 50  0001 C CNN "LCSC"
 F 8 "TH" H 10150 4900 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 10150 4900 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 4900 50  0001 C CNN "Comment"
@@ -1380,7 +1399,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 F 4 "YES" H 9950 5000 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 5000 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 5000 50  0001 C CNN "Parameters"
-F 7 "" H 9950 5000 50  0001 C CNN "goodbye"
+F 7 "" H 9950 5000 50  0001 C CNN "LCSC"
 F 8 "TH" H 9950 5000 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 9950 5000 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 5000 50  0001 C CNN "Comment"
@@ -1398,7 +1417,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150
 F 4 "YES" H 10150 5100 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 5100 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 10150 5100 50  0001 C CNN "Parameters"
-F 7 "" H 10150 5100 50  0001 C CNN "goodbye"
+F 7 "" H 10150 5100 50  0001 C CNN "LCSC"
 F 8 "TH" H 10150 5100 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 10150 5100 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 10150 5100 50  0001 C CNN "Comment"
@@ -1416,7 +1435,7 @@ F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 
 F 4 "YES" H 9950 5200 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 5200 50  0001 C CNN "Fitted"
 F 6 "Gen. Purpose Switch, <1.25V forward drop" H 9950 5200 50  0001 C CNN "Parameters"
-F 7 "" H 9950 5200 50  0001 C CNN "goodbye"
+F 7 "" H 9950 5200 50  0001 C CNN "LCSC"
 F 8 "TH" H 9950 5200 50  0001 C CNN "Mount Style"
 F 9 "Through-hole" H 9950 5200 50  0001 C CNN "Package"
 F 10 "Only install for key matrix without diodes.  Cut jumper if installed." H 9950 5200 50  0001 C CNN "Comment"
@@ -1815,6 +1834,7 @@ F 5 "YES" H 8100 4900 50  0001 C CNN "Fitted"
 F 6 "ATmega2560-16AU" H 8100 4900 50  0001 C CNN "Parameters"
 F 7 "SMT" H 8100 4900 50  0001 C CNN "Mount Style"
 F 8 "TQFP-100 " H 8100 4900 50  0001 C CNN "Package"
+F 9 "C22460" H 8100 4900 50  0001 C CNN "LCSC"
 	1    8100 4900
 	1    0    0    -1  
 $EndComp
