@@ -36,7 +36,7 @@
 #define F_CPU 16000000L
 
 #define ASDF_STROBE_LENGTH_US 10 // strobe length in microseconds
-#define ASDF_KEYBOARD_ROW_SETTLING_TIME_US 2 // time for keyboard capacitance to
+#define ASDF_KEYBOARD_ROW_SETTLING_TIME_US 4 // time for keyboard capacitance to
                                              // settle before sampling
 
 // Clock definitions:
@@ -349,10 +349,10 @@
 #define TICK_COUNT 249
 
 // Default key matrix row scanner
-#define ASDF_ARCH_DEFAULT_SCANNER asdf_arch_read_row
+#define ASDF_ARCH_DEFAULT_SCANNER &asdf_arch_read_row
 
 // Default keyboard output
-#define ASDF_ARCH_DEFAULT_OUTPUT asdf_arch_send_code
+#define ASDF_ARCH_DEFAULT_OUTPUT &asdf_arch_send_code
 
 // DIP switch is on row 8
 #define ASDF_ARCH_DIPSWITCH_ROW 8
