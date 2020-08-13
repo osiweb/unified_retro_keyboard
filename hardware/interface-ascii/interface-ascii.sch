@@ -588,7 +588,7 @@ Connection ~ 5655 1575
 Wire Wire Line
 	5655 1575 5655 1450
 $Comp
-L interface-ascii:74LS166 U2
+L unikbd:74LS166 U2
 U 1 1 5DD565C9
 P 5655 2610
 F 0 "U2" H 5400 3470 50  0000 C CNN
@@ -701,7 +701,7 @@ Row9
 Text Label 7570 5370 2    50   ~ 0
 Row8
 $Comp
-L interface-ascii:ATmega328P-PU-MCU_Microchip_ATmega U1
+L unikbd:ATmega328P-PU-MCU_Microchip_ATmega U1
 U 1 1 5DD17F64
 P 3300 4550
 F 0 "U1" H 2980 6025 50  0000 R CNN

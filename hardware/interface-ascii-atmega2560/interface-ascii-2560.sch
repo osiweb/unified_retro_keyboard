@@ -1631,7 +1631,7 @@ Wire Bus Line
 	15900 8200 13500 8200
 Connection ~ 13500 8200
 $Comp
-L interface-ascii:ATmega2560-16AU U1
+L unikbd:ATmega2560-16AU U1
 U 1 1 5EC4527C
 P 8100 4900
 F 0 "U1" H 7500 7800 50  0000 C CNN
