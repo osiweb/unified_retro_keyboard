@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 3
 Title "Unified Retro Keyboard"
-Date "2020-07-30"
-Rev "1.10"
+Date "2020-08-17"
+Rev "1.11"
 Comp "OSIWeb.org"
 Comment1 "Main sheet with connector"
 Comment2 ""

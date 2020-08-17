@@ -5,8 +5,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 4 4
 Title "Sol-20 keyboard"
-Date "2020-08-15"
-Rev "1.6"
+Date "2020-08-17"
+Rev "1.7"
 Comp "OSIWeb.org"
 Comment1 "Key Matrix part 2"
 Comment2 ""
