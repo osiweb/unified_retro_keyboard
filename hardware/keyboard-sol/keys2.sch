@@ -4,9 +4,9 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 4
-Title "Universal Retro Keyboard"
-Date "2020-05-05"
-Rev "1.5"
+Title "Sol-20 keyboard"
+Date "2020-08-15"
+Rev "1.6"
 Comp "OSIWeb.org"
 Comment1 ""
 Comment2 ""
