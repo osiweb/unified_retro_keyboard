@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "ASCII Interface for Unified Retro Keyboard"
-Date "2020-06-22"
-Rev "2.8"
+Date "2020-08-18"
+Rev "2.9"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -754,46 +754,23 @@ SCK-LED2
 Text Label 3480 1755 0    50   ~ 0
 ~RESET
 Wire Wire Line
-	4760 5150 5100 5150
-Wire Wire Line
-	5100 5050 4760 5050
-Wire Wire Line
-	4460 5050 4310 5050
-Wire Wire Line
 	3900 5150 4210 5150
 $Comp
 L Device:R_US R3
-U 1 1 5DD9ECD2
-P 4610 5050
-F 0 "R3" V 4570 4850 50  0000 C CNN
-F 1 "470" V 4520 5050 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4650 5040 50  0001 C CNN
-F 3 "~" H 4610 5050 50  0001 C CNN
-F 4 "Y" H 4610 5050 50  0001 C CNN "Fitted"
-F 5 "470" H 4610 5050 50  0001 C CNN "Label"
-F 6 "Y" H 4610 5050 50  0001 C CNN "May substitute"
-F 7 "Yageo" H 4610 5050 50  0001 C CNN "Manufacturer"
-F 8 "MFR-25FTE52-470R" H 4610 5050 50  0001 C CNN "Manufacturer PN"
-F 9 "470" H 4610 5050 50  0001 C CNN "Part Value"
-	1    4610 5050
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R_US R4
 U 1 1 5DDA0995
-P 4610 5150
-F 0 "R4" V 4570 4950 50  0000 C CNN
-F 1 "470" V 4496 5150 50  0001 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4650 5140 50  0001 C CNN
-F 3 "~" H 4610 5150 50  0001 C CNN
-F 4 "Y" H 4610 5150 50  0001 C CNN "Fitted"
-F 5 "470" H 4610 5150 50  0001 C CNN "Label"
-F 6 "Y" H 4610 5150 50  0001 C CNN "May substitute"
-F 7 "Yageo" H 4610 5150 50  0001 C CNN "Manufacturer"
-F 8 "MFR-25FTE52-470R" H 4610 5150 50  0001 C CNN "Manufacturer PN"
-F 9 "470" H 4610 5150 50  0001 C CNN "Part Value"
-	1    4610 5150
-	0    1    1    0   
+P 4310 6170
+F 0 "R3" H 4385 6295 50  0000 C CNN
+F 1 "470" H 4405 6055 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4350 6160 50  0001 C CNN
+F 3 "~" H 4310 6170 50  0001 C CNN
+F 4 "Y" H 4310 6170 50  0001 C CNN "Fitted"
+F 5 "470" H 4310 6170 50  0001 C CNN "Label"
+F 6 "Y" H 4310 6170 50  0001 C CNN "May substitute"
+F 7 "Yageo" H 4310 6170 50  0001 C CNN "Manufacturer"
+F 8 "MFR-25FTE52-470R" H 4310 6170 50  0001 C CNN "Manufacturer PN"
+F 9 "470" H 4310 6170 50  0001 C CNN "Part Value"
+	1    4310 6170
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	5860 6070 5860 6510
@@ -2247,14 +2224,11 @@ Wire Wire Line
 	4730 7820 4100 7820
 Wire Wire Line
 	4100 7820 4100 7710
-Connection ~ 4310 5050
 Connection ~ 4210 5150
 Wire Wire Line
 	3900 5050 4310 5050
 Wire Wire Line
-	4310 5050 4310 6710
-Wire Wire Line
-	4210 5150 4460 5150
+	4310 5050 4310 6020
 Text Label 7950 6500 0    50   ~ 0
 Row8
 Entry Wire Line
@@ -2467,12 +2441,19 @@ Text Label 1260 2685 0    50   ~ 0
 OUT1
 Text Label 1260 2585 0    50   ~ 0
 OUT3
-Wire Bus Line
-	5200 3850 5200 6640
+Wire Wire Line
+	4310 6320 4310 6710
+Wire Wire Line
+	4210 5150 5100 5150
 Wire Bus Line
 	10075 1350 10075 6705
+Wire Bus Line
+	5200 3850 5200 6640
 Wire Bus Line
 	1975 875  1975 6640
 Wire Bus Line
 	7800 1350 7800 6705
+Connection ~ 4310 5050
+Wire Wire Line
+	4310 5050 5100 5050
 $EndSCHEMATC
