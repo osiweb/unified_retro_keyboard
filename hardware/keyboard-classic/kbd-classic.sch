@@ -99,19 +99,6 @@ Text Notes 580  7070 0    79   ~ 0
 For OSI keyboards:\n“@“ (AT symbol) maps to “Shift Lock”, R0 C0\n“[“ (left bracket) maps to “Rub Out”, R6 C2\n“\” maps to “Repeat”, R0 C7\n“Rubout” maps to “Break”, \nDNP: “]” (right bracket), “^”, “Here is”, “Break”, “Repeat”, “Clear”
 Text Notes 600  7905 0    79   ~ 0
 For Apple II keyboards:\n“@“ (AT symbol) maps to “Left arrow”\n“\” maps to “Right Arrow\n“[“ (left bracket) maps to “Reset”\nDNP: “]” (right bracket), “^”, “Here is”, “Rub”, “Break”, “Repeat”, “Clear”
-$Comp
-L Switch:SW_Push_LED SW9
-U 1 1 5DF7D21E
-P 8085 2875
-F 0 "SW9" V 8005 3115 50  0000 C CNN
-F 1 "Caps_Lock" V 7835 2875 50  0000 C CNN
-F 2 "unikbd:Key_MX_LED" H 8085 3175 50  0001 C CNN
-F 3 "~" H 8085 3175 50  0001 C CNN
-F 4 "NO" H 8085 2875 50  0001 C CNN "Fitted"
-F 5 "NO" H 8085 2875 50  0001 C CNN "Substitution OK"
-	1    8085 2875
-	0    1    -1   0   
-$EndComp
 NoConn ~ 6045 2850
 NoConn ~ 6045 2950
 NoConn ~ 6045 3050
@@ -569,14 +556,7 @@ Wire Wire Line
 	7745 3020 7745 3075
 Connection ~ 7745 3075
 Wire Wire Line
-	7745 3075 8085 3075
-Wire Wire Line
 	7745 2720 7745 2655
-Wire Wire Line
-	7745 2655 8085 2655
-Connection ~ 8085 2655
-Wire Wire Line
-	8085 2655 8085 2675
 Wire Wire Line
 	8995 2370 8995 2245
 Wire Wire Line
@@ -606,18 +586,18 @@ Connection ~ 8995 2245
 Wire Wire Line
 	8995 2245 8995 2045
 $Comp
-L Switch:SW_Push_LED SW17
+L unikbd:SW_Push_LED SW17
 U 1 1 5EE923F1
 P 8085 3675
 F 0 "SW17" V 8005 3915 50  0000 C CNN
-F 1 "Line_Feed" V 7835 3675 50  0000 C CNN
+F 1 "Line_Feed" V 8330 3720 50  0000 C CNN
 F 2 "unikbd:Key_MX_LED" H 8085 3975 50  0001 C CNN
 F 3 "~" H 8085 3975 50  0001 C CNN
 F 4 "Common to all layouts" H 8085 3675 50  0001 C CNN "Comment"
 F 5 "YES" H 8085 3675 50  0001 C CNN "Fitted"
 F 6 "NO" H 8085 3675 50  0001 C CNN "Substitution OK"
 	1    8085 3675
-	0    1    -1   0   
+	0    1    1    0   
 $EndComp
 Entry Wire Line
 	9035 3470 9135 3370
@@ -689,7 +669,6 @@ Wire Wire Line
 	7605 2655 7605 3455
 Wire Wire Line
 	7605 3455 7745 3455
-Connection ~ 7745 2655
 $Comp
 L Device:LED D65
 U 1 1 5EECE7DC
@@ -716,8 +695,6 @@ Wire Wire Line
 Connection ~ 7745 3455
 Wire Wire Line
 	7745 3455 8085 3455
-Wire Wire Line
-	8085 2540 8085 2655
 Wire Wire Line
 	6800 2250 6800 2540
 Wire Wire Line
@@ -840,10 +817,33 @@ Wire Wire Line
 	6850 2275 6850 2150
 Wire Wire Line
 	6850 2150 6545 2150
+Wire Wire Line
+	7745 3075 8085 3075
+$Comp
+L unikbd:SW_Push_LED SW9
+U 1 1 5DF7D21E
+P 8085 2875
+F 0 "SW9" V 8005 3115 50  0000 C CNN
+F 1 "Caps_Lock" V 8315 2905 50  0000 C CNN
+F 2 "unikbd:Key_MX_LED" H 8085 3175 50  0001 C CNN
+F 3 "~" H 8085 3175 50  0001 C CNN
+F 4 "NO" H 8085 2875 50  0001 C CNN "Fitted"
+F 5 "NO" H 8085 2875 50  0001 C CNN "Substitution OK"
+	1    8085 2875
+	0    1    1    0   
+$EndComp
 Wire Bus Line
 	9135 700  9135 3775
 Wire Bus Line
 	5545 700  5545 2650
 Wire Bus Line
 	2925 700  2925 4700
+Wire Wire Line
+	8085 2655 8085 2675
+Wire Wire Line
+	8085 2540 8085 2655
+Connection ~ 8085 2655
+Connection ~ 7745 2655
+Wire Wire Line
+	7745 2655 8085 2655
 $EndSCHEMATC
