@@ -5,8 +5,8 @@ $Descr USLedger 17000 11000
 encoding utf-8
 Sheet 1 1
 Title "Unified Retro Keyboard Apple 2 Encoder"
-Date "2020-07-23"
-Rev "4.1"
+Date "2020-12-22"
+Rev "4.2"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -487,7 +487,7 @@ U 1 1 5DF0476A
 P 14600 7000
 F 0 "SW1" H 14600 7667 50  0000 C CNN
 F 1 "Options" H 14600 7576 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_DIP_SPSTx08_Piano_CTS_Series194-8MSTN_W7.62mm_P2.54mm" H 14600 7000 50  0001 C CNN
+F 2 "unikbd:SW_DIP_SPSTx08_Piano_CTS_Series194-8MSTN_W7.62mm_P2.54mm" H 14600 7000 50  0001 C CNN
 F 3 "~" H 14600 7000 50  0001 C CNN
 F 4 "YES" H 14600 7000 50  0001 C CNN "Substitution OK"
 F 5 "YES" H 14600 7000 50  0001 C CNN "Fitted"
