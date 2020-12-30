@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "ASCII Interface for Unified Retro Keyboard"
-Date "2020-08-18"
-Rev "2.9"
+Date "2020-12-29"
+Rev "2.10"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -1302,7 +1302,7 @@ U 1 1 5DF0476A
 P 8775 6200
 F 0 "SW1" H 8775 6867 50  0000 C CNN
 F 1 "Options" H 8775 6776 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_DIP_SPSTx08_Piano_CTS_Series194-8MSTN_W7.62mm_P2.54mm" H 8775 6200 50  0001 C CNN
+F 2 "unikbd:SW_DIP_SPSTx08_Piano_CTS_Series194-8MSTN_W7.62mm_P2.54mm" H 8775 6200 50  0001 C CNN
 F 3 "~" H 8775 6200 50  0001 C CNN
 F 4 "Y" H 8775 6200 50  0001 C CNN "Fitted"
 F 5 "Options" H 8775 6200 50  0001 C CNN "Label"
@@ -2445,15 +2445,15 @@ Wire Wire Line
 	4310 6320 4310 6710
 Wire Wire Line
 	4210 5150 5100 5150
-Wire Bus Line
-	10075 1350 10075 6705
+Connection ~ 4310 5050
+Wire Wire Line
+	4310 5050 5100 5050
 Wire Bus Line
 	5200 3850 5200 6640
+Wire Bus Line
+	10075 1350 10075 6705
 Wire Bus Line
 	1975 875  1975 6640
 Wire Bus Line
 	7800 1350 7800 6705
-Connection ~ 4310 5050
-Wire Wire Line
-	4310 5050 5100 5050
 $EndSCHEMATC
