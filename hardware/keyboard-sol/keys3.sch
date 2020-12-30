@@ -633,8 +633,6 @@ Wire Wire Line
 	3600 5000 3600 5900
 Wire Wire Line
 	1450 2100 4400 2100
-Wire Wire Line
-	4400 2100 4400 3200
 Connection ~ 4400 3200
 Wire Wire Line
 	4400 3200 4400 4100
@@ -679,8 +677,6 @@ Text Label 2300 4500 0    50   ~ 0
 Row10_keys
 Text Label 2300 5400 0    50   ~ 0
 Row11_keys
-Wire Wire Line
-	5200 1900 5200 3200
 Wire Wire Line
 	6000 1700 6000 3200
 Wire Wire Line
@@ -895,4 +891,8 @@ F 3 "http://www.nxp.com/documents/data_sheet/1N4148_1N4448.pdf" H 5600 3450 50  
 	1    5600 3450
 	0    -1   -1   0   
 $EndComp
+Wire Wire Line
+	5200 1900 5200 3200
+Wire Wire Line
+	4400 2100 4400 3200
 $EndSCHEMATC
