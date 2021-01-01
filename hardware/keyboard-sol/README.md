@@ -5,8 +5,8 @@ This keyboard replicates the keyboard on the SOL-20.
 This keyboad matrix works with one of the add-on ASCII encoders from this
 project, which must be separately built or acquired.
 
-This keyboard has a sibling [Sol-20 keyboard with integrated
-encoder][../keyboard-sol-integrated]. The two keyboards are identical except for the following difference:
+This keyboard has a sibling Sol-20 keyboard with integrated
+encoder [(here)](../keyboard-sol-integrated). The two keyboards are identical except for the following difference:
 
 1. The integrated version places the connector closer to the main board keyboard
    socket, so the original cable fits more easily.
