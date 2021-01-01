@@ -1,6 +1,6 @@
 # SOL keyboard
 
-This keyboard replicates the keyboard on the SOL-20.
+This keyboard with integrated encoder replicates the keyboard on the SOL-20.
 
 The keyboard is designed using KiCad in order to be the most useful for anybody
 wishing to modify the keyboard for more specific uses, or to add to the project.
@@ -25,5 +25,6 @@ classic ASCII keyset, with a special SOL-20 add-on keyset.
 1. The original uses UPPERCASE+REPEAT to reset the system. For technical
    reasons, this version uses CTRL+MODE_SELECT to RESET the system. 
 
+<img alt="Sol 20 Keyboard" src="images/sol-integrated-pcb.png" width=90%>
 <img alt="Sol 20 Keyboard" src="images/sol_20_kbd.jpg" width=90%>
 <img alt="Sol 20 Keyboard" src="images/kbd_fit.jpg" width=90%>
