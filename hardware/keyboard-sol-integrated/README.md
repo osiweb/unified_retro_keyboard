@@ -3,7 +3,7 @@
 This keyboard with integrated encoder replicates the keyboard on the SOL-20.
 
 This keyboard has a sibling Sol-20 keyboard without integrated
-encoder [(here)](../keyboard-sol). The two keyboards are identical except for the following difference:
+encoder [(here)](../keyboard-sol). The two keyboards are identical except for the following differences:
 
 1. This integrated version places the connector closer to the main board keyboard
    socket, so the original cable fits more easily.
@@ -13,7 +13,7 @@ encoder [(here)](../keyboard-sol). The two keyboards are identical except for th
    side of the keyboard, and connected with a cable, to avoid mechanical
    interference from the Sol main board.
    
-1. The piggy-back encoder permits use with other machines, via the Apple-1 and
+1. The piggy-back encoder is more flexible for use with other machines, via the Apple-1 and
    Apple-2 sockets, and two different user-configurable headers.
    
 1. The piggy-back encoder also includes a UART interface.
