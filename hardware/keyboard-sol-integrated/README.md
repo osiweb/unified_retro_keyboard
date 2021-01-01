@@ -1,6 +1,22 @@
-# SOL keyboard
+# SOL keyboard with built-in encoder
 
 This keyboard with integrated encoder replicates the keyboard on the SOL-20.
+
+This keyboard has a sibling Sol-20 keyboard without integrated
+encoder [(here)](../keyboard-sol). The two keyboards are identical except for the following difference:
+
+1. This integrated version places the connector closer to the main board keyboard
+   socket, so the original cable fits more easily.
+
+1. The non-integrated version requires a piggy-back encoder board. When
+   installing in a Sol-20, this piggyback board must be mounted on the right
+   side of the keyboard, and connected with a cable, to avoid mechanical
+   interference from the Sol main board.
+   
+1. The piggy-back encoder permits use with other machines, via the Apple-1 and
+   Apple-2 sockets, and two different user-configurable headers.
+   
+1. The piggy-back encoder also includes a UART interface.
 
 The keyboard is designed using KiCad in order to be the most useful for anybody
 wishing to modify the keyboard for more specific uses, or to add to the project.

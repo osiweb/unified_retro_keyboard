@@ -11,7 +11,7 @@ encoder [(here)](../keyboard-sol-integrated). The two keyboards are identical ex
 1. The integrated version places the connector closer to the main board keyboard
    socket, so the original cable fits more easily.
 
-1. The non-integrated version requires a piggy-back encoder board. When
+1. This non-integrated version requires a piggy-back encoder board. When
    installing in a Sol-20, this piggyback board must be mounted on the right
    side of the keyboard, and connected with a cable, to avoid mechanical
    interference from the Sol main board.
