@@ -25,6 +25,8 @@
 #if !defined(ASDF_VIRTUAL_H)
 #define ASDF_VIRTUAL_H
 
+#include "asdf_physical.h"
+
 // These are "virtual" output identifiers that can be mapped to the real outputs using
 // keymap initializer commands.
 typedef enum {

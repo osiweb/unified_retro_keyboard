@@ -40,7 +40,6 @@
 #include <util/delay.h>
 #include <stdint.h>
 #include "asdf_config.h"
-#include "asdf_keymap_defs.h"
 
 static volatile uint8_t tick = 0;
 

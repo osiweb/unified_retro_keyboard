@@ -47,6 +47,18 @@
 #define ASDF_DEFAULT_SCREEN_CLEAR_POLARITY ASDF_POSITIVE_POLARITY
 
 
+// Data structure sizes:
+
+// Size of keymap initializer sequence. These sequences are defined in the
+// keymap modules. This should be large enough to accommodate the largest
+// initializer sequence among the included keymaps
+#define ASDF_KEYMAP_INITIALIZER_LENGTH 6
+
+// Size of keymap hook function initializer list. These lists are defined in the
+// keymap modules. This should be large enough to accommodate the largest list
+// among the included keymaps
+#define ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH 2
+
 // size of the keycode output buffer.
 #define ASDF_KEYCODE_BUFFER_SIZE 16
 

@@ -33,7 +33,6 @@
 #include <stddef.h>
 #include "asdf_arch.h"
 #include "asdf_hook.h"
-#include "asdf_keymap_defs.h"
 
 
 // hooks_table[] contains all the function hooks. The entry for each ID contains

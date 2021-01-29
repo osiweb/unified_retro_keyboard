@@ -24,6 +24,8 @@
 #if !defined(ASDF_H)
 #define ASDF_H
 
+#include <stdint.h>
+
 // Define the code at which keyboard actions begin. Codes below this value are
 // values to be transmitted to the host machine. Codes above this value are
 // actions to be performed.

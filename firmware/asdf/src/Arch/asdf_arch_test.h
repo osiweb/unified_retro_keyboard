@@ -28,7 +28,6 @@
 
 #include <stdint.h>
 #include "asdf.h"
-#include "asdf_keymap_defs.h"
 #include "asdf_config.h"
 #include "asdf_physical.h"
 #include "asdf_virtual.h"

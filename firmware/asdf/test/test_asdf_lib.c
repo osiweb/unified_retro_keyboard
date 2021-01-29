@@ -1,7 +1,8 @@
 #include<stdint.h>
 #include "asdf.h"
+#include "asdf_virtual.h"
+#include "asdf_physical.h"
 #include "asdf_keymaps.h"
-#include "asdf_keymap_defs.h"
 #include "asdf_arch.h"
 #include "asdf_hook.h"
 #include "test_asdf_lib.h"

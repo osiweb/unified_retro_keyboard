@@ -8,7 +8,6 @@
 #include "asdf_ascii.h"
 #include "asdf_modifiers.h"
 #include "asdf_keymaps.h"
-#include "asdf_keymap_defs.h"
 #include "asdf_buffer.h"
 #include "asdf_repeat.h"
 #include "asdf_hook.h"

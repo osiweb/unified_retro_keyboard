@@ -27,6 +27,14 @@
 #if !defined(ASDF_KEYMAPS_H)
 #define ASDF_KEYMAPS_H
 
+#include "asdf.h"
+#include "asdf_hook.h"
+#include "asdf_virtual.h"
+#include "asdf_physical.h"
+
+#define ASDF_NUM_KEYMAPS 6
+#define ASDF_NUM_ROWS 13
+#define ASDF_NUM_COLS 8
 
 // Define the bit position of each keymap DIP switch. The DIP switch values at
 // each bit position can be used to select the current keymap. This requires the
@@ -36,6 +44,11 @@
 #define ASDF_KEYMAP_BIT_1 2
 #define ASDF_KEYMAP_BIT_2 4
 #define ASDF_KEYMAP_BIT_3 8
+
+
+// define the keycode matrices to be used by the keymaps. Each matrix is a
+// mapping of row,column to keycode.
+typedef asdf_keycode_t asdf_keycode_matrix_t[ASDF_NUM_ROWS][ASDF_NUM_COLS];
 
 // PROCEDURE: asdf_keymaps_select_keymap
 // INPUTS: (uint8_t) index - index of the keymap number to select
@@ -109,7 +122,28 @@ void asdf_keymaps_map_select_3_set(void);
 // index, to avoid hard-coding constant index values.
 void asdf_keymaps_init(void);
 
-// PROCEDURE: asdf_keymaps_get_`code
+// PROCEDURE: asdf_keymap_add_virtual_device
+// INPUTS: (asdf_virtual_dev_t) virtual_dev: The virtual device being assigned
+//         (asdf_physical_dev_t) physical_dev: The physical device attached to the virtual device
+//         (asdf_virtual_function_t) function: the function associated with the virtual device
+//         (uint8_t) initial_value: The initial state of the virtual device
+// OUTPUTS: none
+// DESCRIPTION: Builds the virtual device initializer structure. Uses the
+// arguments to build an entry in the virtual device initializer structure for
+// the current keymap.
+void asdf_keymap_add_virtual_device(asdf_virtual_dev_t virtual_dev,
+                                    asdf_physical_dev_t physical_dev,
+                                    asdf_virtual_function_t function, uint8_t initial_value);
+
+// PROCEDURE: asdf_keymap_add_hook
+// INPUTS: (asdf_hook_id_t) hook_id: type ID for the provided hook function
+//         (asdf_hook_function_t) function: the function associated with the hook.
+// OUTPUTS: none
+// DESCRIPTION: Builds the hook initializer table for the current keymap
+void asdf_keymap_add_hook(asdf_hook_id_t hook_id, asdf_hook_function_t function);
+
+
+// PROCEDURE: asdf_keymaps_get_code
 // INPUTS: row, col: row and column of key that has been pressed
 //         modifiers_index: index into the keymap array, based on modifier state
 // OUTPUTS: returns a key code.

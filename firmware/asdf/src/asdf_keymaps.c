@@ -21,55 +21,167 @@
 // this program. If not, see <https://www.gnu.org/licenses/>.
 
 #include <stdint.h>
+#include <stddef.h>
 #include "asdf.h"
 #include "asdf_arch.h"
 #include "asdf_physical.h"
 #include "asdf_virtual.h"
 #include "asdf_hook.h"
-#include "asdf_repeat.h"
 #include "asdf_keymaps.h"
-#include "asdf_keymap_defs.h"
-
-// ASDF_KEYMAP_DECLARATIONS is defined in asdf_keymap_defs.h, aggregated from
-// all the included keymap definition files.
-//
-// This is a terrible practice, but defining the declarations as a macro permits
-// the keymap definitions to be incorporated in a fairly modular fashion, using
-// the limited capabilities of the C preprocessor. One alternative is to use a
-// program (in C or at the expense of additional build dependencies, in python
-// or bash) to generate the keymap definitions and declarations from a
-// definition file. But then the keymap declarations would not be private.
-// constexpr in C++ may be an alternative option as well.
-ASDF_KEYMAP_DECLARATIONS;
+#include "asdf_modifiers.h"
 
 // The keymap arrays organized as follows:
 // * Each keymap matrix is a NUM_ROWS x NUM_COLS mapping of key to code for a given modifier.
 // * Each keymap contains a set of keymap matrices, one for each unique
 //   combination of modifier keys.
 // * All the keymaps (NUM_KEYMAPS) are gathered in the keymap_matrixp[] array.
-static keycode_matrix_t const *keymap_matrix[ASDF_NUM_KEYMAPS][ASDF_MOD_NUM_MODIFIERS] =
-  ASDF_KEYMAP_DEFS;
-
+static asdf_keycode_matrix_t *keymap_matrix[ASDF_NUM_KEYMAPS][ASDF_MOD_NUM_MODIFIERS] = {};
 
 // Each keymap (representing a keyboard configuration) has an associated set of
 // virtual device initializers that set up the I/O and LED lines for the
 // keyboard, unique to each keymap. This builds the virtual device initializer
 // array from the initializer definitions in the keymap definition files.
-static const asdf_virtual_initializer_t keymap_initializer_list[ASDF_NUM_KEYMAPS]
-                                                               [ASDF_KEYMAP_INITIALIZER_LENGTH] =
-                                                                 ASDF_KEYMAP_INITIALIZERS;
+static asdf_virtual_initializer_t
+  keymap_initializer_list[ASDF_NUM_KEYMAPS][ASDF_KEYMAP_INITIALIZER_LENGTH] = {};
 
 // Each keymap (representing a keyboard configuration) has an associated set of
 // function hooks unique to the keyboard defined by the map. This builds the
 // function hook initializer array from the definitions in the keymap definition
 // files.
-static const asdf_hook_initializer_t
-  keymap_hook_initializer_list[ASDF_NUM_KEYMAPS][ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH] =
-    ASDF_KEYMAP_HOOK_INITIALIZERS;
+static asdf_hook_initializer_t
+  keymap_hook_initializer_list[ASDF_NUM_KEYMAPS][ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH] = {};
 
 // Index of the currently active keymap, initialized to zero in the init
 // routine.
-static uint8_t keymap_index;
+static uint8_t current_keymap_index = 0;
+
+// index of the current virtual device initializer entry while building virtual
+// device initializer struct.
+static uint8_t vdev_index = 0;
+
+// index of the current hook entry while building hook initializer table.
+static uint8_t hook_index = 0;
+
+// PROCEDURE: asdf_keymaps_add_keymap
+// INPUTS: (asdf_keycode_matrix_t *) matrix - keycode matrix to add in to map
+//         (uint8_t) keymap_modifier - the modifier value for the keycode matrix
+//
+// OUTPUTS: none
+//
+// DESCRIPTION: Called by keymap building modules. This routine is responsible
+// for building the keymap matrix for all the supported keymaps, assigning
+// keymaps for each modifier code in all the keymaps.
+
+// The routine takes a pointer to a keycode matrix that maps each key in the
+// physical keyboard matrix to a code. A modifier code parameter indicates which
+// modifier combination activates the provided matrix.
+//
+// SIDE EFFECTS:
+//
+// NOTES: If the keymap modifier index is not a valid keymap index then no
+// action is performed.
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+void asdf_keymaps_add_map(asdf_keycode_matrix_t *matrix, uint8_t modifier_index)
+{
+  if (modifier_index < ASDF_MOD_NUM_MODIFIERS && current_keymap_index < ASDF_NUM_KEYMAPS) {
+    keymap_matrix[current_keymap_index][modifier_index] = matrix;
+  }
+}
+
+
+// PROCEDURE: asdf_keymaps_next();
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Called by keymap building modules to conclude a keymap. This is
+// done after all modifier maps, hooks, and virtual devices have been defined.
+//
+// SIDE EFFECTS: 1) Causes asdf_keymaps_add_keymap() to increment the keymap index
+//               2) Resets the virtual device table index for the next keymap
+//               3) Resets the hook table index for the next keymap
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_keymaps_start_new(uint8_t new_keymap_index)
+{
+  current_keymap_index = new_keymap_index;
+  asdf_keymap_add_virtual_device(V_NULL, PHYSICAL_NO_OUT, V_NOFUNC, 0);
+  asdf_keymap_add_hook(ASDF_HOOK_NULL, NULL);
+}
+
+
+// PROCEDURE: asdf_keymap_add_virtual_device
+// INPUTS: (asdf_virtual_dev_t) virtual_dev: The virtual device being assigned
+//         (asdf_physical_dev_t) physical_dev: The physical device attached to the virtual device
+//         (asdf_virtual_function_t) function: the function associated with the virtual device
+//         (uint8_t) initial_value: The initial state of the virtual device
+//
+// OUTPUTS: none
+//
+// DESCRIPTION: Builds the virtual device initializer structure. Uses the
+// arguments to build an entry in the virtual device initializer structure for
+// the current keymap.
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_keymap_add_virtual_device(asdf_virtual_dev_t virtual_dev,
+                                    asdf_physical_dev_t physical_dev,
+                                    asdf_virtual_function_t function, uint8_t initial_value)
+{
+  static uint8_t vdev_index = 0;
+
+  if (V_NULL == virtual_dev) {
+    vdev_index = 0;
+  }
+  else if (current_keymap_index < ASDF_NUM_KEYMAPS && vdev_index < ASDF_VIRTUAL_NUM_RESOURCES) {
+    keymap_initializer_list[current_keymap_index][vdev_index++].virtual_device = virtual_dev;
+    keymap_initializer_list[current_keymap_index][vdev_index++].physical_device = physical_dev;
+    keymap_initializer_list[current_keymap_index][vdev_index++].function = function;
+    keymap_initializer_list[current_keymap_index][vdev_index++].initial_value = initial_value;
+  }
+}
+
+// PROCEDURE: asdf_keymap_add_hook
+// INPUTS: (asdf_hook_id_t) hook_id: type ID for the provided hook function
+//         (asdf_hook_function_t) function: the function associated with the hook.
+//
+// OUTPUTS: none
+//
+// DESCRIPTION: Builds the hook initializer table for the current keymap
+//
+// SIDE EFFECTS: See above.
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_keymap_add_hook(asdf_hook_id_t hook_id, asdf_hook_function_t function)
+{
+  static uint8_t hook_entry_index = 0;
+
+  if (ASDF_HOOK_NULL == hook_id) {
+    hook_entry_index = 0;
+  }
+  else if (current_keymap_index < ASDF_NUM_KEYMAPS && hook_index < ASDF_NUM_HOOKS) {
+    keymap_hook_initializer_list[current_keymap_index][hook_entry_index].hook_id = hook_id;
+    keymap_hook_initializer_list[current_keymap_index][hook_entry_index].hook_func = function;
+  }
+}
 
 
 // PROCEDURE: asdf_keymaps_select_keymap
@@ -78,21 +190,17 @@ static uint8_t keymap_index;
 //
 // DESCRIPTION: accepts a index value. If the requested keymap index is valid,
 // then:
-// 1) assign the value to the global (to the module) keymap_index variable
+// 1) assign the value to the global (to the module) current_keymap_index variable
 // 2) execute the architecture-dependent init routine, to undo any settings
 //    from the previous keymap
 // 3) initialize the virtual outputs for the selected keymap.
 // 4) initialize the modifier key states.
 //
 // SIDE EFFECTS:
-// - May change the module-global keymap_index variable.
+// - May change the module-global current_keymap_index variable.
 // - Architecture is initialized to default configuration.
 //
-// NOTES: 1) If the requested index is not valid, then no action is performed.
-//
-//        2) Hooks are initialized after repeat apparratus and modifiers states
-//        are initialized, so that hooks can be used to modify default modifier
-//        states for a map.
+// NOTES: If the requested index is not valid, then no action is performed.
 //
 // SCOPE: public
 //
@@ -101,17 +209,11 @@ static uint8_t keymap_index;
 void asdf_keymaps_select_keymap(uint8_t index)
 {
   if (index < ASDF_NUM_KEYMAPS) {
-    keymap_index = index;
-
+    current_keymap_index = index;
     asdf_arch_init();
-
-    asdf_virtual_init((asdf_virtual_initializer_t *const) keymap_initializer_list[keymap_index]);
-
+    asdf_virtual_init((asdf_virtual_initializer_t *const) keymap_initializer_list[current_keymap_index]);
     asdf_modifiers_init();
-
-    asdf_repeat_init();
-
-    asdf_hook_init((asdf_hook_initializer_t *const) keymap_hook_initializer_list[keymap_index]);
+    asdf_hook_init((asdf_hook_initializer_t *const) keymap_hook_initializer_list[current_keymap_index]);
   }
 }
 
@@ -155,7 +257,7 @@ void asdf_keymaps_init(void)
 //
 void asdf_keymaps_map_select_0_clear(void)
 {
-  asdf_keymaps_select_keymap(keymap_index & (~ASDF_KEYMAP_BIT_0));
+  asdf_keymaps_select_keymap(current_keymap_index & (~ASDF_KEYMAP_BIT_0));
 }
 
 // PROCEDURE: asdf_keymaps_map_select_0_set
@@ -175,7 +277,7 @@ void asdf_keymaps_map_select_0_clear(void)
 //
 void asdf_keymaps_map_select_0_set(void)
 {
-  asdf_keymaps_select_keymap(keymap_index | ASDF_KEYMAP_BIT_0);
+  asdf_keymaps_select_keymap(current_keymap_index | ASDF_KEYMAP_BIT_0);
 }
 
 // PROCEDURE: asdf_keymaps_map_select_1_clear
@@ -195,7 +297,7 @@ void asdf_keymaps_map_select_0_set(void)
 //
 void asdf_keymaps_map_select_1_clear(void)
 {
-  asdf_keymaps_select_keymap(keymap_index & (~ASDF_KEYMAP_BIT_1));
+  asdf_keymaps_select_keymap(current_keymap_index & (~ASDF_KEYMAP_BIT_1));
 }
 
 // PROCEDURE: asdf_keymaps_map_select_1_set
@@ -215,7 +317,7 @@ void asdf_keymaps_map_select_1_clear(void)
 //
 void asdf_keymaps_map_select_1_set(void)
 {
-  asdf_keymaps_select_keymap(keymap_index | ASDF_KEYMAP_BIT_1);
+  asdf_keymaps_select_keymap(current_keymap_index | ASDF_KEYMAP_BIT_1);
 }
 
 // PROCEDURE: asdf_keymaps_map_select_2_clear
@@ -235,7 +337,7 @@ void asdf_keymaps_map_select_1_set(void)
 //
 void asdf_keymaps_map_select_2_clear(void)
 {
-  asdf_keymaps_select_keymap(keymap_index & (~ASDF_KEYMAP_BIT_2));
+  asdf_keymaps_select_keymap(current_keymap_index & (~ASDF_KEYMAP_BIT_2));
 }
 
 // PROCEDURE: asdf_keymaps_map_select_2_set
@@ -255,7 +357,7 @@ void asdf_keymaps_map_select_2_clear(void)
 //
 void asdf_keymaps_map_select_2_set(void)
 {
-  asdf_keymaps_select_keymap(keymap_index | ASDF_KEYMAP_BIT_2);
+  asdf_keymaps_select_keymap(current_keymap_index | ASDF_KEYMAP_BIT_2);
 }
 
 // PROCEDURE: asdf_keymaps_map_select_3_clear
@@ -275,7 +377,7 @@ void asdf_keymaps_map_select_2_set(void)
 //
 void asdf_keymaps_map_select_3_clear(void)
 {
-  asdf_keymaps_select_keymap(keymap_index & (~ASDF_KEYMAP_BIT_3));
+  asdf_keymaps_select_keymap(current_keymap_index & (~ASDF_KEYMAP_BIT_3));
 }
 
 // PROCEDURE: asdf_keymaps_map_select_3_set
@@ -295,7 +397,7 @@ void asdf_keymaps_map_select_3_clear(void)
 //
 void asdf_keymaps_map_select_3_set(void)
 {
-  asdf_keymaps_select_keymap(keymap_index | ASDF_KEYMAP_BIT_3);
+  asdf_keymaps_select_keymap(current_keymap_index | ASDF_KEYMAP_BIT_3);
 }
 
 // PROCEDURE: asdf_keymaps_get_code
@@ -318,7 +420,7 @@ void asdf_keymaps_map_select_3_set(void)
 asdf_keycode_t asdf_keymaps_get_code(const uint8_t row, const uint8_t col,
                                      const uint8_t modifier_index)
 {
-  const keycode_matrix_t *matrix = keymap_matrix[keymap_index][modifier_index];
+  asdf_keycode_matrix_t *matrix = keymap_matrix[current_keymap_index][modifier_index];
 
   return FLASH_READ_MATRIX_ELEMENT(*matrix, row, col);
 }

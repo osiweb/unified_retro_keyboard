@@ -41,7 +41,6 @@
 #include <stdint.h>
 
 #include "asdf_config.h"
-#include "asdf_keymap_defs.h"
 
 // Tick is true every 1 ms.
 static volatile uint8_t tick = 0;

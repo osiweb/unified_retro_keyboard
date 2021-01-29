@@ -25,6 +25,7 @@
 #if !defined(ASDF_PHYSICAL_H)
 #define ASDF_PHYSICAL_H
 
+#include <stdint.h>
 
 // The asdf_virtual_real_dev_t enumerates real outputs that can be assigned to
 // virtual outputs via the asdf_virtual_assign() function. The name is a bit

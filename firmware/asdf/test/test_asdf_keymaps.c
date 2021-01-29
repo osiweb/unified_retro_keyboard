@@ -5,13 +5,25 @@
 #include "asdf.h"
 #include "asdf_ascii.h"
 #include "asdf_modifiers.h"
+#include "test_asdf_keymap_defs.h"
 #include "asdf_keymaps.h"
-#include "asdf_keymap_defs.h"
+#include "test_asdf_lib.h"
 
 #define TESTALPHA 'a'
 #define TESTNUM '2'
 #define TESTKEYMAP_TAG PLAIN_MATRIX_1
 #define NUM_DIPSWITCHES 4
+
+
+static const FLASH asdf_keycode_matrix_t test_PLAIN_matrix = ASDF_TEST_PLAIN_MAP;
+static const FLASH asdf_keycode_matrix_t test_SHIFT_matrix = ASDF_TEST_SHIFT_MAP;
+static const FLASH asdf_keycode_matrix_t test_CAPS_matrix = ASDF_TEST_CAPS_MAP;
+static const FLASH asdf_keycode_matrix_t test_CTRL_matrix = ASDF_TEST_CTRL_MAP;
+
+static const FLASH asdf_keycode_matrix_t test2_PLAIN_matrix = ASDF_TEST2_PLAIN_MAP;
+static const FLASH asdf_keycode_matrix_t test2_SHIFT_matrix = ASDF_TEST2_SHIFT_MAP;
+static const FLASH asdf_keycode_matrix_t test2_CAPS_matrix = ASDF_TEST2_CAPS_MAP;
+static const FLASH asdf_keycode_matrix_t test2_CTRL_matrix = ASDF_TEST2_CTRL_MAP;
 
 // row: row number
 // col: column number
@@ -74,8 +86,6 @@ typedef struct {
 // positions reflect the organization of the test keymaps, to ensure that tools
 // used to place the codes are functioning and are being properly used.
 
-
-ASDF_KEYMAP_DECLARATIONS;
 
 // keymap coordinates for special functions
 static coord_t alpha_sample;
@@ -143,21 +153,6 @@ void complicated_set_keymap(uint8_t mapnum)
 asdf_cols_t asdf_arch_read_row(uint8_t row)
 {
   return (asdf_cols_t) (row+1);
-}
-
-// the next two test check the preprocessor mechanism for allocating space for
-// the largest defined keymap
-
-// check to see that the largest number of columns is detected.
-void test_num_cols_is_max_cols(void)
-{
-  TEST_ASSERT_EQUAL_INT32(max(ASDF_TEST_NUM_COLS, ASDF_TEST2_NUM_COLS), ASDF_NUM_COLS);
-}
-
-// check to see that the largest number of rows is detected.
-void test_num_rows_is_max_rows(void)
-{
-  TEST_ASSERT_EQUAL_INT32(max(ASDF_TEST_NUM_ROWS, ASDF_TEST2_NUM_ROWS), ASDF_NUM_ROWS);
 }
 
 void test_chars_are_in_map(void)
@@ -328,8 +323,6 @@ void dip_switch_invalid_keymap_has_no_effect(void)
 int main(void)
 {
   UNITY_BEGIN();
-  RUN_TEST(test_num_rows_is_max_rows);
-  RUN_TEST(test_num_cols_is_max_cols);
   RUN_TEST(test_chars_are_in_map);
   RUN_TEST(keymap0_plain_gives_plain_values);
   RUN_TEST(keymap0_shift_gives_shift_values);
