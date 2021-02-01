@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 5
 Title "Sol-20 keyboard"
-Date "2020-12-30"
-Rev "2.0"
+Date "2021-02-01"
+Rev "2.1"
 Comp "OSIWeb.org"
 Comment1 "Main sheet with connector"
 Comment2 ""

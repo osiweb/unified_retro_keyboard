@@ -5,8 +5,8 @@ $Descr USLedger 17000 11000
 encoding utf-8
 Sheet 5 5
 Title "Unified Retro Keyboard Apple 2 Encoder"
-Date "2020-12-30"
-Rev "2.0"
+Date "2021-02-01"
+Rev "2.1"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
