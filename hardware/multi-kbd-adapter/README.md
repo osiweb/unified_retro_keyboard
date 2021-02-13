@@ -9,8 +9,5 @@ compatible keyboards with any of these three computers.
 - Pin header allows external RESET and CLEAR (or LOCAL) switches
 - Note that the SOL and Apple keyboards have different strobe polarity. Make
   sure the strobe polarity on the keyboard is properly configured.
-
-
-
-
-
+<img alt="Assembly Rendering" src="images/multi-adapter.png" height=75%
+width=75%>
