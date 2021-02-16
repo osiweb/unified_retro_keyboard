@@ -32,10 +32,6 @@
 #include "asdf_virtual.h"
 #include "asdf_physical.h"
 
-#define ASDF_NUM_KEYMAPS 6
-#define ASDF_NUM_ROWS 13
-#define ASDF_NUM_COLS 8
-
 // Define the bit position of each keymap DIP switch. The DIP switch values at
 // each bit position can be used to select the current keymap. This requires the
 // DIP switches to be mapped to the asdf_keymaps_select_X_set() and
@@ -49,6 +45,17 @@
 // define the keycode matrices to be used by the keymaps. Each matrix is a
 // mapping of row,column to keycode.
 typedef asdf_keycode_t asdf_keycode_matrix_t[ASDF_NUM_ROWS][ASDF_NUM_COLS];
+
+// PROCEDURE: asdf_keymaps_add_map
+// INPUTS: (uint8_t) keymap_index - index of the keymap to be modified
+//         (asdf_keycode_matrix_t *) matrix - pointer to the keycode matrix to add in to map
+//         (uint8_t) keymap_modifier - the modifier value for the keycode matrix being added
+// OUTPUTS: none
+// DESCRIPTION: Called by keymap building modules. This routine adds a keymap
+// matrix into a specific modifier position of the specified matrix.
+// NOTES: If the keymap modifier index is not a valid keymap index then no
+// action is performed.
+void asdf_keymaps_add_map(uint8_t keymap_index, const asdf_keycode_matrix_t *matrix, uint8_t modifier_index);
 
 // PROCEDURE: asdf_keymaps_select_keymap
 // INPUTS: (uint8_t) index - index of the keymap number to select

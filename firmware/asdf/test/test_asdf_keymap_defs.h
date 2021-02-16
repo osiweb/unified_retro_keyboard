@@ -377,5 +377,12 @@
 
 #endif /* !defined (TEST_ASDF_KEYMAP_DEFS_H) */
 
+void setup_test_plain_map(void);
+void setup_test_caps_map(void);
+void setup_test2_plain_map(void);
+void setup_test2_caps_map(void);
+
+
+
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

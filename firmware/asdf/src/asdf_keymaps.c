@@ -62,19 +62,15 @@ static uint8_t vdev_index = 0;
 // index of the current hook entry while building hook initializer table.
 static uint8_t hook_index = 0;
 
-// PROCEDURE: asdf_keymaps_add_keymap
-// INPUTS: (asdf_keycode_matrix_t *) matrix - keycode matrix to add in to map
-//         (uint8_t) keymap_modifier - the modifier value for the keycode matrix
+// PROCEDURE: asdf_keymaps_add_map
+// INPUTS: (uint8_t) keymap_index - index of the keymap to be modified
+//         (asdf_keycode_matrix_t *) matrix - pointer to the keycode matrix to add in to map
+//         (uint8_t) keymap_modifier - the modifier value for the keycode matrix being added
 //
 // OUTPUTS: none
 //
-// DESCRIPTION: Called by keymap building modules. This routine is responsible
-// for building the keymap matrix for all the supported keymaps, assigning
-// keymaps for each modifier code in all the keymaps.
-
-// The routine takes a pointer to a keycode matrix that maps each key in the
-// physical keyboard matrix to a code. A modifier code parameter indicates which
-// modifier combination activates the provided matrix.
+// DESCRIPTION: Called by keymap building modules. This routine adds a keymap
+// matrix into a specific modifier position of the specified matrix.
 //
 // SIDE EFFECTS:
 //
@@ -84,36 +80,13 @@ static uint8_t hook_index = 0;
 // SCOPE: public
 //
 // COMPLEXITY: 1
-void asdf_keymaps_add_map(asdf_keycode_matrix_t *matrix, uint8_t modifier_index)
+void asdf_keymaps_add_map(const uint8_t keymap_index, const asdf_keycode_matrix_t *matrix, const uint8_t modifier_index)
 {
-  if (modifier_index < ASDF_MOD_NUM_MODIFIERS && current_keymap_index < ASDF_NUM_KEYMAPS) {
-    keymap_matrix[current_keymap_index][modifier_index] = matrix;
+  if ((keymap_index < ASDF_NUM_KEYMAPS)
+      &&  (modifier_index < ASDF_MOD_NUM_MODIFIERS)
+      && (keymap_index < ASDF_NUM_KEYMAPS)) {
+    keymap_matrix[keymap_index][modifier_index] = (asdf_keycode_matrix_t *) matrix;
   }
-}
-
-
-// PROCEDURE: asdf_keymaps_next();
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Called by keymap building modules to conclude a keymap. This is
-// done after all modifier maps, hooks, and virtual devices have been defined.
-//
-// SIDE EFFECTS: 1) Causes asdf_keymaps_add_keymap() to increment the keymap index
-//               2) Resets the virtual device table index for the next keymap
-//               3) Resets the hook table index for the next keymap
-//
-// NOTES:
-//
-// SCOPE: public
-//
-// COMPLEXITY: 1
-//
-void asdf_keymaps_start_new(uint8_t new_keymap_index)
-{
-  current_keymap_index = new_keymap_index;
-  asdf_keymap_add_virtual_device(V_NULL, PHYSICAL_NO_OUT, V_NOFUNC, 0);
-  asdf_keymap_add_hook(ASDF_HOOK_NULL, NULL);
 }
 
 
@@ -211,9 +184,9 @@ void asdf_keymaps_select_keymap(uint8_t index)
   if (index < ASDF_NUM_KEYMAPS) {
     current_keymap_index = index;
     asdf_arch_init();
-    asdf_virtual_init((asdf_virtual_initializer_t *const) keymap_initializer_list[current_keymap_index]);
+    //    asdf_virtual_init((asdf_virtual_initializer_t *const) keymap_initializer_list[current_keymap_index]);
     asdf_modifiers_init();
-    asdf_hook_init((asdf_hook_initializer_t *const) keymap_hook_initializer_list[current_keymap_index]);
+    // asdf_hook_init((asdf_hook_initializer_t *const) keymap_hook_initializer_list[current_keymap_index]);
   }
 }
 
@@ -421,7 +394,6 @@ asdf_keycode_t asdf_keymaps_get_code(const uint8_t row, const uint8_t col,
                                      const uint8_t modifier_index)
 {
   asdf_keycode_matrix_t *matrix = keymap_matrix[current_keymap_index][modifier_index];
-
   return FLASH_READ_MATRIX_ELEMENT(*matrix, row, col);
 }
 

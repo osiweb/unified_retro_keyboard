@@ -14,7 +14,6 @@
 #define TESTKEYMAP_TAG PLAIN_MATRIX_1
 #define NUM_DIPSWITCHES 4
 
-
 static const FLASH asdf_keycode_matrix_t test_PLAIN_matrix = ASDF_TEST_PLAIN_MAP;
 static const FLASH asdf_keycode_matrix_t test_SHIFT_matrix = ASDF_TEST_SHIFT_MAP;
 static const FLASH asdf_keycode_matrix_t test_CAPS_matrix = ASDF_TEST_CAPS_MAP;
@@ -113,6 +112,11 @@ coord_t *find_code(asdf_keycode_t code)
 void setUp(void)
 {
   coord_t *temp;
+
+  setup_test_plain_map();
+  setup_test_caps_map();
+  setup_test2_plain_map();
+  setup_test2_caps_map();
 
   asdf_keymaps_init();
 
@@ -284,7 +288,8 @@ void dip_switch_properly_clears_bits(void)
     asdf_keycode_t result;
     asdf_keymaps_select_keymap(i);
     expected = asdf_keymaps_get_code(keymap_tag.row, keymap_tag.col, MOD_PLAIN_MAP);
-
+    sprintf(message,"map %d, expected: %d",i, expected);
+    TEST_MESSAGE(message);
     // set as many keymap bits to '1' as possible.
     asdf_keymaps_select_keymap(mask);
     complicated_set_keymap(i);
@@ -313,9 +318,9 @@ void dip_switch_invalid_keymap_has_no_effect(void)
   map_id = asdf_keymaps_get_code(keymap_tag.row, keymap_tag.col, MOD_PLAIN_MAP);
   TEST_ASSERT_EQUAL_INT32(PLAIN_MATRIX_1, map_id);
 
-  // selecting one above the highest keymap should have no effect
-  map_id = asdf_keymaps_get_code(keymap_tag.row, keymap_tag.col, MOD_PLAIN_MAP);
+  // selecting the highest possible keymap should have no effect
   asdf_keymaps_select_keymap(UINT8_MAX);
+  map_id = asdf_keymaps_get_code(keymap_tag.row, keymap_tag.col, MOD_PLAIN_MAP);
   TEST_ASSERT_EQUAL_INT32(PLAIN_MATRIX_1, map_id);
 
 }

@@ -25,7 +25,9 @@
 
 #include <test_asdf_keymap_defs.h>
 #include "asdf_ascii.h"
+#include "asdf_modifiers.h"
 #include "asdf_keymaps.h"
+
 
 static const asdf_keycode_matrix_t test_PLAIN_matrix = ASDF_TEST_PLAIN_MAP;
 static const asdf_keycode_matrix_t test_SHIFT_matrix = ASDF_TEST_SHIFT_MAP;
@@ -53,6 +55,38 @@ static const asdf_keycode_matrix_t test2_CTRL_matrix = ASDF_TEST2_CTRL_MAP;
 // COMPLEXITY:
 //
 
+
+void setup_test_plain_map(void)
+{
+  asdf_keymaps_add_map(ASDF_TEST_PLAIN_MAP_INDEX, &test_PLAIN_matrix, MOD_PLAIN_MAP);
+  asdf_keymaps_add_map(ASDF_TEST_PLAIN_MAP_INDEX, &test_CAPS_matrix, MOD_CAPS_MAP);
+  asdf_keymaps_add_map(ASDF_TEST_PLAIN_MAP_INDEX, &test_SHIFT_matrix, MOD_SHIFT_MAP);
+  asdf_keymaps_add_map(ASDF_TEST_PLAIN_MAP_INDEX, &test_CTRL_matrix, MOD_CTRL_MAP);
+}
+
+void setup_test_caps_map(void)
+{
+  asdf_keymaps_add_map(ASDF_TEST_CAPS_MAP_INDEX, &test_PLAIN_matrix, MOD_PLAIN_MAP);
+  asdf_keymaps_add_map(ASDF_TEST_CAPS_MAP_INDEX, &test_CAPS_matrix, MOD_CAPS_MAP);
+  asdf_keymaps_add_map(ASDF_TEST_CAPS_MAP_INDEX, &test_SHIFT_matrix, MOD_SHIFT_MAP);
+  asdf_keymaps_add_map(ASDF_TEST_CAPS_MAP_INDEX, &test_CTRL_matrix, MOD_CTRL_MAP);
+}
+
+void setup_test2_plain_map(void)
+{
+  asdf_keymaps_add_map(ASDF_TEST2_PLAIN_MAP_INDEX, &test2_PLAIN_matrix, MOD_PLAIN_MAP);
+  asdf_keymaps_add_map(ASDF_TEST2_PLAIN_MAP_INDEX, &test2_CAPS_matrix, MOD_CAPS_MAP);
+  asdf_keymaps_add_map(ASDF_TEST2_PLAIN_MAP_INDEX, &test2_SHIFT_matrix, MOD_SHIFT_MAP);
+  asdf_keymaps_add_map(ASDF_TEST2_PLAIN_MAP_INDEX, &test2_CTRL_matrix, MOD_CTRL_MAP);
+}
+
+void setup_test2_caps_map(void)
+{
+  asdf_keymaps_add_map(ASDF_TEST2_CAPS_MAP_INDEX, &test2_PLAIN_matrix, MOD_PLAIN_MAP);
+  asdf_keymaps_add_map(ASDF_TEST2_CAPS_MAP_INDEX, &test2_CAPS_matrix, MOD_CAPS_MAP);
+  asdf_keymaps_add_map(ASDF_TEST2_CAPS_MAP_INDEX, &test2_SHIFT_matrix, MOD_SHIFT_MAP);
+  asdf_keymaps_add_map(ASDF_TEST2_CAPS_MAP_INDEX, &test2_CTRL_matrix, MOD_CTRL_MAP);
+}
 
 
 
