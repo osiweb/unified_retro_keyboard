@@ -8,7 +8,7 @@
 #include "asdf_keymaps.h"
 #include "asdf_config.h"
 #include "test_asdf_lib.h"
-
+#include "test_asdf_keymap_defs.h"
 
 
 void setUp(void)
@@ -23,13 +23,6 @@ void tearDown(void) {}
 asdf_cols_t asdf_arch_read_row(uint8_t row)
 {
   return (asdf_cols_t) row;
-}
-
-// check to see that the longest keymap initializer sequence initia is detected.
-void test_inizializer_length_is_max_length(void)
-{
-  TEST_ASSERT_EQUAL_INT32(max(ASDF_TEST_KEYMAP_INITIALIZER_LENGTH,
-                              ASDF_TEST2_KEYMAP_INITIALIZER_LENGTH), ASDF_KEYMAP_INITIALIZER_LENGTH);
 }
 
 void test_single_virtual_output_is_initialized(void)
@@ -300,7 +293,6 @@ void test_cant_assign_real_output_twice(void)
 int main(void)
 {
   UNITY_BEGIN();
-  RUN_TEST(test_inizializer_length_is_max_length);
   RUN_TEST(test_single_virtual_output_is_initialized);
   RUN_TEST(test_uninitialized_virtual_out_is_default);
   RUN_TEST(test_set_virtual_output);

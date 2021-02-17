@@ -1,0 +1,31 @@
+* Keymap architecture
+** Keymap definition module
+   The keymap definition module defines:
+*** The key mappings used by a keymap
+*** The virtual devices required by the keymap
+    This includes definitions for LED's and I/O lines, including their initial
+    states, and default I/O operations such as toggle, pulse, etc.
+*** Function hooks used by the keymap.
+    Specifies which functions are used for operations such as key scanning, I/O,
+    special keybindings, etc.
+
+  Any special functions or logic required by the keymap are also defined and used in the module.
+
+** Keymap definition API
+*** mapping keys
+    #include "asdf_keymaps.h" 
+**** asdf_keymaps_add_map() - called from 
+     Assigns a specified keymap matrix (ptr to FLASH) to a given keymap and modifier type.
+*** adding virtual devices - called from keymap setup routine
+**** asdf_virtual_init()
+***** Clears the virtual device table for the keymap
+***** initialize first entry in virtual device table to NULL
+**** asdf_virtual_add_device()
+***** Accept a virtual device code, a physical device code, a default function, and a default initial value, and create a new entry in the virtual device table.
+***** increment the virtual device table pointer and set next (last) entry to NULL
+
+* Eliminate keymaps table and instead have table of keymap init routines with MAX_KEYMAPS entries
+* keymap setup routine adds maps for each modifier to the keymap, now only rxcxMODIFIERS instead of rxcxmodifiersxkeymaps
+* remove the keymap index from the add_map() call.
+* select_keymap() will call setup routine for the given keymap.
+* Each keymap sets its own num_rows and num_columns, per matrix for each modifier

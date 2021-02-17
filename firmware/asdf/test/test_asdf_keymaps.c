@@ -113,7 +113,7 @@ void setUp(void)
 {
   coord_t *temp;
 
-  setup_test_plain_map();
+  asdf_setup_test_plain_map();
   setup_test_caps_map();
   setup_test2_plain_map();
   setup_test2_caps_map();

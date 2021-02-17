@@ -44,18 +44,30 @@
 
 // define the keycode matrices to be used by the keymaps. Each matrix is a
 // mapping of row,column to keycode.
-typedef asdf_keycode_t asdf_keycode_matrix_t[ASDF_NUM_ROWS][ASDF_NUM_COLS];
+typedef asdf_keycode_t asdf_keycode_matrix_t[][];
+
+// define the type for a keymap setup function. Keymaps are registerd by storing
+// a keymap setup function in the keymap setup array.
+typedef void (*asdf_keymap_setup_function_t)(void);
+
+// define the struct for each keymap matrix in the keymap array. One per
+// modifier state. Each keymap can have it's own row and column count.
+typedef struct {
+  asdf_keycode_matrix_t *matrix;
+  uint8_t rows;
+  uint8_t cols;
+};
+
 
 // PROCEDURE: asdf_keymaps_add_map
 // INPUTS: (uint8_t) keymap_index - index of the keymap to be modified
-//         (asdf_keycode_matrix_t *) matrix - pointer to the keycode matrix to add in to map
-//         (uint8_t) keymap_modifier - the modifier value for the keycode matrix being added
+//         (asdf_keymap_setup_function) setup_function - pointer to keymap setup function
 // OUTPUTS: none
 // DESCRIPTION: Called by keymap building modules. This routine adds a keymap
-// matrix into a specific modifier position of the specified matrix.
+// setup function into the keymap setup array.
 // NOTES: If the keymap modifier index is not a valid keymap index then no
 // action is performed.
-void asdf_keymaps_add_map(uint8_t keymap_index, const asdf_keycode_matrix_t *matrix, uint8_t modifier_index);
+void asdf_keymaps_add_map(uint8_t keymap_index, asdf_keymap_setup_function_t);
 
 // PROCEDURE: asdf_keymaps_select_keymap
 // INPUTS: (uint8_t) index - index of the keymap number to select

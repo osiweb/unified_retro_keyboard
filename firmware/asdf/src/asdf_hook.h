@@ -45,7 +45,7 @@ typedef void (*asdf_hook_function_t)(void);
 typedef struct {
   asdf_hook_id_t hook_id;
   asdf_hook_function_t hook_func;
-} asdf_hook_initializer_t;
+b} asdf_hook_initializer_t;
 
 
 // PROCEDURE: asdf_hook_execute

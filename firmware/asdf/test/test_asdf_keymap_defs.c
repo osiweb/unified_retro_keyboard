@@ -88,8 +88,70 @@ void setup_test2_caps_map(void)
   asdf_keymaps_add_map(ASDF_TEST2_CAPS_MAP_INDEX, &test2_CTRL_matrix, MOD_CTRL_MAP);
 }
 
+void setup_test_devs1(void)
+{
+#define ASDF_TEST_KEYMAP_INITIALIZER_1                                                             \
+  {                                                                                                \
+    
+  asdf_virtual_init();
+  /* Single assignment */                       \
 
+  .virtual_device = VOUT1,                                              \
+      .physical_device = PHYSICAL_OUT1,                                                            \
+      .function = V_NOFUNC,                                                                        \
+      .initial_value = 0,                                                                          \
+    },                                                                                             \
+      {                                                                                            \
+        /* single toggle */                                                                        \
+        .virtual_device = VOUT2,                                                                   \
+        .physical_device = PHYSICAL_OUT2,                                                          \
+        .function = V_TOGGLE,                                                                      \
+        .initial_value = 0,                                                                        \
+      },                                                                                           \
+      {                                                                                            \
+        /* single pulse */                                                                         \
+        .virtual_device = VOUT3,                                                                   \
+        .physical_device = PHYSICAL_OUT3,                                                          \
+        .function = V_PULSE_SHORT,                                                                 \
+        .initial_value = 0,                                                                        \
+      },                                                                                           \
+      { /* first of double assignment attempt */                                                   \
+        .virtual_device = VOUT4,                                                                   \
+        .physical_device = PHYSICAL_LED1,                                                          \
+        .initial_value = 0                                                                         \
+      },                                                                                           \
+    { /* second of double assignment attempt */                                                    \
+      .virtual_device = VOUT5, .physical_device = PHYSICAL_LED1, .initial_value = 1                \
+    }                                                                                              \
+  }
 
+  
+}
+
+void setup_test_devs2(void)
+{
+  #define ASDF_TEST_KEYMAP_INITIALIZER_2                                                             \
+  {                                                                                                \
+    {                                                                                              \
+      /* Triple assignment */                                                                      \
+      .virtual_device = VOUT1,                                                                     \
+      .physical_device = PHYSICAL_OUT1,                                                            \
+      .function = V_TOGGLE,                                                                        \
+      .initial_value = 0,                                                                          \
+    },                                                                                             \
+      {                                                                                            \
+        .virtual_device = VOUT1,                                                                   \
+        .physical_device = PHYSICAL_OUT2,                                                          \
+        .function = V_TOGGLE,                                                                      \
+        .initial_value = 1,                                                                        \
+      },                                                                                           \
+    {                                                                                              \
+      .virtual_device = VOUT1, .physical_device = PHYSICAL_OUT3, .function = V_TOGGLE,             \
+      .initial_value = 0,                                                                          \
+    }                                                                                              \
+  }
+
+}
 
 
 //-------|---------|---------+---------+---------+---------+---------+---------+

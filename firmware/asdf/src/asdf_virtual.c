@@ -176,8 +176,9 @@ static uint8_t valid_virtual_device(asdf_virtual_dev_t device)
 //
 // SIDE EFFECTS: see above.
 //
-// NOTES: if the virtual output is invalid, or the physical resource is invalid, or
-// the physical resource is already assigned, then nothing happens.
+// NOTES:
+//   if the virtual output is invalid, or the physical resource is invalid, or
+//   the physical resource is already assigned, then nothing happens.
 //
 // SCOPE: private
 //
