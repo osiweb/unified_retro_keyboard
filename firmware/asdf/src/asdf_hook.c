@@ -132,11 +132,11 @@ asdf_hook_function_t asdf_hook_get(asdf_hook_id_t hook_id)
 //
 // NOTES:
 //
-// SCOPE: private
+// SCOPE: public
 //
 // COMPLEXITY: 2
 //
-static void asdf_hook_assign(asdf_hook_id_t hook_id, asdf_hook_function_t func)
+void asdf_hook_assign(asdf_hook_id_t hook_id, asdf_hook_function_t func)
 {
   if (asdf_hook_valid_id(hook_id)) {
     hook_map[hook_id] = func;
@@ -144,9 +144,7 @@ static void asdf_hook_assign(asdf_hook_id_t hook_id, asdf_hook_function_t func)
 }
 
 // PROCEDURE: asdf_hook_init
-// INPUTS: (asdf_hook_initializer_t *) initializer_list - contains the hook
-//         initializer list for the selected keymap.
-//
+// INPUTS: none
 // OUTPUTS: none
 //
 // DESCRIPTION: Initializes function hooks for the selected keymap. If a
@@ -161,7 +159,7 @@ static void asdf_hook_assign(asdf_hook_id_t hook_id, asdf_hook_function_t func)
 //
 // COMPLEXITY: 4
 //
-void asdf_hook_init(asdf_hook_initializer_t *const initializer_list)
+void asdf_hook_init(void)
 {
   // initialize hooks to null function
   for (uint8_t i = 0; i < ASDF_NUM_HOOKS; i++) {
@@ -170,18 +168,6 @@ void asdf_hook_init(asdf_hook_initializer_t *const initializer_list)
 
   hook_map[ASDF_HOOK_SCANNER] = (asdf_hook_function_t) ASDF_ARCH_DEFAULT_SCANNER;
   hook_map[ASDF_HOOK_OUTPUT] = (asdf_hook_function_t) ASDF_ARCH_DEFAULT_OUTPUT;
-
-  // run through the keymap specific setup
-  for (uint8_t i = 0; i < ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH; i++) {
-    asdf_hook_id_t id = initializer_list[i].hook_id;
-
-    if (ASDF_HOOK_KEYMAP_SETUP == id) {
-      initializer_list[i].hook_func();
-    }
-    else {
-      asdf_hook_assign(initializer_list[i].hook_id, initializer_list[i].hook_func);
-    }
-  }
 }
 
 //-------|---------|---------+---------+---------+---------+---------+---------+

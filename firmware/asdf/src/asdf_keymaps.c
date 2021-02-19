@@ -22,6 +22,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include "asdf_config.h"
 #include "asdf.h"
 #include "asdf_arch.h"
 #include "asdf_physical.h"
@@ -31,24 +32,22 @@
 #include "asdf_modifiers.h"
 
 // The keymap arrays organized as follows:
-// * `xm`Each keymap matrix is a NUM_ROWS x NUM_COLS mapping of key to code for a given modifier.
-// * Each keymap contains a set of keymap matrices, one for each unique
-//   combination of modifier keys.
-// * All the keymaps (NUM_KEYMAPS) are gathered in the keymap_matrixp[] array.
-static asdf_keycode_matrix_t *keymap_matrix[ASDF_MOD_NUM_MODIFIERS] = {};
+// * keymap_matrix -  matrix of code mapppings for each physical keymap
+// * rows = number of rows in the matrix
+// * cols = number of cols in the matrix
+// * one map structure for each modifier state.
+static asdf_keycode_map_t keymaps[ASDF_MOD_NUM_MODIFIERS] = {};
 
-// Index of the currently active keymap, initialized to zero in the init
-// routine.
-static uint8_t current_keymap_index = 0;
+// List of keymap setup routines. Each keymap setup routine is responsible for
+// populating the keymap matrices, setting up virtual devices, and setting up
+// keymap-specific function hooks and initial conditions for the keymap.
+static asdf_keymap_setup_function_t keymap_setup_function_lookup_table[ASDF_NUM_KEYMAPS];
 
-// index of the current virtual device initializer entry while building virtual
-// device initializer struct.
-static uint8_t vdev_index = 0;
 
-// index of the current hook entry while building hook initializer table.
-static uint8_t hook_index = 0;
+// The current keymap index.  This is stored so bitwise operators on the keymap index can be performed.
+static uint8_t current_keymap_index;
 
-// PROCEDURE: asdf_keymaps_register_keymap
+// PROCEDURE: asdf_keymaps_register
 // INPUTS: (uint8_t) keymap_index - index of the keymap to be modified
 //         (asdf_keymap_setup_function_t) keymap setup function - called on
 //         keymap change to setup up the keymap
@@ -66,17 +65,19 @@ static uint8_t hook_index = 0;
 // SCOPE: public
 //
 // COMPLEXITY: 1
-void asdf_keymaps_register(uint8_t keymap_index, asdf_keymap_setup_function_t keymap_setup_function);
+void asdf_keymaps_register(uint8_t keymap_index, asdf_keymap_setup_function_t keymap_setup_function)
 {
   if (keymap_index < ASDF_NUM_KEYMAPS)
     {
-      keymap_setup_functions[keymap_index] = keymap_setup_function;
+      keymap_setup_function_lookup_table[keymap_index] = keymap_setup_function;
     }
 }
 
 // PROCEDURE: asdf_keymaps_add_map
-// INPUTS: (asdf_keycode_matrix_t *) matrix - pointer to the keycode matrix to add in to map
-//         (uint8_t) keymap_modifier - the modifier value for the keycode matrix being added
+// INPUTS: (asdf_keycode_matrix_t) matrix - pointer to the keycode matrix to add in to map
+//         (uint8_t) modifier_index - the modifier value for the keycode matrix being added
+//         (uint8_t) rows - number of rows in the keymap
+//         (uint8_t) cols - number of columns in the keymap
 //
 // OUTPUTS: none
 //
@@ -85,23 +86,84 @@ void asdf_keymaps_register(uint8_t keymap_index, asdf_keymap_setup_function_t ke
 //
 // SIDE EFFECTS:
 //
-// NOTES: If the keymap modifier index is not a valid keymap index then no
+// NOTES: If the keymap modifier index, num_rows, or num_cols are not valid then no
 // action is performed.
 //
 // SCOPE: public
 //
 // COMPLEXITY: 1
-void asdf_keymaps_add_map(uint8_t num_rows, uint8_t num_cols, asdf_keycode_matrix_t *matrix, modifier_index_t modifier_index);
+void asdf_keymaps_add_map(asdf_keycode_matrix_t matrix, 
+                          modifier_index_t modifier_index,
+                          uint8_t num_rows, uint8_t num_cols)
 {
-  if (modifier_index < ASDF_MOD_NUM_MODIFIERS)
+  if ((modifier_index < ASDF_MOD_NUM_MODIFIERS)
+      && (num_rows <= ASDF_MAX_ROWS)
+      && (num_cols <= ASDF_MAX_COLS))
     {
-      keymaps[modifier_index].map = matrix;
+      keymaps[modifier_index].matrix_ptr = matrix;
       keymaps[modifier_index].rows = num_rows;
       keymaps[modifier_index].cols = num_cols;
     }
 }
 
-asdf_
+// PROCEDURE: asdf_keymaps_num_rows
+// INPUTS: none
+// OUTPUTS: uint8_t - returns number of rows in keymap for current modifier state
+//
+// DESCRIPTION: See OUTPUTS
+//
+// SIDE EFFECTS: none
+//
+// NOTES:
+//
+// SCOPE: publice
+//
+// COMPLEXITY: 1
+//
+uint8_t asdf_keymaps_num_rows(void)
+{
+  return keymaps[asdf_modifier_index()].rows;
+}
+
+// PROCEDURE: asdf_keymaps_num_cols
+// INPUTS: none
+// OUTPUTS: uint8_t - returns number of columns in keymap for current modifier state
+//
+// DESCRIPTION: See OUTPUTS
+//
+// SIDE EFFECTS: none
+//
+// NOTES:
+//
+// SCOPE: publice
+//
+// COMPLEXITY: 1
+//
+uint8_t asdf_keymaps_num_cols(void)
+{
+  return keymaps[asdf_modifier_index()].cols;
+}
+
+
+// PROCEDURE: asdf_keymaps_new
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Clear all keycode mapping matrices. 
+//
+// SIDE EFFECTS: see DESCRIPTION
+//
+// SCOPE: private
+//
+// COMPLEXITY: 2
+//
+static void asdf_keymaps_new(void)
+{
+  for (uint8_t i = 0; i < ASDF_MOD_NUM_MODIFIERS; i++) {
+    asdf_keymaps_add_map(NULL, i, 0, 0);
+  }
+}
+
 // PROCEDURE: asdf_keymaps_select_keymap
 // INPUTS: (uint8_t) index - index of the keymap number to select
 // OUTPUTS: none
@@ -111,12 +173,9 @@ asdf_
 // 1) assign the value to the global (to the module) current_keymap_index variable
 // 2) execute the architecture-dependent init routine, to undo any settings
 //    from the previous keymap
-// 3) initialize the virtual outputs for the selected keymap.
-// 4) initialize the modifier key states.
+// 3) execute the keymap-specific setup routine.
 //
-// SIDE EFFECTS:
-// - May change the module-global current_keymap_index variable.
-// - Architecture is initialized to default configuration.
+// SIDE EFFECTS: See DESCRIPTION
 //
 // NOTES: If the requested index is not valid, then no action is performed.
 //
@@ -128,39 +187,47 @@ void asdf_keymaps_select_keymap(uint8_t index)
 {
   if (index < ASDF_NUM_KEYMAPS) {
     asdf_arch_init();
-    //    asdf_virtual_init((asdf_virtual_initializer_t *const) keymap_initializer_list[current_keymap_index]);
-    // asdf_hook_init((asdf_hook_initializer_t *const) keymap_hook_initializer_list[current_keymap_index]);
+    asdf_keymaps_new();
+    current_keymap_index = index;
+    keymap_setup_function_lookup_table[index]();
   }
-  
 }
+
+// PROCEDURE: ASDF_KEYMAPS_DUMMY_FUNCTION
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: null function to populate the keymap setup function table. Since
+// this function does nothing, then selecting an unregistered keymap has no
+// effect (i.e., the previous keymap persisits)
+//
+// SIDE EFFECTS: See Description
+//
+// SCOPE: private
+//
+// COMPLEXITY: 1
+//
+void asdf_keymaps_dummy_function(void) {}
 
 // PROCEDURE: asdf_keymaps_init
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: initialize the keymap list
+// DESCRIPTION: initialize the keymap list.  Called at startup.
 //
 // SIDE EFFECTS: See DESCRIPTION
 //
 // SCOPE: public
 //
-// NOTES: Note that the DIP switches are keys in the key matrix, which is
-// initialized to the all unpressed state at startup. Since the keymap is
-// initialized to 0, the keymap is consistent with the presumed initial state of
-// the DIP switches. If the DIP switches are not set to Keymap 0, then their
-// position will be detected as keypresses, and the correct keymap will be set.
-
 // COMPLEXITY: 1
 //
 void asdf_keymaps_init(void)
 {
   for (uint8_t i = 0; i < ASDF_NUM_KEYMAPS; i++) {
-    keymaps[i].setup_function = NULL;
-    keymaps[i].rows = 0;
-    keymaps[i].cols = 0;
+    keymap_setup_function_lookup_table[i] = &asdf_keymaps_dummy_function;
   }
+  current_keymap_index = 0;
 }
-
 
 // PROCEDURE: asdf_keymaps_map_select_0_clear
 // INPUTS: none
@@ -342,8 +409,8 @@ void asdf_keymaps_map_select_3_set(void)
 asdf_keycode_t asdf_keymaps_get_code(const uint8_t row, const uint8_t col,
                                      const uint8_t modifier_index)
 {
-  asdf_keycode_matrix_t *matrix = keymap_matrix[current_keymap_index][modifier_index];
-  return FLASH_READ_MATRIX_ELEMENT(*matrix, row, col);
+  asdf_keycode_matrix_t matrix = keymaps[modifier_index].matrix_ptr;
+  return FLASH_READ_MATRIX_ELEMENT(matrix, row, col);
 }
 
 //-------|---------|---------+---------+---------+---------+---------+---------+

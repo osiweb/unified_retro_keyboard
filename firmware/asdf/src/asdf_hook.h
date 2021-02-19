@@ -45,7 +45,7 @@ typedef void (*asdf_hook_function_t)(void);
 typedef struct {
   asdf_hook_id_t hook_id;
   asdf_hook_function_t hook_func;
-b} asdf_hook_initializer_t;
+} asdf_hook_initializer_t;
 
 
 // PROCEDURE: asdf_hook_execute
@@ -64,13 +64,21 @@ void asdf_hook_execute(asdf_hook_id_t hook_id);
 asdf_hook_function_t asdf_hook_get(asdf_hook_id_t hook_id);
 
 // PROCEDURE: asdf_hook_init
-// INPUTS: (asdf_hook_initializer_t *) initializer_list - contains the hook
-//         initializer list for the selected keymap.
+// INPUTS: none
 // OUTPUTS: none
 // DESCRIPTION: Initializes function hooks for the selected keymap. If a
 // function is assigned to the "KEYMAP_SETUP" hook, then execute the function.
 // There is no actual slot where KEYMAP_SETUP functions are stored.
-void asdf_hook_init(asdf_hook_initializer_t *const initializer_list);
+void asdf_hook_init(void);
+
+// PROCEDURE: asdf_hook_assign
+// INPUTS: (asdf_hook_id_t) hook_id: The hook for which to execute attache functions.
+//         (asdf_hook_function_t) func: function to be attached to the hook.
+// OUTPUTS: none
+// DESCRIPTION: If the hook ID is valid, map the function to the hook ID.
+// Ignore if not valid.
+void asdf_hook_assign(asdf_hook_id_t hook_id, asdf_hook_function_t func);
+
 
 #endif /* !defined (ASDF_HOOKS_H) */
 

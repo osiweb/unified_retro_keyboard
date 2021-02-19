@@ -14,15 +14,15 @@
 #define TESTKEYMAP_TAG PLAIN_MATRIX_1
 #define NUM_DIPSWITCHES 4
 
-static const FLASH asdf_keycode_matrix_t test_PLAIN_matrix = ASDF_TEST_PLAIN_MAP;
-static const FLASH asdf_keycode_matrix_t test_SHIFT_matrix = ASDF_TEST_SHIFT_MAP;
-static const FLASH asdf_keycode_matrix_t test_CAPS_matrix = ASDF_TEST_CAPS_MAP;
-static const FLASH asdf_keycode_matrix_t test_CTRL_matrix = ASDF_TEST_CTRL_MAP;
+static const FLASH asdf_keycode_t test_PLAIN_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST_PLAIN_MAP;
+static const FLASH asdf_keycode_t test_SHIFT_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST_SHIFT_MAP;
+static const FLASH asdf_keycode_t test_CAPS_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST_CAPS_MAP;
+static const FLASH asdf_keycode_t test_CTRL_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST_CTRL_MAP;
 
-static const FLASH asdf_keycode_matrix_t test2_PLAIN_matrix = ASDF_TEST2_PLAIN_MAP;
-static const FLASH asdf_keycode_matrix_t test2_SHIFT_matrix = ASDF_TEST2_SHIFT_MAP;
-static const FLASH asdf_keycode_matrix_t test2_CAPS_matrix = ASDF_TEST2_CAPS_MAP;
-static const FLASH asdf_keycode_matrix_t test2_CTRL_matrix = ASDF_TEST2_CTRL_MAP;
+static const FLASH asdf_keycode_t test2_PLAIN_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST2_PLAIN_MAP;
+static const FLASH asdf_keycode_t test2_SHIFT_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST2_SHIFT_MAP;
+static const FLASH asdf_keycode_t test2_CAPS_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST2_CAPS_MAP;
+static const FLASH asdf_keycode_t test2_CTRL_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST2_CTRL_MAP;
 
 // row: row number
 // col: column number
@@ -96,8 +96,8 @@ coord_t *find_code(asdf_keycode_t code)
   uint32_t done = 0;
   static coord_t location = { .row = -1, .col = -1 };
 
-  for (uint32_t row = 0; !done && (row < ASDF_NUM_ROWS); row++) {
-    for (uint32_t col = 0; !done && (col < ASDF_NUM_COLS); col++) {
+  for (uint32_t row = 0; !done && (row < TEST_NUM_ROWS); row++) {
+    for (uint32_t col = 0; !done && (col < TEST_NUM_COLS); col++) {
       if (test_PLAIN_matrix[row][col] == code) {
         done = 1;
         location.row = row;
@@ -113,7 +113,7 @@ void setUp(void)
 {
   coord_t *temp;
 
-  asdf_setup_test_plain_map();
+  setup_test_plain_map();
   setup_test_caps_map();
   setup_test2_plain_map();
   setup_test2_caps_map();
@@ -128,6 +128,12 @@ void setUp(void)
 
   temp = find_code(TESTKEYMAP_TAG);
   keymap_tag = *temp;
+
+  setup_test_plain_map();
+  setup_test_caps_map();
+  setup_test2_plain_map();
+  setup_test2_caps_map();
+
 }
 
 void tearDown(void) {}
@@ -220,10 +226,10 @@ void keymap1_capsmap_plain_maps_to_caps(void)
 
 void dip_switch_codes_are_in_last_row_test1_map(void)
 {
-  coord_t dip_switches[NUM_DIPSWITCHES] = { { .row = ASDF_LAST_ROW, .col = 0 },
-                                            { .row = ASDF_LAST_ROW, .col = 1 },
-                                            { .row = ASDF_LAST_ROW, .col = 2 },
-                                            { .row = ASDF_LAST_ROW, .col = 3 } };
+  coord_t dip_switches[NUM_DIPSWITCHES] = { { .row = (TEST_NUM_ROWS - 1), .col = 0 },
+                                            { .row = (TEST_NUM_ROWS - 1), .col = 1 },
+                                            { .row = (TEST_NUM_ROWS - 1), .col = 2 },
+                                            { .row = (TEST_NUM_ROWS - 1), .col = 3 } };
   for (uint8_t i = 0; i < NUM_DIPSWITCHES; i++) {
     asdf_keycode_t code =
       asdf_keymaps_get_code(dip_switches[i].row, dip_switches[i].col, ASDF_TEST_PLAIN_MAP_INDEX);
@@ -233,10 +239,10 @@ void dip_switch_codes_are_in_last_row_test1_map(void)
 
 void dip_switch_codes_are_in_last_row_test2_map(void)
 {
-  coord_t dip_switches[NUM_DIPSWITCHES] = { { .row = ASDF_LAST_ROW, .col = 0 },
-                                            { .row = ASDF_LAST_ROW, .col = 1 },
-                                            { .row = ASDF_LAST_ROW, .col = 2 },
-                                            { .row = ASDF_LAST_ROW, .col = 3 } };
+  coord_t dip_switches[NUM_DIPSWITCHES] = { { .row = (TEST_NUM_ROWS - 1), .col = 0 },
+                                            { .row = (TEST_NUM_ROWS - 1), .col = 1 },
+                                            { .row = (TEST_NUM_ROWS - 1), .col = 2 },
+                                            { .row = (TEST_NUM_ROWS - 1), .col = 3 } };
   for (uint8_t i = 0; i < NUM_DIPSWITCHES; i++) {
     asdf_keycode_t code =
       asdf_keymaps_get_code(dip_switches[i].row, dip_switches[i].col, ASDF_TEST2_PLAIN_MAP_INDEX);

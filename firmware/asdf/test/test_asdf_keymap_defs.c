@@ -29,15 +29,15 @@
 #include "asdf_keymaps.h"
 
 
-static const asdf_keycode_matrix_t test_PLAIN_matrix = ASDF_TEST_PLAIN_MAP;
-static const asdf_keycode_matrix_t test_SHIFT_matrix = ASDF_TEST_SHIFT_MAP;
-static const asdf_keycode_matrix_t test_CAPS_matrix = ASDF_TEST_CAPS_MAP;
-static const asdf_keycode_matrix_t test_CTRL_matrix = ASDF_TEST_CTRL_MAP;
+static const asdf_keycode_t test_PLAIN_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST_PLAIN_MAP;
+static const asdf_keycode_t test_SHIFT_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST_SHIFT_MAP;
+static const asdf_keycode_t test_CAPS_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST_CAPS_MAP;
+static const asdf_keycode_t test_CTRL_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST_CTRL_MAP;
 
-static const asdf_keycode_matrix_t test2_PLAIN_matrix = ASDF_TEST2_PLAIN_MAP;
-static const asdf_keycode_matrix_t test2_SHIFT_matrix = ASDF_TEST2_SHIFT_MAP;
-static const asdf_keycode_matrix_t test2_CAPS_matrix = ASDF_TEST2_CAPS_MAP;
-static const asdf_keycode_matrix_t test2_CTRL_matrix = ASDF_TEST2_CTRL_MAP;
+static const asdf_keycode_t test2_PLAIN_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST2_PLAIN_MAP;
+static const asdf_keycode_t test2_SHIFT_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST2_SHIFT_MAP;
+static const asdf_keycode_t test2_CAPS_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST2_CAPS_MAP;
+static const asdf_keycode_t test2_CTRL_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST2_CTRL_MAP;
 
 
 // PROCEDURE:
@@ -56,46 +56,49 @@ static const asdf_keycode_matrix_t test2_CTRL_matrix = ASDF_TEST2_CTRL_MAP;
 //
 
 
+void test_keymaps_add_map(asdf_keycode_matrix_t matrix, 
+                          modifier_index_t modifier_index)
+{
+  asdf_keymaps_add_map(matrix, modifier_index, (uint8_t) TEST_NUM_ROWS, (uint8_t) TEST_NUM_COLS);
+}
+  
+
 void setup_test_plain_map(void)
 {
-  asdf_keymaps_add_map(ASDF_TEST_PLAIN_MAP_INDEX, &test_PLAIN_matrix, MOD_PLAIN_MAP);
-  asdf_keymaps_add_map(ASDF_TEST_PLAIN_MAP_INDEX, &test_CAPS_matrix, MOD_CAPS_MAP);
-  asdf_keymaps_add_map(ASDF_TEST_PLAIN_MAP_INDEX, &test_SHIFT_matrix, MOD_SHIFT_MAP);
-  asdf_keymaps_add_map(ASDF_TEST_PLAIN_MAP_INDEX, &test_CTRL_matrix, MOD_CTRL_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test_PLAIN_matrix, MOD_PLAIN_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test_CAPS_matrix, MOD_CAPS_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test_SHIFT_matrix, MOD_SHIFT_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test_CTRL_matrix, MOD_CTRL_MAP);
 }
 
 void setup_test_caps_map(void)
 {
-  asdf_keymaps_add_map(ASDF_TEST_CAPS_MAP_INDEX, &test_PLAIN_matrix, MOD_PLAIN_MAP);
-  asdf_keymaps_add_map(ASDF_TEST_CAPS_MAP_INDEX, &test_CAPS_matrix, MOD_CAPS_MAP);
-  asdf_keymaps_add_map(ASDF_TEST_CAPS_MAP_INDEX, &test_SHIFT_matrix, MOD_SHIFT_MAP);
-  asdf_keymaps_add_map(ASDF_TEST_CAPS_MAP_INDEX, &test_CTRL_matrix, MOD_CTRL_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test_PLAIN_matrix, MOD_PLAIN_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test_CAPS_matrix, MOD_CAPS_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test_SHIFT_matrix, MOD_SHIFT_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test_CTRL_matrix, MOD_CTRL_MAP);
 }
 
 void setup_test2_plain_map(void)
 {
-  asdf_keymaps_add_map(ASDF_TEST2_PLAIN_MAP_INDEX, &test2_PLAIN_matrix, MOD_PLAIN_MAP);
-  asdf_keymaps_add_map(ASDF_TEST2_PLAIN_MAP_INDEX, &test2_CAPS_matrix, MOD_CAPS_MAP);
-  asdf_keymaps_add_map(ASDF_TEST2_PLAIN_MAP_INDEX, &test2_SHIFT_matrix, MOD_SHIFT_MAP);
-  asdf_keymaps_add_map(ASDF_TEST2_PLAIN_MAP_INDEX, &test2_CTRL_matrix, MOD_CTRL_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test2_PLAIN_matrix, MOD_PLAIN_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test2_CAPS_matrix, MOD_CAPS_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test2_SHIFT_matrix, MOD_SHIFT_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test2_CTRL_matrix, MOD_CTRL_MAP);
 }
 
 void setup_test2_caps_map(void)
 {
-  asdf_keymaps_add_map(ASDF_TEST2_CAPS_MAP_INDEX, &test2_PLAIN_matrix, MOD_PLAIN_MAP);
-  asdf_keymaps_add_map(ASDF_TEST2_CAPS_MAP_INDEX, &test2_CAPS_matrix, MOD_CAPS_MAP);
-  asdf_keymaps_add_map(ASDF_TEST2_CAPS_MAP_INDEX, &test2_SHIFT_matrix, MOD_SHIFT_MAP);
-  asdf_keymaps_add_map(ASDF_TEST2_CAPS_MAP_INDEX, &test2_CTRL_matrix, MOD_CTRL_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test2_PLAIN_matrix, MOD_PLAIN_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test2_CAPS_matrix, MOD_CAPS_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test2_SHIFT_matrix, MOD_SHIFT_MAP);
+  test_keymaps_add_map((asdf_keycode_matrix_t) test2_CTRL_matrix, MOD_CTRL_MAP);
 }
 
 void setup_test_devs1(void)
 {
 #define ASDF_TEST_KEYMAP_INITIALIZER_1                                                             \
   {                                                                                                \
-    
-  asdf_virtual_init();
-  /* Single assignment */                       \
-
   .virtual_device = VOUT1,                                              \
       .physical_device = PHYSICAL_OUT1,                                                            \
       .function = V_NOFUNC,                                                                        \

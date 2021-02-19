@@ -31,6 +31,7 @@
 #include "asdf_hook.h"
 #include "asdf_virtual.h"
 #include "asdf_physical.h"
+#include "asdf_modifiers.h"
 
 // Define the bit position of each keymap DIP switch. The DIP switch values at
 // each bit position can be used to select the current keymap. This requires the
@@ -41,10 +42,12 @@
 #define ASDF_KEYMAP_BIT_2 4
 #define ASDF_KEYMAP_BIT_3 8
 
+#define ASDF_MAX_ROWS 16
+#define ASDF_MAX_COLS 8
 
 // define the keycode matrices to be used by the keymaps. Each matrix is a
 // mapping of row,column to keycode.
-typedef asdf_keycode_t asdf_keycode_matrix_t[][];
+typedef asdf_keycode_t **asdf_keycode_matrix_t;
 
 // define the type for a keymap setup function. Keymaps are registerd by storing
 // a keymap setup function in the keymap setup array.
@@ -53,21 +56,48 @@ typedef void (*asdf_keymap_setup_function_t)(void);
 // define the struct for each keymap matrix in the keymap array. One per
 // modifier state. Each keymap can have it's own row and column count.
 typedef struct {
-  asdf_keycode_matrix_t *matrix;
+  asdf_keycode_matrix_t matrix_ptr;
   uint8_t rows;
   uint8_t cols;
-};
+} asdf_keycode_map_t;
 
 
-// PROCEDURE: asdf_keymaps_add_map
+// PROCEDURE: asdf_keymaps_register
 // INPUTS: (uint8_t) keymap_index - index of the keymap to be modified
-//         (asdf_keymap_setup_function) setup_function - pointer to keymap setup function
+//         (asdf_keymap_setup_function_t) keymap setup function - called on
+//         keymap change to setup up the keymap
 // OUTPUTS: none
 // DESCRIPTION: Called by keymap building modules. This routine adds a keymap
 // setup function into the keymap setup array.
 // NOTES: If the keymap modifier index is not a valid keymap index then no
 // action is performed.
-void asdf_keymaps_add_map(uint8_t keymap_index, asdf_keymap_setup_function_t);
+void asdf_keymaps_register(uint8_t keymap_index, asdf_keymap_setup_function_t keymap_setup_function);
+
+// PROCEDURE: asdf_keymaps_add_map
+// INPUTS: (asdf_keycode_matrix_t *) matrix - pointer to the keycode matrix to add in to map
+//         (uint8_t) modifier_index - the modifier value for the keycode matrix being added
+//         (uint8_t) rows - number of rows in the keymap
+//         (uint8_t) cols - number of columns in the keymap
+// OUTPUTS: none
+// DESCRIPTION: Called by keymap building modules. This routine adds a keymap to the current
+// setup function into the keymap setup array.
+// NOTES: If the keymap modifier index, num_rows, or num_cols are not valid then no
+// action is performed.
+void asdf_keymaps_add_map(asdf_keycode_matrix_t matrix, 
+                          modifier_index_t modifier_index,
+                          uint8_t num_rows, uint8_t num_cols);
+
+// PROCEDURE: asdf_keymaps_num_rows
+// INPUTS: none
+// OUTPUTS: uint8_t - returns number of rows in keymap for current modifier state
+// DESCRIPTION: See OUTPUTS
+uint8_t asdf_keymaps_num_rows(void);
+
+// PROCEDURE: asdf_keymaps_num_cols
+// INPUTS: none
+// OUTPUTS: uint8_t - returns number of columns in keymap for current modifier state
+// DESCRIPTION: See OUTPUTS
+uint8_t asdf_keymaps_num_cols(void);
 
 // PROCEDURE: asdf_keymaps_select_keymap
 // INPUTS: (uint8_t) index - index of the keymap number to select
@@ -83,7 +113,6 @@ void asdf_keymaps_select_keymap(uint8_t index);
 // DESCRIPTION: called when map select 0 switch is open. Clears the 0 bit in the
 // keymap index.
 void asdf_keymaps_map_select_0_clear(void);
-
 
 // PROCEDURE: asdf_keymaps_map_select_0_set
 // INPUTS: none

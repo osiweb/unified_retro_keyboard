@@ -44,7 +44,7 @@
 
 // The key scanner keeps track of the last stable (debounced) state of each key
 // in the matrix, one bit per key, 8 bits per row.
-static asdf_cols_t last_stable_key_state[ASDF_NUM_ROWS];
+static asdf_cols_t last_stable_key_state[ASDF_MAX_ROWS];
 
 // Each key is debounced separately, supporting true N-key rollover, allowing a
 // new key to be pressed when the previously pressed key is still debouncing.
@@ -55,7 +55,7 @@ static asdf_cols_t last_stable_key_state[ASDF_NUM_ROWS];
 // key presses and releases, and special handling for modifier keys, perhaps
 // including separate debounce logic in the handlers for toggle keys such as
 // CAPS_LOCK.
-static uint8_t debounce_counters[ASDF_NUM_ROWS][ASDF_NUM_COLS];
+static uint8_t debounce_counters[ASDF_MAX_ROWS][ASDF_MAX_COLS];
 
 // Stores the last key pressed
 static asdf_keycode_t last_key;
@@ -401,9 +401,9 @@ void asdf_init(void)
 
   // Initialize all the keys to the unpressed state, and initialze the debounce
   // counters.
-  for (uint8_t row = 0; row < ASDF_NUM_ROWS; row++) {
+  for (uint8_t row = 0; row < ASDF_MAX_ROWS; row++) {
     last_stable_key_state[row] = 0;
-    for (uint8_t col = 0; col < ASDF_NUM_COLS; col++) {
+    for (uint8_t col = 0; col < ASDF_MAX_COLS; col++) {
       debounce_counters[row][col] = ASDF_DEBOUNCE_TIME_MS;
     }
   }
@@ -509,18 +509,17 @@ static void asdf_handle_key_held_pressed(uint8_t row, uint8_t col)
 //
 void asdf_keyscan(void)
 {
-  
   asdf_cols_t (*row_reader)(uint8_t) = (asdf_cols_t(*)(uint8_t)) asdf_hook_get(ASDF_HOOK_SCANNER);
 
   asdf_hook_execute(ASDF_HOOK_EACH_SCAN);
 
-  for (uint8_t row = 0; row < ASDF_NUM_ROWS; row++) {
+  for (uint8_t row = 0; row < asdf_keymaps_num_rows(); row++) {
     asdf_cols_t row_key_state = (*row_reader)(row);
 
     asdf_cols_t changed = row_key_state ^ last_stable_key_state[row];
 
     // loop over the bits until all changed or pressed keys in the row are handled.
-    for (uint8_t col = 0; (changed || row_key_state) && col < ASDF_NUM_COLS; col++) {
+    for (uint8_t col = 0; (changed || row_key_state) && col < asdf_keymaps_num_cols(); col++) {
       if (changed & 1) {
         // key state is different from last stable state
         asdf_handle_key_press_or_release(row, col, row_key_state & 1);

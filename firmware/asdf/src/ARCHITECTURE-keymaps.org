@@ -27,5 +27,14 @@
 * Eliminate keymaps table and instead have table of keymap init routines with MAX_KEYMAPS entries
 * keymap setup routine adds maps for each modifier to the keymap, now only rxcxMODIFIERS instead of rxcxmodifiersxkeymaps
 * remove the keymap index from the add_map() call.
-* select_keymap() will call setup routine for the given keymap.
+* select_keymap() will call setup routine for the g
+iven keymap.
 * Each keymap sets its own num_rows and num_columns, per matrix for each modifier
+
+* DIP SWITCHES
+  Note that the DIP switches are keys in the key matrix, which is initialized to
+  the all unpressed state at startup. Since the keymap is initialized to 0, the
+  keymap is consistent with the presumed initial state of the DIP switches. If
+  the DIP switches are not set to Keymap 0, then their position will be detected
+  as keypresses, and the correct keymap will be set.
+

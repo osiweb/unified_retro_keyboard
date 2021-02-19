@@ -54,11 +54,14 @@
 #define SHIFT_MATRIX_1 RESERVED_3
 #define CTRL_MATRIX_1 RESERVED_4
 
-#define ASDF_LAST_ROW (ASDF_NUM_ROWS - 1)
-#define ASDF_TEST_MAP_DIP_SWITCHES                                                                 \
-  [ASDF_LAST_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+#define TEST_NUM_ROWS 9
+#define TEST_NUM_COLS 8
 
-#define ASDF_TEST_PLAIN_MAP                                                                        \
+#define ASDF_TEST_MAP_DIP_SWITCHES                                                                 \
+  [TEST_NUM_ROWS-1] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+
+
+#define ASDF_TEST_PLAIN_MAP                                             \
   {                                                                                                \
     { PLAIN_MATRIX_1, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
       ACTION_CAPS,    ASCII_ESC,    ACTION_CTRL,  ASCII_BACKSLASH },                               \
@@ -137,59 +140,6 @@
 #define TRIPLE_TESTS_KEYMAP ASDF_TEST_CAPS_MAP_INDEX
 
 #define ASDF_TEST_KEYMAP_INITIALIZER_LENGTH 5
-#define ASDF_TEST_KEYMAP_INITIALIZER_1                                                             \
-  {                                                                                                \
-    {                                                                                              \
-      /* Single assignment */                                                                      \
-      .virtual_device = VOUT1,                                                                     \
-      .physical_device = PHYSICAL_OUT1,                                                            \
-      .function = V_NOFUNC,                                                                        \
-      .initial_value = 0,                                                                          \
-    },                                                                                             \
-      {                                                                                            \
-        /* single toggle */                                                                        \
-        .virtual_device = VOUT2,                                                                   \
-        .physical_device = PHYSICAL_OUT2,                                                          \
-        .function = V_TOGGLE,                                                                      \
-        .initial_value = 0,                                                                        \
-      },                                                                                           \
-      {                                                                                            \
-        /* single pulse */                                                                         \
-        .virtual_device = VOUT3,                                                                   \
-        .physical_device = PHYSICAL_OUT3,                                                          \
-        .function = V_PULSE_SHORT,                                                                 \
-        .initial_value = 0,                                                                        \
-      },                                                                                           \
-      { /* first of double assignment attempt */                                                   \
-        .virtual_device = VOUT4,                                                                   \
-        .physical_device = PHYSICAL_LED1,                                                          \
-        .initial_value = 0                                                                         \
-      },                                                                                           \
-    { /* second of double assignment attempt */                                                    \
-      .virtual_device = VOUT5, .physical_device = PHYSICAL_LED1, .initial_value = 1                \
-    }                                                                                              \
-  }
-
-#define ASDF_TEST_KEYMAP_INITIALIZER_2                                                             \
-  {                                                                                                \
-    {                                                                                              \
-      /* Triple assignment */                                                                      \
-      .virtual_device = VOUT1,                                                                     \
-      .physical_device = PHYSICAL_OUT1,                                                            \
-      .function = V_TOGGLE,                                                                        \
-      .initial_value = 0,                                                                          \
-    },                                                                                             \
-      {                                                                                            \
-        .virtual_device = VOUT1,                                                                   \
-        .physical_device = PHYSICAL_OUT2,                                                          \
-        .function = V_TOGGLE,                                                                      \
-        .initial_value = 1,                                                                        \
-      },                                                                                           \
-    {                                                                                              \
-      .virtual_device = VOUT1, .physical_device = PHYSICAL_OUT3, .function = V_TOGGLE,             \
-      .initial_value = 0,                                                                          \
-    }                                                                                              \
-  }
 
 #define ASDF_TEST_KEYMAP_INITIALIZER ASDF_TEST_KEYMAP_INITIALIZER_1, ASDF_TEST_KEYMAP_INITIALIZER_2
 
@@ -230,11 +180,6 @@
 #define CAPS_MATRIX_2 RESERVED_6
 #define SHIFT_MATRIX_2 RESERVED_7
 #define CTRL_MATRIX_2 RESERVED_8
-
-#define ASDF_LAST_ROW (ASDF_NUM_ROWS - 1)
-
-#define ASDF_TEST_MAP_DIP_SWITCHES                                                                 \
-  [ASDF_LAST_ROW] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
 
 #define ASDF_TEST2_PLAIN_MAP                                                                       \
   {                                                                                                \
