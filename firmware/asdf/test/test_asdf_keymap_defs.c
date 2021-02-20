@@ -1,4 +1,4 @@
-// -*- mode: C; tab-width: 2 ; indent-tabs-mode: nil -*- 
+// -*- mode: C; tab-width: 2 ; indent-tabs-mode: nil -*-
 //
 // Unified Keyboard Project
 // ASDF keyboard firmware
@@ -40,28 +40,13 @@ static const asdf_keycode_t test2_CAPS_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = AS
 static const asdf_keycode_t test2_CTRL_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST2_CTRL_MAP;
 
 
-// PROCEDURE:
-// INPUTS:
-// OUTPUTS:
-//
-// DESCRIPTION:
-//
-// SIDE EFFECTS:
-//
-// NOTES:
-//
-// SCOPE:
-//
-// COMPLEXITY:
-//
-
-
-void test_keymaps_add_map (const asdf_keycode_t (*matrix)[TEST_NUM_COLS],
-                           modifier_index_t modifier_index)
+void test_keymaps_add_map(const asdf_keycode_t (*matrix)[TEST_NUM_COLS],
+                          modifier_index_t modifier_index)
 {
-  asdf_keymaps_add_map(&matrix[0][0], modifier_index, (uint8_t) TEST_NUM_ROWS, (uint8_t) TEST_NUM_COLS);
+  asdf_keymaps_add_map(&matrix[0][0], modifier_index, (uint8_t) TEST_NUM_ROWS,
+                       (uint8_t) TEST_NUM_COLS);
 }
-  
+
 
 void setup_test_plain_map(void)
 {
@@ -95,68 +80,75 @@ void setup_test2_caps_map(void)
   test_keymaps_add_map(test2_CTRL_matrix, MOD_CTRL_MAP);
 }
 
-void setup_test_devs1(void)
+void setup_test_vdevs_map0(void)
 {
-#define ASDF_TEST_KEYMAP_INITIALIZER_1                                                             \
-  {                                                                                                \
-  .virtual_device = VOUT1,                                              \
-      .physical_device = PHYSICAL_OUT1,                                                            \
-      .function = V_NOFUNC,                                                                        \
-      .initial_value = 0,                                                                          \
-    },                                                                                             \
-      {                                                                                            \
-        /* single toggle */                                                                        \
-        .virtual_device = VOUT2,                                                                   \
-        .physical_device = PHYSICAL_OUT2,                                                          \
-        .function = V_TOGGLE,                                                                      \
-        .initial_value = 0,                                                                        \
-      },                                                                                           \
-      {                                                                                            \
-        /* single pulse */                                                                         \
-        .virtual_device = VOUT3,                                                                   \
-        .physical_device = PHYSICAL_OUT3,                                                          \
-        .function = V_PULSE_SHORT,                                                                 \
-        .initial_value = 0,                                                                        \
-      },                                                                                           \
-      { /* first of double assignment attempt */                                                   \
-        .virtual_device = VOUT4,                                                                   \
-        .physical_device = PHYSICAL_LED1,                                                          \
-        .initial_value = 0                                                                         \
-      },                                                                                           \
-    { /* second of double assignment attempt */                                                    \
-      .virtual_device = VOUT5, .physical_device = PHYSICAL_LED1, .initial_value = 1                \
-    }                                                                                              \
-  }
+  setup_test_plain_map();
 
-  
+  asdf_virtual_init();
+
+  /* single assignment */
+  asdf_virtual_assign(VOUT1, PHYSICAL_OUT1, V_NOFUNC, 0);
+
+  /* single toggle */
+  asdf_virtual_assign(VOUT2, PHYSICAL_OUT2, V_TOGGLE, 0);
+
+  /* single pulse */
+  asdf_virtual_assign(VOUT3, PHYSICAL_OUT3, V_PULSE_SHORT, 0);
+
+  /* first of double assignment attempt */
+  asdf_virtual_assign(VOUT4, PHYSICAL_LED1, V_NOFUNC, 0);
+
+  /* second of double assignment attempt */
+  asdf_virtual_assign(VOUT5, PHYSICAL_LED1, V_NOFUNC, 1);
+
+  asdf_virtual_sync();
 }
 
-void setup_test_devs2(void)
+void setup_test_vdevs_map1(void)
 {
-  #define ASDF_TEST_KEYMAP_INITIALIZER_2                                                             \
-  {                                                                                                \
-    {                                                                                              \
-      /* Triple assignment */                                                                      \
-      .virtual_device = VOUT1,                                                                     \
-      .physical_device = PHYSICAL_OUT1,                                                            \
-      .function = V_TOGGLE,                                                                        \
-      .initial_value = 0,                                                                          \
-    },                                                                                             \
-      {                                                                                            \
-        .virtual_device = VOUT1,                                                                   \
-        .physical_device = PHYSICAL_OUT2,                                                          \
-        .function = V_TOGGLE,                                                                      \
-        .initial_value = 1,                                                                        \
-      },                                                                                           \
-    {                                                                                              \
-      .virtual_device = VOUT1, .physical_device = PHYSICAL_OUT3, .function = V_TOGGLE,             \
-      .initial_value = 0,                                                                          \
-    }                                                                                              \
-  }
 
+  setup_test_caps_map();
+
+  asdf_virtual_init();
+
+  /* Triple assignment */
+  asdf_virtual_assign(VOUT1, PHYSICAL_OUT1, V_TOGGLE, 0);
+  asdf_virtual_assign(VOUT1, PHYSICAL_OUT2, V_TOGGLE, 1);
+  asdf_virtual_assign(VOUT1, PHYSICAL_OUT3, V_TOGGLE, 0);
+
+  asdf_virtual_sync();
 }
+
+void setup_test_vdevs_map2(void)
+{
+  setup_test2_plain_map();
+
+  asdf_virtual_init();
+
+  asdf_virtual_assign(VCAPS_LED, PHYSICAL_LED1, V_NOFUNC, 0);
+  asdf_virtual_assign(VSHIFT_LED, PHYSICAL_LED2, V_NOFUNC, 0);
+  asdf_virtual_assign(VOUT2, PHYSICAL_OUT3, V_NOFUNC, 0);
+  asdf_virtual_assign(VOUT2, ASDF_PHYSICAL_NUM_RESOURCES, V_NOFUNC, 0);
+
+  asdf_virtual_sync();
+}
+
+void setup_test_vdevs_map3(void)
+{
+  setup_test2_caps_map();
+
+  asdf_virtual_init();
+
+  asdf_virtual_assign(VCAPS_LED, PHYSICAL_LED1, V_NOFUNC, 0);
+  asdf_virtual_assign(VSHIFT_LED, PHYSICAL_LED2, V_NOFUNC, 0);
+  asdf_virtual_assign(VOUT2, PHYSICAL_OUT3, V_NOFUNC, 0);
+  asdf_virtual_assign(VOUT2, ASDF_PHYSICAL_NUM_RESOURCES, V_NOFUNC, 0);
+
+  asdf_virtual_sync();
+}
+
+
 
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-

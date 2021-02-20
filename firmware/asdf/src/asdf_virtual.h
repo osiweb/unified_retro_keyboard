@@ -80,12 +80,31 @@ void asdf_virtual_action(asdf_virtual_dev_t virtual_out, asdf_virtual_function_t
 // function assigned to the virtual output at initialization.
 void asdf_virtual_activate(asdf_virtual_dev_t virtual_out);
 
+// PROCEDURE: asdf_virtual_assign
+// INPUTS: (asdf_virtual_dev_t) virtual_out - virtual output to be paired with the physical resource
+//         (asdf_physical_dev_t) physical_out to be assigned to the virtual output.
+//         (asdf_virtual_function_t) - the function to be applied to the virtual
+//              device when activated by a keypress.
+//         (uint8_t) initial_value - the initial state of the physical resource.
+// OUTPUTS: none
+// DESCRIPTION: map the virtual output specified by new_vout to physical_out, if
+// both arguments are valid. Ignore if not valid.
+// NOTES: if the virtual output is invalid, or the physical resource is invalid,
+// or the physical resource is already assigned, then nothing happens.
+void asdf_virtual_assign(asdf_virtual_dev_t virtual_out, asdf_physical_dev_t physical_out,
+                         asdf_virtual_function_t function, uint8_t initial_value);
+
 // PROCEDURE: asdf_virtual_init
 // INPUTS: initializers
 // OUTPUTS: none
 // DESCRIPTION: Initializes the LED and output mapping
-void asdf_virtual_init(asdf_virtual_initializer_t *const initializer_list);
+void asdf_virtual_init(void);
 
+// PROCEDURE: asdf_virtual_sync
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Synchronize the physical outputs with their controlling virtual devices.
+void asdf_virtual_sync(void);
 
 #endif /* !defined (ASDF_VIRTUAL_H) */
 

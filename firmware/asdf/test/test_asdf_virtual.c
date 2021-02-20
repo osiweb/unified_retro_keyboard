@@ -15,7 +15,15 @@ void setUp(void)
 {
   asdf_arch_init();
   asdf_keymaps_init();
+
+  asdf_keymaps_register(ASDF_TEST_PLAIN_MAP_INDEX, &setup_test_vdevs_map0);
+  asdf_keymaps_register(ASDF_TEST_CAPS_MAP_INDEX, &setup_test_vdevs_map1);
+  asdf_keymaps_register(ASDF_TEST2_PLAIN_MAP_INDEX, &setup_test_vdevs_map2);
+  asdf_keymaps_register(ASDF_TEST2_CAPS_MAP_INDEX, &setup_test_vdevs_map3);
+
+  asdf_keymaps_select(0);
 }
+
 
 void tearDown(void) {}
 
@@ -96,7 +104,7 @@ void test_pulse_low_virtual_output(void)
 // output.
 void test_toggle_triple_output(void)
 {
-  asdf_keymaps_select_keymap(TRIPLE_TESTS_KEYMAP);
+  asdf_keymaps_select(TRIPLE_TESTS_KEYMAP);
 
   // check that initial values have been set:
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_OUT1));
@@ -118,7 +126,7 @@ void test_toggle_triple_output(void)
 // output high and low
 void test_set_triple_output(void)
 {
-  asdf_keymaps_select_keymap(TRIPLE_TESTS_KEYMAP);
+  asdf_keymaps_select(TRIPLE_TESTS_KEYMAP);
 
   // check that initial values have been set:
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_OUT1));
@@ -140,7 +148,7 @@ void test_set_triple_output(void)
 // output high and low
 void test_pulse_triple_output(void)
 {
-  asdf_keymaps_select_keymap(TRIPLE_TESTS_KEYMAP);
+  asdf_keymaps_select(TRIPLE_TESTS_KEYMAP);
   // check that initial values have been set:
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_OUT1));
   TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(PHYSICAL_OUT2));
@@ -171,7 +179,7 @@ void test_pulse_triple_output(void)
 // output high and low
 void test_activate_triple_output(void)
 {
-  asdf_keymaps_select_keymap(TRIPLE_TESTS_KEYMAP);
+  asdf_keymaps_select(TRIPLE_TESTS_KEYMAP);
   // check that initial values have been set:
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_OUT1));
   TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(PHYSICAL_OUT2));
@@ -230,7 +238,7 @@ uint8_t *single_zero_array(asdf_physical_dev_t set_element)
 void test_virtual_capslock_indicator(void)
 {
 
-  asdf_keymaps_select_keymap(VCAPS_TEST_KEYMAP);
+  asdf_keymaps_select(VCAPS_TEST_KEYMAP);
 
   // CAPS LED output should be initialized to zero:
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_LED1));
@@ -250,7 +258,7 @@ void test_virtual_capslock_indicator(void)
 void test_virtual_shiftlock_indicator(void)
 {
 
-  asdf_keymaps_select_keymap(VSHIFT_TEST_KEYMAP);
+  asdf_keymaps_select(VSHIFT_TEST_KEYMAP);
 
   // CAPS LED output should be initialized to zero:
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_LED2));
@@ -271,7 +279,7 @@ void test_virtual_shiftlock_indicator(void)
 
 void test_cant_assign_real_output_twice(void)
 {
-  asdf_keymaps_select_keymap(DOUBLE_ASSIGN_TEST_KEYMAP);
+  asdf_keymaps_select(DOUBLE_ASSIGN_TEST_KEYMAP);
 
   // initial value should be set to 0:
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_LED1));

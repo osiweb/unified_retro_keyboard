@@ -184,7 +184,7 @@ static uint8_t valid_virtual_device(asdf_virtual_dev_t device)
 //
 // COMPLEXITY: 3
 //
-static void asdf_virtual_assign(asdf_virtual_dev_t virtual_out, asdf_physical_dev_t physical_out,
+void asdf_virtual_assign(asdf_virtual_dev_t virtual_out, asdf_physical_dev_t physical_out,
                                 asdf_virtual_function_t function, uint8_t initial_value)
 {
   if (valid_virtual_device(virtual_out)) {
@@ -199,8 +199,7 @@ static void asdf_virtual_assign(asdf_virtual_dev_t virtual_out, asdf_physical_de
 }
 
 // PROCEDURE: asdf_virtual_init
-// INPUTS: (asdf_virtual_initializer_t *) initializer_list - contains the
-//         initializer list for the selected keymap.
+// INPUTS: none
 // OUTPUTS: none
 //
 // DESCRIPTION: Initializes the LED and output mapping
@@ -213,7 +212,7 @@ static void asdf_virtual_assign(asdf_virtual_dev_t virtual_out, asdf_physical_de
 //
 // COMPLEXITY: 4
 //
-void asdf_virtual_init(asdf_virtual_initializer_t *const initializer_list)
+void asdf_virtual_init(void)
 {
   // initialize the physical resource table every time virtual output table is
   // initialized.
@@ -224,16 +223,22 @@ void asdf_virtual_init(asdf_virtual_initializer_t *const initializer_list)
     virtual_device_table[i].function = V_NOFUNC;
     virtual_device_table[i].physical_device = PHYSICAL_NO_OUT;
   }
+}
 
-  // run through the keymap specific setup
-  for (uint8_t i = 0; //
-       i < ASDF_KEYMAP_INITIALIZER_LENGTH && initializer_list[i].virtual_device != V_NULL; i++) {
-
-    asdf_virtual_assign(initializer_list[i].virtual_device, initializer_list[i].physical_device,
-                        initializer_list[i].function, initializer_list[i].initial_value);
-  }
-
-  // Now set all the initial LED and output values
+// PROCEDURE: asdf_virtual_sync
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Synchronize the physical outputs with their controlling virtual devices.
+//
+// SIDE EFFECTS: see above
+//
+// SCOPE: public
+//
+// COMPLEXITY: 2
+//
+void asdf_virtual_sync(void)
+{
   for (uint8_t i = 0; i < ASDF_PHYSICAL_NUM_RESOURCES; i++) {
     asdf_physical_assert((asdf_physical_dev_t) i);
   }

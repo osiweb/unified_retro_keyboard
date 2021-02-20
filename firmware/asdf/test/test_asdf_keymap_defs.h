@@ -49,13 +49,19 @@
 // only 9 rows need be allocated.
 
 
+#define TEST_NUM_ROWS 9
+#define TEST_NUM_COLS 8
+
+
 #define PLAIN_MATRIX_1 RESERVED_1
 #define CAPS_MATRIX_1 RESERVED_2
 #define SHIFT_MATRIX_1 RESERVED_3
 #define CTRL_MATRIX_1 RESERVED_4
+#define PLAIN_MATRIX_2 RESERVED_5
+#define CAPS_MATRIX_2 RESERVED_6
+#define SHIFT_MATRIX_2 RESERVED_7
+#define CTRL_MATRIX_2 RESERVED_8
 
-#define TEST_NUM_ROWS 9
-#define TEST_NUM_COLS 8
 
 #define ASDF_TEST_MAP_DIP_SWITCHES                                                                 \
   [TEST_NUM_ROWS-1] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
@@ -128,57 +134,6 @@
   }
 
 
-
-#define ASDF_TEST_PLAIN_MAP_INDEX 0
-#define ASDF_TEST_CAPS_MAP_INDEX 1
-
-#define SINGLE_TESTS_KEYMAP ASDF_TEST_PLAIN_MAP_INDEX
-#define DOUBLE_ASSIGN_TEST_KEYMAP ASDF_TEST_PLAIN_MAP_INDEX
-
-#define TRIPLE_TESTS_KEYMAP ASDF_TEST_CAPS_MAP_INDEX
-
-#define ASDF_TEST_KEYMAP_INITIALIZER_LENGTH 5
-
-#define ASDF_TEST_KEYMAP_INITIALIZER ASDF_TEST_KEYMAP_INITIALIZER_1, ASDF_TEST_KEYMAP_INITIALIZER_2
-
-#define ASDF_TEST_KEYMAP_HOOK_INITIALIZER_LENGTH 2
-
-#define ASDF_TEST_KEYMAP_HOOK_INITIALIZER_1                                                        \
-  {                                                                                                \
-    {                                                                                              \
-      .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                           \
-      .hook_func = &test_hook_1,                                                                    \
-    },                                                                                             \
-      {                                                                                            \
-        .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                         \
-        .hook_func = &test_hook_2,                                                                  \
-      },                                                                                           \
-  }
-
-#define ASDF_TEST_KEYMAP_HOOK_INITIALIZER_2                                                        \
-  {                                                                                                \
-    {                                                                                              \
-      .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                           \
-      .hook_func = &test_hook_3,                                                                    \
-    },                                                                                             \
-      {                                                                                            \
-        .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                         \
-        .hook_func = &test_hook_4,                                                                  \
-      },                                                                                           \
-  }
-
-#define ASDF_TEST_KEYMAP_HOOK_INITIALIZER                                                          \
-  ASDF_TEST_KEYMAP_HOOK_INITIALIZER_1, ASDF_TEST_KEYMAP_HOOK_INITIALIZER_2
-
-
-
-
-
-#define PLAIN_MATRIX_2 RESERVED_5
-#define CAPS_MATRIX_2 RESERVED_6
-#define SHIFT_MATRIX_2 RESERVED_7
-#define CTRL_MATRIX_2 RESERVED_8
-
 #define ASDF_TEST2_PLAIN_MAP                                                                       \
   {                                                                                                \
     { PLAIN_MATRIX_2, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING,                                  \
@@ -247,40 +202,58 @@
 
 
 
+#define ASDF_TEST_PLAIN_MAP_INDEX 0
+#define ASDF_TEST_CAPS_MAP_INDEX 1
 #define ASDF_TEST2_PLAIN_MAP_INDEX 2
 #define ASDF_TEST2_CAPS_MAP_INDEX 3
 
+// keymap assignments for the virtual device tests
+#define SINGLE_TESTS_KEYMAP ASDF_TEST_PLAIN_MAP_INDEX
+#define DOUBLE_ASSIGN_TEST_KEYMAP ASDF_TEST_PLAIN_MAP_INDEX
+#define TRIPLE_TESTS_KEYMAP ASDF_TEST_CAPS_MAP_INDEX
 #define VCAPS_TEST_KEYMAP ASDF_TEST2_PLAIN_MAP_INDEX
 #define VSHIFT_TEST_KEYMAP ASDF_TEST2_PLAIN_MAP_INDEX
 
-#define ASDF_TEST2_KEYMAP_INITIALIZER_LENGTH 4
-#define ASDF_TEST2_KEYMAP_INITIALIZER_1                                                            \
-  {                                                                                                \
-    { .virtual_device = VCAPS_LED, .physical_device = PHYSICAL_LED1, .initial_value = 0 },         \
-      { .virtual_device = VSHIFT_LED, .physical_device = PHYSICAL_LED2, .initial_value = 0 },      \
-      { .virtual_device = VOUT2, .physical_device = PHYSICAL_OUT3, .initial_value = 0 },           \
-    {                                                                                              \
-      .virtual_device = VOUT2, .physical_device = ASDF_PHYSICAL_NUM_RESOURCES, .initial_value = 0  \
-    }                                                                                              \
-  }
 
-#define ASDF_TEST2_KEYMAP_INITIALIZER_2                                                            \
-  {                                                                                                \
-    { .virtual_device = VCAPS_LED, .physical_device = PHYSICAL_LED1, .initial_value = 0 },         \
-      { .virtual_device = VSHIFT_LED, .physical_device = PHYSICAL_LED2, .initial_value = 0 },      \
-      { .virtual_device = VOUT2, .physical_device = PHYSICAL_OUT3, .initial_value = 0 },           \
-    {                                                                                              \
-      .virtual_device = VOUT2, .physical_device = ASDF_PHYSICAL_NUM_RESOURCES, .initial_value = 0  \
-    }                                                                                              \
-  }
-
-#define ASDF_TEST2_KEYMAP_INITIALIZER                                                              \
-  ASDF_TEST2_KEYMAP_INITIALIZER_1, ASDF_TEST2_KEYMAP_INITIALIZER_2
-
-
+// keymap assignments for the hook mechanism tests
 #define ASDF_TEST_ALTERNATE_SCANNER_MAP (ASDF_TEST2_BASE + 0)
 #define ASDF_TEST_ALTERNATE_OUTPUT_MAP (ASDF_TEST2_BASE + 0)
 #define ASDF_TEST_EACH_SCAN_MAP (ASDF_TEST2_BASE + 1)
+
+
+#define ASDF_TEST_KEYMAP_HOOK_INITIALIZER_LENGTH 2
+
+#define ASDF_TEST_KEYMAP_HOOK_INITIALIZER_1                                                        \
+  {                                                                                                \
+    {                                                                                              \
+      .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                           \
+      .hook_func = &test_hook_1,                                                                    \
+    },                                                                                             \
+      {                                                                                            \
+        .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                         \
+        .hook_func = &test_hook_2,                                                                  \
+      },                                                                                           \
+  }
+
+#define ASDF_TEST_KEYMAP_HOOK_INITIALIZER_2                                                        \
+  {                                                                                                \
+    {                                                                                              \
+      .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                           \
+      .hook_func = &test_hook_3,                                                                    \
+    },                                                                                             \
+      {                                                                                            \
+        .hook_id = ASDF_HOOK_KEYMAP_SETUP,                                                         \
+        .hook_func = &test_hook_4,                                                                  \
+      },                                                                                           \
+  }
+
+#define ASDF_TEST_KEYMAP_HOOK_INITIALIZER                                                          \
+  ASDF_TEST_KEYMAP_HOOK_INITIALIZER_1, ASDF_TEST_KEYMAP_HOOK_INITIALIZER_2
+
+
+
+
+
 #define ASDF_TEST2_KEYMAP_HOOK_INITIALIZER_LENGTH 2
 #define ASDF_TEST2_KEYMAP_HOOK_INITIALIZER_1                                                       \
   {                                                                                                \
@@ -311,6 +284,10 @@ void setup_test_plain_map(void);
 void setup_test_caps_map(void);
 void setup_test2_plain_map(void);
 void setup_test2_caps_map(void);
+void setup_test_vdevs_map0(void);
+void setup_test_vdevs_map1(void);
+void setup_test_vdevs_map2(void);
+void setup_test_vdevs_map3(void);
 
 
 
