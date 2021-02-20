@@ -50,7 +50,7 @@
 // Data structure sizes:
 
 // Max number of keymaps supported (defines size of keymap setup routine array)
-#define ASDF_NUM_KEYMAPS 32
+#define ASDF_NUM_KEYMAPS 16
 
 // Size of keymap initializer sequence. These sequences are defined in the
 // keymap modules. This should be large enough to accommodate the largest

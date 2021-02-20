@@ -56,43 +56,43 @@ static const asdf_keycode_t test2_CTRL_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = AS
 //
 
 
-void test_keymaps_add_map(asdf_keycode_matrix_t matrix, 
-                          modifier_index_t modifier_index)
+void test_keymaps_add_map (const asdf_keycode_t (*matrix)[TEST_NUM_COLS],
+                           modifier_index_t modifier_index)
 {
-  asdf_keymaps_add_map(matrix, modifier_index, (uint8_t) TEST_NUM_ROWS, (uint8_t) TEST_NUM_COLS);
+  asdf_keymaps_add_map(&matrix[0][0], modifier_index, (uint8_t) TEST_NUM_ROWS, (uint8_t) TEST_NUM_COLS);
 }
   
 
 void setup_test_plain_map(void)
 {
-  test_keymaps_add_map((asdf_keycode_matrix_t) test_PLAIN_matrix, MOD_PLAIN_MAP);
-  test_keymaps_add_map((asdf_keycode_matrix_t) test_CAPS_matrix, MOD_CAPS_MAP);
-  test_keymaps_add_map((asdf_keycode_matrix_t) test_SHIFT_matrix, MOD_SHIFT_MAP);
-  test_keymaps_add_map((asdf_keycode_matrix_t) test_CTRL_matrix, MOD_CTRL_MAP);
+  test_keymaps_add_map(&test_PLAIN_matrix[0], MOD_PLAIN_MAP);
+  test_keymaps_add_map(test_CAPS_matrix, MOD_CAPS_MAP);
+  test_keymaps_add_map(test_SHIFT_matrix, MOD_SHIFT_MAP);
+  test_keymaps_add_map(test_CTRL_matrix, MOD_CTRL_MAP);
 }
 
 void setup_test_caps_map(void)
 {
-  test_keymaps_add_map((asdf_keycode_matrix_t) test_PLAIN_matrix, MOD_PLAIN_MAP);
-  test_keymaps_add_map((asdf_keycode_matrix_t) test_CAPS_matrix, MOD_CAPS_MAP);
-  test_keymaps_add_map((asdf_keycode_matrix_t) test_SHIFT_matrix, MOD_SHIFT_MAP);
-  test_keymaps_add_map((asdf_keycode_matrix_t) test_CTRL_matrix, MOD_CTRL_MAP);
+  test_keymaps_add_map(test_PLAIN_matrix, MOD_PLAIN_MAP);
+  test_keymaps_add_map(test_CAPS_matrix, MOD_CAPS_MAP);
+  test_keymaps_add_map(test_SHIFT_matrix, MOD_SHIFT_MAP);
+  test_keymaps_add_map(test_CTRL_matrix, MOD_CTRL_MAP);
 }
 
 void setup_test2_plain_map(void)
 {
-  test_keymaps_add_map((asdf_keycode_matrix_t) test2_PLAIN_matrix, MOD_PLAIN_MAP);
-  test_keymaps_add_map((asdf_keycode_matrix_t) test2_CAPS_matrix, MOD_CAPS_MAP);
-  test_keymaps_add_map((asdf_keycode_matrix_t) test2_SHIFT_matrix, MOD_SHIFT_MAP);
-  test_keymaps_add_map((asdf_keycode_matrix_t) test2_CTRL_matrix, MOD_CTRL_MAP);
+  test_keymaps_add_map(test2_PLAIN_matrix, MOD_PLAIN_MAP);
+  test_keymaps_add_map(test2_CAPS_matrix, MOD_CAPS_MAP);
+  test_keymaps_add_map(test2_SHIFT_matrix, MOD_SHIFT_MAP);
+  test_keymaps_add_map(test2_CTRL_matrix, MOD_CTRL_MAP);
 }
 
 void setup_test2_caps_map(void)
 {
-  test_keymaps_add_map((asdf_keycode_matrix_t) test2_PLAIN_matrix, MOD_PLAIN_MAP);
-  test_keymaps_add_map((asdf_keycode_matrix_t) test2_CAPS_matrix, MOD_CAPS_MAP);
-  test_keymaps_add_map((asdf_keycode_matrix_t) test2_SHIFT_matrix, MOD_SHIFT_MAP);
-  test_keymaps_add_map((asdf_keycode_matrix_t) test2_CTRL_matrix, MOD_CTRL_MAP);
+  test_keymaps_add_map(test2_PLAIN_matrix, MOD_PLAIN_MAP);
+  test_keymaps_add_map(test2_CAPS_matrix, MOD_CAPS_MAP);
+  test_keymaps_add_map(test2_SHIFT_matrix, MOD_SHIFT_MAP);
+  test_keymaps_add_map(test2_CTRL_matrix, MOD_CTRL_MAP);
 }
 
 void setup_test_devs1(void)

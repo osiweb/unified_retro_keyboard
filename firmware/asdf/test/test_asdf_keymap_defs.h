@@ -129,8 +129,6 @@
 
 
 
-#define ASDF_TEST_KEYMAPS ASDF_TEST_MAP_DEFS, ASDF_TEST_CAPS_MAP_DEFS
-
 #define ASDF_TEST_PLAIN_MAP_INDEX 0
 #define ASDF_TEST_CAPS_MAP_INDEX 1
 
@@ -248,19 +246,6 @@
   }
 
 
-#define ASDF_TEST2_DECLARATIONS                                                                    \
-
-#define ASDF_TEST2_MAP_DEFS                                                                        \
-  {                                                                                                \
-    &test2_PLAIN_matrix, &test2_SHIFT_matrix, &test2_CAPS_matrix, &test2_CTRL_matrix               \
-  }
-
-#define ASDF_TEST2_CAPS_MAP_DEFS                                                                   \
-  {                                                                                                \
-    &test2_CAPS_matrix, &test2_SHIFT_matrix, &test2_CAPS_matrix, &test2_CTRL_matrix                \
-  }
-
-#define ASDF_TEST2_KEYMAPS ASDF_TEST2_MAP_DEFS, ASDF_TEST2_CAPS_MAP_DEFS
 
 #define ASDF_TEST2_PLAIN_MAP_INDEX 2
 #define ASDF_TEST2_CAPS_MAP_INDEX 3

@@ -31,11 +31,8 @@
 #include "asdf_keymaps.h"
 #include "asdf_modifiers.h"
 
-// The keymap arrays organized as follows:
-// * keymap_matrix -  matrix of code mapppings for each physical keymap
-// * rows = number of rows in the matrix
-// * cols = number of cols in the matrix
-// * one map structure for each modifier state.
+// The keymap array contains the keymap information for each modifier state
+// This structure is populated using the asdf_keymaps_add_map() function.
 static asdf_keycode_map_t keymaps[ASDF_MOD_NUM_MODIFIERS] = {};
 
 // List of keymap setup routines. Each keymap setup routine is responsible for
@@ -74,7 +71,7 @@ void asdf_keymaps_register(uint8_t keymap_index, asdf_keymap_setup_function_t ke
 }
 
 // PROCEDURE: asdf_keymaps_add_map
-// INPUTS: (asdf_keycode_matrix_t) matrix - pointer to the keycode matrix to add in to map
+// INPUTS: (asdf_keycode_t *) - pointer to the keycode matrix to add in to map
 //         (uint8_t) modifier_index - the modifier value for the keycode matrix being added
 //         (uint8_t) rows - number of rows in the keymap
 //         (uint8_t) cols - number of columns in the keymap
@@ -92,7 +89,7 @@ void asdf_keymaps_register(uint8_t keymap_index, asdf_keymap_setup_function_t ke
 // SCOPE: public
 //
 // COMPLEXITY: 1
-void asdf_keymaps_add_map(asdf_keycode_matrix_t matrix, 
+void asdf_keymaps_add_map(const asdf_keycode_t *matrix,
                           modifier_index_t modifier_index,
                           uint8_t num_rows, uint8_t num_cols)
 {
@@ -100,7 +97,7 @@ void asdf_keymaps_add_map(asdf_keycode_matrix_t matrix,
       && (num_rows <= ASDF_MAX_ROWS)
       && (num_cols <= ASDF_MAX_COLS))
     {
-      keymaps[modifier_index].matrix_ptr = matrix;
+      keymaps[modifier_index].matrix = (asdf_keycode_t *) matrix;
       keymaps[modifier_index].rows = num_rows;
       keymaps[modifier_index].cols = num_cols;
     }
@@ -145,7 +142,7 @@ uint8_t asdf_keymaps_num_cols(void)
 }
 
 
-// PROCEDURE: asdf_keymaps_new
+// PROCEDURE: asdf_keymaps_clear
 // INPUTS: none
 // OUTPUTS: none
 //
@@ -157,14 +154,14 @@ uint8_t asdf_keymaps_num_cols(void)
 //
 // COMPLEXITY: 2
 //
-static void asdf_keymaps_new(void)
+static void asdf_keymaps_clear(void)
 {
   for (uint8_t i = 0; i < ASDF_MOD_NUM_MODIFIERS; i++) {
     asdf_keymaps_add_map(NULL, i, 0, 0);
   }
 }
 
-// PROCEDURE: asdf_keymaps_select_keymap
+// PROCEDURE: asdf_keymaps_select
 // INPUTS: (uint8_t) index - index of the keymap number to select
 // OUTPUTS: none
 //
@@ -183,11 +180,11 @@ static void asdf_keymaps_new(void)
 //
 // COMPLEXITY: 2
 //
-void asdf_keymaps_select_keymap(uint8_t index)
+void asdf_keymaps_select(uint8_t index)
 {
   if (index < ASDF_NUM_KEYMAPS) {
     asdf_arch_init();
-    asdf_keymaps_new();
+    asdf_keymaps_clear();
     current_keymap_index = index;
     keymap_setup_function_lookup_table[index]();
   }
@@ -246,7 +243,7 @@ void asdf_keymaps_init(void)
 //
 void asdf_keymaps_map_select_0_clear(void)
 {
-  asdf_keymaps_select_keymap(current_keymap_index & (~ASDF_KEYMAP_BIT_0));
+  asdf_keymaps_select(current_keymap_index & (~ASDF_KEYMAP_BIT_0));
 }
 
 // PROCEDURE: asdf_keymaps_map_select_0_set
@@ -266,7 +263,7 @@ void asdf_keymaps_map_select_0_clear(void)
 //
 void asdf_keymaps_map_select_0_set(void)
 {
-  asdf_keymaps_select_keymap(current_keymap_index | ASDF_KEYMAP_BIT_0);
+  asdf_keymaps_select(current_keymap_index | ASDF_KEYMAP_BIT_0);
 }
 
 // PROCEDURE: asdf_keymaps_map_select_1_clear
@@ -286,7 +283,7 @@ void asdf_keymaps_map_select_0_set(void)
 //
 void asdf_keymaps_map_select_1_clear(void)
 {
-  asdf_keymaps_select_keymap(current_keymap_index & (~ASDF_KEYMAP_BIT_1));
+  asdf_keymaps_select(current_keymap_index & (~ASDF_KEYMAP_BIT_1));
 }
 
 // PROCEDURE: asdf_keymaps_map_select_1_set
@@ -306,7 +303,7 @@ void asdf_keymaps_map_select_1_clear(void)
 //
 void asdf_keymaps_map_select_1_set(void)
 {
-  asdf_keymaps_select_keymap(current_keymap_index | ASDF_KEYMAP_BIT_1);
+  asdf_keymaps_select(current_keymap_index | ASDF_KEYMAP_BIT_1);
 }
 
 // PROCEDURE: asdf_keymaps_map_select_2_clear
@@ -326,7 +323,7 @@ void asdf_keymaps_map_select_1_set(void)
 //
 void asdf_keymaps_map_select_2_clear(void)
 {
-  asdf_keymaps_select_keymap(current_keymap_index & (~ASDF_KEYMAP_BIT_2));
+  asdf_keymaps_select(current_keymap_index & (~ASDF_KEYMAP_BIT_2));
 }
 
 // PROCEDURE: asdf_keymaps_map_select_2_set
@@ -346,7 +343,7 @@ void asdf_keymaps_map_select_2_clear(void)
 //
 void asdf_keymaps_map_select_2_set(void)
 {
-  asdf_keymaps_select_keymap(current_keymap_index | ASDF_KEYMAP_BIT_2);
+  asdf_keymaps_select(current_keymap_index | ASDF_KEYMAP_BIT_2);
 }
 
 // PROCEDURE: asdf_keymaps_map_select_3_clear
@@ -366,7 +363,7 @@ void asdf_keymaps_map_select_2_set(void)
 //
 void asdf_keymaps_map_select_3_clear(void)
 {
-  asdf_keymaps_select_keymap(current_keymap_index & (~ASDF_KEYMAP_BIT_3));
+  asdf_keymaps_select(current_keymap_index & (~ASDF_KEYMAP_BIT_3));
 }
 
 // PROCEDURE: asdf_keymaps_map_select_3_set
@@ -386,7 +383,7 @@ void asdf_keymaps_map_select_3_clear(void)
 //
 void asdf_keymaps_map_select_3_set(void)
 {
-  asdf_keymaps_select_keymap(current_keymap_index | ASDF_KEYMAP_BIT_3);
+  asdf_keymaps_select(current_keymap_index | ASDF_KEYMAP_BIT_3);
 }
 
 // PROCEDURE: asdf_keymaps_get_code
@@ -409,8 +406,14 @@ void asdf_keymaps_map_select_3_set(void)
 asdf_keycode_t asdf_keymaps_get_code(const uint8_t row, const uint8_t col,
                                      const uint8_t modifier_index)
 {
-  asdf_keycode_matrix_t matrix = keymaps[modifier_index].matrix_ptr;
-  return FLASH_READ_MATRIX_ELEMENT(matrix, row, col);
+  uint8_t num_cols = keymaps[current_keymap_index].cols;
+  asdf_keycode_t keycode = 0;
+
+  if (keymaps[current_keymap_index].cols && keymaps[current_keymap_index].rows) {
+    asdf_keycode_t (*keycode_matrix)[num_cols] = (void *) (keymaps[modifier_index].matrix);
+    keycode = FLASH_READ_MATRIX_ELEMENT(keycode_matrix, row, col);
+  }
+  return keycode;
 }
 
 //-------|---------|---------+---------+---------+---------+---------+---------+

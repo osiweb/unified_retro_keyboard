@@ -45,10 +45,6 @@
 #define ASDF_MAX_ROWS 16
 #define ASDF_MAX_COLS 8
 
-// define the keycode matrices to be used by the keymaps. Each matrix is a
-// mapping of row,column to keycode.
-typedef asdf_keycode_t **asdf_keycode_matrix_t;
-
 // define the type for a keymap setup function. Keymaps are registerd by storing
 // a keymap setup function in the keymap setup array.
 typedef void (*asdf_keymap_setup_function_t)(void);
@@ -56,7 +52,7 @@ typedef void (*asdf_keymap_setup_function_t)(void);
 // define the struct for each keymap matrix in the keymap array. One per
 // modifier state. Each keymap can have it's own row and column count.
 typedef struct {
-  asdf_keycode_matrix_t matrix_ptr;
+  asdf_keycode_t *matrix;
   uint8_t rows;
   uint8_t cols;
 } asdf_keycode_map_t;
@@ -74,7 +70,7 @@ typedef struct {
 void asdf_keymaps_register(uint8_t keymap_index, asdf_keymap_setup_function_t keymap_setup_function);
 
 // PROCEDURE: asdf_keymaps_add_map
-// INPUTS: (asdf_keycode_matrix_t *) matrix - pointer to the keycode matrix to add in to map
+// INPUTS: (asdf_keycode_t *) matrix - pointer to the keycode matrix to add in to map
 //         (uint8_t) modifier_index - the modifier value for the keycode matrix being added
 //         (uint8_t) rows - number of rows in the keymap
 //         (uint8_t) cols - number of columns in the keymap
@@ -83,7 +79,7 @@ void asdf_keymaps_register(uint8_t keymap_index, asdf_keymap_setup_function_t ke
 // setup function into the keymap setup array.
 // NOTES: If the keymap modifier index, num_rows, or num_cols are not valid then no
 // action is performed.
-void asdf_keymaps_add_map(asdf_keycode_matrix_t matrix, 
+void asdf_keymaps_add_map(const asdf_keycode_t *matrix,
                           modifier_index_t modifier_index,
                           uint8_t num_rows, uint8_t num_cols);
 
@@ -99,13 +95,13 @@ uint8_t asdf_keymaps_num_rows(void);
 // DESCRIPTION: See OUTPUTS
 uint8_t asdf_keymaps_num_cols(void);
 
-// PROCEDURE: asdf_keymaps_select_keymap
+// PROCEDURE: asdf_keymaps_select
 // INPUTS: (uint8_t) index - index of the keymap number to select
 // OUTPUTS: none
 // DESCRIPTION: accepts a index value. If the requested keymap index is valid,
 // then assign the value to the global (to the module) keymap_index variable. If
 // requested index is not valid then do nothing.
-void asdf_keymaps_select_keymap(uint8_t index);
+void asdf_keymaps_select(uint8_t index);
 
 // PROCEDURE: asdf_keymaps_map_select_0_clear
 // INPUTS: none
