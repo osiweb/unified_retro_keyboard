@@ -1,4 +1,5 @@
 #if !defined(TEST_ASDF_LIB_H)
+#define TEST_ASDF_LIB_H
 
 #define TEST_HOOK_VAL1 1
 #define TEST_HOOK_VAL2 2
@@ -19,5 +20,4 @@ uint8_t test_hook_read_row(uint8_t val);
 void test_hook_output(uint8_t val);
 
 
-#define TEST_ASDF_LIB_H
 #endif // if !defined(TEST_ASDF_LIB_H)

@@ -12,6 +12,7 @@
 #include "asdf_repeat.h"
 #include "asdf_hook.h"
 #include "test_asdf_lib.h"
+#include "test_asdf_keymap_defs.h"
 
 //ASDF_TEST_DECLARATIONS;
 
@@ -28,6 +29,14 @@ void setUp(void)
   test_hook_clear();
   asdf_keymaps_init();
   asdf_init();
+
+  asdf_keymaps_register(ASDF_TEST_PLAIN_MAP_INDEX, &setup_test_hooks_map0);
+  asdf_keymaps_register(ASDF_TEST_CAPS_MAP_INDEX, &setup_test_hooks_map1);
+  asdf_keymaps_register(ASDF_TEST2_PLAIN_MAP_INDEX, &setup_test_hooks_map2);
+  asdf_keymaps_register(ASDF_TEST2_CAPS_MAP_INDEX, &setup_test_hooks_map3);
+
+  asdf_keymaps_select(0);
+
 }
 
 void tearDown(void) {}
@@ -37,7 +46,7 @@ typedef asdf_cols_t (*scanner_func_t)(uint8_t);
 
 void test_default_scan_hook_is_default_scanner(void)
 {
-  scanner_func_t testfunc = (scanner_func_t) asdf_hook_get(ASDF_HOOK_SCANNER);  
+  scanner_func_t testfunc = (scanner_func_t) asdf_hook_get(ASDF_HOOK_SCANNER);
   asdf_cols_t testval = 0;
 
   // make sure the pointer points to the correct function
@@ -51,7 +60,7 @@ void test_default_scan_hook_is_default_scanner(void)
 // test_alternate_scan_hook
 void test_alternate_scan_hook(void)
 {
-  asdf_keymaps_select_keymap(ASDF_TEST_ALTERNATE_SCANNER_MAP);
+  asdf_keymaps_select(ASDF_TEST_ALTERNATE_SCANNER_MAP);
   scanner_func_t testfunc = (scanner_func_t) asdf_hook_get(ASDF_HOOK_SCANNER);
   asdf_cols_t testval = 0;
 
@@ -69,32 +78,13 @@ void test_each_scan_hook_is_executed_each_scan(void)
 {
 
   test_hook_clear();
-  asdf_keymaps_select_keymap(ASDF_TEST_EACH_SCAN_MAP);
+  asdf_keymaps_select(ASDF_TEST_EACH_SCAN_MAP);
   TEST_ASSERT_EQUAL_INT(0, test_hook_readback());
   for (int i = 0; i < NUM_SCAN_TEST_REPS; i++) {
     asdf_keyscan();
   }
   TEST_ASSERT_EQUAL_INT(NUM_SCAN_TEST_REPS, test_hook_readback());
 }
-
-// Check that setup hooks are executed immediately
-void test_setup_hook_is_executed_immediately(void)
-{
-  test_hook_clear();
-  asdf_keymaps_select_keymap(0);
-  uint32_t expected = TEST_HOOK_VAL1 | TEST_HOOK_VAL2;
-  TEST_ASSERT_EQUAL_INT(expected, test_hook_readback());
-}
-
-// Check that setup hooks are executed properly after selecting nonzero map
-void test_setup_hook_is_executed_immediately_when_selecting_nonzero_map(void)
-{
-  test_hook_clear();
-  asdf_keymaps_select_keymap(1);
-  uint32_t expected = TEST_HOOK_VAL3 | TEST_HOOK_VAL4;
-  TEST_ASSERT_EQUAL_INT(expected, test_hook_readback());
-}
-
 
 
 
@@ -103,8 +93,6 @@ int main(void)
   UNITY_BEGIN();
   RUN_TEST(test_default_scan_hook_is_default_scanner);
   RUN_TEST(test_alternate_scan_hook);
-  RUN_TEST(test_setup_hook_is_executed_immediately);
-  RUN_TEST(test_setup_hook_is_executed_immediately_when_selecting_nonzero_map);
   RUN_TEST(test_each_scan_hook_is_executed_each_scan);
   return UNITY_END();
 }

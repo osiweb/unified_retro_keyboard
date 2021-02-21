@@ -52,18 +52,8 @@
 // Max number of keymaps supported (defines size of keymap setup routine array)
 #define ASDF_NUM_KEYMAPS 16
 
-// Size of keymap initializer sequence. These sequences are defined in the
-// keymap modules. This should be large enough to accommodate the largest
-// initializer sequence among the included keymaps
-#define ASDF_KEYMAP_INITIALIZER_LENGTH 6
-
-// Size of keymap hook function initializer list. These lists are defined in the
-// keymap modules. This should be large enough to accommodate the largest list
-// among the included keymaps
-#define ASDF_KEYMAP_HOOK_INITIALIZER_LENGTH 2
-
 // size of the keycode output buffer.
-#define ASDF_KEYCODE_BUFFER_SIZE 16
+#define ASDF_KEYCODE_BUFFER_SIZE 64
 
 // key debounce period (in msec)
 #define ASDF_DEBOUNCE_TIME_MS 10

@@ -27,7 +27,7 @@
 #include "asdf_ascii.h"
 #include "asdf_modifiers.h"
 #include "asdf_keymaps.h"
-
+#include "test_asdf_lib.h"
 
 static const asdf_keycode_t test_PLAIN_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST_PLAIN_MAP;
 static const asdf_keycode_t test_SHIFT_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST_SHIFT_MAP;
@@ -147,7 +147,35 @@ void setup_test_vdevs_map3(void)
   asdf_virtual_sync();
 }
 
+void setup_test_hooks_map0(void)
+{
+  setup_test_plain_map();
+  asdf_hook_init();
+}
 
+void setup_test_hooks_map1(void)
+{
+  setup_test_caps_map();
+  asdf_hook_init();
+}
+
+void setup_test_hooks_map2(void)
+{
+  setup_test2_plain_map();
+
+  asdf_hook_init();
+  asdf_hook_assign(ASDF_HOOK_SCANNER, (void (*)(void)) &test_hook_read_row);
+  asdf_hook_assign(ASDF_HOOK_OUTPUT, (void (*)(void)) &test_hook_output);
+
+}
+
+void setup_test_hooks_map3(void)
+{
+  setup_test2_caps_map();
+
+  asdf_hook_init();
+  asdf_hook_assign(ASDF_HOOK_EACH_SCAN, &test_hook_each_scan);
+}
 
 
 //-------|---------|---------+---------+---------+---------+---------+---------+

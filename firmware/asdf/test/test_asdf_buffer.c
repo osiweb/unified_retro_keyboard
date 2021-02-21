@@ -10,7 +10,9 @@
 #define MAX_BUFFER ASDF_BUFFER_POOL_SIZE
 #define HALF_BUFFER (ASDF_BUFFER_POOL_SIZE / 2)
 
-static const char test_string[] = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+static const char test_string[] = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
 static const char * const more_strings[] = {
                                       "abcdefghijkl",
                                       "12345",
