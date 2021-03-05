@@ -20,7 +20,6 @@ elseif(ARCH MATCHES atmega2560)
   set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/generic-gcc-avr.cmake)
   set (ASDF_OUT_TARGET ${ASDF_TARGET}.elf)
 
-
 endif()
 
 project("asdf"
@@ -33,7 +32,7 @@ set_property(GLOBAL PROPERTY C_STANDARD 99)
 set(ASDF_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 message("SRC Dir is ${ASDF_SRC_DIR}")
 
-set (ASDF_TARGET_NAME asdf-${ARCH}-${PROJECT_VERSION})
+set (ASDF_TARGET_NAME asdf-v${PROJECT_VERSION}-${ARCH})
 set (ASDF_EXECUTABLE_TARGET_NAME ${ASDF_TARGET_NAME})
 
 
