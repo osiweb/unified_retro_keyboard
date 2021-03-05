@@ -1,0 +1,100 @@
+temporary_config_file(${ASDF_SRC_DIR}/Keymaps/asdf_all_keymap_defs_test.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_defs.h)
+
+list(APPEND C_FLAGS
+  "-std=c99"
+  "-Wall"
+  "-Wextra"
+  "-Wpointer-arith"
+  "-Wcast-align"
+  "-Wwrite-strings"
+  "-Wswitch-default"
+  "-Wunreachable-code"
+  "-Winit-self"
+  "-Wmissing-field-initializers"
+  "-Wno-unknown-pragmas"
+  "-Wstrict-prototypes"
+  "-Wundef"
+  "-Wold-style-definition"
+  )
+
+list(APPEND TEST_INCLUDES
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/unity
+  ${ASDF_SRC_DIR}
+  ${ASDF_SRC_DIR}/Arch
+  )
+
+add_library(asdf_core
+  STATIC
+  ${ASDF_SRC_DIR}/asdf.c
+  ${ASDF_SRC_DIR}/asdf_buffer.c
+  ${ASDF_SRC_DIR}/asdf_hook.c
+  ${ASDF_SRC_DIR}/asdf_keymaps.c
+  ${ASDF_SRC_DIR}/asdf_modifiers.c
+  ${ASDF_SRC_DIR}/asdf_physical.c
+  ${ASDF_SRC_DIR}/asdf_repeat.c
+  ${ASDF_SRC_DIR}/asdf_virtual.c
+  ${ASDF_SRC_DIR}/Arch/asdf_arch_test.c
+  )
+
+target_include_directories(asdf_core
+  PRIVATE
+  ${ASDF_SRC_DIR}
+  ${ASDF_SRC_DIR}/Arch
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
+  )
+
+add_library(test_helpers
+  STATIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/test_asdf_lib.c
+  )
+
+target_include_directories(test_helpers
+  PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${ASDF_SRC_DIR}
+  ${CMAKE_BINARY_DIR}
+  )
+
+
+target_compile_options(test_helpers
+  PRIVATE
+  ${CFLAGS}
+  )
+
+function(setup_test testname)
+
+  add_executable(${testname}
+    ${testname}.c
+    unity/unity.c
+    )
+
+  target_compile_options(${testname}
+    PRIVATE
+    ${CFLAGS}
+    )
+
+  target_include_directories(${testname}
+    PRIVATE
+    ${TEST_INCLUDES}
+    )
+
+  target_link_libraries(${testname} asdf_core test_helpers)
+
+  add_test(
+    NAME ${testname}
+    COMMAND ${CMAKE_BINARY_DIR}/test/${testname}
+    )
+endfunction()
+
+enable_testing()
+
+setup_test(test_asdf_repeat)
+setup_test(test_asdf_modifiers)
+setup_test(test_asdf_keymaps)
+setup_test(test_asdf_buffer)
+setup_test(test_asdf_virtual)
+setup_test(test_asdf_hook)
+
+
