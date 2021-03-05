@@ -27,9 +27,6 @@
 #if !defined(TEST_ASDF_KEYMAP_DEFS_H)
 #define TEST_ASDF_KEYMAP_DEFS_H
 
-#define ASDF_TEST_NUM_COLS 8
-#define ASDF_TEST_NUM_ROWS 9
-
 // The first value in each row serves two purposes:
 //
 // 1) Indicate a valid row of codes if the value is nonzero.
