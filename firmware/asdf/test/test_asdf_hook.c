@@ -4,7 +4,7 @@
 
 #include "unity.h"
 #include "asdf.h"
-#include "asdf_arch.h"
+#include "asdf_arch_test.h"
 #include "asdf_ascii.h"
 #include "asdf_modifiers.h"
 #include "asdf_keymaps.h"
