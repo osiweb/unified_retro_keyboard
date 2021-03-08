@@ -13,19 +13,22 @@ add_valid_target atmega328p
 add_valid_target atmega2560
 
 build_arch() {
-    echo one: $1 two: $2 three: $3
-    echo star: "[$*]"
-    echo amp: "[$@]"
+
     for target_arch in "$@"
     do
         if [[ ! -d "build-$target_arch" ]]
         then
-            mkdir  "build-$target_arch"
+            echo -ne "\nCreating directory $target_arch..." 
+            mkdir  "build-$target_arch" && echo "[success]"
+        else
+            echo "Directory \"$target_arch\" exists."
         fi
 
         if [[ -d "build-$target_arch" ]]
         then
+            echo -e "\nRunning CMake in directory $target_arch..."
             (cd "build-$target_arch" && cmake -DARCH=$target_arch ..)
+            echo
         fi
     done
 }

@@ -36,34 +36,6 @@ set(ASDF_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set (ASDF_TARGET_NAME asdf-v${PROJECT_VERSION}-${ARCH})
 set (ASDF_EXECUTABLE_TARGET_NAME ${ASDF_TARGET_NAME})
 
-
-function(create_keymap_setups keymaps keymap_table)
-  list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\n  [\\2] = setup_\\1_keymap" OUTPUT_VARIABLE temp_list)
-  list(APPEND temp_list "")
-  set(${keymap_table} "${temp_list}" PARENT_SCOPE)
-endfunction(create_keymap_setups)
-
-function(create_keymap_report keymaps keymap_report)
-  list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\nkeymap [\\2]: \\1" OUTPUT_VARIABLE temp_list)
-  list(APPEND temp_list "")
-  set(${keymap_report} "${temp_list}" PARENT_SCOPE)
-endfunction(create_keymap_report)
-
-include(keymap_list.cmake)
-
-create_keymap_setups("${keymap_list}" keymap_table)
-create_keymap_report("${keymap_list}" keymap_report)
-
-# get list length and decrement by one to account for trailing semicolon
-list (LENGTH keymap_table num_keymaps)
-math(EXPR num_keymaps "${num_keymaps}-1")
-
-message("**********************")
-message("Keymap table: ${keymap_report}")
-message("**********************\n\n")
-
-
-
 if(ARCH MATCHES test)
   add_subdirectory(test)
 else()
