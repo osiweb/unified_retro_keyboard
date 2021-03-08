@@ -30,13 +30,7 @@ void setUp(void)
   asdf_keymaps_init();
   asdf_init();
 
-  asdf_keymaps_register(ASDF_TEST_PLAIN_MAP_INDEX, &setup_test_hooks_map0);
-  asdf_keymaps_register(ASDF_TEST_CAPS_MAP_INDEX, &setup_test_hooks_map1);
-  asdf_keymaps_register(ASDF_TEST2_PLAIN_MAP_INDEX, &setup_test_hooks_map2);
-  asdf_keymaps_register(ASDF_TEST2_CAPS_MAP_INDEX, &setup_test_hooks_map3);
-
-  asdf_keymaps_select(0);
-
+  asdf_keymaps_select(ASDF_TEST_DEFAULT_SCANNER_MAP);
 }
 
 void tearDown(void) {}
@@ -57,7 +51,7 @@ void test_default_scan_hook_is_default_scanner(void)
   TEST_ASSERT_EQUAL_INT((int) asdf_arch_read_row(100), (int) testval);
 }
 
-// test_alternate_scan_hook
+ // test_alternate_scan_hook
 void test_alternate_scan_hook(void)
 {
   asdf_keymaps_select(ASDF_TEST_ALTERNATE_SCANNER_MAP);

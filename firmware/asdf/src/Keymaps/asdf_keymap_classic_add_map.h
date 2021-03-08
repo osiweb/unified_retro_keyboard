@@ -3,9 +3,9 @@
 // Unfified Keyboard Project
 // ASDF keyboard firmware
 //
-// asdf_keymap_classic.h
+// asdf_keymap_classic_add_map.h
 //
-// Ascii keymaps
+// defines keymap matrices and add_map() function for classic layouts
 //
 // Copyright 2019 David Fenyes
 //
@@ -28,41 +28,23 @@
 // includes the columns from 0-NUM_COLS.
 //
 
-#if !defined(ASDF_KEYMAP_DEFS_CLASSIC_H)
-#define ASDF_KEYMAP_DEFS_CLASSIC_H
-
-// include DIP switch definitions
-#include "asdf_keymap_defs_dipswitch.h"
-
-// Edit the number of rows and columns used in this map. If the number is less
-// than the maxium, the unused elements will be initialized to 0.
-
-#define ASDF_CLASSIC_NUM_ROWS 9 // DIP switches are row 8 (zero based)
-#define ASDF_CLASSIC_NUM_COLS 8
-
-#define CLASSIC_ACTION_BREAK ACTION_NOTHING
-
-#define CLASSIC_VIRTUAL_RESET VOUT1
-#define CLASSIC_ACTION_RESET ACTION_VOUT1
-#define CLASSIC_RESET_OUTPUT PHYSICAL_OUT3_OPEN_HI
-#define CLASSIC_RESET_ACTIVE_VALUE 0
-
-#define CLASSIC_VIRTUAL_CLR_SCR VOUT2
-#define CLASSIC_ACTION_CLEAR ACTION_VOUT2
-#define CLASSIC_CLR_SCR_OUT PHYSICAL_OUT1_OPEN_LO
-#define CLASSIC_CLR_SCR_ACTIVE_VALUE 1
-
-#define CLASSIC_VIRTUAL_POWER_LED VLED1
-#define CLASSIC_POWER_LED PHYSICAL_LED1
-#define CLASSIC_POWER_LED_INIT_VALUE 1
-
-#define CLASSIC_CAPS_LED PHYSICAL_LED3
-#define CLASSIC_CAPS_LED_INIT_VALUE 0
-
-void classic_add_map(const asdf_keycode_t (*matrix)[CLASSIC_NUM_COLS],modifier_index_t);
+#if !defined(ASDF_KEYMAP_CLASSIC_ADD_MAP_H)
+#define ASDF_KEYMAP_CLASSIC_ADD_MAP_H
 
 
-#endif /* !defined (ASDF_KEYMAP_DEFS_ASCII_H) */
+typedef enum {
+  CLASSIC_PLAIN_MAP,
+  CLASSIC_CAPS_MAP,
+  CLASSIC_SHIFT_MAP,
+  CLASSIC_CTRL_MAP,
+} classic_map_index_t;
+
+
+// function prototypes
+void classic_add_map(const classic_map_index_t map_index, modifier_index_t modifier_index);
+
+
+#endif /* !defined (ASDF_KEYMAP_CLASSIC_ADD_MAP_H) */
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

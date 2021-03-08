@@ -204,32 +204,34 @@
 #define ASDF_TEST2_PLAIN_MAP_INDEX 2
 #define ASDF_TEST2_CAPS_MAP_INDEX 3
 
+
 // keymap assignments for the virtual device tests
-#define SINGLE_TESTS_KEYMAP ASDF_TEST_PLAIN_MAP_INDEX
-#define DOUBLE_ASSIGN_TEST_KEYMAP ASDF_TEST_PLAIN_MAP_INDEX
-#define TRIPLE_TESTS_KEYMAP ASDF_TEST_CAPS_MAP_INDEX
-#define VCAPS_TEST_KEYMAP ASDF_TEST2_PLAIN_MAP_INDEX
-#define VSHIFT_TEST_KEYMAP ASDF_TEST2_PLAIN_MAP_INDEX
+#define SINGLE_TESTS_KEYMAP 4
+#define DOUBLE_ASSIGN_TEST_KEYMAP 5
+#define TRIPLE_TESTS_KEYMAP 6
+#define VCAPS_TEST_KEYMAP 7
+#define VSHIFT_TEST_KEYMAP VCAPS_TEST_KEYMAP
 
 // keymap assignments for the hook mechanism tests
-#define ASDF_TEST_ALTERNATE_SCANNER_MAP ASDF_TEST2_PLAIN_MAP_INDEX
-#define ASDF_TEST_ALTERNATE_OUTPUT_MAP ASDF_TEST2_PLAIN_MAP_INDEX
-#define ASDF_TEST_EACH_SCAN_MAP ASDF_TEST2_CAPS_MAP_INDEX
+#define ASDF_TEST_DEFAULT_SCANNER_MAP 8
+#define ASDF_TEST_ALTERNATE_SCANNER_MAP 9
+#define ASDF_TEST_ALTERNATE_OUTPUT_MAP 9
+#define ASDF_TEST_EACH_SCAN_MAP 10
 
 void setup_test_plain_map(void);
 void setup_test_caps_map(void);
 void setup_test2_plain_map(void);
 void setup_test2_caps_map(void);
 
-void setup_test_vdevs_map0(void);
-void setup_test_vdevs_map1(void);
-void setup_test_vdevs_map2(void);
-void setup_test_vdevs_map3(void);
+void setup_test_vdevs_single(void);
+void setup_test_vdevs_double(void);
+void setup_test_vdevs_triple(void);
+void setup_test_vdevs_vcaps(void);
 
-void setup_test_hooks_map0(void);
-void setup_test_hooks_map1(void);
-void setup_test_hooks_map2(void);
-void setup_test_hooks_map3(void);
+void setup_test_hooks_alt_scanner(void);
+void setup_test_hooks_alt_output(void);
+void setup_test_hooks_each_scan(void);
+
 
 
 

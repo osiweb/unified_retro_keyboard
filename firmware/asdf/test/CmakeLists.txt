@@ -1,5 +1,5 @@
-temporary_config_file(${ASDF_SRC_DIR}/Keymaps/asdf_all_keymap_defs_test.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_defs.h)
-temporary_config_file(${ASDF_SRC_DIR}/Arch/asdf_arch_test.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.h)
+configure_file(${ASDF_SRC_DIR}/Keymaps/asdf_all_keymap_defs_test.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_defs.h COPYONLY)
+configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_test.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.h COPYONLY)
 
 list(APPEND C_FLAGS
   "-std=c99"
@@ -16,17 +16,30 @@ list(APPEND C_FLAGS
   "-Wstrict-prototypes"
   "-Wundef"
   "-Wold-style-definition"
+  "-g"
   )
 
 list(APPEND TEST_INCLUDES
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/unity
+  ${CMAKE_CURRENT_BINARY_DIR}
   ${ASDF_SRC_DIR}
   ${ASDF_SRC_DIR}/Arch
   )
 
+add_library(unity
+  STATIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/unity/unity.c
+  )
+
+target_include_directories(unity
+  PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/unity
+  )
+
+
 add_library(asdf_core
   STATIC
+  asdf_keymap_table.c
   ${ASDF_SRC_DIR}/asdf.c
   ${ASDF_SRC_DIR}/asdf_buffer.c
   ${ASDF_SRC_DIR}/asdf_hook.c
@@ -50,6 +63,7 @@ add_library(test_helpers
   STATIC
   ${CMAKE_CURRENT_SOURCE_DIR}/test_asdf_lib.c
   ${CMAKE_CURRENT_SOURCE_DIR}/test_asdf_keymap_defs.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/asdf_keymap_table.c
   )
 
 target_include_directories(test_helpers
@@ -69,7 +83,6 @@ function(setup_test testname)
 
   add_executable(${testname}
     ${testname}.c
-    unity/unity.c
     )
 
   target_compile_options(${testname}
@@ -82,7 +95,7 @@ function(setup_test testname)
     ${TEST_INCLUDES}
     )
 
-  target_link_libraries(${testname} asdf_core test_helpers)
+  target_link_libraries(${testname} unity asdf_core test_helpers)
 
   add_test(
     NAME ${testname}

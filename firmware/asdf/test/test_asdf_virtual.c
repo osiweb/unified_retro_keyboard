@@ -16,12 +16,7 @@ void setUp(void)
   asdf_arch_init();
   asdf_keymaps_init();
 
-  asdf_keymaps_register(ASDF_TEST_PLAIN_MAP_INDEX, &setup_test_vdevs_map0);
-  asdf_keymaps_register(ASDF_TEST_CAPS_MAP_INDEX, &setup_test_vdevs_map1);
-  asdf_keymaps_register(ASDF_TEST2_PLAIN_MAP_INDEX, &setup_test_vdevs_map2);
-  asdf_keymaps_register(ASDF_TEST2_CAPS_MAP_INDEX, &setup_test_vdevs_map3);
-
-  asdf_keymaps_select(0);
+  asdf_keymaps_select(
 }
 
 

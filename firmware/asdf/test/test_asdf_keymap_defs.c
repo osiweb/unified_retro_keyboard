@@ -23,11 +23,12 @@
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include <test_asdf_keymap_defs.h>
+#include "test_asdf_keymap_defs.h"
 #include "asdf_ascii.h"
 #include "asdf_modifiers.h"
 #include "asdf_keymaps.h"
 #include "test_asdf_lib.h"
+#include "asdf_keymap_table.h"
 
 static const asdf_keycode_t test_PLAIN_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST_PLAIN_MAP;
 static const asdf_keycode_t test_SHIFT_matrix[TEST_NUM_ROWS][TEST_NUM_COLS] = ASDF_TEST_SHIFT_MAP;
@@ -50,7 +51,7 @@ void test_keymaps_add_map(const asdf_keycode_t (*matrix)[TEST_NUM_COLS],
 
 void setup_test_plain_map(void)
 {
-  test_keymaps_add_map(&test_PLAIN_matrix[0], MOD_PLAIN_MAP);
+  test_keymaps_add_map(test_PLAIN_matrix, MOD_PLAIN_MAP);
   test_keymaps_add_map(test_CAPS_matrix, MOD_CAPS_MAP);
   test_keymaps_add_map(test_SHIFT_matrix, MOD_SHIFT_MAP);
   test_keymaps_add_map(test_CTRL_matrix, MOD_CTRL_MAP);
@@ -80,7 +81,7 @@ void setup_test2_caps_map(void)
   test_keymaps_add_map(test2_CTRL_matrix, MOD_CTRL_MAP);
 }
 
-void setup_test_vdevs_map0(void)
+void setup_test_vdevs_single(void)
 {
   setup_test_plain_map();
 
@@ -95,6 +96,15 @@ void setup_test_vdevs_map0(void)
   /* single pulse */
   asdf_virtual_assign(VOUT3, PHYSICAL_OUT3, V_PULSE_SHORT, 0);
 
+  asdf_virtual_sync();
+}
+
+void setup_test_vdevs_double(void)
+{
+  setup_test_plain_map();
+
+  asdf_virtual_init();
+
   /* first of double assignment attempt */
   asdf_virtual_assign(VOUT4, PHYSICAL_LED1, V_NOFUNC, 0);
 
@@ -104,9 +114,8 @@ void setup_test_vdevs_map0(void)
   asdf_virtual_sync();
 }
 
-void setup_test_vdevs_map1(void)
+void setup_test_vdevs_triple(void)
 {
-
   setup_test_caps_map();
 
   asdf_virtual_init();
@@ -119,7 +128,7 @@ void setup_test_vdevs_map1(void)
   asdf_virtual_sync();
 }
 
-void setup_test_vdevs_map2(void)
+void setup_test_vdevs_vcaps(void)
 {
   setup_test2_plain_map();
 
@@ -133,43 +142,22 @@ void setup_test_vdevs_map2(void)
   asdf_virtual_sync();
 }
 
-void setup_test_vdevs_map3(void)
+void setup_test_hooks_alt_scanner(void)
 {
-  setup_test2_caps_map();
-
-  asdf_virtual_init();
-
-  asdf_virtual_assign(VCAPS_LED, PHYSICAL_LED1, V_NOFUNC, 0);
-  asdf_virtual_assign(VSHIFT_LED, PHYSICAL_LED2, V_NOFUNC, 0);
-  asdf_virtual_assign(VOUT2, PHYSICAL_OUT3, V_NOFUNC, 0);
-  asdf_virtual_assign(VOUT2, ASDF_PHYSICAL_NUM_RESOURCES, V_NOFUNC, 0);
-
-  asdf_virtual_sync();
-}
-
-void setup_test_hooks_map0(void)
-{
-  setup_test_plain_map();
+  setup_test2_plain_map();
   asdf_hook_init();
 }
 
-void setup_test_hooks_map1(void)
-{
-  setup_test_caps_map();
-  asdf_hook_init();
-}
-
-void setup_test_hooks_map2(void)
+void setup_test_hooks_alt_output(void)
 {
   setup_test2_plain_map();
 
   asdf_hook_init();
-  asdf_hook_assign(ASDF_HOOK_SCANNER, (void (*)(void)) &test_hook_read_row);
   asdf_hook_assign(ASDF_HOOK_OUTPUT, (void (*)(void)) &test_hook_output);
-
+  asdf_hook_assign(ASDF_HOOK_SCANNER, (void (*)(void)) &test_hook_read_row);
 }
 
-void setup_test_hooks_map3(void)
+void setup_test_hooks_each_scan(void)
 {
   setup_test2_caps_map();
 

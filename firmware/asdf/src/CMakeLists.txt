@@ -1,12 +1,9 @@
-
-set (KEYMAP "production")
-
 message("C compiler: ${CMAKE_C_COMPILER}")
 
-temporary_config_file(${ASDF_SRC_DIR}/Arch/asdf_arch_${ARCH}.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.h)
-temporary_config_file(${ASDF_SRC_DIR}/Arch/asdf_arch_${ARCH}.c ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.c)
-temporary_config_file(${ASDF_SRC_DIR}/Keymaps/asdf_all_keymap_defs_${KEYMAP}.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_defs.h)
-
+configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_${ARCH}.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.h COPYONLY)
+configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_${ARCH}.c ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.c COPYONLY)
+configure_file(${ASDF_SRC_DIR}/asdf_keymap_table.c.in  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_table.c)
+configure_file(${ASDF_SRC_DIR}/asdf_keymap_table.h.in  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_table.h)
 
 list(APPEND C_FLAGS
   -std=c99
@@ -38,6 +35,7 @@ list (APPEND SOURCES
   ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.c
   asdf_buffer.c
   asdf_hook.c
+  asdf_keymap_table.c
   asdf_keymaps.c
   asdf_modifiers.c
   asdf_physical.c
@@ -45,6 +43,9 @@ list (APPEND SOURCES
   asdf_virtual.c
   main.c
   )
+
+# create a library for the keymap modules
+add_subdirectory(Keymaps)
 
 # add the executable
 if (COMMAND custom_add_executable)
@@ -66,6 +67,7 @@ target_compile_options(${ASDF_EXECUTABLE_TARGET_NAME}
   ${CFLAGS}
   )
 
-
-
+target_link_libraries(${ASDF_EXECUTABLE_TARGET_NAME}
+  keymaps
+  )
 

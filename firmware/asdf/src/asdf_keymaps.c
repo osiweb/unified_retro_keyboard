@@ -20,6 +20,7 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 
+#include <stdio.h> //FIXME
 #include <stdint.h>
 #include <stddef.h>
 #include "asdf_config.h"
@@ -28,6 +29,7 @@
 #include "asdf_physical.h"
 #include "asdf_virtual.h"
 #include "asdf_hook.h"
+#include "asdf_keymap_table.h"
 #include "asdf_keymaps.h"
 #include "asdf_modifiers.h"
 
@@ -38,37 +40,11 @@ static asdf_keycode_map_t keymaps[ASDF_MOD_NUM_MODIFIERS] = {};
 // List of keymap setup routines. Each keymap setup routine is responsible for
 // populating the keymap matrices, setting up virtual devices, and setting up
 // keymap-specific function hooks and initial conditions for the keymap.
-static asdf_keymap_setup_function_t keymap_setup_function_lookup_table[ASDF_NUM_KEYMAPS];
+extern asdf_keymap_setup_function_t keymap_setup_function_lookup_table[ASDF_NUM_KEYMAPS];
 
 
 // The current keymap index.  This is stored so bitwise operators on the keymap index can be performed.
 static uint8_t current_keymap_index;
-
-// PROCEDURE: asdf_keymaps_register
-// INPUTS: (uint8_t) keymap_index - index of the keymap to be modified
-//         (asdf_keymap_setup_function_t) keymap setup function - called on
-//         keymap change to setup up the keymap
-//
-// OUTPUTS: none
-//
-// DESCRIPTION: Called by keymap building modules. This routine adds a keymap
-// setup function into the keymap setup array.
-//
-// SIDE EFFECTS:
-//
-// NOTES: If the keymap modifier index is not a valid keymap index then no
-// action is performed.
-//
-// SCOPE: public
-//
-// COMPLEXITY: 1
-void asdf_keymaps_register(uint8_t keymap_index, asdf_keymap_setup_function_t keymap_setup_function)
-{
-  if (keymap_index < ASDF_NUM_KEYMAPS)
-    {
-      keymap_setup_function_lookup_table[keymap_index] = keymap_setup_function;
-    }
-}
 
 // PROCEDURE: asdf_keymaps_add_map
 // INPUTS: (asdf_keycode_t *) - pointer to the keycode matrix to add in to map
@@ -220,9 +196,6 @@ void asdf_keymaps_dummy_function(void) {}
 //
 void asdf_keymaps_init(void)
 {
-  for (uint8_t i = 0; i < ASDF_NUM_KEYMAPS; i++) {
-    keymap_setup_function_lookup_table[i] = &asdf_keymaps_dummy_function;
-  }
   current_keymap_index = 0;
 }
 

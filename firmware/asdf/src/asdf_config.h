@@ -49,9 +49,6 @@
 
 // Data structure sizes:
 
-// Max number of keymaps supported (defines size of keymap setup routine array)
-#define ASDF_NUM_KEYMAPS 16
-
 // size of the keycode output buffer.
 #define ASDF_KEYCODE_BUFFER_SIZE 64
 

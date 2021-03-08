@@ -1,10 +1,11 @@
 #include <stdint.h>
 #include <stdarg.h>
-#include "asdf_arch_test.h"
+#include "asdf_arch.h"
 #include "unity.h"
 #include "asdf.h"
 #include "asdf_ascii.h"
 #include "asdf_modifiers.h"
+#include "asdf_keymap_table.h"
 #include "test_asdf_keymap_defs.h"
 #include "asdf_keymaps.h"
 #include "test_asdf_lib.h"
@@ -122,6 +123,7 @@ void setUp(void)
   coord_t *temp;
 
   asdf_keymaps_init();
+  asdf_keymaps_select(ASDF_TEST_PLAIN_MAP_INDEX);
 
   temp = find_code(TESTALPHA);
   alpha_sample = *temp;
@@ -132,10 +134,6 @@ void setUp(void)
   temp = find_code(TESTKEYMAP_TAG);
   keymap_tag = *temp;
 
-  asdf_keymaps_register(ASDF_TEST_PLAIN_MAP_INDEX, &setup_test_plain_map);
-  asdf_keymaps_register(ASDF_TEST_CAPS_MAP_INDEX, &setup_test_caps_map);
-  asdf_keymaps_register(ASDF_TEST2_PLAIN_MAP_INDEX, &setup_test2_plain_map);
-  asdf_keymaps_register(ASDF_TEST2_CAPS_MAP_INDEX, &setup_test2_caps_map);
 }
 
 void tearDown(void) {}
