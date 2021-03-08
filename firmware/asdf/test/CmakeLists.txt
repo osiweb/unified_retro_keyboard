@@ -1,4 +1,7 @@
-temporary_config_file(${ASDF_SRC_DIR}/Keymaps/asdf_all_keymap_defs_test.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_defs.h)
+configure_file(${ASDF_SRC_DIR}/Keymaps/asdf_all_keymap_defs_test.h asdf_keymap_defs.h)
+configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_test.c asdf_arch.c)
+configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_test.h asdf_arch.h)
+
 
 list(APPEND C_FLAGS
   "-std=c99"
@@ -18,10 +21,6 @@ list(APPEND C_FLAGS
   )
 
 list(APPEND TEST_INCLUDES
-  ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/unity
-  ${ASDF_SRC_DIR}
-  ${ASDF_SRC_DIR}/Arch
   )
 
 add_library(asdf_core
@@ -34,13 +33,12 @@ add_library(asdf_core
   ${ASDF_SRC_DIR}/asdf_physical.c
   ${ASDF_SRC_DIR}/asdf_repeat.c
   ${ASDF_SRC_DIR}/asdf_virtual.c
-  ${ASDF_SRC_DIR}/Arch/asdf_arch_test.c
+  asdf_arch.c
   )
 
 target_include_directories(asdf_core
   PRIVATE
   ${ASDF_SRC_DIR}
-  ${ASDF_SRC_DIR}/Arch
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
   )
@@ -54,7 +52,7 @@ target_include_directories(test_helpers
   PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${ASDF_SRC_DIR}
-  ${CMAKE_BINARY_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
   )
 
 
@@ -77,7 +75,10 @@ function(setup_test testname)
 
   target_include_directories(${testname}
     PRIVATE
-    ${TEST_INCLUDES}
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/unity
+    ${ASDF_SRC_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
     )
 
   target_link_libraries(${testname} asdf_core test_helpers)
