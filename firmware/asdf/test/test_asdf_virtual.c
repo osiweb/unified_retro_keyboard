@@ -16,9 +16,8 @@ void setUp(void)
   asdf_arch_init();
   asdf_keymaps_init();
 
-  asdf_keymaps_select(
+  asdf_keymaps_select(SINGLE_TESTS_KEYMAP);
 }
-
 
 void tearDown(void) {}
 
