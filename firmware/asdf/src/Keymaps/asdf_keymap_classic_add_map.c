@@ -23,7 +23,12 @@
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
+#include "asdf_arch.h"
+#include "asdf.h"
+#include "asdf_ascii.h"
+#include "asdf_keymaps.h"
 #include "asdf_keymap_classic.h"
+#include "asdf_keymap_classic_add_map.h"
 
 // Key Matrix for combination of ASCII controller and Classic ASCII matrix
 //
@@ -58,11 +63,15 @@
 
 #define ASDF_CLASSIC_DIP_SWITCHES ASDF_KEYMAP_DIP_SWITCHES
 
-const FLASH keycode_matrix_t ascii_plain_matrix = {
-  [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING, CLASSIC_ESC, ASCII_TAB,
+typedef asdf_keycode_t classic_keycode_matrix_t[CLASSIC_NUM_ROWS][CLASSIC_NUM_COLS];
+
+
+
+const FLASH classic_keycode_matrix_t classic_plain_matrix = {
+  [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING, ASCII_ESC, ASCII_TAB,
           ACTION_CTRL, ASCII_BACKSLASH },
   [1] = { ASCII_DEL, 'p', ';', '/', ASCII_SPACE, 'z', 'a', 'q' },
-  [2] = { ASCII_ACTION_BREAK, ASCII_COMMA, 'm', 'n', 'b', 'v', 'c', 'x' },
+  [2] = { CLASSIC_ACTION_BREAK, ASCII_COMMA, 'm', 'n', 'b', 'v', 'c', 'x' },
   [3] = { ACTION_NOTHING, 'k', 'j', 'h', 'g', 'f', 'd', 's' },
   [4] = { ACTION_NOTHING, 'i', 'u', 'y', 't', 'r', 'e', 'w' },
   [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, 'o', 'l', ASCII_PERIOD },
@@ -72,11 +81,11 @@ const FLASH keycode_matrix_t ascii_plain_matrix = {
   ASDF_CLASSIC_DIP_SWITCHES
 };
 
-const FLASH keycode_matrix_t ascii_shift_matrix = {
+const FLASH classic_keycode_matrix_t classic_shift_matrix = {
   [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING, ASCII_ESC, ASCII_TAB,
           ACTION_CTRL, ASCII_VERT_BAR },
   [1] = { ASCII_DEL, 'P', '+', '?', ASCII_SPACE, 'Z', 'A', 'Q' },
-  [2] = { ASCII_ACTION_CLEAR, '<', 'M', 'N', 'B', 'V', 'C', 'X' },
+  [2] = { CLASSIC_ACTION_CLEAR, '<', 'M', 'N', 'B', 'V', 'C', 'X' },
   [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },
   [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },
   [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', '>' },
@@ -86,11 +95,11 @@ const FLASH keycode_matrix_t ascii_shift_matrix = {
   ASDF_CLASSIC_DIP_SWITCHES
 };
 
-const FLASH keycode_matrix_t ascii_caps_matrix = {
+const FLASH classic_keycode_matrix_t classic_caps_matrix = {
   [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING, ASCII_ESC, ASCII_TAB,
           ACTION_CTRL, ASCII_BACKSLASH },
   [1] = { ASCII_DEL, 'P', ';', '/', ASCII_SPACE, 'Z', 'A', 'Q' },
-  [2] = { ASCII_ACTION_BREAK, ASCII_COMMA, 'M', 'N', 'B', 'V', 'C', 'X' },
+  [2] = { CLASSIC_ACTION_BREAK, ASCII_COMMA, 'M', 'N', 'B', 'V', 'C', 'X' },
   [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },
   [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },
   [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', ASCII_PERIOD },
@@ -100,12 +109,12 @@ const FLASH keycode_matrix_t ascii_caps_matrix = {
   ASDF_CLASSIC_DIP_SWITCHES
 };
 
-const FLASH keycode_matrix_t ascii_ctrl_matrix = {
+const FLASH classic_keycode_matrix_t classic_ctrl_matrix = {
   [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING, ASCII_ESC, ASCII_TAB,
           ACTION_CTRL, 0x1c },
   [1] = { ACTION_NOTHING, ASCII_CTRL_P, ACTION_NOTHING, ACTION_NOTHING, ASCII_SPACE, ASCII_CTRL_Z,
           ASCII_CTRL_A, ASCII_CTRL_Q },
-  [2] = { ASCII_ACTION_RESET, ASCII_COMMA, ASCII_CTRL_M, ASCII_CTRL_N, ASCII_CTRL_B, ASCII_CTRL_V,
+  [2] = { CLASSIC_ACTION_RESET, ASCII_COMMA, ASCII_CTRL_M, ASCII_CTRL_N, ASCII_CTRL_B, ASCII_CTRL_V,
           ASCII_CTRL_C, ASCII_CTRL_X },
   [3] = { ACTION_NOTHING, ASCII_CTRL_K, ASCII_CTRL_J, ASCII_CTRL_H, ASCII_CTRL_G, ASCII_CTRL_F,
           ASCII_CTRL_D, ASCII_CTRL_S },
@@ -122,19 +131,19 @@ const FLASH keycode_matrix_t ascii_ctrl_matrix = {
 
 
 
-static keycode_matrix_t *classic_maps[] = {
-  [CLASSIC_CAPS_MAP] = classic_caps_matrix,
-  [CLASSIC_PLAIN_MAP] = classic_plain_matrix,
-  [CLASSIC_SHIFT_MAP] = classic_shift_matrix,
-  [CLASSIC_CTRL_MAP] = classic_ctrl_matrix,
-}
+static const classic_keycode_matrix_t *classic_maps[] = {
+  [CLASSIC_CAPS_MAP] = &classic_caps_matrix,
+  [CLASSIC_PLAIN_MAP] = &classic_plain_matrix,
+  [CLASSIC_SHIFT_MAP] = &classic_shift_matrix,
+  [CLASSIC_CTRL_MAP] = &classic_ctrl_matrix,
+};
 
-  void classic_add_map(const classic_maps_index_t map_index,
+  void classic_add_map(const classic_map_index_t map_index,
                        modifier_index_t modifier_index)
 {
 
   asdf_keycode_t (*matrix)[CLASSIC_NUM_COLS] =
-    classic_maps[map_index];
+    (asdf_keycode_t (*)[CLASSIC_NUM_COLS]) classic_maps[map_index];
 
     asdf_keymaps_add_map(&matrix[0][0], modifier_index, (uint8_t) CLASSIC_NUM_ROWS,
                        (uint8_t) CLASSIC_NUM_COLS);

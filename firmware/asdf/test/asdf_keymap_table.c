@@ -47,6 +47,9 @@ asdf_keymap_setup_function_t keymap_setup_function_lookup_table[ASDF_NUM_KEYMAPS
   [ASDF_TEST_EACH_SCAN_MAP] = setup_test_hooks_each_scan,
 };
 
+
+void asdf_keymap_table_init(void) {}
+
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
 

@@ -23,6 +23,8 @@
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
+#include "asdf_keymaps.h"
+#include "asdf_virtual.h"
 #include "asdf_keymap_classic.h"
 #include "asdf_keymap_classic_add_map.h"
 
@@ -57,31 +59,6 @@ void setup_classic_keymap(void)
   // match the initial CAPSLOCK state. The capslock state code will alter the
   // virtual LED according to the state.
   asdf_virtual_assign(VCAPS_LED, CLASSIC_CAPS_LED, V_NOFUNC, CLASSIC_CAPS_LED_INIT_VALUE);
-
-  // assign RESET output to the virtual RESET output, configure to produce a short pulse when activated
-  asdf_virtual_assign(CLASSIC_VIRTUAL_RESET, CLASSIC_RESET_OUTPUT, V_PULSE_SHORT, !CLASSIC_RESET_ACTIVE_VALUE);
-
-  // assign the CLRSCR output to the virtual CLRSCR output, configure to produce a long pulse when activated
-  asdf_virtual_assign(CLASSIC_VIRTUAL_CLR_SCR, CLASSIC_CLR_SCR_OUT, V_PULSE_LONG, !CLASSIC_CLR_SCR_ACTIVE_VALUE);
-}
-
-void setup_classic_caps_keymap(void)
-{
-  // for the ALL CAPS keymap, the "plain" mode is the same as "all caps" mode:
-  classic_add_map(classic_caps_map, MOD_PLAIN_MAP);
-  classic_add_map(classic_caps_map, MOD_CAPS_MAP);
-  classic_add_map(classic_shift_map, MOD_SHIFT_MAP);
-  classic_add_map(classic_ctrl_map, MOD_CTRL_MAP);
-
-  asdf_virtual_init();
-
-  // Assign power LED to virtual power LED, and initialize to ON
-  asdf_virtual_assign(CLASSIC_VIRTUAL_POWER_LED, CLASSIC_POWER_LED, V_NOFUNC, CLASSIC_POWER_LED_INIT_VALUE);
-
-  // Because the virtual power LED never changes, also assign the CAPSLOCK
-  // physical LED to the virtual Power LED, and intialize to OFF (or can change
-  // to ON depending on preference)
-  asdf_virtual_assign(CLASSIC_VIRTUAL_POWER_LED, CLASSIC_CAPS_LED, V_NOFUNC, CLASSIC_CAPS_LED_INIT_VALUE);
 
   // assign RESET output to the virtual RESET output, configure to produce a short pulse when activated
   asdf_virtual_assign(CLASSIC_VIRTUAL_RESET, CLASSIC_RESET_OUTPUT, V_PULSE_SHORT, !CLASSIC_RESET_ACTIVE_VALUE);

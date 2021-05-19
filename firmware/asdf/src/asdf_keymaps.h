@@ -42,9 +42,6 @@
 #define ASDF_KEYMAP_BIT_2 4
 #define ASDF_KEYMAP_BIT_3 8
 
-#define ASDF_MAX_ROWS 16
-#define ASDF_MAX_COLS 8
-
 // define the type for a keymap setup function. Keymaps are registerd by storing
 // a keymap setup function in the keymap setup array.
 typedef void (*asdf_keymap_setup_function_t)(void);

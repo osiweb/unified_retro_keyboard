@@ -42,7 +42,6 @@ static asdf_keycode_map_t keymaps[ASDF_MOD_NUM_MODIFIERS] = {};
 // keymap-specific function hooks and initial conditions for the keymap.
 extern asdf_keymap_setup_function_t keymap_setup_function_lookup_table[ASDF_NUM_KEYMAPS];
 
-
 // The current keymap index.  This is stored so bitwise operators on the keymap index can be performed.
 static uint8_t current_keymap_index;
 
@@ -186,7 +185,8 @@ void asdf_keymaps_dummy_function(void) {}
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: initialize the keymap list.  Called at startup.
+// DESCRIPTION: initialize the keymap list. Called at startup. This function
+// calls the auto-generated keymap table init function, then selects keymap 0.
 //
 // SIDE EFFECTS: See DESCRIPTION
 //
@@ -196,6 +196,7 @@ void asdf_keymaps_dummy_function(void) {}
 //
 void asdf_keymaps_init(void)
 {
+  asdf_keymap_table_init();
   current_keymap_index = 0;
 }
 

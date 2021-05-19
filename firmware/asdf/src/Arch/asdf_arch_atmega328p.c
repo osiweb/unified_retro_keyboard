@@ -39,6 +39,7 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <stdint.h>
+#include "asdf.h"
 #include "asdf_config.h"
 
 static volatile uint8_t tick = 0;
@@ -752,7 +753,8 @@ asdf_cols_t asdf_arch_read_row(uint8_t row)
   asdf_cols_t cols = 0;
 
   // first, output the new row value:
-  ASDF_ROW_PORT = (ASDF_ROW_PORT & ~ASDF_ROW_MASK) | ((row & ASDF_ROW_MASK) << ASDF_ROW_OFFSET);
+  ASDF_ROW_PORT = (ASDF_ROW_PORT & ~ASDF_ROW_MASK) 
+    | ((row & ASDF_ROW_MASK) << ASDF_ROW_OFFSET);
 
 
   // read in the columns.  Set LOAD mode and pulse clock.
@@ -767,7 +769,7 @@ asdf_cols_t asdf_arch_read_row(uint8_t row)
   // After the load operation, the LSB is already at the output pin, so there
   // will be one fewer read than clock pulse. Continue reading the bits until
   // the leader bit is in the boundary position.
-  for (uint8_t i = 0; i < ASDF_NUM_COLS; i++) {
+  for (uint8_t i = 0; i < ASDF_MAX_COLS; i++) {
 
     // invert the bits as they are read (see note 1)
     cols |= (((~(ASDF_COL_PIN) >> ASDF_COL_BIT) & 1) << i);

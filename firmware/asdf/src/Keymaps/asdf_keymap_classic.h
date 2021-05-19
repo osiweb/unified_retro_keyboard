@@ -37,8 +37,8 @@
 // Edit the number of rows and columns used in this map. If the number is less
 // than the maxium, the unused elements will be initialized to 0.
 
-#define ASDF_CLASSIC_NUM_ROWS 9 // DIP switches are row 8 (zero based)
-#define ASDF_CLASSIC_NUM_COLS 8
+#define CLASSIC_NUM_ROWS 9 // DIP switches are row 8 (zero based)
+#define CLASSIC_NUM_COLS 8
 
 #define CLASSIC_ACTION_BREAK ACTION_NOTHING
 
@@ -58,9 +58,6 @@
 
 #define CLASSIC_CAPS_LED PHYSICAL_LED3
 #define CLASSIC_CAPS_LED_INIT_VALUE 0
-
-void classic_add_map(const asdf_keycode_t (*matrix)[CLASSIC_NUM_COLS],modifier_index_t);
-
 
 #endif /* !defined (ASDF_KEYMAP_DEFS_ASCII_H) */
 

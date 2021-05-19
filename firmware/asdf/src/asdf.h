@@ -34,8 +34,12 @@
 // an action code is not a valid keycode.
 #define ASDF_INVALID_CODE ASDF_ACTION
 
+// define ASDF_MAX_COLS to fit in asdf_cols_t
+#define ASDF_MAX_COLS 8
+#define ASDF_MAX_ROWS 16
+
 // for efficiency on 8-bit machines, use 8 columns per row. For 16 columns per
-// row, change cols_t to uint16_t and increase ASDF_NUM_COLS.
+// row, change cols_t to uint16_t and increase ASDF_NUM_COLS to 16.
 typedef uint8_t asdf_cols_t;
 
 // ASCII keycodes are 7 bits. An 8-bit datatype encodes ASCII, plus a flag for a

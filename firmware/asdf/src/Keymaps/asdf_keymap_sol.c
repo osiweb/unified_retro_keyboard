@@ -23,6 +23,12 @@
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
+#include "asdf_arch.h"
+#include "asdf_keymap_sol.h"
+#include "asdf.h"
+#include "asdf_ascii.h"
+#include "asdf_modifiers.h"
+#include "asdf_keymaps.h"
 
 static const FLASH asdf_keycode_t sol_plain_map[ASDF_SOL_NUM_ROWS][ASDF_SOL_NUM_COLS] = {
   [0] = { ACTION_CTRL, SOL_KBD_SHIFTLOCK_ACTION, 'a', 's', 'd', 'f', 'g', 'h' },
@@ -123,11 +129,11 @@ static const FLASH asdf_keycode_t sol_ctrl_map[ASDF_SOL_NUM_ROWS][ASDF_SOL_NUM_C
 //
 // COMPLEXITY: 1
 //
-static void sol_add_map(const asdf_keycode_t (*matrix)[SOL_NUM_COLS],
+static void sol_add_map(const asdf_keycode_t (*matrix)[ASDF_SOL_NUM_COLS],
                         modifier_index_t modifier_index)
 {
-  asdf_keymaps_add_map(&matrix[0][0], modifier_index, (uint8_t) SOL_NUM_ROWS,
-                       (uint8_t) SOL_NUM_COLS);
+  asdf_keymaps_add_map(&matrix[0][0], modifier_index, (uint8_t) ASDF_SOL_NUM_ROWS,
+                       (uint8_t) ASDF_SOL_NUM_COLS);
 }
 
 
@@ -155,7 +161,7 @@ void setup_sol_keymap(void)
   asdf_virtual_assign(SOL_KBD_VRESET, SOL_KBD_TTLOUT_RESET, V_PULSE_SHORT, SOL_KBD_TTL_HIGH);
 
   // Set up the BREAK output, produce a long pulse when activated, default output high
-  asdf_virtual_assign(SOL_KBD_VBREAK, V_PULSE_LONG, SOL_KBD_TTL_HIGH);
+  asdf_virtual_assign(SOL_KBD_VBREAK, SOL_KBD_TTLOUT_BREAK, V_PULSE_LONG, SOL_KBD_TTL_HIGH);
 
 
   // Activate the ALL CAPS mode to emulate the original keyboard:

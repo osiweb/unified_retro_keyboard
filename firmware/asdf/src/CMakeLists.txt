@@ -1,10 +1,20 @@
 message("C compiler: ${CMAKE_C_COMPILER}")
 
 function(create_keymap_setups keymaps keymap_table)
-  list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\n  [\\2] = setup_\\1_keymap" OUTPUT_VARIABLE temp_list)
-  string(REPLACE ";" "," temp_list2 "${temp_list}")
-  set(${keymap_table} "${temp_list2}" PARENT_SCOPE)
+  list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\n  keymap_setup_function_lookup_table[\\2] = setup_\\1_keymap" OUTPUT_VARIABLE temp_list)
+  # we can keep the ';' cmake list separators as the C statement separators.
+  # However, we need to append an extra ';' at the end.
+  string(APPEND temp_list ";")
+  set(${keymap_table} "${temp_list}" PARENT_SCOPE)
 endfunction(create_keymap_setups)
+
+function(create_keymap_declarations keymaps keymap_decl)
+  list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\nextern asdf_keymap_setup_function_t setup_\\1_keymap" OUTPUT_VARIABLE temp_list)
+  # we can keep the ';' cmake list separators as the C statement separators.
+  # However, we need to append an extra ';' at the end.
+  string(APPEND temp_list ";")
+  set(${keymap_decl} "${temp_list}" PARENT_SCOPE)
+endfunction(create_keymap_declarations)
 
 function(create_keymap_report keymaps keymap_report)
   list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\nkeymap [\\2]: \\1" OUTPUT_VARIABLE temp_list)
@@ -16,6 +26,7 @@ include(../keymap_list.cmake)
 
 create_keymap_setups("${keymap_list}" keymap_table)
 create_keymap_report("${keymap_list}" keymap_report)
+create_keymap_declarations("${keymap_list}" keymap_declarations)
 
 # get list length and decrement by one to account for trailing semicolon
 list (LENGTH keymap_list num_keymaps)
@@ -24,6 +35,7 @@ message("**********************")
 message("Keymap table: ${keymap_report}")
 message("**********************\n\n")
 
+set (ASDF_BIN_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
 configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_${ARCH}.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.h COPYONLY)
 configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_${ARCH}.c ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.c COPYONLY)
@@ -60,6 +72,7 @@ list(APPEND C_FLAGS
 list (APPEND SOURCES
   asdf.c
   ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.c
+  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_table.c
   asdf_buffer.c
   asdf_hook.c
   asdf_keymap_table.c
@@ -80,7 +93,9 @@ if (COMMAND custom_add_executable)
   ${SOURCES}
   )
 else()
-  add_executable(${ASDF_TARGET_NAME})
+  add_executable(${ASDF_TARGET_NAME}
+    ${SOURCES}
+    )
 endif()
 
 target_include_directories(${ASDF_EXECUTABLE_TARGET_NAME}

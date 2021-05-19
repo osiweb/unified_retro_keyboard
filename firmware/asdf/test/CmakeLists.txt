@@ -1,4 +1,3 @@
-configure_file(${ASDF_SRC_DIR}/Keymaps/asdf_all_keymap_defs_test.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_defs.h COPYONLY)
 configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_test.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.h COPYONLY)
 
 list(APPEND C_FLAGS

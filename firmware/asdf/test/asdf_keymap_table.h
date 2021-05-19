@@ -32,6 +32,7 @@
 // a keymap setup function in the keymap setup array.
 typedef void (*asdf_keymap_setup_function_t)(void);
 
+void asdf_keymap_table_init(void);
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

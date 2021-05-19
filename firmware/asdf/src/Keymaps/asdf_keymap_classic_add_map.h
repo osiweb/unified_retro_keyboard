@@ -31,6 +31,7 @@
 #if !defined(ASDF_KEYMAP_CLASSIC_ADD_MAP_H)
 #define ASDF_KEYMAP_CLASSIC_ADD_MAP_H
 
+#include "asdf_modifiers.h"
 
 typedef enum {
   CLASSIC_PLAIN_MAP,
@@ -42,7 +43,6 @@ typedef enum {
 
 // function prototypes
 void classic_add_map(const classic_map_index_t map_index, modifier_index_t modifier_index);
-
 
 #endif /* !defined (ASDF_KEYMAP_CLASSIC_ADD_MAP_H) */
 

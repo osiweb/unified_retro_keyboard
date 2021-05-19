@@ -29,10 +29,34 @@
 
 #include "asdf_keymap_table.h"
 
+@keymap_declarations@
 
-asdf_keymap_setup_function_t keymap_setup_function_lookup_table[ASDF_NUM_KEYMAPS] = {
+asdf_keymap_setup_function_t keymap_setup_function_lookup_table[ASDF_NUM_KEYMAPS];
+
+
+// PROCEDURE: asdf_keymap_table_init
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: This function populates the keymap_setup_function_lookup_table
+// with the various externally defined keymap setup functions, in the order
+// specified in the keymap_list.cmake file.
+//
+
+// SIDE EFFECTS: See Description
+//
+// NOTES: This function is necessary because functions defined in external
+// modules are not considered compile-time constants by the C99 standard, so the
+// array cannot be initialized with a compile-time declaration.
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+
+void asdf_keymap_table_init(void) {
   @keymap_table@
-}
+};
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

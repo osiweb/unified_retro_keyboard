@@ -42,6 +42,10 @@ else()
   if((ARCH MATCHES atmega328p) OR (ARCH MATCHES atmega2560))
     set (ASDF_EXECUTABLE_TARGET_NAME ${ASDF_TARGET_NAME}.elf)
 
+    function(custom_add_library EXECUTABLE_NAME)
+      add_avr_library(${EXECUTABLE_NAME} ${ARGN})
+    endfunction(custom_add_library)
+
     function(custom_add_executable EXECUTABLE_NAME)
       add_avr_executable(${EXECUTABLE_NAME} ${ARGN})
     endfunction(custom_add_executable)
