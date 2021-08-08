@@ -5,8 +5,8 @@ $Descr USLedger 17000 11000
 encoding utf-8
 Sheet 1 1
 Title "Unified Retro Keyboard Apple 2 Encoder"
-Date "2020-12-22"
-Rev "4.2"
+Date "2021-08-08"
+Rev "4.3"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -1082,7 +1082,7 @@ U 1 1 5E301C34
 P 10150 3500
 F 0 "D9" H 11000 3500 50  0000 C CNN
 F 1 "1N4148" H 10090 3610 50  0000 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 3325 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 10150 3325 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 3500 50  0001 C CNN
 F 4 "YES" H 10150 3500 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 3500 50  0001 C CNN "Fitted"
@@ -1100,7 +1100,7 @@ U 1 1 5E36B862
 P 9950 3600
 F 0 "D1" H 11000 3600 50  0000 C CNN
 F 1 "1N4148" H 9748 3640 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 3425 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 9950 3425 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 3600 50  0001 C CNN
 F 4 "YES" H 9950 3600 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 3600 50  0001 C CNN "Fitted"
@@ -1118,7 +1118,7 @@ U 1 1 5E3942E4
 P 10150 3700
 F 0 "D10" H 11000 3700 50  0000 C CNN
 F 1 "1N4148" H 9948 3740 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 3525 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 10150 3525 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 3700 50  0001 C CNN
 F 4 "YES" H 10150 3700 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 3700 50  0001 C CNN "Fitted"
@@ -1136,7 +1136,7 @@ U 1 1 5E357678
 P 9950 3800
 F 0 "D2" H 11000 3800 50  0000 C CNN
 F 1 "1N4148" H 9748 3840 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 3625 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 9950 3625 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 3800 50  0001 C CNN
 F 4 "YES" H 9950 3800 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 3800 50  0001 C CNN "Fitted"
@@ -1154,7 +1154,7 @@ U 1 1 5E37FC86
 P 10150 3900
 F 0 "D11" H 11000 3900 50  0000 C CNN
 F 1 "1N4148" H 9948 3940 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 3725 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 10150 3725 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 3900 50  0001 C CNN
 F 4 "YES" H 10150 3900 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 3900 50  0001 C CNN "Fitted"
@@ -1172,7 +1172,7 @@ U 1 1 5E34160D
 P 9950 4000
 F 0 "D3" H 11000 4000 50  0000 C CNN
 F 1 "1N4148" H 9748 4040 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 3825 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 9950 3825 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 4000 50  0001 C CNN
 F 4 "YES" H 9950 4000 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 4000 50  0001 C CNN "Fitted"
@@ -1190,7 +1190,7 @@ U 1 1 5E32CB02
 P 10150 4100
 F 0 "D12" H 11000 4100 50  0000 C CNN
 F 1 "1N4148" H 9948 4140 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 3925 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 10150 3925 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 4100 50  0001 C CNN
 F 4 "YES" H 10150 4100 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 4100 50  0001 C CNN "Fitted"
@@ -1208,7 +1208,7 @@ U 1 1 5E316F0B
 P 9950 4200
 F 0 "D4" H 11000 4200 50  0000 C CNN
 F 1 "1N4148" H 9748 4240 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 4025 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 9950 4025 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 4200 50  0001 C CNN
 F 4 "YES" H 9950 4200 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 4200 50  0001 C CNN "Fitted"
@@ -1304,7 +1304,7 @@ U 1 1 5F1EFED9
 P 10150 4500
 F 0 "D13" H 11000 4500 50  0000 C CNN
 F 1 "1N4148" H 10090 4610 50  0000 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 4325 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 10150 4325 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 4500 50  0001 C CNN
 F 4 "YES" H 10150 4500 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 4500 50  0001 C CNN "Fitted"
@@ -1322,7 +1322,7 @@ U 1 1 5F1EFEDF
 P 9950 4600
 F 0 "D5" H 11000 4600 50  0000 C CNN
 F 1 "1N4148" H 9748 4640 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 4425 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 9950 4425 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 4600 50  0001 C CNN
 F 4 "YES" H 9950 4600 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 4600 50  0001 C CNN "Fitted"
@@ -1340,7 +1340,7 @@ U 1 1 5F1EFEE5
 P 10150 4700
 F 0 "D14" H 11000 4700 50  0000 C CNN
 F 1 "1N4148" H 9948 4740 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 4525 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 10150 4525 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 4700 50  0001 C CNN
 F 4 "YES" H 10150 4700 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 4700 50  0001 C CNN "Fitted"
@@ -1358,7 +1358,7 @@ U 1 1 5F1EFEEB
 P 9950 4800
 F 0 "D6" H 11000 4800 50  0000 C CNN
 F 1 "1N4148" H 9748 4840 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 4625 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 9950 4625 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 4800 50  0001 C CNN
 F 4 "YES" H 9950 4800 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 4800 50  0001 C CNN "Fitted"
@@ -1376,7 +1376,7 @@ U 1 1 5F1EFEF1
 P 10150 4900
 F 0 "D15" H 11000 4900 50  0000 C CNN
 F 1 "1N4148" H 9948 4940 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 4725 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 10150 4725 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 4900 50  0001 C CNN
 F 4 "YES" H 10150 4900 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 4900 50  0001 C CNN "Fitted"
@@ -1394,7 +1394,7 @@ U 1 1 5F1EFEF7
 P 9950 5000
 F 0 "D7" H 11000 5000 50  0000 C CNN
 F 1 "1N4148" H 9748 5040 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 4825 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 9950 4825 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 5000 50  0001 C CNN
 F 4 "YES" H 9950 5000 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 5000 50  0001 C CNN "Fitted"
@@ -1412,7 +1412,7 @@ U 1 1 5F1EFEFD
 P 10150 5100
 F 0 "D16" H 11000 5100 50  0000 C CNN
 F 1 "1N4148" H 9948 5140 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 10150 4925 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 10150 4925 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 10150 5100 50  0001 C CNN
 F 4 "YES" H 10150 5100 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 10150 5100 50  0001 C CNN "Fitted"
@@ -1430,7 +1430,7 @@ U 1 1 5F1EFF03
 P 9950 5200
 F 0 "D8" H 11000 5200 50  0000 C CNN
 F 1 "1N4148" H 9748 5240 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 9950 5025 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 9950 5025 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 9950 5200 50  0001 C CNN
 F 4 "YES" H 9950 5200 50  0001 C CNN "Substitution OK"
 F 5 "NO" H 9950 5200 50  0001 C CNN "Fitted"
