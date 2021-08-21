@@ -3,7 +3,7 @@
 An interface for OSI computers that is compatible with the OSI 542C keyboard, including sound circuits.  
 
 This interface also permits substitution of a soft-shiftlock function using 
-a regular momentary keyswitch, instead of the hard-to-fine latchine keyswitch.
+a regular momentary keyswitch, instead of the hard-to-find latching keyswitch.
 An LED is provided to indicate SHIFT LOCK status.  This interface mates with
 the Classic ASCII keyboard, configured with the OSI keycaps.  
 
