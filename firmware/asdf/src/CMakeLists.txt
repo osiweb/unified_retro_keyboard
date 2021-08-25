@@ -44,7 +44,7 @@ configure_file(${ASDF_SRC_DIR}/asdf_keymap_table.h.in  ${CMAKE_CURRENT_BINARY_DI
 
 
 
-list(APPEND C_FLAGS
+list(APPEND CFLAGS
   -std=c99
   -Wall
   -funsigned-char
