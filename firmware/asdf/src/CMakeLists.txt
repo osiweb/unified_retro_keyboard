@@ -8,7 +8,7 @@ temporary_config_file(${ASDF_SRC_DIR}/Arch/asdf_arch_${ARCH}.c ${CMAKE_CURRENT_B
 temporary_config_file(${ASDF_SRC_DIR}/Keymaps/asdf_all_keymap_defs_${KEYMAP}.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_defs.h)
 
 
-list(APPEND C_FLAGS
+list(APPEND CFLAGS
   -std=c99
   -Wall
   -funsigned-char
