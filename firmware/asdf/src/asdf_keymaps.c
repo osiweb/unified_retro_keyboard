@@ -117,11 +117,14 @@ uint8_t asdf_keymaps_num_cols(void)
 }
 
 
-// PROCEDURE: asdf_keymaps_clear
+// PROCEDURE: asdf_keymaps_reset
 // INPUTS: none
 // OUTPUTS: none
 //
-// DESCRIPTION: Clear all keycode mapping matrices. 
+// DESCRIPTION: Reset keymaps to initial state:
+//              - Clear all keycode mapping matrices.
+//              - Clear all virtual devices
+//              - Reset all hooks to default state.
 //
 // SIDE EFFECTS: see DESCRIPTION
 //
@@ -129,11 +132,19 @@ uint8_t asdf_keymaps_num_cols(void)
 //
 // COMPLEXITY: 2
 //
-static void asdf_keymaps_clear(void)
+static void asdf_keymaps_reset(void)
 {
+  // Clear all keycode mappings
   for (uint8_t i = 0; i < ASDF_MOD_NUM_MODIFIERS; i++) {
-    asdf_keymaps_add_map(NULL, i, 0, 0);
+    asdf_keymaps_add_map((const asdf_keycode_t *) NULL, (modifier_index_t) i,
+                         0, 0);
   }
+
+  // Clear virtual devices
+  asdf_virtual_init();
+
+  // Reset hooks
+  asdf_hook_init();
 }
 
 // PROCEDURE: asdf_keymaps_select
@@ -159,7 +170,7 @@ void asdf_keymaps_select(uint8_t index)
 {
   if (index < ASDF_NUM_KEYMAPS) {
     asdf_arch_init();
-    asdf_keymaps_clear();
+    asdf_keymaps_reset();
     current_keymap_index = index;
     keymap_setup_function_lookup_table[index]();
   }
@@ -198,6 +209,7 @@ void asdf_keymaps_init(void)
 {
   asdf_keymap_table_init();
   current_keymap_index = 0;
+  asdf_keymaps_reset();
 }
 
 // PROCEDURE: asdf_keymaps_map_select_0_clear
