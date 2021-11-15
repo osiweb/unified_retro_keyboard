@@ -393,10 +393,10 @@ void asdf_arch_out1_open_lo_set(uint8_t value)
 void asdf_arch_out2_set(uint8_t value)
 {
   if (value) {
-    clear_bit(&ASDF_OUT2_PORT, ASDF_OUT1_BIT);
+    clear_bit(&ASDF_OUT2_PORT, ASDF_OUT2_BIT);
   }
   else {
-    set_bit(&ASDF_OUT2_PORT, ASDF_OUT1_BIT);
+    set_bit(&ASDF_OUT2_PORT, ASDF_OUT2_BIT);
   }
   set_bit(&ASDF_OUT2_DDR, ASDF_OUT2_BIT);
 }

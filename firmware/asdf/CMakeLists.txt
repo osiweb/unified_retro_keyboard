@@ -23,7 +23,7 @@ elseif(ARCH MATCHES atmega2560)
 endif()
 
 project("asdf"
-  VERSION 1.5
+  VERSION 1.5.1
   DESCRIPTION "A customizable keyboard matrix controller for retrocomputers"
   LANGUAGES C)
 
