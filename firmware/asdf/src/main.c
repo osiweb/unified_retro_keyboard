@@ -60,9 +60,6 @@
 //
 int main(void)
 {
-  // initialize the hardware:
-  asdf_arch_init();
-
   // initialize the keyboard logic:
   asdf_init();
 
