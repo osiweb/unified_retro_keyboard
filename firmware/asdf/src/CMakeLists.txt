@@ -1,7 +1,7 @@
 message("C compiler: ${CMAKE_C_COMPILER}")
 
 function(create_keymap_setups keymaps keymap_table)
-  list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\n  keymap_setup_function_lookup_table[\\2] = setup_\\1_keymap" OUTPUT_VARIABLE temp_list)
+  list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\n    case \\2: setup_\\1_keymap();break" OUTPUT_VARIABLE temp_list)
   # we can keep the ';' cmake list separators as the C statement separators.
   # However, we need to append an extra ';' at the end.
   string(APPEND temp_list ";")
@@ -9,7 +9,7 @@ function(create_keymap_setups keymaps keymap_table)
 endfunction(create_keymap_setups)
 
 function(create_keymap_declarations keymaps keymap_decl)
-  list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\nextern asdf_keymap_setup_function_t setup_\\1_keymap" OUTPUT_VARIABLE temp_list)
+  list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\n void setup_\\1_keymap(void)" OUTPUT_VARIABLE temp_list)
   # we can keep the ';' cmake list separators as the C statement separators.
   # However, we need to append an extra ';' at the end.
   string(APPEND temp_list ";")
@@ -39,13 +39,14 @@ set (ASDF_BIN_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
 configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_${ARCH}.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.h COPYONLY)
 configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_${ARCH}.c ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.c COPYONLY)
-configure_file(${ASDF_SRC_DIR}/asdf_keymap_table.c.in  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_table.c)
-configure_file(${ASDF_SRC_DIR}/asdf_keymap_table.h.in  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_table.h)
+configure_file(${ASDF_SRC_DIR}/asdf_keymap_setup.c.in  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_setup.c)
+configure_file(${ASDF_SRC_DIR}/asdf_keymap_setup.h.in  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_setup.h)
 
 
 
 list(APPEND CFLAGS
   -std=c99
+#  -Wa,-adhln
   -Wall
   -funsigned-char
   -funsigned-bitfields
@@ -72,20 +73,25 @@ list(APPEND CFLAGS
 list (APPEND SOURCES
   asdf.c
   ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.c
-  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_table.c
+  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_setup.c
   asdf_buffer.c
   asdf_hook.c
-  asdf_keymap_table.c
+  asdf_keymap_setup.c
   asdf_keymaps.c
   asdf_modifiers.c
   asdf_physical.c
   asdf_repeat.c
   asdf_virtual.c
+  asdf_print.c
+  Keymaps/asdf_keymap_classic.c
+  Keymaps/asdf_keymap_classic_caps.c
+  Keymaps/asdf_keymap_classic_add_map.c
+  Keymaps/asdf_keymap_sol.c
   main.c
   )
 
 # create a library for the keymap modules
-add_subdirectory(Keymaps)
+#add_subdirectory(Keymaps)
 
 # add the executable
 if (COMMAND custom_add_executable)
@@ -102,6 +108,8 @@ target_include_directories(${ASDF_EXECUTABLE_TARGET_NAME}
   PRIVATE
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/Keymaps
+
   )
 
 target_compile_options(${ASDF_EXECUTABLE_TARGET_NAME}
@@ -109,7 +117,6 @@ target_compile_options(${ASDF_EXECUTABLE_TARGET_NAME}
   ${CFLAGS}
   )
 
-target_link_libraries(${ASDF_EXECUTABLE_TARGET_NAME}
-  keymaps
-  )
-
+#target_link_libraries(${ASDF_EXECUTABLE_TARGET_NAME}
+#  keymaps
+#  )

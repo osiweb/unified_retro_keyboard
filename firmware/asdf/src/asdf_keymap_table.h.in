@@ -29,22 +29,13 @@
 
 #define ASDF_NUM_KEYMAPS @num_keymaps@
 
-// define the type for a keymap setup function. Keymaps are registerd by storing
-// a keymap setup function in the keymap setup array.
-typedef void (*asdf_keymap_setup_function_t)(void);
-
-
-// PROCEDURE: asdf_keymap_table_init
-// INPUTS: none
+// PROCEDURE: asdf_keymap_setup
+// INPUTS: (uint8_t) index - index of the keymap setup function to call
 // OUTPUTS: none
-// DESCRIPTION: This function populates the keymap_setup_function_lookup_table
-// with the various externally defined keymap setup functions, in the order
-// specified in the keymap_list.cmake file.
+// DESCRIPTION: This function calls the keymap setup function specified
+//              by the index.
 // SIDE EFFECTS: See Description
-// NOTES: This function is necessary because functions defined in external
-// modules are not considered compile-time constants by the C99 standard, so the
-// array cannot be initialized with a compile-time declaration.
-void asdf_keymap_table_init(void);
+void asdf_keymap_setup(uint8_t index);
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

@@ -25,9 +25,11 @@
 
 #include "asdf_keymaps.h"
 #include "asdf_virtual.h"
+#include "asdf_modifiers.h"
 #include "asdf_keymap_classic.h"
 #include "asdf_keymap_classic_add_map.h"
-
+//FIXME: remove unused arch.h call
+#include "asdf_arch.h"
 // PROCEDURE:
 // INPUTS:
 // OUTPUTS:
@@ -45,10 +47,15 @@
 
 void setup_classic_keymap(void)
 {
+  asdf_arch_send_code('*');
   classic_add_map(CLASSIC_PLAIN_MAP, MOD_PLAIN_MAP);
+  asdf_arch_send_code('*');
   classic_add_map(CLASSIC_CAPS_MAP, MOD_CAPS_MAP);
+  asdf_arch_send_code('*');
   classic_add_map(CLASSIC_SHIFT_MAP, MOD_SHIFT_MAP);
+  asdf_arch_send_code('*');
   classic_add_map(CLASSIC_CTRL_MAP, MOD_CTRL_MAP);
+  asdf_arch_send_code('*');
 
   asdf_virtual_init();
 
@@ -65,6 +72,7 @@ void setup_classic_keymap(void)
 
   // assign the CLRSCR output to the virtual CLRSCR output, configure to produce a long pulse when activated
   asdf_virtual_assign(CLASSIC_VIRTUAL_CLR_SCR, CLASSIC_CLR_SCR_OUT, V_PULSE_LONG, !CLASSIC_CLR_SCR_ACTIVE_VALUE);
+  asdf_put_code('[');asdf_put_code('c');asdf_put_code(']');
 }
 
 

@@ -20,7 +20,6 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 
-#include <stdio.h> //FIXME
 #include <stdint.h>
 #include <stddef.h>
 #include "asdf_config.h"
@@ -29,18 +28,13 @@
 #include "asdf_physical.h"
 #include "asdf_virtual.h"
 #include "asdf_hook.h"
-#include "asdf_keymap_table.h"
+#include "asdf_keymap_setup.h"
 #include "asdf_keymaps.h"
 #include "asdf_modifiers.h"
 
 // The keymap array contains the keymap information for each modifier state
 // This structure is populated using the asdf_keymaps_add_map() function.
 static asdf_keycode_map_t keymaps[ASDF_MOD_NUM_MODIFIERS] = {};
-
-// List of keymap setup routines. Each keymap setup routine is responsible for
-// populating the keymap matrices, setting up virtual devices, and setting up
-// keymap-specific function hooks and initial conditions for the keymap.
-extern asdf_keymap_setup_function_t keymap_setup_function_lookup_table[ASDF_NUM_KEYMAPS];
 
 // The current keymap index.  This is stored so bitwise operators on the keymap index can be performed.
 static uint8_t current_keymap_index;
@@ -116,7 +110,6 @@ uint8_t asdf_keymaps_num_cols(void)
   return keymaps[asdf_modifier_index()].cols;
 }
 
-
 // PROCEDURE: asdf_keymaps_reset
 // INPUTS: none
 // OUTPUTS: none
@@ -169,10 +162,15 @@ static void asdf_keymaps_reset(void)
 void asdf_keymaps_select(uint8_t index)
 {
   if (index < ASDF_NUM_KEYMAPS) {
+
+
     asdf_arch_init();
     asdf_keymaps_reset();
     current_keymap_index = index;
-    keymap_setup_function_lookup_table[index]();
+
+    asdf_print("\r\nIndex is %d.", index);
+    asdf_keymap_setup(index);
+    asdf_print("\r\nAfter setup function\n");
   }
 }
 
@@ -207,8 +205,6 @@ void asdf_keymaps_dummy_function(void) {}
 //
 void asdf_keymaps_init(void)
 {
-  asdf_hook_init();
-  asdf_keymap_table_init();
   asdf_keymaps_select(0);
 }
 

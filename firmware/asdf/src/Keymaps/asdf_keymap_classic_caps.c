@@ -25,6 +25,7 @@
 
 #include "asdf_keymaps.h"
 #include "asdf_virtual.h"
+#include "asdf_modifiers.h"
 #include "asdf_keymap_classic.h"
 #include "asdf_keymap_classic_add_map.h"
 
