@@ -36,8 +36,8 @@ asdf_keymap_setup_function_t keymap_setup_function_lookup_table[ASDF_NUM_KEYMAPS
   [ASDF_TEST2_CAPS_MAP_INDEX] = setup_test2_caps_map,
   
   // keymap assignments for the virtual device tests
-  [SINGLE_TESTS_KEYMAP] = &setup_test_vdevs_single,
-  [DOUBLE_ASSIGN_TEST_KEYMAP] = &setup_test_vdevs_double,
+  [SINGLE_TESTS_KEYMAP] = setup_test_vdevs_single,
+  [DOUBLE_ASSIGN_TEST_KEYMAP] = setup_test_vdevs_double,
   [TRIPLE_TESTS_KEYMAP] = setup_test_vdevs_triple,
   [VCAPS_TEST_KEYMAP] = setup_test_vdevs_vcaps,
 
