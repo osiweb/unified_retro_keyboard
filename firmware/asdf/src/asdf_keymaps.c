@@ -207,9 +207,9 @@ void asdf_keymaps_dummy_function(void) {}
 //
 void asdf_keymaps_init(void)
 {
+  asdf_hook_init();
   asdf_keymap_table_init();
-  current_keymap_index = 0;
-  asdf_keymaps_reset();
+  asdf_keymaps_select(0);
 }
 
 // PROCEDURE: asdf_keymaps_map_select_0_clear
