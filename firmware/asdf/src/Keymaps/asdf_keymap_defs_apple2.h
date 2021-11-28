@@ -135,7 +135,7 @@
 // Row 6   ~(tilde)   ]          [          -(dash)    :(colon)   0(numeral) 9          8
 // Row 7   @(at)      7          6          5          4          3          2          1
 //
-// Row 15 DIP switches 0-7
+// Row 9 DIP switches 0-7
 //
 // Notes:
 //

@@ -1,0 +1,23 @@
+(module proto_pad (layer F.Cu) (tedit 602746C3)
+  (descr "solder Pin_ with flat with fork, hole diameter 1.4mm, length 8.5mm, width 2.8mm, e.g. Ettinger 13.13.890, https://katalog.ettinger.de/#p=434")
+  (tags "solder Pin_ with flat fork")
+  (fp_text reference . (at 0.762 0.254) (layer F.SilkS) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_text value . (at 0 -1.27) (layer F.Fab) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_line (start -1.4 0.25) (end -1.4 -0.25) (layer F.Fab) (width 0.1))
+  (fp_line (start 1.4 -0.25) (end 1.4 0.25) (layer F.Fab) (width 0.1))
+  (fp_line (start -1.4 -0.25) (end 1.4 -0.25) (layer F.Fab) (width 0.1))
+  (fp_line (start 1.4 0.25) (end -1.4 0.25) (layer F.Fab) (width 0.1))
+  (fp_text user . (at -0.762 0.254) (layer F.Fab) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (pad 1 thru_hole circle (at 0 0) (size 2.032 2.032) (drill 1.016) (layers *.Cu *.Mask))
+  (model ${KISYS3DMOD}/Connector_Pin.3dshapes/Pin_D1.4mm_L8.5mm_W2.8mm_FlatFork.wrl
+    (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+)

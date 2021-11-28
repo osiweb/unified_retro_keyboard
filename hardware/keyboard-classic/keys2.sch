@@ -5,8 +5,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 3
 Title "Unified Retro Keyboard"
-Date "2020-08-17"
-Rev "1.11"
+Date "2021-11-24"
+Rev "1.12"
 Comp "OSIWeb.org"
 Comment1 ""
 Comment2 ""

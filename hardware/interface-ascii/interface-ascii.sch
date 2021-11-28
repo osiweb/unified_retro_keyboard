@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "ASCII Interface for Unified Retro Keyboard"
-Date "2020-12-29"
-Rev "2.10"
+Date "2021-08-08"
+Rev "2.11"
 Comp "OSIWeb.org"
 Comment1 "Main Keyboard Interface"
 Comment2 ""
@@ -1302,7 +1302,7 @@ U 1 1 5DF0476A
 P 8775 6200
 F 0 "SW1" H 8775 6867 50  0000 C CNN
 F 1 "Options" H 8775 6776 50  0000 C CNN
-F 2 "unikbd:SW_DIP_SPSTx08_Piano_CTS_Series194-8MSTN_W7.62mm_P2.54mm" H 8775 6200 50  0001 C CNN
+F 2 "unikbd:SW_DIP_SPSTx08_oriented_backward" H 8775 6200 50  0001 C CNN
 F 3 "~" H 8775 6200 50  0001 C CNN
 F 4 "Y" H 8775 6200 50  0001 C CNN "Fitted"
 F 5 "Options" H 8775 6200 50  0001 C CNN "Label"
@@ -1379,7 +1379,7 @@ U 1 1 5E316F0B
 P 7150 4530
 F 0 "D4" H 7120 4190 50  0000 C CNN
 F 1 "1N4148" H 6948 4570 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7150 4355 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7150 4355 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7150 4530 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7150 4530 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7150 4530 50  0001 C CNN "Fitted"
@@ -1397,7 +1397,7 @@ U 1 1 5E32CB02
 P 7280 4430
 F 0 "D1" H 7310 3990 50  0000 C CNN
 F 1 "1N4148" H 7078 4470 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7280 4255 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7280 4255 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7280 4430 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7280 4430 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7280 4430 50  0001 C CNN "Fitted"
@@ -1415,7 +1415,7 @@ U 1 1 5E34160D
 P 7150 4330
 F 0 "D2" H 7120 3860 50  0000 C CNN
 F 1 "1N4148" H 6948 4370 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7150 4155 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7150 4155 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7150 4330 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7150 4330 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7150 4330 50  0001 C CNN "Fitted"
@@ -1433,7 +1433,7 @@ U 1 1 5E412853
 P 7300 5370
 F 0 "D13" H 7370 4570 50  0000 C CNN
 F 1 "1N4148" H 7240 5480 50  0000 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7300 5195 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7300 5195 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7300 5370 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7300 5370 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7300 5370 50  0001 C CNN "Fitted"
@@ -1451,7 +1451,7 @@ U 1 1 5E412859
 P 7170 6070
 F 0 "D8" H 7150 5730 50  0000 C CNN
 F 1 "1N4148" H 6968 6110 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7170 5895 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7170 5895 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7170 6070 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7170 6070 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7170 6070 50  0001 C CNN "Fitted"
@@ -1469,7 +1469,7 @@ U 1 1 5E41285F
 P 7310 5970
 F 0 "D16" H 7370 5530 50  0000 C CNN
 F 1 "1N4148" H 7108 6010 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7310 5795 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7310 5795 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7310 5970 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7310 5970 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7310 5970 50  0001 C CNN "Fitted"
@@ -1487,7 +1487,7 @@ U 1 1 5E412865
 P 7170 5870
 F 0 "D7" H 7150 5410 50  0000 C CNN
 F 1 "1N4148" H 6968 5910 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7170 5695 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7170 5695 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7170 5870 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7170 5870 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7170 5870 50  0001 C CNN "Fitted"
@@ -1505,7 +1505,7 @@ U 1 1 5E41286B
 P 7170 5670
 F 0 "D6" H 7150 5090 50  0000 C CNN
 F 1 "1N4148" H 6968 5710 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7170 5495 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7170 5495 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7170 5670 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7170 5670 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7170 5670 50  0001 C CNN "Fitted"
@@ -1523,7 +1523,7 @@ U 1 1 5E412871
 P 7160 5470
 F 0 "D5" H 7150 4770 50  0000 C CNN
 F 1 "1N4148" H 6958 5510 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7160 5295 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7160 5295 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7160 5470 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7160 5470 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7160 5470 50  0001 C CNN "Fitted"
@@ -1541,7 +1541,7 @@ U 1 1 5E412877
 P 7300 5770
 F 0 "D15" H 7370 5210 50  0000 C CNN
 F 1 "1N4148" H 7098 5810 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7300 5595 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7300 5595 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7300 5770 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7300 5770 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7300 5770 50  0001 C CNN "Fitted"
@@ -1559,7 +1559,7 @@ U 1 1 5E41287D
 P 7300 5570
 F 0 "D14" H 7370 4890 50  0000 C CNN
 F 1 "1N4148" H 7098 5610 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7300 5395 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7300 5395 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7300 5570 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7300 5570 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7300 5570 50  0001 C CNN "Fitted"
@@ -1637,7 +1637,7 @@ U 1 1 5E37FC86
 P 7280 4230
 F 0 "D11" H 7310 3660 50  0000 C CNN
 F 1 "1N4148" H 7078 4270 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7280 4055 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7280 4055 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7280 4230 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7280 4230 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7280 4230 50  0001 C CNN "Fitted"
@@ -1655,7 +1655,7 @@ U 1 1 5E357678
 P 7150 4130
 F 0 "D3" H 7120 3540 50  0000 C CNN
 F 1 "1N4148" H 6948 4170 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7150 3955 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7150 3955 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7150 4130 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7150 4130 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7150 4130 50  0001 C CNN "Fitted"
@@ -1673,7 +1673,7 @@ U 1 1 5E3942E4
 P 7280 4030
 F 0 "D10" H 7310 3340 50  0000 C CNN
 F 1 "1N4148" H 7078 4070 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7280 3855 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7280 3855 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7280 4030 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7280 4030 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7280 4030 50  0001 C CNN "Fitted"
@@ -1691,7 +1691,7 @@ U 1 1 5E36B862
 P 7140 3930
 F 0 "D12" H 7120 3210 50  0000 C CNN
 F 1 "1N4148" H 6938 3970 50  0001 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7140 3755 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7140 3755 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7140 3930 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7140 3930 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7140 3930 50  0001 C CNN "Fitted"
@@ -1709,7 +1709,7 @@ U 1 1 5E301C34
 P 7270 3830
 F 0 "D9" H 7310 3010 50  0000 C CNN
 F 1 "1N4148" H 7210 3940 50  0000 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7270 3655 50  0001 C CNN
+F 2 "unikbd:D_DO-35_SOD27_P7.62mm_Horizontal_bypassed" H 7270 3655 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 7270 3830 50  0001 C CNN
 F 4 "Install only for matrix without diodes.  Cut jumper if installed" H 7270 3830 50  0001 C CNN "BOM Comment"
 F 5 "N" H 7270 3830 50  0001 C CNN "Fitted"
