@@ -42,10 +42,6 @@
 #define ASDF_KEYMAP_BIT_2 4
 #define ASDF_KEYMAP_BIT_3 8
 
-// define the type for a keymap setup function. Keymaps are registerd by storing
-// a keymap setup function in the keymap setup array.
-typedef void (*asdf_keymap_setup_function_t)(void);
-
 // define the struct for each keymap matrix in the keymap array. One per
 // modifier state. Each keymap can have it's own row and column count.
 typedef struct {
@@ -53,18 +49,6 @@ typedef struct {
   uint8_t rows;
   uint8_t cols;
 } asdf_keycode_map_t;
-
-
-// PROCEDURE: asdf_keymaps_register
-// INPUTS: (uint8_t) keymap_index - index of the keymap to be modified
-//         (asdf_keymap_setup_function_t) keymap setup function - called on
-//         keymap change to setup up the keymap
-// OUTPUTS: none
-// DESCRIPTION: Called by keymap building modules. This routine adds a keymap
-// setup function into the keymap setup array.
-// NOTES: If the keymap modifier index is not a valid keymap index then no
-// action is performed.
-void asdf_keymaps_register(uint8_t keymap_index, asdf_keymap_setup_function_t keymap_setup_function);
 
 // PROCEDURE: asdf_keymaps_add_map
 // INPUTS: (asdf_keycode_t *) matrix - pointer to the keycode matrix to add in to map
