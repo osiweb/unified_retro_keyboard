@@ -99,7 +99,7 @@ void asdf_put_code(asdf_keycode_t code)
 //
 asdf_keycode_t asdf_next_code(void)
 {
-  return asdf_buffer_get(asdf_keycode_buffer);
+   return asdf_buffer_get(asdf_keycode_buffer);
 }
 
 // PROCEDURE: asdf_lookup_keycode
@@ -391,14 +391,12 @@ void asdf_init(void)
 
   last_key = ACTION_NOTHING;
 
+  asdf_buffer_init();  // initialize the buffers
   asdf_repeat_init();  // initialize the repeat counters
   asdf_keymaps_init(); // initialize keymaps. This also initializes the modifier
                        // key states.
-  asdf_buffer_init();  // initialize the buffers
-
   // reserve a buffer for the ASCII output:
   asdf_keycode_buffer = asdf_buffer_new(ASDF_KEYCODE_BUFFER_SIZE);
-
   // Initialize all the keys to the unpressed state, and initialze the debounce
   // counters.
   for (uint8_t row = 0; row < ASDF_MAX_ROWS; row++) {
