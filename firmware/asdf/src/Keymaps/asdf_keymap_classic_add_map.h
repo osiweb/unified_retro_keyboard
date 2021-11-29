@@ -34,10 +34,10 @@
 #include "asdf_modifiers.h"
 
 typedef enum {
-  CLASSIC_PLAIN_MAP = 0,
-  CLASSIC_CAPS_MAP = 1,
-  CLASSIC_SHIFT_MAP = 2,
-  CLASSIC_CTRL_MAP = 3,
+  CLASSIC_PLAIN_MAP,
+  CLASSIC_CAPS_MAP,
+  CLASSIC_SHIFT_MAP,
+  CLASSIC_CTRL_MAP,
 } classic_map_index_t;
 
 

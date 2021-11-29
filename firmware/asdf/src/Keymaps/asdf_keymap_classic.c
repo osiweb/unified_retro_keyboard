@@ -28,8 +28,7 @@
 #include "asdf_modifiers.h"
 #include "asdf_keymap_classic.h"
 #include "asdf_keymap_classic_add_map.h"
-//FIXME: remove unused arch.h call
-#include "asdf_arch.h"
+
 // PROCEDURE:
 // INPUTS:
 // OUTPUTS:
@@ -47,15 +46,10 @@
 
 void setup_classic_keymap(void)
 {
-  asdf_arch_send_code('*');
   classic_add_map(CLASSIC_PLAIN_MAP, MOD_PLAIN_MAP);
-  asdf_arch_send_code('*');
   classic_add_map(CLASSIC_CAPS_MAP, MOD_CAPS_MAP);
-  asdf_arch_send_code('*');
   classic_add_map(CLASSIC_SHIFT_MAP, MOD_SHIFT_MAP);
-  asdf_arch_send_code('*');
   classic_add_map(CLASSIC_CTRL_MAP, MOD_CTRL_MAP);
-  asdf_arch_send_code('*');
 
   asdf_virtual_init();
 

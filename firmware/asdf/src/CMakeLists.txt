@@ -86,6 +86,8 @@ list (APPEND SOURCES
   Keymaps/asdf_keymap_classic.c
   Keymaps/asdf_keymap_classic_caps.c
   Keymaps/asdf_keymap_classic_add_map.c
+  Keymaps/asdf_keymap_apple2.c
+  Keymaps/asdf_keymap_apple2_add_map.c
   Keymaps/asdf_keymap_sol.c
   main.c
   )
