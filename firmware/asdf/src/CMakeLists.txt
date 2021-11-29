@@ -8,6 +8,14 @@ function(create_keymap_setups keymaps keymap_table)
   set(${keymap_table} "${temp_list}" PARENT_SCOPE)
 endfunction(create_keymap_setups)
 
+function(create_keymap_valid keymaps keymap_valid)
+  list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\n    case \\2:" OUTPUT_VARIABLE temp_list)
+  # we can keep the ';' cmake list separators as the C statement separators.
+  # However, we need to append an extra ';' at the end.
+  string(APPEND temp_list ";")
+  set(${keymap_valid} "${temp_list}" PARENT_SCOPE)
+endfunction(create_keymap_setups)
+
 function(create_keymap_declarations keymaps keymap_decl)
   list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\n void setup_\\1_keymap(void)" OUTPUT_VARIABLE temp_list)
   # we can keep the ';' cmake list separators as the C statement separators.
@@ -25,6 +33,7 @@ endfunction(create_keymap_report)
 include(../keymap_list.cmake)
 
 create_keymap_setups("${keymap_list}" keymap_table)
+create_keymap_valid("${keymap_list}" keymap_valid)
 create_keymap_report("${keymap_list}" keymap_report)
 create_keymap_declarations("${keymap_list}" keymap_declarations)
 
@@ -87,6 +96,7 @@ list (APPEND SOURCES
   Keymaps/asdf_keymap_classic_caps.c
   Keymaps/asdf_keymap_classic_add_map.c
   Keymaps/asdf_keymap_apple2.c
+  Keymaps/asdf_keymap_apple2_caps.c
   Keymaps/asdf_keymap_apple2_add_map.c
   Keymaps/asdf_keymap_sol.c
   main.c

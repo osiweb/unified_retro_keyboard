@@ -193,7 +193,7 @@ void asdf_buffer_put(asdf_buffer_handle_t handle, asdf_keycode_t code)
 asdf_keycode_t asdf_buffer_get(asdf_buffer_handle_t handle)
 {
   asdf_keycode_t code = ASDF_INVALID_CODE;
-  if (buffers[handle].count) {
+  if (handle < next_handle && buffers[handle].count) {
     code = buffers[handle].buf[buffers[handle].tail];
     buffers[handle].tail = (buffers[handle].tail + 1) % buffers[handle].size;
     buffers[handle].count--;

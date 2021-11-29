@@ -27,10 +27,10 @@
 //
 #include <stdio.h>
 #include <avr/io.h>
-#include "asdf_arch.h"
+#include "asdf.h"
 
 
-static FILE ascii_port = FDEV_SETUP_STREAM(asdf_arch_send_code, NULL,
+static FILE ascii_port = FDEV_SETUP_STREAM(asdf_putc, NULL,
                                            _FDEV_SETUP_WRITE);
 
 //

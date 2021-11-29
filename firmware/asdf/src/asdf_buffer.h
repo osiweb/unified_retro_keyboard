@@ -26,10 +26,8 @@
 #if !defined(ASDF_BUFFER_H)
 #define ASDF_BUFFER_H
 
+// ASDF_BUFFER_POOL_SIZE is defined in asdf_config.h
 #include "asdf_config.h"
-
-// The total space available for all buffers used in the application
-#define ASDF_BUFFER_POOL_SIZE ASDF_KEYCODE_BUFFER_SIZE
 
 // Used to designate an invalid buffer.
 #define ASDF_BUFFER_INVALID -1
@@ -37,7 +35,7 @@
 // Setting the number of handles to 1 will work if only one buffer is requrired,
 // and will save a few bytes of RAM. But the test code needs at least 2 buffer
 // handles to test the module, so we leave it at 2.
-#define ASDF_BUFFER_NUM_HANDLES 2
+#define ASDF_BUFFER_NUM_HANDLES 4
 
 
 // The buffer handle type should be able to handle the expected number of buffers.

@@ -24,6 +24,7 @@
 //
 
 #include "asdf_keymaps.h"
+#include "asdf_print.h"
 #include "asdf_virtual.h"
 #include "asdf_modifiers.h"
 #include "asdf_keymap_classic.h"
@@ -46,6 +47,8 @@
 
 void setup_classic_caps_keymap(void)
 {
+  asdf_print("[Keymap: classic CAPS]");
+
   // for the ALL CAPS keymap, the "plain" mode is the same as "all caps" mode:
   classic_add_map(CLASSIC_CAPS_MAP, MOD_PLAIN_MAP);
   classic_add_map(CLASSIC_CAPS_MAP, MOD_CAPS_MAP);

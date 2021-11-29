@@ -3,9 +3,9 @@
 // Unified Keyboard Project
 // ASDF keyboard firmware
 //
-// asdf_keymap_classic.c
+// asdf_keymap_apple2_caps.c
 //
-// Implements the "classic" ADM 3A style keymaps
+// set up keymaps for ALL CAPS Apple II keyboards
 //
 // Copyright 2019 David Fenyes
 //
@@ -23,47 +23,54 @@
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "asdf_keymap_classic.h"
-#include "asdf_keymap_classic_add_map.h"
 
-// PROCEDURE:
-// INPUTS:
-// OUTPUTS:
+#include "asdf_print.h"
+#include "asdf_keymaps.h"
+#include "asdf_virtual.h"
+#include "asdf_modifiers.h"
+#include "asdf_keymap_apple2_add_map.h"
+
+// PROCEDURE: setup_apple2_caps_keymap
+// INPUTS: none
+// OUTPUTS: none
 //
-// DESCRIPTION:
+// DESCRIPTION: Set up keymaps for ALL CAPS apple 2 keyboard
 //
-// SIDE EFFECTS:
+// SIDE EFFECTS: See DESCRIPTION
 //
 // NOTES:
 //
-// SCOPE:
+// SCOPE: public
 //
-// COMPLEXITY:
+// COMPLEXITY: 1
 //
-
-void setup_classic_caps_keymap(void)
+void setup_apple2_caps_keymap(void)
 {
-  // for the ALL CAPS keymap, the "plain" mode is the same as "all caps" mode:
-  classic_add_map(classic_caps_map, MOD_PLAIN_MAP);
-  classic_add_map(classic_caps_map, MOD_CAPS_MAP);
-  classic_add_map(classic_shift_map, MOD_SHIFT_MAP);
-  classic_add_map(classic_ctrl_map, MOD_CTRL_MAP);
+
+  asdf_print("[Keymap: Apple 2 CAPS]");
+
+  apple_add_map(APPLE_CAPS_MAP, MOD_PLAIN_MAP);
+  apple_add_map(APPLE_CAPS_MAP, MOD_CAPS_MAP);
+  apple_add_map(APPLE_CAPS_SHIFT_MAP, MOD_SHIFT_MAP);
+  apple_add_map(APPLE_CTRL_MAP, MOD_CTRL_MAP);
 
   asdf_virtual_init();
 
-  // Assign power LED to virtual power LED, and initialize to ON
-  asdf_virtual_assign(CLASSIC_VIRTUAL_POWER_LED, CLASSIC_POWER_LED, V_NOFUNC, CLASSIC_POWER_LED_INIT_VALUE);
 
-  // Because the virtual power LED never changes, also assign the CAPSLOCK
-  // physical LED to the virtual Power LED, and intialize to OFF (or can change
-  // to ON depending on preference)
-  asdf_virtual_assign(CLASSIC_VIRTUAL_POWER_LED, CLASSIC_CAPS_LED, V_NOFUNC, CLASSIC_CAPS_LED_INIT_VALUE);
+  // Attach the physical POWER LED as the CAPS LED. Assign no triggered
+  // function, and initialize to initial state of the CAPS logic. The CAPS LED
+  // will be controlled by the state of the CAPSLOCK logic.
+
+  asdf_virtual_assign(VCAPS_LED, APPLE_POWER_LED, V_NOFUNC, APPLE_POWER_LED_INIT_VALUE);
+
+  // Assign CAPS LED to off (disabled)
+  asdf_virtual_assign(APPLE_VIRTUAL_DISABLED_LED, APPLE_DISABLED_LED, V_NOFUNC, APPLE_DISABLED_INIT_VALUE);
 
   // assign RESET output to the virtual RESET output, configure to produce a short pulse when activated
-  asdf_virtual_assign(CLASSIC_VIRTUAL_RESET, CLASSIC_RESET_OUTPUT, V_PULSE_SHORT, !CLASSIC_RESET_ACTIVE_VALUE);
+  asdf_virtual_assign(APPLE_VIRTUAL_RESET, APPLE_RESET_OUTPUT, V_PULSE_SHORT, !APPLE_RESET_ACTIVE_VALUE);
 
   // assign the CLRSCR output to the virtual CLRSCR output, configure to produce a long pulse when activated
-  asdf_virtual_assign(CLASSIC_VIRTUAL_CLR_SCR, CLASSIC_CLR_SCR_OUT, V_PULSE_LONG, !CLASSIC_CLR_SCR_ACTIVE_VALUE);
+  asdf_virtual_assign(APPLE_VIRTUAL_CLR_SCR, APPLE_CLR_SCR_OUTPUT, V_PULSE_LONG, !APPLE_CLR_SCR_ACTIVE_VALUE);
 }
 
 

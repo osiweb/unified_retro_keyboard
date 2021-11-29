@@ -161,16 +161,17 @@ static void asdf_keymaps_reset(void)
 //
 void asdf_keymaps_select(uint8_t index)
 {
-  if (index < ASDF_NUM_KEYMAPS) {
+  // we set the current keymap index in order to track the state of the DIP
+  // switches, but only switch to a valid map
 
+  current_keymap_index = index;
+
+  if (asdf_keymap_valid(index)) {
 
     asdf_arch_init();
     asdf_keymaps_reset();
-    current_keymap_index = index;
 
-    asdf_print("\r\nIndex is %d.", index);
     asdf_keymap_setup(index);
-    asdf_print("\r\nAfter setup function\n");
   }
 }
 

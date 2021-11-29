@@ -49,14 +49,45 @@
 //
 // COMPLEXITY: 1
 //
-
 void asdf_keymap_setup(uint8_t index) {
   switch(index) {
 @keymap_table@
     default:
     break;
   }
-};
+}
+
+// PROCEDURE: asdf_keymap_valid
+//
+// INPUTS: (uint8_t) index - index of the keymap setup function to check
+// OUTPUTS: (uintu_t) returns TRUE (nonzero) if valid, FALSE (0) otherwise
+////
+// DESCRIPTION: This function returns TRUE if the index corresponds to
+//              a valid keymap.
+//
+// SIDE EFFECTS: none
+//
+// NOTES:
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+uint8_t asdf_keymap_valid(uint8_t index) {
+  uint8_t valid = 0;
+
+  switch(index) {
+@keymap_valid@
+    valid= 1;
+    break;
+
+    default:
+    break;
+  }
+
+  return valid;
+}
+
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

@@ -50,7 +50,11 @@
 // Data structure sizes:
 
 // size of the keycode output buffer.
-#define ASDF_KEYCODE_BUFFER_SIZE 64
+#define ASDF_KEYCODE_BUFFER_SIZE 16
+
+#define ASDF_MESSAGE_BUFFER_SIZE 128
+
+#define ASDF_BUFFER_POOL_SIZE (ASDF_MESSAGE_BUFFER_SIZE + ASDF_KEYCODE_BUFFER_SIZE)
 
 // key debounce period (in msec)
 #define ASDF_DEBOUNCE_TIME_MS 10
@@ -58,6 +62,11 @@
 // Autorepeat default behavior. Set to REPEAT_AUTO for default autorepeat.
 // Set to REPEAT_OFF for default no autorepeat by default.
 #define ASDF_DEFAULT_REPEAT_STATE REPEAT_AUTO
+
+// time to wait before sending consecutive message characters to the host, to
+// ensure that messages are intact on hosts that poll the port without
+// buffering. (in msec)
+#define ASDF_MESSAGE_CHARACTER_DELAY 16 //msec
 
 // time to hold down a key in milliseconds before autorepeat starts
 #define ASDF_AUTOREPEAT_TIME_MS 525 // 525 msec.

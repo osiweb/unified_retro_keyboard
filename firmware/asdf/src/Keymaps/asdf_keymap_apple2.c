@@ -24,6 +24,7 @@
 //
 
 
+#include "asdf_print.h"
 #include "asdf_keymaps.h"
 #include "asdf_virtual.h"
 #include "asdf_modifiers.h"
@@ -45,6 +46,9 @@
 //
 void setup_apple2_keymap(void)
 {
+
+  asdf_print("[Keymap: Apple 2 (u/l case)]");
+
   apple_add_map(APPLE_PLAIN_MAP, MOD_PLAIN_MAP);
   apple_add_map(APPLE_CAPS_MAP, MOD_CAPS_MAP);
   apple_add_map(APPLE_SHIFT_MAP, MOD_SHIFT_MAP);
