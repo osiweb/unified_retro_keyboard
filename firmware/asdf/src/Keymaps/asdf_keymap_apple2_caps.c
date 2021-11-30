@@ -57,11 +57,9 @@ void setup_apple2_caps_keymap(void)
   asdf_virtual_init();
 
 
-  // Attach the physical POWER LED as the CAPS LED. Assign no triggered
-  // function, and initialize to initial state of the CAPS logic. The CAPS LED
-  // will be controlled by the state of the CAPSLOCK logic.
+  // Turn the POWER LED on and don't assign to any function
 
-  asdf_virtual_assign(VCAPS_LED, APPLE_POWER_LED, V_NOFUNC, APPLE_POWER_LED_INIT_VALUE);
+  asdf_virtual_assign(APPLE_VIRTUAL_POWER_LED, APPLE_POWER_LED, V_NOFUNC, APPLE_POWER_LED_INIT_VALUE);
 
   // Assign CAPS LED to off (disabled)
   asdf_virtual_assign(APPLE_VIRTUAL_DISABLED_LED, APPLE_DISABLED_LED, V_NOFUNC, APPLE_DISABLED_INIT_VALUE);
