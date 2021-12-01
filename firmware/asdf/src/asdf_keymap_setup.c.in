@@ -51,9 +51,7 @@
 //
 void asdf_keymap_setup(uint8_t index) {
   switch(index) {
-@keymap_table@
-    default:
-    break;
+    default: @keymap_table@
   }
 }
 
@@ -76,12 +74,12 @@ void asdf_keymap_setup(uint8_t index) {
 uint8_t asdf_keymap_valid(uint8_t index) {
   uint8_t valid = 0;
 
-  switch(index) {
-@keymap_valid@
-    valid= 1;
+  switch(index) { @keymap_valid@
+      valid = 1;
     break;
 
     default:
+      valid = 0;
     break;
   }
 

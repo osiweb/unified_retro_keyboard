@@ -1,15 +1,14 @@
 * Keymap architecture
-** Keymap definition module
-   The keymap definition module defines:
-*** The key mappings used by a keymap
-*** The virtual devices required by the keymap
-    This includes definitions for LED's and I/O lines, including their initial
-    states, and default I/O operations such as toggle, pulse, etc.
-*** Function hooks used by the keymap.
-    Specifies which functions are used for operations such as key scanning, I/O,
-    special keybindings, etc.
-
-  Any special functions or logic required by the keymap are also defined and used in the module.
+** Keymap definition modules are in src/Keymaps
+** Each keymap has its own keymap setup routine
+*** void setup_mapname_keymap(void) - keymap setup function
+**** register a keycode map for each modifier combination
+***** The keycode maps are in flash (ROM)
+**** set up virtual devices for the keymap
+***** virtual device to physical device mapping
+***** associated virtual device function on activate/deactivate
+***** initial state
+**** set up function hooks used by keymap
 
 ** Keymap definition API
 *** mapping keys
@@ -24,12 +23,6 @@
 ***** Accept a virtual device code, a physical device code, a default function, and a default initial value, and create a new entry in the virtual device table.
 ***** increment the virtual device table pointer and set next (last) entry to NULL
 
-* Eliminate keymaps table and instead have table of keymap init routines with MAX_KEYMAPS entries
-* keymap setup routine adds maps for each modifier to the keymap, now only rxcxMODIFIERS instead of rxcxmodifiersxkeymaps
-* remove the keymap index from the add_map() call.
-* select_keymap() will call setup routine for the g
-iven keymap.
-* Each keymap sets its own num_rows and num_columns, per matrix for each modifier
 
 * DIP SWITCHES
   Note that the DIP switches are keys in the key matrix, which is initialized to
