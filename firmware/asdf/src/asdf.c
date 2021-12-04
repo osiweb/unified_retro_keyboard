@@ -561,7 +561,7 @@ void asdf_keyscan(void)
     asdf_cols_t changed = row_key_state ^ last_stable_key_state[row];
 
     // loop over the bits until all changed or pressed keys in the row are handled.
-    for (uint8_t col = 0; (changed || row_key_state) && col < asdf_keymaps_num_cols(); col++) {
+    for (uint8_t col = 0; /*(changed || row_key_state) && */col < asdf_keymaps_num_cols(); col++) {
       if (changed & 1) {
         // key state is different from last stable state
         asdf_handle_key_press_or_release(row, col, row_key_state & 1);
