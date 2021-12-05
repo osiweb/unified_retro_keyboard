@@ -29,6 +29,11 @@
 #include "asdf_ascii.h"
 #include "asdf_modifiers.h"
 #include "asdf_keymaps.h"
+#include "asdf_print.h"
+
+
+#define SOL_PRINT_DELAY 40 // msec
+#define SOL_ID_MESSAGE_HOOK ASDF_HOOK_USER_10
 
 static const FLASH asdf_keycode_t sol_plain_map[ASDF_SOL_NUM_ROWS][ASDF_SOL_NUM_COLS] = {
   [0] = { ACTION_CTRL, SOL_KBD_SHIFTLOCK_ACTION, 'a', 's', 'd', 'f', 'g', 'h' },
@@ -137,6 +142,11 @@ static void sol_add_map(const asdf_keycode_t (*matrix)[ASDF_SOL_NUM_COLS],
 }
 
 
+static void sol_id_message(void)
+{
+  asdf_print("[Keybd: Sol-20]");
+}
+
 void setup_sol_keymap(void)
 {
   sol_add_map(sol_plain_map, MOD_PLAIN_MAP);
@@ -144,7 +154,7 @@ void setup_sol_keymap(void)
   sol_add_map(sol_shift_map, MOD_SHIFT_MAP);
   sol_add_map(sol_ctrl_map, MOD_CTRL_MAP);
 
-  asdf_virtual_init();
+  asdf_set_print_delay(SOL_PRINT_DELAY);
 
   // Set up the ALL CAPS LED, default = off
   asdf_virtual_assign(VCAPS_LED, SOL_KBD_LED_UPPERCASE, V_NOFUNC, SOL_KBD_LED_OFF);
@@ -163,12 +173,13 @@ void setup_sol_keymap(void)
   // Set up the BREAK output, produce a long pulse when activated, default output high
   asdf_virtual_assign(SOL_KBD_VBREAK, SOL_KBD_TTLOUT_BREAK, V_PULSE_LONG, SOL_KBD_TTL_HIGH);
 
-
   // Activate the ALL CAPS mode to emulate the original keyboard:
   asdf_modifier_capslock_activate();
 
   // Configure negative strobe
   asdf_arch_set_neg_strobe();
+
+  asdf_hook_assign(SOL_ID_MESSAGE_HOOK, sol_id_message);
 }
 
 
