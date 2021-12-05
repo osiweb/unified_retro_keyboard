@@ -63,9 +63,6 @@ void setup_apple2_keymap(void)
   asdf_hook_assign(APPLESOFT_KEYBOARD_TEST, applesoft_keyboard_test);
   asdf_hook_assign(APPLE2_ID_MESSAGE, apple2_id_message);
 
-  asdf_virtual_init();
-
-
   // Attach the physical POWER LED as the CAPS LED. Assign no triggered
   // function, and initialize to initial state of the CAPS logic. The CAPS LED
   // will be controlled by the state of the CAPSLOCK logic.
@@ -80,6 +77,8 @@ void setup_apple2_keymap(void)
 
   // assign the CLRSCR output to the virtual CLRSCR output, configure to produce a long pulse when activated
   asdf_virtual_assign(APPLE_VIRTUAL_CLR_SCR, APPLE_CLR_SCR_OUTPUT, V_PULSE_LONG, !APPLE_CLR_SCR_ACTIVE_VALUE);
+
+  asdf_modifier_capslock_activate(); // For Apple 2, start with CAPS active
 }
 
 
