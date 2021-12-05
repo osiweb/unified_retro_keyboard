@@ -695,7 +695,9 @@ void asdf_arch_pulse_delay_long(void)
 //
 void asdf_arch_delay_ms(uint16_t delay_ms)
 {
-  _delay_ms(delay_ms);
+  for (uint16_t i=0; i < delay_ms; i++) {
+    _delay_ms(1);
+  }
 }
 
 // PROCEDURE: asdf_arch_init
