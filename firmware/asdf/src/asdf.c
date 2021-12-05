@@ -67,6 +67,11 @@ static asdf_buffer_handle_t asdf_keycode_buffer;
 // This is the handle for the message output buffer
 static asdf_buffer_handle_t asdf_message_buffer;
 
+// The delay time for strings sent via parallel port. This is needed because
+// most keyboards have no handshaking, and we need to allow time for various
+// environments to process the characters. Some, such as basic interpreters, are
+// rather slow.  So we we allow keyboard modules to modifiy this delay.
+static uint16_t asdf_print_delay_ms;
 
 // PROCEDURE: asdf_put_code
 // INPUTS: (asdf_keycode_t) code: code to be buffered for output
@@ -140,9 +145,31 @@ asdf_keycode_t asdf_next_code(void)
     code = asdf_buffer_get(asdf_keycode_buffer);
   } else {
     // for system message
-    asdf_arch_character_delay();
+    asdf_arch_delay_ms(asdf_print_delay_ms);
   }
   return code;
+}
+
+// PROCEDURE: asdf_set_print_delay
+// INPUTS: (uint8_t) delay_ms
+//
+// OUTPUTS: none
+//
+// DESCRIPTION: sets the delay to be used by the system print buffer
+//
+// SIDE EFFECTS: modifies character delay variable.
+//
+// NOTES: A delay is enforced for system messages, to reduce the risk of dropped
+// characters with unbuffered polling hosts. No delay is needed for typed
+// keycodes, as these are generated at human speeds.
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_set_print_delay(uint8_t delay_ms)
+{
+  asdf_print_delay_ms = delay_ms;
 }
 
 // PROCEDURE: asdf_lookup_keycode
@@ -280,15 +307,35 @@ static void asdf_activate_action(action_t keycode)
     case ACTION_NOTHING:
     case ACTION_HERE_IS:
     case ACTION_FN_1:
+      asdf_hook_execute(ASDF_HOOK_USER_1);
+      break;
     case ACTION_FN_2:
+      asdf_hook_execute(ASDF_HOOK_USER_2);
+      break;
     case ACTION_FN_3:
+      asdf_hook_execute(ASDF_HOOK_USER_3);
+      break;
     case ACTION_FN_4:
+      asdf_hook_execute(ASDF_HOOK_USER_4);
+      break;
     case ACTION_FN_5:
+      asdf_hook_execute(ASDF_HOOK_USER_5);
+      break;
     case ACTION_FN_6:
+      asdf_hook_execute(ASDF_HOOK_USER_6);
+      break;
     case ACTION_FN_7:
+      asdf_hook_execute(ASDF_HOOK_USER_7);
+      break;
     case ACTION_FN_8:
+      asdf_hook_execute(ASDF_HOOK_USER_8);
+      break;
     case ACTION_FN_9:
+      asdf_hook_execute(ASDF_HOOK_USER_9);
+      break;
     case ACTION_FN_10:
+      asdf_hook_execute(ASDF_HOOK_USER_10);
+      break;
     default: break;
   }
 }
@@ -416,42 +463,6 @@ static void asdf_deactivate_key(asdf_keycode_t keycode)
   }
 }
 
-// PROCEDURE: asdf_init
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Reserve an output buffer to hold keycodes to be sent, and
-// initialize the keyboard state and debounce counters
-//
-// SIDE EFFECTS: see DESCRIPTION
-//
-// SCOPE: public
-//
-// COMPLEXITY: 3
-//
-void asdf_init(void)
-{
-
-  last_key = ACTION_NOTHING;
-
-  asdf_buffer_init();  // initialize the buffers
-  asdf_repeat_init();  // initialize the repeat counters
-  asdf_keymaps_init(); // initialize keymaps. This also initializes the modifier
-                       // key states.
-  // reserve a buffer for the ASCII output:
-  asdf_keycode_buffer = asdf_buffer_new(ASDF_KEYCODE_BUFFER_SIZE);
-  asdf_message_buffer = asdf_buffer_new(ASDF_MESSAGE_BUFFER_SIZE);
-
-  // Initialize all the keys to the unpressed state, and initialze the debounce
-  // counters.
-  for (uint8_t row = 0; row < ASDF_MAX_ROWS; row++) {
-    last_stable_key_state[row] = 0;
-    for (uint8_t col = 0; col < ASDF_MAX_COLS; col++) {
-      debounce_counters[row][col] = ASDF_DEBOUNCE_TIME_MS;
-    }
-  }
-}
-
 // PROCEDURE: asdf_handle_key_press_or_release
 // INPUTS: row, col: the row and column number of the key that has changed.
 // OUTPUTS: none
@@ -574,6 +585,83 @@ void asdf_keyscan(void)
     }
   }
 }
+
+// PROCEDURE: asdf_apply_all_actions
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Scans the key matrix. For each row, read the columns, and for
+// each bit, if an action is specified, then call the activate or deactivate
+// function for that action, based on the key state. This is necessary to ensure
+// that configuration settings, such as DIP switches and jumper settings, are
+// properly handled when a keymap is changed.
+
+// SIDE EFFECTS: See DESCRIPTION
+//
+// COMPLEXITY: 5
+//
+// SCOPE: private
+//
+void asdf_apply_all_actions(void)
+{
+  asdf_cols_t (*row_reader)(uint8_t) = (asdf_cols_t(*)(uint8_t)) asdf_hook_get(ASDF_HOOK_SCANNER);
+
+  for (uint8_t row = 0; row < asdf_keymaps_num_rows(); row++) {
+    asdf_cols_t row_key_state = (*row_reader)(row);
+
+    // To avoid double actions, assign last stable key state to current state.
+    last_stable_key_state[row] = row_key_state;
+
+    // loop over the bits until all changed or pressed keys in the row are handled.
+    for (uint8_t col = 0; col < asdf_keymaps_num_cols(); col++) {
+      asdf_keycode_t code = asdf_lookup_keycode(row, col);
+      if (row_key_state & 1) {
+        asdf_activate_action(code);
+      } else {
+        asdf_deactivate_action(code);
+      }
+      row_key_state >>= 1;
+    }
+  }
+}
+
+
+// PROCEDURE: asdf_init
+// INPUTS: none
+// OUTPUTS: none
+//
+// DESCRIPTION: Reserve an output buffer to hold keycodes to be sent, and
+// initialize the keyboard state and debounce counters
+//
+// SIDE EFFECTS: see DESCRIPTION
+//
+// SCOPE: public
+//
+// COMPLEXITY: 3
+//
+void asdf_init(void)
+{
+
+  last_key = ACTION_NOTHING;
+
+  asdf_buffer_init();  // initialize the buffers
+  asdf_repeat_init();  // initialize the repeat counters
+  asdf_keymaps_init(); // initialize keymaps. This also initializes the modifier
+                       // key states.
+  // reserve a buffer for the ASCII output:
+  asdf_keycode_buffer = asdf_buffer_new(ASDF_KEYCODE_BUFFER_SIZE);
+  asdf_message_buffer = asdf_buffer_new(ASDF_MESSAGE_BUFFER_SIZE);
+
+  // Initialize all the keys to the unpressed state, and initialze the debounce
+  // counters.
+  for (uint8_t row = 0; row < ASDF_MAX_ROWS; row++) {
+    last_stable_key_state[row] = 0;
+    for (uint8_t col = 0; col < ASDF_MAX_COLS; col++) {
+      debounce_counters[row][col] = ASDF_DEBOUNCE_TIME_MS;
+    }
+  }
+}
+
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

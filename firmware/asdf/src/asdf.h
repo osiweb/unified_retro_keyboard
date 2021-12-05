@@ -147,6 +147,15 @@ int asdf_putc(char c, FILE *stream);
 // keycodes, as these are generated at human speeds.
 asdf_keycode_t asdf_next_code(void);
 
+// PROCEDURE: asdf_set_print_delay
+// INPUTS: (uint8_t) delay_ms
+// OUTPUTS: none
+// DESCRIPTION: sets the delay to be used by the system print buffer
+// NOTES: A delay is enforced for system messages, to reduce the risk of dropped
+// characters with unbuffered polling hosts. No delay is needed for typed
+// keycodes, as these are generated at human speeds.
+void asdf_set_print_delay(uint8_t delay_ms);
+
 #endif // !defined (ASDF_H)
 
 
