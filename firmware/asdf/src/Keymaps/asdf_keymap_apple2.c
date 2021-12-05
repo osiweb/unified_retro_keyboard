@@ -29,6 +29,7 @@
 #include "asdf_virtual.h"
 #include "asdf_modifiers.h"
 #include "asdf_keymap_apple2_add_map.h"
+#include "asdf_keymap_apple2.h"
 
 // PROCEDURE:
 // INPUTS:
@@ -44,15 +45,23 @@
 //
 // COMPLEXITY:
 //
+
+void apple2_id_message(void) {
+  asdf_print("[Keymap: Apple 2 (u/l case)]");
+}
+
 void setup_apple2_keymap(void)
 {
+  asdf_set_print_delay(APPLE2_PRINT_DELAY);
 
-  asdf_print("[Keymap: Apple 2 (u/l case)]");
 
   apple_add_map(APPLE_PLAIN_MAP, MOD_PLAIN_MAP);
   apple_add_map(APPLE_CAPS_MAP, MOD_CAPS_MAP);
   apple_add_map(APPLE_SHIFT_MAP, MOD_SHIFT_MAP);
   apple_add_map(APPLE_CTRL_MAP, MOD_CTRL_MAP);
+
+  asdf_hook_assign(APPLESOFT_KEYBOARD_TEST, applesoft_keyboard_test);
+  asdf_hook_assign(APPLE2_ID_MESSAGE, apple2_id_message);
 
   asdf_virtual_init();
 

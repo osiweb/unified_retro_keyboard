@@ -29,6 +29,11 @@
 #include "asdf_virtual.h"
 #include "asdf_modifiers.h"
 #include "asdf_keymap_apple2_add_map.h"
+#include "asdf_keymap_apple2_caps.h"
+
+void apple2_caps_id_message(void) {
+  asdf_print("[Keymap: Apple 2 CAPS]");
+}
 
 // PROCEDURE: setup_apple2_caps_keymap
 // INPUTS: none
@@ -46,13 +51,15 @@
 //
 void setup_apple2_caps_keymap(void)
 {
-
-  asdf_print("[Keymap: Apple 2 CAPS]");
+  asdf_set_print_delay(APPLE2_PRINT_DELAY);
 
   apple_add_map(APPLE_CAPS_MAP, MOD_PLAIN_MAP);
   apple_add_map(APPLE_CAPS_MAP, MOD_CAPS_MAP);
   apple_add_map(APPLE_CAPS_SHIFT_MAP, MOD_SHIFT_MAP);
   apple_add_map(APPLE_CTRL_MAP, MOD_CTRL_MAP);
+
+  asdf_hook_assign(APPLESOFT_KEYBOARD_TEST, applesoft_keyboard_test);
+  asdf_hook_assign(APPLE2_CAPS_ID_MESSAGE, apple2_caps_id_message);
 
   asdf_virtual_init();
 

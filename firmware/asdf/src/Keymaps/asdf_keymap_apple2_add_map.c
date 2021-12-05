@@ -25,6 +25,7 @@
 
 #include "asdf_arch.h"
 #include "asdf.h"
+#include "asdf_print.h"
 #include "asdf_ascii.h"
 #include "asdf_keymaps.h"
 #include "asdf_keymap_apple2_add_map.h"
@@ -149,7 +150,18 @@ static const apple_keycode_matrix_t *apple_maps[] = {
   [APPLE_CAPS_SHIFT_MAP] = &apple_caps_shift_matrix
 };
 
-  void apple_add_map(const apple_map_index_t map_index,
+void applesoft_keyboard_test(void)
+{
+    asdf_print("10 GET A$\r");
+    asdf_print("20 A = ASC(A$)\r");
+    asdf_print("30 IF A < 32 THEN A$=\"CTL+\"+CHR$(A + 64)\r");
+    asdf_print("40 ?\"'\";A$;\"' = \";A:\r");
+    asdf_print("50 IF A <> 3 GOTO 10\r");
+    asdf_print("60 END\rRUN\r");
+
+}
+
+void apple_add_map(const apple_map_index_t map_index,
                        modifier_index_t modifier_index)
 {
 

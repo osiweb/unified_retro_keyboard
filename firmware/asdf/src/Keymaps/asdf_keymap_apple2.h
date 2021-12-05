@@ -39,11 +39,11 @@
 #if !defined(ASDF_KEYMAP_DEFS_APPLE2_H)
 #define ASDF_KEYMAP_DEFS_APPLE2_H
 
-// include DIP switch definitions
-#include "asdf_keymap_defs_dipswitch.h"
+#define APPLESOFT_KEYBOARD_TEST ASDF_HOOK_USER_9
+#define APPLE2_ID_MESSAGE ASDF_HOOK_USER_10
 
-// Edit the number of rows and columns used in this map. If the number is less
-// than the maxium, the unused elements will be initialized to 0.
+#define APPLE2_PRINT_DELAY 40 // msec
+
 
 #endif /* !defined (ASDF_KEYMAP_DEFS_APPLE2_H) */
 

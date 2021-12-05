@@ -70,6 +70,8 @@ typedef enum {
 
 
 // function prototypes
+void applesoft_keyboard_test(void);
+
 void apple_add_map(const apple_map_index_t map_index, modifier_index_t modifier_index);
 
 #endif /* !defined (ASDF_KEYMAP_APPLE_ADD_MAP_H) */
