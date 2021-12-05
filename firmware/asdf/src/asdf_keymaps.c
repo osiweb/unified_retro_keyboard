@@ -37,7 +37,7 @@
 static asdf_keycode_map_t keymaps[ASDF_MOD_NUM_MODIFIERS] = {};
 
 // The current keymap index.  This is stored so bitwise operators on the keymap index can be performed.
-static uint8_t current_keymap_index;
+static uint8_t current_keyboard_index;
 
 // PROCEDURE: asdf_keymaps_add_map
 // INPUTS: (asdf_keycode_t *) - pointer to the keycode matrix to add in to map
@@ -140,13 +140,12 @@ static void asdf_keymaps_reset(void)
   asdf_hook_init();
 }
 
-// PROCEDURE: asdf_keymaps_select
-// INPUTS: (uint8_t) index - index of the keymap number to select
+// PROCEDURE: asdf_keymaps_switch
+// INPUTS: (uint8_t) index - index of the keymap number to switch to
 // OUTPUTS: none
 //
-// DESCRIPTION: accepts a index value. If the requested keymap index is valid,
-// then:
-// 1) assign the value to the global (to the module) current_keymap_index variable
+// DESCRIPTION: accepts a index value.
+// 1) assign the value to the global (to the module) current_keyboard_index variable
 // 2) execute the architecture-dependent init routine, to undo any settings
 //    from the previous keymap
 // 3) execute the keymap-specific setup routine.
@@ -159,14 +158,13 @@ static void asdf_keymaps_reset(void)
 //
 // COMPLEXITY: 2
 //
-void asdf_keymaps_select(uint8_t index)
+void asdf_keymaps_switch(uint8_t index)
 {
   // we set the current keymap index in order to track the state of the DIP
   // switches, but only switch to a valid map
 
-  current_keymap_index = index;
-
   if (asdf_keymap_valid(index)) {
+    current_keyboard_index = index;
 
     asdf_arch_init();
     asdf_keymaps_reset();
@@ -175,28 +173,36 @@ void asdf_keymaps_select(uint8_t index)
   }
 }
 
-// PROCEDURE: ASDF_KEYMAPS_DUMMY_FUNCTION
-// INPUTS: none
+// PROCEDURE: asdf_keymaps_select
+// INPUTS: (uint8_t) index - index of the keymap number to select
 // OUTPUTS: none
 //
-// DESCRIPTION: null function to populate the keymap setup function table. Since
-// this function does nothing, then selecting an unregistered keymap has no
-// effect (i.e., the previous keymap persisits)
+// DESCRIPTION: accepts a index value. If the keyboard is different from the
+// currently active keyboard, then attempt to switch to the new keyboard index
 //
-// SIDE EFFECTS: See Description
+// SIDE EFFECTS: See DESCRIPTION
 //
-// SCOPE: private
+// NOTES:
 //
-// COMPLEXITY: 1
+// SCOPE: public
 //
-void asdf_keymaps_dummy_function(void) {}
+// COMPLEXITY: 2
+//
+void asdf_keymaps_select(uint8_t index)
+{
+
+  if (index != current_keyboard_index) {
+    asdf_keymaps_switch(index);
+  }
+}
 
 // PROCEDURE: asdf_keymaps_init
 // INPUTS: none
 // OUTPUTS: none
 //
 // DESCRIPTION: initialize the keymap list. Called at startup. This function
-// calls the auto-generated keymap table init function, then selects keymap 0.
+// switches to keyboard 0. The switch routine cleans up the keyboard data
+// structures.
 //
 // SIDE EFFECTS: See DESCRIPTION
 //
@@ -206,7 +212,7 @@ void asdf_keymaps_dummy_function(void) {}
 //
 void asdf_keymaps_init(void)
 {
-  asdf_keymaps_select(0);
+  asdf_keymaps_switch(0);
 }
 
 // PROCEDURE: asdf_keymaps_map_select_0_clear
@@ -226,7 +232,7 @@ void asdf_keymaps_init(void)
 //
 void asdf_keymaps_map_select_0_clear(void)
 {
-  asdf_keymaps_select(current_keymap_index & (~ASDF_KEYMAP_BIT_0));
+  asdf_keymaps_select(current_keyboard_index & (~ASDF_KEYMAP_BIT_0));
 }
 
 // PROCEDURE: asdf_keymaps_map_select_0_set
@@ -246,7 +252,7 @@ void asdf_keymaps_map_select_0_clear(void)
 //
 void asdf_keymaps_map_select_0_set(void)
 {
-  asdf_keymaps_select(current_keymap_index | ASDF_KEYMAP_BIT_0);
+  asdf_keymaps_select(current_keyboard_index | ASDF_KEYMAP_BIT_0);
 }
 
 // PROCEDURE: asdf_keymaps_map_select_1_clear
@@ -266,7 +272,7 @@ void asdf_keymaps_map_select_0_set(void)
 //
 void asdf_keymaps_map_select_1_clear(void)
 {
-  asdf_keymaps_select(current_keymap_index & (~ASDF_KEYMAP_BIT_1));
+  asdf_keymaps_select(current_keyboard_index & (~ASDF_KEYMAP_BIT_1));
 }
 
 // PROCEDURE: asdf_keymaps_map_select_1_set
@@ -286,7 +292,7 @@ void asdf_keymaps_map_select_1_clear(void)
 //
 void asdf_keymaps_map_select_1_set(void)
 {
-  asdf_keymaps_select(current_keymap_index | ASDF_KEYMAP_BIT_1);
+  asdf_keymaps_select(current_keyboard_index | ASDF_KEYMAP_BIT_1);
 }
 
 // PROCEDURE: asdf_keymaps_map_select_2_clear
@@ -306,7 +312,7 @@ void asdf_keymaps_map_select_1_set(void)
 //
 void asdf_keymaps_map_select_2_clear(void)
 {
-  asdf_keymaps_select(current_keymap_index & (~ASDF_KEYMAP_BIT_2));
+  asdf_keymaps_select(current_keyboard_index & (~ASDF_KEYMAP_BIT_2));
 }
 
 // PROCEDURE: asdf_keymaps_map_select_2_set
@@ -326,7 +332,7 @@ void asdf_keymaps_map_select_2_clear(void)
 //
 void asdf_keymaps_map_select_2_set(void)
 {
-  asdf_keymaps_select(current_keymap_index | ASDF_KEYMAP_BIT_2);
+  asdf_keymaps_select(current_keyboard_index | ASDF_KEYMAP_BIT_2);
 }
 
 // PROCEDURE: asdf_keymaps_map_select_3_clear
@@ -346,7 +352,7 @@ void asdf_keymaps_map_select_2_set(void)
 //
 void asdf_keymaps_map_select_3_clear(void)
 {
-  asdf_keymaps_select(current_keymap_index & (~ASDF_KEYMAP_BIT_3));
+  asdf_keymaps_select(current_keyboard_index & (~ASDF_KEYMAP_BIT_3));
 }
 
 // PROCEDURE: asdf_keymaps_map_select_3_set
@@ -366,7 +372,7 @@ void asdf_keymaps_map_select_3_clear(void)
 //
 void asdf_keymaps_map_select_3_set(void)
 {
-  asdf_keymaps_select(current_keymap_index | ASDF_KEYMAP_BIT_3);
+  asdf_keymaps_select(current_keyboard_index | ASDF_KEYMAP_BIT_3);
 }
 
 // PROCEDURE: asdf_keymaps_get_code
@@ -389,10 +395,10 @@ void asdf_keymaps_map_select_3_set(void)
 asdf_keycode_t asdf_keymaps_get_code(const uint8_t row, const uint8_t col,
                                      const uint8_t modifier_index)
 {
-  uint8_t num_cols = keymaps[current_keymap_index].cols;
+  uint8_t num_cols = keymaps[current_keyboard_index].cols;
   asdf_keycode_t keycode = 0;
 
-  if (keymaps[current_keymap_index].cols && keymaps[current_keymap_index].rows) {
+  if (keymaps[current_keyboard_index].cols && keymaps[current_keyboard_index].rows) {
     asdf_keycode_t (*keycode_matrix)[num_cols] = (void *) (keymaps[modifier_index].matrix);
     keycode = FLASH_READ_MATRIX_ELEMENT(keycode_matrix, row, col);
   }
