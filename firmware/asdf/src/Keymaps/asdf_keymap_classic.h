@@ -31,8 +31,7 @@
 #if !defined(ASDF_KEYMAP_DEFS_CLASSIC_H)
 #define ASDF_KEYMAP_DEFS_CLASSIC_H
 
-// include DIP switch definitions
-#include "asdf_keymap_defs_dipswitch.h"
+#include "asdf_hook.h"
 
 // Edit the number of rows and columns used in this map. If the number is less
 // than the maxium, the unused elements will be initialized to 0.
@@ -58,6 +57,11 @@
 
 #define CLASSIC_CAPS_LED PHYSICAL_LED3
 #define CLASSIC_CAPS_LED_INIT_VALUE 0
+
+#define CLASSIC_ID_MESSAGE_HOOK ASDF_HOOK_USER_10
+#define APPLESOFT_KEYBOARD_TEST_HOOK ASDF_HOOK_USER_9
+
+#define ASDF_CLASSIC_PRINT_SPEED 40
 
 #endif /* !defined (ASDF_KEYMAP_DEFS_ASCII_H) */
 

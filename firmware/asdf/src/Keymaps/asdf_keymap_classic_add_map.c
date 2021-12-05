@@ -29,6 +29,7 @@
 #include "asdf_keymaps.h"
 #include "asdf_keymap_classic.h"
 #include "asdf_keymap_classic_add_map.h"
+#include "asdf_keymap_defs_dipswitch.h"
 
 // Key Matrix for combination of ASCII controller and Classic ASCII matrix
 //

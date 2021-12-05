@@ -61,9 +61,6 @@ void setup_apple2_caps_keymap(void)
   asdf_hook_assign(APPLESOFT_KEYBOARD_TEST, applesoft_keyboard_test);
   asdf_hook_assign(APPLE2_CAPS_ID_MESSAGE, apple2_caps_id_message);
 
-  asdf_virtual_init();
-
-
   // Turn the POWER LED on and don't assign to any function
 
   asdf_virtual_assign(APPLE_VIRTUAL_POWER_LED, APPLE_POWER_LED, V_NOFUNC, APPLE_POWER_LED_INIT_VALUE);
