@@ -677,24 +677,23 @@ void asdf_arch_pulse_delay_long(void)
   _delay_ms(ASDF_PULSE_DELAY_LONG_MS);
 }
 
-// PROCEDURE: asdf_arch_character_delay
-// INPUTS: none
+// PROCEDURE: asdf_arch_delay_ms
+// INPUTS: (uint16) delay_ms - the delay in msec.
 // OUTPUTS: none
 //
-// DESCRIPTION: Delays a fixed amount of time after each character of a system
-// message, to allow polled systems to catch up.
+// DESCRIPTION: Delays a specified number of milliseconds
 //
 // SIDE EFFECTS: see above.
-//
-// NOTES: Set ASDF_PULSE_DELAY_US in asdf_config.h
 //
 // SCOPE: public
 //
 // COMPLEXITY: 1
 //
-void asdf_arch_character_delay(void)
+void asdf_arch_delay_ms(uint16_t delay_ms)
 {
-  _delay_ms(ASDF_MESSAGE_CHARACTER_DELAY);
+  for (uint16_t i=0; i < delay_ms; i++) {
+    _delay_ms(1);
+  }
 }
 
 // PROCEDURE: asdf_arch_init
