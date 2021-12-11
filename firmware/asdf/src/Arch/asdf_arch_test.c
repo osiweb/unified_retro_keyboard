@@ -543,6 +543,23 @@ void asdf_arch_pulse_delay_long(void)
   asdf_arch_pulse_delay();
 }
 
+// PROCEDURE: asdf_arch_delay_ms
+// INPUTS: (uint16) delay_ms - the delay in msec.
+// OUTPUTS: none
+//
+// DESCRIPTION: Delays a specified number of milliseconds
+//
+// SIDE EFFECTS: see above.
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_arch_delay_ms(uint16_t delay_ms)
+{
+    asdf_arch_pulse_delay();
+}
+
 // PROCEDURE: asdf_arch_pulse_delay_short
 // INPUTS: none
 // OUTPUTS: none

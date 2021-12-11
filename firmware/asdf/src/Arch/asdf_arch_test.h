@@ -197,6 +197,12 @@ asdf_cols_t asdf_arch_read_row(uint8_t row);
 // be tested.
 void asdf_arch_send_code(asdf_keycode_t);
 
+// PROCEDURE: asdf_arch_delay_ms
+// INPUTS: (uint16) delay_ms - the delay in msec.
+// OUTPUTS: none
+// DESCRIPTION: Delays a specified number of milliseconds
+void asdf_arch_delay_ms(uint16_t delay_ms);
+
 // PROCEDURE: asdf_arch_get_sent_code
 // INPUTS: none
 // OUTPUTS: returns type (asdf_keycode_t) in register and zeros the register.

@@ -10,8 +10,8 @@
 #define MAX_BUFFER ASDF_BUFFER_POOL_SIZE
 #define HALF_BUFFER (ASDF_BUFFER_POOL_SIZE / 2)
 
-static const char test_string[] = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+static const char test_string[] = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+static const int test_string_size = sizeof(test_string) - 1;
 
 static const char * const more_strings[] = {
                                       "abcdefghijkl",
@@ -31,6 +31,18 @@ void setUp(void)
 }
 void tearDown(void) {}
 
+
+
+// function to generate pseudo-random sequence to fill buffer.
+asdf_keycode_t random_code(asdf_keycode_t seed)
+{
+    uint8_t msb = seed & 0x80;
+    seed <<= 1;
+    if (msb) {
+        seed ^= 0x88;
+    }
+    return seed;
+}
 
 // allocating first buffer returns handle 0
 void test_allocating_first_buffer_returns_handle_0(void)
@@ -125,16 +137,16 @@ void test_adding_and_retrieving_string_one_by_one(void)
   }
 }
 
-// Filling the buffer first, then retrieving the characters from the buffer
+
 // should return the same string.
 void test_fill_buffer_then_retrieve_string(void)
 {
   for (int sent = 0; sent < MAX_BUFFER; sent++) {
-    asdf_buffer_put(handle, (asdf_keycode_t) test_string[sent]);
+    asdf_buffer_put(handle, (asdf_keycode_t) test_string[sent % test_string_size]);
   }
   for (int received = 0; received < MAX_BUFFER; received++) {
     int32_t code = (int32_t) asdf_buffer_get(handle);
-    TEST_ASSERT_EQUAL_INT32((int32_t) test_string[received],code);
+    TEST_ASSERT_EQUAL_INT32((int32_t) test_string[received % test_string_size],code);
   }
   // assert that next code request returns invalid code:
   TEST_ASSERT_EQUAL_INT32(ASDF_INVALID_CODE, (int32_t) asdf_buffer_get(handle));
@@ -145,15 +157,20 @@ void test_fill_buffer_then_retrieve_string(void)
 // characters back, quietly dropping the overflow.
 void test_overfilling_buffer_and_retrieve_drops_overflow(void)
 {
+  const asdf_keycode_t seed = 0x3b;
+  asdf_keycode_t next_random_code;
+
   // send the entire test string to overflow the buffer.
-  for (int i = 0; i < (int) sizeof(test_string); i++) {
-    asdf_buffer_put(handle, (asdf_keycode_t) test_string[i]);
+  for (int i = 0, next_rand_code = seed; i < MAX_BUFFER * 2; i++) {
+    next_rand_code = random_code(next_rand_code);
+    asdf_buffer_put(handle, next_rand_code);
   }
   // read until invalid character is received, testing that each character is
   // correct.
-  for (int i = 0; i < MAX_BUFFER; i++) {
+  for (int i = 0, next_rand_code = seed; i < MAX_BUFFER; i++) {
     asdf_keycode_t code = asdf_buffer_get(handle);
-    TEST_ASSERT_EQUAL_INT32((int32_t) test_string[i], (int32_t) code);
+    next_rand_code = random_code(next_rand_code);
+    TEST_ASSERT_EQUAL_INT32((int32_t) next_rand_code, (int32_t) code);
   }
 
   // the next code request returns invalid code:

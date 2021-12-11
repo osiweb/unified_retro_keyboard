@@ -30,9 +30,21 @@
 
 // define the type for a keymap setup function. Keymaps are registerd by storing
 // a keymap setup function in the keymap setup array.
-typedef void (*asdf_keymap_setup_function_t)(void);
 
-void asdf_keymap_table_init(void);
+// PROCEDURE: asdf_keymap_setup
+// INPUTS: (uint8_t) index - index of the keymap setup function to call
+// OUTPUTS: none
+// DESCRIPTION: This function calls the keymap setup function specified
+//              by the index.
+// SIDE EFFECTS: See Description
+void asdf_keymap_setup(uint8_t index);
+
+// PROCEDURE: asdf_keymap_valid
+// INPUTS: (uint8_t) index - index of the keymap setup function to check
+// OUTPUTS: (uintu_t) returns TRUE (nonzero) if valid, FALSE (0) otherwise
+// DESCRIPTION: This function returns TRUE if the index corresponds to
+//              a valid keymap.
+uint8_t asdf_keymap_valid(uint8_t index);
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

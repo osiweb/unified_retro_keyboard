@@ -25,8 +25,6 @@
 // testing, both must be present to test their functionality.
 
 
-#include "test_keymapdefs.h"
-
 #define PLAIN_MATRIX_1 RESERVED_1
 #define CAPS_MATRIX_1 RESERVED_2
 #define SHIFT_MATRIX_1 RESERVED_3
