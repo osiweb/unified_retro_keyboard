@@ -59,7 +59,7 @@ void asdf_keymap_setup(uint8_t index) {
 //
 // INPUTS: (uint8_t) index - index of the keymap setup function to check
 // OUTPUTS: (uintu_t) returns TRUE (nonzero) if valid, FALSE (0) otherwise
-////
+//
 // DESCRIPTION: This function returns TRUE if the index corresponds to
 //              a valid keymap.
 //
