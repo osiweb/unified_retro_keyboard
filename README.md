@@ -18,6 +18,7 @@ The keyboard is designed using KiCad in order to be the most useful for anybody 
 ### Coming soon:
 - Replace encoder board on Apple II/II+ keyboards
 - Convert an OSI 542 keyboard into a generic ASCII keyboard
+- Replica for Knight keyboard
 
 ### This keyboard project so far consists of:
 - A classic retro-style ASCII keyboard, modeled after the ADM-3A keyboard, which
