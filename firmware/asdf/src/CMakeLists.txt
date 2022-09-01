@@ -14,7 +14,7 @@ function(create_keymap_valid keymaps keymap_valid)
   # However, we need to append an extra ';' at the end.
   string(APPEND temp_list ";")
   set(${keymap_valid} "${temp_list}" PARENT_SCOPE)
-endfunction(create_keymap_setups)
+endfunction(create_keymap_valid)
 
 function(create_keymap_declarations keymaps keymap_decl)
   list(TRANSFORM keymaps REPLACE "<\(.+\):\(.+\)>"  "\n void setup_\\1_keymap(void)" OUTPUT_VARIABLE temp_list)
