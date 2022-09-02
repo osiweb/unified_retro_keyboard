@@ -52,32 +52,7 @@ configure_file(${ASDF_SRC_DIR}/asdf_keymap_setup.c.in  ${CMAKE_CURRENT_BINARY_DI
 configure_file(${ASDF_SRC_DIR}/asdf_keymap_setup.h.in  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_setup.h)
 
 
-
-list(APPEND CFLAGS
-  -std=c99
-#  -Wa,-adhln
-  -Wall
-  -funsigned-char
-  -funsigned-bitfields
-  -ffunction-sections
-  -fdata-sections
-  -fpack-struct
-  -fshort-enums
-  -O2
-  -Wall
-  -Wextra
-  -Wpointer-arith
-  -Wcast-align
-  -Wwrite-strings
-  -Wswitch-default
-  -Wunreachable-code
-  -Winit-self
-  -Wmissing-field-initializers
-  -Wno-unknown-pragmas
-  -Wstrict-prototypes
-  -Wundef
-  -Wold-style-definition
-)
+c_toolchain_flags()
 
 list (APPEND SOURCES
   asdf.c

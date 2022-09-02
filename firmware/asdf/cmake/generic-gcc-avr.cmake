@@ -151,6 +151,45 @@ else(WITH_MCU)
     set(MCU_TYPE_FOR_FILENAME "")
 endif(WITH_MCU)
 
+function(c_toolchain_flags)
+    # fix array base indexing beginning in AVR-GCC 12:
+
+    list(APPEND TOOLCHAIN_FLAGS
+        -std=c99
+    #  -Wa,-adhln
+        -Wall
+        -funsigned-char
+        -funsigned-bitfields
+        -ffunction-sections
+        -fdata-sections
+        -fpack-struct
+        -fshort-enums
+        -O2
+        -Wall
+        -Wextra
+        -Wpointer-arith
+        -Wcast-align
+        -Wwrite-strings
+        -Wswitch-default
+        -Wunreachable-code
+        -Winit-self
+        -Wmissing-field-initializers
+        -Wno-unknown-pragmas
+        -Wstrict-prototypes
+        -Wundef
+        -Wold-style-definition
+    )
+
+    if(CMAKE_C_COMPILER_VERSION GREATER_EQUAL "11.3")
+        message(STATUS "Appending page size fix for GCC >= 11.3")
+        list(APPEND TOOLCHAIN_FLAGS --param=min-pagesize=0)
+    endif()
+
+    set(CFLAGS ${TOOLCHAIN_FLAGS} PARENT_SCOPE)
+endfunction(c_toolchain_flags)
+
+
+
 ##########################################################################
 # add_avr_executable
 # - IN_VAR: EXECUTABLE_NAME
