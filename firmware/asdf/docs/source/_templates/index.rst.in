@@ -1,0 +1,8 @@
+Unified Retro Keyboard firmware (ASDF) rev @CMAKE_PROJECT_VERSION@
+=======================================================================
+
+.. toctree::
+   :caption: Downloads
+   :glob:
+
+   toc_*
