@@ -1,4 +1,4 @@
-configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_test.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.h COPYONLY)
+configure_file(${PROJECT_SRC_DIR}/Arch/asdf_arch_test.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.h COPYONLY)
 
 list(APPEND C_FLAGS
   "-std=c99"
@@ -21,8 +21,8 @@ list(APPEND C_FLAGS
 list(APPEND TEST_INCLUDES
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
-  ${ASDF_SRC_DIR}
-  ${ASDF_SRC_DIR}/Arch
+  ${PROJECT_SRC_DIR}
+  ${PROJECT_SRC_DIR}/Arch
   )
 
 add_library(unity
@@ -39,21 +39,21 @@ target_include_directories(unity
 add_library(asdf_core
   STATIC
   asdf_keymap_table.c
-  ${ASDF_SRC_DIR}/asdf.c
-  ${ASDF_SRC_DIR}/asdf_buffer.c
-  ${ASDF_SRC_DIR}/asdf_hook.c
-  ${ASDF_SRC_DIR}/asdf_keymaps.c
-  ${ASDF_SRC_DIR}/asdf_modifiers.c
-  ${ASDF_SRC_DIR}/asdf_physical.c
-  ${ASDF_SRC_DIR}/asdf_repeat.c
-  ${ASDF_SRC_DIR}/asdf_virtual.c
-  ${ASDF_SRC_DIR}/Arch/asdf_arch_test.c
+  ${PROJECT_SRC_DIR}/asdf.c
+  ${PROJECT_SRC_DIR}/asdf_buffer.c
+  ${PROJECT_SRC_DIR}/asdf_hook.c
+  ${PROJECT_SRC_DIR}/asdf_keymaps.c
+  ${PROJECT_SRC_DIR}/asdf_modifiers.c
+  ${PROJECT_SRC_DIR}/asdf_physical.c
+  ${PROJECT_SRC_DIR}/asdf_repeat.c
+  ${PROJECT_SRC_DIR}/asdf_virtual.c
+  ${PROJECT_SRC_DIR}/Arch/asdf_arch_test.c
   )
 
 target_include_directories(asdf_core
   PRIVATE
-  ${ASDF_SRC_DIR}
-  ${ASDF_SRC_DIR}/Arch
+  ${PROJECT_SRC_DIR}
+  ${PROJECT_SRC_DIR}/Arch
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
   )
@@ -68,7 +68,7 @@ add_library(test_helpers
 target_include_directories(test_helpers
   PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${ASDF_SRC_DIR}
+  ${PROJECT_SRC_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
   )
 

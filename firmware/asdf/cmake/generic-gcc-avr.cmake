@@ -51,6 +51,66 @@ set(CMAKE_C_COMPILER ${AVR_CC})
 set(CMAKE_CXX_COMPILER ${AVR_CXX})
 
 ##########################################################################
+# c_toolchain_flags
+# - Adds a list of compiler-specific flags to the CFLAGS variable in the
+#   parent scope.
+##########################################################################
+function(c_toolchain_flags)
+    # fix array base indexing beginning in AVR-GCC 12:
+
+    list(APPEND TOOLCHAIN_FLAGS
+        -std=c99
+    #  -Wa,-adhln
+        -Wall
+        -funsigned-char
+        -funsigned-bitfields
+        -ffunction-sections
+        -fdata-sections
+        -fpack-struct
+        -fshort-enums
+        -O2
+        -Wall
+        -Wextra
+        -Wpointer-arith
+        -Wcast-align
+        -Wwrite-strings
+        -Wswitch-default
+        -Wunreachable-code
+        -Winit-self
+        -Wmissing-field-initializers
+        -Wno-unknown-pragmas
+        -Wstrict-prototypes
+        -Wundef
+        -Wold-style-definition
+    )
+
+    if(CMAKE_C_COMPILER_VERSION GREATER_EQUAL "11.3")
+        message(STATUS "Appending page size fix for GCC >= 11.3")
+        list(APPEND TOOLCHAIN_FLAGS --param=min-pagesize=0)
+    endif()
+
+    set(CFLAGS ${TOOLCHAIN_FLAGS} PARENT_SCOPE)
+endfunction(c_toolchain_flags)
+
+
+##########################################################################
+# Macros for setting optimization flag:
+# - optimization_off: turn off optimization for RTOS
+# - optimization_full: set optimization to desired level for app.
+##########################################################################
+
+macro(optimization_off)
+    set(CMAKE_CFLAGS_RELEASE "-O0" "-NDEBUG")
+    set(CMAKE_CFLAGS "-O0" "-NDEBUG")
+endmacro(optimization_off)
+
+
+macro(optimization_full)
+    set(CMAKE_CFLAGS_RELEASE "-O3" "-NDEBUG")
+    set(CMAKE_CFLAGS "-O3" "-NDEBUG")
+endmacro(optimization_full)
+
+##########################################################################
 # Identification
 ##########################################################################
 set(AVR 1)
@@ -100,11 +160,7 @@ endif(NOT AVR_MCU)
 
 #default avr-size args
 if(NOT AVR_SIZE_ARGS)
-    if(APPLE)
-        set(AVR_SIZE_ARGS -B)
-    else(APPLE)
-        set(AVR_SIZE_ARGS -C;--mcu=${AVR_MCU})
-    endif(APPLE)
+    set(AVR_SIZE_ARGS -B)
 endif(NOT AVR_SIZE_ARGS)
 
 # prepare base flags for upload tool
@@ -151,44 +207,6 @@ else(WITH_MCU)
     set(MCU_TYPE_FOR_FILENAME "")
 endif(WITH_MCU)
 
-function(c_toolchain_flags)
-    # fix array base indexing beginning in AVR-GCC 12:
-
-    list(APPEND TOOLCHAIN_FLAGS
-        -std=c99
-    #  -Wa,-adhln
-        -Wall
-        -funsigned-char
-        -funsigned-bitfields
-        -ffunction-sections
-        -fdata-sections
-        -fpack-struct
-        -fshort-enums
-        -O2
-        -Wall
-        -Wextra
-        -Wpointer-arith
-        -Wcast-align
-        -Wwrite-strings
-        -Wswitch-default
-        -Wunreachable-code
-        -Winit-self
-        -Wmissing-field-initializers
-        -Wno-unknown-pragmas
-        -Wstrict-prototypes
-        -Wundef
-        -Wold-style-definition
-    )
-
-    if(CMAKE_C_COMPILER_VERSION GREATER_EQUAL "11.3")
-        message(STATUS "Appending page size fix for GCC >= 11.3")
-        list(APPEND TOOLCHAIN_FLAGS --param=min-pagesize=0)
-    endif()
-
-    set(CFLAGS ${TOOLCHAIN_FLAGS} PARENT_SCOPE)
-endfunction(c_toolchain_flags)
-
-
 
 ##########################################################################
 # add_avr_executable
@@ -208,12 +226,22 @@ function(add_avr_executable EXECUTABLE_NAME)
    endif(NOT ARGN)
 
    # set file names
-   set(elf_file ${EXECUTABLE_NAME}${MCU_TYPE_FOR_FILENAME}.elf)
-   set(hex_file ${EXECUTABLE_NAME}${MCU_TYPE_FOR_FILENAME}.hex)
-   set(lst_file ${EXECUTABLE_NAME}${MCU_TYPE_FOR_FILENAME}.lst)
-   set(map_file ${EXECUTABLE_NAME}${MCU_TYPE_FOR_FILENAME}.map)
-   set(eeprom_image ${EXECUTABLE_NAME}${MCU_TYPE_FOR_FILENAME}-eeprom.hex)
-   message(STATUS "elf name: ${elf_file}")
+   set(basename ${EXECUTABLE_NAME}${MCU_TYPE_FOR_FILENAME})
+   set(elf_file ${basename}.elf)
+   set(hex_file ${basename}.hex)
+   set(lst_file ${basename}.lst)
+   set(map_file ${basename}.map)
+   set(eeprom_image ${basename}-eeprom.hex)
+  message(STATUS "elf name: ${elf_file}")
+  message(STATUS "project target name: ${PROJECT_TARGET_NAME}")
+
+  set(sphinx_file ${CMAKE_CURRENT_BINARY_DIR}/toc_${PROJECT_TARGET_NAME}.rst)
+  configure_file(${DOC_DIR}/source/_templates/hexfile_link.in ${sphinx_file})
+
+  message(STATUS "sphinx file: ${sphinx_file}")
+
+  install(FILES ${sphinx_file} DESTINATION docs/source)
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${basename}.hex DESTINATION dist)
 
    # elf file
    add_executable(${elf_file} EXCLUDE_FROM_ALL ${ARGN})

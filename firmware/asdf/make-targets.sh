@@ -199,11 +199,10 @@ main() {
      fi
 
      echo Valid Targets: "${VALID_TARGETS[*]}"
-     echo ${CMAKE_TARGETS[*]}
+
      for (( i=0; $i<$NUM_CMAKE_TARGETS; i++ ))
      do
          TARGET=${CMAKE_TARGETS[$i]}
-         echo $TARGET
          if [[ "$CLEAN_BEFORE_BUILD" == "yes" ]]
          then
              clean_arch ${VALID_TARGETS[$TARGET]}

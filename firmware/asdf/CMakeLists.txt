@@ -11,7 +11,7 @@ if(ARCH MATCHES atmega328p)
   set(AVR_MCU ${ARCH})
 
   set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/generic-gcc-avr.cmake)
-  set (ASDF_OUT_TARGET ${ASDF_TARGET}.elf)
+  set (PROJECT_OUT_TARGET ${PROJECT_TARGET}.elf)
 
 elseif(ARCH MATCHES atmega2560)
   message(STATUS "setting up for atmega2560")
@@ -20,7 +20,7 @@ elseif(ARCH MATCHES atmega2560)
   set(AVR_MCU ${ARCH})
 
   set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/generic-gcc-avr.cmake)
-  set (ASDF_OUT_TARGET ${ASDF_TARGET}.elf)
+  set (PROJECT_OUT_TARGET ${PROJECT_TARGET}.elf)
 
 endif()
 
@@ -31,16 +31,23 @@ project("asdf"
 
 set_property(GLOBAL PROPERTY C_STANDARD 99)
 
-set(ASDF_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(PROJECT_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+message("SRC Dir is ${PROJECT_SRC_DIR}")
 
-set (ASDF_TARGET_NAME asdf-v${PROJECT_VERSION}-${ARCH})
-set (ASDF_EXECUTABLE_TARGET_NAME ${ASDF_TARGET_NAME})
+#set(PYTHON_SCRIPTS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/scripts)
+#message("Python scripts Dir is ${PYTHON_SCRIPTS_DIR}")
+
+set(DOC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/docs)
+message("Documentation and web page directory is ${DOC_DIR}")
+
+set (PROJECT_TARGET_NAME asdf-v${PROJECT_VERSION}-${ARCH})
+set (PROJECT_EXECUTABLE_TARGET_NAME ${PROJECT_TARGET_NAME})
 
 if(ARCH MATCHES test)
   add_subdirectory(test)
 else()
   if((ARCH MATCHES atmega328p) OR (ARCH MATCHES atmega2560))
-    set (ASDF_EXECUTABLE_TARGET_NAME ${ASDF_TARGET_NAME}.elf)
+    set (PROJECT_EXECUTABLE_TARGET_NAME ${PROJECT_TARGET_NAME}.elf)
 
     function(custom_add_library EXECUTABLE_NAME)
       add_avr_library(${EXECUTABLE_NAME} ${ARGN})
@@ -53,3 +60,8 @@ else()
 
   add_subdirectory(src)
 endif()
+
+# generate reStructuredText index file for project version: Note: this may be
+# rebuilt for each target, but as long as all have the same project version, the
+# build is idempotent, so no issues.
+configure_file(${DOC_DIR}/source/_templates/index.rst.in ${DOC_DIR}/source/index.rst)

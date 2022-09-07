@@ -44,12 +44,12 @@ message("**********************")
 message("Keymap table: ${keymap_report}")
 message("**********************\n\n")
 
-set (ASDF_BIN_DIR ${CMAKE_CURRENT_BINARY_DIR})
+set (PROJECT_BIN_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
-configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_${ARCH}.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.h COPYONLY)
-configure_file(${ASDF_SRC_DIR}/Arch/asdf_arch_${ARCH}.c ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.c COPYONLY)
-configure_file(${ASDF_SRC_DIR}/asdf_keymap_setup.c.in  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_setup.c)
-configure_file(${ASDF_SRC_DIR}/asdf_keymap_setup.h.in  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_setup.h)
+configure_file(${PROJECT_SRC_DIR}/Arch/asdf_arch_${ARCH}.h ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.h COPYONLY)
+configure_file(${PROJECT_SRC_DIR}/Arch/asdf_arch_${ARCH}.c ${CMAKE_CURRENT_BINARY_DIR}/asdf_arch.c COPYONLY)
+configure_file(${PROJECT_SRC_DIR}/asdf_keymap_setup.c.in  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_setup.c)
+configure_file(${PROJECT_SRC_DIR}/asdf_keymap_setup.h.in  ${CMAKE_CURRENT_BINARY_DIR}/asdf_keymap_setup.h)
 
 
 c_toolchain_flags()
@@ -82,16 +82,16 @@ list (APPEND SOURCES
 
 # add the executable
 if (COMMAND custom_add_executable)
-  custom_add_executable(${ASDF_TARGET_NAME}
+  custom_add_executable(${PROJECT_TARGET_NAME}
   ${SOURCES}
   )
 else()
-  add_executable(${ASDF_TARGET_NAME}
+  add_executable(${PROJECT_TARGET_NAME}
     ${SOURCES}
     )
 endif()
 
-target_include_directories(${ASDF_EXECUTABLE_TARGET_NAME}
+target_include_directories(${PROJECT_EXECUTABLE_TARGET_NAME}
   PRIVATE
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}
@@ -99,11 +99,11 @@ target_include_directories(${ASDF_EXECUTABLE_TARGET_NAME}
 
   )
 
-target_compile_options(${ASDF_EXECUTABLE_TARGET_NAME}
+target_compile_options(${PROJECT_EXECUTABLE_TARGET_NAME}
   PRIVATE
   ${CFLAGS}
   )
 
-#target_link_libraries(${ASDF_EXECUTABLE_TARGET_NAME}
+#target_link_libraries(${PROJECT_EXECUTABLE_TARGET_NAME}
 #  keymaps
 #  )

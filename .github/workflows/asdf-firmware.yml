@@ -1,0 +1,25 @@
+name: asdf-firmware
+on:
+  push:
+    branches:
+      asdf-release
+      asdf-build-test
+
+uses: lukka/get-cmake@latest
+
+jobs:
+  build_firmware:
+    runs-on: ubuntu-latest
+    steps:
+      - run: apt-get install gcc-avr binutils-avr avr-libc
+      - run: snap install cmake
+      - run: pip install -U sphinx sphinx-rtd-theme sphinx-autodoc-typehints
+      - run: pip install -U sphinxcontrib-napoleon
+      - run: pip install -U toml build
+      - run: pip install pipenv
+
+      # Create the build directories, make all targets, and copy
+      # hex files to sphinx source directory for download links
+      - run: bash ./make-targets.sh -a -p -i -s
+      - run: mkdir public
+      - run: sphinx-build -b html docs/source public
