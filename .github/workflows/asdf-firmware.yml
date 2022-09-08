@@ -5,8 +5,6 @@ on:
       - asdf-release
       - asdf-build-test
 
-uses: lukka/get-cmake@latest
-
 jobs:
   build_firmware:
     runs-on: ubuntu-latest
