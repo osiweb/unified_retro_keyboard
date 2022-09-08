@@ -85,7 +85,7 @@ This will generate a github page with downloadable hex files. You will find the
 link to the github page in the "Actions" tab of the repository.  
 
 ### build using the make-build-dirs.sh script.
-------------------------------------------
+
 
 1) Run the make-targets.sh script
 
@@ -107,13 +107,13 @@ link to the github page in the "Actions" tab of the repository.
 
     - To create a a build directory for atmega1280, deleting any pre-existing directory:
 
-      > bash make-targets.sh -xt atmega280
+      > bash make-targets.sh -xt atmega2560
 
     - To remove and rebuild the python virtual environment:
 
       > bash make-targets.sh -xp
 
-    - To copy hex files to sphinx source tree (Requres the hex files
+    - To copy hex files to sphinx source tree (Requires the hex files
       to be installed in ./dist either from make install in each target
       directory, or 'bash make-targets.sh -ai')
 
@@ -144,15 +144,23 @@ link to the github page in the "Actions" tab of the repository.
 
 1) make and build directories for the desired architectures:
 
-   > mkdir build-atmega328p build-atmega640
+   > mkdir build-atmega328p build-atmega2560
 
 3) enter each build directory and run cmake for the desired architecture. 
 
    This step will also install the resulting hex files to the ./dist subdirectory.
 
    > cd build-atmega2560
-   > cmake .. -DARCH=atmega2560 -DCMAKE_INSTALL_PRESFIX=.. -DCMAKE_BUILD_TYPE=RELEASE
-   > make install
+   > cmake .. -DARCH=atmega2560 -DCMAKE_BUILD_TYPE=RELEASE
+   > make
+   
+4) to run unit tests, the process is the same as above, with "test" as the target:
+
+   > mkdir build-test
+   > cd build-test
+   > cmake .. -DARCH=test
+   > cd src
+   > ctest
 
 ## Porting
 --
