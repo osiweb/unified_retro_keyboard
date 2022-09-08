@@ -23,7 +23,7 @@ row,column format, with separate keymaps shift, capslock, and control-key modes.
 Download the latest release of the firmware [here](https://osiweb.github.io/unified_retro_keyboard)
 
 ## Features:
---------
+
 * modifiers: A set of modifier keys may be specified. When only a few modifiers
   are used, this mechanism is a low-overhead alternative to a keymap overlay for
   keyboard states that only change the key codes produced by a keypress, such as
@@ -90,40 +90,42 @@ link to the github page in the "Actions" tab of the repository.
 1) Run the make-targets.sh script
 
     Options:
-      -x   Before creating a build directgory or virtual env, remove
-           any pre-existing version
-      -t   add an architecture directory
-      -a   Add all valid architecture directories
-      -i   Build each specified target and install to dist directory
-      -p   Install pipenv virtual environment for python scripts
-      -c   Clean all artifacts
-      -s   Copy dist files to sphinx directory
+
+            -x   Before creating a build directgory or virtual env, remove
+                 any pre-existing version
+            -t   add an architecture directory
+            -a   Add all valid architecture directories
+            -i   Build each specified target and install to dist directory
+            -p   Install pipenv virtual environment for python scripts
+            -c   Clean all artifacts
+            -s   Copy dist files to sphinx directory
 
     Valid targets: atmega640, atmega1280, atmega2560
 
-    - To create build directories for all targets and install the python virtual environment:
+    - To create build directories for all targets and install the python virtual
+      environment:
 
-      > bash make-targets.sh -ap
+            bash make-targets.sh -ap
 
     - To create a a build directory for atmega1280, deleting any pre-existing directory:
 
-      > bash make-targets.sh -xt atmega2560
+            bash make-targets.sh -xt atmega2560
 
     - To remove and rebuild the python virtual environment:
 
-      > bash make-targets.sh -xp
+            bash make-targets.sh -xp
 
     - To copy hex files to sphinx source tree (Requires the hex files
       to be installed in ./dist either from make install in each target
       directory, or 'bash make-targets.sh -ai')
 
-      > bash make-targets.sh -s
+            bash make-targets.sh -s
 
 
     - From a fresh checkout, build all targets and install hex files in
       sphinx tree for the download links:
 
-      > bash make-targets -pais
+            bash make-targets -pais
 
 2) Enter the build directory for the desired architecture and build:
    Only needed if working on single target.  To make all targets at once,
@@ -131,38 +133,37 @@ link to the github page in the "Actions" tab of the repository.
 
    Example: building the atmega2560 binary:
 
-   > cd build-atmega2560
-   > make
+         cd build-atmega2560
+         make
 
 3) Build the sphinx documentation:
 
-   > cd docs
-   > pipenv run make html
-   
- ### build manually (e.g., for development)
-==============
+         cd docs
+         pipenv run make html
+
+### build manually (e.g., for development)
 
 1) make and build directories for the desired architectures:
 
-   > mkdir build-atmega328p build-atmega2560
+        mkdir build-atmega328p build-atmega2560
 
 3) enter each build directory and run cmake for the desired architecture.
 
-   > cd build-atmega2560
-   > cmake .. -DARCH=atmega2560 -DCMAKE_BUILD_TYPE=RELEASE
-   > make
-   
+        cd build-atmega2560
+        cmake .. -DARCH=atmega2560 -DCMAKE_BUILD_TYPE=RELEASE
+   >    make
+
 4) to run unit tests, the process is the same as above, with "test" as the
    target:
 
-   > mkdir build-test
-   > cd build-test
-   > cmake .. -DARCH=test
-   > cd src
-   > ctest
+        mkdir build-test
+        cd build-test
+        cmake .. -DARCH=test
+        cd src
+        ctest
 
 ## Porting
---
+
 This firmware was written in modular, portable C99, to be compiled with GCC
 (avr-gcc for the Atmega). The hardware-sepecific files are in Arch/*.[ch]. To
 adapt the Atmega port for additional hardware, enter the ./src/Arch directory,
