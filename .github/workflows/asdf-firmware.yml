@@ -1,23 +1,34 @@
 name: asdf-firmware
-on:
-  push:
-    branches:
-      - asdf-release
-      - asdf-build-test
+on: [push]
 
 jobs:
   build_firmware:
     runs-on: ubuntu-latest
+    container: { image: alpine }
+    defaults:
+      run:
+        shell: sh
     steps:
-      - run: apt-get install gcc-avr binutils-avr avr-libc
-      - run: snap install cmake
-      - run: pip install -U sphinx sphinx-rtd-theme sphinx-autodoc-typehints
-      - run: pip install -U sphinxcontrib-napoleon
-      - run: pip install -U toml build
-      - run: pip install pipenv
+       - name: install_git_and_bash
+         run: apk add bash git rsync
 
-      # Create the build directories, make all targets, and copy
-      # hex files to sphinx source directory for download links
-      - run: bash ./make-targets.sh -a -p -i -s
-      - run: mkdir public
-      - run: sphinx-build -b html docs/source public
+       - name: checkout
+         uses: actions/checkout@v2
+
+       - run: apk add gcc-avr binutils-avr avr-libc
+       - run: apk add cmake make
+       - run: apk add python3 py3-pip
+       - run: pip install -U sphinx sphinx-rtd-theme sphinx-autodoc-typehints
+       - run: pip install -U sphinxcontrib-napoleon
+       - run: pip install -U toml
+#       - run: pip install pipenv
+       # Create the build directories, make all targets, and copy
+       # hex files to sphinx source directory for download links
+       - run: cd firmware/asdf; /bin/bash ./make-targets.sh -a -i -s
+       - run: mkdir public; touch public/.nojekyll
+       - run: sphinx-build -b html firmware/asdf/docs/source public
+
+       - name: Deploy
+         uses: JamesIves/github-pages-deploy-action@v4
+         with:
+           folder: public
