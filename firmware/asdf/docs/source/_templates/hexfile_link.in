@@ -1,7 +1,0 @@
-.. _@ARCH@ Rev @CMAKE_PROJECT_VERSION@:
-
-ASDF Rev @CMAKE_PROJECT_VERSION@ hex file (@ARCH@)
-----------------------------------------------------------------------------------
-
-:ASDF Firmware @CMAKE_PROJECT_VERSION@-@ARCH@:
-   :download:`@hex_file@`
