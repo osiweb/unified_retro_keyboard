@@ -1,5 +1,5 @@
-ASDF Keyboard scanning firmware
--
+# ASDF Keyboard scanning firmware
+
 This is a key matrix scanner that can detect and debounce keypress and release
 events on a key matrix and either send codes or perform actions on keypress or
 release. Keymaps are defined per application and may, for example, generate
@@ -18,8 +18,12 @@ ASDF supports basic keyboard functionality and is configurable via a few
 boolean variables, and via the key maps. The key maps are organized in
 row,column format, with separate keymaps shift, capslock, and control-key modes.
 
-Features:
---
+## Downloads:
+
+Download the latest release of the firmware [here](https://osiweb.github.io/unified_retro_keyboard)
+
+## Features:
+--------
 * modifiers: A set of modifier keys may be specified. When only a few modifiers
   are used, this mechanism is a low-overhead alternative to a keymap overlay for
   keyboard states that only change the key codes produced by a keypress, such as
@@ -59,22 +63,98 @@ Features:
 
 * ASCII output - supported via output_value function.
 
-* Virtual Output layer: Indicator LEDs and other direct logic-level hardware controls: supported via
- a virtual output layer.  The keymaps (and certain functions such as shiftlock and capslock) may bind virtual outputs.  The keymaps may then specify how the virtual outputs map to the available physical resources.  This allows one keymap to place the capslock LED in one position, and another keymap may place the capslock LED elswhere.  This simplifies support of multiple keyboards and keymaps.
+* Virtual Output layer: Indicator LEDs and other direct logic-level hardware
+ controls: supported via a virtual output layer. The keymaps (and certain
+ functions such as shiftlock and capslock) may bind virtual outputs. The keymaps
+ may then specify how the virtual outputs map to the available physical
+ resources. This allows one keymap to place the capslock LED in one position,
+ and another keymap may place the capslock LED elswhere. This simplifies support
+ of multiple keyboards and keymaps.
 
-Compiling and configuration
---
-The source files are in the ./src directory.  The final build files go in the ./build directory.
+## Compiling and configuration
 
-To build, enter the ./src directory. You should be able to build a binary and
-hex file suitable for programming a microcontroller by typing "Make". You may
-edit the Makefile to specify your target platform (default is Atmega328P ASCII
-controller). You may also wish to edit your preferences in "asdf_config.h" to
-specify repeat timings, optimize the debounce setting (if you have very bounce
-keys), and specify the character output buffer size (if you are implementing
-macros, etc.)
+### building using github actions:
 
-Porting
+If you have commit privileges to the repository, or if you have your own fork,
+then push a commit to one of the following branches to trigger an automatic build:
+
+- asdf-release
+- asdf-build-test
+
+This will generate a github page with downloadable hex files. You will find the
+link to the github page in the "Actions" tab of the repository.  
+
+### build using the make-build-dirs.sh script.
+------------------------------------------
+
+1) Run the make-targets.sh script
+
+    Options:
+      -x   Before creating a build directgory or virtual env, remove
+           any pre-existing version
+      -t   add an architecture directory
+      -a   Add all valid architecture directories
+      -i   Build each specified target and install to dist directory
+      -p   Install pipenv virtual environment for python scripts
+      -c   Clean all artifacts
+      -s   Copy dist files to sphinx directory
+
+    Valid targets: atmega640, atmega1280, atmega2560
+
+    - To create build directories for all targets and install the python virtual environment:
+
+      > bash make-targets.sh -ap
+
+    - To create a a build directory for atmega1280, deleting any pre-existing directory:
+
+      > bash make-targets.sh -xt atmega280
+
+    - To remove and rebuild the python virtual environment:
+
+      > bash make-targets.sh -xp
+
+    - To copy hex files to sphinx source tree (Requres the hex files
+      to be installed in ./dist either from make install in each target
+      directory, or 'bash make-targets.sh -ai')
+
+      > bash make-targets.sh -s
+
+
+    - From a fresh checkout, build all targets and install hex files in
+      sphinx tree for the download links:
+
+      > bash make-targets -pais
+
+2) Enter the build directory for the desired architecture and build:
+   Only needed if working on single target.  To make all targets at once,
+   use the make-targest script described in step 1.
+
+   Example: building the atmega2560 binary:
+
+   > cd build-atmega2560
+   > make
+
+3) Build the sphinx documentation:
+
+   > cd docs
+   > pipenv run make html
+   
+ ### build manually (e.g., for development)
+==============
+
+1) make and build directories for the desired architectures:
+
+   > mkdir build-atmega328p build-atmega640
+
+3) enter each build directory and run cmake for the desired architecture. 
+
+   This step will also install the resulting hex files to the ./dist subdirectory.
+
+   > cd build-atmega2560
+   > cmake .. -DARCH=atmega2560 -DCMAKE_INSTALL_PRESFIX=.. -DCMAKE_BUILD_TYPE=RELEASE
+   > make install
+
+## Porting
 --
 This firmware was written in modular, portable C99, to be compiled with GCC
 (avr-gcc for the Atmega). The hardware-sepecific files are in Arch/*.[ch]. To
