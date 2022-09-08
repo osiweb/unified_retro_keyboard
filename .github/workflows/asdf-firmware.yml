@@ -2,8 +2,8 @@ name: asdf-firmware
 on:
   push:
     branches:
-      asdf-release
-      asdf-build-test
+      - asdf-release
+      - asdf-build-test
 
 uses: lukka/get-cmake@latest
 
