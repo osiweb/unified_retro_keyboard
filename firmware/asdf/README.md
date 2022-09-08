@@ -146,15 +146,14 @@ link to the github page in the "Actions" tab of the repository.
 
    > mkdir build-atmega328p build-atmega2560
 
-3) enter each build directory and run cmake for the desired architecture. 
-
-   This step will also install the resulting hex files to the ./dist subdirectory.
+3) enter each build directory and run cmake for the desired architecture.
 
    > cd build-atmega2560
    > cmake .. -DARCH=atmega2560 -DCMAKE_BUILD_TYPE=RELEASE
    > make
    
-4) to run unit tests, the process is the same as above, with "test" as the target:
+4) to run unit tests, the process is the same as above, with "test" as the
+   target:
 
    > mkdir build-test
    > cd build-test
