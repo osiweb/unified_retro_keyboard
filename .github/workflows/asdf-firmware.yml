@@ -1,8 +1,9 @@
 name: asdf-firmware
+on:
   push:
     branches:
-      asdf-release
-      asdf-build-test
+      - asdf-release
+      - asdf-build-test
 
 jobs:
   build_firmware:
@@ -24,6 +25,7 @@ jobs:
        - run: pip install -U sphinx sphinx-rtd-theme sphinx-autodoc-typehints
        - run: pip install -U sphinxcontrib-napoleon
        - run: pip install -U toml
+#       - run: pip install pipenv
 
        # Create the build directories, make all targets, and copy
        # hex files to sphinx source directory for download links
