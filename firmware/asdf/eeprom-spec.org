@@ -22,4 +22,41 @@
 *** Any parameters specific to a keyboard, such as macros, keymap-specific settings, etc. are stored here.
 *** This section is erased when keymap changes, but not when a keymap is loaded from EEPROM at powerup.
 
-*
+* Architecture
+** Device independent layer - allows diferent devices including on-chip EEPROM, off-chip EEPROM, and other technologies such as FRAM.  An API that implements the following:
+*** Read a byte/word from EEPROM
+*** Write a byte/word to EEPROM
+*** Erase a range of EEPROM
+*** Return size of storage (in bytes)
+** Allocation layer
+*** Store an arbitrary length string to a numbers slot (0-ff)
+*** retrieve an arbitrary length string from a numbered slot (0-ff)
+*** delete a string an a numbered slot (0-ff).  Probably accomplish by storing a 0-length string.
+*** Initialize an arbitary portion of storage (including all storage)
+
+** Architecture for allocation layer:
+*** Pointer to first "free" block.  This is a linked list of blocks.
+*** Table of starting positions and lengths.  Starting position will be 2 bytes, and will indicate a 1 or 2 byte boundary1, 2, or 4-byte words, determined by storage size.  Number of elements in table will also be determined by storage size, up to max 255.
+*** Initialize with a free block of all available storage
+*** Allocate storage from beginning of free block.
+*** The beginning of each block is a header including a "size" value (1 or 2 bytes) and a "link" address, 1, 2, or 4 bytes, same as the index table.  For free blocks, the "size" is always a contiguous size.  For allocated blocks, the size is the total size of all the blocks linked in a list.
+*** To allocate:
+***** Look up the first free block
+***** If the string can fit in the size of the free block:
+****** then store size in the size field
+****** store "0" in the link
+****** store the string next.
+****** If there is any space left over in the free block, then create a new "free block" from the next few bytes, and add to the front of the "free" list.
+***** If the string cannot fit in the size of the free block:
+****** store the size in the size field
+****** Leave the "link" address, which points to the next free block
+****** Store the string text
+****** jump to the next free block, and repeat the above for the remainder of the string.
+****** keep repeating until the string can fit in a free block.
+****** If there is no more free block, and not enough room to store the text, then store as much as possible, then stop.
+*** To free:
+***** Look up the string address in the index
+***** Zero out the index entry for the string.
+***** Look at the size of the string.  If the next contiguous block is also free, then combine and store the size of the combined block at the beginning of the block.
+****** repeat the above until next contiguous block is not free
+***** Please free block at the beginning of the "free" list.
