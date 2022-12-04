@@ -76,7 +76,19 @@ Download the latest release of the firmware [here](https://osiweb.github.io/unif
 ### Changing project name and version number.
 
 - Edit the file "CMakeLists.txt"
-- You will see a "project" section near the beginning of the file.  You can change the project name from "asdf" to whatever you like, and change the version number as you see fit.  These values will be used to name the resulting hex files, and also to name the download links in the GitHub page, if you choose to create one.
+- You will see a "project" section near the beginning of the file.
+
+        project("asdf"
+            VERSION 1.6.3
+            DESCRIPTION "A customizable keyboard matrix controller for retrocomputers"
+            LANGUAGES C)
+
+- You can change the project name from "asdf" to whatever you like, and change the version number as you see fit.  These values will be used to name the resulting hex files, and also to name the download links in the GitHub page, if you choose to create one. 
+
+        project("my-keyboard"
+            VERSION 1.0
+            DESCRIPTION "My customized keyboard firmware"
+            LANGUAGES C)
 
 ### building using github actions:
 
