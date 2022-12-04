@@ -40,7 +40,7 @@ message("SRC Dir is ${PROJECT_SRC_DIR}")
 set(DOC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/docs)
 message("Documentation and web page directory is ${DOC_DIR}")
 
-set (PROJECT_TARGET_NAME asdf-v${PROJECT_VERSION}-${ARCH})
+set (PROJECT_TARGET_NAME ${PROJECT_NAME}-v${PROJECT_VERSION}-${ARCH})
 set (PROJECT_EXECUTABLE_TARGET_NAME ${PROJECT_TARGET_NAME})
 
 if(ARCH MATCHES test)
