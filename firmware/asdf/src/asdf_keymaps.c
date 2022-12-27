@@ -25,7 +25,6 @@
 #include "asdf_config.h"
 #include "asdf.h"
 #include "asdf_arch.h"
-#include "asdf_physical.h"
 #include "asdf_virtual.h"
 #include "asdf_hook.h"
 #include "asdf_keymap_setup.h"
