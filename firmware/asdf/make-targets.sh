@@ -62,7 +62,8 @@ build_arch() {
     local target_arch="$1"
     local hardware_sig="$2"
 
-    cmake -S . -B "build-$target_arch" -G "$GENERATOR" -DCMAKE_INSTALL_PREFIX=".." -DARCH="$target_arch" \
+    cmake -S . -B "build-$target_arch" -G "$GENERATOR" \
+        -DCMAKE_INSTALL_PREFIX=".." -DARCH="$target_arch" \
         -DCMAKE_BUILD_TYPE="$BUILD_TYPE"
 
 }

@@ -77,6 +77,9 @@ message("SRC Dir is ${PROJECT_SRC_DIR}")
 set(DOC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/docs)
 message("Documentation and web page directory is ${DOC_DIR}")
 
+set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR})
+message("Install root: ${CMAKE_INSTALL_PREFIX}")
+
 set (PROJECT_TARGET_NAME ${PROJECT_NAME}-v${PROJECT_VERSION}-${ARCH})
 set (PROJECT_EXECUTABLE_TARGET_NAME ${PROJECT_TARGET_NAME})
 
