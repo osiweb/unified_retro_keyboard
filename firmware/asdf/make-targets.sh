@@ -16,7 +16,11 @@ add_valid_target() {
 
 add_valid_target test
 add_valid_target atmega328p
+add_valid_target atmega168p
+add_valid_target atmega88p
 add_valid_target atmega2560
+add_valid_target atmega1280
+add_valid_target atmega640
 
 
 check_valid_target() {
@@ -58,17 +62,9 @@ build_arch() {
     local target_arch="$1"
     local hardware_sig="$2"
 
-    if [[ ! -d "build-$target_arch" ]]
-    then
-        mkdir  "build-$target_arch"
-    fi
+    cmake -S . -B "build-$target_arch" -G "$GENERATOR" -DCMAKE_INSTALL_PREFIX=".." -DARCH="$target_arch" \
+        -DCMAKE_BUILD_TYPE="$BUILD_TYPE"
 
-    if [[ -d "build-$target_arch" ]]
-    then
-        (cd "build-$target_arch" \
-        && cmake -G "$GENERATOR" -DCMAKE_INSTALL_PREFIX=".." -DARCH="$target_arch" \
-        -DCMAKE_BUILD_TYPE="$BUILD_TYPE" ..)
-    fi
 }
 
 deploy_arch() {

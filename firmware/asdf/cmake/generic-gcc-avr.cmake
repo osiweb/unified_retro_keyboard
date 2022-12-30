@@ -50,6 +50,15 @@ set(CMAKE_SYSTEM_PROCESSOR avr)
 set(CMAKE_C_COMPILER ${AVR_CC})
 set(CMAKE_CXX_COMPILER ${AVR_CXX})
 
+#Flags used by the C compiler during DEBUG builds.
+set(CMAKE_C_FLAGS_DEBUG "-O0 -g")
+#Flags used by the C compiler during MINSIZEREL builds.
+set(CMAKE_C_FLAGS_MINSIZEREL "-Os -DNDEBUG")
+#Flags used by the C compiler during RELEASE builds.
+set(CMAKE_C_FLAGS_RELEASE "-O1 -DNDEBUG")
+#Flags used by the C compiler during RELWITHDEBINFO builds.
+set(CMAKE_C_FLAGS_RELWITHDEBINFO "-O1 -g -DNDEBUG")
+
 ##########################################################################
 # c_toolchain_flags
 # - Adds a list of compiler-specific flags to the CFLAGS variable in the
@@ -68,7 +77,6 @@ function(c_toolchain_flags)
         -fdata-sections
         -fpack-struct
         -fshort-enums
-        -O2
         -Wall
         -Wextra
         -Wpointer-arith
@@ -106,8 +114,8 @@ endmacro(optimization_off)
 
 
 macro(optimization_full)
-    set(CMAKE_CFLAGS_RELEASE "-O3" "-NDEBUG")
-    set(CMAKE_CFLAGS "-O3" "-NDEBUG")
+    set(CMAKE_CFLAGS_RELEASE "-O1" "-NDEBUG")
+    set(CMAKE_CFLAGS "-O1" "-NDEBUG")
 endmacro(optimization_full)
 
 ##########################################################################
