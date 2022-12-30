@@ -82,7 +82,9 @@ typedef enum {
   ASCII_RT_CURLY_BRACE = 0x7d,
   ASCII_TILDE = 0x7e,
   ASCII_VERT_BAR = 0x7c,
-  ASCII_DEL = 0x7f
+  ASCII_DEL = 0x7f,
+  ASCII_MAX_PRINTABLE = 0x7f,
+  ASCII_MIN_PRINTABLE = 0x20,
 } ascii_defs_t;
 
 #define ASCII_NULL 0
