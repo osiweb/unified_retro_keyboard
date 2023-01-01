@@ -48,8 +48,14 @@
 // COMPLEXITY:
 //
 
-void apple2_id_message(void) {
+void apple2_id_message(void)
+{
   asdf_print("[Keymap: Apple 2 (u/l case)]");
+}
+
+void apple2_print_characters(void)
+{
+  asdf_keymap_print_characters();
 }
 
 void setup_apple2_keymap(void)
@@ -64,7 +70,7 @@ void setup_apple2_keymap(void)
 
   asdf_hook_assign(APPLESOFT_KEYBOARD_TEST, applesoft_keyboard_test);
   asdf_hook_assign(APPLE2_ID_MESSAGE, apple2_id_message);
-  asdf_hook_assign(APPLE2_ASCII_TEST, asdf_keymap_print_characters);
+  asdf_hook_assign(APPLE2_ASCII_TEST, apple2_print_characters);
 
   // Attach the physical POWER LED as the CAPS LED. Assign no triggered
   // function, and initialize to initial state of the CAPS logic. The CAPS LED

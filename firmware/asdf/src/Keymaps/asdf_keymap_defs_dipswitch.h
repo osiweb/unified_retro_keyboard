@@ -31,6 +31,7 @@
                                [1] = ACTION_MAPSEL_1,               \
                                [2] = ACTION_MAPSEL_2,               \
                                [3] = ACTION_MAPSEL_3,               \
+                               [5] = ACTION_FN_11,                   \
                                [6] = ACTION_STROBE_POLARITY_SELECT, \
                                [7] = ACTION_AUTOREPEAT_SELECT,      \
   }

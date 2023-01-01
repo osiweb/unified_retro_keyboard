@@ -42,6 +42,7 @@ typedef enum {
   ASDF_HOOK_USER_8,
   ASDF_HOOK_USER_9,
   ASDF_HOOK_USER_10,
+  ASDF_HOOK_USER_11,
   ASDF_NUM_HOOKS,
 } asdf_hook_id_t;
 

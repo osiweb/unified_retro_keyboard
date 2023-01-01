@@ -85,6 +85,7 @@ typedef enum {
   ACTION_FN_8,
   ACTION_FN_9,
   ACTION_FN_10,
+  ACTION_FN_11,
   RESERVED_1,
   RESERVED_2,
   RESERVED_3,
