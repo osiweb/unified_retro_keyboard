@@ -74,7 +74,6 @@ list (APPEND SOURCES
   Keymaps/asdf_keymap_apple2_caps.c
   Keymaps/asdf_keymap_apple2_add_map.c
   Keymaps/asdf_keymap_sol.c
-  Keymaps/asdf_keymap_utils.c
   main.c
   )
 
