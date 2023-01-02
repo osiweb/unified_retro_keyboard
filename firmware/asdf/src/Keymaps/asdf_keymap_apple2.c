@@ -52,11 +52,6 @@ void apple2_id_message(void)
   asdf_print("[Keymap: Apple 2 (u/l case)]");
 }
 
-void apple2_print_characters(void)
-{
-  asdf_keymap_print_characters();
-}
-
 void setup_apple2_keymap(void)
 {
   asdf_set_print_delay(APPLE2_PRINT_DELAY);
