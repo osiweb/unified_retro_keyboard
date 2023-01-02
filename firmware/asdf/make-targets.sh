@@ -63,7 +63,7 @@ build_arch() {
     local hardware_sig="$2"
 
     cmake -S . -B "build-$target_arch" -G "$GENERATOR" \
-        -DCMAKE_INSTALL_PREFIX=".." -DARCH="$target_arch" \
+        -DCMAKE_INSTALL_PREFIX="." -DARCH="$target_arch" \
         -DCMAKE_BUILD_TYPE="$BUILD_TYPE"
 
 }
@@ -81,9 +81,11 @@ deploy_arch() {
 clean_all() {
     echo "- Removing install dir \"$INSTALL_DIR\"..."
     rm -rvf "$INSTALL_DIR"
-    echo "- Removing download links..."
+    echo "- Removing download links from doc dir..."
     rm -vf $DOC_DIR/source/toc_*
-    echo "- Removing versioned index file"
+    echo "- Removing hex files from doc dir..."
+    rm -vf $DOC_DIR/source/*.hex
+    echo "- Removing versioned index file from doc dir"
     rm -vf "$DOC_DIR/source/index.rst"
 }
 
