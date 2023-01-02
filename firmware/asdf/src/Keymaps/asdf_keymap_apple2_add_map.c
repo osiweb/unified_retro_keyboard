@@ -88,7 +88,7 @@ const FLASH apple_keycode_matrix_t apple_shift_matrix = {
    [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },
    [5] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ASCII_CR, ASCII_AT, 'O', 'L', '>' },
    [6] = { ACTION_NOTHING, ACTION_NOTHING, APPLE_ACTION_CLEAR, '=',
-           '*',         ASCII_ZERO,           ASCII_RT_PAREN,       ASCII_LT_PAREN },
+           '*', ASCII_AT, ASCII_RT_PAREN, ASCII_LT_PAREN },
    [7] = { APPLE_LEFT_ARROW, ASCII_SINGLE_QUOTE, '&', '%', '$', '#', ASCII_DOUBLE_QUOTE, '!' },
    ASDF_APPLE2_DIP_SWITCHES
 };
@@ -102,7 +102,7 @@ const FLASH apple_keycode_matrix_t apple_caps_shift_matrix = {
    [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },
    [5] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ASCII_CR, ACTION_REPEAT, 'O', 'L', '>' },
    [6] = { ACTION_NOTHING, ACTION_NOTHING, APPLE_ACTION_CLEAR, '=',
-           '*', ASCII_ZERO, ASCII_RT_PAREN, ASCII_LT_PAREN },
+           '*', ACTION_NOTHING, ASCII_RT_PAREN, ASCII_LT_PAREN },
    [7] = { APPLE_LEFT_ARROW, ASCII_SINGLE_QUOTE, '&', '%', '$', '#', ASCII_DOUBLE_QUOTE, '!' },
    ASDF_APPLE2_DIP_SWITCHES
 };
@@ -134,8 +134,8 @@ const FLASH apple_keycode_matrix_t apple_ctrl_matrix = {
    [5] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING,  ASCII_CR,
            ACTION_REPEAT,      ASCII_CTRL_O,   ASCII_CTRL_L, ASCII_RT_SQUARE_BRACE },
    [6] = { ACTION_NOTHING, ACTION_NOTHING, APPLE_ACTION_RESET,  ASCII_UNDERSCORE,
-           ACTION_NOTHING, ASCII_AT, ASCII_RT_CURLY_BRACE, ASCII_LT_CURLY_BRACE },
-   [7] = { APPLE_LEFT_ARROW, ASCII_GRAVE_ACCENT, ASCII_CARET, ACTION_FN_5,
+           ACTION_NOTHING, ACTION_FN_10, ASCII_RT_CURLY_BRACE, ASCII_LT_CURLY_BRACE },
+   [7] = { ASCII_DEL, ASCII_GRAVE_ACCENT, ASCII_CARET, ACTION_FN_5,
             ACTION_FN_4, ACTION_FN_3, ASCII_TILDE, ASCII_VERT_BAR },
    ASDF_APPLE2_DIP_SWITCHES
 };
@@ -151,13 +151,7 @@ static const apple_keycode_matrix_t *apple_maps[] = {
 
 void applesoft_keyboard_test(void)
 {
-    asdf_print("10 GET A$\r");
-    asdf_print("20 A = ASC(A$)\r");
-    asdf_print("30 IF A < 32 THEN A$=\"CTL+\"+CHR$(A + 64)\r");
-    asdf_print("40 ?\"'\";A$;\"' = \";A:\r");
-    asdf_print("50 IF A <> 3 GOTO 10\r");
-    asdf_print("60 END\rRUN\r");
-
+    asdf_print("10GETA$(0):A=ASC(A$(0)):A$(1)=\"CTL+\"+CHR$(A + 64):?\"'\";A$(A<32);\"' = \";A:IFA<>3GOTO10\r");
 }
 
 void apple_add_map(const apple_map_index_t map_index,
