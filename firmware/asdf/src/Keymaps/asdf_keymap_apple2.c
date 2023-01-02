@@ -31,7 +31,6 @@
 #include "asdf_modifiers.h"
 #include "asdf_keymap_apple2_add_map.h"
 #include "asdf_keymap_apple2.h"
-#include "asdf_keymap_utils.h"
 
 // PROCEDURE:
 // INPUTS:
