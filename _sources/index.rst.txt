@@ -1,4 +1,4 @@
-Unified Retro Keyboard firmware (ASDF) rev 1.6.4
+Unified Retro Keyboard firmware (ASDF) rev 1.6.5
 =======================================================================
 
 .. toctree::

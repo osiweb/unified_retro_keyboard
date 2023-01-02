@@ -1,7 +1,0 @@
-.. _atmega88p Rev 1.6.4:
-
-ASDF Rev 1.6.4 hex file (atmega88p)
-----------------------------------------------------------------------------------
-
-:ASDF Firmware 1.6.4-atmega88p:
-   :download:`asdf-v1.6.4-atmega88p.hex`

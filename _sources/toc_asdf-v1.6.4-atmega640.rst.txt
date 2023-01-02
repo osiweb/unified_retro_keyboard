@@ -1,7 +1,0 @@
-.. _atmega640 Rev 1.6.4:
-
-ASDF Rev 1.6.4 hex file (atmega640)
-----------------------------------------------------------------------------------
-
-:ASDF Firmware 1.6.4-atmega640:
-   :download:`asdf-v1.6.4-atmega640.hex`
