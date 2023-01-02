@@ -70,7 +70,6 @@ void setup_apple2_keymap(void)
 
   asdf_hook_assign(APPLESOFT_KEYBOARD_TEST, applesoft_keyboard_test);
   asdf_hook_assign(APPLE2_ID_MESSAGE, apple2_id_message);
-  asdf_hook_assign(APPLE2_ASCII_TEST, apple2_print_characters);
 
   // Attach the physical POWER LED as the CAPS LED. Assign no triggered
   // function, and initialize to initial state of the CAPS logic. The CAPS LED
