@@ -5,7 +5,8 @@
 //
 // asdf_keymap_ace1000.h
 //
-// Ascii keymaps
+// ASCII keymaps for the Franklin ACE 1000 replacement keyboard
+// https://github.com/ryucats/Franklin-ACE-1000-Keyboard
 //
 // Copyright 2023 Chris RYU
 // Copyright 2019 David Fenyes

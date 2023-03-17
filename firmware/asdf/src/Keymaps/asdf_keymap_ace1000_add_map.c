@@ -5,7 +5,8 @@
 //
 // asdf_keymap_ace1000_add_map.c
 //
-// defines the keymap matrices used by the Franklin ACE 1000
+// Keymap matrices used by the Franklin ACE 1000 replacement keyboard
+// https://github.com/ryucats/Franklin-ACE-1000-Keyboard
 //
 // Copyright 2023 Chris RYU
 // Copyright 2019 David Fenyes
