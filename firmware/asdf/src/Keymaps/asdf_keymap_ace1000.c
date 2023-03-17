@@ -62,7 +62,7 @@ void setup_ace1000_keymap(void)
   ace1000_add_map(ACE1000_CTRL_MAP, MOD_CTRL_MAP);
 
   asdf_hook_assign(ACE1000_ID_MESSAGE_HOOK, ace1000_id_message);
-  asdf_hook_assign(APPLESOFT_KEYBOARD_TEST_HOOK, applesoft_keyboard_test);
+  asdf_hook_assign(APPLESOFT_KEYBOARD_TEST_HOOK, ace1000_keyboard_test);
 
   // Assign power LED to virtual power LED, and initialize to ON
   asdf_virtual_assign(ACE1000_VIRTUAL_POWER_LED, ACE1000_POWER_LED, V_NOFUNC, ACE1000_POWER_LED_INIT_VALUE);

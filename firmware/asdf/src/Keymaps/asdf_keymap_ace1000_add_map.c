@@ -27,6 +27,7 @@
 #include "asdf_arch.h"
 #include "asdf.h"
 #include "asdf_ascii.h"
+#include "asdf_print.h"
 #include "asdf_keymaps.h"
 #include "asdf_keymap_ace1000.h"
 #include "asdf_keymap_ace1000_add_map.h"
@@ -73,7 +74,7 @@ const FLASH ace1000_keycode_matrix_t ace1000_caps_matrix = {
     [5] = { ACE_KEY_9, ACE_KEY_SHIFT_O, ACE_KEY_SHIFT_L, ACE_KEY_PERIOD, ACE_KEY_RIGHT, ACE_KEY_UNDERSCORE, ACE_KEY_PLUS, ACE_KEY_SPLAT,  },
     [6] = { ACE_KEY_0, ACE_KEY_SHIFT_P, ACE_KEY_SEMI, ACE_KEY_SLASH, ACE_KEY_7, ACE_KEY_4, ACE_KEY_1, ACE_KEY_GT,  },
     [7] = { ACE_KEY_MINUS, ACE_KEY_CURLY, ACE_KEY_QUOTE, ACTION_SHIFT, ACE_KEY_8, ACE_KEY_5, ACE_KEY_2, ACE_KEY_0,  },
-   [8] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING },
+    [8] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING },
     [9] = { ACE_KEY_SLASH, ACE_KEY_SQUARE, ACE_KEY_RETURN, ACE_KEY_LEFT, ACE_KEY_9, ACE_KEY_6, ACE_KEY_3, ACE_KEY_PERIOD,  },
 };
 
@@ -86,7 +87,7 @@ const FLASH ace1000_keycode_matrix_t ace1000_ctrl_matrix = {
     [5] = { ACE_KEY_CTRL_9, ACE_KEY_CTRL_O, ACE_KEY_CTRL_L, ACE_KEY_CTRL_PERIOD, ACE_KEY_CTRL_RIGHT, ACE_KEY_CTRL_UNDERSCORE, ACE_KEY_CTRL_PLUS, ACE_KEY_CTRL_SPLAT,  },
     [6] = { ACE_KEY_CTRL_0, ACE_KEY_CTRL_P, ACE_KEY_CTRL_SEMI, ACE_KEY_CTRL_SLASH, ACE_KEY_CTRL_7, ACE_KEY_CTRL_4, ACE_KEY_CTRL_1, ACE_KEY_CTRL_GT,  },
     [7] = { ACE_KEY_CTRL_MINUS, ACE_KEY_CTRL_CURLY, ACE_KEY_CTRL_QUOTE, ACTION_SHIFT, ACE_KEY_CTRL_8, ACE_KEY_CTRL_5, ACE_KEY_CTRL_2, ACE_KEY_CTRL_0,  },
-   [8] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING },
+    [8] = { ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING, ACTION_NOTHING },
     [9] = { ACE_KEY_CTRL_SLASH, ACE_KEY_CTRL_SQUARE, ACE_KEY_RETURN, ACE_KEY_CTRL_LEFT, ACE_KEY_CTRL_9, ACE_KEY_CTRL_6, ACE_KEY_CTRL_3, ACE_KEY_CTRL_PERIOD,  },
 };
 
@@ -97,8 +98,8 @@ static const ace1000_keycode_matrix_t *ace1000_maps[] = {
   [ACE1000_CTRL_MAP] = &ace1000_ctrl_matrix,
 };
 
-  void ace1000_add_map(const ace1000_map_index_t map_index,
-                       modifier_index_t modifier_index)
+void ace1000_add_map(const ace1000_map_index_t map_index,
+                     modifier_index_t modifier_index)
 {
 
   asdf_keycode_t (*matrix)[ACE1000_NUM_COLS] =
@@ -107,6 +108,12 @@ static const ace1000_keycode_matrix_t *ace1000_maps[] = {
     asdf_keymaps_add_map(&matrix[0][0], modifier_index, (uint8_t) ACE1000_NUM_ROWS,
                        (uint8_t) ACE1000_NUM_COLS);
 }
+
+void ace1000_keyboard_test(void)
+{
+    asdf_print("10GETA$(0):A=ASC(A$(0)):A$(1)=\"CTL+\"+CHR$(A + 64):?\"'\";A$(A<32);\"' = \";A:IFA<>3GOTO10\r");
+}
+
 
 
 

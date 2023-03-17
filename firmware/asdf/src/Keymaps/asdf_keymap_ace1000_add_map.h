@@ -38,7 +38,9 @@ typedef enum {
 
 // function prototypes
 void ace1000_add_map(const ace1000_map_index_t map_index, modifier_index_t modifier_index);
+void ace1000_keyboard_test(void);
 
+// Key value definitions
 #define ACE_KEY_0	0x30
 #define ACE_KEY_1	0x31
 #define ACE_KEY_2	0x32
