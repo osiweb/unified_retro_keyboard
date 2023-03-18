@@ -79,6 +79,9 @@ void setup_ace1000_keymap(void)
 
   // assign the CLRSCR output to the virtual CLRSCR output, configure to produce a long pulse when activated
   asdf_virtual_assign(ACE1000_VIRTUAL_CLR_SCR, ACE1000_CLR_SCR_OUT, V_PULSE_LONG, !ACE1000_CLR_SCR_ACTIVE_VALUE);
+
+  // turn on caps lock
+  asdf_modifier_capslock_activate();
 }
 
 

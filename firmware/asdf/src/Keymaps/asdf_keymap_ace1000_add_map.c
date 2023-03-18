@@ -93,8 +93,8 @@ const FLASH ace1000_keycode_matrix_t ace1000_ctrl_matrix = {
 };
 
 static const ace1000_keycode_matrix_t *ace1000_maps[] = {
-  [ACE1000_CAPS_MAP] = &ace1000_plain_matrix,
-  [ACE1000_PLAIN_MAP] = &ace1000_caps_matrix,
+  [ACE1000_CAPS_MAP] = &ace1000_caps_matrix,
+  [ACE1000_PLAIN_MAP] = &ace1000_plain_matrix,
   [ACE1000_SHIFT_MAP] = &ace1000_shift_matrix,
   [ACE1000_CTRL_MAP] = &ace1000_ctrl_matrix,
 };
