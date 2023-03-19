@@ -51,6 +51,7 @@ Download the latest release of the firmware [here](https://osiweb.github.io/unif
   * (2): Apple 2 ASCII keyboard (upper/lower)
   * (3): Apple 2 ASCII keyboard (standard all caps)
   * (4): Sol-20 ASCII keyboard
+  * (5): Franklin Ace-100 keyboard (Thanks to Chris Ryu)
 
 * Debounce and Repeat functions: The main keyscan logic implements key
   debouncing. Multiple keys may be debounced simultaneously using a separate
