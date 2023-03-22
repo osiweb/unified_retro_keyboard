@@ -14,7 +14,7 @@ The keyboard is designed using KiCad in order to be the most useful for anybody 
 - Replacement keyboard for the Sol-20 computer
 - Generic ADM-3A/Teletype style keyboard
 - Apple I keyboard (multiple styles)
-- Franklin ACE 1000 replacement keyboard by Chris RYU (https://github.com/ryucats/Franklin-ACE-1000-Keyboard)
+- Franklin ACE 1000 replacement keyboard by Chris Ryu (https://github.com/ryucats/Franklin-ACE-1000-Keyboard)
 
 ### Coming soon:
 - Replace encoder board on Apple II/II+ keyboards
