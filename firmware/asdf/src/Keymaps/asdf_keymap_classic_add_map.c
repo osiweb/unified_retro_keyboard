@@ -69,84 +69,330 @@ typedef asdf_keycode_t classic_keycode_matrix_t[CLASSIC_NUM_ROWS][CLASSIC_NUM_CO
 
 
 const FLASH classic_keycode_matrix_t classic_plain_matrix = {
-  [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING, ASCII_ESC, ASCII_TAB,
-          ACTION_CTRL, ASCII_BACKSLASH },
-  [1] = { ASCII_DEL, 'p', ';', '/', ASCII_SPACE, 'z', 'a', 'q' },
-  [2] = { CLASSIC_ACTION_BREAK, ASCII_COMMA, 'm', 'n', 'b', 'v', 'c', 'x' },
-  [3] = { ACTION_NOTHING, 'k', 'j', 'h', 'g', 'f', 'd', 's' },
-  [4] = { ACTION_NOTHING, 'i', 'u', 'y', 't', 'r', 'e', 'w' },
-  [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, 'o', 'l', ASCII_PERIOD },
-  [6] = { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', ASCII_ZERO, '9',
-          '8' },
-  [7] = { ASCII_AT, '7', '6', '5', '4', '3', '2', '1' },
+[0][0] = {no_action, no_action, 0},
+[0][1] = {asdf_modifier_shift_activate, asdf_modifier_shift_deactivate, 0},
+[0][2] = {asdf_modifier_shift_activate, asdf_modifier_shift_deactivate, 0},
+[0][3] = {no_action, no_action, 0},
+[0][4] = {insert, no_action, ASCII_ESC},
+[0][5] = {insert, no_action, ASCII_TAB},
+[0][6] = {asdf_modifier_ctrl_activate, asdf_modifier_ctrl_deactivate, 0},
+[0][7] = {insert, no_action, ASCII_BACKSLASH},
+
+[1][0] = {insert, no_action, ASCII_DEL},
+[1][1] = {insert, no_action, 'p'},
+[1][2] = {insert, no_action, ';'},
+[1][3] = {insert, no_action, '/'},
+[1][4] = {insert, no_action, ASCII_SPACE},
+[1][5] = {insert, no_action, 'z'},
+[1][6] = {insert, no_action, 'a'},
+[1][7] = {insert, no_action, 'q'},
+
+[2][0] = {asdf_virtual_activate, no_action, CLASSIC_ACTION_BREAK},
+[2][1] = {insert, no_action, ASCII_COMMA},
+[2][2] = {insert, no_action, 'm'},
+[2][3] = {insert, no_action, 'n'},
+[2][4] = {insert, no_action, 'b'},
+[2][5] = {insert, no_action, 'v'},
+[2][6] = {insert, no_action, 'c'},
+[2][7] = {insert, no_action, 'x'},
+
+[3][0] = {no_action, no_action, 0},
+[3][1] = {insert, no_action, 'k'},
+[3][2] = {insert, no_action, 'j'},
+[3][3] = {insert, no_action, 'h'},
+[3][4] = {insert, no_action, 'g'},
+[3][5] = {insert, no_action, 'f'},
+[3][6] = {insert, no_action, 'd'},
+[3][7] = {insert, no_action, 's'},
+
+[4][0] = {no_action, no_action, 0},
+[4][1] = {insert, no_action, 'i'},
+[4][2] = {insert, no_action, 'u'},
+[4][3] = {insert, no_action, 'y'},
+[4][4] = {insert, no_action, 't'},
+[4][5] = {insert, no_action, 'r'},
+[4][6] = {insert, no_action, 'e'},
+[4][7] = {insert, no_action, 'w'},
+
+[5][0] = {no_action, no_action, 0},
+[5][1] = {asdf_repeat_activate, asdf_repeat_deactivate, 0},
+[5][2] = {asdf_modifier_capslock_activate, no_action, 0},
+[5][3] = {insert, no_action, ASCII_CR},
+[5][4] = {insert, no_action, ASCII_LF},
+[5][5] = {insert, no_action, 'o'},
+[5][6] = {insert, no_action, 'l'},
+[5][7] = insert, no_action, ASCII_PERIOD},
+
+  [6][0] = {insert, no_action, ASCII_TILDE},
+  [6][1] = {insert, no_action, ASCII_RT_SQUARE_BRACE},
+  [6][2] = {insert, no_action, ASCII_LT_SQUARE_BRACE},
+  [6][3] = {insert, no_action, '-'},
+  [6][4] = {insert, no_action, ':'},
+  [6][5] = {insert, no_action, ASCII_ZERO},
+  [6][6] = {insert, no_action, '9'},
+  [6][7] = {insert, no_action, '8'},
+
+  [7][0] = {insert, no_action, ASCII_AT},
+  [7][1] = {insert, no_action, '7'},
+  [7][2] = {insert, no_action, '6'},
+  [7][3] = {insert, no_action, '5'},
+  [7][4] = {insert, no_action, '4'},
+  [7][5] = {insert, no_action, '3'},
+  [7][6] = {insert, no_action, '2'},
+  [7][7] = {insert, no_action, '1'},
+
   ASDF_CLASSIC_DIP_SWITCHES
-};
+  };
 
 const FLASH classic_keycode_matrix_t classic_shift_matrix = {
-  [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING, ASCII_ESC, ASCII_TAB,
-          ACTION_CTRL, ASCII_VERT_BAR },
-  [1] = { ASCII_DEL, 'P', '+', '?', ASCII_SPACE, 'Z', 'A', 'Q' },
-  [2] = { CLASSIC_ACTION_CLEAR, '<', 'M', 'N', 'B', 'V', 'C', 'X' },
-  [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },
-  [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },
-  [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', '>' },
-  [6] = { ASCII_TILDE, ASCII_RT_CURLY_BRACE, ASCII_LT_CURLY_BRACE, '=', '*', ASCII_ZERO,
-          ASCII_RT_PAREN, ASCII_LT_PAREN },
-  [7] = { ASCII_GRAVE_ACCENT, ASCII_SINGLE_QUOTE, '&', '%', '$', '#', ASCII_DOUBLE_QUOTE, '!' },
-  ASDF_CLASSIC_DIP_SWITCHES
+
+[0][0] = {no_action, no_action, 0},
+[0][1] = {asdf_modifier_shift_activate, asdf_modifier_shift_deactivate, 0}
+[0][2] = {{asdf_modifier_shift_activate, asdf_modifier_shift_deactivate, 0}
+[0][3] = {no_action, no_action, 0},
+[0][4] = {insert, no_action, ASCII_ESC},
+[0][5] = {insert, no_action, ASCII_TAB},
+[0][6] = {asdf_modifier_ctrl_activate, asdf_modifier_ctrl_deactivate, 0},
+[0][7] = {insert, no_action, ASCII_VERT_BAR},
+
+[1][0] = {insert, no_action, ASCII_DEL},
+[1][1] = {insert, no_action, 'P'},
+[1][2] = {insert, no_action, '+'},
+[1][3] = {insert, no_action, '?'},
+[1][4] = {insert, no_action, ASCII_SPACE},
+[1][5] = {insert, no_action, 'Z'},
+[1][6] = {insert, no_action, 'A'},
+[1][7] = {insert, no_action, 'Q'},
+
+[2][0] = {asdf_virtual_activate, no_action, CLASSIC_ACTION_CLEAR},
+[2][1] = {insert, no_action, '<'},
+[2][2] = {insert, no_action, 'M'},
+[2][3] = {insert, no_action, 'N'},
+[2][4] = {insert, no_action, 'B'},
+[2][5] = {insert, no_action, 'V'},
+[2][6] = {insert, no_action, 'C'},
+[2][7] = {insert, no_action, 'X'},
+
+[3][0] = {no_action, no_action, 0},
+[3][1] = {insert, no_action, 'K'},
+[3][2] = {insert, no_action, 'J'},
+[3][3] = {insert, no_action, 'H'},
+[3][4] = {insert, no_action, 'G'},
+[3][5] = {insert, no_action, 'F'},
+[3][6] = {insert, no_action, 'D'},
+[3][7] = {insert, no_action, 'S'},
+
+[4][0] = {no_action, no_action, 0},
+[4][1] = {insert, no_action, 'I'},
+[4][2] = {insert, no_action, 'U'},
+[4][3] = {insert, no_action, 'Y'},
+[4][4] = {insert, no_action, 'T'},
+[4][5] = {insert, no_action, 'R'},
+[4][6] = {insert, no_action, 'E'},
+[4][7] = {insert, no_action, 'W'},
+
+[5][0] = {no_action, no_action, 0},
+[5][1] = {asdf_repeat_activate, asdf_repeat_deactivate, 0},
+[5][2] = {asdf_modifier_capslock_activate, asdf_modifier_capslock_activate, 0},
+[5][3] = {insert, no_action, ASCII_CR},
+[5][4] = {insert, no_action, ASCII_LF},
+[5][5] = {insert, no_action, 'O'},
+[5][6] = {insert, no_action, 'L'},
+[5][7] = {insert, no_action, '>'},
+
+[6][0] = {insert, no_action, ASCII_TILDE},
+[6][1] = {insert, no_action, ASCII_RT_CURLY_BRACE},
+[6][2] = {insert, no_action, ASCII_LT_CURLY_BRACE},
+[6][3] = {insert, no_action, '='},
+[6][4] = {insert, no_action, '*'},
+[6][5] = {insert, no_action, ASCII_ZERO},
+[6][6] = {insert, no_action, ASCII_RT_PAREN},
+[6][7] = {insert, no_action, ASCII_LT_PAREN},
+
+
+[7][0] = {insert, no_action, ASCII_GRAVE_ACCENT},
+[7][1] = {insert, no_action, ASCII_SINGLE_QUOTE},
+[7][2] = {insert, no_action, '&'},
+[7][3] = {insert, no_action, '%'},
+[7][4] = {insert, no_action, '$'},
+[7][5] = {insert, no_action, '#'},
+[7][6] = {insert, no_action, ASCII_DOUBLE_QUOTE},
+[7][7] = {insert, no_action, '!'},
+
+ASDF_CLASSIC_DIP_SWITCHES
 };
 
 const FLASH classic_keycode_matrix_t classic_caps_matrix = {
-  [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING, ASCII_ESC, ASCII_TAB,
-          ACTION_CTRL, ASCII_BACKSLASH },
-  [1] = { ASCII_DEL, 'P', ';', '/', ASCII_SPACE, 'Z', 'A', 'Q' },
-  [2] = { CLASSIC_ACTION_BREAK, ASCII_COMMA, 'M', 'N', 'B', 'V', 'C', 'X' },
-  [3] = { ACTION_NOTHING, 'K', 'J', 'H', 'G', 'F', 'D', 'S' },
-  [4] = { ACTION_NOTHING, 'I', 'U', 'Y', 'T', 'R', 'E', 'W' },
-  [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, 'O', 'L', ASCII_PERIOD },
-  [6] = { ASCII_TILDE, ASCII_RT_SQUARE_BRACE, ASCII_LT_SQUARE_BRACE, '-', ':', ASCII_ZERO, '9',
-          '8' },
-  [7] = { ASCII_AT, '7', '6', '5', '4', '3', '2', '1' },
-  ASDF_CLASSIC_DIP_SWITCHES
+
+[0][0] = {no_action, no_action, 0},
+[0][1] = {asdf_modifier_shift_activate, asdf_modifier_shift_deactivate, 0},
+[0][2] = {asdf_modifier_shift_activate, asdf_modifier_shift_deactivate, 0},
+[0][3] = {no_action, no_action, 0},
+[0][4] = {insert, no_action, ASCII_ESC},
+[0][5] = {insert, no_action, ASCII_TAB},
+[0][6] = {asdf_modifier_ctrl_activate, asdf_modifier_ctrl_deactivate, 0},
+[0][7] = {insert, no_action, ASCII_BACKSLASH},
+
+[1][0] = {insert, no_action, ASCII_DEL},
+[1][1] = {insert, no_action, 'P'},
+[1][2] = {insert, no_action, ';'},
+[1][3] = {insert, no_action, '/'},
+[1][4] = {insert, no_action, ASCII_SPACE},
+[1][5] = {insert, no_action, 'Z'},
+[1][6] = {insert, no_action, 'A'},
+[1][7] = {insert, no_action, 'Q'},
+
+
+[2][0] = {asdf_virtual_activate, no_action, CLASSIC_ACTION_BREAK},
+[2][1] = {insert, no_action, ASCII_COMMA},
+[2][2] = {insert, no_action, 'M'},
+[2][3] = {insert, no_action, 'N'},
+[2][4] = {insert, no_action, 'B'},
+[2][5] = {insert, no_action, 'V'},
+[2][6] = {insert, no_action, 'C'},
+[2][7] = {insert, no_action, 'X'},
+
+[3][0] = {no_action, no_action, 0},
+[3][1] = {insert, no_action, 'K'},
+[3][2] = {insert, no_action, 'J'},
+[3][3] = {insert, no_action, 'H'},
+[3][4] = {insert, no_action, 'G'},
+[3][5] = {insert, no_action, 'F'},
+[3][6] = insert, no_action, 'D'},
+[3][7] = {insert, no_action, 'S'},
+
+[4][0] = {no_action, no_action, 0},
+[4][1] = {insert, no_action, 'I'},
+[4][2] = {insert, no_action, 'U'},
+[4][3] = {insert, no_action, 'Y'},
+[4][4] = {insert, no_action, 'T'},
+[4][5] = {insert, no_action, 'R'},
+[4][6] = {insert, no_action, 'E'},
+[4][7] = {insert, no_action, 'W'},
+
+[5][0] = {no_action, no_action, 0},
+[5][1] = {asdf_repeat_activate, asdf_repeat_deactivate, 0},
+[5][2] = {asdf_modifier_capslock_activate, asdf_modifier_capslock_activate, 0},
+[5][3] = {insert, no_action, ASCII_CR},
+[5][4] = {insert, no_action, ASCII_LF},
+[5][5] = {insert, no_action, 'O'},
+[5][6] = {insert, no_action, 'L'},
+[5][7] = {insert, no_action, ASCII_PERIOD},
+
+[6][0] = {insert, no_action, ASCII_TILDE},
+[6][1] = {insert, no_action, ASCII_RT_SQUARE_BRACE},
+[6][2] = {insert, no_action, ASCII_LT_SQUARE_BRACE},
+[6][3] = {insert, no_action, '-'},
+[6][4] = {insert, no_action, ':'},
+[6][5] = {insert, no_action, ASCII_ZERO},
+[6][6] = {insert, no_action, '9'},
+[6][7] = {insert, no_action, '8'},
+
+[7][0] = {insert, no_action, ASCII_AT},
+[7][1] = {insert, no_action, '7'},
+[7][2] = {insert, no_action, '6'},
+[7][3] = {insert, no_action, '5'},
+[7][4] = {insert, no_action, '4'},
+[7][5] = {insert, no_action, '3'},
+[7][6] = {insert, no_action, '2'},
+[7][7] = {insert, no_action, '1'},
+
+ASDF_CLASSIC_DIP_SWITCHES
 };
 
 const FLASH classic_keycode_matrix_t classic_ctrl_matrix = {
-  [0] = { ACTION_NOTHING, ACTION_SHIFT, ACTION_SHIFT, ACTION_NOTHING, ASCII_ESC, ASCII_TAB,
-          ACTION_CTRL, 0x1c },
-  [1] = { ACTION_NOTHING, ASCII_CTRL_P, ACTION_NOTHING, ACTION_NOTHING, ASCII_SPACE, ASCII_CTRL_Z,
-          ASCII_CTRL_A, ASCII_CTRL_Q },
-  [2] = { CLASSIC_ACTION_RESET, ASCII_COMMA, ASCII_CTRL_M, ASCII_CTRL_N, ASCII_CTRL_B, ASCII_CTRL_V,
-          ASCII_CTRL_C, ASCII_CTRL_X },
-  [3] = { ACTION_NOTHING, ASCII_CTRL_K, ASCII_CTRL_J, ASCII_CTRL_H, ASCII_CTRL_G, ASCII_CTRL_F,
-          ASCII_CTRL_D, ASCII_CTRL_S },
-  [4] = { ACTION_NOTHING, ASCII_CTRL_I, ASCII_CTRL_U, ASCII_CTRL_Y, ASCII_CTRL_T, ASCII_CTRL_R,
-          ASCII_CTRL_E, ASCII_CTRL_W },
-  [5] = { ACTION_NOTHING, ACTION_REPEAT, ACTION_CAPS, ASCII_CR, ASCII_LF, ASCII_CTRL_O,
-          ASCII_CTRL_L, ACTION_NOTHING },
-  [6] = { ACTION_NOTHING, 0x1d, ASCII_ESC, ACTION_NOTHING, ACTION_NOTHING, ACTION_FN_10,
-          ACTION_FN_9, ACTION_FN_8 },
-  [7] = { ASCII_NULL, ACTION_FN_7, ACTION_FN_6, ACTION_FN_5, ACTION_FN_4, ACTION_FN_3, ACTION_FN_2,
-          ACTION_FN_1 },
-  ASDF_CLASSIC_DIP_SWITCHES
+[0][0] = {no_action, no_action, 0},
+[0][1] = {asdf_modifier_shift_activate, asdf_modifier_shift_deactivate, 0},
+[0][2] = {asdf_modifier_shift_activate, asdf_modifier_shift_deactivate, 0},
+[0][3] = {no_action, no_action, 0},
+[0][4] = {insert, no_action, ASCII_ESC},
+[0][5] = {insert, no_action, ASCII_TAB},
+[0][6] = {asdf_modifier_ctrl_activate, asdf_modifier_ctrl_deactivate, 0},
+[0][7] = {insert, no_action, ASCII_FS}
+
+[1][0] = {no_action, no_action, 0},
+[1][1] = {insert, no_action, ASCII_CTRL_P},
+[1][2] = {no_action, no_action, 0},
+[1][3] = {no_action, no_action, 0},
+[1][4] = {insert, no_action, ASCII_SPACE},
+[1][5] = {insert, no_action, ASCII_CTRL_Z},
+[1][6] = {insert, no_action, ASCII_CTRL_A},
+[1][7] = {insert, no_action, ASCII_CTRL_Q},
+
+[2][0] = {asdf_virtual_activate, no_action, CLASSIC_ACTION_RESET},
+[2][1] = {insert, no_action, ASCII_COMMA,},
+[2][2] = {insert, no_action, ASCII_CTRL_M},
+[2][3] = {insert, no_action, ASCII_CTRL_N},
+[2][4] = {insert, no_action, ASCII_CTRL_B},
+[2][5] = {insert, no_action, ASCII_CTRL_V},
+[2][6] = {insert, no_action, ASCII_CTRL_C},
+[2][7] = {insert, no_action, ASCII_CTRL_X},
+
+[3][0] = {no_action, no_action, 0},
+[3][1] = {insert, no_action, ASCII_CTRL_K},
+[3][2] = {insert, no_action, ASCII_CTRL_J},
+[3][3] = {insert, no_action, ASCII_CTRL_H},
+[3][4] = {insert, no_action, ASCII_CTRL_G},
+[3][5] = {insert, no_action, ASCII_CTRL_F},
+[3][6] = {insert, no_action, ASCII_CTRL_D},
+[3][7] = {insert, no_action, ASCII_CTRL_S},
+
+[4][0] = {no_action, no_action, 0},
+[4][1] = {insert, no_action, ASCII_CTRL_I},
+[4][2] = {insert, no_action, ASCII_CTRL_U},
+[4][3] = {insert, no_action, ASCII_CTRL_Y},
+[4][4] = {insert, no_action, ASCII_CTRL_T},
+[4][5] = {insert, no_action, ASCII_CTRL_R},
+[4][6] = {insert, no_action, ASCII_CTRL_E},
+[4][7] = {insert, no_action, ASCII_CTRL_W},
+
+[5][0] = {no_action, no_action, 0},
+[5][1] = {asdf_repeat_activate, asdf_repeat_deactivate, 0}
+[5][2] = {asdf_modifier_capslock_activate, asdf_modifier_capslock_activate, 0},
+[5][3] = {insert, no_action, ASCII_CR},
+[5][4] = {insert, no_action, ASCII_LF},
+[5][5] = {insert, no_action, ASCII_CTRL_O},
+[5][6] = {insert, no_action, ASCII_CTRL_L},
+[5][7] = {no_action, no_action, 0},
+
+[6][0] = {no_action, no_action, 0},
+[6][1] = {insert, no_action, ASCII_GS},
+[6][2] = {insert, no_action, ASCII_ESC},
+[6][3] = {no_action, no_action, 0},
+[6][4] = {no_action, no_action, 0},
+[6][5] = {asdf_hook_execute, no_action, ASDF_HOOK_USER_10},
+[6][6] = {asdf_hook_execute, no_action, ASDF_HOOK_USER_9},
+[6][7] = {asdf_hook_execute, no_action, ASDF_HOOK_USER_8},
+
+[7][0] = {insert, no_action, ASCII_NULL},
+[7][1] = {asdf_hook_execute, no_action, ASDF_HOOK_USER_7},
+[7][2] = {asdf_hook_execute, no_action, ASDF_HOOK_USER_6},
+[7][3] = {asdf_hook_execute, no_action, ASDF_HOOK_USER_5},
+[7][4] = {asdf_hook_execute, no_action, ASDF_HOOK_USER_4},
+[7][5] = {asdf_hook_execute, no_action, ASDF_HOOK_USER_3},
+[7][6] = {asdf_hook_execute, no_action, ASDF_HOOK_USER_2},
+[7][7] = {asdf_hook_execute, no_action, ASDF_HOOK_USER_1},
+
+ASDF_CLASSIC_DIP_SWITCHES,
 };
 
 
 
 static const classic_keycode_matrix_t *classic_maps[] = {
-  [CLASSIC_CAPS_MAP] = &classic_caps_matrix,
-  [CLASSIC_PLAIN_MAP] = &classic_plain_matrix,
-  [CLASSIC_SHIFT_MAP] = &classic_shift_matrix,
-  [CLASSIC_CTRL_MAP] = &classic_ctrl_matrix,
+[CLASSIC_CAPS_MAP] = &classic_caps_matrix,
+[CLASSIC_PLAIN_MAP] = &classic_plain_matrix,
+[CLASSIC_SHIFT_MAP] = &classic_shift_matrix,
+[CLASSIC_CTRL_MAP] = &classic_ctrl_matrix,
 };
 
-  void classic_add_map(const classic_map_index_t map_index,
-                       modifier_index_t modifier_index)
+void classic_add_map(const classic_map_index_t map_index,
+                     modifier_index_t modifier_index)
 {
 
   asdf_keycode_t (*matrix)[CLASSIC_NUM_COLS] =
     (asdf_keycode_t (*)[CLASSIC_NUM_COLS]) classic_maps[map_index];
 
-    asdf_keymaps_add_map(&matrix[0][0], modifier_index, (uint8_t) CLASSIC_NUM_ROWS,
+  asdf_keymaps_add_map(&matrix[0][0], modifier_index, (uint8_t) CLASSIC_NUM_ROWS,
                        (uint8_t) CLASSIC_NUM_COLS);
 }
 
