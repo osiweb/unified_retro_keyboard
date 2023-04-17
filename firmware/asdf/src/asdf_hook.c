@@ -31,6 +31,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include "asdf_config.h"
 #include "asdf_arch.h"
 #include "asdf_hook.h"
 
@@ -166,8 +167,9 @@ void asdf_hook_init(void)
     hook_map[i] = &asdf_hook_null_func;
   }
 
-  hook_map[ASDF_HOOK_SCANNER] = (asdf_hook_function_t) ASDF_ARCH_DEFAULT_SCANNER;
+  hook_map[ASDF_HOOK_ROW_SCANNER] = (asdf_hook_function_t) ASDF_ARCH_DEFAULT_ROW_SCANNER;
   hook_map[ASDF_HOOK_OUTPUT] = (asdf_hook_function_t) ASDF_ARCH_DEFAULT_OUTPUT;
+  hook_map[ASDF_HOOK_KEY_SCANNER] = (asdf_hook_function_t) ASDF_DEFAULT_KEY_SCANNER;
 }
 
 //-------|---------|---------+---------+---------+---------+---------+---------+

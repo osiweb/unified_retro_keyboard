@@ -40,7 +40,7 @@ typedef asdf_cols_t (*scanner_func_t)(uint8_t);
 
 void test_default_scan_hook_is_default_scanner(void)
 {
-  scanner_func_t testfunc = (scanner_func_t) asdf_hook_get(ASDF_HOOK_SCANNER);
+  scanner_func_t testfunc = (scanner_func_t) asdf_hook_get(ASDF_HOOK_ROW_SCANNER);
   asdf_cols_t testval = 0;
 
   // make sure the pointer points to the correct function
@@ -55,7 +55,7 @@ void test_default_scan_hook_is_default_scanner(void)
 void test_alternate_scan_hook(void)
 {
   asdf_keymaps_select(ASDF_TEST_ALTERNATE_SCANNER_MAP);
-  scanner_func_t testfunc = (scanner_func_t) asdf_hook_get(ASDF_HOOK_SCANNER);
+  scanner_func_t testfunc = (scanner_func_t) asdf_hook_get(ASDF_HOOK_ROW_SCANNER);
   asdf_cols_t testval = 0;
 
   // make sure the pointer points to the correct function

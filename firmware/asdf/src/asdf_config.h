@@ -83,6 +83,9 @@
 // DEFAULT value of keyboard outputs
 #define ASDF_VIRTUAL_OUT_DEFAULT_VALUE 1 // High if not used.
 
+// DEFAULT key scan routine
+#define ASDF_DEFAULT_KEY_SCANNER asdf_keyscan
+
 #endif /* !defined (CONFIG_H) */
 
 //-------|---------|---------+---------+---------+---------+---------+---------+

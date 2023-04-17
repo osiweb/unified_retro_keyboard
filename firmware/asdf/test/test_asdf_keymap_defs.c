@@ -154,7 +154,7 @@ void setup_test_hooks_alt_output(void)
 
   asdf_hook_init();
   asdf_hook_assign(ASDF_HOOK_OUTPUT, (void (*)(void)) &test_hook_output);
-  asdf_hook_assign(ASDF_HOOK_SCANNER, (void (*)(void)) &test_hook_read_row);
+  asdf_hook_assign(ASDF_HOOK_ROW_SCANNER, (void (*)(void)) &test_hook_read_row);
 }
 
 void setup_test_hooks_each_scan(void)

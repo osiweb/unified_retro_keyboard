@@ -29,7 +29,8 @@
 // keymap initializer commands.
 typedef enum {
   ASDF_HOOK_NULL,
-  ASDF_HOOK_SCANNER,
+  ASDF_HOOK_KEY_SCANNER,
+  ASDF_HOOK_ROW_SCANNER,
   ASDF_HOOK_OUTPUT,
   ASDF_HOOK_EACH_SCAN,
   ASDF_HOOK_USER_1,
