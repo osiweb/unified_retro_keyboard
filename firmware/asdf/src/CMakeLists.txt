@@ -37,9 +37,6 @@ create_keymap_valid("${keymap_list}" keymap_valid)
 create_keymap_report("${keymap_list}" keymap_report)
 create_keymap_declarations("${keymap_list}" keymap_declarations)
 
-# get list length and decrement by one to account for trailing semicolon
-list (LENGTH keymap_list num_keymaps)
-
 message("**********************")
 message("Keymap table: ${keymap_report}")
 message("**********************\n\n")

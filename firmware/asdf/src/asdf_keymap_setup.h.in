@@ -27,8 +27,6 @@
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#define ASDF_NUM_KEYMAPS @num_keymaps@
-
 // PROCEDURE: asdf_keymap_setup
 // INPUTS: (uint8_t) index - index of the keymap setup function to call
 // OUTPUTS: none
