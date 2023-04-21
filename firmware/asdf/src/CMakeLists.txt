@@ -73,6 +73,7 @@ list (APPEND SOURCES
   Keymaps/asdf_keymap_sol.c
   Keymaps/asdf_keymap_ace1000.c
   Keymaps/asdf_keymap_ace1000_add_map.c
+  Keymaps/asdf_keymap_rowcol.c
   main.c
   )
 
