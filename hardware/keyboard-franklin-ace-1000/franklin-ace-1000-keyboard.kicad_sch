@@ -3294,10 +3294,6 @@
     (uuid ff753a8e-3d53-4254-92de-f10020575d41)
   )
 
-  (label "Row10" (at 246.38 41.91 0) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 03f31a80-dd0e-4be4-b036-a254deae55e9)
-  )
   (label "Col4" (at 111.76 147.32 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 131fefd0-e4d1-4786-ae23-bcb13048765a)
