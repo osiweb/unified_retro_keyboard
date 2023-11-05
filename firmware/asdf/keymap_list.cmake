@@ -5,7 +5,4 @@ list(APPEND keymap_list
   "<apple2_caps:3>"
   "<sol:4>"
   "<ace1000:5>"
-  "<rowcol:7>"
   )
-
-
