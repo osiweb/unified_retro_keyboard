@@ -1148,7 +1148,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 227fb71b-406f-4a73-b4c6-ac9bc5c2a0f3))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -1156,7 +1156,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (tstamp 46485bd9-09ff-42b3-b02b-3b419f6ee632))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 62 "Net-(D31-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 62 "Net-(D31-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -1361,7 +1361,7 @@
     (pad "" np_thru_hole oval locked (at 11.938 -0.1016) (size 5 2) (drill oval 5 2) (layers "*.Cu" "*.Mask") (tstamp 19d57aaf-b5b7-46cd-b35a-b49924c86339))
     (pad "" np_thru_hole circle locked (at 11.938 8.3566) (size 3.9878 3.9878) (drill 3.9878) (layers "*.Cu" "*.Mask") (tstamp 7c0b652e-ebd2-42d0-94bc-d9ca3834c583))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 1.27 -0.9779) (end 0.7366 -0.5715) (width 0.3048))
@@ -1370,7 +1370,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (tstamp 21792a0a-4bb0-4704-8f6b-ab05b442c42f))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 7 "Net-(D7-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 7 "Net-(D7-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.1016) (end 1.27 2.4384) (width 0.3048))
@@ -1565,7 +1565,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 7ad94891-27b0-4bfb-a864-ea2cdaaec718))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -1573,7 +1573,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (tstamp ab1a41a2-99eb-464c-8651-d6a8690c0815))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 12 "Net-(D10-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 12 "Net-(D10-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -1624,7 +1624,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp c37a937e-7c93-4730-ae26-5e1921139e12))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -1632,7 +1632,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (tstamp b76f06cc-11d2-467b-927c-68a8db997500))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 83 "Net-(D52-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 83 "Net-(D52-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -2423,7 +2423,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 9549f714-dba0-45fd-ad67-7f7d45a01583))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -2431,7 +2431,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (tstamp 3969f80e-1808-4e3c-b955-bf9242b7d7c1))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 69 "Net-(D38-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 69 "Net-(D38-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -2482,7 +2482,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 8b73c1fe-1840-42c7-8664-cdebc2998d6d))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -2490,7 +2490,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (tstamp 5fae422e-d49d-47c5-baac-dd6cf494493d))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 49 "Net-(D18-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 49 "Net-(D18-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -2541,7 +2541,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 93542c82-5ada-4f01-bc1e-dc61c4637436))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -2549,7 +2549,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (tstamp 58e4ebcd-293d-4e1f-af70-f8abdfa03790))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 89 "Net-(D58-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 89 "Net-(D58-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -2600,7 +2600,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 03f70a35-0430-4e20-84cb-ec9d137e8412))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -2608,7 +2608,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (tstamp 75599b4b-a3e6-4275-8aa9-7ca04e39af4a))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 84 "Net-(D53-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 84 "Net-(D53-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -2659,7 +2659,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp d5912928-e493-4b49-96af-29110dc71ca9))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -2667,7 +2667,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (tstamp bc36bc56-8312-4def-bc51-8fbef82ec7f3))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 75 "Net-(D44-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 75 "Net-(D44-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -2866,7 +2866,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 36c78038-7cf7-46df-a1e7-37c40981b7cb))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -2874,7 +2874,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (tstamp 0621a3e4-da45-4890-b229-b64b2c296108))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 9 "Net-(D9-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 9 "Net-(D9-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -3369,7 +3369,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp a4adf368-44a3-479b-aad4-60be78c6a890))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -3377,7 +3377,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (tstamp ec432b11-f2ba-45fa-ac63-ea786e427e3a))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 73 "Net-(D42-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 73 "Net-(D42-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -3434,7 +3434,7 @@
     (pad "" np_thru_hole oval locked (at 66.675 -0.1016) (size 5 2) (drill oval 5 2) (layers "*.Cu" "*.Mask") (tstamp 1675a804-e8eb-4220-bc7f-c22b6de274dd))
     (pad "" np_thru_hole circle locked (at 66.675 8.3566) (size 3.9878 3.9878) (drill 3.9878) (layers "*.Cu" "*.Mask") (tstamp 4660a357-d5ff-444f-b2b5-695066468645))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 0) (end 2.54 -0.8763) (width 0.2))
@@ -3442,7 +3442,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (tstamp 515066cb-db57-4376-aa51-0dcd334d5c03))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 63 "Net-(D32-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 63 "Net-(D32-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 0) (end 1.27 4.9784) (width 0.2))
@@ -4085,7 +4085,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp b34d0f31-f626-45a1-9c0e-46e8f85b53f9))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -4093,7 +4093,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (tstamp 221964a4-237d-489a-873a-419ffa51e3f0))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 53 "Net-(D22-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 53 "Net-(D22-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -4144,7 +4144,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 713535fd-88fa-45c2-8af4-5e409f18227f))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -4152,7 +4152,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (tstamp 88d46528-8be7-478e-85ef-e9b58264db51))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 86 "Net-(D55-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 86 "Net-(D55-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -4376,7 +4376,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp d3a385c7-b661-4483-941d-128c835cf598))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -4384,7 +4384,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (tstamp 84c3b0d8-43a9-4fb1-b86d-23211719a71e))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 95 "Net-(D64-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 95 "Net-(D64-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -4583,7 +4583,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 3a910b71-76bb-4a84-98fe-3a2c0758dcb3))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -4591,7 +4591,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (tstamp 6f0be847-4554-452c-baa4-039da3fb08f7))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 57 "Net-(D26-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 57 "Net-(D26-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -4642,7 +4642,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 0faff9da-a581-4739-88d6-a85e57a3d831))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -4650,7 +4650,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (tstamp af949035-61e2-440d-982d-08c0e18e2e5a))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 47 "Net-(D16-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 47 "Net-(D16-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -4701,7 +4701,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp a7cbac54-152b-462c-bcfe-0d0c7ee8322c))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -4709,7 +4709,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (tstamp e7362c24-c16b-4c5b-92c2-8a222076e2b4))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 97 "Net-(D66-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 97 "Net-(D66-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -4760,7 +4760,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 40c0bc57-9f02-499c-9ed2-6ff9254f6cff))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -4768,7 +4768,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (tstamp 9912598b-a4aa-494e-83a9-97a2f98b1bf7))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 79 "Net-(D48-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 79 "Net-(D48-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -5115,7 +5115,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp d986e801-542a-4009-8f60-1e6b3cec9570))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -5123,7 +5123,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (tstamp 07b61037-e343-4abf-a297-2655bd68ebc0))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 87 "Net-(D56-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 87 "Net-(D56-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -5466,7 +5466,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp eee9000e-27a2-4039-981a-1db66000ba2b))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -5474,7 +5474,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (tstamp f6baa1be-07ad-4416-8d65-50c76de45381))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 105 "Net-(D73-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 105 "Net-(D73-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -5846,7 +5846,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 77ab9ae9-69e8-4684-a038-9d1d0989ba47))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -5854,7 +5854,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (tstamp f2dd0a72-86cc-4e68-a2c8-7ca071f0163b))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 46 "Net-(D15-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 46 "Net-(D15-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -5905,7 +5905,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 5dab9b51-5e14-4fa3-91c0-5c9bb6ab0474))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -5913,7 +5913,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (tstamp 4214bd24-acbd-4f08-b483-dffb8b00ff2a))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 64 "Net-(D33-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 64 "Net-(D33-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -6852,7 +6852,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 2e5bd1ea-d896-4dca-bea9-9d8e05335bae))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -6860,7 +6860,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (tstamp 987c8146-1da5-4fab-a90f-77aa0b9c98c8))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 52 "Net-(D21-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 52 "Net-(D21-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -6911,7 +6911,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 2acb4449-00c3-4a3b-8c30-ef68c0590dbd))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -6919,7 +6919,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (tstamp 77f5b289-a683-41a5-863b-4fbdf8cd8565))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 78 "Net-(D47-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 78 "Net-(D47-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -6970,7 +6970,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp e3989f36-f185-45b4-8f3a-ad481e95c6af))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -6978,7 +6978,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (tstamp 65ded06a-a339-4ca1-adf6-16fbd9b0a6f7))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 59 "Net-(D28-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 59 "Net-(D28-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -7473,7 +7473,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 7ea5ada3-2d47-4f4a-b7d4-dedf494cd51d))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -7481,7 +7481,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (tstamp 6a30c29b-2ccd-47d5-9c75-30a338a8cd96))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 96 "Net-(D65-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 96 "Net-(D65-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -7680,7 +7680,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 8883afaa-3272-4edd-8bb1-bc1a5fba5e09))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -7688,7 +7688,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (tstamp 2c5825df-14ce-471b-982f-de563dec9979))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 1 "Net-(D1-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 1 "Net-(D1-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -8208,7 +8208,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp abbaf49f-4570-4577-8983-7c48e94f2428))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -8216,7 +8216,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (tstamp 070a4305-8002-49c0-a21c-afed15e81171))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 70 "Net-(D39-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 70 "Net-(D39-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -8267,7 +8267,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp cfca0c3f-a6d5-4773-b3e6-db5a7df143b4))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -8275,7 +8275,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (tstamp 5b89b5a6-701f-4e99-920f-de2c89b4fb91))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 80 "Net-(D49-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 80 "Net-(D49-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -8474,7 +8474,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 43ad77fe-aa14-49ac-8911-857a8e1a823f))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -8482,7 +8482,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (tstamp 8b37bee6-7f69-491c-9232-493783115ca5))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 99 "Net-(D68-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 99 "Net-(D68-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -8533,7 +8533,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 921eaeed-da4b-48ac-872e-b173e435d904))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -8541,7 +8541,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (tstamp 2c5cbf8b-835a-49fa-b42b-84587754027b))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 82 "Net-(D51-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 82 "Net-(D51-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -8765,7 +8765,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 4b107292-23ca-4803-9b54-75b092a4f6f6))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -8773,7 +8773,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (tstamp 018dfeee-3509-4be3-9378-6761144c4485))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 43 "Net-(D12-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 43 "Net-(D12-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -8972,7 +8972,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp f0d78ab4-e340-4b55-bb25-467e9ed0ad45))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -8980,7 +8980,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (tstamp dfb49fa1-c4e1-423a-af83-7330d19b8c3c))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 6 "Net-(D6-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 6 "Net-(D6-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -9031,7 +9031,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 5b168e7d-b76d-4134-ab50-b83e1543537a))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -9039,7 +9039,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (tstamp e725241e-0ca0-405c-9b7c-06d853e5e00f))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 74 "Net-(D43-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 74 "Net-(D43-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -9411,7 +9411,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp a322441c-705d-4ea8-a290-5b19a0a50265))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -9419,7 +9419,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (tstamp c2885020-5aad-4c73-a5ab-2ab93b2bbbb0))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 56 "Net-(D25-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 56 "Net-(D25-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -9495,7 +9495,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 1467f206-907e-4248-a656-360c20ab3beb))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -9503,7 +9503,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (tstamp 7f7b0439-26db-425d-a677-47abc66b86a9))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 101 "Net-(D70-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 101 "Net-(D70-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -9554,7 +9554,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 5ad3c60f-dbb9-462d-b367-5df3c54f0c8d))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -9562,7 +9562,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (tstamp 1c6460d7-4032-4857-89df-bd918c5cb487))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 67 "Net-(D36-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 67 "Net-(D36-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -9909,7 +9909,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp cde807f6-18c2-4546-b1b0-100953659e62))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -9917,7 +9917,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (tstamp b46e4c82-9084-48e3-a502-d88f189ecad6))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 14 "Net-(D11-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 14 "Net-(D11-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -9968,7 +9968,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 7910cd59-1b14-4b0a-9997-d1d5030e771e))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -9976,7 +9976,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (tstamp f8f584cb-53dc-4310-a147-d5be212d3fbd))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 93 "Net-(D62-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 93 "Net-(D62-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -10027,7 +10027,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 5b451a69-427c-47a2-a354-f21636808654))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -10035,7 +10035,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (tstamp e4772b36-cf44-4d80-b36c-5ce65125b9e5))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 60 "Net-(D29-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 60 "Net-(D29-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -10755,7 +10755,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 2b254acf-58e4-4048-b932-1eefc686c52c))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -10763,7 +10763,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (tstamp f82cefcc-b772-492f-b359-7098b5185cd9))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 3 "Net-(D3-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 3 "Net-(D3-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -11110,7 +11110,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp e316d200-61ed-4720-ad04-31b049dce65c))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -11118,7 +11118,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (tstamp 0d329055-db1e-4538-b7c7-e6a8c4673169))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 55 "Net-(D24-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 55 "Net-(D24-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -11169,7 +11169,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 517fb2dd-1293-4b2a-a4ed-06aaeef11dba))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -11177,7 +11177,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (tstamp 5ff161a0-3fd7-4a90-ae82-4be9193a024c))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 8 "Net-(D8-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 8 "Net-(D8-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -11228,7 +11228,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 9b79f147-1b43-4721-a1aa-1a14d166b559))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -11236,7 +11236,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (tstamp 2d9876b7-5a24-4d7a-a4e5-0d68d4e7f807))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 81 "Net-(D50-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 81 "Net-(D50-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -11287,7 +11287,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 0e81430b-94b2-4072-86ec-26906d273580))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -11295,7 +11295,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (tstamp 17c600ae-858d-4172-87a9-fadc3adc28be))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 102 "Net-(D71-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 102 "Net-(D71-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -11346,7 +11346,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp d0b217a1-524a-471b-bb52-aade7afef5c0))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -11354,7 +11354,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (tstamp 081e7625-c2a4-4990-8959-2995b4545dee))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 76 "Net-(D45-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 76 "Net-(D45-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -11701,7 +11701,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 99da0f9b-426d-47c0-900e-7b312fb41302))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -11709,7 +11709,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (tstamp 257f4d82-d307-4f1b-9bfb-10e47c0df473))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 88 "Net-(D57-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 88 "Net-(D57-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -11760,7 +11760,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 58b1afe6-49ce-40f6-aee0-2d919456a0d9))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -11768,7 +11768,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (tstamp c45f8ffc-f2f0-42b8-90f4-7513ad3e0dbe))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 50 "Net-(D19-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 50 "Net-(D19-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -12263,7 +12263,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp bee48154-4924-4a42-8aa6-c891575f5a16))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -12271,7 +12271,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (tstamp 425711f5-9a76-461d-bdda-ef2b9105a10d))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 54 "Net-(D23-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 54 "Net-(D23-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -12322,7 +12322,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 8b012f77-cd06-4a28-afd5-928257f97f1d))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -12330,7 +12330,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (tstamp 63a49a50-1077-4f42-a478-155a719ee859))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 2 "Net-(D2-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 2 "Net-(D2-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -12825,7 +12825,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 0b8013d3-fc46-4444-8da3-61e6701b1fbb))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -12833,7 +12833,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (tstamp 5be80658-d30a-4db6-95bd-5e3ca5aea560))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 100 "Net-(D69-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 100 "Net-(D69-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -13328,7 +13328,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp b6819f92-9711-4bfe-b266-b48a0d33610a))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -13336,7 +13336,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (tstamp b179ab65-acee-4467-84e1-b50055d92924))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 92 "Net-(D61-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 92 "Net-(D61-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -13689,7 +13689,7 @@
     (pad "" np_thru_hole oval locked (at 11.938 -0.1016) (size 5 2) (drill oval 5 2) (layers "*.Cu" "*.Mask") (tstamp c1ccf2cf-1805-41cd-b4d5-443bcf6267fd))
     (pad "" np_thru_hole circle locked (at 11.938 8.3566) (size 3.9878 3.9878) (drill 3.9878) (layers "*.Cu" "*.Mask") (tstamp 3cf68af9-d781-43af-bdd9-3ea5beb33b99))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 1.27 -0.9779) (end 0.7366 -0.5715) (width 0.3048))
@@ -13698,7 +13698,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (tstamp b46581f3-d955-4159-8ea0-565ec6d74d9c))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 91 "Net-(D60-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 91 "Net-(D60-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.1016) (end 1.27 2.4384) (width 0.3048))
@@ -14037,7 +14037,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 4bc98c9f-ceaa-4771-af0c-ff26dc48a402))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -14045,7 +14045,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (tstamp aa380760-0961-448e-970e-0a3c3f5ce2bf))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 106 "Net-(D74-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 106 "Net-(D74-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -14244,7 +14244,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp a5ce2ac6-618b-414d-a09e-644d8125dca4))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -14252,7 +14252,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (tstamp cec63990-43f0-487f-84aa-0c657059bf4e))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 85 "Net-(D54-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 85 "Net-(D54-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -14303,7 +14303,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 2b13ccc6-6ceb-4eb8-a932-5e91de11d6ba))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -14311,7 +14311,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (tstamp dd18a56a-3c7e-447f-bae0-d029263f35fa))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 48 "Net-(D17-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 48 "Net-(D17-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -14362,7 +14362,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp c4cd62d6-4653-4bd6-8045-d27a201115ed))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -14370,7 +14370,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 25 "Col0") (pinfunction "Pin_1") (pintype "passive") (tstamp 1435d9ec-c516-4989-97e7-b8f3c5a681ea))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 72 "Net-(D41-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 72 "Net-(D41-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -14421,7 +14421,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 1316cfe6-88a4-46a3-b8b2-52f199097054))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -14429,7 +14429,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (tstamp e64ea512-e294-4177-895d-0d7b63116d7b))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 44 "Net-(D13-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 44 "Net-(D13-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -14628,7 +14628,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp ec18d182-f450-488b-a4f7-7f915e2a4a5b))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -14636,7 +14636,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 23 "Col1") (pinfunction "Pin_1") (pintype "passive") (tstamp fb36742b-b0f5-46bc-b66f-bb70d331f5fc))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 65 "Net-(D34-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 65 "Net-(D34-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -14687,7 +14687,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp cbd494ca-0368-4f7d-925d-ac09ebe9ab66))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -14695,7 +14695,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (tstamp 253c37fe-056e-4907-9c45-9f2b46f30b9a))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 66 "Net-(D35-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 66 "Net-(D35-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -14894,7 +14894,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 4e5dec52-03ba-48b6-aa31-3cd99994652d))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -14902,7 +14902,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (tstamp 673ca149-f7fc-4242-bc71-8d6f0cf709a6))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 90 "Net-(D59-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 90 "Net-(D59-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -15101,7 +15101,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp b5e96f07-ca98-4cdd-891b-7d51af7675eb))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -15109,7 +15109,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (tstamp 4adc7cc6-d2ae-45fa-bc12-78ce38c0973d))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 71 "Net-(D40-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 71 "Net-(D40-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -15185,7 +15185,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp bd381436-80e0-4fd3-8c3b-283a2e78699d))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -15193,7 +15193,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (tstamp 326ca9a9-286b-4d28-a0d5-7aa262b023de))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 61 "Net-(D30-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 61 "Net-(D30-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -15744,7 +15744,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp cdeaf6c9-f303-473c-8da1-79b037268ec0))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -15752,7 +15752,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 21 "Col2") (pinfunction "Pin_1") (pintype "passive") (tstamp 8c521f79-6a4f-4e4f-9f4a-605b2db94630))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 98 "Net-(D67-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 98 "Net-(D67-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -16272,7 +16272,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 29bdb477-9240-48d6-b4a9-08eb43b686a9))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -16280,7 +16280,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (tstamp 63b15cd2-ee98-4b03-a195-8c91c476c8db))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 58 "Net-(D27-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 58 "Net-(D27-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -16479,7 +16479,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp d74a769f-bb62-4fbc-a8f6-c16b1cc3b4d5))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -16487,7 +16487,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 11 "Col7") (pinfunction "Pin_1") (pintype "passive") (tstamp 73ffb3a3-5b98-4d6d-af10-86237f5a1ac3))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 103 "Net-(D72-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 103 "Net-(D72-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -16538,7 +16538,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 94cce4aa-c9dc-4270-9eba-775e08391968))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -16546,7 +16546,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 15 "Col5") (pinfunction "Pin_1") (pintype "passive") (tstamp 1b57b01e-a500-4d0e-b230-5b4c21f402ca))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 77 "Net-(D46-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 77 "Net-(D46-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -16597,7 +16597,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 996642b2-6b53-4d55-9949-e3250b0b3438))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -16605,7 +16605,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (tstamp 41d30ae5-d02c-4b9e-ac24-96e6123aed85))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 45 "Net-(D14-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 45 "Net-(D14-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -16804,7 +16804,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp f7ed979f-ba7d-4a9a-a760-ae47752db34c))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -16812,7 +16812,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 19 "Col3") (pinfunction "Pin_1") (pintype "passive") (tstamp 7628f8e4-12d0-4453-9a15-4088aa9c4ecf))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 4 "Net-(D4-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 4 "Net-(D4-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -16863,7 +16863,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp efebf393-2f63-476e-805a-d7c5aa2c123b))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -16871,7 +16871,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (tstamp d16e8715-ebe0-400a-8bd7-41edc1ec2df1))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 51 "Net-(D20-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 51 "Net-(D20-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -16922,7 +16922,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp 075c65b7-ebe2-4d35-a95d-4438a1a481d0))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -16930,7 +16930,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (tstamp d466d223-7663-4e93-a6f2-54cecad68c02))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 68 "Net-(D37-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 68 "Net-(D37-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -16981,7 +16981,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp e9b92944-745c-4fa9-ae4b-23564ff6ee2d))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -16989,7 +16989,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 13 "Col6") (pinfunction "Pin_1") (pintype "passive") (tstamp fe61dd0a-7ffb-45ad-9c79-16271e8978c7))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 94 "Net-(D63-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 94 "Net-(D63-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -17040,7 +17040,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0.1016) (size 1.7018 1.7018) (drill 1.7018) (layers "*.Cu" "*.Mask")
       (solder_mask_margin 0.0762) (tstamp a375a50c-c0af-40ed-8374-8df01b72decc))
     (pad "1" thru_hole custom locked (at 0 -4.1021) (size 2.2352 2.2352) (drill 1.397) (layers "*.Cu" "*.Mask")
-      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (thermal_bridge_angle 45)
+      (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0.0508 0.0381) (end 2.6162 -0.9779) (width 0.2))
@@ -17048,7 +17048,7 @@
     (pad "1" thru_hole circle locked (at 2.54 -4.9784) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
       (net 17 "Col4") (pinfunction "Pin_1") (pintype "passive") (tstamp f3f162b4-0431-48fb-a6a3-0c28be5e4545))
     (pad "2" thru_hole custom locked (at -3.81 -2.4384) (size 2.2352 2.2352) (drill 1.5748) (layers "*.Cu" "*.Mask")
-      (net 5 "Net-(D5-K)") (pinfunction "Pin_2") (pintype "passive") (thermal_bridge_angle 45)
+      (net 5 "Net-(D5-K)") (pinfunction "Pin_2") (pintype "passive")
       (options (clearance outline) (anchor circle))
       (primitives
         (gr_line (start 0 -0.0254) (end 0.9398 4.0132) (width 0.2))
@@ -17444,6 +17444,22 @@
     )
   )
 
+  (gr_line (start 115.993036 154.575352) (end 115.993036 230.775352)
+    (stroke (width 0.15) (type default)) (layer "Eco2.User") (tstamp 010e68d9-2499-497c-aabc-33ceb51b6417))
+  (gr_line (start 483.023036 230.775352) (end 359.198036 230.775352)
+    (stroke (width 0.15) (type default)) (layer "Eco2.User") (tstamp 0187053d-01f0-4faa-a4d9-da769fd6017a))
+  (gr_line (start 483.023036 154.575352) (end 483.023036 230.775352)
+    (stroke (width 0.15) (type default)) (layer "Eco2.User") (tstamp 07917a17-1505-4b7c-887f-1f401e55a701))
+  (gr_line (start 187.748036 249.825352) (end 187.748036 230.775352)
+    (stroke (width 0.15) (type default)) (layer "Eco2.User") (tstamp 65c98451-59fc-4b35-a0f4-ee1407f5300d))
+  (gr_line (start 359.198036 249.825352) (end 187.748036 249.825352)
+    (stroke (width 0.15) (type default)) (layer "Eco2.User") (tstamp c0c4fd49-7b71-4c42-af17-2ff85baaae75))
+  (gr_line (start 359.198036 230.775352) (end 359.198036 249.825352)
+    (stroke (width 0.15) (type default)) (layer "Eco2.User") (tstamp c21790bc-74fb-4db9-bcd4-83bfbf74e015))
+  (gr_line (start 187.748036 230.775352) (end 115.993036 230.775352)
+    (stroke (width 0.15) (type default)) (layer "Eco2.User") (tstamp d3c96ef6-422c-4f93-a1fc-7c8a6fb7bcee))
+  (gr_line (start 115.993036 154.575352) (end 483.023036 154.575352)
+    (stroke (width 0.15) (type default)) (layer "Eco2.User") (tstamp e9605c5c-d250-4ea7-84e2-e1910e9d7012))
   (gr_line (start 504.4 166.100352) (end 497.4 166.100352)
     (stroke (width 0.1) (type solid)) (layer "Edge.Cuts") (tstamp 0465e9df-ecf6-4742-b465-244b9af748bd))
   (gr_line (start 504.4 204.200352) (end 504.4 219.377352)
@@ -17550,6 +17566,9 @@
     (stroke (width 0.1) (type solid)) (layer "Edge.Cuts") (tstamp ff0c6dcf-0423-4bc2-81ef-d49ec89d60b1))
   (gr_text "${TITLE}\n${COMPANY}\nRev ${REVISION}   ${ISSUE_DATE}\n${COMMENT1}\n${COMMENT2}" (at 144.5768 137.541) (layer "F.SilkS") (tstamp 17b0f512-687a-473b-8004-eb74aa8afe41)
     (effects (font (size 2 2) (thickness 0.3)) (justify left))
+  )
+  (gr_text "Keyboard cutout on User ECO 1 layer." (at 97.79 256.5146) (layer "Dwgs.User") (tstamp 9ff8f94f-b34a-47bc-afff-459348bd67ab)
+    (effects (font (size 1 1) (thickness 0.15)) (justify left bottom))
   )
   (dimension (type aligned) (layer "Cmts.User") (tstamp d0c2f2af-a888-417a-9712-1ca9f49df2e0)
     (pts (xy 94.7 263.9) (xy 504.45 263.9))
