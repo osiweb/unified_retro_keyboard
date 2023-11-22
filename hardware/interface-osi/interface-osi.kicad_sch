@@ -6,8 +6,8 @@
 
   (title_block
     (title "OSI Interface")
-    (date "2019-08-25")
-    (rev "1.2")
+    (date "2023-11-22")
+    (rev "2.0")
     (company "OSIWeb.org")
     (comment 1 "Main Keyboard Interface")
   )
