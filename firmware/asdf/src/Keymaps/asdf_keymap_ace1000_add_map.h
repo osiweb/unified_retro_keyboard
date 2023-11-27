@@ -27,6 +27,7 @@
 #if !defined(ASDF_KEYMAP_ACE1000_ADD_MAP_H)
 #define ASDF_KEYMAP_ACE1000_ADD_MAP_H
 
+#include "asdf_keymap_defs_dipswitch.h"
 #include "asdf_modifiers.h"
 
 typedef enum {
@@ -40,6 +41,8 @@ typedef enum {
 // function prototypes
 void ace1000_add_map(const ace1000_map_index_t map_index, modifier_index_t modifier_index);
 void ace1000_keyboard_test(void);
+
+#define ASDF_ACE_DIP_SWITCHES ASDF_KEYMAP_DIP_SWITCHES
 
 // Key value definitions
 #define ACE_KEY_0	0x30
