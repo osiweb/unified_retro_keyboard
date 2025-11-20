@@ -35,6 +35,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include "asdf.h"
 #include "asdf_config.h"
 #include "asdf_physical.h"
 #include "asdf_arch.h"

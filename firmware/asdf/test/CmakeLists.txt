@@ -110,5 +110,5 @@ setup_test(test_asdf_keymaps)
 setup_test(test_asdf_buffer)
 setup_test(test_asdf_virtual)
 setup_test(test_asdf_hook)
-
+setup_test(test_keymap_lookup)
 
