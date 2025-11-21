@@ -190,6 +190,11 @@ void asdf_repeat_deactivate(void)
   key_repeat_timer = repeat_state = base_repeat_state;
 }
 
+uint8_t asdf_repeat_is_autorepeat_enabled(void)
+{
+  return (base_repeat_state == REPEAT_AUTO);
+}
+
 // PROCEDURE: asdf_repeat
 // INPUTS: none
 // OUTPUTS: none

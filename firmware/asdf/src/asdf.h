@@ -120,6 +120,14 @@ void asdf_init(void);
 // function.
 void asdf_keyscan(void);
 
+// PROCEDURE: asdf_apply_all_actions
+// INPUTS: none
+// OUTPUTS: none
+// DESCRIPTION: Re-applies the action hooks corresponding to the currently
+// pressed keys (e.g., DIP switches) so that configuration state persists across
+// keymap changes.
+void asdf_apply_all_actions(void);
+
 // PROCEDURE: asdf_put_code
 // INPUTS: (asdf_keycode_t) code: code to be buffered for output
 // OUTPUTS: none

@@ -25,13 +25,10 @@
 //
 // Headers
 //
-#include <stdio.h>
-#include <avr/io.h>
+#include <stdarg.h>
 #include "asdf.h"
-
-
-static FILE ascii_port = FDEV_SETUP_STREAM(asdf_putc, NULL,
-                                           _FDEV_SETUP_WRITE);
+#define NANOPRINTF_IMPLEMENTATION
+#include "third_party/nanoprintf.h"
 
 //
 // Regular functions
@@ -52,17 +49,22 @@ static FILE ascii_port = FDEV_SETUP_STREAM(asdf_putc, NULL,
 //
 // COMPLEXITY: 1
 //
-void asdf_print(char *fmt, ...)                                                       
-{                                                                               
-   va_list arg_ptr;                                                             
-                                                                                
-   va_start(arg_ptr, fmt);                                                      
-   vfprintf(&ascii_port, fmt, arg_ptr);                                                       
-   va_end(arg_ptr);                                                             
-}                                                                               
+static void asdf_print_putchar(int c, void *ctx)
+{
+  (void) ctx;
+  asdf_putc((char) c, NULL);
+}
+
+void asdf_print(const char *fmt, ...)
+{
+  va_list arg_ptr;
+
+  va_start(arg_ptr, fmt);
+  npf_vpprintf(asdf_print_putchar, NULL, fmt, arg_ptr);
+  va_end(arg_ptr);
+}
 
 
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-

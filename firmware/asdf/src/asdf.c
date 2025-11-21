@@ -30,18 +30,18 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 
-#include <stdio.h>
-#include <stdint.h>
 #include "asdf.h"
-#include "asdf_ascii.h"
-#include "asdf_physical.h"
-#include "asdf_virtual.h"
-#include "asdf_keymaps.h"
-#include "asdf_repeat.h"
-#include "asdf_modifiers.h"
-#include "asdf_buffer.h"
 #include "asdf_arch.h"
+#include "asdf_ascii.h"
+#include "asdf_buffer.h"
 #include "asdf_hook.h"
+#include "asdf_keymaps.h"
+#include "asdf_modifiers.h"
+#include "asdf_physical.h"
+#include "asdf_repeat.h"
+#include "asdf_virtual.h"
+#include <stdint.h>
+#include <stdio.h>
 
 // The key scanner keeps track of the last stable (debounced) state of each key
 // in the matrix, one bit per key, 8 bits per row.
@@ -87,9 +87,8 @@ static uint16_t asdf_print_delay_ms;
 //
 // COMPLEXITY: 1
 //
-void asdf_put_code(asdf_keycode_t code)
-{
-  asdf_buffer_put(asdf_keycode_buffer, code);
+void asdf_put_code(asdf_keycode_t code) {
+    asdf_buffer_put(asdf_keycode_buffer, code);
 }
 
 // PROCEDURE: asdf_putc
@@ -108,14 +107,13 @@ void asdf_put_code(asdf_keycode_t code)
 //
 // COMPLEXITY: 1
 //
-int asdf_putc(char c, FILE *stream)
-{
-  // for messages, add CR to LF:
-  if ('\n' == c) {
-    asdf_putc('\r', stream);
-  }
-  asdf_buffer_put(asdf_message_buffer, (asdf_keycode_t) c);
-  return (int) c;
+int asdf_putc(char c, FILE *stream) {
+    // for messages, add CR to LF:
+    if ('\n' == c) {
+        asdf_putc('\r', stream);
+    }
+    asdf_buffer_put(asdf_message_buffer, (asdf_keycode_t)c);
+    return (int)c;
 }
 
 // PROCEDURE: asdf_next_code
@@ -138,16 +136,15 @@ int asdf_putc(char c, FILE *stream)
 //
 // COMPLEXITY: 2
 //
-asdf_keycode_t asdf_next_code(void)
-{
-  asdf_keycode_t code = asdf_buffer_get(asdf_message_buffer);
-  if (ASDF_INVALID_CODE == code) {
-    code = asdf_buffer_get(asdf_keycode_buffer);
-  } else {
-    // for system message
-    asdf_arch_delay_ms(asdf_print_delay_ms);
-  }
-  return code;
+asdf_keycode_t asdf_next_code(void) {
+    asdf_keycode_t code = asdf_buffer_get(asdf_message_buffer);
+    if (ASDF_INVALID_CODE == code) {
+        code = asdf_buffer_get(asdf_keycode_buffer);
+    } else {
+        // for system message
+        asdf_arch_delay_ms(asdf_print_delay_ms);
+    }
+    return code;
 }
 
 // PROCEDURE: asdf_set_print_delay
@@ -167,10 +164,7 @@ asdf_keycode_t asdf_next_code(void)
 //
 // COMPLEXITY: 1
 //
-void asdf_set_print_delay(uint8_t delay_ms)
-{
-  asdf_print_delay_ms = delay_ms;
-}
+void asdf_set_print_delay(uint8_t delay_ms) { asdf_print_delay_ms = delay_ms; }
 
 // PROCEDURE: asdf_lookup_keycode
 // INPUTS: row, col: specify a row and column in the keyboard matrix
@@ -187,9 +181,8 @@ void asdf_set_print_delay(uint8_t delay_ms)
 //
 // COMPLEXITY: 1
 //
-asdf_keycode_t asdf_lookup_keycode(uint8_t row, uint8_t col)
-{
-  return asdf_keymaps_get_code(row, col, asdf_modifier_index());
+asdf_keycode_t asdf_lookup_keycode(uint8_t row, uint8_t col) {
+    return asdf_keymaps_get_code(row, col, asdf_modifier_index());
 }
 
 // PROCEDURE: asdf_activate_action
@@ -200,7 +193,8 @@ asdf_keycode_t asdf_lookup_keycode(uint8_t row, uint8_t col)
 // pressed, and maps the action code to a function call, or other action
 // appropriate for activation of the function.
 //
-// SIDE EFFECTS: All the actions may have side effects, depending on the function called.
+// SIDE EFFECTS: All the actions may have side effects, depending on the
+// function called.
 //
 // SCOPE: private
 //
@@ -216,128 +210,128 @@ asdf_keycode_t asdf_lookup_keycode(uint8_t row, uint8_t col)
 //
 // COMPLEXITY: 1 (+18 for the switch)
 //
-static void asdf_activate_action(action_t keycode)
-{
-  switch (keycode) {
+static void asdf_activate_action(action_t keycode) {
+    switch (keycode) {
 
     case ACTION_SHIFT: {
-      asdf_modifier_shift_activate();
-      break;
+        asdf_modifier_shift_activate();
+        break;
     }
     case ACTION_SHIFTLOCK_ON: {
-      asdf_modifier_shiftlock_on_activate();
-      break;
+        asdf_modifier_shiftlock_on_activate();
+        break;
     }
     case ACTION_SHIFTLOCK_TOGGLE: {
-      asdf_modifier_shiftlock_toggle_activate();
-      break;
+        asdf_modifier_shiftlock_toggle_activate();
+        break;
     }
     case ACTION_CAPS: {
-      asdf_modifier_capslock_activate();
-      break;
+        asdf_modifier_capslock_activate();
+        break;
     }
     case ACTION_CTRL: {
-      asdf_modifier_ctrl_activate();
-      break;
+        asdf_modifier_ctrl_activate();
+        break;
     }
     case ACTION_REPEAT: {
-      asdf_repeat_activate();
-      break;
+        asdf_repeat_activate();
+        break;
     }
     case ACTION_MAPSEL_0: {
-      asdf_keymaps_map_select_0_set();
-      break;
+        asdf_keymaps_map_select_0_set();
+        break;
     }
     case ACTION_MAPSEL_1: {
-      asdf_keymaps_map_select_1_set();
-      break;
+        asdf_keymaps_map_select_1_set();
+        break;
     }
     case ACTION_MAPSEL_2: {
-      asdf_keymaps_map_select_2_set();
-      break;
+        asdf_keymaps_map_select_2_set();
+        break;
     }
     case ACTION_MAPSEL_3: {
-      asdf_keymaps_map_select_3_set();
-      break;
+        asdf_keymaps_map_select_3_set();
+        break;
     }
     case ACTION_STROBE_POLARITY_SELECT: {
-      asdf_arch_set_pos_strobe();
-      break;
+        asdf_arch_set_pos_strobe();
+        break;
     }
     case ACTION_AUTOREPEAT_SELECT: {
-      asdf_repeat_auto_on();
-      break;
+        asdf_repeat_auto_on();
+        break;
     }
     case ACTION_VLED1: {
-      asdf_virtual_activate(VLED1);
-      break;
+        asdf_virtual_activate(VLED1);
+        break;
     }
     case ACTION_VLED2: {
-      asdf_virtual_activate(VLED2);
-      break;
+        asdf_virtual_activate(VLED2);
+        break;
     }
     case ACTION_VLED3: {
-      asdf_virtual_activate(VLED3);
-      break;
+        asdf_virtual_activate(VLED3);
+        break;
     }
     case ACTION_VOUT1: {
-      asdf_virtual_activate(VOUT1);
-      break;
+        asdf_virtual_activate(VOUT1);
+        break;
     }
     case ACTION_VOUT2: {
-      asdf_virtual_activate(VOUT2);
-      break;
+        asdf_virtual_activate(VOUT2);
+        break;
     }
     case ACTION_VOUT3: {
-      asdf_virtual_activate(VOUT3);
-      break;
+        asdf_virtual_activate(VOUT3);
+        break;
     }
     case ACTION_VOUT4: {
-      asdf_virtual_activate(VOUT4);
-      break;
+        asdf_virtual_activate(VOUT4);
+        break;
     }
     case ACTION_VOUT5: {
-      asdf_virtual_activate(VOUT5);
-      break;
+        asdf_virtual_activate(VOUT5);
+        break;
     }
     case ACTION_VOUT6: {
-      asdf_virtual_activate(VOUT6);
-      break;
+        asdf_virtual_activate(VOUT6);
+        break;
     }
     case ACTION_NOTHING:
     case ACTION_HERE_IS:
     case ACTION_FN_1:
-      asdf_hook_execute(ASDF_HOOK_USER_1);
-      break;
+        asdf_hook_execute(ASDF_HOOK_USER_1);
+        break;
     case ACTION_FN_2:
-      asdf_hook_execute(ASDF_HOOK_USER_2);
-      break;
+        asdf_hook_execute(ASDF_HOOK_USER_2);
+        break;
     case ACTION_FN_3:
-      asdf_hook_execute(ASDF_HOOK_USER_3);
-      break;
+        asdf_hook_execute(ASDF_HOOK_USER_3);
+        break;
     case ACTION_FN_4:
-      asdf_hook_execute(ASDF_HOOK_USER_4);
-      break;
+        asdf_hook_execute(ASDF_HOOK_USER_4);
+        break;
     case ACTION_FN_5:
-      asdf_hook_execute(ASDF_HOOK_USER_5);
-      break;
+        asdf_hook_execute(ASDF_HOOK_USER_5);
+        break;
     case ACTION_FN_6:
-      asdf_hook_execute(ASDF_HOOK_USER_6);
-      break;
+        asdf_hook_execute(ASDF_HOOK_USER_6);
+        break;
     case ACTION_FN_7:
-      asdf_hook_execute(ASDF_HOOK_USER_7);
-      break;
+        asdf_hook_execute(ASDF_HOOK_USER_7);
+        break;
     case ACTION_FN_8:
-      asdf_hook_execute(ASDF_HOOK_USER_8);
-      break;
+        asdf_hook_execute(ASDF_HOOK_USER_8);
+        break;
     case ACTION_FN_9:
-      asdf_hook_execute(ASDF_HOOK_USER_9);
-      break;
+        asdf_hook_execute(ASDF_HOOK_USER_9);
+        break;
     case ACTION_FN_10:
-      asdf_hook_execute(ASDF_HOOK_USER_10);
-      break;
-    default: break;
-  }
+        asdf_hook_execute(ASDF_HOOK_USER_10);
+        break;
+    default:
+        break;
+    }
 }
 
 // PROCEDURE: asdf_deactivate_action
@@ -348,7 +342,8 @@ static void asdf_activate_action(action_t keycode)
 // released, and maps the action code to a function call, or other action
 // appropriate for deactivation of the function.
 //
-// SIDE EFFECTS: All the actions may have side effects, depending on the function called.
+// SIDE EFFECTS: All the actions may have side effects, depending on the
+// function called.
 //
 // SCOPE: private
 //
@@ -358,48 +353,48 @@ static void asdf_activate_action(action_t keycode)
 //
 // COMPLEXITY: 1 (+9 for the switch, see note)
 //
-static void asdf_deactivate_action(action_t keycode)
-{
-  switch (keycode) {
+static void asdf_deactivate_action(action_t keycode) {
+    switch (keycode) {
     case ACTION_SHIFT: {
-      asdf_modifier_shift_deactivate();
-      break;
+        asdf_modifier_shift_deactivate();
+        break;
     }
     case ACTION_CTRL: {
-      asdf_modifier_ctrl_deactivate();
-      break;
+        asdf_modifier_ctrl_deactivate();
+        break;
     }
     case ACTION_REPEAT: {
-      asdf_repeat_deactivate();
-      break;
+        asdf_repeat_deactivate();
+        break;
     }
     case ACTION_MAPSEL_0: {
-      asdf_keymaps_map_select_0_clear();
-      break;
+        asdf_keymaps_map_select_0_clear();
+        break;
     }
     case ACTION_MAPSEL_1: {
-      asdf_keymaps_map_select_1_clear();
-      break;
+        asdf_keymaps_map_select_1_clear();
+        break;
     }
     case ACTION_MAPSEL_2: {
-      asdf_keymaps_map_select_2_clear();
-      break;
+        asdf_keymaps_map_select_2_clear();
+        break;
     }
     case ACTION_MAPSEL_3: {
-      asdf_keymaps_map_select_3_clear();
-      break;
+        asdf_keymaps_map_select_3_clear();
+        break;
     }
     case ACTION_STROBE_POLARITY_SELECT: {
-      asdf_arch_set_neg_strobe();
-      break;
+        asdf_arch_set_neg_strobe();
+        break;
     }
     case ACTION_AUTOREPEAT_SELECT: {
-      asdf_repeat_auto_off();
-      break;
+        asdf_repeat_auto_off();
+        break;
     }
     case ACTION_NOTHING:
-    default: break;
-  }
+    default:
+        break;
+    }
 }
 
 // PROCEDURE: asdf_activate_key
@@ -407,8 +402,8 @@ static void asdf_deactivate_action(action_t keycode)
 // OUTPUTS: none
 //
 // DESCRIPTION: Called when a key has been pressed. If the key is bound to a
-// value, output the value. If the key is bound to an action, call the activate action
-// handler with the keycode.
+// value, output the value. If the key is bound to an action, call the activate
+// action handler with the keycode.
 //
 // SIDE EFFECTS: If the code is a value, the last key is updated to the current
 // value, and repeat timer is reset. If the code is an action code, the activate
@@ -418,20 +413,18 @@ static void asdf_deactivate_action(action_t keycode)
 //
 // COMPLEXITY: 3
 //
-static void asdf_activate_key(asdf_keycode_t keycode)
-{
-  if (keycode > ASDF_ACTION) { // ASDF_ACTION = ASDF_NOTHING = no action.
-    asdf_activate_action((action_t) keycode);
-  }
-  else {
+static void asdf_activate_key(asdf_keycode_t keycode) {
+    if (keycode > ASDF_ACTION) { // ASDF_ACTION = ASDF_NOTHING = no action.
+        asdf_activate_action((action_t)keycode);
+    } else {
 
-    // activate a new codable keypress
-    asdf_put_code(keycode);
-    if (last_key != keycode) {
-      last_key = keycode;
-      asdf_repeat_reset_count();
+        // activate a new codable keypress
+        asdf_put_code(keycode);
+        if (last_key != keycode) {
+            last_key = keycode;
+            asdf_repeat_reset_count();
+        }
     }
-  }
 }
 
 // PROCEDURE: asdf_deactivate_key
@@ -439,28 +432,26 @@ static void asdf_activate_key(asdf_keycode_t keycode)
 // OUTPUTS: none
 //
 // DESCRIPTION: Called when a key has been released. If the key is bound to a
-// value, output the value. If the key is bound to an action, call the deactivate
-// action handler with the keycode.
+// value, output the value. If the key is bound to an action, call the
+// deactivate action handler with the keycode.
 //
 // SIDE EFFECTS: If the code is a value, the last key is set to ACTION_NOTHING,
-// which is effectively a NOP. If the code is an action code, the deactivate action
-// dispatcher produces side effects. See asdf_deactivate_action()
+// which is effectively a NOP. If the code is an action code, the deactivate
+// action dispatcher produces side effects. See asdf_deactivate_action()
 //
 // SCOPE: private
 //
 // COMPLEXITY: 3
 //
-static void asdf_deactivate_key(asdf_keycode_t keycode)
-{
-  if (keycode > ASDF_ACTION) {
-    asdf_deactivate_action((action_t) keycode);
-  }
-  else {
-    // deactivate a released keypress
-    if (last_key == keycode) {
-      last_key = ACTION_NOTHING;
+static void asdf_deactivate_key(asdf_keycode_t keycode) {
+    if (keycode > ASDF_ACTION) {
+        asdf_deactivate_action((action_t)keycode);
+    } else {
+        // deactivate a released keypress
+        if (last_key == keycode) {
+            last_key = ACTION_NOTHING;
+        }
     }
-  }
 }
 
 // PROCEDURE: asdf_handle_key_press_or_release
@@ -485,26 +476,25 @@ static void asdf_deactivate_key(asdf_keycode_t keycode)
 //
 // COMPLEXITY: 3
 //
-static void asdf_handle_key_press_or_release(uint8_t row, uint8_t col, uint8_t key_was_pressed)
-{
-  uint8_t *debounce_count = &debounce_counters[row][col];
+static void asdf_handle_key_press_or_release(uint8_t row, uint8_t col,
+                                             uint8_t key_was_pressed) {
+    uint8_t *debounce_count = &debounce_counters[row][col];
 
-  if (!(--(*debounce_count))) {
+    if (!(--(*debounce_count))) {
 
-    // debounce timed out. Set new stable state and activate or
+        // debounce timed out. Set new stable state and activate or
 
-    // deactivate key.
-    *debounce_count = ASDF_DEBOUNCE_TIME_MS;
-    if (key_was_pressed) {
-      last_stable_key_state[row] |= 1 << col;
-      asdf_activate_key(asdf_lookup_keycode(row, col));
+        // deactivate key.
+        *debounce_count = ASDF_DEBOUNCE_TIME_MS;
+        if (key_was_pressed) {
+            last_stable_key_state[row] |= 1 << col;
+            asdf_activate_key(asdf_lookup_keycode(row, col));
+        } else {
+            // key was released
+            last_stable_key_state[row] &= ~(1 << col);
+            asdf_deactivate_key(asdf_lookup_keycode(row, col));
+        }
     }
-    else {
-      // key was released
-      last_stable_key_state[row] &= ~(1 << col);
-      asdf_deactivate_key(asdf_lookup_keycode(row, col));
-    }
-  }
 }
 
 // PROCEDURE: asdf_handle_key_held_pressed
@@ -514,8 +504,9 @@ static void asdf_handle_key_press_or_release(uint8_t row, uint8_t col, uint8_t k
 // DESCRIPTION: Given a row and column of a key that has been debounced and
 // continues to be pressed:
 // 1) Determine if this is the last key pressed.
-// 2) If it's the most recent key, then check to see if it's time to repeat the key code.
-// 3) If it's time to repeat, then do the repeat and reset the repeat timer.
+// 2) If it's the most recent key, then check to see if it's time to repeat the
+// key code. 3) If it's time to repeat, then do the repeat and reset the repeat
+// timer.
 //
 // SIDE EFFECTS:
 // - Causes repeat timer to tick, and may reset the repeat timer.
@@ -528,15 +519,14 @@ static void asdf_handle_key_press_or_release(uint8_t row, uint8_t col, uint8_t k
 //
 // COMPLEXITY: 3
 //
-static void asdf_handle_key_held_pressed(uint8_t row, uint8_t col)
-{
-  if (asdf_lookup_keycode(row, col) == last_key) {
+static void asdf_handle_key_held_pressed(uint8_t row, uint8_t col) {
+    if (asdf_lookup_keycode(row, col) == last_key) {
 
-    // if last debounced code-producing key is still pressed, handle repeat
-    if (asdf_repeat()) {
-      asdf_activate_key(last_key);
+        // if last debounced code-producing key is still pressed, handle repeat
+        if (asdf_repeat()) {
+            asdf_activate_key(last_key);
+        }
     }
-  }
 }
 
 // PROCEDURE: asdf_keyscan
@@ -561,29 +551,31 @@ static void asdf_handle_key_held_pressed(uint8_t row, uint8_t col)
 //
 // COMPLEXITY: 5
 //
-void asdf_keyscan(void)
-{
-  asdf_cols_t (*row_reader)(uint8_t) = (asdf_cols_t(*)(uint8_t)) asdf_hook_get(ASDF_HOOK_ROW_SCANNER);
+void asdf_keyscan(void) {
+    asdf_cols_t (*row_reader)(uint8_t) =
+        (asdf_cols_t(*)(uint8_t))asdf_hook_get(ASDF_HOOK_ROW_SCANNER);
 
-  asdf_hook_execute(ASDF_HOOK_EACH_SCAN);
-  for (uint8_t row = 0; row < asdf_keymaps_num_rows(); row++) {
-    asdf_cols_t row_key_state = (*row_reader)(row);
+    asdf_hook_execute(ASDF_HOOK_EACH_SCAN);
+    for (uint8_t row = 0; row < asdf_keymaps_num_rows(); row++) {
+        asdf_cols_t row_key_state = (*row_reader)(row);
 
-    asdf_cols_t changed = row_key_state ^ last_stable_key_state[row];
+        asdf_cols_t changed = row_key_state ^ last_stable_key_state[row];
 
-    // loop over the bits until all changed or pressed keys in the row are handled.
-    for (uint8_t col = 0; /*(changed || row_key_state) && */col < asdf_keymaps_num_cols(); col++) {
-      if (changed & 1) {
-        // key state is different from last stable state
-        asdf_handle_key_press_or_release(row, col, row_key_state & 1);
-      }
-      else if (row_key_state & 1) {
-        asdf_handle_key_held_pressed(row, col);
-      }
-      changed >>= 1;
-      row_key_state >>= 1;
+        // loop over the bits until all changed or pressed keys in the row are
+        // handled.
+        for (uint8_t col = 0;
+             /*(changed || row_key_state) && */ col < asdf_keymaps_num_cols();
+             col++) {
+            if (changed & 1) {
+                // key state is different from last stable state
+                asdf_handle_key_press_or_release(row, col, row_key_state & 1);
+            } else if (row_key_state & 1) {
+                asdf_handle_key_held_pressed(row, col);
+            }
+            changed >>= 1;
+            row_key_state >>= 1;
+        }
     }
-  }
 }
 
 // PROCEDURE: asdf_apply_all_actions
@@ -602,29 +594,23 @@ void asdf_keyscan(void)
 //
 // SCOPE: private
 //
-void asdf_apply_all_actions(void)
-{
-  asdf_cols_t (*row_reader)(uint8_t) = (asdf_cols_t(*)(uint8_t)) asdf_hook_get(ASDF_HOOK_ROW_SCANNER);
+void asdf_apply_all_actions(void) {
+    for (uint8_t row = 0; row < asdf_keymaps_num_rows(); row++) {
 
-  for (uint8_t row = 0; row < asdf_keymaps_num_rows(); row++) {
-    asdf_cols_t row_key_state = (*row_reader)(row);
+        // Here we scan the last stable key state for each row. We don't rescan
+        // because the map_select() functions interfere with the keymap change.
 
-    // To avoid double actions, assign last stable key state to current state.
-    last_stable_key_state[row] = row_key_state;
+        asdf_cols_t row_key_state = last_stable_key_state[row];
 
-    // loop over the bits until all changed or pressed keys in the row are handled.
-    for (uint8_t col = 0; col < asdf_keymaps_num_cols(); col++) {
-      asdf_keycode_t code = asdf_lookup_keycode(row, col);
-      if (row_key_state & 1) {
-        asdf_activate_action(code);
-      } else {
-        asdf_deactivate_action(code);
-      }
-      row_key_state >>= 1;
+        for (uint8_t col = 0; col < asdf_keymaps_num_cols(); col++) {
+            if (row_key_state & 1) {
+                asdf_keycode_t code = asdf_lookup_keycode(row, col);
+                asdf_activate_action(code);
+            }
+            row_key_state >>= 1;
+        }
     }
-  }
 }
-
 
 // PROCEDURE: asdf_init
 // INPUTS: none
@@ -639,29 +625,27 @@ void asdf_apply_all_actions(void)
 //
 // COMPLEXITY: 3
 //
-void asdf_init(void)
-{
+void asdf_init(void) {
 
-  last_key = ACTION_NOTHING;
+    last_key = ACTION_NOTHING;
 
-  asdf_buffer_init();  // initialize the buffers
-  asdf_repeat_init();  // initialize the repeat counters
-  asdf_keymaps_init(); // initialize keymaps. This also initializes the modifier
-                       // key states.
-  // reserve a buffer for the ASCII output:
-  asdf_keycode_buffer = asdf_buffer_new(ASDF_KEYCODE_BUFFER_SIZE);
-  asdf_message_buffer = asdf_buffer_new(ASDF_MESSAGE_BUFFER_SIZE);
+    asdf_buffer_init();  // initialize the buffers
+    asdf_repeat_init();  // initialize the repeat counters
+    asdf_keymaps_init(); // initialize keymaps. This also initializes the
+                         // modifier key states.
+    // reserve a buffer for the ASCII output:
+    asdf_keycode_buffer = asdf_buffer_new(ASDF_KEYCODE_BUFFER_SIZE);
+    asdf_message_buffer = asdf_buffer_new(ASDF_MESSAGE_BUFFER_SIZE);
 
-  // Initialize all the keys to the unpressed state, and initialze the debounce
-  // counters.
-  for (uint8_t row = 0; row < ASDF_MAX_ROWS; row++) {
-    last_stable_key_state[row] = 0;
-    for (uint8_t col = 0; col < ASDF_MAX_COLS; col++) {
-      debounce_counters[row][col] = ASDF_DEBOUNCE_TIME_MS;
+    // Initialize all the keys to the unpressed state, and initialze the
+    // debounce counters.
+    for (uint8_t row = 0; row < ASDF_MAX_ROWS; row++) {
+        last_stable_key_state[row] = 0;
+        for (uint8_t col = 0; col < ASDF_MAX_COLS; col++) {
+            debounce_counters[row][col] = ASDF_DEBOUNCE_TIME_MS;
+        }
     }
-  }
 }
-
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.

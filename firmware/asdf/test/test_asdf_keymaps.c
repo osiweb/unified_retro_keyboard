@@ -162,7 +162,8 @@ void complicated_set_keymap(uint8_t mapnum)
 // dummy function, to resolve reference in keymap hook initialization.
 asdf_cols_t asdf_arch_read_row(uint8_t row)
 {
-  return (asdf_cols_t)(row + 1);
+  (void) row;
+  return 0;
 }
 
 void test_chars_are_in_map(void)

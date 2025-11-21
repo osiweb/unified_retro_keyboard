@@ -52,6 +52,10 @@ void asdf_repeat_auto_off(void);
 // DESCRIPTION: Turns Autorepeat mode on
 void asdf_repeat_auto_on(void);
 
+// PROCEDURE: asdf_repeat_is_autorepeat_enabled
+// OUTPUTS: returns non-zero if autorepeat mode is enabled
+uint8_t asdf_repeat_is_autorepeat_enabled(void);
+
 // PROCEDURE: asdf_repeat_activate
 // INPUTS: none
 // OUTPUTS: none

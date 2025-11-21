@@ -169,6 +169,9 @@ void asdf_keymaps_switch(uint8_t index)
     asdf_keymaps_reset();
 
     asdf_keymap_setup(index);
+
+    // Ensure DIP/action state persists across map changes.
+    asdf_apply_all_actions();
   }
 }
 

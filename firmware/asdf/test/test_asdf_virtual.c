@@ -10,6 +10,8 @@
 #include "test_asdf_lib.h"
 #include "test_asdf_keymap_defs.h"
 
+static uint32_t key_matrix[TEST_NUM_ROWS];
+
 
 void setUp(void)
 {
@@ -17,14 +19,18 @@ void setUp(void)
   asdf_keymaps_init();
 
   asdf_keymaps_select(SINGLE_TESTS_KEYMAP);
+
+  for (uint32_t i = 0; i < TEST_NUM_ROWS; i++) {
+    key_matrix[i] = 0;
+  }
 }
 
 void tearDown(void) {}
 
-// needed for keymap.
+// needed for keymap / scanner integration.
 asdf_cols_t asdf_arch_read_row(uint8_t row)
 {
-  return (asdf_cols_t) row;
+  return key_matrix[row];
 }
 
 void test_single_virtual_output_is_initialized(void)

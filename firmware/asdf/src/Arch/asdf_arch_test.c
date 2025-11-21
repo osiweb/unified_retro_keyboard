@@ -108,6 +108,10 @@ static pulse_state_t pulse_transition_table[PD_ST_NUM_VALID_PULSE_STATES][NUM_PU
 static uint8_t outputs[ASDF_PHYSICAL_NUM_RESOURCES];
 static pulse_state_t pulses[ASDF_PHYSICAL_NUM_RESOURCES];
 
+static uint32_t delay_ms_calls;
+static uint16_t last_delay_ms;
+static uint8_t strobe_is_positive;
+
 
 
 static asdf_keycode_t code_register;
@@ -558,7 +562,25 @@ void asdf_arch_pulse_delay_long(void)
 //
 void asdf_arch_delay_ms(uint16_t delay_ms)
 {
-    asdf_arch_pulse_delay();
+  delay_ms_calls++;
+  last_delay_ms = delay_ms;
+  asdf_arch_pulse_delay();
+}
+
+uint32_t asdf_arch_delay_ms_call_count(void)
+{
+  return delay_ms_calls;
+}
+
+uint16_t asdf_arch_delay_ms_last_value(void)
+{
+  return last_delay_ms;
+}
+
+void asdf_arch_delay_ms_reset_count(void)
+{
+  delay_ms_calls = 0;
+  last_delay_ms = 0;
 }
 
 // PROCEDURE: asdf_arch_pulse_delay_short
@@ -586,13 +608,24 @@ void asdf_arch_pulse_delay_short(void)
 // OUTPUTS: none
 // DESCRIPTION: Initialize strobe output to positive polarity. Initial state is
 // LOW
-void asdf_arch_set_pos_strobe(void) {}
+void asdf_arch_set_pos_strobe(void)
+{
+  strobe_is_positive = 1;
+}
 
 // PROCEDURE: asdf_arch_neg_strobe
 // INPUTS: none
 // OUTPUTS: none
 // DESCRIPTION: Initialize strobe output
-void asdf_arch_set_neg_strobe(void) {}
+void asdf_arch_set_neg_strobe(void)
+{
+  strobe_is_positive = 0;
+}
+
+uint8_t asdf_arch_is_strobe_positive(void)
+{
+  return strobe_is_positive;
+}
 
 
 // PROCEDURE: asdf_arch_init
@@ -616,6 +649,7 @@ void asdf_arch_init(void)
 
   // initially, no keycodes have been sent via asdf_arch_send_code:
   code_sent = 0;
+  strobe_is_positive = 0;
 }
 
 

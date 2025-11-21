@@ -72,6 +72,10 @@ void asdf_arch_set_pos_strobe(void);
 // DESCRIPTION: Initialize strobe output
 void asdf_arch_set_neg_strobe(void);
 
+// PROCEDURE: asdf_arch_is_strobe_positive
+// OUTPUTS: returns non-zero if test arch currently uses positive strobe polarity
+uint8_t asdf_arch_is_strobe_positive(void);
+
 // PROCEDURE: asdf_arch_null_output
 // INPUTS: (uint8_t) value - ignored
 // OUTPUTS: none
@@ -203,6 +207,18 @@ void asdf_arch_send_code(asdf_keycode_t);
 // DESCRIPTION: Delays a specified number of milliseconds
 void asdf_arch_delay_ms(uint16_t delay_ms);
 
+// PROCEDURE: asdf_arch_delay_ms_call_count
+// Returns: number of times asdf_arch_delay_ms has been invoked (testing aid)
+uint32_t asdf_arch_delay_ms_call_count(void);
+
+// PROCEDURE: asdf_arch_delay_ms_last_value
+// Returns: last delay value passed to asdf_arch_delay_ms (testing aid)
+uint16_t asdf_arch_delay_ms_last_value(void);
+
+// PROCEDURE: asdf_arch_delay_ms_reset_count
+// DESCRIPTION: clear call-count tracking for asdf_arch_delay_ms (testing aid)
+void asdf_arch_delay_ms_reset_count(void);
+
 // PROCEDURE: asdf_arch_get_sent_code
 // INPUTS: none
 // OUTPUTS: returns type (asdf_keycode_t) in register and zeros the register.
@@ -231,6 +247,4 @@ void asdf_arch_init(void);
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-
-
 

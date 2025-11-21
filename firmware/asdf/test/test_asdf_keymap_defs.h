@@ -61,7 +61,11 @@
 
 
 #define ASDF_TEST_MAP_DIP_SWITCHES                                                                 \
-  [TEST_NUM_ROWS-1] = { ACTION_MAPSEL_0, ACTION_MAPSEL_1, ACTION_MAPSEL_2, ACTION_MAPSEL_3 }
+  [TEST_NUM_ROWS-1] = {                                                                           \
+    ACTION_MAPSEL_0,               ACTION_MAPSEL_1,               ACTION_MAPSEL_2,               \
+    ACTION_MAPSEL_3,               ACTION_NOTHING,                ACTION_FN_11,                  \
+    ACTION_STROBE_POLARITY_SELECT, ACTION_AUTOREPEAT_SELECT                                      \
+  }
 
 
 #define ASDF_TEST_PLAIN_MAP                                             \
