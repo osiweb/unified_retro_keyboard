@@ -17,7 +17,6 @@ add_valid_target() {
 add_valid_target test
 add_valid_target atmega328p
 add_valid_target atmega168p
-add_valid_target atmega88p
 add_valid_target atmega2560
 add_valid_target atmega1280
 add_valid_target atmega640
