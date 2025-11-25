@@ -41,7 +41,7 @@ void test_asdf_repeat_init_resets_to_autorepeat_default(void)
 void test_asdf_repeat_no_repeat_if_auto_turned_off(void)
 {
   uint32_t delay;
-  asdf_repeat_auto_off();
+  asdf_repeat_auto_off(0);
 
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
 
@@ -53,8 +53,8 @@ void test_asdf_repeat_no_repeat_if_auto_turned_off(void)
 void test_asdf_repeat_autorepeat_if_auto_turned_on(void)
 {
   uint32_t delay;
-  asdf_repeat_auto_off();
-  asdf_repeat_auto_on();
+  asdf_repeat_auto_off(0);
+  asdf_repeat_auto_on(0);
 
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
 
@@ -86,14 +86,14 @@ void test_asf_repeat_autorepeat_fast_repeat_after_delay(void)
 void test_asdf_repeat_auto_repeat_if_auto_turned_on(void)
 {
   uint32_t delay;
-  asdf_repeat_auto_on();
-  asdf_repeat_auto_on();
+  asdf_repeat_auto_on(0);
+  asdf_repeat_auto_on(0);
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
 
   TEST_ASSERT_EQUAL_INT(ASDF_AUTOREPEAT_TIME_MS, delay);
 
-  asdf_repeat_auto_off();
-  asdf_repeat_auto_on();
+  asdf_repeat_auto_off(0);
+  asdf_repeat_auto_on(0);
 
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
 
@@ -124,7 +124,7 @@ void test_asdf_repeat_reset_count_works_in_repeat_mode(void)
   uint32_t delay;
   // wait 1/2 of autorepeat time and release a key
 
-  asdf_repeat_activate();
+  asdf_repeat_activate(0);
 
   delay = count_repeat_ticks(ASDF_REPEAT_TIME_MS / 2);
 
@@ -144,9 +144,9 @@ void test_asdf_repeat_reset_count_works_in_repeat_mode(void)
 void test_asdf_repeat_activate_with_auto_on(void)
 {
   uint32_t delay;
-  asdf_repeat_auto_on();
+  asdf_repeat_auto_on(0);
 
-  asdf_repeat_activate();
+  asdf_repeat_activate(0);
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
 
   TEST_ASSERT_EQUAL_INT(ASDF_REPEAT_TIME_MS, delay);
@@ -157,8 +157,8 @@ void test_asdf_repeat_activate_with_auto_on(void)
 void test_asdf_repeat_activate_with_auto_off(void)
 {
   uint32_t delay;
-  asdf_repeat_auto_off();
-  asdf_repeat_activate();
+  asdf_repeat_auto_off(0);
+  asdf_repeat_activate(0);
 
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
 
@@ -172,12 +172,12 @@ void test_asdf_repeat_deactivate_returns_to_baseline_no_repeat(void)
 {
   uint32_t delay;
 
-  asdf_repeat_auto_off();
+  asdf_repeat_auto_off(0);
 
   // simulate a brief REPEAT key press (3 repeat cycles)
 
 
-  asdf_repeat_activate();
+  asdf_repeat_activate(0);
 
   delay = 0;
   for (uint32_t i = 0; i < NUM_REPETITIONS; i++) {
@@ -186,7 +186,7 @@ void test_asdf_repeat_deactivate_returns_to_baseline_no_repeat(void)
 
   TEST_ASSERT_EQUAL_INT(ASDF_REPEAT_TIME_MS * NUM_REPETITIONS, delay);
 
-  asdf_repeat_deactivate();
+  asdf_repeat_deactivate(0);
 
   // now that repeat is deactivated, we should time out before hitting a repeat
   // event:
@@ -203,7 +203,7 @@ void test_asdf_repeat_deactivate_returns_to_baseline_autorepeat(void)
   uint32_t delay;
 
   // simulate a brief REPEAT key press (1/2 autorepeat time)
-  asdf_repeat_activate();
+  asdf_repeat_activate(0);
 
   delay = 0;
   for (uint32_t i = 0; i < NUM_REPETITIONS; i++) {
@@ -212,7 +212,7 @@ void test_asdf_repeat_deactivate_returns_to_baseline_autorepeat(void)
 
   TEST_ASSERT_EQUAL_INT(ASDF_REPEAT_TIME_MS * NUM_REPETITIONS, delay);
 
-  asdf_repeat_deactivate();
+  asdf_repeat_deactivate(0);
 
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
 
@@ -233,7 +233,7 @@ void test_asdf_repeat_repeat_key_circumvents_initial_autorepeat_delay(void)
   TEST_ASSERT_EQUAL_INT((ASDF_AUTOREPEAT_TIME_MS / 2), delay);
 
   // simulate pressing the REPEAT key in the middle of an autorepeat interval
-  asdf_repeat_activate();
+  asdf_repeat_activate(0);
 
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
 
@@ -246,13 +246,13 @@ void test_asdf_repeat_repeat_key_circumvents_initial_autorepeat_delay(void)
 void test_asdf_repeat_turning_off_auto_cancels_autorepeat_delay_in_progress(void)
 {
   uint32_t delay;
-  asdf_repeat_auto_on();
+  asdf_repeat_auto_on(0);
   // simulate a brief keypress (1/2 autorepeat time)
   delay = count_repeat_ticks(ASDF_AUTOREPEAT_TIME_MS / 2);
 
   TEST_ASSERT_EQUAL_INT((ASDF_AUTOREPEAT_TIME_MS / 2), delay);
 
-  asdf_repeat_auto_off();
+  asdf_repeat_auto_off(0);
 
   // simulate continued holding down key
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
@@ -267,7 +267,7 @@ void test_asdf_repeat_turning_off_auto_cancels_autorepeating_keypress(void)
 {
   uint32_t delay;
 
-  asdf_repeat_auto_on();
+  asdf_repeat_auto_on(0);
   // simulate an autorepeating key.  Wait out entire autorepeat delay.
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
 
@@ -280,7 +280,7 @@ void test_asdf_repeat_turning_off_auto_cancels_autorepeating_keypress(void)
   }
   TEST_ASSERT_EQUAL_INT(ASDF_REPEAT_TIME_MS * NUM_REPETITIONS, delay);
 
-  asdf_repeat_auto_off();
+  asdf_repeat_auto_off(0);
 
   for (delay = 0; !asdf_repeat() && (delay < REPEAT_TIMED_OUT); delay++) {
   }
@@ -295,7 +295,7 @@ void test_asdf_repeat_activate_while_autorepeating_wont_affect_timing(void)
 {
   uint32_t delay;
 
-  asdf_repeat_auto_on();
+  asdf_repeat_auto_on(0);
   // simulate an autorepeating key.  Wait out entire autorepeat delay.
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
 
@@ -308,7 +308,7 @@ void test_asdf_repeat_activate_while_autorepeating_wont_affect_timing(void)
   TEST_ASSERT_EQUAL_INT((ASDF_REPEAT_TIME_MS / 2), delay);
 
   // turn on repeat mode (press REPEAT key)
-  asdf_repeat_activate();
+  asdf_repeat_activate(0);
 
   // now verify the repeat interval was not affected. Finish the current repeat
   // interval
@@ -324,8 +324,8 @@ void test_asdf_repeat_deactivate_while_repeating_resets_autorepeat_counter(void)
 {
   uint32_t delay;
 
-  asdf_repeat_auto_on();
-  asdf_repeat_activate();
+  asdf_repeat_auto_on(0);
+  asdf_repeat_activate(0);
 
   // wait NUM_REPETITIONS repeat cycles:
   delay = 0;
@@ -335,7 +335,7 @@ void test_asdf_repeat_deactivate_while_repeating_resets_autorepeat_counter(void)
   TEST_ASSERT_EQUAL_INT(ASDF_REPEAT_TIME_MS * NUM_REPETITIONS, delay);
 
   // releast REPEAT key:
-  asdf_repeat_deactivate();
+  asdf_repeat_deactivate(0);
 
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
 
@@ -349,8 +349,8 @@ void test_asdf_repeat_deactivate_while_repeating_stops_repeating(void)
 {
   uint32_t delay;
 
-  asdf_repeat_auto_off();
-  asdf_repeat_activate();
+  asdf_repeat_auto_off(0);
+  asdf_repeat_activate(0);
 
   // wait NUM_REPETITIONS repeat cycles:
   delay = 0;
@@ -360,7 +360,7 @@ void test_asdf_repeat_deactivate_while_repeating_stops_repeating(void)
   TEST_ASSERT_EQUAL_INT(ASDF_REPEAT_TIME_MS * NUM_REPETITIONS, delay);
 
   // releast REPEAT key:
-  asdf_repeat_deactivate();
+  asdf_repeat_deactivate(0);
 
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);
 
@@ -374,7 +374,7 @@ void test_asdf_repeat_new_key_while_repeat_active_keeps_repeating(void)
 {
   uint32_t delay;
 
-  asdf_repeat_activate();
+  asdf_repeat_activate(0);
 
   // wait NUM_REPETITIONS repeat cycles:
   delay = 0;
@@ -401,7 +401,7 @@ void test_asdf_repeat_new_key_while_autorepeating_starts_new_autorepeat(void)
 {
   uint32_t delay;
 
-  asdf_repeat_auto_on();
+  asdf_repeat_auto_on(0);
 
   // simulate an autorepeating key.  Wait out entire autorepeat delay.
   delay = count_repeat_ticks(REPEAT_TIMED_OUT);

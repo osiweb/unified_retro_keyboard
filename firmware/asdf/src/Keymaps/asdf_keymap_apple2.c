@@ -80,7 +80,7 @@ void setup_apple2_keymap(void)
   // assign the CLRSCR output to the virtual CLRSCR output, configure to produce a long pulse when activated
   asdf_virtual_assign(APPLE_VIRTUAL_CLR_SCR, APPLE_CLR_SCR_OUTPUT, V_PULSE_LONG, !APPLE_CLR_SCR_ACTIVE_VALUE);
 
-  asdf_modifier_capslock_activate(); // For Apple 2, start with CAPS active
+  asdf_modifier_capslock_activate(0); // For Apple 2, start with CAPS active
 }
 
 

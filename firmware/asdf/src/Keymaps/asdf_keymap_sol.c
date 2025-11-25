@@ -174,10 +174,10 @@ void setup_sol_keymap(void)
   asdf_virtual_assign(SOL_KBD_VBREAK, SOL_KBD_TTLOUT_BREAK, V_PULSE_LONG, SOL_KBD_TTL_HIGH);
 
   // Activate the ALL CAPS mode to emulate the original keyboard:
-  asdf_modifier_capslock_activate();
+  asdf_modifier_capslock_activate(0);
 
   // Configure negative strobe
-  asdf_arch_set_neg_strobe();
+  asdf_arch_set_neg_strobe(0);
 
   asdf_hook_assign(SOL_ID_MESSAGE_HOOK, sol_id_message);
 }

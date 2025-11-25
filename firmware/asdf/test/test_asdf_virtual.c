@@ -244,13 +244,13 @@ void test_virtual_capslock_indicator(void)
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_LED1));
 
   // emulate capslock press and release.  Should set LED1
-  asdf_modifier_capslock_activate();
+  asdf_modifier_capslock_activate(0);
 
   TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(PHYSICAL_LED1));
 
 
   // emulate capslock press and release.  clear LED1
-  asdf_modifier_capslock_activate();
+  asdf_modifier_capslock_activate(0);
 
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_LED1));
 }
@@ -264,14 +264,14 @@ void test_virtual_shiftlock_indicator(void)
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_LED2));
 
   // emulate shiftlock press and release.  Should set LED2
-  asdf_modifier_shiftlock_on_activate();
+  asdf_modifier_shiftlock_on_activate(0);
 
   TEST_ASSERT_EQUAL_INT32(1, asdf_arch_check_output(PHYSICAL_LED2));
 
 
   // emulate shift press and release.  clear LED2
-  asdf_modifier_shift_activate();
-  asdf_modifier_shift_deactivate();
+  asdf_modifier_shift_activate(0);
+  asdf_modifier_shift_deactivate(0);
 
   TEST_ASSERT_EQUAL_INT32(0, asdf_arch_check_output(PHYSICAL_LED2));
 }
