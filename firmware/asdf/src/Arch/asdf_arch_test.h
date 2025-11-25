@@ -59,18 +59,17 @@ typedef enum {
 #define ASDF_ARCH_DEFAULT_ROW_SCANNER asdf_arch_read_row
 #define ASDF_ARCH_DEFAULT_OUTPUT asdf_arch_send_code
 
-// PROCEDURE: asdf_arch_pos_strobe
+// PROCEDURE: asdf_arch_set_pos_strobe
 // INPUTS: none
 // OUTPUTS: none
-// DESCRIPTION: Initialize strobe output to positive polarity. Initial state is
-// LOW
-void asdf_arch_set_pos_strobe(void);
+// DESCRIPTION: Initialize strobe output to positive polarity. Initial state is LOW
+void asdf_arch_set_pos_strobe(uint8_t unused);
 
-// PROCEDURE: asdf_arch_neg_strobe
+// PROCEDURE: asdf_arch_set_neg_strobe
 // INPUTS: none
 // OUTPUTS: none
 // DESCRIPTION: Initialize strobe output
-void asdf_arch_set_neg_strobe(void);
+void asdf_arch_set_neg_strobe(uint8_t unused);
 
 // PROCEDURE: asdf_arch_is_strobe_positive
 // OUTPUTS: returns non-zero if test arch currently uses positive strobe polarity
@@ -247,4 +246,3 @@ void asdf_arch_init(void);
 
 //-------|---------|---------+---------+---------+---------+---------+---------+
 // Above line is 80 columns, and should display completely in the editor.
-

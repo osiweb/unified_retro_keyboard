@@ -142,18 +142,12 @@ void tearDown(void) {}
 // set a keymap using the asdf_keymap dip-switch functions
 void complicated_set_keymap(uint8_t mapnum)
 {
-  void (*set_funcs[])(void) = { &asdf_keymaps_map_select_0_set, &asdf_keymaps_map_select_1_set,
-                                &asdf_keymaps_map_select_2_set, &asdf_keymaps_map_select_3_set };
-  void (*clr_funcs[])(void) = { &asdf_keymaps_map_select_0_clear, &asdf_keymaps_map_select_1_clear,
-                                &asdf_keymaps_map_select_2_clear,
-                                &asdf_keymaps_map_select_3_clear };
-
   for (uint8_t i = 0; i < NUM_DIPSWITCHES; i++) {
     if (mapnum & 1) {
-      set_funcs[i]();
+      asdf_keymaps_map_select_set(i);
     }
     else {
-      clr_funcs[i]();
+      asdf_keymaps_map_select_clear(i);
     }
     mapnum >>= 1;
   }
@@ -223,7 +217,7 @@ void keymap2_ctrl_gives_ctrl_values(void)
 void keymap1_capsmap_plain_maps_to_caps(void)
 {
   // set bit 0 to select keymap 1
-  asdf_keymaps_map_select_0_set();
+  asdf_keymaps_map_select_set(0);
   TEST1CAPS(alpha_sample.row, alpha_sample.col);
   TEST1CAPS(num_sample.row, num_sample.col);
 }

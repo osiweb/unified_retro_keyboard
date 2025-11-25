@@ -84,61 +84,17 @@ uint8_t asdf_keymaps_num_cols(void);
 // requested index is not valid then do nothing.
 void asdf_keymaps_select(uint8_t index);
 
-// PROCEDURE: asdf_keymaps_map_select_0_clear
-// INPUTS: none
+// PROCEDURE: asdf_keymaps_map_select_set
+// INPUTS: bit_num - bit number to set (0-3)
 // OUTPUTS: none
-// DESCRIPTION: called when map select 0 switch is open. Clears the 0 bit in the
-// keymap index.
-void asdf_keymaps_map_select_0_clear(void);
+// DESCRIPTION: Sets the specified bit in the keymap selection index.
+void asdf_keymaps_map_select_set(uint8_t bit_num);
 
-// PROCEDURE: asdf_keymaps_map_select_0_set
-// INPUTS: none
+// PROCEDURE: asdf_keymaps_map_select_clear
+// INPUTS: bit_num - bit number to clear (0-3)
 // OUTPUTS: none
-// DESCRIPTION: called when map select 0 switch is closed. Sets the 0 bit in the
-// keymap index, if the resulting keymap index is valid.  Otherwise do nothing.
-void asdf_keymaps_map_select_0_set(void);
-
-// PROCEDURE: asdf_keymaps_map_select_1_clear
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: called when map select 1 switch is open. Clears the 1 bit in the
-// keymap index.
-void asdf_keymaps_map_select_1_clear(void);
-
-// PROCEDURE: asdf_keymaps_map_select_1_set
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: called when map select 1 switch is closed. Sets the 0 bit in the
-// keymap index, if the resulting keymap index is valid.  Otherwise do nothing.
-void asdf_keymaps_map_select_1_set(void);
-
-// PROCEDURE: asdf_keymaps_map_select_2_clear
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: called when map select 2 switch is open. Clears the 2 bit in the
-// keymap index.
-void asdf_keymaps_map_select_2_clear(void);
-
-// PROCEDURE: asdf_keymaps_map_select_2_set
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: called when map select 2 switch is closed. Sets the 0 bit in the
-// keymap index, if the resulting keymap index is valid.  Otherwise do nothing.
-void asdf_keymaps_map_select_2_set(void);
-
-// PROCEDURE: asdf_keymaps_map_select_3_clear
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: called when map select 3 switch is open. Clears the 3 bit in the
-// keymap index.
-void asdf_keymaps_map_select_3_clear(void);
-
-// PROCEDURE: asdf_keymaps_map_select_3_set
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: called when map select 3 switch is closed. Sets the 0 bit in the
-// keymap index, if the resulting keymap index is valid.  Otherwise do nothing.
-void asdf_keymaps_map_select_3_set(void);
+// DESCRIPTION: Clears the specified bit in the keymap selection index.
+void asdf_keymaps_map_select_clear(uint8_t bit_num);
 
 // PROCEDURE: asdf_keymaps_init
 // INPUTS: none

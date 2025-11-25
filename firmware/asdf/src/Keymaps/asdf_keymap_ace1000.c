@@ -81,7 +81,7 @@ void setup_ace1000_keymap(void)
   asdf_virtual_assign(ACE1000_VIRTUAL_CLR_SCR, ACE1000_CLR_SCR_OUT, V_PULSE_LONG, !ACE1000_CLR_SCR_ACTIVE_VALUE);
 
   // turn on caps lock
-  asdf_modifier_capslock_activate();
+  asdf_modifier_capslock_activate(0);
 }
 
 

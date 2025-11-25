@@ -237,124 +237,6 @@ static void asdf_clear_last_keycode(uint8_t keycode) {
     }
 }
 
-// PROCEDURE: asdf_virtual_output_activate
-// INPUTS: vout_id - the virtual output identifier
-// OUTPUTS: none
-//
-// DESCRIPTION: Activates a virtual output (LED or other output)
-//
-// SIDE EFFECTS: Activates the specified virtual output
-//
-// SCOPE: private
-//
-// COMPLEXITY: 1
-//
-static void asdf_virtual_output_activate(uint8_t vout_id) {
-    asdf_virtual_activate(vout_id);
-}
-
-// PROCEDURE: asdf_hook_execute_wrapper
-// INPUTS: hook_id - the hook identifier
-// OUTPUTS: none
-//
-// DESCRIPTION: Executes a user-defined hook function
-//
-// SIDE EFFECTS: Executes the specified hook
-//
-// SCOPE: private
-//
-// COMPLEXITY: 1
-//
-static void asdf_hook_execute_wrapper(uint8_t hook_id) {
-    asdf_hook_execute(hook_id);
-}
-
-// Wrapper functions for actions without parameters
-static void asdf_modifier_shift_activate_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_modifier_shift_activate();
-}
-static void asdf_modifier_shift_deactivate_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_modifier_shift_deactivate();
-}
-static void asdf_modifier_ctrl_activate_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_modifier_ctrl_activate();
-}
-static void asdf_modifier_ctrl_deactivate_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_modifier_ctrl_deactivate();
-}
-static void asdf_modifier_shiftlock_on_activate_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_modifier_shiftlock_on_activate();
-}
-static void asdf_modifier_shiftlock_toggle_activate_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_modifier_shiftlock_toggle_activate();
-}
-static void asdf_modifier_capslock_activate_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_modifier_capslock_activate();
-}
-static void asdf_repeat_activate_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_repeat_activate();
-}
-static void asdf_repeat_deactivate_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_repeat_deactivate();
-}
-static void asdf_repeat_auto_on_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_repeat_auto_on();
-}
-static void asdf_repeat_auto_off_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_repeat_auto_off();
-}
-static void asdf_arch_set_pos_strobe_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_arch_set_pos_strobe();
-}
-static void asdf_arch_set_neg_strobe_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_arch_set_neg_strobe();
-}
-static void asdf_keymaps_map_select_0_set_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_keymaps_map_select_0_set();
-}
-static void asdf_keymaps_map_select_0_clear_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_keymaps_map_select_0_clear();
-}
-static void asdf_keymaps_map_select_1_set_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_keymaps_map_select_1_set();
-}
-static void asdf_keymaps_map_select_1_clear_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_keymaps_map_select_1_clear();
-}
-static void asdf_keymaps_map_select_2_set_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_keymaps_map_select_2_set();
-}
-static void asdf_keymaps_map_select_2_clear_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_keymaps_map_select_2_clear();
-}
-static void asdf_keymaps_map_select_3_set_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_keymaps_map_select_3_set();
-}
-static void asdf_keymaps_map_select_3_clear_wrapper(uint8_t unused) {
-    (void)unused;
-    asdf_keymaps_map_select_3_clear();
-}
-
 // Unified dispatch table for all keycodes (ASCII and actions)
 // This table maps every possible keycode value to its handler functions
 static const asdf_key_handler_t asdf_handlers[256] = {
@@ -455,7 +337,7 @@ static const asdf_key_handler_t asdf_handlers[256] = {
                   .parameter = ASCII_RS},
     [ASCII_US] = {.activate = asdf_emit_keycode,
                   .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_US}
+                  .parameter = ASCII_US},
 
         // ASCII printable characters (0x20 - 0x7E)
         [' '] = {.activate = asdf_emit_keycode,
@@ -747,7 +629,7 @@ static const asdf_key_handler_t asdf_handlers[256] = {
     // DEL character
     [ASCII_DEL] = {.activate = asdf_emit_keycode,
                    .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_DEL}
+                   .parameter = ASCII_DEL},
 
         // SOL-20 extended ASCII codes (0x80-0x9F)
         // These are special character codes used by the SOL-20 keyboard for
@@ -855,144 +737,144 @@ static const asdf_key_handler_t asdf_handlers[256] = {
 
     // Modifier actions - these affect keyboard state and should be reapplied on
     // init
-    [ACTION_SHIFT] = {.activate = asdf_modifier_shift_activate_wrapper,
-                      .deactivate = asdf_modifier_shift_deactivate_wrapper,
+    [ACTION_SHIFT] = {.activate = asdf_modifier_shift_activate,
+                      .deactivate = asdf_modifier_shift_deactivate,
                       .parameter = 0,
                       .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
     [ACTION_SHIFTLOCK_ON] = {.activate =
-                                 asdf_modifier_shiftlock_on_activate_wrapper,
+                                 asdf_modifier_shiftlock_on_activate,
                              .deactivate = NULL,
                              .parameter = 0,
                              .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
     [ACTION_SHIFTLOCK_TOGGLE] =
-        {.activate = asdf_modifier_shiftlock_toggle_activate_wrapper,
+        {.activate = asdf_modifier_shiftlock_toggle_activate,
          .deactivate = NULL,
          .parameter = 0,
          .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_CAPS] = {.activate = asdf_modifier_capslock_activate_wrapper,
+    [ACTION_CAPS] = {.activate = asdf_modifier_capslock_activate,
                      .deactivate = NULL,
                      .parameter = 0,
                      .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_CTRL] = {.activate = asdf_modifier_ctrl_activate_wrapper,
-                     .deactivate = asdf_modifier_ctrl_deactivate_wrapper,
+    [ACTION_CTRL] = {.activate = asdf_modifier_ctrl_activate,
+                     .deactivate = asdf_modifier_ctrl_deactivate,
                      .parameter = 0,
                      .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
 
     // Repeat control - affects keyboard state
-    [ACTION_REPEAT] = {.activate = asdf_repeat_activate_wrapper,
-                       .deactivate = asdf_repeat_deactivate_wrapper,
+    [ACTION_REPEAT] = {.activate = asdf_repeat_activate,
+                       .deactivate = asdf_repeat_deactivate,
                        .parameter = 0,
                        .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
 
     // HERE_IS action (maps to USER_1 hook)
-    [ACTION_HERE_IS] = {.activate = asdf_hook_execute_wrapper,
+    [ACTION_HERE_IS] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
                         .deactivate = NULL,
                         .parameter = ASDF_HOOK_USER_1},
 
     // Keymap selection - these are DIP switches that should be reapplied on
     // keyboard init
-    [ACTION_MAPSEL_0] = {.activate = asdf_keymaps_map_select_0_set_wrapper,
-                         .deactivate = asdf_keymaps_map_select_0_clear_wrapper,
+    [ACTION_MAPSEL_0] = {.activate = asdf_keymaps_map_select_set,
+                         .deactivate = asdf_keymaps_map_select_clear,
                          .parameter = 0,
                          .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_MAPSEL_1] = {.activate = asdf_keymaps_map_select_1_set_wrapper,
-                         .deactivate = asdf_keymaps_map_select_1_clear_wrapper,
-                         .parameter = 0,
+    [ACTION_MAPSEL_1] = {.activate = asdf_keymaps_map_select_set,
+                         .deactivate = asdf_keymaps_map_select_clear,
+                         .parameter = 1,
                          .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_MAPSEL_2] = {.activate = asdf_keymaps_map_select_2_set_wrapper,
-                         .deactivate = asdf_keymaps_map_select_2_clear_wrapper,
-                         .parameter = 0,
+    [ACTION_MAPSEL_2] = {.activate = asdf_keymaps_map_select_set,
+                         .deactivate = asdf_keymaps_map_select_clear,
+                         .parameter = 2,
                          .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_MAPSEL_3] = {.activate = asdf_keymaps_map_select_3_set_wrapper,
-                         .deactivate = asdf_keymaps_map_select_3_clear_wrapper,
-                         .parameter = 0,
+    [ACTION_MAPSEL_3] = {.activate = asdf_keymaps_map_select_set,
+                         .deactivate = asdf_keymaps_map_select_clear,
+                         .parameter = 3,
                          .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
 
     // Auto-repeat control - DIP switch setting
-    [ACTION_AUTOREPEAT_SELECT] = {.activate = asdf_repeat_auto_on_wrapper,
-                                  .deactivate = asdf_repeat_auto_off_wrapper,
+    [ACTION_AUTOREPEAT_SELECT] = {.activate = asdf_repeat_auto_on,
+                                  .deactivate = asdf_repeat_auto_off,
                                   .parameter = 0,
                                   .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
 
     // Strobe polarity control - DIP switch setting
     [ACTION_STROBE_POLARITY_SELECT] =
-        {.activate = asdf_arch_set_pos_strobe_wrapper,
-         .deactivate = asdf_arch_set_neg_strobe_wrapper,
+        {.activate = asdf_arch_set_pos_strobe,
+         .deactivate = asdf_arch_set_neg_strobe,
          .parameter = 0,
          .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
 
     // Virtual LEDs - reapply if toggle switches are pressed
-    [ACTION_VLED1] = {.activate = asdf_virtual_output_activate,
+    [ACTION_VLED1] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
                       .deactivate = NULL,
                       .parameter = VLED1,
                       .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VLED2] = {.activate = asdf_virtual_output_activate,
+    [ACTION_VLED2] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
                       .deactivate = NULL,
                       .parameter = VLED2,
                       .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VLED3] = {.activate = asdf_virtual_output_activate,
+    [ACTION_VLED3] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
                       .deactivate = NULL,
                       .parameter = VLED3,
                       .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
 
     // Virtual outputs - reapply if toggle switches are pressed
-    [ACTION_VOUT1] = {.activate = asdf_virtual_output_activate,
+    [ACTION_VOUT1] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
                       .deactivate = NULL,
                       .parameter = VOUT1,
                       .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VOUT2] = {.activate = asdf_virtual_output_activate,
+    [ACTION_VOUT2] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
                       .deactivate = NULL,
                       .parameter = VOUT2,
                       .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VOUT3] = {.activate = asdf_virtual_output_activate,
+    [ACTION_VOUT3] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
                       .deactivate = NULL,
                       .parameter = VOUT3,
                       .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VOUT4] = {.activate = asdf_virtual_output_activate,
+    [ACTION_VOUT4] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
                       .deactivate = NULL,
                       .parameter = VOUT4,
                       .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VOUT5] = {.activate = asdf_virtual_output_activate,
+    [ACTION_VOUT5] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
                       .deactivate = NULL,
                       .parameter = VOUT5,
                       .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VOUT6] = {.activate = asdf_virtual_output_activate,
+    [ACTION_VOUT6] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
                       .deactivate = NULL,
                       .parameter = VOUT6,
                       .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
 
     // User function hooks
-    [ACTION_FN_1] = {.activate = asdf_hook_execute_wrapper,
+    [ACTION_FN_1] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
                      .deactivate = NULL,
                      .parameter = ASDF_HOOK_USER_1},
-    [ACTION_FN_2] = {.activate = asdf_hook_execute_wrapper,
+    [ACTION_FN_2] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
                      .deactivate = NULL,
                      .parameter = ASDF_HOOK_USER_2},
-    [ACTION_FN_3] = {.activate = asdf_hook_execute_wrapper,
+    [ACTION_FN_3] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
                      .deactivate = NULL,
                      .parameter = ASDF_HOOK_USER_3},
-    [ACTION_FN_4] = {.activate = asdf_hook_execute_wrapper,
+    [ACTION_FN_4] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
                      .deactivate = NULL,
                      .parameter = ASDF_HOOK_USER_4},
-    [ACTION_FN_5] = {.activate = asdf_hook_execute_wrapper,
+    [ACTION_FN_5] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
                      .deactivate = NULL,
                      .parameter = ASDF_HOOK_USER_5},
-    [ACTION_FN_6] = {.activate = asdf_hook_execute_wrapper,
+    [ACTION_FN_6] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
                      .deactivate = NULL,
                      .parameter = ASDF_HOOK_USER_6},
-    [ACTION_FN_7] = {.activate = asdf_hook_execute_wrapper,
+    [ACTION_FN_7] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
                      .deactivate = NULL,
                      .parameter = ASDF_HOOK_USER_7},
-    [ACTION_FN_8] = {.activate = asdf_hook_execute_wrapper,
+    [ACTION_FN_8] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
                      .deactivate = NULL,
                      .parameter = ASDF_HOOK_USER_8},
-    [ACTION_FN_9] = {.activate = asdf_hook_execute_wrapper,
+    [ACTION_FN_9] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
                      .deactivate = NULL,
                      .parameter = ASDF_HOOK_USER_9},
-    [ACTION_FN_10] = {.activate = asdf_hook_execute_wrapper,
+    [ACTION_FN_10] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
                       .deactivate = NULL,
                       .parameter = ASDF_HOOK_USER_10},
-    [ACTION_FN_11] = {.activate = asdf_hook_execute_wrapper,
+    [ACTION_FN_11] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
                       .deactivate = NULL,
                       .parameter = ASDF_HOOK_USER_11},
 

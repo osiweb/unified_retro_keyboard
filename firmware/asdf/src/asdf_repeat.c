@@ -100,54 +100,9 @@ void asdf_repeat_reset_count(void)
   key_repeat_timer = (key_timer_t) repeat_state;
 }
 
-// PROCEDURE: asdf_repeat_auto_off
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Turns Autorepeat mode off by setting the base state to
-// autorepeat. If key is repeating, then the new behavior will be realized after
-// the repeat key is released. This function can be bound to a key or DIP switch
-// to turn autorepeat off.
-//
-// SIDE EFFECTS: See DESCRIPTION
-//
-// SCOPE: public
-//
-// COMPLEXITY: 1
-//
-void asdf_repeat_auto_off(void)
-{
-  base_repeat_state = REPEAT_OFF;
-  if (REPEAT_ON != repeat_state) {
-    key_repeat_timer = repeat_state = base_repeat_state;
-  }
-}
-
-// PROCEDURE: asdf_repeat_auto_on
-// INPUTS: none
-// OUTPUTS: none
-//
-// DESCRIPTION: Turns Autorepeat mode on by setting the base state to
-// autorepeat. If key is repeating, then the new behavior will be realized after
-// the repeat key is released.  This function can be bound to a key or DIP switch
-// to turn autorepeat on.
-//
-// SIDE EFFECTS: see above
-//
-// SCOPE: public
-//
-// COMPLEXITY: 1
-//
-void asdf_repeat_auto_on(void)
-{
-  base_repeat_state = REPEAT_AUTO;
-  if (REPEAT_ON != repeat_state) {
-    key_repeat_timer = repeat_state = base_repeat_state;
-  }
-}
 
 // PROCEDURE: asdf_repeat_activate
-// INPUTS: none
+// INPUTS: unused - parameter required for dispatch table but not used
 // OUTPUTS: none
 //
 // DESCRIPTION: set repeat state machine to repeat mode. Called when REPEAT key
@@ -161,15 +116,16 @@ void asdf_repeat_auto_on(void)
 //
 // COMPLEXITY: 1
 //
-void asdf_repeat_activate(void)
+void asdf_repeat_activate(uint8_t unused)
 {
+  (void) unused;
   if (key_repeat_timer > REPEAT_ON || REPEAT_OFF == repeat_state) {
     key_repeat_timer = repeat_state = REPEAT_ON;
   }
 }
 
 // PROCEDURE: asdf_repeat_deactivate
-// INPUTS: none
+// INPUTS: unused - parameter required for dispatch table but not used
 // OUTPUTS: none
 //
 // DESCRIPTION: Reset repeat state to default state. Called when REPEAT
@@ -185,8 +141,9 @@ void asdf_repeat_activate(void)
 //
 // COMPLEXITY: 1
 //
-void asdf_repeat_deactivate(void)
+void asdf_repeat_deactivate(uint8_t unused)
 {
+  (void) unused;
   key_repeat_timer = repeat_state = base_repeat_state;
 }
 
@@ -220,6 +177,50 @@ uint8_t asdf_repeat(void)
   }
 
   return timeout;
+}
+
+// PROCEDURE: asdf_repeat_auto_on
+// INPUTS: unused - parameter required for dispatch table but not used
+// OUTPUTS: none
+//
+// DESCRIPTION: Enables auto-repeat mode. Used as activate function for
+// ACTION_AUTOREPEAT_SELECT DIP switch.
+//
+// SIDE EFFECTS: Sets auto-repeat mode to enabled
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_repeat_auto_on(uint8_t unused)
+{
+  (void) unused;
+  base_repeat_state = REPEAT_AUTO;
+  if (REPEAT_ON != repeat_state) {
+    key_repeat_timer = repeat_state = base_repeat_state;
+  }
+}
+
+// PROCEDURE: asdf_repeat_auto_off
+// INPUTS: unused - parameter required for dispatch table but not used
+// OUTPUTS: none
+//
+// DESCRIPTION: Disables auto-repeat mode. Used as deactivate function for
+// ACTION_AUTOREPEAT_SELECT DIP switch.
+//
+// SIDE EFFECTS: Sets auto-repeat mode to disabled
+//
+// SCOPE: public
+//
+// COMPLEXITY: 1
+//
+void asdf_repeat_auto_off(uint8_t unused)
+{
+  (void) unused;
+  base_repeat_state = REPEAT_OFF;
+  if (REPEAT_ON != repeat_state) {
+    key_repeat_timer = repeat_state = base_repeat_state;
+  }
 }
 
 //-------|---------|---------+---------+---------+---------+---------+---------+

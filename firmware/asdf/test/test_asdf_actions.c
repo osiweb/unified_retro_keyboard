@@ -75,7 +75,7 @@ void test_dip_strobe_action_toggles_polarity(void)
 
 void test_dip_autorepeat_action_toggles_mode(void)
 {
-  asdf_repeat_auto_off();
+  asdf_repeat_auto_off(0);
   TEST_ASSERT_FALSE(asdf_repeat_is_autorepeat_enabled());
 
   press_dip(AUTOREPEAT_COL);
@@ -87,7 +87,7 @@ void test_dip_autorepeat_action_toggles_mode(void)
 
 void test_keymap_switch_reapplies_dip_actions(void)
 {
-  asdf_repeat_auto_off();
+  asdf_repeat_auto_off(0);
   TEST_ASSERT_FALSE(asdf_repeat_is_autorepeat_enabled());
   TEST_ASSERT_FALSE(asdf_arch_is_strobe_positive());
 

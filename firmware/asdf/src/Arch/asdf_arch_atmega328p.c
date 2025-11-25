@@ -535,7 +535,7 @@ void asdf_arch_out3_open_lo_set(uint8_t value)
   }
 }
 
-// PROCEDURE: asdf_arch_pos_strobe
+// PROCEDURE: asdf_arch_set_pos_strobe
 // INPUTS: none
 // OUTPUTS: none
 //
@@ -548,13 +548,14 @@ void asdf_arch_out3_open_lo_set(uint8_t value)
 //
 // COMPLEXITY: 1
 //
-void asdf_arch_set_pos_strobe(void)
+void asdf_arch_set_pos_strobe(uint8_t unused)
 {
+  (void) unused;
   clear_bit(&ASDF_STROBE_PORT, ASDF_STROBE_BIT);
   set_bit(&ASDF_STROBE_DDR, ASDF_STROBE_BIT);
 }
 
-// PROCEDURE: asdf_arch_neg_strobe
+// PROCEDURE: asdf_arch_set_neg_strobe
 // INPUTS: none
 // OUTPUTS: none
 //
@@ -562,12 +563,13 @@ void asdf_arch_set_pos_strobe(void)
 //
 // SIDE EFFECTS: See DESCRIPTION
 //
-// SCOPE: private
+// SCOPE: public
 //
 // COMPLEXITY: 1
 //
-void asdf_arch_set_neg_strobe(void)
+void asdf_arch_set_neg_strobe(uint8_t unused)
 {
+  (void) unused;
   set_bit(&ASDF_STROBE_PORT, ASDF_STROBE_BIT);
   set_bit(&ASDF_STROBE_DDR, ASDF_STROBE_BIT);
 }
@@ -727,9 +729,9 @@ void asdf_arch_init(void)
   data_polarity = ASDF_DEFAULT_DATA_POLARITY;
 
   if (ASDF_DEFAULT_STROBE_POLARITY == ASDF_POSITIVE_POLARITY) {
-    asdf_arch_set_pos_strobe();
+    asdf_arch_set_pos_strobe(0);
   } else {
-    asdf_arch_set_neg_strobe();
+    asdf_arch_set_neg_strobe(0);
   }
 
   asdf_arch_init_leds();

@@ -40,35 +40,38 @@ void asdf_repeat_init(void);
 // repeat cycle.  Resest is based on repeat state (no repeat, autorepeat, normal repeat).
 void asdf_repeat_reset_count(void);
 
-// PROCEDURE: asdf_repeat_auto_off
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: Turns Autorepeat mode off
-void asdf_repeat_auto_off(void);
-
-// PROCEDURE: asdf_repeat_auto_on
-// INPUTS: none
-// OUTPUTS: none
-// DESCRIPTION: Turns Autorepeat mode on
-void asdf_repeat_auto_on(void);
 
 // PROCEDURE: asdf_repeat_is_autorepeat_enabled
 // OUTPUTS: returns non-zero if autorepeat mode is enabled
 uint8_t asdf_repeat_is_autorepeat_enabled(void);
 
 // PROCEDURE: asdf_repeat_activate
-// INPUTS: none
+// INPUTS: unused - parameter required for dispatch table but not used
 // OUTPUTS: none
 // DESCRIPTION: set repeat state machine to repeat mode. Called when REPEAT key
 // is pressed.
-void asdf_repeat_activate(void);
+void asdf_repeat_activate(uint8_t unused);
 
 // PROCEDURE: asdf_repeat_deactivate
-// INPUTS: none
+// INPUTS: unused - parameter required for dispatch table but not used
 // OUTPUTS: none
 // DESCRIPTION: Reset repeat state machine to default state. Called when REPEAT
 // key is released.
-void asdf_repeat_deactivate(void);
+void asdf_repeat_deactivate(uint8_t unused);
+
+// PROCEDURE: asdf_repeat_auto_on
+// INPUTS: unused - parameter required for dispatch table but not used
+// OUTPUTS: none
+// DESCRIPTION: Enables auto-repeat mode. Used as activate function for
+// ACTION_AUTOREPEAT_SELECT DIP switch.
+void asdf_repeat_auto_on(uint8_t unused);
+
+// PROCEDURE: asdf_repeat_auto_off
+// INPUTS: unused - parameter required for dispatch table but not used
+// OUTPUTS: none
+// DESCRIPTION: Disables auto-repeat mode. Used as deactivate function for
+// ACTION_AUTOREPEAT_SELECT DIP switch.
+void asdf_repeat_auto_off(uint8_t unused);
 
 // PROCEDURE: asdf_repeat
 // INPUTS: none
