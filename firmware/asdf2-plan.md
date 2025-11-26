@@ -7,14 +7,17 @@ ASDF2 is a complete redesign of the ASDF keyboard firmware, replacing the curren
 - Demonstrates excellent software architecture patterns
 - Provides an accessible YAML-based configuration system
 - Supports exotic retrocomputing keyboards through hierarchical state machines
-- Rivals QMK in flexibility while maintaining simplicity and embedded efficiency
+- Supports modern keyboard features (tap-dance, leader keys, mod-tap, layers)
+- Maintains simplicity and embedded efficiency with a lean runtime
 
 **Key Design Decisions:**
-- **HSM Runtime**: Events bubble up, keycodes inherit down through state hierarchy
+- **HSM Runtime**: Non-keypress events bubble up through state hierarchy; replaces `asdf_modifiers.c`
+- **Polymorphic Keymaps**: Dense, sparse, single-override, or transform - generator picks optimal representation
+- **Uniform Key Entries**: Each key has action+param for both press and release events
+- **Compile-Time Optimization**: Python generator resolves inheritance and chooses keymap types at build time
 - **YAML Configuration**: External config files replace C keymaps entirely
-- **Compile-Time Generation**: Python generates optimized C from YAML at build time
-- **Sparse Storage**: Efficient representation for large/sparse key matrices
 - **Protocol Abstraction**: Clean separation enables parallel ASCII, serial, USB HID outputs
+- **Extensible Events**: HSM handles timers, serial/wireless input for expandable keyboards
 
 ---
 
@@ -57,9 +60,9 @@ main loop: asdf_next_code() → output_hook() → asdf_arch_send_code()
 ### Current Limitations
 
 1. **Flat modifier system**: Only 4 fixed states (plain/shift/caps/ctrl)
-2. **Dense matrices**: Waste space when matrices are sparse
+2. **Split dispatch logic**: Keycodes (0x00-0x7F) and actions (0xA0+) handled differently
 3. **C-only keymaps**: Require programming knowledge to modify
-4. **No event inheritance**: Each layer must define all keys
+4. **No extensibility**: Cannot handle external events (serial, wireless keyboards)
 5. **Single output format**: Parallel ASCII hardcoded
 
 ---
@@ -76,17 +79,20 @@ main loop: asdf_next_code() → output_hook() → asdf_arch_send_code()
                             │ (build time)
 ┌───────────────────────────▼─────────────────────────────────────┐
 │                    HSM Runtime Engine                            │
-│  • Event dispatch with bubbling                                  │
+│  • O(1) keymap lookup via flattened per-state arrays            │
+│  • Event dispatch with bubbling (timers, serial, etc.)          │
 │  • State transitions with entry/exit actions                     │
-│  • Hierarchical keycode lookup                                   │
 │  • Timer pool for repeat/tap-hold                               │
+│  • Replaces asdf_modifiers.c                                    │
 └─────────────────────────────────────────────────────────────────┘
                             │
 ┌───────────────────────────▼─────────────────────────────────────┐
 │                    Output Protocol Layer                         │
+│  Abstraction between HSM and HAL for output format:             │
 │  • Parallel ASCII (current)                                      │
 │  • Serial/VT-100 (future)                                       │
 │  • USB HID (future)                                             │
+│  • Switch matrix emulation (future)                             │
 └─────────────────────────────────────────────────────────────────┘
                             │
 ┌───────────────────────────▼─────────────────────────────────────┐
@@ -116,10 +122,11 @@ ROOT (global)
 ```
 
 **Key behaviors:**
-- **Events bubble up**: Unhandled events propagate from leaf to root
-- **Keycodes inherit down**: Child states only define differences from parent
+- **O(1) keymap lookup**: Each state has a complete keymap array (no runtime inheritance)
+- **Events bubble up**: Unhandled non-keypress events propagate from leaf to root
 - **Entry/exit actions**: Fire on state transitions
 - **Timers**: Generic infrastructure for repeat, tap-hold, etc.
+- **External events**: Serial/wireless input for keyboard expansion (e.g., add numpad)
 
 ### 1.2 Core Data Structures
 
@@ -133,12 +140,13 @@ typedef uint8_t hsm_state_id_t;
 #define HSM_STATE_HANDLED 0xFE  // Event was consumed
 #define HSM_STATE_SUPER   0xFF  // Delegate to parent
 
-// Event types
+// Event types (keypresses are events)
 typedef enum {
     HSM_EVT_NONE = 0,
     HSM_EVT_KEY_PRESS,
     HSM_EVT_KEY_RELEASE,
     HSM_EVT_TIMER,
+    HSM_EVT_SERIAL_RX,      // Byte received on serial (wireless/expansion)
     HSM_EVT_ENTRY,
     HSM_EVT_EXIT,
     HSM_EVT_INIT,
@@ -147,172 +155,375 @@ typedef enum {
 // Event structure (8 bytes, fits in registers)
 typedef struct {
     hsm_event_type_t type;   // 1 byte
-    uint8_t row;             // 1 byte
+    uint8_t row;             // 1 byte (or serial byte for HSM_EVT_SERIAL_RX)
     uint8_t col;             // 1 byte
     uint8_t param;           // 1 byte (timer ID, etc.)
     uint16_t timestamp;      // 2 bytes (for tap detection)
     uint16_t reserved;       // 2 bytes (alignment)
 } hsm_event_t;
 
-// Sparse key binding (4 bytes each, stored in PROGMEM)
+// Keymap entry: uniform action+param for press and release
 typedef struct {
-    uint8_t row;
-    uint8_t col;
-    uint8_t keycode;
-    uint8_t flags;
-} hsm_binding_t;
+    uint8_t press_action;    // Action code for key press
+    uint8_t press_param;     // Parameter for press action
+    uint8_t release_action;  // Action code for key release
+    uint8_t release_param;   // Parameter for release action
+} keymap_entry_t;  // 4 bytes for 8-bit params
 
-#define HSM_BIND_ON_PRESS    0x01
-#define HSM_BIND_ON_RELEASE  0x02
-#define HSM_BIND_REPEATABLE  0x04
+typedef struct {
+    uint8_t press_action;
+    uint8_t release_action;
+    uint16_t press_param;    // 16-bit for extended keycodes (USB HID, Unicode)
+    uint16_t release_param;
+} keymap_entry_16_t;  // 6 bytes for 16-bit params
+
+// Action codes (examples)
+#define ACT_NONE        0x00  // No action
+#define ACT_EMIT        0x01  // Emit param as keycode
+#define ACT_TRANSITION  0x02  // Transition to state in param
+#define ACT_TOGGLE      0x03  // Toggle state (for caps lock)
+#define ACT_PULSE       0x04  // Pulse virtual output in param
+#define ACT_SET_OUTPUT  0x05  // Set virtual output in param
+#define ACT_CLEAR_OUTPUT 0x06 // Clear virtual output in param
+
+// === Polymorphic Keymap Interface ===
+// Different implementations for different state characteristics
+
+struct keymap_s;  // Forward declaration
+
+typedef keymap_entry_t (*keymap_lookup_fn)(const struct keymap_s *km, uint8_t row, uint8_t col);
+
+typedef struct keymap_s {
+    keymap_lookup_fn lookup;
+    const void *data;
+} keymap_t;
 
 // State definition (stored in PROGMEM)
 typedef struct {
     hsm_state_id_t id;
-    hsm_state_id_t parent;
-    hsm_state_id_t initial_child;   // For composite states
+    hsm_state_id_t parent;              // For event bubbling (non-keypress)
+    hsm_state_id_t initial_child;       // For composite states
     uint8_t flags;
-    uint8_t handler_index;          // Index into handler function table
-    const hsm_binding_t *bindings;  // Sparse key bindings (PROGMEM)
-    uint8_t binding_count;
+    const keymap_t *keymap;             // Polymorphic keymap (see section 1.3)
+    hsm_handler_fn event_handler;       // Handler for non-keypress events
 } hsm_state_def_t;
+
+// Event handler function type
+// Returns: HSM_STATE_HANDLED, HSM_STATE_SUPER, or target state ID for transition
+typedef hsm_state_id_t (*hsm_handler_fn)(const hsm_event_t *event);
 
 #define HSM_FLAG_COMPOSITE    0x01  // Has child states
 #define HSM_FLAG_ENTRY_ACTION 0x02  // Has entry action
 #define HSM_FLAG_EXIT_ACTION  0x04  // Has exit action
 ```
 
-### 1.3 Event Dispatch (Bubbling)
+### 1.3 Polymorphic Keymap Types
+
+The keymap is polymorphic - different implementations for different state characteristics.
+The generator chooses the optimal representation, or the user can specify it in YAML.
 
 ```c
 // === asdf_hsm.c ===
 
-static hsm_state_id_t current_state;
-static hsm_state_id_t current_leaf;  // Deepest active state
+static const hsm_state_def_t *current_state;
 
-hsm_state_id_t hsm_dispatch(const hsm_event_t *event) {
-    hsm_state_id_t state = current_leaf;
+// Unified keymap lookup - delegates to implementation
+void hsm_handle_key_event(uint8_t row, uint8_t col, uint8_t pressed) {
+    const keymap_t *km = current_state->keymap;
+    keymap_entry_t entry = km->lookup(km, row, col);
+
+    if (pressed) {
+        dispatch_action(entry.press_action, entry.press_param);
+    } else {
+        dispatch_action(entry.release_action, entry.release_param);
+    }
+}
+```
+
+#### 1.3.1 Dense Keymap (O(1))
+
+Full array for states with most keys defined (base, shift, ctrl):
+
+```c
+typedef struct {
+    const keymap_entry_t *entries;  // [ROWS * COLS] array
+} keymap_dense_t;
+
+keymap_entry_t lookup_dense(const keymap_t *km, uint8_t row, uint8_t col) {
+    const keymap_dense_t *dense = km->data;
+    return dense->entries[row * MATRIX_COLS + col];
+}
+```
+
+#### 1.3.2 Single-Override Keymap (O(1))
+
+For tap-dance/leader states that override exactly one key, with instant fallback:
+
+```c
+typedef struct {
+    uint8_t row;
+    uint8_t col;
+    keymap_entry_t entry;
+    const keymap_t *fallback;
+} keymap_single_t;
+
+keymap_entry_t lookup_single(const keymap_t *km, uint8_t row, uint8_t col) {
+    const keymap_single_t *single = km->data;
+    if (row == single->row && col == single->col) {
+        return single->entry;
+    }
+    return single->fallback->lookup(single->fallback, row, col);
+}
+```
+
+Cost: ~8 bytes per state instead of ~288 bytes for dense. Fallback is type-agnostic.
+
+#### 1.3.3 Sparse Keymap (O(log n))
+
+For states with few overrides (10-20 keys). Sorted list with binary search + fallback:
+
+```c
+typedef struct {
+    const keymap_entry_t *entries;  // Sparse entries, sorted by (row<<4)|col
+    uint8_t count;
+    const keymap_t *fallback;
+} keymap_sparse_t;
+
+keymap_entry_t lookup_sparse(const keymap_t *km, uint8_t row, uint8_t col) {
+    const keymap_sparse_t *sparse = km->data;
+    // Binary search in sorted entries
+    const keymap_entry_t *found = binary_search(sparse->entries, sparse->count, row, col);
+    if (found) {
+        return *found;
+    }
+    return sparse->fallback->lookup(sparse->fallback, row, col);
+}
+```
+
+#### 1.3.4 Transform Keymap (O(1) + underlying)
+
+Wraps another keymap and applies transformation (caps lock, ctrl codes):
+
+```c
+typedef struct {
+    const keymap_t *base;
+    uint8_t transform_type;  // TRANSFORM_UPPERCASE, TRANSFORM_CTRL, etc.
+} keymap_transform_t;
+
+keymap_entry_t lookup_transform(const keymap_t *km, uint8_t row, uint8_t col) {
+    const keymap_transform_t *xform = km->data;
+    keymap_entry_t entry = xform->base->lookup(xform->base, row, col);
+    // Apply transformation to entry
+    return apply_transform(entry, xform->transform_type);
+}
+```
+
+#### 1.3.5 Generator Selection
+
+The generator chooses implementation based on state characteristics:
+
+| Condition | Implementation |
+|-----------|----------------|
+| >50% keys defined | Dense |
+| 1 key override | Single-override |
+| 2-20 key overrides | Sparse |
+| Only alpha case change | Transform wrapping parent |
+
+User can override in YAML:
+```yaml
+states:
+  my_layer:
+    keymap_type: sparse  # Force sparse even if dense would be chosen
+```
+
+#### 1.3.6 Action Dispatch
+
+```c
+static void dispatch_action(uint8_t action, uint8_t param) {
+    switch (action) {
+        case ACT_NONE:
+            break;
+        case ACT_EMIT:
+            asdf_put_code(param);
+            break;
+        case ACT_TRANSITION:
+            hsm_transition_to(param);
+            break;
+        case ACT_TOGGLE:
+            hsm_toggle_state(param);
+            break;
+        case ACT_PULSE:
+            asdf_virtual_activate(param);
+            break;
+        // ... etc
+    }
+}
+```
+
+### 1.4 Event Dispatch (Bubbling for Non-Keypress Events)
+
+Non-keypress events (timers, serial input, etc.) bubble up the state hierarchy:
+
+```c
+hsm_state_id_t hsm_dispatch_event(const hsm_event_t *event) {
+    const hsm_state_def_t *state = current_state;
 
     // Bubble up until handled or root reached
-    while (state != HSM_STATE_NONE) {
-        const hsm_state_def_t *def = hsm_get_state_def(state);
-        hsm_state_id_t result = hsm_call_handler(def, event);
+    while (state != NULL) {
+        if (state->event_handler != NULL) {
+            hsm_state_id_t result = state->event_handler(event);
 
-        if (result == HSM_STATE_HANDLED) {
-            return result;  // Event consumed
-        }
-        if (result != HSM_STATE_SUPER) {
-            // Transition requested
-            hsm_transition_to(result);
-            return result;
+            if (result == HSM_STATE_HANDLED) {
+                return result;  // Event consumed
+            }
+            if (result != HSM_STATE_SUPER) {
+                // Transition requested
+                hsm_transition_to(result);
+                return result;
+            }
         }
         // Bubble up to parent
-        state = def->parent;
+        state = hsm_get_state_def(state->parent);
     }
     return HSM_STATE_NONE;  // Unhandled
 }
 ```
 
-### 1.4 Hierarchical Keycode Lookup
-
-```c
-// Lookup with inheritance: child → parent → grandparent → ...
-asdf_keycode_t hsm_lookup_keycode(uint8_t row, uint8_t col) {
-    hsm_state_id_t state = current_leaf;
-
-    while (state != HSM_STATE_NONE) {
-        const hsm_state_def_t *def = hsm_get_state_def(state);
-
-        // Binary search in sorted sparse bindings
-        const hsm_binding_t *binding = hsm_find_binding(
-            def->bindings, def->binding_count, row, col
-        );
-
-        if (binding != NULL) {
-            return pgm_read_byte(&binding->keycode);
-        }
-
-        // Not found in this state, try parent
-        state = def->parent;
-    }
-    return ACTION_NOTHING;
-}
-
-// Binary search (bindings sorted by row<<4|col)
-static const hsm_binding_t *hsm_find_binding(
-    const hsm_binding_t *bindings,
-    uint8_t count,
-    uint8_t row,
-    uint8_t col
-) {
-    if (!bindings || count == 0) return NULL;
-
-    uint8_t key = (row << 4) | col;
-    uint8_t lo = 0, hi = count;
-
-    while (lo < hi) {
-        uint8_t mid = lo + ((hi - lo) >> 1);
-        uint8_t mid_key = (pgm_read_byte(&bindings[mid].row) << 4)
-                        | pgm_read_byte(&bindings[mid].col);
-        if (mid_key < key) {
-            lo = mid + 1;
-        } else {
-            hi = mid;
-        }
-    }
-
-    if (lo < count) {
-        uint8_t found_key = (pgm_read_byte(&bindings[lo].row) << 4)
-                          | pgm_read_byte(&bindings[lo].col);
-        if (found_key == key) {
-            return &bindings[lo];
-        }
-    }
-    return NULL;
-}
-```
+This allows parent states to provide default handling for events like:
+- Timer expiry (autorepeat at root level)
+- Serial byte received (expansion keyboard handling)
+- Entry/exit actions
 
 ### 1.5 State Transitions
 
+For typical keyboard state changes (base → shift → base), transitions are between
+sibling states, so the LCA algorithm simplifies. Entry/exit actions fire as needed:
+
 ```c
 void hsm_transition_to(hsm_state_id_t target) {
-    hsm_state_id_t source = current_leaf;
+    const hsm_state_def_t *source = current_state;
+    const hsm_state_def_t *target_def = hsm_get_state_def(target);
 
     // Find Lowest Common Ancestor (LCA)
-    hsm_state_id_t lca = hsm_find_lca(source, target);
+    hsm_state_id_t lca = hsm_find_lca(source->id, target);
 
     // Exit from source up to LCA
-    hsm_state_id_t s = source;
-    while (s != lca && s != HSM_STATE_NONE) {
+    const hsm_state_def_t *s = source;
+    while (s->id != lca && s->id != HSM_STATE_NONE) {
         hsm_call_exit_action(s);
-        s = hsm_get_parent(s);
+        s = hsm_get_state_def(s->parent);
     }
 
     // Build entry path from LCA to target
     hsm_state_id_t entry_path[HSM_MAX_DEPTH];
     uint8_t depth = 0;
-    s = target;
-    while (s != lca && s != HSM_STATE_NONE) {
-        entry_path[depth++] = s;
-        s = hsm_get_parent(s);
+    hsm_state_id_t t = target;
+    while (t != lca && t != HSM_STATE_NONE) {
+        entry_path[depth++] = t;
+        t = hsm_get_state_def(t)->parent;
     }
 
     // Enter from LCA down to target (reverse order)
     while (depth > 0) {
-        hsm_call_entry_action(entry_path[--depth]);
+        hsm_call_entry_action(hsm_get_state_def(entry_path[--depth]));
     }
 
-    current_leaf = target;
+    current_state = target_def;
 
     // Handle initial transition for composite states
-    const hsm_state_def_t *def = hsm_get_state_def(target);
-    if ((def->flags & HSM_FLAG_COMPOSITE) && def->initial_child != HSM_STATE_NONE) {
-        hsm_transition_to(def->initial_child);
+    if ((target_def->flags & HSM_FLAG_COMPOSITE) &&
+        target_def->initial_child != HSM_STATE_NONE) {
+        hsm_transition_to(target_def->initial_child);
     }
 }
 ```
 
-### 1.6 Timer Pool
+### 1.6 Advanced Key Behaviors
+
+The HSM naturally supports modern keyboard features through state composition.
+
+#### 1.6.1 Tap-Dance
+
+A key that does different things based on tap count. Each tap count is a sibling
+state under the same parent, using single-override keymaps:
+
+```
+base (dense)
+ ├── td_semicolon_1 (single-override → base)  tap 1: ';'
+ ├── td_semicolon_2 (single-override → base)  tap 2: ':'
+ └── td_semicolon_3 (single-override → base)  tap 3: emit ";)" sequence
+```
+
+- First press → transition to td_semicolon_1, start timer
+- Second press before timeout → transition to td_semicolon_2, restart timer
+- Timer expires → execute action for current tap count, return to base
+
+All tap states are siblings - no deep nesting. Each state costs ~8 bytes (single-override).
+
+```yaml
+# YAML configuration
+tap_dance:
+  semicolon:
+    key: { row: 3, col: 5 }
+    timeout_ms: 200
+    taps:
+      1: ';'
+      2: ':'
+      3: [';', ')']  # sequence
+```
+
+#### 1.6.2 Leader Key
+
+A key that starts a sequence mode, like vim's leader. Forms a trie of states:
+
+```
+base (dense)
+ └── leader_active (single-override: leader key captures)
+      ├── leader_d (single-override: 'd' captures)
+      │    └── leader_dd (action: Ctrl+Shift+K)
+      ├── leader_g (single-override: 'g' captures)
+      │    ├── leader_gg (action: Ctrl+Home)
+      │    └── leader_gd (action: goto definition)
+      └── leader_timeout (returns to base)
+```
+
+Each level is a child because we track position in the sequence. Nodes with multiple
+branches use sparse keymaps; single-path nodes use single-override.
+
+```yaml
+# YAML configuration
+leader:
+  key: { row: 0, col: 0 }
+  timeout_ms: 500
+  sequences:
+    - keys: [d, d]
+      action: { emit: [CTRL+SHIFT+K] }
+    - keys: [g, g]
+      action: { emit: [CTRL+HOME] }
+    - keys: [g, d]
+      action: { emit: [F12] }  # goto definition
+```
+
+#### 1.6.3 Mod-Tap (Hold vs Tap)
+
+A key that acts as modifier when held, regular key when tapped:
+
+```
+base (dense)
+ └── mt_pending (single-override: the mod-tap key)
+      ├── [timer expires] → activate modifier, transition to mt_held
+      └── [key released before timer] → emit tap key, return to base
+```
+
+```yaml
+mod_tap:
+  - key: { row: 4, col: 0 }
+    hold: SHIFT
+    tap: 'a'
+    hold_threshold_ms: 200
+```
+
+### 1.7 Timer Pool
 
 ```c
 #define HSM_MAX_TIMERS 4
@@ -452,13 +663,23 @@ states:
       - action: print_id_message
 
   # Base layer - full keymap defined here
+  # Each key specifies action+param for press and release
+  # Simple keys use shorthand: 'a' expands to { press: [EMIT, 'a'] }
   base:
     parent: apple2_root
     type: leaf
 
     keymap:
       - row: 0
-        keys: [NONE, SHIFT, SHIFT, NONE, ESC, TAB, CTRL, '\\']
+        keys:
+          - NONE
+          - { press: [TRANSITION, shift] }  # SHIFT key
+          - { press: [TRANSITION, shift] }  # SHIFT key
+          - NONE
+          - ESC                              # Shorthand for { press: [EMIT, 0x1B] }
+          - TAB
+          - { press: [TRANSITION, ctrl] }   # CTRL key
+          - '\\'
       - row: 1
         keys: [DEL, 'p', ';', '/', SPACE, 'z', 'a', 'q']
       - row: 2
@@ -468,30 +689,30 @@ states:
       - row: 4
         keys: [NONE, 'i', 'u', 'y', 't', 'r', 'e', 'w']
       - row: 5
-        keys: [NONE, RESET, CLEAR, REPEAT, CAPS, '-', ':', '0']
+        keys:
+          - NONE
+          - { press: [PULSE, VOUT_RESET] }  # RESET button
+          - { press: [PULSE, VOUT_CLEAR] }  # CLEAR button
+          - REPEAT
+          - { press: [TOGGLE, caps] }       # CAPS LOCK
+          - '-'
+          - ':'
+          - '0'
       - row: 6
         keys: [CR, 'o', 'l', '.', HERE_IS, REPT, '=', '9']
       - row: 7
         keys: [LEFT, RIGHT, BREAK, '`', POWER, ']', '[', 'P']
       # Row 8 is DIP switches (defined separately)
 
-    # Event handlers for this state
-    on:
-      key_press:
-        - match: { action: SHIFT }
-          transition: shift
-        - match: { action: CTRL }
-          transition: ctrl
-        - match: { action: CAPS }
-          action: toggle_caps_state
-
-  # Shift layer - only differences from base
+  # Shift layer - inherits from base, overrides specific keys
+  # Generator flattens this to complete keymap at build time
   shift:
     parent: base
     type: leaf
 
-    # Sparse overrides (inherits rest from parent)
     keymap_overrides:
+      - { row: 0, col: 1, press: [TRANSITION, shift], release: [TRANSITION, base] }
+      - { row: 0, col: 2, press: [TRANSITION, shift], release: [TRANSITION, base] }
       - { row: 0, col: 7, key: '|' }
       - { row: 1, col: 1, key: 'P' }
       - { row: 1, col: 2, key: '+' }
@@ -499,33 +720,26 @@ states:
       - { row: 2, col: 1, key: '<' }
       - { row: 2, col: 2, key: 'M' }
       - { row: 2, col: 3, key: 'N' }
-      # ... remaining shift overrides
+      # ... remaining shift overrides (generator applies to full keymap)
 
-    on:
-      key_release:
-        - match: { action: SHIFT }
-          transition: base
-
-  # Caps layer - auto-uppercase transformation
+  # Caps layer - generator applies uppercase transform to base keymap
   caps:
     parent: base
     type: leaf
 
     transform:
-      uppercase_alpha: true  # 'a'-'z' → 'A'-'Z'
+      uppercase_alpha: true  # Generator converts 'a'-'z' → 'A'-'Z' in output
 
-  # Ctrl layer - control code transformation
+  # Ctrl layer - generator applies control code transform
   ctrl:
     parent: base
     type: leaf
 
-    transform:
-      control_codes: true  # 'a'-'z' → 0x01-0x1A
+    keymap_overrides:
+      - { row: 0, col: 6, press: [TRANSITION, ctrl], release: [TRANSITION, base] }
 
-    on:
-      key_release:
-        - match: { action: CTRL }
-          transition: base
+    transform:
+      control_codes: true  # Generator converts 'a'-'z' → 0x01-0x1A in output
 
 # DIP switch configuration
 dip_switches:
@@ -635,7 +849,7 @@ YAML Files
        │
        ▼
 ┌─────────────┐
-│  Optimizer  │  ← Sort bindings for binary search
+│  Flattener  │  ← Resolve inheritance, flatten keymaps per state
 └──────┬──────┘
        │
        ▼
@@ -671,23 +885,39 @@ python -m keymapgen -v keyboards/apple2.yaml -o src/generated/
 #include "asdf_hsm.h"
 #include "asdf_keymap_apple2.h"
 
-// Sparse bindings for base layer (sorted by row<<4|col)
-static const PROGMEM hsm_binding_t apple2_base_bindings[] = {
-    { .row = 0, .col = 1, .keycode = ACTION_SHIFT, .flags = HSM_BIND_ON_PRESS },
-    { .row = 0, .col = 2, .keycode = ACTION_SHIFT, .flags = HSM_BIND_ON_PRESS },
-    { .row = 0, .col = 4, .keycode = 0x1B,         .flags = HSM_BIND_ON_PRESS }, // ESC
-    { .row = 0, .col = 5, .keycode = 0x09,         .flags = HSM_BIND_ON_PRESS }, // TAB
-    { .row = 0, .col = 6, .keycode = ACTION_CTRL,  .flags = HSM_BIND_ON_PRESS },
-    { .row = 0, .col = 7, .keycode = '\\',         .flags = HSM_BIND_ON_PRESS },
-    // ... remaining bindings, sorted
+// Complete flattened keymap for base state (72 entries for 9x8 matrix)
+// Each entry: { press_action, press_param, release_action, release_param }
+static const PROGMEM keymap_entry_t apple2_base_keymap[] = {
+    // Row 0
+    { ACT_NONE, 0, ACT_NONE, 0 },                              // [0,0] unused
+    { ACT_TRANSITION, APPLE2_STATE_SHIFT, ACT_NONE, 0 },       // [0,1] SHIFT
+    { ACT_TRANSITION, APPLE2_STATE_SHIFT, ACT_NONE, 0 },       // [0,2] SHIFT
+    { ACT_NONE, 0, ACT_NONE, 0 },                              // [0,3] unused
+    { ACT_EMIT, 0x1B, ACT_NONE, 0 },                           // [0,4] ESC
+    { ACT_EMIT, 0x09, ACT_NONE, 0 },                           // [0,5] TAB
+    { ACT_TRANSITION, APPLE2_STATE_CTRL, ACT_NONE, 0 },        // [0,6] CTRL
+    { ACT_EMIT, '\\', ACT_NONE, 0 },                           // [0,7] backslash
+    // Row 1
+    { ACT_EMIT, 0x7F, ACT_NONE, 0 },                           // [1,0] DEL
+    { ACT_EMIT, 'p', ACT_NONE, 0 },                            // [1,1] p
+    // ... remaining 64 entries
 };
 
-// Sparse bindings for shift layer (only overrides)
-static const PROGMEM hsm_binding_t apple2_shift_bindings[] = {
-    { .row = 0, .col = 7, .keycode = '|',  .flags = HSM_BIND_ON_PRESS },
-    { .row = 1, .col = 1, .keycode = 'P',  .flags = HSM_BIND_ON_PRESS },
-    { .row = 1, .col = 2, .keycode = '+',  .flags = HSM_BIND_ON_PRESS },
-    // ... only shifted keys
+// Complete flattened keymap for shift state (inherits from base with overrides)
+static const PROGMEM keymap_entry_t apple2_shift_keymap[] = {
+    // Row 0 - note SHIFT keys now have release action
+    { ACT_NONE, 0, ACT_NONE, 0 },                              // [0,0] unused
+    { ACT_TRANSITION, APPLE2_STATE_SHIFT, ACT_TRANSITION, APPLE2_STATE_BASE }, // [0,1] SHIFT
+    { ACT_TRANSITION, APPLE2_STATE_SHIFT, ACT_TRANSITION, APPLE2_STATE_BASE }, // [0,2] SHIFT
+    { ACT_NONE, 0, ACT_NONE, 0 },                              // [0,3] unused
+    { ACT_EMIT, 0x1B, ACT_NONE, 0 },                           // [0,4] ESC (inherited)
+    { ACT_EMIT, 0x09, ACT_NONE, 0 },                           // [0,5] TAB (inherited)
+    { ACT_TRANSITION, APPLE2_STATE_CTRL, ACT_NONE, 0 },        // [0,6] CTRL (inherited)
+    { ACT_EMIT, '|', ACT_NONE, 0 },                            // [0,7] pipe (overridden)
+    // Row 1
+    { ACT_EMIT, 0x7F, ACT_NONE, 0 },                           // [1,0] DEL (inherited)
+    { ACT_EMIT, 'P', ACT_NONE, 0 },                            // [1,1] P (overridden)
+    // ... remaining entries (each state has complete 72-entry keymap)
 };
 
 // State definitions
@@ -697,29 +927,26 @@ static const PROGMEM hsm_state_def_t apple2_states[] = {
         .parent = HSM_STATE_ROOT,
         .initial_child = APPLE2_STATE_BASE,
         .flags = HSM_FLAG_COMPOSITE | HSM_FLAG_ENTRY_ACTION,
-        .handler_index = HANDLER_APPLE2_ROOT,
-        .bindings = NULL,
-        .binding_count = 0,
+        .keymap = NULL,  // Composite states have no keymap
+        .event_handler = apple2_root_handler,
     },
     [APPLE2_STATE_BASE] = {
         .id = APPLE2_STATE_BASE,
         .parent = APPLE2_STATE_ROOT,
         .initial_child = HSM_STATE_NONE,
         .flags = 0,
-        .handler_index = HANDLER_APPLE2_BASE,
-        .bindings = apple2_base_bindings,
-        .binding_count = sizeof(apple2_base_bindings) / sizeof(hsm_binding_t),
+        .keymap = apple2_base_keymap,  // Complete flattened keymap
+        .event_handler = NULL,         // No special event handling
     },
     [APPLE2_STATE_SHIFT] = {
         .id = APPLE2_STATE_SHIFT,
-        .parent = APPLE2_STATE_BASE,  // Inherits from base
+        .parent = APPLE2_STATE_ROOT,   // Parent for event bubbling only
         .initial_child = HSM_STATE_NONE,
         .flags = 0,
-        .handler_index = HANDLER_APPLE2_SHIFT,
-        .bindings = apple2_shift_bindings,
-        .binding_count = sizeof(apple2_shift_bindings) / sizeof(hsm_binding_t),
+        .keymap = apple2_shift_keymap, // Complete flattened keymap
+        .event_handler = NULL,
     },
-    // ... remaining states
+    // ... remaining states (caps, ctrl)
 };
 
 // Keyboard registration
@@ -731,15 +958,38 @@ void setup_apple2_keymap(void) {
     asdf_virtual_assign(VCAPS_LED, PHYSICAL_LED1, V_NOFUNC, 1);
     asdf_virtual_assign(VOUT1, PHYSICAL_OUT3_OPEN_HI, V_PULSE_SHORT, 1);
     asdf_virtual_assign(VOUT2, PHYSICAL_OUT1_OPEN_LO, V_PULSE_LONG, 0);
-
-    // Initial state
-    asdf_modifier_capslock_activate(0);
 }
 ```
 
 ---
 
 ## Part 4: Output Protocol Layer
+
+The Output Protocol Layer sits between the HSM and the HAL, abstracting how
+keycodes are transmitted to the host system. This allows the same HSM/keymap
+logic to drive different output types without modification.
+
+```
+HSM (state machine, keymaps)
+         │
+         ▼
+┌─────────────────────────┐
+│  Output Protocol Layer  │  ← Abstraction for output format
+│  • Parallel ASCII       │
+│  • Serial/VT-100        │
+│  • USB HID              │
+│  • Switch Matrix Emu    │
+└─────────────────────────┘
+         │
+         ▼
+HAL (architecture-specific I/O)
+```
+
+**Future use cases (design later, abstraction now):**
+- **VT-100**: Emit escape sequences for cursor keys, function keys
+- **USB HID**: Track pressed keys, send HID reports on change
+- **Switch Matrix Emulation**: Drive row/column outputs to emulate a different
+  keyboard's switch matrix - allows one PCB to connect to multiple vintage computers
 
 ### 4.1 Protocol Interface
 
@@ -749,12 +999,12 @@ void setup_apple2_keymap(void) {
 typedef struct {
     void (*init)(void);
     void (*send_code)(uint16_t code);
-    void (*send_event)(uint16_t code, uint8_t pressed);  // For HID
+    void (*send_event)(uint16_t code, uint8_t pressed);  // For HID-style protocols
     void (*send_sequence)(const uint8_t *data, uint8_t len);
     void (*flush)(void);
 } asdf_output_protocol_t;
 
-// Active protocol
+// Active protocol (set at init, could be DIP-switch selectable)
 void asdf_output_set_protocol(const asdf_output_protocol_t *protocol);
 
 // Send functions (delegate to active protocol)
@@ -823,45 +1073,39 @@ static void hid_flush(void) {
 ### Phase 1: HSM Core Engine
 **Deliverables:**
 - `src/asdf_hsm.h` - Data structures and interface
-- `src/asdf_hsm.c` - Event dispatch, transitions, timers
+- `src/asdf_hsm.c` - O(1) keymap lookup, event dispatch, transitions, timers
 
 **Tasks:**
-1. Define all HSM data structures
-2. Implement event dispatch with bubbling
-3. Implement state transitions with entry/exit
-4. Implement timer pool
-5. Write unit tests using test harness
+1. Define HSM data structures (keymap_entry_t, hsm_state_def_t, hsm_event_t)
+2. Implement O(1) keymap lookup: `hsm_handle_key_event(row, col, pressed)`
+3. Implement action dispatch switch/table
+4. Implement state transitions with entry/exit actions
+5. Implement event bubbling for non-keypress events
+6. Implement timer pool
+7. Write unit tests using test harness
 
-### Phase 2: Sparse Keycode Lookup
+### Phase 2: Integration with Key Scanner
 **Deliverables:**
-- Binary search lookup function
-- Hierarchical fallthrough
+- Modified `asdf.c` calling HSM for key events
+- Remove `asdf_modifiers.c` (replaced by HSM)
 
 **Tasks:**
-1. Implement `hsm_find_binding()` with binary search
-2. Implement `hsm_lookup_keycode()` with inheritance
-3. Verify O(log n) lookup performance
-
-### Phase 3: Integration with Key Scanner
-**Deliverables:**
-- Modified `asdf.c` generating HSM events
-
-**Tasks:**
-1. Refactor `asdf_keyscan()` to emit HSM events
+1. Refactor `asdf_keyscan()` to call `hsm_handle_key_event()`
 2. Connect HSM output to existing buffer system
 3. Maintain backward compatibility during transition
 
-### Phase 4: Python Code Generator
+### Phase 3: Python Code Generator
 **Deliverables:**
 - Complete `scripts/keymapgen/` package
 
 **Tasks:**
 1. Implement YAML parser with include resolution
-2. Implement schema validator
-3. Implement Jinja2 code emitter
-4. Write generator tests
+2. Implement keymap flattener (resolve inheritance at build time)
+3. Implement schema validator
+4. Implement Jinja2 code emitter (generates complete keymaps per state)
+5. Write generator tests
 
-### Phase 5: YAML Schema and Common Files
+### Phase 4: YAML Schema and Common Files
 **Deliverables:**
 - `keymaps/schema.yaml`
 - `keymaps/common/*.yaml`
@@ -872,7 +1116,7 @@ static void hid_flush(void) {
 3. Create common actions file
 4. Create base keyboard template
 
-### Phase 6: Migrate Existing Keymaps
+### Phase 5: Migrate Existing Keymaps
 **Deliverables:**
 - `keymaps/keyboards/classic.yaml`
 - `keymaps/keyboards/apple2.yaml`
@@ -884,7 +1128,7 @@ static void hid_flush(void) {
 2. Validate generated C matches original behavior
 3. Run full test suite
 
-### Phase 7: Output Protocol Layer
+### Phase 6: Output Protocol Layer
 **Deliverables:**
 - `src/asdf_output.h`
 - `src/asdf_output.c`
@@ -895,7 +1139,7 @@ static void hid_flush(void) {
 2. Implement protocol dispatch
 3. Wrap existing parallel ASCII output
 
-### Phase 8: Documentation
+### Phase 7: Documentation
 **Deliverables:**
 - `docs/user-guide.md`
 - `docs/yaml-reference.md`
@@ -919,36 +1163,58 @@ static void hid_flush(void) {
 | Debounce counters | 128 B | 128 B |
 | Key state bitmap | 16 B | 16 B |
 | Modifier state | 4 B | - |
-| HSM current state | - | 4 B |
+| HSM current state pointer | - | 2 B |
 | Timer pool (4 timers) | - | 16 B |
-| **Total** | ~150 B | ~170 B |
+| **Total** | ~150 B | ~162 B |
 
-### Flash Usage (per keyboard)
+### Flash Usage (per keyboard, 9x8 matrix = 72 keys)
 
-| Component | ASDF1 | ASDF2 |
-|-----------|-------|-------|
-| Dense matrices (4 layers) | ~400 B | - |
-| Sparse bindings | - | ~300 B |
-| State definitions | - | ~80 B |
-| Handler dispatch | 256 B | ~64 B |
-| **Total** | ~650 B | ~450 B |
+**Basic keyboard (4 states: base, shift, ctrl, caps):**
 
-**Result:** ASDF2 uses ~30% less flash per keyboard due to sparse representation.
+| Component | ASDF1 | ASDF2 (dense) |
+|-----------|-------|---------------|
+| Keymap per layer | 72 B (1 byte/key) | 288 B (4 bytes/key) |
+| 4 layers total | ~288 B | ~1152 B |
+| State definitions | - | ~48 B |
+| Keymap interface overhead | - | ~32 B |
+| Handler dispatch | ~256 B | ~64 B |
+| **Total per keyboard** | ~550 B | ~1296 B |
+
+**With polymorphic keymaps (example: 10 tap-dance keys):**
+
+| Keymap Type | Size per state |
+|-------------|----------------|
+| Dense (base, shift) | 288 B (full array) |
+| Single-override (tap-dance states) | ~8 B (row, col, entry, fallback ptr) |
+| Sparse (20 overrides) | ~84 B (entries + metadata) |
+| Transform (caps = uppercase base) | ~6 B (base ptr + transform type) |
+
+10 tap-dance keys × 3 taps each = 30 single-override states = ~240 B
+vs 30 dense states = ~8640 B
+
+**Summary:** Polymorphic keymaps keep advanced features memory-efficient:
+- Dense for primary layers (base, shift, ctrl)
+- Single-override for tap-dance/leader states (~8 B each)
+- Transform for caps lock (near-zero cost)
+- Sparse for moderate override counts
 
 ---
 
 ## Part 7: Testing Strategy
 
 ### Unit Tests
-- HSM event dispatch
-- State transitions
+- Keymap lookup for all types (dense, sparse, single-override, transform)
+- Fallback chain resolution across keymap types
+- Action dispatch for all action types
+- State transitions with entry/exit actions
 - Timer operations
-- Sparse binding lookup
-- Keycode inheritance
+- Event bubbling for non-keypress events
+- Tap-dance state transitions and timing
+- Leader key trie traversal
 
 ### Integration Tests
 - Full keyboard scan cycle
-- Modifier state changes
+- Modifier state changes (base → shift → base)
 - Output generation
 
 ### Regression Tests
@@ -968,22 +1234,26 @@ static void hid_flush(void) {
 3. **New keyboard in < 1 hour** - Measured time to create VT-100 keyboard
 4. **Clear documentation** - New contributor can understand architecture
 5. **Extensible protocols** - Adding USB HID requires only new protocol file
-6. **Memory efficient** - Less flash usage than ASDF1
+6. **O(1) key event handling** - Single array lookup, no runtime inheritance
 
 ---
 
 ## Quick Start for Implementation
 
 1. **Read these files first:**
-   - `src/asdf.c` (especially lines 188-850, dispatch table)
+   - `src/asdf.c` (especially dispatch table)
    - `src/asdf_keymaps.c` (keymap registration)
+   - `src/asdf_modifiers.c` (to be replaced by HSM)
    - `src/Keymaps/asdf_keymap_classic_add_map.c` (matrix format)
 
 2. **Start with Phase 1:**
    - Create `src/asdf_hsm.h` with data structures
-   - Implement basic event dispatch in `src/asdf_hsm.c`
+   - Implement `hsm_handle_key_event()` with O(1) lookup
+   - Implement `dispatch_action()` switch
+   - Hand-code one test keyboard's keymap arrays
    - Test using existing test harness
 
 3. **Build incrementally:**
    - Each phase should be testable independently
    - Maintain backward compatibility until final migration
+   - Build generator after HSM runtime is proven
