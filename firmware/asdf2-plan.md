@@ -1,21 +1,47 @@
-# ASDF2: Next-Generation Keyboard Firmware Architecture
+# TURK: The Unified Reconfigurable Keyboard Project
 
 ## Executive Summary
+
+TURK is the next generation of the Unified Retro Keyboard project, comprising:
+
+- **ASDF** (Abstract Scanner Definition Framework) - The HSM-based firmware runtime
+- **JKL;** (Jazzy Keyboard Language) - YAML-based keyboard configuration language
 
 ASDF2 is a complete redesign of the ASDF keyboard firmware, replacing the current flat keymap/modifier system with a **Hierarchical State Machine (HSM)** model. The goal is to create a model embedded keyboard platform that:
 
 - Demonstrates excellent software architecture patterns
-- Provides an accessible YAML-based configuration system
+- Provides an accessible configuration system via JKL;
 - Supports exotic retrocomputing keyboards through hierarchical state machines
 - Supports modern keyboard features (tap-dance, leader keys, mod-tap, layers)
 - Maintains simplicity and embedded efficiency with a lean runtime
 
+```
+┌─────────────────────────────┐
+│  JKL; Configuration         │  ← User-facing YAML dialect
+│  keyboards/*.jkl            │     (Jazzy Keyboard Language)
+└─────────────────────────────┘
+            │ (build time)
+┌───────────▼─────────────────┐
+│  ASDF Runtime               │  ← HSM, keymaps, output abstraction
+│  (Abstract Scanner          │
+│   Definition Framework)     │
+└─────────────────────────────┘
+            │
+┌───────────▼─────────────────┐
+│  HAL                        │  ← Architecture-specific I/O
+└─────────────────────────────┘
+
+            TURK
+   (The Unified Reconfigurable
+        Keyboard Project)
+```
+
 **Key Design Decisions:**
 - **HSM Runtime**: Non-keypress events bubble up through state hierarchy; replaces `asdf_modifiers.c`
-- **Polymorphic Keymaps**: Dense, sparse, single-override, or transform - generator picks optimal representation
+- **Polymorphic Keymaps**: Dense, sparse, or single-override - generator picks optimal representation
 - **Uniform Key Entries**: Each key has action+param for both press and release events
-- **Compile-Time Optimization**: Python generator resolves inheritance and chooses keymap types at build time
-- **YAML Configuration**: External config files replace C keymaps entirely
+- **Compile-Time Optimization**: Python generator resolves JKL; inheritance and chooses keymap types at build time
+- **JKL; Configuration**: External `.jkl` files replace C keymaps entirely
 - **Protocol Abstraction**: Clean separation enables parallel ASCII, serial, USB HID outputs
 - **Extensible Events**: HSM handles timers, serial/wireless input for expandable keyboards
 
@@ -300,25 +326,7 @@ keymap_entry_t lookup_sparse(const keymap_t *km, uint8_t row, uint8_t col) {
 }
 ```
 
-#### 1.3.4 Transform Keymap (O(1) + underlying)
-
-Wraps another keymap and applies transformation (caps lock, ctrl codes):
-
-```c
-typedef struct {
-    const keymap_t *base;
-    uint8_t transform_type;  // TRANSFORM_UPPERCASE, TRANSFORM_CTRL, etc.
-} keymap_transform_t;
-
-keymap_entry_t lookup_transform(const keymap_t *km, uint8_t row, uint8_t col) {
-    const keymap_transform_t *xform = km->data;
-    keymap_entry_t entry = xform->base->lookup(xform->base, row, col);
-    // Apply transformation to entry
-    return apply_transform(entry, xform->transform_type);
-}
-```
-
-#### 1.3.5 Generator Selection
+#### 1.3.4 Generator Selection
 
 The generator chooses implementation based on state characteristics:
 
@@ -326,8 +334,7 @@ The generator chooses implementation based on state characteristics:
 |-----------|----------------|
 | >50% keys defined | Dense |
 | 1 key override | Single-override |
-| 2-20 key overrides | Sparse |
-| Only alpha case change | Transform wrapping parent |
+| 2-30 key overrides | Sparse |
 
 User can override in YAML:
 ```yaml
@@ -336,7 +343,7 @@ states:
     keymap_type: sparse  # Force sparse even if dense would be chosen
 ```
 
-#### 1.3.6 Action Dispatch
+#### 1.3.5 Action Dispatch
 
 ```c
 static void dispatch_action(uint8_t action, uint8_t param) {
@@ -573,7 +580,10 @@ void hsm_timer_tick(void) {
 
 ---
 
-## Part 2: YAML Configuration System
+## Part 2: JKL; Configuration Language
+
+JKL; (Jazzy Keyboard Language) is a YAML-based configuration language for TURK keyboards.
+The `jkl` tool processes JKL; files and generates C code for the ASDF runtime.
 
 ### 2.1 Directory Structure
 
@@ -591,7 +601,7 @@ firmware/asdf/
 │   │   └── vt100.yaml           # VT-100 terminal
 │   └── schema.yaml              # JSON Schema for validation
 ├── scripts/
-│   └── keymapgen/               # Python code generator
+│   └── jkl/                     # JKL; code generator tool
 │       ├── __init__.py
 │       ├── cli.py               # Command-line interface
 │       ├── parser.py            # YAML parsing, include resolution
@@ -722,24 +732,30 @@ states:
       - { row: 2, col: 3, key: 'N' }
       # ... remaining shift overrides (generator applies to full keymap)
 
-  # Caps layer - generator applies uppercase transform to base keymap
+  # Caps layer - sparse overrides for uppercase alpha
   caps:
     parent: base
     type: leaf
 
-    transform:
-      uppercase_alpha: true  # Generator converts 'a'-'z' → 'A'-'Z' in output
+    keymap_overrides:
+      - { row: 0, col: 4, press: [TOGGLE, caps] }  # Caps key returns to base
+      # 26 alpha overrides: 'a'->'A', 'b'->'B', etc.
+      # (Generator can expand 'uppercase_alpha: true' shorthand if desired)
+      - { row: 1, col: 1, key: 'P' }
+      - { row: 1, col: 7, key: 'Q' }
+      # ... remaining alpha keys
 
-  # Ctrl layer - generator applies control code transform
+  # Ctrl layer - sparse overrides for control codes
   ctrl:
     parent: base
     type: leaf
 
     keymap_overrides:
       - { row: 0, col: 6, press: [TRANSITION, ctrl], release: [TRANSITION, base] }
-
-    transform:
-      control_codes: true  # Generator converts 'a'-'z' → 0x01-0x1A in output
+      # Control codes: 'a'->0x01, 'b'->0x02, etc.
+      - { row: 1, col: 6, key: 0x01 }  # Ctrl-A
+      - { row: 1, col: 7, key: 0x11 }  # Ctrl-Q
+      # ... remaining ctrl overrides
 
 # DIP switch configuration
 dip_switches:
@@ -825,12 +841,12 @@ states:
 
 ---
 
-## Part 3: Python Code Generator
+## Part 3: jkl Code Generator Tool
 
 ### 3.1 Generator Pipeline
 
 ```
-YAML Files
+JKL; YAML Files
     │
     ▼
 ┌─────────────┐
@@ -840,11 +856,6 @@ YAML Files
        ▼
 ┌─────────────┐
 │  Validator  │  ← Check schema, validate references
-└──────┬──────┘
-       │
-       ▼
-┌─────────────┐
-│ Transformer │  ← Build internal model, resolve transforms
 └──────┬──────┘
        │
        ▼
@@ -865,16 +876,16 @@ Generated C Files
 
 ```bash
 # Generate single keyboard
-python -m keymapgen keyboards/apple2.yaml -o src/generated/
+python -m jkl keyboards/apple2.yaml -o src/generated/
 
 # Generate all keyboards
-python -m keymapgen keyboards/*.yaml -o src/generated/
+python -m jkl keyboards/*.yaml -o src/generated/
 
 # Validate only (no output)
-python -m keymapgen --validate keyboards/apple2.yaml
+python -m jkl --validate keyboards/apple2.yaml
 
 # Verbose mode with diagnostics
-python -m keymapgen -v keyboards/apple2.yaml -o src/generated/
+python -m jkl -v keyboards/apple2.yaml -o src/generated/
 ```
 
 ### 3.3 Generated C Output
@@ -1094,9 +1105,9 @@ static void hid_flush(void) {
 2. Connect HSM output to existing buffer system
 3. Maintain backward compatibility during transition
 
-### Phase 3: Python Code Generator
+### Phase 3: jkl Code Generator Tool
 **Deliverables:**
-- Complete `scripts/keymapgen/` package
+- Complete `scripts/jkl/` package
 
 **Tasks:**
 1. Implement YAML parser with include resolution
@@ -1184,26 +1195,24 @@ static void hid_flush(void) {
 
 | Keymap Type | Size per state |
 |-------------|----------------|
-| Dense (base, shift) | 288 B (full array) |
+| Dense (base, shift, ctrl, caps) | 288 B (full array) |
 | Single-override (tap-dance states) | ~8 B (row, col, entry, fallback ptr) |
-| Sparse (20 overrides) | ~84 B (entries + metadata) |
-| Transform (caps = uppercase base) | ~6 B (base ptr + transform type) |
+| Sparse (26 overrides for caps) | ~108 B (entries + metadata) |
 
 10 tap-dance keys × 3 taps each = 30 single-override states = ~240 B
 vs 30 dense states = ~8640 B
 
 **Summary:** Polymorphic keymaps keep advanced features memory-efficient:
 - Dense for primary layers (base, shift, ctrl)
+- Sparse for caps lock (26 alpha overrides) and similar
 - Single-override for tap-dance/leader states (~8 B each)
-- Transform for caps lock (near-zero cost)
-- Sparse for moderate override counts
 
 ---
 
 ## Part 7: Testing Strategy
 
 ### Unit Tests
-- Keymap lookup for all types (dense, sparse, single-override, transform)
+- Keymap lookup for all types (dense, sparse, single-override)
 - Fallback chain resolution across keymap types
 - Action dispatch for all action types
 - State transitions with entry/exit actions
