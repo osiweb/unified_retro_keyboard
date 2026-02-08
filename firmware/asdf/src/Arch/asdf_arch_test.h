@@ -54,8 +54,33 @@ typedef enum {
 } pulse_state_t;
 
 #define FLASH
-#define FLASH_READ (a) (*(a))
-#define FLASH_READ_MATRIX_ELEMENT(mat,row,col) (mat)[(row)][(col)]
+// PROCEDURE: arch_flash_get_matrix_element
+// INPUTS: (const asdf_keycode_t *) matrix - pointer to keycode matrix
+//         (uint8_t) row - row index
+//         (uint8_t) col - column index
+//         (uint8_t) num_cols - number of columns per row
+// OUTPUTS: (asdf_keycode_t) the keycode at the given row and column
+// DESCRIPTION: Reads a single keycode from a keycode matrix. Test arch
+// equivalent of the PROGMEM version; simply indexes into RAM.
+// SIDE EFFECTS: none
+// COMPLEXITY: 1
+static inline asdf_keycode_t arch_flash_get_matrix_element(
+    const asdf_keycode_t *matrix, uint8_t row, uint8_t col, uint8_t num_cols) {
+    return matrix[(row * num_cols) + col];
+}
+
+// PROCEDURE: arch_flash_get_handler
+// INPUTS: (asdf_key_handler_t *) dest - destination
+//         (const asdf_key_handler_t *) src - source
+// OUTPUTS: none
+// DESCRIPTION: Copies a key handler struct. Test arch equivalent of the
+// PROGMEM version; simply performs a struct copy.
+// SIDE EFFECTS: writes to *dest
+// COMPLEXITY: 1
+static inline void arch_flash_get_handler(asdf_key_handler_t *dest,
+                                          const asdf_key_handler_t *src) {
+    *dest = *src;
+}
 #define ASDF_ARCH_DEFAULT_ROW_SCANNER asdf_arch_read_row
 #define ASDF_ARCH_DEFAULT_OUTPUT asdf_arch_send_code
 

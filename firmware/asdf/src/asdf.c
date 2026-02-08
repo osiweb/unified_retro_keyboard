@@ -185,18 +185,6 @@ asdf_keycode_t asdf_lookup_keycode(uint8_t row, uint8_t col) {
     return asdf_keymaps_get_code(row, col, asdf_modifier_index());
 }
 
-// Handler structure for unified dispatch table
-typedef struct {
-    void (*activate)(uint8_t param);
-    void (*deactivate)(uint8_t param);
-    uint8_t parameter;
-    uint8_t flags; // Behavioral flags for the handler
-} asdf_key_handler_t;
-
-// Handler flags
-#define ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT                                    \
-    0x01 // Apply this action when initializing a keyboard
-
 // PROCEDURE: asdf_emit_keycode
 // INPUTS: keycode - the ASCII code to emit
 // OUTPUTS: none
@@ -239,7 +227,7 @@ static void asdf_clear_last_keycode(uint8_t keycode) {
 
 // Unified dispatch table for all keycodes (ASCII and actions)
 // This table maps every possible keycode value to its handler functions
-static const asdf_key_handler_t asdf_handlers[256] = {
+static const FLASH asdf_key_handler_t asdf_handlers[256] = {
     // ASCII control characters (0x00 - 0x1F) using named constants for clarity
     [ASCII_NULL] = {.activate = asdf_emit_keycode,
                     .deactivate = asdf_clear_last_keycode,
@@ -896,9 +884,10 @@ static const asdf_key_handler_t asdf_handlers[256] = {
 // COMPLEXITY: 1
 //
 static void asdf_activate_key(asdf_keycode_t keycode) {
-    const asdf_key_handler_t *handler = &asdf_handlers[keycode];
-    if (handler->activate) {
-        handler->activate(handler->parameter);
+    asdf_key_handler_t handler;
+    arch_flash_get_handler(&handler, &asdf_handlers[keycode]);
+    if (handler.activate) {
+        handler.activate(handler.parameter);
     }
 }
 
@@ -917,9 +906,10 @@ static void asdf_activate_key(asdf_keycode_t keycode) {
 // COMPLEXITY: 1
 //
 static void asdf_deactivate_key(asdf_keycode_t keycode) {
-    const asdf_key_handler_t *handler = &asdf_handlers[keycode];
-    if (handler->deactivate) {
-        handler->deactivate(handler->parameter);
+    asdf_key_handler_t handler;
+    arch_flash_get_handler(&handler, &asdf_handlers[keycode]);
+    if (handler.deactivate) {
+        handler.deactivate(handler.parameter);
     }
 }
 
@@ -1074,11 +1064,12 @@ void asdf_apply_all_actions(void) {
         for (uint8_t col = 0; col < asdf_keymaps_num_cols(); col++) {
             if (row_key_state & 1) {
                 asdf_keycode_t code = asdf_lookup_keycode(row, col);
-                const asdf_key_handler_t *handler = &asdf_handlers[code];
+                asdf_key_handler_t handler;
+                arch_flash_get_handler(&handler, &asdf_handlers[code]);
                 // Only apply handlers that should be reapplied on keyboard init
-                if ((handler->flags & ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT) &&
-                    handler->activate) {
-                    handler->activate(handler->parameter);
+                if ((handler.flags & ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT) &&
+                    handler.activate) {
+                    handler.activate(handler.parameter);
                 }
             }
             row_key_state >>= 1;
