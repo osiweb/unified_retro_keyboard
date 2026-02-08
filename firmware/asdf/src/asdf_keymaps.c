@@ -295,7 +295,7 @@ asdf_keycode_t asdf_keymaps_get_code(const uint8_t row, const uint8_t col,
     if (keymaps[modifier_index].cols && keymaps[modifier_index].rows) {
         asdf_keycode_t(*keycode_matrix)[num_cols] =
             (void *)(keymaps[modifier_index].matrix);
-        keycode = FLASH_READ_MATRIX_ELEMENT(keycode_matrix, row, col);
+        keycode = arch_flash_get_matrix_element((const asdf_keycode_t *)keycode_matrix, row, col, num_cols);
     }
     return keycode;
 }

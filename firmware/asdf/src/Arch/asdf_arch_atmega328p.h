@@ -243,11 +243,31 @@
 
 #define FLASH PROGMEM
 
-// not implemented with do-while(0) because this is a function call that returns
-// a value, and parameters are expanded inside the parameter list, so this will
-// be valid when substituting for function-like syntax.
-#define FLASH_READ (a) pgm_read_byte((a))
-#define FLASH_READ_MATRIX_ELEMENT(matrix, row, col) pgm_read_byte(&((matrix)[(row)][(col)]))
+// PROCEDURE: arch_flash_get_matrix_element
+// INPUTS: (const asdf_keycode_t *) matrix - pointer to keycode matrix in flash
+//         (uint8_t) row - row index
+//         (uint8_t) col - column index
+//         (uint8_t) num_cols - number of columns per row
+// OUTPUTS: (asdf_keycode_t) the keycode at the given row and column
+// DESCRIPTION: Reads a single keycode from a PROGMEM keycode matrix.
+// SIDE EFFECTS: none
+// COMPLEXITY: 1
+static inline asdf_keycode_t arch_flash_get_matrix_element(
+    const asdf_keycode_t *matrix, uint8_t row, uint8_t col, uint8_t num_cols) {
+    return pgm_read_byte(&matrix[(row * num_cols) + col]);
+}
+
+// PROCEDURE: arch_flash_get_handler
+// INPUTS: (asdf_key_handler_t *) dest - destination in RAM
+//         (const asdf_key_handler_t *) src - source in flash
+// OUTPUTS: none
+// DESCRIPTION: Copies a key handler struct from PROGMEM into RAM.
+// SIDE EFFECTS: writes to *dest
+// COMPLEXITY: 1
+static inline void arch_flash_get_handler(asdf_key_handler_t *dest,
+                                          const asdf_key_handler_t *src) {
+    memcpy_P(dest, src, sizeof(asdf_key_handler_t));
+}
 
 // For 1 ms tick, (8000000 / 64(prescale)) / 1000(usec) - 1 = 124
 #define TICK_COUNT 124

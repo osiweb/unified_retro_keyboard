@@ -104,6 +104,16 @@ typedef enum {
   RESERVED_16,
 } action_t;
 
+// Handler structure for unified dispatch table
+typedef struct {
+    void (*activate)(uint8_t param);
+    void (*deactivate)(uint8_t param);
+    uint8_t parameter;
+    uint8_t flags; // Behavioral flags for the handler
+} asdf_key_handler_t;
+
+// Handler flags
+#define ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT 0x01
 
 // PROCEDURE: asdf_init
 // INPUTS: none
