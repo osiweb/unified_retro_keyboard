@@ -358,17 +358,18 @@
 #define ASDF_ARCH_DIPSWITCH_ROW 8
 
 
-// PROCEDURE: asdf_arch_set_pos_strobe
+// PROCEDURE: asdf_arch_pos_strobe
 // INPUTS: none
 // OUTPUTS: none
-// DESCRIPTION: Initialize strobe output to positive polarity. Initial state is LOW
-void asdf_arch_set_pos_strobe(uint8_t unused);
+// DESCRIPTION: Initialize strobe output to positive polarity. Initial state is
+// LOW
+void asdf_arch_set_pos_strobe(void);
 
-// PROCEDURE: asdf_arch_set_neg_strobe
+// PROCEDURE: asdf_arch_neg_strobe
 // INPUTS: none
 // OUTPUTS: none
 // DESCRIPTION: Initialize strobe output
-void asdf_arch_set_neg_strobe(uint8_t unused);
+void asdf_arch_set_neg_strobe(void);
 
 
 // PROCEDURE: asdf_arch_null_output

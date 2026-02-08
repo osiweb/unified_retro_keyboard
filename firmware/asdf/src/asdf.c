@@ -185,720 +185,245 @@ asdf_keycode_t asdf_lookup_keycode(uint8_t row, uint8_t col) {
     return asdf_keymaps_get_code(row, col, asdf_modifier_index());
 }
 
-// Handler structure for unified dispatch table
-typedef struct {
-    void (*activate)(uint8_t param);
-    void (*deactivate)(uint8_t param);
-    uint8_t parameter;
-    uint8_t flags; // Behavioral flags for the handler
-} asdf_key_handler_t;
-
-// Handler flags
-#define ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT                                    \
-    0x01 // Apply this action when initializing a keyboard
-
-// PROCEDURE: asdf_emit_keycode
-// INPUTS: keycode - the ASCII code to emit
+// PROCEDURE: asdf_activate_action
+// INPUTS: keycode: an action key code
 // OUTPUTS: none
 //
-// DESCRIPTION: Handles activation of ASCII keycodes. Buffers the keycode for
-// output and manages repeat state.
+// DESCRIPTION: This routine is called when a key bound to an action code is
+// pressed, and maps the action code to a function call, or other action
+// appropriate for activation of the function.
 //
-// SIDE EFFECTS: Updates last_key and repeat count
+// SIDE EFFECTS: All the actions may have side effects, depending on the
+// function called.
 //
 // SCOPE: private
 //
-// COMPLEXITY: 2
+// NOTES: The switch() could be implemented as an array of function pointers,
+// essentially a jump table. However, the switch statement will also be
+// implemented as a jump table, and may be more efficiently implemented as a
+// code jump table than an array of pointers stored in flash that would require
+// an additional flash-read operation. Also, the switch jumptable will make more
+// efficient use of space than a sparse array of function pointers. The
+// reduction in cyclometric complexity by using an array is a technicality,
+// since the elements must still be entered as lines of code in some part of the
+// program.  Here, they are arranged in the place they are used.
 //
-static void asdf_emit_keycode(uint8_t keycode) {
-    asdf_put_code(keycode);
-    if (last_key != keycode) {
-        last_key = keycode;
-        asdf_repeat_reset_count();
+// COMPLEXITY: 1 (+18 for the switch)
+//
+static void asdf_activate_action(action_t keycode) {
+    switch (keycode) {
+
+    case ACTION_SHIFT: {
+        asdf_modifier_shift_activate();
+        break;
+    }
+    case ACTION_SHIFTLOCK_ON: {
+        asdf_modifier_shiftlock_on_activate();
+        break;
+    }
+    case ACTION_SHIFTLOCK_TOGGLE: {
+        asdf_modifier_shiftlock_toggle_activate();
+        break;
+    }
+    case ACTION_CAPS: {
+        asdf_modifier_capslock_activate();
+        break;
+    }
+    case ACTION_CTRL: {
+        asdf_modifier_ctrl_activate();
+        break;
+    }
+    case ACTION_REPEAT: {
+        asdf_repeat_activate();
+        break;
+    }
+    case ACTION_MAPSEL_0: {
+        asdf_keymaps_map_select_0_set();
+        break;
+    }
+    case ACTION_MAPSEL_1: {
+        asdf_keymaps_map_select_1_set();
+        break;
+    }
+    case ACTION_MAPSEL_2: {
+        asdf_keymaps_map_select_2_set();
+        break;
+    }
+    case ACTION_MAPSEL_3: {
+        asdf_keymaps_map_select_3_set();
+        break;
+    }
+    case ACTION_STROBE_POLARITY_SELECT: {
+        asdf_arch_set_pos_strobe();
+        break;
+    }
+    case ACTION_AUTOREPEAT_SELECT: {
+        asdf_repeat_auto_on();
+        break;
+    }
+    case ACTION_VLED1: {
+        asdf_virtual_activate(VLED1);
+        break;
+    }
+    case ACTION_VLED2: {
+        asdf_virtual_activate(VLED2);
+        break;
+    }
+    case ACTION_VLED3: {
+        asdf_virtual_activate(VLED3);
+        break;
+    }
+    case ACTION_VOUT1: {
+        asdf_virtual_activate(VOUT1);
+        break;
+    }
+    case ACTION_VOUT2: {
+        asdf_virtual_activate(VOUT2);
+        break;
+    }
+    case ACTION_VOUT3: {
+        asdf_virtual_activate(VOUT3);
+        break;
+    }
+    case ACTION_VOUT4: {
+        asdf_virtual_activate(VOUT4);
+        break;
+    }
+    case ACTION_VOUT5: {
+        asdf_virtual_activate(VOUT5);
+        break;
+    }
+    case ACTION_VOUT6: {
+        asdf_virtual_activate(VOUT6);
+        break;
+    }
+    case ACTION_NOTHING:
+    case ACTION_HERE_IS:
+    case ACTION_FN_1:
+        asdf_hook_execute(ASDF_HOOK_USER_1);
+        break;
+    case ACTION_FN_2:
+        asdf_hook_execute(ASDF_HOOK_USER_2);
+        break;
+    case ACTION_FN_3:
+        asdf_hook_execute(ASDF_HOOK_USER_3);
+        break;
+    case ACTION_FN_4:
+        asdf_hook_execute(ASDF_HOOK_USER_4);
+        break;
+    case ACTION_FN_5:
+        asdf_hook_execute(ASDF_HOOK_USER_5);
+        break;
+    case ACTION_FN_6:
+        asdf_hook_execute(ASDF_HOOK_USER_6);
+        break;
+    case ACTION_FN_7:
+        asdf_hook_execute(ASDF_HOOK_USER_7);
+        break;
+    case ACTION_FN_8:
+        asdf_hook_execute(ASDF_HOOK_USER_8);
+        break;
+    case ACTION_FN_9:
+        asdf_hook_execute(ASDF_HOOK_USER_9);
+        break;
+    case ACTION_FN_10:
+        asdf_hook_execute(ASDF_HOOK_USER_10);
+        break;
+    default:
+        break;
     }
 }
 
-// PROCEDURE: asdf_clear_last_keycode
-// INPUTS: keycode - the ASCII code being released
+// PROCEDURE: asdf_deactivate_action
+// INPUTS: keycode: an action key code
 // OUTPUTS: none
 //
-// DESCRIPTION: Handles deactivation of ASCII keycodes. Clears last_key if it
-// matches the released keycode.
+// DESCRIPTION: This routine is called when a key bound to an action code is
+// released, and maps the action code to a function call, or other action
+// appropriate for deactivation of the function.
 //
-// SIDE EFFECTS: May clear last_key
+// SIDE EFFECTS: All the actions may have side effects, depending on the
+// function called.
 //
 // SCOPE: private
 //
-// COMPLEXITY: 1
+// NOTES: See NOTE for asdf_activate_action(). The Virtual Outputs have
+// activate() functions, but no deactivate() functions, and are handled by the
+// default case.
 //
-static void asdf_clear_last_keycode(uint8_t keycode) {
-    if (last_key == keycode) {
-        last_key = ACTION_NOTHING;
+// COMPLEXITY: 1 (+9 for the switch, see note)
+//
+static void asdf_deactivate_action(action_t keycode) {
+    switch (keycode) {
+    case ACTION_SHIFT: {
+        asdf_modifier_shift_deactivate();
+        break;
+    }
+    case ACTION_CTRL: {
+        asdf_modifier_ctrl_deactivate();
+        break;
+    }
+    case ACTION_REPEAT: {
+        asdf_repeat_deactivate();
+        break;
+    }
+    case ACTION_MAPSEL_0: {
+        asdf_keymaps_map_select_0_clear();
+        break;
+    }
+    case ACTION_MAPSEL_1: {
+        asdf_keymaps_map_select_1_clear();
+        break;
+    }
+    case ACTION_MAPSEL_2: {
+        asdf_keymaps_map_select_2_clear();
+        break;
+    }
+    case ACTION_MAPSEL_3: {
+        asdf_keymaps_map_select_3_clear();
+        break;
+    }
+    case ACTION_STROBE_POLARITY_SELECT: {
+        asdf_arch_set_neg_strobe();
+        break;
+    }
+    case ACTION_AUTOREPEAT_SELECT: {
+        asdf_repeat_auto_off();
+        break;
+    }
+    case ACTION_NOTHING:
+    default:
+        break;
     }
 }
-
-// Unified dispatch table for all keycodes (ASCII and actions)
-// This table maps every possible keycode value to its handler functions
-static const asdf_key_handler_t asdf_handlers[256] = {
-    // ASCII control characters (0x00 - 0x1F) using named constants for clarity
-    [ASCII_NULL] = {.activate = asdf_emit_keycode,
-                    .deactivate = asdf_clear_last_keycode,
-                    .parameter = ASCII_NULL,
-                    .flags = 0},
-    [ASCII_SOH] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_SOH},
-    [ASCII_STX] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_STX},
-    [ASCII_ETX] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_ETX},
-    [ASCII_EOT] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_EOT},
-    [ASCII_ENQ] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_ENQ},
-    [ASCII_ACK] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_ACK},
-    [ASCII_BEL] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_BEL},
-    [ASCII_BS] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_BS},
-    [ASCII_TAB] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_TAB},
-    [ASCII_LF] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_LF},
-    [ASCII_VT] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_VT},
-    [ASCII_FF] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_FF},
-    [ASCII_CR] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_CR},
-    [ASCII_SO] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_SO},
-    [ASCII_SI] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_SI},
-    [ASCII_DLE] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_DLE},
-    [ASCII_DC1] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_DC1},
-    [ASCII_DC2] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_DC2},
-    [ASCII_DC3] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_DC3},
-    [ASCII_DC4] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_DC4},
-    [ASCII_NAK] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_NAK},
-    [ASCII_SYN] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_SYN},
-    [ASCII_ETB] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_ETB},
-    [ASCII_CAN] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_CAN},
-    [ASCII_EM] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_EM},
-    [ASCII_SUB] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_SUB},
-    [ASCII_ESC] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_ESC},
-    [ASCII_FS] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_FS},
-    [ASCII_GS] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_GS},
-    [ASCII_RS] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_RS},
-    [ASCII_US] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = ASCII_US},
-
-        // ASCII printable characters (0x20 - 0x7E)
-        [' '] = {.activate = asdf_emit_keycode,
-                 .deactivate = asdf_clear_last_keycode,
-                 .parameter = ' '},
-    ['!'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '!'},
-    ['"'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '"'},
-    ['#'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '#'},
-    ['$'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '$'},
-    ['%'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '%'},
-    ['&'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '&'},
-    ['\''] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = '\''},
-    ['('] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '('},
-    [')'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = ')'},
-    ['*'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '*'},
-    ['+'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '+'},
-    [','] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = ','},
-    ['-'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '-'},
-    ['.'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '.'},
-    ['/'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '/'},
-    ['0'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '0'},
-    ['1'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '1'},
-    ['2'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '2'},
-    ['3'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '3'},
-    ['4'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '4'},
-    ['5'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '5'},
-    ['6'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '6'},
-    ['7'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '7'},
-    ['8'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '8'},
-    ['9'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '9'},
-    [':'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = ':'},
-    [';'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = ';'},
-    ['<'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '<'},
-    ['='] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '='},
-    ['>'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '>'},
-    ['?'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '?'},
-    ['@'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '@'},
-    ['A'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'A'},
-    ['B'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'B'},
-    ['C'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'C'},
-    ['D'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'D'},
-    ['E'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'E'},
-    ['F'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'F'},
-    ['G'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'G'},
-    ['H'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'H'},
-    ['I'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'I'},
-    ['J'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'J'},
-    ['K'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'K'},
-    ['L'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'L'},
-    ['M'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'M'},
-    ['N'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'N'},
-    ['O'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'O'},
-    ['P'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'P'},
-    ['Q'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'Q'},
-    ['R'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'R'},
-    ['S'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'S'},
-    ['T'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'T'},
-    ['U'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'U'},
-    ['V'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'V'},
-    ['W'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'W'},
-    ['X'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'X'},
-    ['Y'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'Y'},
-    ['Z'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'Z'},
-    ['['] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '['},
-    ['\\'] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = '\\'},
-    [']'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = ']'},
-    ['^'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '^'},
-    ['_'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '_'},
-    ['`'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '`'},
-    ['a'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'a'},
-    ['b'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'b'},
-    ['c'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'c'},
-    ['d'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'd'},
-    ['e'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'e'},
-    ['f'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'f'},
-    ['g'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'g'},
-    ['h'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'h'},
-    ['i'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'i'},
-    ['j'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'j'},
-    ['k'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'k'},
-    ['l'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'l'},
-    ['m'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'm'},
-    ['n'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'n'},
-    ['o'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'o'},
-    ['p'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'p'},
-    ['q'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'q'},
-    ['r'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'r'},
-    ['s'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 's'},
-    ['t'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 't'},
-    ['u'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'u'},
-    ['v'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'v'},
-    ['w'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'w'},
-    ['x'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'x'},
-    ['y'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'y'},
-    ['z'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = 'z'},
-    ['{'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '{'},
-    ['|'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '|'},
-    ['}'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '}'},
-    ['~'] = {.activate = asdf_emit_keycode,
-             .deactivate = asdf_clear_last_keycode,
-             .parameter = '~'},
-
-    // DEL character
-    [ASCII_DEL] = {.activate = asdf_emit_keycode,
-                   .deactivate = asdf_clear_last_keycode,
-                   .parameter = ASCII_DEL},
-
-        // SOL-20 extended ASCII codes (0x80-0x9F)
-        // These are special character codes used by the SOL-20 keyboard for
-        // cursor movement, etc.
-        [0x80] = {.activate = asdf_emit_keycode,
-                  .deactivate = asdf_clear_last_keycode,
-                  .parameter = 0x80}, // SOL_ASCII_MODE_SELECT
-    [0x81] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x81}, // SOL_ASCII_LT_ARROW
-    [0x82] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x82},
-    [0x83] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x83},
-    [0x84] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x84},
-    [0x85] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x85},
-    [0x86] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x86},
-    [0x87] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x87},
-    [0x88] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x88},
-    [0x89] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x89},
-    [0x8A] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x8A},
-    [0x8B] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x8B}, // SOL_ASCII_CLEAR
-    [0x8C] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x8C}, // SOL_ASCII_LOAD
-    [0x8D] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x8D},
-    [0x8E] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x8E}, // SOL_ASCII_HOME
-    [0x8F] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x8F},
-    [0x90] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x90},
-    [0x91] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x91},
-    [0x92] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x92},
-    [0x93] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x93}, // SOL_ASCII_RT_ARROW
-    [0x94] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x94},
-    [0x95] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x95},
-    [0x96] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x96},
-    [0x97] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x97}, // SOL_ASCII_UP_ARROW
-    [0x98] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x98},
-    [0x99] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x99},
-    [0x9A] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x9A}, // SOL_ASCII_DN_ARROW
-    [0x9B] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x9B},
-    [0x9C] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x9C},
-    [0x9D] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x9D},
-    [0x9E] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x9E},
-    [0x9F] = {.activate = asdf_emit_keycode,
-              .deactivate = asdf_clear_last_keycode,
-              .parameter = 0x9F},
-
-    // Action codes start at 0xA0 (ASDF_ACTION)
-    // ACTION_NOTHING = 0xA0
-    [ACTION_NOTHING] = {.activate = NULL, .deactivate = NULL, .parameter = 0},
-
-    // Modifier actions - these affect keyboard state and should be reapplied on
-    // init
-    [ACTION_SHIFT] = {.activate = asdf_modifier_shift_activate,
-                      .deactivate = asdf_modifier_shift_deactivate,
-                      .parameter = 0,
-                      .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_SHIFTLOCK_ON] = {.activate =
-                                 asdf_modifier_shiftlock_on_activate,
-                             .deactivate = NULL,
-                             .parameter = 0,
-                             .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_SHIFTLOCK_TOGGLE] =
-        {.activate = asdf_modifier_shiftlock_toggle_activate,
-         .deactivate = NULL,
-         .parameter = 0,
-         .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_CAPS] = {.activate = asdf_modifier_capslock_activate,
-                     .deactivate = NULL,
-                     .parameter = 0,
-                     .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_CTRL] = {.activate = asdf_modifier_ctrl_activate,
-                     .deactivate = asdf_modifier_ctrl_deactivate,
-                     .parameter = 0,
-                     .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-
-    // Repeat control - affects keyboard state
-    [ACTION_REPEAT] = {.activate = asdf_repeat_activate,
-                       .deactivate = asdf_repeat_deactivate,
-                       .parameter = 0,
-                       .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-
-    // HERE_IS action (maps to USER_1 hook)
-    [ACTION_HERE_IS] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
-                        .deactivate = NULL,
-                        .parameter = ASDF_HOOK_USER_1},
-
-    // Keymap selection - these are DIP switches that should be reapplied on
-    // keyboard init
-    [ACTION_MAPSEL_0] = {.activate = asdf_keymaps_map_select_set,
-                         .deactivate = asdf_keymaps_map_select_clear,
-                         .parameter = 0,
-                         .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_MAPSEL_1] = {.activate = asdf_keymaps_map_select_set,
-                         .deactivate = asdf_keymaps_map_select_clear,
-                         .parameter = 1,
-                         .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_MAPSEL_2] = {.activate = asdf_keymaps_map_select_set,
-                         .deactivate = asdf_keymaps_map_select_clear,
-                         .parameter = 2,
-                         .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_MAPSEL_3] = {.activate = asdf_keymaps_map_select_set,
-                         .deactivate = asdf_keymaps_map_select_clear,
-                         .parameter = 3,
-                         .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-
-    // Auto-repeat control - DIP switch setting
-    [ACTION_AUTOREPEAT_SELECT] = {.activate = asdf_repeat_auto_on,
-                                  .deactivate = asdf_repeat_auto_off,
-                                  .parameter = 0,
-                                  .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-
-    // Strobe polarity control - DIP switch setting
-    [ACTION_STROBE_POLARITY_SELECT] =
-        {.activate = asdf_arch_set_pos_strobe,
-         .deactivate = asdf_arch_set_neg_strobe,
-         .parameter = 0,
-         .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-
-    // Virtual LEDs - reapply if toggle switches are pressed
-    [ACTION_VLED1] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
-                      .deactivate = NULL,
-                      .parameter = VLED1,
-                      .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VLED2] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
-                      .deactivate = NULL,
-                      .parameter = VLED2,
-                      .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VLED3] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
-                      .deactivate = NULL,
-                      .parameter = VLED3,
-                      .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-
-    // Virtual outputs - reapply if toggle switches are pressed
-    [ACTION_VOUT1] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
-                      .deactivate = NULL,
-                      .parameter = VOUT1,
-                      .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VOUT2] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
-                      .deactivate = NULL,
-                      .parameter = VOUT2,
-                      .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VOUT3] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
-                      .deactivate = NULL,
-                      .parameter = VOUT3,
-                      .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VOUT4] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
-                      .deactivate = NULL,
-                      .parameter = VOUT4,
-                      .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VOUT5] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
-                      .deactivate = NULL,
-                      .parameter = VOUT5,
-                      .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-    [ACTION_VOUT6] = {.activate = (void (*)(uint8_t))asdf_virtual_activate,
-                      .deactivate = NULL,
-                      .parameter = VOUT6,
-                      .flags = ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT},
-
-    // User function hooks
-    [ACTION_FN_1] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
-                     .deactivate = NULL,
-                     .parameter = ASDF_HOOK_USER_1},
-    [ACTION_FN_2] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
-                     .deactivate = NULL,
-                     .parameter = ASDF_HOOK_USER_2},
-    [ACTION_FN_3] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
-                     .deactivate = NULL,
-                     .parameter = ASDF_HOOK_USER_3},
-    [ACTION_FN_4] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
-                     .deactivate = NULL,
-                     .parameter = ASDF_HOOK_USER_4},
-    [ACTION_FN_5] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
-                     .deactivate = NULL,
-                     .parameter = ASDF_HOOK_USER_5},
-    [ACTION_FN_6] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
-                     .deactivate = NULL,
-                     .parameter = ASDF_HOOK_USER_6},
-    [ACTION_FN_7] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
-                     .deactivate = NULL,
-                     .parameter = ASDF_HOOK_USER_7},
-    [ACTION_FN_8] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
-                     .deactivate = NULL,
-                     .parameter = ASDF_HOOK_USER_8},
-    [ACTION_FN_9] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
-                     .deactivate = NULL,
-                     .parameter = ASDF_HOOK_USER_9},
-    [ACTION_FN_10] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
-                      .deactivate = NULL,
-                      .parameter = ASDF_HOOK_USER_10},
-    [ACTION_FN_11] = {.activate = (void (*)(uint8_t))asdf_hook_execute,
-                      .deactivate = NULL,
-                      .parameter = ASDF_HOOK_USER_11},
-
-    // Note: RESERVED actions are not handled
-};
 
 // PROCEDURE: asdf_activate_key
 // INPUTS: keycode - the code for a key that has been pressed.
 // OUTPUTS: none
 //
-// DESCRIPTION: Called when a key has been pressed. Uses a unified dispatch
-// table to handle both ASCII keycodes and action codes with a single lookup.
+// DESCRIPTION: Called when a key has been pressed. If the key is bound to a
+// value, output the value. If the key is bound to an action, call the activate
+// action handler with the keycode.
 //
-// SIDE EFFECTS: Depends on the handler - ASCII codes update last_key and
-// reset repeat timer. Action codes produce various side effects.
+// SIDE EFFECTS: If the code is a value, the last key is updated to the current
+// value, and repeat timer is reset. If the code is an action code, the activate
+// action dispatcher produces side effects.  See asdf_activate_action()
 //
 // SCOPE: private
 //
-// COMPLEXITY: 1
+// COMPLEXITY: 3
 //
 static void asdf_activate_key(asdf_keycode_t keycode) {
-    const asdf_key_handler_t *handler = &asdf_handlers[keycode];
-    if (handler->activate) {
-        handler->activate(handler->parameter);
+    if (keycode > ASDF_ACTION) { // ASDF_ACTION = ASDF_NOTHING = no action.
+        asdf_activate_action((action_t)keycode);
+    } else {
+
+        // activate a new codable keypress
+        asdf_put_code(keycode);
+        if (last_key != keycode) {
+            last_key = keycode;
+            asdf_repeat_reset_count();
+        }
     }
 }
 
@@ -906,20 +431,26 @@ static void asdf_activate_key(asdf_keycode_t keycode) {
 // INPUTS: keycode - the code for a key that has been released
 // OUTPUTS: none
 //
-// DESCRIPTION: Called when a key has been released. Uses a unified dispatch
-// table to handle both ASCII keycodes and action codes with a single lookup.
+// DESCRIPTION: Called when a key has been released. If the key is bound to a
+// value, output the value. If the key is bound to an action, call the
+// deactivate action handler with the keycode.
 //
-// SIDE EFFECTS: Depends on the handler - ASCII codes may clear last_key.
-// Action codes produce various side effects.
+// SIDE EFFECTS: If the code is a value, the last key is set to ACTION_NOTHING,
+// which is effectively a NOP. If the code is an action code, the deactivate
+// action dispatcher produces side effects. See asdf_deactivate_action()
 //
 // SCOPE: private
 //
-// COMPLEXITY: 1
+// COMPLEXITY: 3
 //
 static void asdf_deactivate_key(asdf_keycode_t keycode) {
-    const asdf_key_handler_t *handler = &asdf_handlers[keycode];
-    if (handler->deactivate) {
-        handler->deactivate(handler->parameter);
+    if (keycode > ASDF_ACTION) {
+        asdf_deactivate_action((action_t)keycode);
+    } else {
+        // deactivate a released keypress
+        if (last_key == keycode) {
+            last_key = ACTION_NOTHING;
+        }
     }
 }
 
@@ -1074,12 +605,7 @@ void asdf_apply_all_actions(void) {
         for (uint8_t col = 0; col < asdf_keymaps_num_cols(); col++) {
             if (row_key_state & 1) {
                 asdf_keycode_t code = asdf_lookup_keycode(row, col);
-                const asdf_key_handler_t *handler = &asdf_handlers[code];
-                // Only apply handlers that should be reapplied on keyboard init
-                if ((handler->flags & ASDF_HANDLER_APPLY_ON_KEYBOARD_INIT) &&
-                    handler->activate) {
-                    handler->activate(handler->parameter);
-                }
+                asdf_activate_action(code);
             }
             row_key_state >>= 1;
         }

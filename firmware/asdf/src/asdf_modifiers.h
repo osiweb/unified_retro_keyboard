@@ -23,8 +23,6 @@
 #if !defined(ASDF_MODIFIERS_H)
 #define ASDF_MODIFIERS_H
 
-#include <stdint.h>
-
 // The active modifiers are used to build an index into a map that determinds
 // which modifier map is selected.  The following define the bit position for each modifier.
 // For example, if SHIFT and CTRL are active, the modifier index would be
@@ -76,51 +74,51 @@ typedef enum {
 } modifier_index_t;
 
 // PROCEDURE: asdf_modifier_shift_activate
-// INPUTS: unused - parameter required for dispatch table but not used
+// INPUTS: none
 // OUTPUTS: none
 // DESCRIPTION: sets SHIFT state to ON
 //
-void asdf_modifier_shift_activate(uint8_t unused);
+void asdf_modifier_shift_activate(void);
 
 // PROCEDURE: asdf_modifier_shiftlock_on_activate
-// INPUTS: unused - parameter required for dispatch table but not used
+// INPUTS: none
 // OUTPUTS: none
 // DESCRIPTION: sets SHIFTLOCK state to ON
-void asdf_modifier_shiftlock_on_activate(uint8_t unused);
+void asdf_modifier_shiftlock_on_activate(void);
 
 // PROCEDURE: asdf_modifier_shiftlock_toggle_activate
-// INPUTS: unused - parameter required for dispatch table but not used
+// INPUTS: none
 // OUTPUTS: none
 // DESCRIPTION: Toggles SHIFTLOCK state.
-void asdf_modifier_shiftlock_toggle_activate(uint8_t unused);
+void asdf_modifier_shiftlock_toggle_activate(void);
 
 // PROCEDURE: asdf_modifier_capslock_activate
-// INPUTS: unused - parameter required for dispatch table but not used
+// INPUTS: none
 // OUTPUTS: none
 // DESCRIPTION: Turns on Capslock state
 //
-void asdf_modifier_capslock_activate(uint8_t unused);
+void asdf_modifier_capslock_activate(void);
 
 // PROCEDURE: asdf_modifier_ctrl_activate
-// INPUTS: unused - parameter required for dispatch table but not used
+// INPUTS: none
 // OUTPUTS: none
 // DESCRIPTION: Turns on CTRL mode
 //
-void asdf_modifier_ctrl_activate(uint8_t unused);
+void asdf_modifier_ctrl_activate(void);
 
 // PROCEDURE: asdf_modifier_shift_deactivate
-// INPUTS: unused - parameter required for dispatch table but not used
+// INPUTS: none
 // OUTPUTS: none
 // DESCRIPTION: Turns off shift mode.
 //
-void asdf_modifier_shift_deactivate(uint8_t unused);
+void asdf_modifier_shift_deactivate(void);
 
 // PROCEDURE: asdf_modifier_ctrl_deactivate
-// INPUTS: unused - parameter required for dispatch table but not used
+// INPUTS: none
 // OUTPUTS: none
 // DESCRIPTION: Turns off CTRL mode
 //
-void asdf_modifier_ctrl_deactivate(uint8_t unused);
+void asdf_modifier_ctrl_deactivate(void);
 
 // PROCEDURE: asdf_modifiers_init
 // INPUTS: none
