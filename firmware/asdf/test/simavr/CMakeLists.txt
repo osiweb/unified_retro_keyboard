@@ -19,5 +19,7 @@ add_executable(asdf_sim_test_capture
   harness/test_capture.c
 )
 target_include_directories(asdf_sim_test_capture PRIVATE harness)
-target_compile_options(asdf_sim_test_capture PRIVATE -Wall -Wextra -std=c99)
+# -UNDEBUG so assert() is live even under the default RELEASE build,
+# otherwise this test would silently always pass.
+target_compile_options(asdf_sim_test_capture PRIVATE -Wall -Wextra -std=c99 -UNDEBUG)
 add_test(NAME unit_capture COMMAND asdf_sim_test_capture)
