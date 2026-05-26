@@ -63,6 +63,7 @@ int main(int argc, char **argv)
 
     cap_init();
     io_wire_output(cpu, io);
+    io_wire_input(cpu, io);
 
     /* Run for 100 simulated milliseconds. No matrix inputs driven yet,
      * so we should see no output bytes. This proves the sim runs and
