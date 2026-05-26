@@ -7,7 +7,7 @@ add_executable(asdf_simavr_runner
   harness/sim.c
   harness/io.c
   harness/run.c
-  harness/assert.c
+  harness/sim_assert.c
   harness/vcd.c
 )
 target_include_directories(asdf_simavr_runner PRIVATE

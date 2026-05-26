@@ -10,7 +10,7 @@
 #include "sim.h"
 #include "io.h"
 #include "capture.h"
-#include "assert.h"
+#include "sim_assert.h"
 #include "vcd.h"
 #include "test_types.h"
 #include "keymap_data/asdf_simavr_test_classic.h"

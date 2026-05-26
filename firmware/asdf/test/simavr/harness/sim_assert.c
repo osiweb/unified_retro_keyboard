@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <inttypes.h>
 
-#include "assert.h"
+#include "sim_assert.h"
 #include "run.h"
 #include "capture.h"
 
