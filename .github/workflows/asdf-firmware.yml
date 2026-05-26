@@ -2,8 +2,12 @@ name: asdf-firmware
 on:
   push:
     branches:
+      - main
       - asdf-release
       - asdf-build-test
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build_firmware:
@@ -13,27 +17,97 @@ jobs:
       run:
         shell: sh
     steps:
-       - name: install_git_and_bash
-         run: apk add bash git rsync
+      - name: install_git_and_bash
+        run: apk add bash git rsync
+      - name: checkout
+        uses: actions/checkout@v4
+      - run: apk add gcc-avr binutils-avr avr-libc
+      - run: apk add cmake make
+      - run: cd firmware/asdf; /bin/bash ./make-targets.sh -a -i -s
+      - name: Upload built ELFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: asdf-elfs
+          path: firmware/asdf/build-atmega*/src/asdf-v1.6.6-*.elf
+          retention-days: 7
+      - name: Upload docs/dist for deploy
+        uses: actions/upload-artifact@v4
+        with:
+          name: asdf-docs-dist
+          path: |
+            firmware/asdf/docs/source/
+            firmware/asdf/dist/
+          retention-days: 7
 
-       - name: checkout
-         uses: actions/checkout@v2
+  integration_test:
+    needs: build_firmware
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake build-essential simavr libsimavr-dev pkg-config
+      - name: Download ELFs
+        uses: actions/download-artifact@v4
+        with:
+          name: asdf-elfs
+          path: firmware/asdf/
+      - name: Re-layout downloaded ELFs
+        run: |
+          cd firmware/asdf
+          for t in atmega328p atmega168p atmega640 atmega1280 atmega2560; do
+            mkdir -p build-$t/src
+            mv asdf-v1.6.6-$t.elf build-$t/src/ 2>/dev/null || \
+              find . -maxdepth 4 -name "asdf-v1.6.6-$t.elf" \
+                -not -path "./build-$t/*" \
+                -exec mv {} build-$t/src/ \; 2>/dev/null || true
+          done
+      - name: Configure
+        run: |
+          cd firmware/asdf
+          mkdir build-simavr-test
+          cd build-simavr-test
+          cmake .. -DARCH=simavr_test
+      - name: Build runner
+        run: cd firmware/asdf/build-simavr-test && make
+      - name: Run integration tests
+        run: |
+          cd firmware/asdf/build-simavr-test
+          ctest --output-on-failure \
+            --exclude-regex 'simavr_atmega640_'
+      - name: Upload VCD on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: simavr-vcd-traces
+          path: firmware/asdf/build-simavr-test/test/simavr/*.vcd
+          retention-days: 14
 
-       - run: apk add gcc-avr binutils-avr avr-libc
-       - run: apk add cmake make
-       - run: apk add python3 py3-pip
-       - run: pip install -U sphinx sphinx-rtd-theme sphinx-autodoc-typehints
-       - run: pip install -U sphinxcontrib-napoleon
-       - run: pip install -U toml
-#       - run: pip install pipenv
-
-       # Create the build directories, make all targets, and copy
-       # hex files to sphinx source directory for download links
-       - run: cd firmware/asdf; /bin/bash ./make-targets.sh -a -i -s
-       - run: mkdir public; touch public/.nojekyll
-       - run: sphinx-build -b html firmware/asdf/docs/source public
-
-       - name: Deploy
-         uses: JamesIves/github-pages-deploy-action@v4
-         with:
-           folder: public
+  deploy:
+    needs: integration_test
+    if: github.ref == 'refs/heads/asdf-release'
+    runs-on: ubuntu-latest
+    container: { image: alpine }
+    defaults:
+      run:
+        shell: sh
+    steps:
+      - name: install_git_and_bash
+        run: apk add bash git rsync
+      - uses: actions/checkout@v4
+      - run: apk add python3 py3-pip
+      - run: pip install -U sphinx sphinx-rtd-theme sphinx-autodoc-typehints
+      - run: pip install -U sphinxcontrib-napoleon
+      - run: pip install -U toml
+      - name: Download docs/dist
+        uses: actions/download-artifact@v4
+        with:
+          name: asdf-docs-dist
+          path: firmware/asdf/
+      - run: mkdir public; touch public/.nojekyll
+      - run: sphinx-build -b html firmware/asdf/docs/source public
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: public
