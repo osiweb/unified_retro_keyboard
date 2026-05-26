@@ -13,7 +13,13 @@ static uint8_t g_last_strobe;        /* reset by io_wire_output */
 #define MATRIX_MAX_ROWS 16
 #define MATRIX_MAX_COLS 8
 static uint8_t matrix[MATRIX_MAX_ROWS];   /* matrix[row] = bitmap of pressed cols */
-static int g_active_row = -1;             /* row currently being strobed, or -1 */
+static int g_active_row = -1;             /* row currently being strobed, or -1 (family B) */
+
+/* ── family-A shift-register state ──────────────────────────────────────── */
+static int     g_active_row_familyA  = -1;  /* 4-bit row index from PORTC, or -1 */
+static uint8_t g_familyA_col_shift   = 0;   /* shift register contents */
+static int     g_familyA_in_load_phase = 0; /* 1 when COLMODE is LOW (load mode) */
+static int     g_familyA_last_clock  = 0;   /* for rising-edge detection */
 
 static void on_data_port(struct avr_irq_t *irq, uint32_t value, void *param)
 {
@@ -33,6 +39,56 @@ static void on_strobe(struct avr_irq_t *irq, uint32_t value, void *param)
         cap_push(g_cpu->cycle, g_data_port_value);
         g_last_strobe = v;
     }
+}
+
+/* ── family-A serial column injection helpers ────────────────────────────── */
+
+/* Drive PINB[col_bit_serial] to the value the firmware will read.
+ * The firmware inverts on read (~ASDF_COL_PIN >> bit & 1), so a pressed key
+ * (matrix bit = 1) must appear as LOW on the pin; unpressed = HIGH. */
+static void drive_familyA_serial(int bit_value)
+{
+    avr_irq_t *pin_irq = avr_io_getirq(g_cpu,
+        AVR_IOCTL_IOPORT_GETIRQ(g_io->col_port), g_io->col_bit_serial);
+    avr_raise_irq(pin_irq, bit_value ? 0 : 1);
+}
+
+static void on_row_port_familyA(struct avr_irq_t *irq, uint32_t value, void *param)
+{
+    (void)irq; (void)param;
+    g_active_row_familyA = (int)((value >> g_io->row_shift) & g_io->row_mask);
+}
+
+static void on_col_mode_familyA(struct avr_irq_t *irq, uint32_t value, void *param)
+{
+    (void)irq; (void)param;
+    g_familyA_in_load_phase = ((value & 1) == 0);   /* LOW = load mode */
+}
+
+static void on_col_clock_familyA(struct avr_irq_t *irq, uint32_t value, void *param)
+{
+    (void)irq; (void)param;
+    int now = (int)(value & 1);
+    if (now && !g_familyA_last_clock) {                /* rising edge */
+        if (g_familyA_in_load_phase) {
+            /* Load phase: snapshot the matrix row into the shift register,
+             * then immediately present bit 0 on the pin.  The firmware reads
+             * the pin before issuing the first shift clock, so bit 0 must be
+             * valid as soon as the load pulse completes. */
+            if (g_active_row_familyA >= 0 &&
+                g_active_row_familyA < MATRIX_MAX_ROWS) {
+                g_familyA_col_shift = matrix[g_active_row_familyA];
+            } else {
+                g_familyA_col_shift = 0;
+            }
+        } else {
+            /* Shift phase: advance one position right; the next bit becomes
+             * the new LSB that the firmware will read. */
+            g_familyA_col_shift >>= 1;
+        }
+        drive_familyA_serial(g_familyA_col_shift & 1);
+    }
+    g_familyA_last_clock = now;
 }
 
 void io_wire_output(avr_t *cpu, const asdf_io_map_t *io)
@@ -57,7 +113,8 @@ void io_wire_output(avr_t *cpu, const asdf_io_map_t *io)
     /* For family A, the column data arrives on a single serial bit.  simavr
      * leaves undriven input pins at 0, which the firmware inverts to 1 (key
      * pressed).  Pre-drive the serial column pin high so all columns read as
-     * unpressed before Task 7 installs a proper column-injection notifier. */
+     * unpressed for the very first read cycle, before the active column-
+     * injection notifiers installed by io_wire_input take over. */
     if (!io->col_parallel) {
         avr_irq_t *col_irq = avr_io_getirq(cpu,
             AVR_IOCTL_IOPORT_GETIRQ(io->col_port), io->col_bit_serial);
@@ -137,8 +194,31 @@ void io_wire_input(avr_t *cpu, const asdf_io_map_t *io)
                 AVR_IOCTL_IOPORT_GETIRQ(io->row_port_hi), IOPORT_IRQ_REG_PORT);
             avr_irq_register_notify(hi, on_row_port_familyB, (void *)(intptr_t)1);
         }
+    } else {
+        /* Family A: parallel-in / serial-out shift register on PORTB.
+         * Three notifiers cooperate to replay the 74xx165-style protocol:
+         *   row port   → tracks the 4-bit row index from PORTC[3:0]
+         *   COLMODE    → distinguishes load phase (LOW) from shift phase (HIGH)
+         *   COLCLK     → on rising edge, loads or shifts and drives PINB[0] */
+        g_active_row_familyA  = -1;
+        g_familyA_col_shift   = 0;
+        g_familyA_in_load_phase = 0;
+        g_familyA_last_clock  = 0;
+
+        /* Row notifier on PORTC (full-byte IRQ) to track the 4-bit row index. */
+        avr_irq_t *row = avr_io_getirq(cpu,
+            AVR_IOCTL_IOPORT_GETIRQ(io->row_port), IOPORT_IRQ_REG_PORT);
+        avr_irq_register_notify(row, on_row_port_familyA, 0);
+
+        /* COLMODE on PORTB[col_mode_bit]: bit-level notifier. */
+        avr_irq_t *mode = avr_io_getirq(cpu,
+            AVR_IOCTL_IOPORT_GETIRQ(io->col_mode_port), io->col_mode_bit);
+        avr_irq_register_notify(mode, on_col_mode_familyA, 0);
+
+        /* COLCLK on PORTB[col_load_clock_bit]: bit-level notifier. */
+        avr_irq_t *clk = avr_io_getirq(cpu,
+            AVR_IOCTL_IOPORT_GETIRQ(io->col_load_clock_port),
+            io->col_load_clock_bit);
+        avr_irq_register_notify(clk, on_col_clock_familyA, 0);
     }
-    /* Family A serial-column injection is intentionally deferred.
-     * io_wire_output already pre-drives the serial column pin high, so
-     * the firmware sees all keys unpressed and the boot smoke test passes. */
 }

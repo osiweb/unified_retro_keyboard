@@ -30,25 +30,10 @@ target_include_directories(asdf_sim_test_capture PRIVATE harness)
 target_compile_options(asdf_sim_test_capture PRIVATE -Wall -Wextra -std=c99 -UNDEBUG)
 add_test(NAME unit_capture COMMAND asdf_sim_test_capture)
 
-set(SIMAVR_TARGETS_BOOT_ONLY atmega328p atmega168p)
-set(SIMAVR_TARGETS_FULL      atmega1280 atmega2560)
+set(SIMAVR_TARGETS atmega328p atmega168p atmega1280 atmega2560)
 set(SIMAVR_KEYMAPS classic classic_caps apple2 apple2_caps sol ace1000)
 
-foreach(tgt ${SIMAVR_TARGETS_BOOT_ONLY})
-  foreach(km ${SIMAVR_KEYMAPS})
-    add_test(
-      NAME simavr_${tgt}_${km}
-      COMMAND asdf_simavr_runner
-              --target ${tgt} --keymap ${km}
-              --elf ${CMAKE_SOURCE_DIR}/build-${tgt}/src/asdf-v1.6.6-${tgt}.elf
-              --boot-only
-              --vcd ${CMAKE_CURRENT_BINARY_DIR}/simavr_${tgt}_${km}.vcd
-    )
-    set_tests_properties(simavr_${tgt}_${km} PROPERTIES TIMEOUT 10)
-  endforeach()
-endforeach()
-
-foreach(tgt ${SIMAVR_TARGETS_FULL})
+foreach(tgt ${SIMAVR_TARGETS})
   foreach(km ${SIMAVR_KEYMAPS})
     set(elf_path ${CMAKE_SOURCE_DIR}/build-${tgt}/src/asdf-v1.6.6-${tgt}.elf)
     add_test(
@@ -58,6 +43,6 @@ foreach(tgt ${SIMAVR_TARGETS_FULL})
               --elf ${elf_path}
               --vcd ${CMAKE_CURRENT_BINARY_DIR}/simavr_${tgt}_${km}.vcd
     )
-    set_tests_properties(simavr_${tgt}_${km} PROPERTIES TIMEOUT 10)
+    set_tests_properties(simavr_${tgt}_${km} PROPERTIES TIMEOUT 15)
   endforeach()
 endforeach()

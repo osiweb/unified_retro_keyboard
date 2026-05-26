@@ -37,6 +37,22 @@ int vcd_begin(avr_t *cpu, const asdf_io_map_t *io, const char *path)
         AVR_IOCTL_IOPORT_GETIRQ(io->row_port), IOPORT_IRQ_REG_PORT);
     avr_vcd_add_signal(&g_vcd, row_irq, 8, "row_lo");
 
+    /* Family A only: COLMODE and COLCLK for shift-register timing inspection. */
+    if (!io->col_parallel) {
+        avr_irq_t *mode_irq = avr_io_getirq(cpu,
+            AVR_IOCTL_IOPORT_GETIRQ(io->col_mode_port), io->col_mode_bit);
+        avr_vcd_add_signal(&g_vcd, mode_irq, 1, "col_mode");
+
+        avr_irq_t *clk_irq = avr_io_getirq(cpu,
+            AVR_IOCTL_IOPORT_GETIRQ(io->col_load_clock_port),
+            io->col_load_clock_bit);
+        avr_vcd_add_signal(&g_vcd, clk_irq, 1, "col_clk");
+
+        avr_irq_t *ser_irq = avr_io_getirq(cpu,
+            AVR_IOCTL_IOPORT_GETIRQ(io->col_port), io->col_bit_serial);
+        avr_vcd_add_signal(&g_vcd, ser_irq, 1, "col_serial");
+    }
+
     avr_vcd_start(&g_vcd);
     g_vcd_active = 1;
     return 0;
