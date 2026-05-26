@@ -5,6 +5,8 @@
 #include <simavr/sim_avr.h>
 #include <simavr/sim_elf.h>
 
+#include "asdf_simavr_io_select.h"
+
 static void usage(const char *argv0)
 {
     fprintf(stderr,
@@ -62,9 +64,14 @@ int main(int argc, char **argv)
     }
 
     avr_init(cpu);
+
+    const asdf_io_map_t *io = asdf_io_pick(a.target);
+    if (!io) { fprintf(stderr, "FAIL: no I/O map for %s\n", a.target); return 1; }
+    cpu->frequency = io->cpu_frequency_hz;
+
     avr_load_firmware(cpu, &fw);
 
-    printf("OK: loaded %s into %s (frequency=%u Hz)\n",
-           a.elf_path, a.target, (unsigned)cpu->frequency);
+    printf("OK: %s mapped to family %s (%u Hz)\n",
+           a.target, io->family_name, (unsigned)io->cpu_frequency_hz);
     return 0;
 }
