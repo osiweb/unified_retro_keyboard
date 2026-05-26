@@ -21,6 +21,7 @@ add_valid_target atmega88p
 add_valid_target atmega2560
 add_valid_target atmega1280
 add_valid_target atmega640
+add_valid_target simavr_test
 
 
 check_valid_target() {
@@ -58,13 +59,50 @@ clean_arch() {
     rm -f $LINKS_DIR/*$1*
 }
 
+preflight_simavr_test() {
+    local missing=0
+    for t in atmega328p atmega168p atmega640 atmega1280 atmega2560; do
+        local elf="build-$t/src/asdf-v1.6.6-$t.elf"
+        if [[ ! -f $elf ]]; then
+            echo "ERROR: missing $elf"
+            missing=1
+        fi
+    done
+    if [[ $missing -ne 0 ]]; then
+        echo
+        echo "Run: bash make-targets.sh -a"
+        echo "to build the AVR firmware before running integration tests."
+        return 1
+    fi
+
+    if ! command -v simavr >/dev/null 2>&1; then
+        echo "ERROR: simavr not found on PATH."
+        echo "Install with: sudo apt-get install simavr libsimavr-dev pkg-config"
+        return 1
+    fi
+    if [[ ! -f /usr/include/simavr/sim_avr.h ]]; then
+        echo "ERROR: libsimavr-dev headers not found."
+        echo "Install with: sudo apt-get install libsimavr-dev"
+        return 1
+    fi
+    return 0
+}
+
 build_arch() {
     local target_arch="$1"
     local hardware_sig="$2"
 
+    if [[ $target_arch == simavr_test ]]; then
+        preflight_simavr_test || exit 1
+    fi
+
     cmake -S . -B "build-$target_arch" -G "$GENERATOR" \
         -DCMAKE_INSTALL_PREFIX="." -DARCH="$target_arch" \
         -DCMAKE_BUILD_TYPE="$BUILD_TYPE"
+
+    if [[ $target_arch == simavr_test || $target_arch == test ]]; then
+        (cd "build-$target_arch" && make && ctest --output-on-failure)
+    fi
 
 }
 
