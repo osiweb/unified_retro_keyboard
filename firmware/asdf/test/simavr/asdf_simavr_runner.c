@@ -10,6 +10,7 @@
 #include "sim.h"
 #include "io.h"
 #include "capture.h"
+#include "vcd.h"
 
 static void usage(const char *argv0)
 {
@@ -65,6 +66,11 @@ int main(int argc, char **argv)
     io_wire_output(cpu, io);
     io_wire_input(cpu, io);
 
+    if (a.vcd_path) {
+        if (vcd_begin(cpu, io, a.vcd_path) != 0)
+            fprintf(stderr, "WARN: VCD recording disabled\n");
+    }
+
     /* Run for 100 simulated milliseconds. No matrix inputs driven yet,
      * so we should see no output bytes. This proves the sim runs and
      * the notifier wiring is sane. */
@@ -80,5 +86,6 @@ int main(int argc, char **argv)
 
     printf("OK: %s/%s ran %" PRIu64 " cycles, captured %zu bytes\n",
            a.target, a.keymap, (uint64_t)cpu->cycle, cap_count());
+    vcd_end();
     return 0;
 }
