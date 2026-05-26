@@ -1,3 +1,5 @@
+#include <string.h>
+
 #include "asdf_simavr_io_familyA.h"
 #include "asdf_simavr_io_familyB.h"
 

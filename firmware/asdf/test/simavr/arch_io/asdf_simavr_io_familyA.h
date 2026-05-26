@@ -30,6 +30,8 @@ static const asdf_io_map_t asdf_io_familyA = {
 
     .strobe_port = 'B',
     .strobe_bit  = 6,
+    /* Default polarity; a keymap can flip this via asdf_arch_set_neg_strobe.
+     * Harness strobe-edge capture observes both edges; see harness/io.c. */
     .strobe_active_high = 1,
 
     .led_count = 3,

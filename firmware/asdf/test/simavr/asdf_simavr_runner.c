@@ -11,7 +11,8 @@ static void usage(const char *argv0)
 {
     fprintf(stderr,
         "usage: %s --target <chip> --keymap <name> --elf <path>\n"
-        "  --target   atmega328p | atmega168p | atmega640 | atmega1280 | atmega2560\n"
+        "  --target   atmega328p | atmega168p | atmega1280 | atmega2560\n"
+        "             (atmega640 is built but unsupported by simavr 1.6)\n"
         "  --keymap   classic | classic_caps | apple2 | apple2_caps | sol | ace1000\n"
         "  --elf      path to the .elf produced by build-<chip>/\n"
         "  --verbose  log every captured output byte\n"

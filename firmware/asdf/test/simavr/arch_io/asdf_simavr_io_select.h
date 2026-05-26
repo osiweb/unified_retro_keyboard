@@ -2,7 +2,6 @@
 #define ASDF_SIMAVR_IO_SELECT_H
 
 #include <stdint.h>
-#include <string.h>
 
 #define ASDF_IO_MAX_LEDS 4
 
