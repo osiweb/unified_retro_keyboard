@@ -4,6 +4,8 @@ add_executable(asdf_simavr_runner
   asdf_simavr_runner.c
   arch_io/asdf_simavr_io.c
   harness/capture.c
+  harness/sim.c
+  harness/io.c
 )
 target_include_directories(asdf_simavr_runner PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/arch_io

@@ -1,11 +1,15 @@
+#define __STDC_FORMAT_MACROS
+#include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include <simavr/sim_avr.h>
-#include <simavr/sim_elf.h>
 
 #include "asdf_simavr_io_select.h"
+#include "sim.h"
+#include "io.h"
+#include "capture.h"
 
 static void usage(const char *argv0)
 {
@@ -51,28 +55,29 @@ int main(int argc, char **argv)
 {
     args_t a = parse_args(argc, argv);
 
-    elf_firmware_t fw;
-    memset(&fw, 0, sizeof(fw));
-    if (elf_read_firmware(a.elf_path, &fw) != 0) {
-        fprintf(stderr, "FAIL: could not read ELF %s\n", a.elf_path);
-        return 1;
-    }
-
-    avr_t *cpu = avr_make_mcu_by_name(a.target);
-    if (!cpu) {
-        fprintf(stderr, "FAIL: unknown MCU %s\n", a.target);
-        return 1;
-    }
-
-    avr_init(cpu);
-
     const asdf_io_map_t *io = asdf_io_pick(a.target);
     if (!io) { fprintf(stderr, "FAIL: no I/O map for %s\n", a.target); return 1; }
-    cpu->frequency = io->cpu_frequency_hz;
 
-    avr_load_firmware(cpu, &fw);
+    avr_t *cpu = sim_load(a.target, a.elf_path, io);
+    if (!cpu) return 1;
 
-    printf("OK: %s mapped to family %s (%u Hz)\n",
-           a.target, io->family_name, (unsigned)io->cpu_frequency_hz);
+    cap_init();
+    io_wire_output(cpu, io);
+
+    /* Run for 100 simulated milliseconds. No matrix inputs driven yet,
+     * so we should see no output bytes. This proves the sim runs and
+     * the notifier wiring is sane. */
+    uint64_t target_cycle = (uint64_t)(cpu->frequency / 10);   /* 100 ms */
+    while (cpu->cycle < target_cycle) {
+        int state = avr_run(cpu);
+        if (state == cpu_Done || state == cpu_Crashed) {
+            fprintf(stderr, "FAIL: cpu halted at cycle %" PRIu64 " (state=%d)\n",
+                    (uint64_t)cpu->cycle, state);
+            return 1;
+        }
+    }
+
+    printf("OK: %s/%s ran %" PRIu64 " cycles, captured %zu bytes\n",
+           a.target, a.keymap, (uint64_t)cpu->cycle, cap_count());
     return 0;
 }
