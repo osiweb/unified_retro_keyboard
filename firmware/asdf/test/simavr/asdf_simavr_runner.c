@@ -19,13 +19,14 @@ static void usage(const char *argv0)
 {
     fprintf(stderr,
         "usage: %s --target <chip> --keymap <name> --elf <path>\n"
-        "  --target   atmega328p | atmega168p | atmega1280 | atmega2560\n"
-        "             (atmega640 is built but unsupported by simavr 1.6)\n"
-        "  --keymap   classic | classic_caps | apple2 | apple2_caps | sol | ace1000\n"
-        "  --elf      path to the .elf produced by build-<chip>/\n"
-        "  --verbose  log every captured output byte\n"
-        "  --vcd PATH dump VCD of watched pins to PATH\n"
-        "  --gdb PORT start simavr gdb stub on PORT and wait for attach\n",
+        "  --target    atmega328p | atmega168p | atmega1280 | atmega2560\n"
+        "              (atmega640 is built but unsupported by simavr 1.6)\n"
+        "  --keymap    classic | classic_caps | apple2 | apple2_caps | sol | ace1000\n"
+        "  --elf       path to the .elf produced by build-<chip>/\n"
+        "  --boot-only boot and run a brief idle period; skip keypress events\n"
+        "  --verbose   log every captured output byte\n"
+        "  --vcd PATH  dump VCD of watched pins to PATH\n"
+        "  --gdb PORT  start simavr gdb stub on PORT and wait for attach\n",
         argv0);
     exit(2);
 }
@@ -37,6 +38,7 @@ typedef struct {
     const char *vcd_path;
     int gdb_port;
     int verbose;
+    int boot_only;
 } args_t;
 
 static args_t parse_args(int argc, char **argv)
@@ -49,6 +51,7 @@ static args_t parse_args(int argc, char **argv)
         else if (!strcmp(argv[i], "--vcd") && i + 1 < argc) a.vcd_path = argv[++i];
         else if (!strcmp(argv[i], "--gdb") && i + 1 < argc) a.gdb_port = atoi(argv[++i]);
         else if (!strcmp(argv[i], "--verbose")) a.verbose = 1;
+        else if (!strcmp(argv[i], "--boot-only")) a.boot_only = 1;
         else { fprintf(stderr, "unknown arg: %s\n", argv[i]); usage(argv[0]); }
     }
     if (!a.target || !a.keymap || !a.elf_path) usage(argv[0]);
@@ -90,6 +93,20 @@ int main(int argc, char **argv)
     if (sim_wait_ms(cpu, km->boot_scan_ticks, io->cpu_frequency_hz) < 0) {
         fprintf(stderr, "FAIL: cpu halted during boot\n");
         return 1;
+    }
+
+    /* Boot-only mode: confirm the CPU survived boot, then exit.
+     * Run an extra 200 ms of idle time to confirm the scan loop is alive. */
+    if (a.boot_only) {
+        if (sim_wait_ms(cpu, 200, io->cpu_frequency_hz) < 0) {
+            fprintf(stderr, "FAIL: %s/%s cpu halted after boot\n", a.target, a.keymap);
+            vcd_end();
+            return 1;
+        }
+        vcd_end();
+        printf("OK: %s/%s boot-only smoke passed at cycle %" PRIu64 "\n",
+               a.target, a.keymap, (uint64_t)cpu->cycle);
+        return 0;
     }
 
     /* Drain anything emitted during boot. */
