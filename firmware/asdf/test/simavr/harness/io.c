@@ -6,6 +6,7 @@
 static avr_t *g_cpu;
 static const asdf_io_map_t *g_io;
 static uint8_t g_data_port_value;    /* latched on every write to data port */
+static uint8_t g_last_strobe;        /* reset by io_wire_output */
 
 static void on_data_port(struct avr_irq_t *irq, uint32_t value, void *param)
 {
@@ -20,11 +21,10 @@ static void on_strobe(struct avr_irq_t *irq, uint32_t value, void *param)
      * can flip strobe polarity at runtime via asdf_arch_set_neg_strobe.
      * The IOPORT-bit IRQ only fires on actual changes, so one pulse =
      * two notifies; the test code drains between events. */
-    static uint8_t last_strobe = 0;
     uint8_t v = (uint8_t)(value & 1);
-    if (v != last_strobe) {
+    if (v != g_last_strobe) {
         cap_push(g_cpu->cycle, g_data_port_value);
-        last_strobe = v;
+        g_last_strobe = v;
     }
 }
 
@@ -33,6 +33,7 @@ void io_wire_output(avr_t *cpu, const asdf_io_map_t *io)
     g_cpu = cpu;
     g_io  = io;
     g_data_port_value = 0;
+    g_last_strobe = 0;
 
     /* Hook every bit of the data port so any write updates our latch.
      * AVR_IOCTL_IOPORT_GETIRQ + IOPORT_IRQ_REG_PORT fires on PORTx writes. */
