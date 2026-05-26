@@ -1,4 +1,5 @@
-# Host-built test runner — never compiled with avr-gcc.
-# Built when the root CMakeLists.txt is invoked with -DARCH=simavr_test.
+# Host-built test runner; never compiled with avr-gcc.
 
-message(STATUS "simavr integration test runner: placeholder build")
+add_executable(asdf_simavr_runner asdf_simavr_runner.c)
+target_compile_options(asdf_simavr_runner PRIVATE -Wall -Wextra -Wno-unused-parameter -std=c99)
+target_link_libraries(asdf_simavr_runner PRIVATE simavr)
