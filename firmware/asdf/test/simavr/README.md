@@ -25,16 +25,11 @@ atmega328p  atmega168p  atmega1280  atmega2560
 atmega640 is built by `make-targets.sh -a` but simavr 1.6 on Ubuntu does
 not support that core; its cases are not registered in the ctest matrix.
 
-### Family A note (atmega328p, atmega168p)
-
-Family A targets use a serial shift-register column read that requires
-tracking the firmware's clock/mode-select sequence. That injection is not
-yet implemented. Family A cases therefore run with `--boot-only`: the
-firmware boots, idles for 200 ms of simulated time, and the test asserts
-only that the CPU did not halt or crash. They do not inject keypresses or
-check output bytes.
-
-Family B targets (atmega1280, atmega2560) run the full event sequence.
+All four supported targets run the full event-driven sequence (matrix
+press, modifier handling, byte-level output assertion). Family A's
+serial-shift-register column read is emulated by the harness in
+`io.c::on_col_clock_familyA`, which tracks COLMODE / COLCLK transitions
+and feeds bits onto PINB[0] one at a time.
 
 ## Iterate on a single case
 
@@ -55,7 +50,8 @@ Runner flags:
   On CI, VCDs are uploaded as artifacts on test failure so they can be
   fetched and opened in gtkwave locally.
 - `--boot-only` — skip keypress events; confirm only that the CPU survives
-  the boot period without halting.
+  the boot period without halting. Useful when bringing up a new target
+  before its column-injection wiring is in place.
 - `--gdb <port>` — start the simavr GDB stub on the given port and wait
   for a debugger attach. Then connect with:
   `avr-gdb build-atmega2560/src/asdf-v1.6.6-atmega2560.elf -ex 'target remote :1234'`
@@ -74,10 +70,8 @@ Runner flags:
    row/col coordinates for those keys. Read
    `src/Keymaps/asdf_keymap_<new>.c` to find them.
 
-5. Add `<new>` to `SIMAVR_KEYMAPS` in `test/simavr/CMakeLists.txt`.
-   If the new keymap targets family B only, also add `<new>` to
-   `SIMAVR_TARGETS_FULL`; if it runs on all targets, it will inherit
-   the existing boot-only fallback for family A automatically.
+5. Add `<new>` to `SIMAVR_KEYMAPS` in `test/simavr/CMakeLists.txt`. The
+   ctest matrix automatically generates one case per (target, keymap).
 
 6. Add a `case` to `pick_keymap` in `asdf_simavr_runner.c`: add an
    `#include "keymap_data/asdf_simavr_test_<new>.h"` near the top of
