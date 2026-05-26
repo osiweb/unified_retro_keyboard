@@ -14,6 +14,11 @@
 #include "vcd.h"
 #include "test_types.h"
 #include "keymap_data/asdf_simavr_test_classic.h"
+#include "keymap_data/asdf_simavr_test_classic_caps.h"
+#include "keymap_data/asdf_simavr_test_apple2.h"
+#include "keymap_data/asdf_simavr_test_apple2_caps.h"
+#include "keymap_data/asdf_simavr_test_sol.h"
+#include "keymap_data/asdf_simavr_test_ace1000.h"
 
 static void usage(const char *argv0)
 {
@@ -60,8 +65,12 @@ static args_t parse_args(int argc, char **argv)
 
 static const sim_keymap_test_t *pick_keymap(const char *name)
 {
-    if (!strcmp(name, "classic")) return &classic_test;
-    /* Other keymaps added by later tasks. */
+    if (!strcmp(name, "classic"))      return &classic_test;
+    if (!strcmp(name, "classic_caps")) return &classic_caps_test;
+    if (!strcmp(name, "apple2"))       return &apple2_test;
+    if (!strcmp(name, "apple2_caps"))  return &apple2_caps_test;
+    if (!strcmp(name, "sol"))          return &sol_test;
+    if (!strcmp(name, "ace1000"))      return &ace1000_test;
     return 0;
 }
 

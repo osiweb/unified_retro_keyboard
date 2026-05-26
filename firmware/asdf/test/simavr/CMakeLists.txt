@@ -32,7 +32,7 @@ add_test(NAME unit_capture COMMAND asdf_sim_test_capture)
 
 set(SIMAVR_TARGETS_BOOT_ONLY atmega328p atmega168p)
 set(SIMAVR_TARGETS_FULL      atmega1280 atmega2560)
-set(SIMAVR_KEYMAPS classic)
+set(SIMAVR_KEYMAPS classic classic_caps apple2 apple2_caps sol ace1000)
 
 foreach(tgt ${SIMAVR_TARGETS_BOOT_ONLY})
   foreach(km ${SIMAVR_KEYMAPS})
