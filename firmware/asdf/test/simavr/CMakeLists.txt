@@ -13,6 +13,7 @@ add_executable(asdf_simavr_runner
 target_include_directories(asdf_simavr_runner PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/arch_io
   ${CMAKE_CURRENT_SOURCE_DIR}/harness
+  ${CMAKE_CURRENT_SOURCE_DIR}
 )
 target_compile_options(asdf_simavr_runner PRIVATE -Wall -Wextra -Wno-unused-parameter -std=c99)
 target_link_libraries(asdf_simavr_runner PRIVATE simavr)
@@ -28,3 +29,13 @@ target_include_directories(asdf_sim_test_capture PRIVATE harness)
 # otherwise this test would silently always pass.
 target_compile_options(asdf_sim_test_capture PRIVATE -Wall -Wextra -std=c99 -UNDEBUG)
 add_test(NAME unit_capture COMMAND asdf_sim_test_capture)
+
+add_test(
+  NAME simavr_atmega2560_classic
+  COMMAND asdf_simavr_runner
+          --target atmega2560
+          --keymap classic
+          --elf ${CMAKE_SOURCE_DIR}/build-atmega2560/src/asdf-v1.6.6-atmega2560.elf
+          --vcd ${CMAKE_CURRENT_BINARY_DIR}/simavr_atmega2560_classic.vcd
+)
+set_tests_properties(simavr_atmega2560_classic PROPERTIES TIMEOUT 10)

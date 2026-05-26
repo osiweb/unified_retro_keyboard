@@ -1,4 +1,4 @@
-#include <assert.h>
+#include <stdlib.h>
 
 #include "capture.h"
 
@@ -21,7 +21,7 @@ void cap_push(uint64_t cycle, uint8_t byte)
 
 int cap_pop(asdf_cap_record_t *out)
 {
-    assert(out != NULL);
+    if (!out) abort();
     if (count == 0) return 0;
     *out = ring[tail];
     tail = (tail + 1) % ASDF_CAP_RING_SIZE;

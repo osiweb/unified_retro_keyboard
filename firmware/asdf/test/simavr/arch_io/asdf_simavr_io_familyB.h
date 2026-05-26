@@ -17,11 +17,15 @@ static const asdf_io_map_t asdf_io_familyB = {
     .row_port_hi = 'A',           /* PORTA[7:0] = rows 8..15 (HIROW) */
     .row_active_low = 1,
 
-    /* Parallel column read on PINC, active-LOW (firmware inverts). */
+    /* Parallel column read on PINC, active-LOW (firmware inverts).
+     * PINC = _SFR_IO8(0x06); data-memory address = 0x06 + 0x20 = 0x26.
+     * avr_raise_irq(IOPORT_IRQ_PIN_ALL) does not reliably affect what the
+     * firmware reads; direct write to cpu->data[col_pin_addr] is used. */
     .col_port  = 'C',
     .col_parallel = 1,
     .col_mask  = 0xFF,
     .col_active_low = 1,
+    .col_pin_addr = 0x26,         /* PINC data-space address for atmega640/1280/2560 */
 
     .data_port = 'H',
     .data_mask = 0xFF,

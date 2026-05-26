@@ -10,7 +10,10 @@
 #include "sim.h"
 #include "io.h"
 #include "capture.h"
+#include "assert.h"
 #include "vcd.h"
+#include "test_types.h"
+#include "keymap_data/asdf_simavr_test_classic.h"
 
 static void usage(const char *argv0)
 {
@@ -52,6 +55,13 @@ static args_t parse_args(int argc, char **argv)
     return a;
 }
 
+static const sim_keymap_test_t *pick_keymap(const char *name)
+{
+    if (!strcmp(name, "classic")) return &classic_test;
+    /* Other keymaps added by later tasks. */
+    return 0;
+}
+
 int main(int argc, char **argv)
 {
     args_t a = parse_args(argc, argv);
@@ -71,21 +81,57 @@ int main(int argc, char **argv)
             fprintf(stderr, "WARN: VCD recording disabled\n");
     }
 
-    /* Run for 100 simulated milliseconds. No matrix inputs driven yet,
-     * so we should see no output bytes. This proves the sim runs and
-     * the notifier wiring is sane. */
-    uint64_t target_cycle = (uint64_t)(cpu->frequency / 10);   /* 100 ms */
-    while (cpu->cycle < target_cycle) {
-        int state = avr_run(cpu);
-        if (state == cpu_Done || state == cpu_Crashed) {
-            fprintf(stderr, "FAIL: cpu halted at cycle %" PRIu64 " (state=%d)\n",
-                    (uint64_t)cpu->cycle, state);
-            return 1;
-        }
+    const sim_keymap_test_t *km = pick_keymap(a.keymap);
+    if (!km) { fprintf(stderr, "FAIL: no test data for keymap %s\n", a.keymap); return 1; }
+
+    set_dip(km->dip_value);
+
+    /* Let the firmware boot and run a few scan cycles to settle. */
+    if (sim_wait_ms(cpu, km->boot_scan_ticks, io->cpu_frequency_hz) < 0) {
+        fprintf(stderr, "FAIL: cpu halted during boot\n");
+        return 1;
     }
 
-    printf("OK: %s/%s ran %" PRIu64 " cycles, captured %zu bytes\n",
-           a.target, a.keymap, (uint64_t)cpu->cycle, cap_count());
+    /* Drain anything emitted during boot. */
+    cap_clear();
+
+    for (int i = 0; i < km->num_events; i++) {
+        const sim_event_t *e = &km->events[i];
+        char what[64];
+        snprintf(what, sizeof what, "%s/event[%d]@(%d,%d)", a.keymap, i, e->row, e->col);
+
+        if (e->with_modifier == SIM_MOD_SHIFT) {
+            matrix_press(km->modifier_shift.row, km->modifier_shift.col);
+            /* Let the modifier key debounce fully before pressing the main key.
+             * 15 ms = 1.5× the 10 ms debounce period covers worst-case scan
+             * alignment.  SHIFT must be stable before the key lookup runs. */
+            sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+            cap_clear();
+        } else if (e->with_modifier == SIM_MOD_CTRL) {
+            matrix_press(km->modifier_ctrl.row, km->modifier_ctrl.col);
+            sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+            cap_clear();
+        }
+
+        matrix_press(e->row, e->col);
+        if (sim_expect_byte_within(cpu, e->expected, e->hold_cycles, what) != 0) {
+            vcd_end();
+            return 1;
+        }
+        matrix_release(e->row, e->col);
+
+        if (e->with_modifier == SIM_MOD_SHIFT)
+            matrix_release(km->modifier_shift.row, km->modifier_shift.col);
+        else if (e->with_modifier == SIM_MOD_CTRL)
+            matrix_release(km->modifier_ctrl.row, km->modifier_ctrl.col);
+
+        /* Wait for debounce + repeat-delay guard before the next event. */
+        sim_wait_ms(cpu, 50, io->cpu_frequency_hz);
+        cap_clear();
+    }
+
     vcd_end();
+    printf("OK: %s/%s passed %d events at cycle %" PRIu64 "\n",
+           a.target, a.keymap, km->num_events, (uint64_t)cpu->cycle);
     return 0;
 }

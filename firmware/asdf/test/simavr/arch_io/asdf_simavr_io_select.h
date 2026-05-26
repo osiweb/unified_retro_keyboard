@@ -30,6 +30,10 @@ typedef struct {
     int  col_load_clock_bit;
     char col_mode_port;
     int  col_mode_bit;
+    uint16_t col_pin_addr;        /* data-memory address of the column PIN register;
+                                   * used by the harness to inject column states directly.
+                                   * For AVR standard IO: PIN_io_base + 0x20.
+                                   * For family A (serial), set to 0. */
 
     char data_port;
     uint8_t data_mask;

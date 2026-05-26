@@ -95,10 +95,11 @@ static void present_columns_familyB(void)
     uint8_t cols = matrix[g_active_row];
     uint8_t pin_value = g_io->col_active_low ? (uint8_t)~cols : cols;
 
-    /* Drive every bit of the column port in one call via IOPORT_IRQ_PIN_ALL. */
-    avr_irq_t *pin_irq = avr_io_getirq(g_cpu,
-        AVR_IOCTL_IOPORT_GETIRQ(g_io->col_port), IOPORT_IRQ_PIN_ALL);
-    avr_raise_irq(pin_irq, pin_value);
+    /* avr_raise_irq(IOPORT_IRQ_PIN_ALL) does not reliably propagate to what
+     * the firmware reads from PINx in simavr 1.6.  Direct write to the
+     * cpu->data[] slot for the PIN register is the only reliable method. */
+    if (g_io->col_pin_addr)
+        g_cpu->data[g_io->col_pin_addr] = pin_value;
 }
 
 static void on_row_port_familyB(struct avr_irq_t *irq, uint32_t value, void *param)
