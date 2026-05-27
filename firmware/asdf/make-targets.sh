@@ -10,17 +10,18 @@ LINKS_DIR="$DOC_DIR/source"
 
 add_valid_target() {
     VALID_TARGETS[$NUM_VALID_TARGETS]=$1
-    HW_SIGS[$NUM_VALID_TARGETS]=$2
+    TARGET_TYPE[$NUM_VALID_TARGETS]=${2:-EXECUTABLE}
     ((NUM_VALID_TARGETS++))
 }
 
-add_valid_target test
+add_valid_target test         UNIT_TEST
 add_valid_target atmega328p
 add_valid_target atmega168p
 add_valid_target atmega88p
 add_valid_target atmega2560
 add_valid_target atmega1280
 add_valid_target atmega640
+add_valid_target simavr_test  INTEGRATION_TEST
 
 
 check_valid_target() {
@@ -58,13 +59,50 @@ clean_arch() {
     rm -f $LINKS_DIR/*$1*
 }
 
+preflight_simavr_test() {
+    local missing=0
+    for t in atmega328p atmega168p atmega640 atmega1280 atmega2560; do
+        local elf="build-$t/src/asdf-v1.6.6-$t.elf"
+        if [[ ! -f $elf ]]; then
+            echo "ERROR: missing $elf"
+            missing=1
+        fi
+    done
+    if [[ $missing -ne 0 ]]; then
+        echo
+        echo "Run: bash make-targets.sh -a"
+        echo "to build the AVR firmware before running integration tests."
+        return 1
+    fi
+
+    if ! command -v simavr >/dev/null 2>&1; then
+        echo "ERROR: simavr not found on PATH."
+        echo "Install with: sudo apt-get install simavr libsimavr-dev pkg-config"
+        return 1
+    fi
+    if [[ ! -f /usr/include/simavr/sim_avr.h ]]; then
+        echo "ERROR: libsimavr-dev headers not found."
+        echo "Install with: sudo apt-get install libsimavr-dev"
+        return 1
+    fi
+    return 0
+}
+
 build_arch() {
     local target_arch="$1"
-    local hardware_sig="$2"
+    local target_type="$2"
+
+    if [[ $target_arch == simavr_test ]]; then
+        preflight_simavr_test || exit 1
+    fi
 
     cmake -S . -B "build-$target_arch" -G "$GENERATOR" \
         -DCMAKE_INSTALL_PREFIX="." -DARCH="$target_arch" \
-        -DCMAKE_BUILD_TYPE="$BUILD_TYPE"
+        -DCMAKE_BUILD_TYPE="$BUILD_TYPE" || exit 1
+
+    if [[ $target_type == UNIT_TEST || $target_type == INTEGRATION_TEST ]]; then
+        (cd "build-$target_arch" && make && ctest --output-on-failure) || exit 1
+    fi
 
 }
 
@@ -74,7 +112,7 @@ deploy_arch() {
     if [[ -d "build-$target_arch" ]]
     then
         (cd "build-$target_arch" \
-        && make install)
+        && make install) || exit 1
     fi
 }
 
@@ -165,9 +203,11 @@ parse() {
     then
         for (( i=0; i<NUM_VALID_TARGETS; i++ ))
         do
-            CMAKE_TARGETS[i]=$i
+            if [[ ${TARGET_TYPE[$i]} == "EXECUTABLE" ]]; then
+                CMAKE_TARGETS[$NUM_CMAKE_TARGETS]=$i
+                ((NUM_CMAKE_TARGETS++))
+            fi
         done
-        NUM_CMAKE_TARGETS=$NUM_VALID_TARGETS
     fi
 
 }
@@ -206,7 +246,7 @@ main() {
          then
              clean_arch ${VALID_TARGETS[$TARGET]}
          fi
-         build_arch ${VALID_TARGETS[$TARGET]} ${HW_SIGS[$TARGET]}
+         build_arch ${VALID_TARGETS[$TARGET]} ${TARGET_TYPE[$TARGET]}
          if [[ "$DEPLOY" == "yes" ]]
          then
              deploy_arch ${VALID_TARGETS[$TARGET]}
