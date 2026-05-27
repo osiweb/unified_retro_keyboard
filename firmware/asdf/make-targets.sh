@@ -78,11 +78,23 @@ preflight_simavr_test() {
     if ! command -v simavr >/dev/null 2>&1; then
         echo "ERROR: simavr not found on PATH."
         echo "Install with: sudo apt-get install simavr libsimavr-dev pkg-config"
+        echo "          or: sudo port install simavr  (MacPorts)"
+        echo "          or: brew install simavr  (Homebrew)"
         return 1
     fi
-    if [[ ! -f /usr/include/simavr/sim_avr.h ]]; then
-        echo "ERROR: libsimavr-dev headers not found."
+    local header_found=
+    for prefix in /usr/include /usr/local/include /opt/local/include /opt/homebrew/include; do
+        if [[ -f "$prefix/simavr/sim_avr.h" ]]; then
+            header_found="$prefix/simavr/sim_avr.h"
+            break
+        fi
+    done
+    if [[ -z $header_found ]]; then
+        echo "ERROR: libsimavr headers not found."
         echo "Install with: sudo apt-get install libsimavr-dev"
+        echo "          or: sudo port install simavr"
+        echo "          or: brew install simavr"
+        echo "Or build from source and pass -DSIMAVR_ROOT=<prefix> via cmake."
         return 1
     fi
     return 0

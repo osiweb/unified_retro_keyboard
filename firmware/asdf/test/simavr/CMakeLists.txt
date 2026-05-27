@@ -1,5 +1,29 @@
 # Host-built test runner; never compiled with avr-gcc.
 
+# Locate simavr and libelf. Headers live under /usr/include (apt) or
+# /usr/local, /opt/local, /opt/homebrew (manual / MacPorts / Homebrew).
+# Override with -DSIMAVR_ROOT=<prefix> or -DCMAKE_PREFIX_PATH=<prefix>.
+find_path(SIMAVR_INCLUDE_DIR simavr/sim_avr.h
+  HINTS ${SIMAVR_ROOT}/include
+        /usr/local/include /opt/local/include /opt/homebrew/include)
+find_library(SIMAVR_LIBRARY NAMES simavr
+  HINTS ${SIMAVR_ROOT}/lib
+        /usr/local/lib /opt/local/lib /opt/homebrew/lib)
+find_path(ELF_INCLUDE_DIR libelf.h
+  PATH_SUFFIXES libelf
+  HINTS /usr/local/include /opt/local/include /opt/homebrew/include)
+find_library(ELF_LIBRARY NAMES elf
+  HINTS /usr/local/lib /opt/local/lib /opt/homebrew/lib)
+if(NOT SIMAVR_INCLUDE_DIR OR NOT SIMAVR_LIBRARY)
+  message(FATAL_ERROR
+    "simavr not found. Install libsimavr-dev (apt) or build from source and "
+    "pass -DSIMAVR_ROOT=<prefix>.")
+endif()
+if(NOT ELF_LIBRARY)
+  message(FATAL_ERROR
+    "libelf not found. Install libelf-dev (apt) or libelf (MacPorts/Homebrew).")
+endif()
+
 add_executable(asdf_simavr_runner
   asdf_simavr_runner.c
   arch_io/asdf_simavr_io.c
@@ -11,12 +35,14 @@ add_executable(asdf_simavr_runner
   harness/vcd.c
 )
 target_include_directories(asdf_simavr_runner PRIVATE
+  ${SIMAVR_INCLUDE_DIR}
+  ${ELF_INCLUDE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/arch_io
   ${CMAKE_CURRENT_SOURCE_DIR}/harness
   ${CMAKE_CURRENT_SOURCE_DIR}
 )
 target_compile_options(asdf_simavr_runner PRIVATE -Wall -Wextra -Wno-unused-parameter -std=c99)
-target_link_libraries(asdf_simavr_runner PRIVATE simavr)
+target_link_libraries(asdf_simavr_runner PRIVATE ${SIMAVR_LIBRARY} ${ELF_LIBRARY})
 
 enable_testing()
 
