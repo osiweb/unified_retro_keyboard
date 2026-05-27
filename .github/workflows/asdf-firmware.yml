@@ -58,7 +58,7 @@ jobs:
       - name: Install deps
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake build-essential simavr libsimavr-dev pkg-config
+          sudo apt-get install -y cmake build-essential simavr libsimavr-dev libelf-dev pkg-config
       - name: Download ELFs
         uses: actions/download-artifact@v4
         with:
