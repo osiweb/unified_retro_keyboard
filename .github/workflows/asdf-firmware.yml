@@ -39,6 +39,17 @@ jobs:
             firmware/asdf/dist/
           retention-days: 7
 
+  host_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake build-essential
+      - name: Run host unit tests
+        run: cd firmware/asdf && bash ./make-targets.sh -t test
+
   integration_test:
     needs: build_firmware
     runs-on: ubuntu-latest
@@ -63,29 +74,18 @@ jobs:
                 -not -path "./build-$t/*" \
                 -exec mv {} build-$t/src/ \; 2>/dev/null || true
           done
-      - name: Configure
-        run: |
-          cd firmware/asdf
-          mkdir build-simavr-test
-          cd build-simavr-test
-          cmake .. -DARCH=simavr_test
-      - name: Build runner
-        run: cd firmware/asdf/build-simavr-test && make
-      - name: Run integration tests
-        run: |
-          cd firmware/asdf/build-simavr-test
-          ctest --output-on-failure \
-            --exclude-regex 'simavr_atmega640_'
+      - name: Run simavr integration tests
+        run: cd firmware/asdf && bash ./make-targets.sh -t simavr_test
       - name: Upload VCD on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: simavr-vcd-traces
-          path: firmware/asdf/build-simavr-test/test/simavr/*.vcd
+          path: firmware/asdf/build-simavr_test/test/simavr/*.vcd
           retention-days: 14
 
   deploy:
-    needs: integration_test
+    needs: [host_test, integration_test]
     if: github.ref == 'refs/heads/asdf-release'
     runs-on: ubuntu-latest
     container: { image: alpine }
