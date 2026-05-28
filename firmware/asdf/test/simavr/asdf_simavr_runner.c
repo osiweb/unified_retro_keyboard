@@ -218,6 +218,7 @@ int main(int argc, char **argv)
             sim_coord_t mc = identity_mod_coord(id, id->trigger_modifier);
             matrix_press(mc.row, mc.col);
             sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+            cap_clear();
         }
         matrix_press(id->trigger_key.row, id->trigger_key.col);
         sim_wait_ms(cpu, 15, io->cpu_frequency_hz);

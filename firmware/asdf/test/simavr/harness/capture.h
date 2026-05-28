@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#define ASDF_CAP_RING_SIZE 64
+#define ASDF_CAP_RING_SIZE 256
 
 typedef struct {
     uint64_t cycle;

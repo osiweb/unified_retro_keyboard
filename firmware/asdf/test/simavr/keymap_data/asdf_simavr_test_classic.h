@@ -25,9 +25,10 @@ static const sim_event_t classic_events[] = {
 static const sim_keymap_test_t classic_test = {
     .name            = "classic",
     .dip_value       = 0,
-    /* Boot wait must outlast the ID-message print train.
-     * "[Keymap: classic]\n" = 18 chars at 40 ms/char = 720 ms.
-     * Use 1000 ms to settle completely before asserting on output. */
+    /* Boot settle wait.  No identity message is printed at boot (the
+     * ID hook fires only when the user-function key is pressed —
+     * see classic_identity_test below), so this is just enough
+     * time for the scan loop to start running cleanly. */
     .boot_scan_ticks = 1000,
     .modifier_shift  = { .row = 0, .col = 2 },
     .modifier_ctrl   = { .row = 0, .col = 6 },
@@ -51,7 +52,7 @@ static const sim_identity_test_t classic_identity_test = {
     .modifier_ctrl         = { .row = 0, .col = 6 },
     .capture_ticks         = 1000,
     .expected              = "[Keymap: classic]\r\n",
-    .expected_len          = 19,
+    .expected_len          = sizeof("[Keymap: classic]\r\n") - 1,
 };
 
 #endif
