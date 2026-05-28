@@ -189,6 +189,14 @@ int main(int argc, char **argv)
 
         if (sim_wait_ms(cpu, id->boot_scan_ticks, io->cpu_frequency_hz) < 0) {
             fprintf(stderr, "FAIL: cpu halted during identity boot wait\n");
+            vcd_end();
+            return 1;
+        }
+
+        if (id->expected_len <= 0) {
+            fprintf(stderr, "FAIL: %s/%s identity test has no expected bytes (expected_len=%d)\n",
+                    a.target, a.keymap, id->expected_len);
+            vcd_end();
             return 1;
         }
 
@@ -213,6 +221,15 @@ int main(int argc, char **argv)
             if (r.byte != (uint8_t)id->expected[i]) {
                 fprintf(stderr, "FAIL: %s/%s identity byte[%d] = 0x%02x, expected 0x%02x\n",
                         a.target, a.keymap, i, r.byte, (uint8_t)id->expected[i]);
+                /* Drain and dump remaining bytes for diagnostic context. */
+                for (int j = i + 1; j < id->expected_len; j++) {
+                    asdf_cap_record_t rr;
+                    if (!cap_pop(&rr)) break;
+                    fprintf(stderr, "  [%d] cycle=%" PRIu64 " byte=0x%02x %c (expected 0x%02x)\n",
+                            j, rr.cycle, rr.byte,
+                            (rr.byte >= 0x20 && rr.byte < 0x7f) ? (char)rr.byte : '.',
+                            (uint8_t)id->expected[j]);
+                }
                 vcd_end();
                 return 1;
             }
