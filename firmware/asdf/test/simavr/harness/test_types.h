@@ -42,7 +42,7 @@ typedef struct {
     sim_step_type_t type;
     int row;               /* SIM_STEP_KEY: key coord */
     int col;
-    int modifier;          /* SIM_STEP_MOD_*: SIM_MOD_SHIFT | SIM_MOD_CAPS | SIM_MOD_CTRL */
+    int modifier;          /* SIM_STEP_MOD_*: one of SIM_MOD_SHIFT, SIM_MOD_CAPS, SIM_MOD_CTRL */
     uint8_t expected;      /* SIM_STEP_KEY: expected output byte (0 for mod steps) */
 } sim_string_step_t;
 
