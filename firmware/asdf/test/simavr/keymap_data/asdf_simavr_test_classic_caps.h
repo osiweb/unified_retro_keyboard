@@ -47,4 +47,91 @@ static const sim_identity_test_t classic_caps_identity_test = {
     .expected_len          = sizeof("[Keymap: classic]\r\n") - 1,
 };
 
+
+/* Typed-string test for classic_caps (DIP 1).
+ *
+ * Script: <shift>T</shift>HIS IS A <caps>TEST<caps> OF THE CLASSIC CAPS KEYMAP.<ctrl>m</ctrl>
+ * Expected output: THIS IS A TEST OF THE CLASSIC CAPS KEYMAP.\r
+ *
+ * classic_caps maps CLASSIC_CAPS_MAP to both MOD_PLAIN_MAP and MOD_CAPS_MAP, and
+ * CLASSIC_SHIFT_MAP to MOD_SHIFT_MAP.  Both plain and caps states use the same
+ * uppercase matrix, so the caps-toggle taps have no visible effect on letter case.
+ * Every letter keystroke produces uppercase output regardless of the caps state.
+ *
+ * Key coordinates (from classic_caps_matrix / classic_shift_matrix):
+ *   space (1,4)   T (4,4)   H (3,3)   I (4,1)   S (3,7)
+ *   A     (1,6)   E (4,6)   O (5,5)   F (3,5)   C (2,6)
+ *   L     (5,6)   K (3,1)   Y (4,3)   M (2,2)   P (1,1)
+ *   .     (5,7)
+ *
+ * CTRL+m (row 2, col 2 with CTRL) maps to ASCII_CTRL_M = '\r' via
+ * classic_ctrl_matrix[2][2].
+ */
+static const sim_string_step_t classic_caps_string_steps[] = {
+    /* <shift>T */
+    { .type = SIM_STEP_MOD_DOWN, .modifier = SIM_MOD_SHIFT },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 4, .expected = 'T' },
+    { .type = SIM_STEP_MOD_UP,   .modifier = SIM_MOD_SHIFT },
+    /* HIS IS A  */
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 3, .expected = 'H' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 1, .expected = 'I' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 7, .expected = 'S' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 1, .expected = 'I' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 7, .expected = 'S' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 6, .expected = 'A' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    /* <caps>TEST<caps> — both caps states use classic_caps_matrix, so no case change */
+    { .type = SIM_STEP_MOD_TAP,  .modifier = SIM_MOD_CAPS },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 4, .expected = 'T' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 6, .expected = 'E' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 7, .expected = 'S' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 4, .expected = 'T' },
+    { .type = SIM_STEP_MOD_TAP,  .modifier = SIM_MOD_CAPS },
+    /*  OF THE CLASSIC CAPS KEYMAP. */
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 5, .col = 5, .expected = 'O' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 5, .expected = 'F' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 4, .expected = 'T' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 3, .expected = 'H' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 6, .expected = 'E' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 2, .col = 6, .expected = 'C' },
+    { .type = SIM_STEP_KEY,  .row = 5, .col = 6, .expected = 'L' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 6, .expected = 'A' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 7, .expected = 'S' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 7, .expected = 'S' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 1, .expected = 'I' },
+    { .type = SIM_STEP_KEY,  .row = 2, .col = 6, .expected = 'C' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 2, .col = 6, .expected = 'C' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 6, .expected = 'A' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 1, .expected = 'P' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 7, .expected = 'S' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 1, .expected = 'K' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 6, .expected = 'E' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 3, .expected = 'Y' },
+    { .type = SIM_STEP_KEY,  .row = 2, .col = 2, .expected = 'M' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 6, .expected = 'A' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 1, .expected = 'P' },
+    { .type = SIM_STEP_KEY,  .row = 5, .col = 7, .expected = '.' },
+    /* <ctrl>m</ctrl> => '\r' */
+    { .type = SIM_STEP_MOD_DOWN, .modifier = SIM_MOD_CTRL },
+    { .type = SIM_STEP_KEY,  .row = 2, .col = 2, .expected = '\r' },
+    { .type = SIM_STEP_MOD_UP,   .modifier = SIM_MOD_CTRL },
+};
+
+static const sim_string_test_t classic_caps_string_test = {
+    .dip_value             = 1,
+    .boot_scan_ticks       = 1000,
+    .modifier_shift        = { .row = 0, .col = 2 },
+    .modifier_caps_toggle  = { .row = 5, .col = 2 },
+    .modifier_ctrl         = { .row = 0, .col = 6 },
+    .steps                 = classic_caps_string_steps,
+    .num_steps             = sizeof(classic_caps_string_steps) / sizeof(classic_caps_string_steps[0]),
+};
+
 #endif

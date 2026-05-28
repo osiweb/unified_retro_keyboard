@@ -106,6 +106,11 @@ static sim_coord_t identity_mod_coord(const sim_identity_test_t *id, int mod)
 static const sim_string_test_t *pick_string_test(const char *name)
 {
     if (!strcmp(name, "classic"))      return &classic_string_test;
+    if (!strcmp(name, "classic_caps")) return &classic_caps_string_test;
+    if (!strcmp(name, "apple2"))       return &apple2_string_test;
+    if (!strcmp(name, "apple2_caps"))  return &apple2_caps_string_test;
+    if (!strcmp(name, "sol"))          return &sol_string_test;
+    if (!strcmp(name, "ace1000"))      return &ace1000_string_test;
     return 0;
 }
 
