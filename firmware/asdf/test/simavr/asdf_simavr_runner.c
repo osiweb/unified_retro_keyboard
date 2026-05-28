@@ -291,7 +291,7 @@ int main(int argc, char **argv)
                 for (int j = i + 1; j < id->expected_len; j++) {
                     asdf_cap_record_t rr, dd;
                     if (!cap_pop(&rr)) break;
-                    cap_pop(&dd);  /* discard second-edge duplicate */
+                    if (!cap_pop(&dd)) break;  /* ring parity violation - abort dump */
                     fprintf(stderr, "  [%d] cycle=%" PRIu64 " byte=0x%02x %c (expected 0x%02x)\n",
                             j, rr.cycle, rr.byte,
                             (rr.byte >= 0x20 && rr.byte < 0x7f) ? (char)rr.byte : '.',
