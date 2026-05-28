@@ -85,6 +85,13 @@ static const sim_keymap_test_t *pick_keymap(const char *name)
 static const sim_identity_test_t *pick_identity(const char *name)
 {
     if (!strcmp(name, "classic"))      return &classic_identity_test;
+    if (!strcmp(name, "classic_caps")) return &classic_caps_identity_test;
+    if (!strcmp(name, "apple2"))       return &apple2_identity_test;
+    if (!strcmp(name, "apple2_caps"))  return &apple2_caps_identity_test;
+    /* sol and ace1000: ASDF_HOOK_USER_10 is bound to an id-message function in
+     * each keymap's setup, but neither keymap's ctrl matrix contains ACTION_FN_10,
+     * so there is no reachable key sequence that triggers the hook.  Identity
+     * tests for these two keymaps are omitted until a trigger key is added. */
     return 0;
 }
 

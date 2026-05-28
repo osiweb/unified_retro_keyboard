@@ -29,4 +29,24 @@ static const sim_keymap_test_t apple2_test = {
     .num_events      = sizeof(apple2_events) / sizeof(apple2_events[0]),
 };
 
+/* The apple2 keymap ID hook (APPLE2_ID_MESSAGE = ASDF_HOOK_USER_10) is fired
+ * by ACTION_FN_10, which lives in apple_ctrl_matrix[6][5].  So pressing
+ * CTRL + key(6,5) triggers apple2_id_message(), which prints
+ * "[Keymap: Apple 2 (u/l case)]" with no trailing newline.
+ * No \n means no \r\n expansion; the emitted sequence is 28 bytes.
+ * The apple2 keymap activates capslock on boot so the caps toggle key is
+ * ACTION_CAPS at apple_plain_matrix[0][0]. */
+static const sim_identity_test_t apple2_identity_test = {
+    .dip_value             = 2,
+    .boot_scan_ticks       = 200,
+    .trigger_key           = { .row = 6, .col = 5 },
+    .trigger_modifier      = SIM_MOD_CTRL,
+    .modifier_shift        = { .row = 0, .col = 2 },
+    .modifier_caps_toggle  = { .row = 0, .col = 0 },
+    .modifier_ctrl         = { .row = 0, .col = 6 },
+    .capture_ticks         = 1500,
+    .expected              = "[Keymap: Apple 2 (u/l case)]",
+    .expected_len          = sizeof("[Keymap: Apple 2 (u/l case)]") - 1,
+};
+
 #endif

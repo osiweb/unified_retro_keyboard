@@ -33,4 +33,14 @@ static const sim_keymap_test_t sol_test = {
     .num_events      = sizeof(sol_events) / sizeof(sol_events[0]),
 };
 
+/* SOL identity test: not provided.
+ *
+ * sol_id_message() is bound to SOL_ID_MESSAGE_HOOK (ASDF_HOOK_USER_10) in
+ * setup_sol_keymap(), so the hook IS assigned.  However, neither sol_ctrl_map
+ * (in asdf_keymap_sol.c) nor ASDF_SOL_CTRL_MAP (in asdf_keymap_defs_sol.h)
+ * contains ACTION_FN_10, which is the only way to fire ASDF_HOOK_USER_10 via
+ * a keypress.  There is therefore no reachable key sequence that triggers the
+ * ID hook, and no identity test is possible until a trigger key is added to
+ * the ctrl matrix. */
+
 #endif

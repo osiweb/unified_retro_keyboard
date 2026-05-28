@@ -30,4 +30,14 @@ static const sim_keymap_test_t ace1000_test = {
     .num_events      = sizeof(ace1000_events) / sizeof(ace1000_events[0]),
 };
 
+/* ACE1000 identity test: not provided.
+ *
+ * ace1000_id_message() is bound to ACE1000_ID_MESSAGE_HOOK (ASDF_HOOK_USER_10)
+ * in setup_ace1000_keymap(), so the hook IS assigned.  However,
+ * ace1000_ctrl_matrix (in asdf_keymap_ace1000_add_map.c) contains no
+ * ACTION_FN_10.  All ctrl-matrix entries are concrete ASCII control codes or
+ * ACTION_SHIFT; none call the user-function dispatch path.  There is therefore
+ * no reachable key sequence that triggers the ID hook, and no identity test is
+ * possible until a trigger key is added to the ctrl matrix. */
+
 #endif
