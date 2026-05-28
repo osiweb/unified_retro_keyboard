@@ -103,6 +103,23 @@ static sim_coord_t identity_mod_coord(const sim_identity_test_t *id, int mod)
     }
 }
 
+static const sim_string_test_t *pick_string_test(const char *name)
+{
+    (void)name;
+    /* Populated per-keymap in subsequent tasks. */
+    return 0;
+}
+
+static sim_coord_t string_mod_coord(const sim_string_test_t *st, int mod)
+{
+    switch (mod) {
+        case SIM_MOD_SHIFT: return st->modifier_shift;
+        case SIM_MOD_CAPS:  return st->modifier_caps_toggle;
+        case SIM_MOD_CTRL:  return st->modifier_ctrl;
+        default: { sim_coord_t z = { -1, -1 }; return z; }
+    }
+}
+
 int main(int argc, char **argv)
 {
     args_t a = parse_args(argc, argv);
@@ -288,8 +305,69 @@ int main(int argc, char **argv)
     }
 
     if (!strcmp(a.mode, "string")) {
-        fprintf(stderr, "FAIL: string mode not yet implemented for keymap %s\n", a.keymap);
-        return 1;
+        const sim_string_test_t *st = pick_string_test(a.keymap);
+        if (!st) {
+            fprintf(stderr, "FAIL: no string test data for keymap %s\n", a.keymap);
+            return 1;
+        }
+
+        set_dip(st->dip_value);
+
+        if (sim_wait_ms(cpu, st->boot_scan_ticks, io->cpu_frequency_hz) < 0) {
+            fprintf(stderr, "FAIL: cpu halted during string boot wait\n");
+            vcd_end();
+            return 1;
+        }
+        cap_clear();   /* drain boot output */
+
+        for (int i = 0; i < st->num_steps; i++) {
+            const sim_string_step_t *step = &st->steps[i];
+            char what[64];
+
+            switch (step->type) {
+                case SIM_STEP_KEY: {
+                    snprintf(what, sizeof what, "%s/step[%d]@(%d,%d)",
+                             a.keymap, i, step->row, step->col);
+                    matrix_press(step->row, step->col);
+                    if (sim_expect_byte_within(cpu, step->expected, 400000, what) != 0) {
+                        vcd_end();
+                        return 1;
+                    }
+                    matrix_release(step->row, step->col);
+                    sim_wait_ms(cpu, 50, io->cpu_frequency_hz);
+                    cap_clear();
+                    break;
+                }
+                case SIM_STEP_MOD_DOWN: {
+                    sim_coord_t c = string_mod_coord(st, step->modifier);
+                    matrix_press(c.row, c.col);
+                    sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+                    cap_clear();
+                    break;
+                }
+                case SIM_STEP_MOD_UP: {
+                    sim_coord_t c = string_mod_coord(st, step->modifier);
+                    matrix_release(c.row, c.col);
+                    sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+                    cap_clear();
+                    break;
+                }
+                case SIM_STEP_MOD_TAP: {
+                    sim_coord_t c = string_mod_coord(st, step->modifier);
+                    matrix_press(c.row, c.col);
+                    sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+                    matrix_release(c.row, c.col);
+                    sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+                    cap_clear();
+                    break;
+                }
+            }
+        }
+
+        vcd_end();
+        printf("OK: %s/%s passed %d string steps at cycle %" PRIu64 "\n",
+               a.target, a.keymap, st->num_steps, (uint64_t)cpu->cycle);
+        return 0;
     }
 
     fprintf(stderr, "FAIL: unreachable\n");
