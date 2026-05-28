@@ -55,6 +55,21 @@ Runner flags:
 - `--gdb <port>` — start the simavr GDB stub on the given port and wait
   for a debugger attach. Then connect with:
   `avr-gdb build-atmega2560/src/asdf-v1.7.0-atmega2560.elf -ex 'target remote :1234'`
+- `--mode events|identity|string` — pick which test mode the runner
+  drives. Default `events` preserves backwards-compatible behavior.
+  See Test modes above.
+
+## Test modes
+
+Each (target, keymap) pair runs three ctest cases:
+
+| ctest case suffix | runner `--mode` | what it asserts |
+|---|---|---|
+| `simavr_<tgt>_<km>` | `events` (default) | A small set of atomic keypresses with optional shift/ctrl modifier; one expected ASCII byte per press. |
+| `simavr_<tgt>_<km>_identity` | `identity` | Presses the keymap's ID-message trigger key (typically CTRL+0, which fires ACTION_FN_10 / ASDF_HOOK_USER_10) and asserts the exact byte sequence printed in response. |
+| `simavr_<tgt>_<km>_string` | `string` | A typed sentence (`<shift>t</shift>his is a <caps>test<caps> of the <mapname> keymap.<ctrl>m</ctrl>`) that exercises shift held, shift released mid-stream, a sticky caps-toggle, and ctrl held in one capture. |
+
+The runner takes `--mode events|identity|string`; default is `events`.
 
 ## Add a new keymap test
 
@@ -98,6 +113,38 @@ Runner flags:
    inspect in gtkwave. The most common causes are wrong matrix
    coordinates (re-read the keymap source), a wrong DIP value (check
    `keymap_list.cmake`), or a boot-CAPS mismatch in the expected bytes.
+
+10. Author the **identity test** for the new keymap. Find the user-function
+    key bound to the ID hook in `setup_<new>_keymap()` (look for
+    `asdf_hook_assign(ASDF_HOOK_USER_*, ...)`), locate that ACTION_FN_xx
+    coord in one of the keymap's matrices (usually the ctrl matrix), and
+    add a `sim_identity_test_t` with:
+    - `trigger_key` = the (row, col) of that action
+    - `trigger_modifier` = the modifier that combines with the trigger key
+      (usually `SIM_MOD_CTRL`)
+    - `modifier_*` coords = same as the events-mode test
+    - `expected` and `expected_len` = the literal bytes the firmware prints
+      (use `sizeof("...") - 1` for the length to keep them in sync)
+    - `boot_scan_ticks` = 200 (boot settle), `capture_ticks` = 1500 (allow
+      time for the print train)
+
+    Wire `<new>_identity_test` into `pick_identity` in
+    `asdf_simavr_runner.c`.
+
+    To discover the actual ID bytes, set `expected = ""` and
+    `expected_len = 0` initially, run the runner with
+    `--mode identity --verbose`, and copy the captured bytes from the
+    length-mismatch failure output into the real `expected`. Remember:
+    `asdf_putc` expands every `\n` to `\r\n`.
+
+11. Author the **string test** for the new keymap. Locate the caps-toggle
+    coord and every key coord used in the typed sentence, compute the
+    expected byte per step based on the keymap's plain/shift/caps matrix
+    semantics, and wire `<new>_string_test` into `pick_string_test`. The
+    shared sentence is
+    `<shift>t</shift>his is a <caps>test<caps> of the <mapname> keymap.<ctrl>m</ctrl>`.
+    The `<mapname>` expansion is per-keymap-author's choice (literal name,
+    spaced, or any identifying string).
 
 ## Architecture
 
