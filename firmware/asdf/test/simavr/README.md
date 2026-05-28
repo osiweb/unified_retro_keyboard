@@ -57,7 +57,7 @@ Runner flags:
   `avr-gdb build-atmega2560/src/asdf-v1.7.0-atmega2560.elf -ex 'target remote :1234'`
 - `--mode events|identity|string` — pick which test mode the runner
   drives. Default `events` preserves backwards-compatible behavior.
-  See Test modes above.
+  See Test modes below.
 
 ## Test modes
 
