@@ -84,9 +84,18 @@ static const sim_keymap_test_t *pick_keymap(const char *name)
 
 static const sim_identity_test_t *pick_identity(const char *name)
 {
-    (void)name;
-    /* Populated per-keymap in subsequent tasks. */
+    if (!strcmp(name, "classic"))      return &classic_identity_test;
     return 0;
+}
+
+static sim_coord_t identity_mod_coord(const sim_identity_test_t *id, int mod)
+{
+    switch (mod) {
+        case SIM_MOD_SHIFT: return id->modifier_shift;
+        case SIM_MOD_CAPS:  return id->modifier_caps_toggle;
+        case SIM_MOD_CTRL:  return id->modifier_ctrl;
+        default: { sim_coord_t z = { -1, -1 }; return z; }
+    }
 }
 
 int main(int argc, char **argv)
@@ -200,10 +209,36 @@ int main(int argc, char **argv)
             return 1;
         }
 
+        /* Drain any residual boot output before triggering the ID hook. */
+        cap_clear();
+
+        /* Press modifier (if any), then press the trigger key, release both,
+         * then wait for the ID-message print train to complete. */
+        if (id->trigger_modifier != SIM_MOD_NONE) {
+            sim_coord_t mc = identity_mod_coord(id, id->trigger_modifier);
+            matrix_press(mc.row, mc.col);
+            sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+        }
+        matrix_press(id->trigger_key.row, id->trigger_key.col);
+        sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+        matrix_release(id->trigger_key.row, id->trigger_key.col);
+        sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+        if (id->trigger_modifier != SIM_MOD_NONE) {
+            sim_coord_t mc = identity_mod_coord(id, id->trigger_modifier);
+            matrix_release(mc.row, mc.col);
+            sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+        }
+        sim_wait_ms(cpu, id->capture_ticks, io->cpu_frequency_hz);
+
+        /* Each output byte is captured on both strobe edges (rising and
+         * falling), matching the behaviour in events-mode where cap_clear()
+         * discards the second-edge duplicate after each event.  So the raw
+         * count is 2× the number of unique bytes emitted. */
         size_t captured = cap_count();
-        if ((int)captured != id->expected_len) {
-            fprintf(stderr, "FAIL: %s/%s identity length mismatch: captured %zu, expected %d\n",
-                    a.target, a.keymap, captured, id->expected_len);
+        size_t unique = captured / 2;
+        if ((int)unique != id->expected_len) {
+            fprintf(stderr, "FAIL: %s/%s identity length mismatch: captured %zu (%zu unique), expected %d\n",
+                    a.target, a.keymap, captured, unique, id->expected_len);
             for (size_t i = 0; i < captured; i++) {
                 asdf_cap_record_t r;
                 cap_pop(&r);
@@ -217,14 +252,19 @@ int main(int argc, char **argv)
 
         for (int i = 0; i < id->expected_len; i++) {
             asdf_cap_record_t r;
-            cap_pop(&r);
+            cap_pop(&r);          /* first edge: the actual data */
+            {
+                asdf_cap_record_t dummy;
+                cap_pop(&dummy);  /* second edge: discard duplicate */
+            }
             if (r.byte != (uint8_t)id->expected[i]) {
                 fprintf(stderr, "FAIL: %s/%s identity byte[%d] = 0x%02x, expected 0x%02x\n",
                         a.target, a.keymap, i, r.byte, (uint8_t)id->expected[i]);
                 /* Drain and dump remaining bytes for diagnostic context. */
                 for (int j = i + 1; j < id->expected_len; j++) {
-                    asdf_cap_record_t rr;
+                    asdf_cap_record_t rr, dd;
                     if (!cap_pop(&rr)) break;
+                    cap_pop(&dd);  /* discard second-edge duplicate */
                     fprintf(stderr, "  [%d] cycle=%" PRIu64 " byte=0x%02x %c (expected 0x%02x)\n",
                             j, rr.cycle, rr.byte,
                             (rr.byte >= 0x20 && rr.byte < 0x7f) ? (char)rr.byte : '.',

@@ -58,8 +58,14 @@ typedef struct {
 
 typedef struct {
     uint8_t             dip_value;
-    uint32_t            boot_scan_ticks;   /* capture window */
-    const char         *expected;          /* exact bytes the firmware should print */
+    uint32_t            boot_scan_ticks;       /* settle wait before pressing trigger */
+    sim_coord_t         trigger_key;           /* matrix coord of the key that fires the ID hook */
+    int                 trigger_modifier;      /* SIM_MOD_NONE, SIM_MOD_SHIFT, SIM_MOD_CAPS, or SIM_MOD_CTRL */
+    sim_coord_t         modifier_shift;        /* used when trigger_modifier == SIM_MOD_SHIFT */
+    sim_coord_t         modifier_caps_toggle;  /* used when trigger_modifier == SIM_MOD_CAPS */
+    sim_coord_t         modifier_ctrl;         /* used when trigger_modifier == SIM_MOD_CTRL */
+    uint32_t            capture_ticks;         /* ms to wait after release for ID-message print train */
+    const char         *expected;             /* exact bytes the firmware should print */
     int                 expected_len;
 } sim_identity_test_t;
 

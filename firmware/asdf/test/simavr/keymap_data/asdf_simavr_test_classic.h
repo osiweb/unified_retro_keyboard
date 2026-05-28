@@ -35,4 +35,23 @@ static const sim_keymap_test_t classic_test = {
     .num_events      = sizeof(classic_events) / sizeof(classic_events[0]),
 };
 
+/* The classic keymap ID hook (ASDF_HOOK_USER_10) is fired by ACTION_FN_10,
+ * which lives in classic_ctrl_matrix[6][5].  So pressing CTRL + key(6,5)
+ * triggers the hook, which prints "[Keymap: classic]\n" to the output ring.
+ * asdf_putc() expands \n to \r\n, so the actual emitted sequence is 19 bytes.
+ * The print train is ~40 ms/char × 19 chars ≈ 760 ms, so 1000 ms capture
+ * window after release leaves margin. */
+static const sim_identity_test_t classic_identity_test = {
+    .dip_value             = 0,
+    .boot_scan_ticks       = 200,
+    .trigger_key           = { .row = 6, .col = 5 },
+    .trigger_modifier      = SIM_MOD_CTRL,
+    .modifier_shift        = { .row = 0, .col = 2 },
+    .modifier_caps_toggle  = { .row = 5, .col = 2 },
+    .modifier_ctrl         = { .row = 0, .col = 6 },
+    .capture_ticks         = 1000,
+    .expected              = "[Keymap: classic]\r\n",
+    .expected_len          = 19,
+};
+
 #endif
