@@ -126,9 +126,9 @@ jobs:
         run: apk add bash git rsync zip
       - uses: actions/checkout@v4
       - run: apk add python3 py3-pip
-      - run: pip install -U sphinx sphinx-rtd-theme sphinx-autodoc-typehints
-      - run: pip install -U sphinxcontrib-napoleon
-      - run: pip install -U toml
+      - run: pip install --break-system-packages -U sphinx sphinx-rtd-theme sphinx-autodoc-typehints
+      - run: pip install --break-system-packages -U sphinxcontrib-napoleon
+      - run: pip install --break-system-packages -U toml
       - name: Download docs/dist
         uses: actions/download-artifact@v4
         with:
