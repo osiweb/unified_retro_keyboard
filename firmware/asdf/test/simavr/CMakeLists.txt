@@ -58,17 +58,26 @@ add_test(NAME unit_capture COMMAND asdf_sim_test_capture)
 
 set(SIMAVR_TARGETS atmega328p atmega168p atmega1280 atmega2560)
 set(SIMAVR_KEYMAPS classic classic_caps apple2 apple2_caps sol ace1000)
+set(SIMAVR_MODES   events identity string)
 
 foreach(tgt ${SIMAVR_TARGETS})
   foreach(km ${SIMAVR_KEYMAPS})
-    set(elf_path ${CMAKE_SOURCE_DIR}/build-${tgt}/src/asdf-v${PROJECT_VERSION}-${tgt}.elf)
-    add_test(
-      NAME simavr_${tgt}_${km}
-      COMMAND asdf_simavr_runner
-              --target ${tgt} --keymap ${km}
-              --elf ${elf_path}
-              --vcd ${CMAKE_CURRENT_BINARY_DIR}/simavr_${tgt}_${km}.vcd
-    )
-    set_tests_properties(simavr_${tgt}_${km} PROPERTIES TIMEOUT 15)
+    foreach(mode ${SIMAVR_MODES})
+      set(elf_path ${CMAKE_SOURCE_DIR}/build-${tgt}/src/asdf-v${PROJECT_VERSION}-${tgt}.elf)
+      if(mode STREQUAL events)
+        set(suffix "")
+      else()
+        set(suffix "_${mode}")
+      endif()
+      add_test(
+        NAME simavr_${tgt}_${km}${suffix}
+        COMMAND asdf_simavr_runner
+                --target ${tgt} --keymap ${km}
+                --mode ${mode}
+                --elf ${elf_path}
+                --vcd ${CMAKE_CURRENT_BINARY_DIR}/simavr_${tgt}_${km}${suffix}.vcd
+      )
+      set_tests_properties(simavr_${tgt}_${km}${suffix} PROPERTIES TIMEOUT 30)
+    endforeach()
   endforeach()
 endforeach()
