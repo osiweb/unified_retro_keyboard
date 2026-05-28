@@ -82,6 +82,13 @@ static const sim_keymap_test_t *pick_keymap(const char *name)
     return 0;
 }
 
+static const sim_identity_test_t *pick_identity(const char *name)
+{
+    (void)name;
+    /* Populated per-keymap in subsequent tasks. */
+    return 0;
+}
+
 int main(int argc, char **argv)
 {
     args_t a = parse_args(argc, argv);
@@ -172,8 +179,49 @@ int main(int argc, char **argv)
     }
 
     if (!strcmp(a.mode, "identity")) {
-        fprintf(stderr, "FAIL: identity mode not yet implemented for keymap %s\n", a.keymap);
-        return 1;
+        const sim_identity_test_t *id = pick_identity(a.keymap);
+        if (!id) {
+            fprintf(stderr, "FAIL: no identity test data for keymap %s\n", a.keymap);
+            return 1;
+        }
+
+        set_dip(id->dip_value);
+
+        if (sim_wait_ms(cpu, id->boot_scan_ticks, io->cpu_frequency_hz) < 0) {
+            fprintf(stderr, "FAIL: cpu halted during identity boot wait\n");
+            return 1;
+        }
+
+        size_t captured = cap_count();
+        if ((int)captured != id->expected_len) {
+            fprintf(stderr, "FAIL: %s/%s identity length mismatch: captured %zu, expected %d\n",
+                    a.target, a.keymap, captured, id->expected_len);
+            for (size_t i = 0; i < captured; i++) {
+                asdf_cap_record_t r;
+                cap_pop(&r);
+                fprintf(stderr, "  [%zu] cycle=%" PRIu64 " byte=0x%02x %c\n",
+                        i, r.cycle, r.byte,
+                        (r.byte >= 0x20 && r.byte < 0x7f) ? (char)r.byte : '.');
+            }
+            vcd_end();
+            return 1;
+        }
+
+        for (int i = 0; i < id->expected_len; i++) {
+            asdf_cap_record_t r;
+            cap_pop(&r);
+            if (r.byte != (uint8_t)id->expected[i]) {
+                fprintf(stderr, "FAIL: %s/%s identity byte[%d] = 0x%02x, expected 0x%02x\n",
+                        a.target, a.keymap, i, r.byte, (uint8_t)id->expected[i]);
+                vcd_end();
+                return 1;
+            }
+        }
+
+        vcd_end();
+        printf("OK: %s/%s identity %d bytes at cycle %" PRIu64 "\n",
+               a.target, a.keymap, id->expected_len, (uint64_t)cpu->cycle);
+        return 0;
     }
 
     if (!strcmp(a.mode, "string")) {
