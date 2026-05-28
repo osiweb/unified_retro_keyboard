@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "$(dirname "${BASH_SOURCE[0]}")/version.sh"
+
 GENERATOR="Unix Makefiles"
 NUM_VALID_TARGETS=0
 BUILD_TYPE=RELEASE
@@ -61,8 +63,10 @@ clean_arch() {
 
 preflight_simavr_test() {
     local missing=0
+    local ver
+    ver=$(asdf_version)
     for t in atmega328p atmega168p atmega640 atmega1280 atmega2560; do
-        local elf="build-$t/src/asdf-v1.6.6-$t.elf"
+        local elf="build-$t/src/asdf-v${ver}-$t.elf"
         if [[ ! -f $elf ]]; then
             echo "ERROR: missing $elf"
             missing=1

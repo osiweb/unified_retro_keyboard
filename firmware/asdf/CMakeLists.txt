@@ -62,7 +62,7 @@ elseif(ARCH MATCHES atmega640 OR ARCH MATCHES atmega1280 OR ARCH MATCHES atmega2
 endif()
 
 project("asdf"
-  VERSION 1.6.6
+  VERSION 1.7.0
   DESCRIPTION "A customizable keyboard matrix controller for retrocomputers"
   LANGUAGES C)
 

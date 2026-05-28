@@ -6,3 +6,5 @@ Unified Retro Keyboard firmware (ASDF) rev @CMAKE_PROJECT_VERSION@
    :glob:
 
    toc_*
+
+.. include:: ../../RELEASE_NOTES.rst
