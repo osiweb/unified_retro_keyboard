@@ -101,12 +101,12 @@ int main(int argc, char **argv)
             fprintf(stderr, "WARN: VCD recording disabled\n");
     }
 
-    const sim_keymap_test_t *km = pick_keymap(a.keymap);
-    if (!km) { fprintf(stderr, "FAIL: no test data for keymap %s\n", a.keymap); return 1; }
-
-    set_dip(km->dip_value);
-
     if (!strcmp(a.mode, "events")) {
+        const sim_keymap_test_t *km = pick_keymap(a.keymap);
+        if (!km) { fprintf(stderr, "FAIL: no test data for keymap %s\n", a.keymap); return 1; }
+
+        set_dip(km->dip_value);
+
         /* Let the firmware boot and run a few scan cycles to settle. */
         if (sim_wait_ms(cpu, km->boot_scan_ticks, io->cpu_frequency_hz) < 0) {
             fprintf(stderr, "FAIL: cpu halted during boot\n");
