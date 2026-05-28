@@ -31,7 +31,8 @@ static void usage(const char *argv0)
         "  --boot-only boot and run a brief idle period; skip keypress events\n"
         "  --verbose   log every captured output byte\n"
         "  --vcd PATH  dump VCD of watched pins to PATH\n"
-        "  --gdb PORT  start simavr gdb stub on PORT and wait for attach\n",
+        "  --gdb PORT  start simavr gdb stub on PORT and wait for attach\n"
+        "  --mode M    events (default) | identity | string\n",
         argv0);
     exit(2);
 }
@@ -41,6 +42,7 @@ typedef struct {
     const char *keymap;
     const char *elf_path;
     const char *vcd_path;
+    const char *mode;
     int gdb_port;
     int verbose;
     int boot_only;
@@ -55,11 +57,17 @@ static args_t parse_args(int argc, char **argv)
         else if (!strcmp(argv[i], "--elf") && i + 1 < argc) a.elf_path = argv[++i];
         else if (!strcmp(argv[i], "--vcd") && i + 1 < argc) a.vcd_path = argv[++i];
         else if (!strcmp(argv[i], "--gdb") && i + 1 < argc) a.gdb_port = atoi(argv[++i]);
+        else if (!strcmp(argv[i], "--mode") && i + 1 < argc) a.mode = argv[++i];
         else if (!strcmp(argv[i], "--verbose")) a.verbose = 1;
         else if (!strcmp(argv[i], "--boot-only")) a.boot_only = 1;
         else { fprintf(stderr, "unknown arg: %s\n", argv[i]); usage(argv[0]); }
     }
     if (!a.target || !a.keymap || !a.elf_path) usage(argv[0]);
+    if (!a.mode) a.mode = "events";
+    if (strcmp(a.mode, "events") && strcmp(a.mode, "identity") && strcmp(a.mode, "string")) {
+        fprintf(stderr, "unknown mode: %s\n", a.mode);
+        usage(argv[0]);
+    }
     return a;
 }
 
@@ -98,66 +106,81 @@ int main(int argc, char **argv)
 
     set_dip(km->dip_value);
 
-    /* Let the firmware boot and run a few scan cycles to settle. */
-    if (sim_wait_ms(cpu, km->boot_scan_ticks, io->cpu_frequency_hz) < 0) {
-        fprintf(stderr, "FAIL: cpu halted during boot\n");
-        return 1;
-    }
-
-    /* Boot-only mode: confirm the CPU survived boot, then exit.
-     * Run an extra 200 ms of idle time to confirm the scan loop is alive. */
-    if (a.boot_only) {
-        if (sim_wait_ms(cpu, 200, io->cpu_frequency_hz) < 0) {
-            fprintf(stderr, "FAIL: %s/%s cpu halted after boot\n", a.target, a.keymap);
-            vcd_end();
+    if (!strcmp(a.mode, "events")) {
+        /* Let the firmware boot and run a few scan cycles to settle. */
+        if (sim_wait_ms(cpu, km->boot_scan_ticks, io->cpu_frequency_hz) < 0) {
+            fprintf(stderr, "FAIL: cpu halted during boot\n");
             return 1;
         }
+
+        /* Boot-only mode: confirm the CPU survived boot, then exit.
+         * Run an extra 200 ms of idle time to confirm the scan loop is alive. */
+        if (a.boot_only) {
+            if (sim_wait_ms(cpu, 200, io->cpu_frequency_hz) < 0) {
+                fprintf(stderr, "FAIL: %s/%s cpu halted after boot\n", a.target, a.keymap);
+                vcd_end();
+                return 1;
+            }
+            vcd_end();
+            printf("OK: %s/%s boot-only smoke passed at cycle %" PRIu64 "\n",
+                   a.target, a.keymap, (uint64_t)cpu->cycle);
+            return 0;
+        }
+
+        /* Drain anything emitted during boot. */
+        cap_clear();
+
+        for (int i = 0; i < km->num_events; i++) {
+            const sim_event_t *e = &km->events[i];
+            char what[64];
+            snprintf(what, sizeof what, "%s/event[%d]@(%d,%d)", a.keymap, i, e->row, e->col);
+
+            if (e->with_modifier == SIM_MOD_SHIFT) {
+                matrix_press(km->modifier_shift.row, km->modifier_shift.col);
+                /* Let the modifier key debounce fully before pressing the main key.
+                 * 15 ms = 1.5× the 10 ms debounce period covers worst-case scan
+                 * alignment.  SHIFT must be stable before the key lookup runs. */
+                sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+                cap_clear();
+            } else if (e->with_modifier == SIM_MOD_CTRL) {
+                matrix_press(km->modifier_ctrl.row, km->modifier_ctrl.col);
+                sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
+                cap_clear();
+            }
+
+            matrix_press(e->row, e->col);
+            if (sim_expect_byte_within(cpu, e->expected, e->hold_cycles, what) != 0) {
+                vcd_end();
+                return 1;
+            }
+            matrix_release(e->row, e->col);
+
+            if (e->with_modifier == SIM_MOD_SHIFT)
+                matrix_release(km->modifier_shift.row, km->modifier_shift.col);
+            else if (e->with_modifier == SIM_MOD_CTRL)
+                matrix_release(km->modifier_ctrl.row, km->modifier_ctrl.col);
+
+            /* Wait for debounce + repeat-delay guard before the next event. */
+            sim_wait_ms(cpu, 50, io->cpu_frequency_hz);
+            cap_clear();
+        }
+
         vcd_end();
-        printf("OK: %s/%s boot-only smoke passed at cycle %" PRIu64 "\n",
-               a.target, a.keymap, (uint64_t)cpu->cycle);
+        printf("OK: %s/%s passed %d events at cycle %" PRIu64 "\n",
+               a.target, a.keymap, km->num_events, (uint64_t)cpu->cycle);
         return 0;
     }
 
-    /* Drain anything emitted during boot. */
-    cap_clear();
-
-    for (int i = 0; i < km->num_events; i++) {
-        const sim_event_t *e = &km->events[i];
-        char what[64];
-        snprintf(what, sizeof what, "%s/event[%d]@(%d,%d)", a.keymap, i, e->row, e->col);
-
-        if (e->with_modifier == SIM_MOD_SHIFT) {
-            matrix_press(km->modifier_shift.row, km->modifier_shift.col);
-            /* Let the modifier key debounce fully before pressing the main key.
-             * 15 ms = 1.5× the 10 ms debounce period covers worst-case scan
-             * alignment.  SHIFT must be stable before the key lookup runs. */
-            sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
-            cap_clear();
-        } else if (e->with_modifier == SIM_MOD_CTRL) {
-            matrix_press(km->modifier_ctrl.row, km->modifier_ctrl.col);
-            sim_wait_ms(cpu, 15, io->cpu_frequency_hz);
-            cap_clear();
-        }
-
-        matrix_press(e->row, e->col);
-        if (sim_expect_byte_within(cpu, e->expected, e->hold_cycles, what) != 0) {
-            vcd_end();
-            return 1;
-        }
-        matrix_release(e->row, e->col);
-
-        if (e->with_modifier == SIM_MOD_SHIFT)
-            matrix_release(km->modifier_shift.row, km->modifier_shift.col);
-        else if (e->with_modifier == SIM_MOD_CTRL)
-            matrix_release(km->modifier_ctrl.row, km->modifier_ctrl.col);
-
-        /* Wait for debounce + repeat-delay guard before the next event. */
-        sim_wait_ms(cpu, 50, io->cpu_frequency_hz);
-        cap_clear();
+    if (!strcmp(a.mode, "identity")) {
+        fprintf(stderr, "FAIL: identity mode not yet implemented for keymap %s\n", a.keymap);
+        return 1;
     }
 
-    vcd_end();
-    printf("OK: %s/%s passed %d events at cycle %" PRIu64 "\n",
-           a.target, a.keymap, km->num_events, (uint64_t)cpu->cycle);
-    return 0;
+    if (!strcmp(a.mode, "string")) {
+        fprintf(stderr, "FAIL: string mode not yet implemented for keymap %s\n", a.keymap);
+        return 1;
+    }
+
+    fprintf(stderr, "FAIL: unreachable\n");
+    return 1;
 }
