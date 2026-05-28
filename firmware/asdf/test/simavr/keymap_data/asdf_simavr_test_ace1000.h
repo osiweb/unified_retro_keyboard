@@ -30,14 +30,27 @@ static const sim_keymap_test_t ace1000_test = {
     .num_events      = sizeof(ace1000_events) / sizeof(ace1000_events[0]),
 };
 
-/* ACE1000 identity test: not provided.
+/* ACE1000 identity test.
  *
- * ace1000_id_message() is bound to ACE1000_ID_MESSAGE_HOOK (ASDF_HOOK_USER_10)
- * in setup_ace1000_keymap(), so the hook IS assigned.  However,
- * ace1000_ctrl_matrix (in asdf_keymap_ace1000_add_map.c) contains no
- * ACTION_FN_10.  All ctrl-matrix entries are concrete ASCII control codes or
- * ACTION_SHIFT; none call the user-function dispatch path.  There is therefore
- * no reachable key sequence that triggers the ID hook, and no identity test is
- * possible until a trigger key is added to the ctrl matrix. */
+ * ace1000_id_message() prints "[Keymap: ace1000]\n"; asdf_putc() expands \n
+ * to \r\n, so the emitted sequence is 20 bytes.
+ * ACTION_FN_10 is at ace1000_ctrl_matrix[6][5], so CTRL + key(6,5) triggers
+ * the hook.
+ * ACE1000 activates capslock on boot.
+ * ace1000_plain_matrix[0][5] = ACTION_CAPS (caps toggle).
+ * Modifier coords from ace1000_test above.
+ */
+static const sim_identity_test_t ace1000_identity_test = {
+    .dip_value             = 5,
+    .boot_scan_ticks       = 200,
+    .trigger_key           = { .row = 6, .col = 5 },
+    .trigger_modifier      = SIM_MOD_CTRL,
+    .modifier_shift        = { .row = 0, .col = 6 },
+    .modifier_caps_toggle  = { .row = 0, .col = 5 },
+    .modifier_ctrl         = { .row = 0, .col = 3 },
+    .capture_ticks         = 1500,
+    .expected              = "[Keymap: ace1000]\r\n",
+    .expected_len          = sizeof("[Keymap: ace1000]\r\n") - 1,
+};
 
 #endif

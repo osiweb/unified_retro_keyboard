@@ -33,14 +33,27 @@ static const sim_keymap_test_t sol_test = {
     .num_events      = sizeof(sol_events) / sizeof(sol_events[0]),
 };
 
-/* SOL identity test: not provided.
+/* SOL identity test.
  *
- * sol_id_message() is bound to SOL_ID_MESSAGE_HOOK (ASDF_HOOK_USER_10) in
- * setup_sol_keymap(), so the hook IS assigned.  However, neither sol_ctrl_map
- * (in asdf_keymap_sol.c) nor ASDF_SOL_CTRL_MAP (in asdf_keymap_defs_sol.h)
- * contains ACTION_FN_10, which is the only way to fire ASDF_HOOK_USER_10 via
- * a keypress.  There is therefore no reachable key sequence that triggers the
- * ID hook, and no identity test is possible until a trigger key is added to
- * the ctrl matrix. */
+ * sol_id_message() prints "[Keybd: Sol-20]" (no trailing newline).
+ * ACTION_FN_10 is at sol_ctrl_map[6][5], so CTRL + key(6,5) triggers the hook.
+ * SOL activates capslock on boot; setup_sol_keymap() also calls
+ * asdf_arch_set_neg_strobe() but the harness captures on both edges
+ * transparently.
+ * sol_plain_map[2][0] = ACTION_CAPS (caps toggle).
+ * Modifier coords from sol_test above.
+ */
+static const sim_identity_test_t sol_identity_test = {
+    .dip_value             = 4,
+    .boot_scan_ticks       = 200,
+    .trigger_key           = { .row = 6, .col = 5 },
+    .trigger_modifier      = SIM_MOD_CTRL,
+    .modifier_shift        = { .row = 2, .col = 1 },
+    .modifier_caps_toggle  = { .row = 2, .col = 0 },
+    .modifier_ctrl         = { .row = 0, .col = 0 },
+    .capture_ticks         = 1500,
+    .expected              = "[Keybd: Sol-20]",
+    .expected_len          = sizeof("[Keybd: Sol-20]") - 1,
+};
 
 #endif
