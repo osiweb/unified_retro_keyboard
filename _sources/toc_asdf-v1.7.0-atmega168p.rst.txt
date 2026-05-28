@@ -1,0 +1,7 @@
+.. _atmega168p Rev 1.7.0:
+
+ASDF Rev 1.7.0 hex file (atmega168p)
+----------------------------------------------------------------------------------
+
+:ASDF Firmware 1.7.0-atmega168p:
+   :download:`asdf-v1.7.0-atmega168p.hex`

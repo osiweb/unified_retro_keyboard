@@ -1,4 +1,4 @@
-Unified Retro Keyboard firmware (ASDF) rev 1.6.5
+Unified Retro Keyboard firmware (ASDF) rev 1.7.0
 =======================================================================
 
 .. toctree::
@@ -6,3 +6,5 @@ Unified Retro Keyboard firmware (ASDF) rev 1.6.5
    :glob:
 
    toc_*
+
+.. include:: ../../RELEASE_NOTES.rst

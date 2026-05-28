@@ -1,0 +1,7 @@
+.. _atmega2560 Rev 1.7.0:
+
+ASDF Rev 1.7.0 hex file (atmega2560)
+----------------------------------------------------------------------------------
+
+:ASDF Firmware 1.7.0-atmega2560:
+   :download:`asdf-v1.7.0-atmega2560.hex`
