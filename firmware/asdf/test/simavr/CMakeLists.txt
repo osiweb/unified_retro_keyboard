@@ -61,7 +61,7 @@ set(SIMAVR_KEYMAPS classic classic_caps apple2 apple2_caps sol ace1000)
 
 foreach(tgt ${SIMAVR_TARGETS})
   foreach(km ${SIMAVR_KEYMAPS})
-    set(elf_path ${CMAKE_SOURCE_DIR}/build-${tgt}/src/asdf-v1.6.6-${tgt}.elf)
+    set(elf_path ${CMAKE_SOURCE_DIR}/build-${tgt}/src/asdf-v${PROJECT_VERSION}-${tgt}.elf)
     add_test(
       NAME simavr_${tgt}_${km}
       COMMAND asdf_simavr_runner

@@ -38,7 +38,7 @@ cd build-simavr-test
 ctest -R simavr_atmega2560_sol -V    # one case, verbose ctest output
 ./test/simavr/asdf_simavr_runner \
     --target atmega2560 --keymap sol \
-    --elf ../build-atmega2560/src/asdf-v1.6.6-atmega2560.elf \
+    --elf ../build-atmega2560/src/asdf-v1.7.0-atmega2560.elf \
     --verbose --vcd /tmp/sol.vcd
 gtkwave /tmp/sol.vcd
 ```
@@ -54,7 +54,7 @@ Runner flags:
   before its column-injection wiring is in place.
 - `--gdb <port>` — start the simavr GDB stub on the given port and wait
   for a debugger attach. Then connect with:
-  `avr-gdb build-atmega2560/src/asdf-v1.6.6-atmega2560.elf -ex 'target remote :1234'`
+  `avr-gdb build-atmega2560/src/asdf-v1.7.0-atmega2560.elf -ex 'target remote :1234'`
 
 ## Add a new keymap test
 
