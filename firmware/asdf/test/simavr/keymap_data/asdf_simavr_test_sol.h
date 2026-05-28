@@ -59,7 +59,7 @@ static const sim_identity_test_t sol_identity_test = {
 
 /* Typed-string test for sol (DIP 4).
  *
- * Script: THIS IS A TEST OF THE SOL-20 KEYMAP.<ctrl>m</ctrl>
+ * Script: <shift>T</shift>HIS IS A TEST OF THE SOL-20 KEYMAP.<ctrl>m</ctrl>
  * Expected output: THIS IS A TEST OF THE SOL-20 KEYMAP.\r
  *
  * setup_sol_keymap() calls asdf_modifier_capslock_activate(), so caps is ON at
@@ -85,28 +85,34 @@ static const sim_string_step_t sol_string_steps[] = {
     { .type = SIM_STEP_MOD_DOWN, .modifier = SIM_MOD_SHIFT },
     { .type = SIM_STEP_KEY,  .row = 6, .col = 6, .expected = 'T' },
     { .type = SIM_STEP_MOD_UP,   .modifier = SIM_MOD_SHIFT },
-    /* HIS IS A TEST OF THE SOL-20 KEYMAP. (caps ON -> sol_caps_map -> uppercase) */
+    /* HIS IS A  (caps ON -> sol_caps_map -> uppercase) */
     { .type = SIM_STEP_KEY,  .row = 0, .col = 7, .expected = 'H' },
     { .type = SIM_STEP_KEY,  .row = 7, .col = 1, .expected = 'I' },
     { .type = SIM_STEP_KEY,  .row = 0, .col = 3, .expected = 'S' },
     { .type = SIM_STEP_KEY,  .row = 9, .col = 3, .expected = ' ' },
+    /* IS  */
     { .type = SIM_STEP_KEY,  .row = 7, .col = 1, .expected = 'I' },
     { .type = SIM_STEP_KEY,  .row = 0, .col = 3, .expected = 'S' },
     { .type = SIM_STEP_KEY,  .row = 9, .col = 3, .expected = ' ' },
+    /* A  */
     { .type = SIM_STEP_KEY,  .row = 0, .col = 2, .expected = 'A' },
     { .type = SIM_STEP_KEY,  .row = 9, .col = 3, .expected = ' ' },
+    /* TEST  */
     { .type = SIM_STEP_KEY,  .row = 6, .col = 6, .expected = 'T' },
     { .type = SIM_STEP_KEY,  .row = 6, .col = 4, .expected = 'E' },
     { .type = SIM_STEP_KEY,  .row = 0, .col = 3, .expected = 'S' },
     { .type = SIM_STEP_KEY,  .row = 6, .col = 6, .expected = 'T' },
     { .type = SIM_STEP_KEY,  .row = 9, .col = 3, .expected = ' ' },
+    /* OF  */
     { .type = SIM_STEP_KEY,  .row = 7, .col = 2, .expected = 'O' },
     { .type = SIM_STEP_KEY,  .row = 0, .col = 5, .expected = 'F' },
     { .type = SIM_STEP_KEY,  .row = 9, .col = 3, .expected = ' ' },
+    /* THE  */
     { .type = SIM_STEP_KEY,  .row = 6, .col = 6, .expected = 'T' },
     { .type = SIM_STEP_KEY,  .row = 0, .col = 7, .expected = 'H' },
     { .type = SIM_STEP_KEY,  .row = 6, .col = 4, .expected = 'E' },
     { .type = SIM_STEP_KEY,  .row = 9, .col = 3, .expected = ' ' },
+    /* SOL-20  */
     { .type = SIM_STEP_KEY,  .row = 0, .col = 3, .expected = 'S' },
     { .type = SIM_STEP_KEY,  .row = 7, .col = 2, .expected = 'O' },
     { .type = SIM_STEP_KEY,  .row = 1, .col = 2, .expected = 'L' },
@@ -114,6 +120,7 @@ static const sim_string_step_t sol_string_steps[] = {
     { .type = SIM_STEP_KEY,  .row = 4, .col = 2, .expected = '2' },
     { .type = SIM_STEP_KEY,  .row = 5, .col = 2, .expected = '0' },
     { .type = SIM_STEP_KEY,  .row = 9, .col = 3, .expected = ' ' },
+    /* KEYMAP. */
     { .type = SIM_STEP_KEY,  .row = 1, .col = 1, .expected = 'K' },
     { .type = SIM_STEP_KEY,  .row = 6, .col = 4, .expected = 'E' },
     { .type = SIM_STEP_KEY,  .row = 6, .col = 7, .expected = 'Y' },
