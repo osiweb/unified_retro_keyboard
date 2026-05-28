@@ -105,8 +105,7 @@ static sim_coord_t identity_mod_coord(const sim_identity_test_t *id, int mod)
 
 static const sim_string_test_t *pick_string_test(const char *name)
 {
-    (void)name;
-    /* Populated per-keymap in subsequent tasks. */
+    if (!strcmp(name, "classic"))      return &classic_string_test;
     return 0;
 }
 

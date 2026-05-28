@@ -55,4 +55,82 @@ static const sim_identity_test_t classic_identity_test = {
     .expected_len          = sizeof("[Keymap: classic]\r\n") - 1,
 };
 
+/* Typed-string test for classic (DIP 0).
+ *
+ * Script: <shift>t</shift>his is a <caps>TEST<caps> of the classic keymap.<ctrl>m</ctrl>
+ * Expected output: This is a TEST of the classic keymap.\r
+ *
+ * Key coordinates (from classic_plain_matrix in asdf_keymap_classic_add_map.c):
+ *   space  (1,4)   t (4,4)   h (3,3)   i (4,1)   s (3,7)
+ *   a      (1,6)   e (4,6)   o (5,5)   f (3,5)   c (2,6)
+ *   l      (5,6)   k (3,1)   y (4,3)   m (2,2)   p (1,1)
+ *   .      (5,7)
+ *
+ * CTRL+m (row 2, col 2 with CTRL) maps to ASCII_CTRL_M = '\r' via
+ * classic_ctrl_matrix[2][2].  asdf_put_code() routes keycodes below
+ * ASDF_ACTION directly to the keycode buffer (bypassing asdf_putc), so
+ * no automatic \n follows the \r.
+ */
+static const sim_string_step_t classic_string_steps[] = {
+    /* <shift>T */
+    { .type = SIM_STEP_MOD_DOWN, .modifier = SIM_MOD_SHIFT },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 4, .expected = 'T' },
+    { .type = SIM_STEP_MOD_UP,   .modifier = SIM_MOD_SHIFT },
+    /* his is a  */
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 3, .expected = 'h' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 1, .expected = 'i' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 7, .expected = 's' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 1, .expected = 'i' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 7, .expected = 's' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 6, .expected = 'a' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    /* <caps>TEST<caps> */
+    { .type = SIM_STEP_MOD_TAP,  .modifier = SIM_MOD_CAPS },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 4, .expected = 'T' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 6, .expected = 'E' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 7, .expected = 'S' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 4, .expected = 'T' },
+    { .type = SIM_STEP_MOD_TAP,  .modifier = SIM_MOD_CAPS },
+    /*  of the classic keymap. */
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 5, .col = 5, .expected = 'o' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 5, .expected = 'f' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 4, .expected = 't' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 3, .expected = 'h' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 6, .expected = 'e' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 2, .col = 6, .expected = 'c' },
+    { .type = SIM_STEP_KEY,  .row = 5, .col = 6, .expected = 'l' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 6, .expected = 'a' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 7, .expected = 's' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 7, .expected = 's' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 1, .expected = 'i' },
+    { .type = SIM_STEP_KEY,  .row = 2, .col = 6, .expected = 'c' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 4, .expected = ' ' },
+    { .type = SIM_STEP_KEY,  .row = 3, .col = 1, .expected = 'k' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 6, .expected = 'e' },
+    { .type = SIM_STEP_KEY,  .row = 4, .col = 3, .expected = 'y' },
+    { .type = SIM_STEP_KEY,  .row = 2, .col = 2, .expected = 'm' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 6, .expected = 'a' },
+    { .type = SIM_STEP_KEY,  .row = 1, .col = 1, .expected = 'p' },
+    { .type = SIM_STEP_KEY,  .row = 5, .col = 7, .expected = '.' },
+    /* <ctrl>m</ctrl> => '\r' */
+    { .type = SIM_STEP_MOD_DOWN, .modifier = SIM_MOD_CTRL },
+    { .type = SIM_STEP_KEY,  .row = 2, .col = 2, .expected = '\r' },
+    { .type = SIM_STEP_MOD_UP,   .modifier = SIM_MOD_CTRL },
+};
+
+static const sim_string_test_t classic_string_test = {
+    .dip_value             = 0,
+    .boot_scan_ticks       = 1000,
+    .modifier_shift        = { .row = 0, .col = 2 },
+    .modifier_caps_toggle  = { .row = 5, .col = 2 },
+    .modifier_ctrl         = { .row = 0, .col = 6 },
+    .steps                 = classic_string_steps,
+    .num_steps             = sizeof(classic_string_steps) / sizeof(classic_string_steps[0]),
+};
+
 #endif
