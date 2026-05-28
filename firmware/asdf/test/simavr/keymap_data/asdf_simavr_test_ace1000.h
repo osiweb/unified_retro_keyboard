@@ -34,7 +34,7 @@ static const sim_keymap_test_t ace1000_test = {
  *
  * ace1000_id_message() prints "[Keymap: ace1000]\n"; asdf_putc() expands \n
  * to \r\n, so the emitted sequence is 20 bytes.
- * ACTION_FN_10 is at ace1000_ctrl_matrix[6][5], so CTRL + key(6,5) triggers
+ * ACTION_FN_10 is at ace1000_ctrl_matrix[6][0] (the 0 key), so CTRL+0 triggers
  * the hook.
  * ACE1000 activates capslock on boot.
  * ace1000_plain_matrix[0][5] = ACTION_CAPS (caps toggle).
@@ -43,7 +43,7 @@ static const sim_keymap_test_t ace1000_test = {
 static const sim_identity_test_t ace1000_identity_test = {
     .dip_value             = 5,
     .boot_scan_ticks       = 200,
-    .trigger_key           = { .row = 6, .col = 5 },
+    .trigger_key           = { .row = 6, .col = 0 },
     .trigger_modifier      = SIM_MOD_CTRL,
     .modifier_shift        = { .row = 0, .col = 6 },
     .modifier_caps_toggle  = { .row = 0, .col = 5 },

@@ -36,7 +36,7 @@ static const sim_keymap_test_t sol_test = {
 /* SOL identity test.
  *
  * sol_id_message() prints "[Keybd: Sol-20]" (no trailing newline).
- * ACTION_FN_10 is at sol_ctrl_map[6][5], so CTRL + key(6,5) triggers the hook.
+ * ACTION_FN_10 is at sol_ctrl_map[5][2] (the 0 key), so CTRL+0 triggers the hook.
  * SOL activates capslock on boot; setup_sol_keymap() also calls
  * asdf_arch_set_neg_strobe() but the harness captures on both edges
  * transparently.
@@ -46,7 +46,7 @@ static const sim_keymap_test_t sol_test = {
 static const sim_identity_test_t sol_identity_test = {
     .dip_value             = 4,
     .boot_scan_ticks       = 200,
-    .trigger_key           = { .row = 6, .col = 5 },
+    .trigger_key           = { .row = 5, .col = 2 },
     .trigger_modifier      = SIM_MOD_CTRL,
     .modifier_shift        = { .row = 2, .col = 1 },
     .modifier_caps_toggle  = { .row = 2, .col = 0 },
