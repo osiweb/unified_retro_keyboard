@@ -18,59 +18,32 @@ ASDF supports basic keyboard functionality and is configurable via a few
 boolean variables, and via the key maps. The key maps are organized in
 row,column format, with separate keymaps shift, capslock, and control-key modes.
 
-## Downloads:
+## Downloads
 
-Download the latest release of the firmware [here](https://osiweb.github.io/unified_retro_keyboard)
+The latest downloads are available at:
 
-## Features:
+- **Download page**: <https://osiweb.github.io/unified_retro_keyboard/> — per-target `.hex` files and the release notes for every version.
 
-* modifiers: A set of modifier keys may be specified. When only a few modifiers
-  are used, this mechanism is a low-overhead alternative to a keymap overlay for
-  keyboard states that only change the key codes produced by a keypress, such as
-  SHIFT, CAPS LOCK, CONTROL, etc. The state of each modifier key is kept in a
-  state variable. In most cases, pressing the key will set the value to a
-  "pressed" state, and releasing will reset the value to an "unpressed" state.
-  However some functions interact. For example, Shift Lock is sticky, so
-  pressing Shift Lock toggles the Shift Lock state, and Releasing Shift Lock
-  does nothing; but pressing "Shift" will reset the "Shift Lock" state.
+<!-- **GitHub Releases**: <https://github.com/osiweb/unified_retro_keyboard/releases/latest> — the same `.hex` files plus `.elf` builds and a zipped copy of the docs site, attached as release assets. -->
 
-  All modifier state variables are kept in a modifier state variable array. On a
-  regular keypress, all of the modifier state variables are OR'ed together to
-  produce an index into a value array for the standard key, to determine the
-  value sent by the standard keypress.
+## Supported keymaps:
 
-* DIP switches: DIP switches are implemented by adding them into the key
-  matrix, and providing activate() and deactivate() functions for the on and off
-  positions.
+The following keymaps may be selected via the DIP switches:
 
-* Multiple keymaps. DIP switches 0-4 select the map. The current version
-  includes: 
-  
-  * (0): ADM-style ASCII keyboard 
+  * (0): ADM-style ASCII keyboard
   * (1): ADM-style ASCII keyboard (all caps)
   * (2): Apple 2 ASCII keyboard (upper/lower)
   * (3): Apple 2 ASCII keyboard (standard all caps)
   * (4): Sol-20 ASCII keyboard
-  * (5): Franklin Ace-100 keyboard (Thanks to Chris Ryu)
+  * (5): Franklin ACE 1000 keyboard (Thanks to Chris Ryu)
 
-* Debounce and Repeat functions: The main keyscan logic implements key
-  debouncing. Multiple keys may be debounced simultaneously using a separate
-  debounce counter for each key in the matrix.
 
-* Repeat key and Autorepeat: This is provided by the repeat module. Autorepeat
-  may be disabled or enabled either by configuration, by activate()/deactivate()
-  functions, or other keyboard logic. Repeat and autorepeat only apply to the
-  most recently pressed key.
+## Keyboard features
 
-* ASCII output - supported via output_value function.
-
-* Virtual Output layer: Indicator LEDs and other direct logic-level hardware
- controls: supported via a virtual output layer. The keymaps (and certain
- functions such as shiftlock and capslock) may bind virtual outputs. The keymaps
- may then specify how the virtual outputs map to the available physical
- resources. This allows one keymap to place the capslock LED in one position,
- and another keymap may place the capslock LED elswhere. This simplifies support
- of multiple keyboards and keymaps.
+  * N-key rollover
+  * Debouncing
+  * Auto repeat and manual repeat.  Autorepeat may be enabled or diabled via DIP switch.
+  * Positive or negative strobe polarity selection via DIP switch.
 
 ## Compiling and configuration
 
@@ -80,11 +53,11 @@ Download the latest release of the firmware [here](https://osiweb.github.io/unif
 - You will see a "project" section near the beginning of the file.
 
         project("asdf"
-            VERSION 1.6.3
+            VERSION 1.7.0
             DESCRIPTION "A customizable keyboard matrix controller for retrocomputers"
             LANGUAGES C)
 
-- You can change the project name from "asdf" to whatever you like, and change the version number as you see fit.  These values will be used to name the resulting hex files, and also to name the download links in the GitHub page, if you choose to create one. 
+- You can change the project name from "asdf" to whatever you like, and change the version number as you see fit.  These values will be used to name the resulting hex files, and also to name the download links in the GitHub page, if you choose to create one.
 
         project("my-keyboard"
             VERSION 1.0
@@ -96,18 +69,20 @@ Download the latest release of the firmware [here](https://osiweb.github.io/unif
 If you have commit privileges to the repository, or if you have your own fork,
 then push a commit to one of the following branches to trigger an automatic build:
 
-- asdf-release
+- main
 - asdf-build-test
 
+Pushing a `vX.Y.Z` tag also triggers the release pipeline (documentation deploy and GitHub Release with built `.hex` / `.elf` assets).
+
 This will generate a github page with downloadable hex files. You will find the
-link to the github page in the "Actions" tab of the repository. 
+link to the github page in the "Actions" tab of the repository.
 
 You will also need to activate GitHub pages.  To do this:
 
 - Click "Settings" at the top of this GitHub page, then along the menu bar on the left, select "Pages" in the "Code and Actions Section."
 - In the "Build and deployment" section, select "Deploy from Branch"
-- The "Branch" section will display a message that github pages is disabled.  Select the branch "gh-pages" from the dropdown, and the "disabled" message will be replaced with a message that the site is being built from "gh-pages".  Once you have triggered a build, you will see a message at the top of this page with a link to the live page. 
-- 
+- The "Branch" section will display a message that github pages is disabled.  Select the branch "gh-pages" from the dropdown, and the "disabled" message will be replaced with a message that the site is being built from "gh-pages".  Once you have triggered a build, you will see a message at the top of this page with a link to the live page.
+-
 
 ### build using the make-build-dirs.sh script.
 
@@ -125,7 +100,10 @@ You will also need to activate GitHub pages.  To do this:
             -c   Clean all artifacts
             -s   Copy dist files to sphinx directory
 
-    Valid targets: atmega640, atmega1280, atmega2560
+    Valid targets: atmega88p, atmega168p, atmega328p, atmega640, atmega1280, atmega2560, test, simavr_test
+
+    (`test` runs the host-side Unity unit tests; `simavr_test` runs
+    simavr-driven integration tests against the built AVR ELFs.)
 
     - To create build directories for all targets and install the python virtual
       environment:
@@ -150,7 +128,7 @@ You will also need to activate GitHub pages.  To do this:
     - From a fresh checkout, build all targets and install hex files in
       sphinx tree for the download links:
 
-            bash make-targets -pais
+            bash make-targets.sh -pais
 
 2) Enter the build directory for the desired architecture and build:
    Only needed if working on single target.  To make all targets at once,
@@ -168,31 +146,30 @@ You will also need to activate GitHub pages.  To do this:
 
 ### build manually (e.g., for development)
 
-1) make and build directories for the desired architectures:
+1) make build directories for the desired architectures:
 
         mkdir build-atmega328p build-atmega2560
 
-3) enter each build directory and run cmake for the desired architecture.
+2) enter each build directory and run cmake for the desired architecture.
 
         cd build-atmega2560
         cmake .. -DARCH=atmega2560 -DCMAKE_BUILD_TYPE=RELEASE
-   >    make
+        make
 
-4) to run unit tests, the process is the same as above, with "test" as the
+3) to run unit tests, the process is the same as above, with "test" as the
    target:
 
         mkdir build-test
         cd build-test
         cmake .. -DARCH=test
-        cd src
-        ctest
+        make && ctest
 
 ## Porting
 
 This firmware was written in modular, portable C99, to be compiled with GCC
-(avr-gcc for the Atmega). The hardware-sepecific files are in Arch/*.[ch]. To
+(avr-gcc for the Atmega). The hardware-specific files are in Arch/*.[ch]. To
 adapt the Atmega port for additional hardware, enter the ./src/Arch directory,
-and copy the files asdf_arch_atmega2560.c and asdf_arch_astmeg2560.h to new
+and copy the files asdf_arch_atmega2560.c and asdf_arch_atmega2560.h to new
 filenames, and edit them to suit the hardware changes.
 
 The firmware is designed to run from ROM on a slow vintage processor, with a
@@ -222,16 +199,15 @@ hardware, exporting the following functions:
   a scheduler, would be to schedule the keyscan every 1 ms, rather than poll. In
   that case, this function is not needed, and the "superloop" in main.c would
   contain a call to the scheduler.
-  
+
 - asdf_arch_XXXX_set: The hardware provides a number of physical resources, such
   as TTL or tri-state outputs, which can be used to drive LEDs, TTL logic output
   lines, etc. These are driven by a virtual output layer. The virtual layer
   requires a function to set the state of the physical resources. One function
   is provided for each such resource. For example, if a TTL output is called
   OUT1, then the function asdf_arch_out1_set() must be defined. For now, the
-  required devices are: 
+  required devices are:
 - LED1, LED2, LED3 (LED outputs)
 - OUT1, OUT2, OUT3 (TTL outputs)
 - OUT1\_OPEN\_HI, OUT2\_OPEN\_HI, OUT3\_OPEN\_HI (Open collector outputs)
 - OUT1\_OPEN\_LO, OUT2\_OPEN\_LO, OUT3\_OPEN\_LO (Open emitter outputs)
-

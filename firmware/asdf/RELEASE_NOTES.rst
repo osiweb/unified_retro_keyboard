@@ -1,8 +1,6 @@
 ASDF Firmware Release Notes
 ===========================
 
-Entries are listed most recent first. Highlights summarize the impact. Details give the implementation notes and other supporting changes.
-
 Version 1.7.0 (Release)
 -----------------------
 
@@ -48,7 +46,7 @@ Details
 - *Feature*: Added ``asdf_arch_set_row_scanner()`` and default row scanner declarations in the architecture headers.
 - *Build*: Removed unused row/column list plumbing and an unused keymap helper.
 
-Version 1.6.5 (2023-01-02)
+Version 1.6.5 (Release: 2023-01-02)
 --------------------------
 
 Highlights
@@ -68,7 +66,7 @@ Details
 - *Build*: Reworked CMake target factor out processor family from the MCU.
 - *Build*: Fixed install directory handling and ``make-targets.sh`` issues.
 
-Version 1.6.4 (2022-12-27)
+Version 1.6.4 (Release: 2022-12-27)
 --------------------------
 
 Highlights
@@ -87,7 +85,7 @@ Details
 - *Bug Fix*: Fixed a GCC 11.3 compiler warning path.
 - *Bug Fix*: Added missing keymap setup files and missing keymap headers needed by tests and builds.
 
-Version 1.6.3 (2021-12-05)
+Version 1.6.3 (Release: 2021-12-05)
 --------------------------
 
 Highlights
@@ -109,7 +107,7 @@ Details
 - *Bug Fix*: Fixed the ATmega2560 millisecond delay routine.
 - *Bug Fix*: ``asdf_buffer_get()`` fixed to validate the buffer handle before use.
 
-Version 1.6.2 (2021-11-29)
+Version 1.6.2 (Release: 2021-11-29)
 --------------------------
 
 Highlights
@@ -128,7 +126,7 @@ Details
 - *Bug Fix*: Fixed extra indirection and library-related indirection errors.
 - *Build*: Added CMake templates for generated keymap setup files.
 
-Version 1.6.1 (2021-11-28)
+Version 1.6.1 (Release: 2021-11-28)
 --------------------------
 
 Highlights
@@ -145,7 +143,7 @@ Details
 - *Bug Fix*: Removed ``arch_init`` from ``main()``.
 - *Build*: Updated generated keymap setup handling for the new layout.
 
-Version 1.6.0 (2021-11-28)
+Version 1.6.0 (Release: 2021-11-28)
 --------------------------
 
 Highlights
@@ -163,7 +161,7 @@ Details
 - *Build*: Fixed test CMake files and compile flags for the new scheme.
 - *Bug Fix*: Fixed Sol map comments and keymap initialization cleanup items found during the conversion.
 
-Version 1.5.1 (2021-11-08)
+Version 1.5.1 (Release: 2021-11-08)
 --------------------------
 
 Highlights
@@ -179,7 +177,7 @@ Details
 - *Build*: Changed build artifact names to place the version before the architecture.
 - *Build*: Fixed CMake test files and C compile flags.
 
-Version 1.5 (2021-03-04)
+Version 1.5 (Release: 2021-03-04)
 ------------------------
 
 Highlights
