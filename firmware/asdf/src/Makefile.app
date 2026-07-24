@@ -2,10 +2,11 @@
 
 ARCH ?= atmega2560
 KEYMAP ?= production
+VERSION ?= 0.9
 
 ARCH_TOKEN = _Arch_$(ARCH)
 
-TARGET = asdf-$(ARCH)
+TARGET = asdf-$(ARCH)-v$(VERSION)
 
 TEST_DIR = ../test
 UNITY_DIR = $(TEST_DIR)/unity
@@ -19,7 +20,6 @@ TARGET_MAP := $(BUILD_DIR)/$(TARGET).map
 UNITY_SCRIPTS = $(UNITY_DIR)/auto
 ARCH_DIR = Arch
 KEYMAPS_DIR = Keymaps
-VERSION =
 RELEASE=
 SIZE_COMMAND = avr-size
 

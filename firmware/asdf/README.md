@@ -64,15 +64,81 @@ Features:
 
 Compiling and configuration
 --
-The source files are in the ./src directory.  The final build files go in the ./build directory.
+The source files are in the ./src directory. All build products — object files,
+ELF binaries, hex files, map files, and the test executables — are written to the
+./build directory. That directory must already exist; the makefiles will not
+create it, so if your checkout does not have one, "mkdir build" first.
 
-To build, enter the ./src directory. You should be able to build a binary and
-hex file suitable for programming a microcontroller by typing "Make". You may
-edit the Makefile to specify your target platform (default is Atmega328P ASCII
-controller). You may also wish to edit your preferences in "asdf_config.h" to
-specify repeat timings, optimize the debounce setting (if you have very bounce
-keys), and specify the character output buffer size (if you are implementing
-macros, etc.)
+You will need GNU make, avr-gcc and avr-binutils to build the firmware, and the
+host gcc to build the tests. All make commands are run from the ./src directory.
+
+To build a firmware image for each supported target:
+
+    cd src
+    make cleanall ARCH=atmega2560 && make app ARCH=atmega2560
+    make cleanall ARCH=atmega328p && make app ARCH=atmega328p
+
+Each build produces ../build/asdf-\<arch\>-v\<version\>.elf, .hex and .map, and
+prints a size report — for example, asdf-atmega2560-v0.9.hex. There is no upload
+target in the makefiles; program the .hex file onto the microcontroller with
+avrdude or the programmer of your choice.
+
+The supported values of ARCH are the names of the architecture files in
+./src/Arch, currently atmega2560 (the default) and atmega328p. A KEYMAP variable
+selects which set of keymaps is compiled in; it defaults to "production" and
+there is no reason to change it for a firmware build. VERSION supplies the
+version stamped into the output filenames, and is set in Makefile.app; it does
+not affect the compiled code, only what the artifacts are called. The
+corresponding source revisions are tagged in git as asdf-v-\<version\>.
+
+**Always run "make cleanall" when you change ARCH or KEYMAP.** The build selects
+the target hardware and keymap set by copying files into place, rather than by
+include paths or preprocessor flags:
+
+    Arch/asdf_arch_$(ARCH).c                  ->  asdf_arch.c
+    Arch/asdf_arch_$(ARCH).h                  ->  asdf_arch.h
+    Keymaps/asdf_all_keymap_defs_$(KEYMAP).h  ->  asdf_keymap_defs.h
+
+The rest of the sources include the generic names. The rules that make these
+copies do not reliably notice that ARCH has changed, and only "cleanall" removes
+the copies and forces them to be regenerated. Plain "make clean" is not enough:
+it clears the object files but leaves the stale copies behind. The object files
+are not qualified by architecture either, so they have to be cleared between
+targets in any case.
+
+Passing ARCH to cleanall, as shown above, scopes the deletion to that target's
+own build products and leaves an image already built for another architecture
+in place. A bare "make cleanall" would delete the default target's hex file.
+
+Building with a stale copy in place fails loudly rather than producing a bad
+image: either the compiler rejects register names that do not exist on the
+selected part, or the linker rejects objects built for a different AVR
+architecture.
+
+You may also wish to edit your preferences in "asdf_config.h" to specify repeat
+timings, optimize the debounce setting (if you have very bouncy keys), and
+specify the character output buffer size (if you are implementing macros, etc.)
+
+Testing
+--
+The unit tests use the Unity framework, vendored in ./test/unity. They build
+against a host architecture stub, so they compile with the native gcc rather
+than avr-gcc.
+
+    cd src
+    make cleanall && make test
+
+Each suite is built as a standalone executable in ./build and run immediately as
+part of the build, so make stops at the first suite that fails.
+
+The tests build with ARCH=test and KEYMAP=test, and so overwrite the same
+generated copies that a firmware build uses. Run "make cleanall" when switching
+between "make test" and "make app" in either direction.
+
+Known issue: the asdf\_keymaps and asdf\_virtual suites currently fail to link,
+with an undefined reference to asdf\_repeat\_init, because asdf\_repeat.c is
+missing from their dependency lists in Makefile.test. The asdf\_repeat,
+asdf\_modifiers, asdf\_buffer and asdf\_hook suites pass.
 
 Porting
 --
