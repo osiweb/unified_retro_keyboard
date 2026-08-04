@@ -13,7 +13,7 @@ KBM-01-01) keys.
 The keyboard is designed using KiCad in order to be the most useful for anybody
 wishing to modify the keyboard for more specific uses, or to add to the project.
 
-For construction and notes, see the the wiki at (https://github.com/osiweb/unified_retro_keyboard/wiki).
+For construction and notes, see the the wiki at https://github.com/osiweb/unified_retro_keyboard/wiki.
 
 ### Capabilities so far:
 - Replacement keyboard for OSI computers
