@@ -1,4 +1,4 @@
 Firmware Downloads
 ==================
 
-Download the latest release of the firmware [here](https://osiweb.github.io/unified_retro_keyboard)
+Download the latest release of the firmware [here](https://unified-retro-keyboard.github.io/asdf-firmware/)

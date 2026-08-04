@@ -28,3 +28,14 @@ The keyboard is designed using KiCad in order to be the most useful for anybody 
 - A Sol-20 compatible keyboard.
 - Keyscan/decoder interface modules that can output parallel ASCII, and can be adapted for other protocols.
 - An OSI interface module, to connect the classic keyboard to an OSI computer.
+
+### Firmware
+
+The ASDF keyscan/encoder firmware lives in its own repository:
+<https://github.com/unified-retro-keyboard/asdf-firmware>
+
+- **Download page**: <https://unified-retro-keyboard.github.io/asdf-firmware/> — per-target `.hex` files and release notes.
+- **GitHub Releases**: <https://github.com/unified-retro-keyboard/asdf-firmware/releases/latest>
+
+The full firmware history, including everything that was previously under `firmware/`
+in this repository, is preserved there.
