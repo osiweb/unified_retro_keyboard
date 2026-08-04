@@ -1,12 +1,19 @@
 ## Unified Retrocomputer Keyboard Project
 
-This project aims to provide a unified collection of keyboards and encoders for vintage computers, with modular design to reuse as many elements as possible across the designs.  
+This project aims to provide a unified collection of keyboards and encoders for
+vintage computers, with modular design to reuse as many elements as possible
+across the designs.
 
-Home computers of the 1970's typically either polled a switch matrix, or interfaced to a parallel ASCII keyboard via a parallel port.
+Home computers of the 1970's typically either polled a switch matrix, or
+interfaced to a parallel ASCII keyboard via a parallel port.
 
-The keyboard allows use of Cherry MX keys, or Futaba MD-4PCS (aka George Risk KBM-01-01) keys.
+The keyboard allows use of Cherry MX keys, or Futaba MD-4PCS (aka George Risk
+KBM-01-01) keys.
 
-The keyboard is designed using KiCad in order to be the most useful for anybody wishing to modify the keyboard for more specific uses, or to add to the project.
+The keyboard is designed using KiCad in order to be the most useful for anybody
+wishing to modify the keyboard for more specific uses, or to add to the project.
+
+For construction and notes, see the the wiki at (https://github.com/osiweb/unified_retro_keyboard/wiki).
 
 ### Capabilities so far:
 - Replacement keyboard for OSI computers
